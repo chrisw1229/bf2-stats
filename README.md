@@ -1,0 +1,3 @@
+The goal of this project is to output and subsequently parse log files for the game Battlefield 2 and generate a wide range of statistical web pages that describe the performance of each player.
+
+The focus will be on creating a modern and polished user experience that provides interesting and entertaining information to players of the game. It will support a real-time mode for use during LAN party events, as well as a comprehensive static mode for post-game viewing. It will also include a custom game mod that will make it possible to extract additional statistics not available in the standard game. There is no interest at this time in supporting other games. 
