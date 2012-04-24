@@ -1,22 +1,23 @@
+import time
+
 import host
 import bf2.PlayerManager
 import bf2.GameLogic
 
-from time import gmtime, strftime
-
 from constants import *
 from bf2.stats.stats import getStatsMap
 
-logFile = None;
+logFile = None
 
 def init():
 	print 'INIT'
 
 	# Get the current time formatted to name the log file
-	timestamp = strftime('%Y-%m-%d_%H-%M-%S', gmtime())
+	timestamp = time.strftime('%Y-%m-%d_%H-%M-%S', time.gmtime())
 
 	# Build a path to the target log output file
 	logFileName = bf2.gameLogic.getModDir() + '/logs/' + '/bf2_' + timestamp + '_log.txt'
+	print 'Creating log file: ', logFileName
 
 	# Open the log file in line-buffered write mode
 	global logFile
@@ -46,7 +47,7 @@ def deinit():
 	host.unregisterGameStatusHandler(onGameStatus)
 
 	# Cleanup the log file stream
-	logFile.close();
+	logFile.close()
 
 def onPlayerConnect(player):
 	log('CN', player.getAddress(), player.getProfileId(), player.getName())
@@ -207,6 +208,10 @@ def onVehicleDestroyed(vehicle, attacker):
 	log('VD', vehicle, attacker)
 
 def log(type, *args):
+
+	# Write the log entry time stamp
+	logFile.write(str(int(host.timer_getWallTime())).zfill(5))
+	logFile.write(';')
 
 	# Write the required type of log
 	logFile.write(type)
