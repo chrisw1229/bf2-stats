@@ -1,4 +1,4 @@
-import time
+import datetime
 
 import host
 import bf2.PlayerManager
@@ -13,7 +13,7 @@ def init():
 	print 'INIT'
 
 	# Get the current time formatted to name the log file
-	timestamp = time.strftime('%Y-%m-%d_%H-%M-%S', time.gmtime())
+	timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 
 	# Build a path to the target log output file
 	logFileName = bf2.gameLogic.getModDir() + '/logs/' + '/bf2_' + timestamp + '_log.txt'
