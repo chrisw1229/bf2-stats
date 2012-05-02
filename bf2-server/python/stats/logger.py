@@ -11,7 +11,7 @@ from bf2.stats.stats import getStatsMap
 logFile = None
 
 def init():
-	print 'INIT'
+	print 'LOGGER - INIT'
 
 	# Get the current time formatted to name the log file
 	timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
@@ -37,7 +37,7 @@ def init():
 	host.registerGameStatusHandler(onGameStatus)
 
 def deinit():
-	print 'DEINIT'
+	print 'LOGGER - DEINIT'
 
 	# Unregister the pre-game callbacks
 	host.unregisterHandler('PlayerConnect', onPlayerConnect)
@@ -51,16 +51,26 @@ def deinit():
 	logFile.close()
 
 def onPlayerConnect(player):
-	log('CN', [player.getAddress(), player.getProfileId(), formatPlayerName(player)])
+	playerAddr = formatPlayerAddr(player)
+	playerId = player.getProfileId()
+	playerIndex = player.index
+	playerName = formatPlayer(player)
+
+	log('CN', playerAddr, playerId, playerIndex, playerName)
 
 def onPlayerDisconnect(player):
-	log('DC', [player.getAddress(), player.getProfileId(), formatPlayerName(player)])
+	playerAddr = formatPlayerAddr(player)
+	playerId = player.getProfileId()
+	playerIndex = player.index
+	playerName = formatPlayer(player)
+
+	log('DC', playerAddr, playerId, playerIndex, playerName)
 
 def onReset(data):
-	log('RS', [data])
+	log('RS', data)
 
 def onGameStatus(status):
-	log('GS', [formatStatus(status)])
+	log('GS', formatStatus(status))
 
 	# Update the callback function registrations
 	if status == bf2.GameStatus.Playing:
@@ -117,233 +127,237 @@ def onGameStatus(status):
 		host.unregisterHandler('VehicleDestroyed', onVehicleDestroyed)
 
 def onChangedCommander(teamId, oldPlayer, newPlayer):
-	teamName = formatTeam(player.getTeam())
-	oldId = oldPlayer.getProfileId()
-	oldName = formatPlayerName(oldPlayer)
-	newId = newPlayer.getProfileId()
-	newName = formatPlayerName(newPlayer)
+	teamName = formatTeam(newPlayer.getTeam())
+	newPlayerName = formatPlayer(newPlayer)
 
-	log('CR', [teamName, oldId, oldName, newId, newName])
+	log('CR', teamName, newPlayerName)
 
 def onChangedSquadLeader(squadId, oldPlayer, newPlayer):
-	values = []
-	values.extend([squadId])
-	values.extend(formatPlayer(oldPlayer))
-	values.extend(formatPlayer(newPlayer))
+	newPlayerName = formatPlayer(newPlayer)
 
-	log('SL', values)
+	log('SL', squadId, newPlayerName)
 
 def onChatMessage(playerId, text, channelId, flags):
-	log('CM', [playerId, text, channelId, flags])
+
+	# Determine the name of the player that sent the message
+	playerName = playerId
+	if playerId < 0:
+		playerName = 'Server'
+	else:
+		player = bf2.playerManager.getPlayerByIndex(playerId)
+		if player:
+			playerName = formatPlayer(player)
+
+	# Remove localization prefixes from messages
+	if text.startswith('HUD_TEXT_CHAT_TEAM'):
+		text = text[len('HUD_TEXT_CHAT_TEAM'):]
+	elif text.startswith('HUD_TEXT_CHAT_SQUAD'):
+		text = text[len('HUD_TEXT_CHAT_SQUAD'):]
+	elif text.startswith('HUD_CHAT_DEADPREFIX'):
+		text = text[len('HUD_CHAT_DEADPREFIX'):]
+
+	# Format the channel name
+	channelName = channelId.lower()
+
+	log('CM', channelName, playerName, text)
 
 def onControlPointChangedOwner(controlPoint, teamId):
-	log('CP', [controlPoint, teamId])
+	log('CP', controlPoint, teamId)
 
 def onDropKit(player, kit):
-	values = []
-	values.extend(formatPlayer(player))
-	values.extend([formatKit(kit)])
+	playerName = formatPlayer(player)
+	playerPos = formatPlayerPos(player)
+	kitName = formatKit(kit)
 
-	log('DK', values)
+	log('DK', playerName, playerPos, kitName)
 
 def onEnterVehicle(player, vehicle, freeSoldier = False):
-	values = []
-	values.extend(formatPlayer(player))
-	values.extend([formatVehicle(vehicle), freeSoldier])
+	playerName = formatPlayer(player)
+	playerPos = formatPlayerPos(player)
+	vehicleName = formatVehicle(vehicle)
 
-	log('EV', values)
+	log('EV', playerName, playerPos, vehicleName, freeSoldier)
 
 def onExitVehicle(player, vehicle):
-	values = []
-	values.extend(formatPlayer(player))
-	values.extend([formatVehicle(vehicle)])
+	playerName = formatPlayer(player)
+	playerPos = formatPlayerPos(player)
+	vehicleName = formatVehicle(vehicle)
 
-	log('XV', values)
+	log('XV', playerName, playerPos, vehicleName)
 
 def onPickupKit(player, kit):
-	values = []
-	values.extend(formatPlayer(player))
-	values.extend([formatKit(kit)])
+	playerName = formatPlayer(player)
+	playerPos = formatPlayerPos(player)
+	kitName = formatKit(kit)
 
-	log('PK', values)
+	log('PK', playerName, playerPos, kitName)
 
 def onPlayerBanned(player, time, type):
-	values = []
-	values.extend(formatPlayer(player))
-	values.extend([time, type])
+	playerName = formatPlayer(player)
 
-	log('BN', [player, time, type])
+	log('BN', playerName, time, type)
 
-def onPlayerChangedSquad(player, oldSquad, newSquad):
-	values = []
-	values.extend(formatPlayer(player))
-	values.extend([oldSquad, newSquad])
+def onPlayerChangedSquad(player, oldSquadId, newSquadId):
+	playerName = formatPlayer(player)
 
-	log('SQ', [player, oldSquad, newSquad])
+	log('SQ', playerName, newSquadId)
 
 def onPlayerChangeTeams(player, humanHasSpawned):
-	values = []
-	values.extend(formatPlayer(player))
-	values.extend([humanHasSpawned])
+	playerName = formatPlayer(player)
+	teamName = formatTeam(player.getTeam())
 
-	log('TM', values)
+	log('TM', playerName, teamName)
 
 def onPlayerChangeWeapon(player, oldWeapon, newWeapon):
-	values = []
-	values.extend(formatPlayer(player))
-	values.extend([formatWeapon(oldWeapon), formatWeapon(newWeapon)])
+	playerName = formatPlayer(player)
+	playerPos = formatPlayerPos(player)
+	newWeaponName = formatWeapon(newWeapon)
 
-	log('WP', values)
+	log('WP', playerName, playerPos, newWeaponName)
 
 def onPlayerDeath(victim, object):
-	values = []
-	values.extend(formatPlayer(victim))
-	values.extend([object])
+	victimName = formatPlayer(victim)
+	victimPos = formatPlayerPos(victim)
 
-	log('DT', values)
+	log('DT', victimName, victimPos, object)
 
 def onPlayerGiveAmmoPoint(giver, object):
-	values = []
-	values.extend(formatPlayer(giver))
-	values.extend([object])
+	giverName = formatPlayer(giver)
+	giverPos = formatPlayerPos(giver)
 
-	log('AP', values)
+	log('AP', giverName, giverPos, object)
 
 def onPlayerHealPoint(giver, object):
-	values = []
-	values.extend(formatPlayer(giver))
-	values.extend([object])
+	giverName = formatPlayer(giver)
+	giverPos = formatPlayerPos(giver)
 
-	log('HP', values)
+	log('HP', giverName, giverPos, object)
 
 def onPlayerKicked(player):
-	log('KK', formatPlayer(player))
+	playerName = formatPlayer(player)
+
+	log('KK', playerName)
 
 def onPlayerKilled(victim, attacker, weapon, assists, object):
-	values = []
-	values.extend(formatPlayer(victim))
-	values.extend(formatPlayer(attacker))
-	values.extend([formatWeapon(weapon), assists, object])
+	victimName = formatPlayer(victim)
+	victimPos = formatPlayerPos(victim)
+	attackerName = formatPlayer(attacker)
+	attackerPos = formatPlayerPos(attacker)
+	weaponName = formatWeapon(weapon)
 
-	log('KL', values)
+	log('KL', victimName, victimPos, attackerName, attackerPos, weaponName, assists, object)
 
 def onPlayerRepairPoint(giver, object):
-	values = []
-	values.extend(formatPlayer(giver))
-	values.extend([object])
+	giverName = formatPlayer(giver)
+	giverPos = formatPlayerPos(giver)
 
-	log('RP', values)
+	log('RP', giverName, giverPos, object)
 
 def onPlayerRevived(victim, reviver):
-	values = []
-	values.extend(formatPlayer(victim))
-	values.extend(formatPlayer(reviver))
+	victimName = formatPlayer(victim)
+	victimPos = formatPlayerPos(victim)
+	reviverName = formatPlayer(reviver)
+	reviverPos = formatPlayerPos(reviver)
 
-	log('RV', values)
+	log('RV', victimName, victimPos, reviverName, reviverPos)
 
 def onPlayerScore(player, difference):
-	values = []
-	values.extend(formatPlayer(player))
-	values.extend([difference])
+	playerName = formatPlayer(player)
 
-	log('SC', values)
+	log('SC', playerName, difference)
 
 def onPlayerSpawn(player, object):
-	values = []
-	values.extend(formatPlayer(player))
-	values.extend([object])
+	playerName = formatPlayer(player)
+	playerPos = formatPlayerPos(player)
+	playerTeam = formatTeam(player.getTeam())
 
-	log('SP', values)
+	log('SP', playerName, playerPos, playerTeam)
 
 def onPlayerTeamDamagePoint(attacker, victim):
-	values = []
-	values.extend(formatPlayer(victim))
-	values.extend(formatPlayer(attacker))
+	victimName = formatPlayer(victim)
+	victimPos = formatPlayerPos(victim)
+	attackerName = formatPlayer(attacker)
+	attackerPos = formatPlayerPos(attacker)
 
-	log('TP', values)
+	log('TP', victimName, victimPos, attackerName, attackerPos)
 
 def onTicketLimitReached(teamId, limitId):
-	log('TL', [teamId, limitId])
+	teamName = formatTeam(teamId)
+
+	log('TL', teamName, limitId)
 
 def onTimeLimitReached(value):
-	log('RL', [value])
+	log('CL', value)
 
 def onVehicleDestroyed(vehicle, attacker):
-	values = []
-	values.extend([formatVehicle(vehicle)])
-	values.extend(formatPlayer(attacker))
+	vehicleName = formatVehicle(vehicle)
+	vehiclePos = formatPos(vehicle.getPosition())
+	attackerName = formatPlayer(attacker)
+	attackerPos = formatPlayerPos(attacker)
 
-	log('VD', values)
+	log('VD', vehicleName, vehiclePos, attackerName, attackerPos)
 
 def formatKit(kit):
-	kitName = None
-	if kit != None:
-		kitName = kit.templateName.lower()
-	return kitName
+	if kit:
+		return kit.templateName.lower()
+	return None
 
 def formatPlayer(player):
-	playerId = player.getProfileId()
-	playerName = formatPlayerName(player)
-	playerTeam = formatTeam(player.getTeam())
-	playerVehicle = player.getVehicle()
-	playerPosition = formatPosition(playerVehicle.getPosition())
+	if player:
+		return player.getName().strip()
+	return None
 
-	values = [playerId, playerName, playerTeam]
-	values.extend(playerPosition)
-	return values
+def formatPlayerAddr(player):
+	if player and player.getAddress() != 'N/A':
+		return player.getAddress()
+	return None
 
-def formatPlayerName(player):
-	name = None
-	if player != None:
-		name = player.getName().strip()
-	return name
+def formatPlayerPos(player):
+	if player and player.getVehicle():
+		return formatPos(player.getVehicle().getPosition())
+	return None
 
-def formatPosition(position):
-	worldSize = bf2.gameLogic.getWorldSize()
-	scale = [512.0 / worldSize[0], 1, 512.0 / worldSize[1]]
-	scaled = [position[0] * scale[0], position[1] * scale[1], position[2] * scale[2]]
-	return [fpformat.fix(scaled[0], 1), fpformat.fix(scaled[1], 1), fpformat.fix(scaled[2], 1)]
+def formatPos(position):
+	if position and len(position) == 3:
+		return (fpformat.fix(position[0], 1) + ','
+				+ fpformat.fix(position[1], 1) + ','
+				+ fpformat.fix(position[2], 1))
+	return None
 
 def formatStatus(status):
-	name = None
 	if status == bf2.GameStatus.Playing:
-		name = 'Playing'
+		return 'play'
 	elif status == bf2.GameStatus.EndGame:
-		name = 'EndGame'
+		return 'end'
 	elif status == bf2.GameStatus.PreGame:
-		name = 'PreGame'
+		return 'pre'
 	elif status == bf2.GameStatus.Paused:
-		name = 'Paused'
+		return 'pause'
 	elif status == bf2.GameStatus.RestartServer:
-		name = 'RestartServer'
+		return 'restart'
 	elif status == bf2.GameStatus.NotConnected:
-		name = 'NotConnected'
-	else:
-		name = 'Unknown'
-	return name
+		return 'idle'
+	return None
 
 def formatTeam(team):
-	name = None
-	if team != None:
-		name = bf2.gameLogic.getTeamName(team).lower()
-	return name
+	if team:
+		return bf2.gameLogic.getTeamName(team).lower()
+	return None
 
 def formatVehicle(vehicle):
-	name = None
-	if vehicle != None:
-		name = vehicle.templateName.lower()
-	return name
+	if vehicle:
+		return vehicle.templateName.lower()
+	return None
 
 def formatWeapon(weapon):
-	name = None
-	if weapon != None:
-		name = weapon.templateName.lower()
-	return name
+	if weapon:
+		return weapon.templateName.lower()
+	return None
 
-def log(type, values = None):
+def log(type, *args):
 
 	# Validate the given parameters
-	assert type != None and len(type) == 2, 'Invalid log type: %s' % `type`
+	assert type and len(type) == 2, 'Invalid log type: %s' % `type`
 
 	# Write the log entry time stamp
 	logFile.write(str(int(host.timer_getWallTime())).zfill(5))
@@ -353,10 +367,10 @@ def log(type, values = None):
 	logFile.write(type)
 
 	# Write any optional log values with delimiters
-	if values:
-		for value in values:
+	if args:
+		for arg in args:
 			logFile.write(';')
-			logFile.write(str(value))
+			logFile.write(str(arg))
 		
 	# Make sure the log entry is output to disk immediately
 	logFile.write('\n')
