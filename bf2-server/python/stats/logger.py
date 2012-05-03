@@ -13,11 +13,8 @@ logFile = None
 def init():
 	print 'LOGGER - INIT'
 
-	# Get the current time formatted to name the log file
-	timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-
 	# Build a path to the target log output file
-	logFileName = bf2.gameLogic.getModDir() + '/logs/' + '/bf2_' + timestamp + '_log.txt'
+	logFileName = bf2.gameLogic.getModDir() + '/logs/' + '/bf2_game_log.txt'
 	print 'Creating log file: ', logFileName
 
 	# Open the log file in line-buffered write mode
