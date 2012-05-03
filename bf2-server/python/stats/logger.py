@@ -183,7 +183,12 @@ def on_drop_kit(player, kit):
 
     log('DK', player_name, player_pos, kit_name)
 
-def on_enter_vehicle(player, vehicle, free_soldier = False):
+def on_enter_vehicle(player, vehicle, free_soldier=False):
+
+    # Ignore the actual soldier model vehicle type
+    if is_soldier(vehicle):
+        return
+
     player_name = format_player(player)
     player_pos = format_player_pos(player)
     vehicle_name = format_vehicle(vehicle)
@@ -191,6 +196,11 @@ def on_enter_vehicle(player, vehicle, free_soldier = False):
     log('EV', player_name, player_pos, vehicle_name, free_soldier)
 
 def on_exit_vehicle(player, vehicle):
+
+    # Ignore the actual soldier model vehicle type
+    if is_soldier(vehicle):
+        return
+
     player_name = format_player(player)
     player_pos = format_player_pos(player)
     vehicle_name = format_vehicle(vehicle)
@@ -302,6 +312,11 @@ def on_time_limit_reached(value):
     log('CL', value)
 
 def on_vehicle_destroyed(vehicle, attacker):
+
+    # Ignore the actual soldier model vehicle type
+    if is_soldier(vehicle):
+        return
+
     vehicle_name = format_vehicle(vehicle)
     vehicle_pos = format_vehicle_pos(vehicle)
     attacker_name = format_player(attacker)
@@ -369,6 +384,9 @@ def format_weapon(weapon):
     if weapon:
         return weapon.templateName.lower()
     return None
+
+def is_soldier(vehicle):
+    return vehicle and getVehicleType(vehicle.templateName) == VEHICLE_TYPE_SOLDIER
 
 def log(type, *args):
 
