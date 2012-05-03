@@ -17,13 +17,17 @@ def init():
 	logFileName = bf2.gameLogic.getModDir() + '/logs/' + '/bf2_game_log.txt'
 	print 'Creating log file: ', logFileName
 
-	# Open the log file in line-buffered write mode
+	# Open the log file in line-buffered append mode
 	global logFile
 	try:
-		logFile = open(logFileName, 'w', 1)
+		logFile = open(logFileName, 'a', 1)
 	except IOError:
 		print 'Unable to open log file: ', logFileName
 		return
+
+	# Log the change in server status
+	timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+	log('SS', 'start', timestamp)
 
 	# Register the pre-game callbacks
 	host.registerHandler('PlayerConnect', onPlayerConnect, 1)
@@ -43,6 +47,10 @@ def deinit():
 
 	# Unregister the game status callback
 	host.unregisterGameStatusHandler(onGameStatus)
+
+	# Log the change in server status
+	timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+	log('SS', 'stop', timestamp)
 
 	# Cleanup the log file stream
 	logFile.close()
