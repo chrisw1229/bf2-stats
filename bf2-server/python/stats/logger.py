@@ -57,19 +57,15 @@ def deinit():
 
 def on_player_connect(player):
     player_addr = format_player_addr(player)
-    player_id = player.getProfileId()
-    player_index = player.index
     player_name = format_player(player)
 
-    log('CN', player_addr, player_id, player_index, player_name)
+    log('CN', player_addr, player_name)
 
 def on_player_disconnect(player):
     player_addr = format_player_addr(player)
-    player_id = player.getProfileId()
-    player_index = player.index
     player_name = format_player(player)
 
-    log('DC', player_addr, player_id, player_index, player_name)
+    log('DC', player_addr, player_name)
 
 def on_reset(data):
     log('RS', data)
