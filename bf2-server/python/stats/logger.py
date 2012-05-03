@@ -303,7 +303,7 @@ def on_time_limit_reached(value):
 
 def on_vehicle_destroyed(vehicle, attacker):
     vehicle_name = format_vehicle(vehicle)
-    vehicle_pos = format_pos(vehicle.getPosition())
+    vehicle_pos = format_vehicle_pos(vehicle)
     attacker_name = format_player(attacker)
     attacker_pos = format_player_pos(attacker)
 
@@ -325,15 +325,19 @@ def format_player_addr(player):
     return None
 
 def format_player_pos(player):
-    if player and player.getVehicle():
-        return format_pos(player.getVehicle().getPosition())
+    if player:
+        return format_vehicle_pos(player.getVehicle())
     return None
 
-def format_pos(pos):
-    if pos and len(pos) == 3:
-        return (fpformat.fix(pos[0], 1) + ','
-                + fpformat.fix(pos[1], 1) + ','
-                + fpformat.fix(pos[2], 1))
+def format_vehicle_pos(vehicle):
+    if vehicle:
+        pos = vehicle.getPosition()
+        rot = vehicle.getRotation()
+        if pos and len(pos) == 3 and rot and len(rot) == 3:
+            return (fpformat.fix(pos[0], 1) + ','
+                    + fpformat.fix(pos[1], 1) + ','
+                    + fpformat.fix(pos[2], 1) + ','
+                    + fpformat.fix(rot[0], 1))
     return None
 
 def format_status(status):
