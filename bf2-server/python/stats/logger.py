@@ -8,375 +8,375 @@ import bf2.GameLogic
 from constants import *
 from bf2.stats.stats import getStatsMap
 
-logFile = None
+log_file = None
 
 def init():
-	print 'LOGGER - INIT'
+    print 'LOGGER - INIT'
 
-	# Build a path to the target log output file
-	logFileName = bf2.gameLogic.getModDir() + '/logs/' + '/bf2_game_log.txt'
-	print 'Creating log file: ', logFileName
+    # Build a path to the target log output file
+    log_name = bf2.gameLogic.getModDir() + '/logs/' + '/bf2_game_log.txt'
+    print 'Creating log file: ', log_name
 
-	# Open the log file in line-buffered append mode
-	global logFile
-	try:
-		logFile = open(logFileName, 'a', 1)
-	except IOError:
-		print 'Unable to open log file: ', logFileName
-		return
+    # Open the log file in line-buffered append mode
+    global log_file
+    try:
+        log_file = open(log_name, 'a', 1)
+    except IOError:
+        print 'Unable to open log file: ', log_name
+        return
 
-	# Log the change in server status
-	timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-	log('SS', 'start', timestamp)
+    # Log the change in server status
+    timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    log('SS', 'start', timestamp)
 
-	# Register the pre-game callbacks
-	host.registerHandler('PlayerConnect', onPlayerConnect, 1)
-	host.registerHandler('PlayerDisconnect', onPlayerDisconnect, 1)
-	host.registerHandler('Reset', onReset, 1)
+    # Register the pre-game callbacks
+    host.registerHandler('PlayerConnect', on_player_connect, 1)
+    host.registerHandler('PlayerDisconnect', on_player_disconnect, 1)
+    host.registerHandler('Reset', on_reset, 1)
 
-	# Register the game status callback
-	host.registerGameStatusHandler(onGameStatus)
+    # Register the game status callback
+    host.registerGameStatusHandler(on_game_status)
 
 def deinit():
-	print 'LOGGER - DEINIT'
-
-	# Unregister the pre-game callbacks
-	host.unregisterHandler('PlayerConnect', onPlayerConnect)
-	host.unregisterHandler('PlayerDisconnect', onPlayerDisconnect)
-	host.unregisterHandler('Reset', onReset)
-
-	# Unregister the game status callback
-	host.unregisterGameStatusHandler(onGameStatus)
-
-	# Log the change in server status
-	timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-	log('SS', 'stop', timestamp)
-
-	# Cleanup the log file stream
-	logFile.close()
-
-def onPlayerConnect(player):
-	playerAddr = formatPlayerAddr(player)
-	playerId = player.getProfileId()
-	playerIndex = player.index
-	playerName = formatPlayer(player)
-
-	log('CN', playerAddr, playerId, playerIndex, playerName)
-
-def onPlayerDisconnect(player):
-	playerAddr = formatPlayerAddr(player)
-	playerId = player.getProfileId()
-	playerIndex = player.index
-	playerName = formatPlayer(player)
-
-	log('DC', playerAddr, playerId, playerIndex, playerName)
-
-def onReset(data):
-	log('RS', data)
-
-def onGameStatus(status):
-	log('GS', formatStatus(status))
-
-	# Update the callback function registrations
-	if status == bf2.GameStatus.Playing:
-		host.registerHandler('ChangedCommander', onChangedCommander)
-		host.registerHandler('ChangedSquadLeader', onChangedSquadLeader)
-		host.registerHandler('ChatMessage', onChatMessage)
-		host.registerHandler('ControlPointChangedOwner', onControlPointChangedOwner)
-		host.registerHandler('DropKit', onDropKit)
-		host.registerHandler('EnterVehicle', onEnterVehicle)
-		host.registerHandler('ExitVehicle', onExitVehicle)
-		host.registerHandler('PickupKit', onPickupKit)
-		host.registerHandler('PlayerBanned', onPlayerBanned)
-		host.registerHandler('PlayerChangedSquad', onPlayerChangedSquad)
-		host.registerHandler('PlayerChangeTeams', onPlayerChangeTeams)
-		host.registerHandler('PlayerChangeWeapon', onPlayerChangeWeapon)
-		host.registerHandler('PlayerDeath', onPlayerDeath)
-		host.registerHandler('PlayerGiveAmmoPoint', onPlayerGiveAmmoPoint)
-		host.registerHandler('PlayerHealPoint', onPlayerHealPoint)
-		host.registerHandler('PlayerKicked', onPlayerKicked)
-		host.registerHandler('PlayerKilled', onPlayerKilled)
-		host.registerHandler('PlayerRepairPoint', onPlayerRepairPoint)
-		host.registerHandler('PlayerRevived', onPlayerRevived)
-		host.registerHandler('PlayerScore', onPlayerScore)
-		host.registerHandler('PlayerSpawn', onPlayerSpawn)
-		host.registerHandler('PlayerTeamDamagePoint', onPlayerTeamDamagePoint)
-		host.registerHandler('TicketLimitReached', onTicketLimitReached)
-		host.registerHandler('TimeLimitReached', onTimeLimitReached)
-		host.registerHandler('VehicleDestroyed', onVehicleDestroyed)
-	elif status == bf2.GameStatus.EndGame:
-		host.unregisterHandler('ChangedCommander', onChangedCommander)
-		host.unregisterHandler('ChangedSquadLeader', onChangedSquadLeader)
-		host.unregisterHandler('ChatMessage', onChatMessage)
-		host.unregisterHandler('ControlPointChangedOwner', onControlPointChangedOwner)
-		host.unregisterHandler('DropKit', onDropKit)
-		host.unregisterHandler('EnterVehicle', onEnterVehicle)
-		host.unregisterHandler('ExitVehicle', onExitVehicle)
-		host.unregisterHandler('PickupKit', onPickupKit)
-		host.unregisterHandler('PlayerBanned', onPlayerBanned)
-		host.unregisterHandler('PlayerChangedSquad', onPlayerChangedSquad)
-		host.unregisterHandler('PlayerChangeTeams', onPlayerChangeTeams)
-		host.unregisterHandler('PlayerChangeWeapon', onPlayerChangeWeapon)
-		host.unregisterHandler('PlayerDeath', onPlayerDeath)
-		host.unregisterHandler('PlayerGiveAmmoPoint', onPlayerGiveAmmoPoint)
-		host.unregisterHandler('PlayerHealPoint', onPlayerHealPoint)
-		host.unregisterHandler('PlayerKicked', onPlayerKicked)
-		host.unregisterHandler('PlayerKilled', onPlayerKilled)
-		host.unregisterHandler('PlayerRepairPoint', onPlayerRepairPoint)
-		host.unregisterHandler('PlayerRevived', onPlayerRevived)
-		host.unregisterHandler('PlayerScore', onPlayerScore)
-		host.unregisterHandler('PlayerSpawn', onPlayerSpawn)
-		host.unregisterHandler('PlayerTeamDamagePoint', onPlayerTeamDamagePoint)
-		host.unregisterHandler('TicketLimitReached', onTicketLimitReached)
-		host.unregisterHandler('TimeLimitReached', onTimeLimitReached)
-		host.unregisterHandler('VehicleDestroyed', onVehicleDestroyed)
-
-def onChangedCommander(teamId, oldPlayer, newPlayer):
-	teamName = formatTeam(newPlayer.getTeam())
-	newPlayerName = formatPlayer(newPlayer)
-
-	log('CR', teamName, newPlayerName)
-
-def onChangedSquadLeader(squadId, oldPlayer, newPlayer):
-	newPlayerName = formatPlayer(newPlayer)
+    print 'LOGGER - DEINIT'
+
+    # Unregister the pre-game callbacks
+    host.unregisterHandler('PlayerConnect', on_player_connect)
+    host.unregisterHandler('PlayerDisconnect', on_player_disconnect)
+    host.unregisterHandler('Reset', on_reset)
+
+    # Unregister the game status callback
+    host.unregisterGameStatusHandler(on_game_status)
+
+    # Log the change in server status
+    timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    log('SS', 'stop', timestamp)
+
+    # Cleanup the log file stream
+    log_file.close()
+
+def on_player_connect(player):
+    player_addr = format_player_addr(player)
+    player_id = player.getProfileId()
+    player_index = player.index
+    player_name = format_player(player)
+
+    log('CN', player_addr, player_id, player_index, player_name)
+
+def on_player_disconnect(player):
+    player_addr = format_player_addr(player)
+    player_id = player.getProfileId()
+    player_index = player.index
+    player_name = format_player(player)
+
+    log('DC', player_addr, player_id, player_index, player_name)
+
+def on_reset(data):
+    log('RS', data)
+
+def on_game_status(status):
+    log('GS', format_status(status))
+
+    # Update the callback function registrations
+    if status == bf2.GameStatus.Playing:
+        host.registerHandler('ChangedCommander', on_changed_commander)
+        host.registerHandler('ChangedSquadLeader', on_changed_squad_leader)
+        host.registerHandler('ChatMessage', on_chat_message)
+        host.registerHandler('ControlPointChangedOwner', on_control_point_changed_owner)
+        host.registerHandler('DropKit', on_drop_kit)
+        host.registerHandler('EnterVehicle', on_enter_vehicle)
+        host.registerHandler('ExitVehicle', on_exit_vehicle)
+        host.registerHandler('PickupKit', on_pickup_kit)
+        host.registerHandler('PlayerBanned', on_player_banned)
+        host.registerHandler('PlayerChangedSquad', on_player_changed_squad)
+        host.registerHandler('PlayerChangeTeams', on_player_change_teams)
+        host.registerHandler('PlayerChangeWeapon', on_player_change_weapon)
+        host.registerHandler('PlayerDeath', on_player_death)
+        host.registerHandler('PlayerGiveAmmoPoint', on_player_give_ammo_point)
+        host.registerHandler('PlayerHealPoint', on_player_heal_point)
+        host.registerHandler('PlayerKicked', on_player_kicked)
+        host.registerHandler('PlayerKilled', on_player_killed)
+        host.registerHandler('PlayerRepairPoint', on_player_repair_point)
+        host.registerHandler('PlayerRevived', on_player_revived)
+        host.registerHandler('PlayerScore', on_player_score)
+        host.registerHandler('PlayerSpawn', on_player_spawn)
+        host.registerHandler('PlayerTeamDamagePoint', on_player_team_damage_point)
+        host.registerHandler('TicketLimitReached', on_ticket_limit_reached)
+        host.registerHandler('TimeLimitReached', on_time_limit_reached)
+        host.registerHandler('VehicleDestroyed', on_vehicle_destroyed)
+    elif status == bf2.GameStatus.EndGame:
+        host.unregisterHandler('ChangedCommander', on_changed_commander)
+        host.unregisterHandler('ChangedSquadLeader', on_changed_squad_leader)
+        host.unregisterHandler('ChatMessage', on_chat_message)
+        host.unregisterHandler('ControlPointChangedOwner', on_control_point_changed_owner)
+        host.unregisterHandler('DropKit', on_drop_kit)
+        host.unregisterHandler('EnterVehicle', on_enter_vehicle)
+        host.unregisterHandler('ExitVehicle', on_exit_vehicle)
+        host.unregisterHandler('PickupKit', on_pickup_kit)
+        host.unregisterHandler('PlayerBanned', on_player_banned)
+        host.unregisterHandler('PlayerChangedSquad', on_player_changed_squad)
+        host.unregisterHandler('PlayerChangeTeams', on_player_change_teams)
+        host.unregisterHandler('PlayerChangeWeapon', on_player_change_weapon)
+        host.unregisterHandler('PlayerDeath', on_player_death)
+        host.unregisterHandler('PlayerGiveAmmoPoint', on_player_give_ammo_point)
+        host.unregisterHandler('PlayerHealPoint', on_player_heal_point)
+        host.unregisterHandler('PlayerKicked', on_player_kicked)
+        host.unregisterHandler('PlayerKilled', on_player_killed)
+        host.unregisterHandler('PlayerRepairPoint', on_player_repair_point)
+        host.unregisterHandler('PlayerRevived', on_player_revived)
+        host.unregisterHandler('PlayerScore', on_player_score)
+        host.unregisterHandler('PlayerSpawn', on_player_spawn)
+        host.unregisterHandler('PlayerTeamDamagePoint', on_player_team_damage_point)
+        host.unregisterHandler('TicketLimitReached', on_ticket_limit_reached)
+        host.unregisterHandler('TimeLimitReached', on_time_limit_reached)
+        host.unregisterHandler('VehicleDestroyed', on_vehicle_destroyed)
+
+def on_changed_commander(team_id, old_player, new_player):
+    team_name = format_team(team_id)
+    new_player_name = format_player(new_player)
+
+    log('CR', team_name, new_player_name)
+
+def on_changed_squad_leader(squad_id, old_player, new_player):
+    new_player_name = format_player(new_player)
 
-	log('SL', squadId, newPlayerName)
+    log('SL', squad_id, new_player_name)
 
-def onChatMessage(playerId, text, channelId, flags):
+def on_chat_message(player_index, text, channel_id, flags):
 
-	# Determine the name of the player that sent the message
-	playerName = playerId
-	if playerId < 0:
-		playerName = 'Server'
-	else:
-		player = bf2.playerManager.getPlayerByIndex(playerId)
-		if player:
-			playerName = formatPlayer(player)
+    # Determine the name of the player that sent the message
+    player_name = player_index
+    if player_index < 0:
+        player_name = 'Server'
+    else:
+        player = bf2.playerManager.getPlayerByIndex(player_index)
+        if player:
+            player_name = format_player(player)
 
-	# Remove localization prefixes from messages
-	if text.startswith('HUD_TEXT_CHAT_TEAM'):
-		text = text[len('HUD_TEXT_CHAT_TEAM'):]
-	elif text.startswith('HUD_TEXT_CHAT_SQUAD'):
-		text = text[len('HUD_TEXT_CHAT_SQUAD'):]
-	elif text.startswith('HUD_CHAT_DEADPREFIX'):
-		text = text[len('HUD_CHAT_DEADPREFIX'):]
+    # Remove localization prefixes from messages
+    if text.startswith('HUD_TEXT_CHAT_TEAM'):
+        text = text[len('HUD_TEXT_CHAT_TEAM'):]
+    elif text.startswith('HUD_TEXT_CHAT_SQUAD'):
+        text = text[len('HUD_TEXT_CHAT_SQUAD'):]
+    elif text.startswith('HUD_CHAT_DEADPREFIX'):
+        text = text[len('HUD_CHAT_DEADPREFIX'):]
 
-	# Format the channel name
-	channelName = channelId.lower()
+    # Format the channel name
+    channel_name = channel_id.lower()
 
-	log('CM', channelName, playerName, text)
+    log('CM', channel_name, player_name, text)
 
-def onControlPointChangedOwner(controlPoint, teamId):
-	log('CP', controlPoint, teamId)
+def on_control_point_changed_owner(control_point, team_id):
+    log('CP', control_point, team_id)
 
-def onDropKit(player, kit):
-	playerName = formatPlayer(player)
-	playerPos = formatPlayerPos(player)
-	kitName = formatKit(kit)
+def on_drop_kit(player, kit):
+    player_name = format_player(player)
+    player_pos = format_player_pos(player)
+    kit_name = format_kit(kit)
 
-	log('DK', playerName, playerPos, kitName)
+    log('DK', player_name, player_pos, kit_name)
 
-def onEnterVehicle(player, vehicle, freeSoldier = False):
-	playerName = formatPlayer(player)
-	playerPos = formatPlayerPos(player)
-	vehicleName = formatVehicle(vehicle)
+def on_enter_vehicle(player, vehicle, free_soldier = False):
+    player_name = format_player(player)
+    player_pos = format_player_pos(player)
+    vehicle_name = format_vehicle(vehicle)
 
-	log('EV', playerName, playerPos, vehicleName, freeSoldier)
+    log('EV', player_name, player_pos, vehicle_name, free_soldier)
 
-def onExitVehicle(player, vehicle):
-	playerName = formatPlayer(player)
-	playerPos = formatPlayerPos(player)
-	vehicleName = formatVehicle(vehicle)
+def on_exit_vehicle(player, vehicle):
+    player_name = format_player(player)
+    player_pos = format_player_pos(player)
+    vehicle_name = format_vehicle(vehicle)
 
-	log('XV', playerName, playerPos, vehicleName)
+    log('XV', player_name, player_pos, vehicle_name)
 
-def onPickupKit(player, kit):
-	playerName = formatPlayer(player)
-	playerPos = formatPlayerPos(player)
-	kitName = formatKit(kit)
+def on_pickup_kit(player, kit):
+    player_name = format_player(player)
+    player_pos = format_player_pos(player)
+    kit_name = format_kit(kit)
 
-	log('PK', playerName, playerPos, kitName)
+    log('PK', player_name, player_pos, kit_name)
 
-def onPlayerBanned(player, time, type):
-	playerName = formatPlayer(player)
+def on_player_banned(player, time, type):
+    player_name = format_player(player)
 
-	log('BN', playerName, time, type)
+    log('BN', player_name, time, type)
 
-def onPlayerChangedSquad(player, oldSquadId, newSquadId):
-	playerName = formatPlayer(player)
+def on_player_changed_squad(player, old_squad_id, new_squad_id):
+    player_name = format_player(player)
 
-	log('SQ', playerName, newSquadId)
+    log('SQ', player_name, new_squad_id)
 
-def onPlayerChangeTeams(player, humanHasSpawned):
-	playerName = formatPlayer(player)
-	teamName = formatTeam(player.getTeam())
+def on_player_change_teams(player, human_has_spawned):
+    player_name = format_player(player)
+    team_name = format_team(player.getTeam())
 
-	log('TM', playerName, teamName)
+    log('TM', player_name, team_name)
 
-def onPlayerChangeWeapon(player, oldWeapon, newWeapon):
-	playerName = formatPlayer(player)
-	playerPos = formatPlayerPos(player)
-	newWeaponName = formatWeapon(newWeapon)
+def on_player_change_weapon(player, old_weapon, new_weapon):
+    player_name = format_player(player)
+    player_pos = format_player_pos(player)
+    new_weapon_name = format_weapon(new_weapon)
 
-	log('WP', playerName, playerPos, newWeaponName)
+    log('WP', player_name, player_pos, new_weapon_name)
 
-def onPlayerDeath(victim, object):
-	victimName = formatPlayer(victim)
-	victimPos = formatPlayerPos(victim)
+def on_player_death(victim, object):
+    victim_name = format_player(victim)
+    victim_pos = format_player_pos(victim)
 
-	log('DT', victimName, victimPos, object)
+    log('DT', victim_name, victim_pos, object)
 
-def onPlayerGiveAmmoPoint(giver, object):
-	giverName = formatPlayer(giver)
-	giverPos = formatPlayerPos(giver)
+def on_player_give_ammo_point(giver, object):
+    giver_name = format_player(giver)
+    giver_pos = format_player_pos(giver)
 
-	log('AP', giverName, giverPos, object)
+    log('AP', giver_name, giver_pos, object)
 
-def onPlayerHealPoint(giver, object):
-	giverName = formatPlayer(giver)
-	giverPos = formatPlayerPos(giver)
+def on_player_heal_point(giver, object):
+    giver_name = format_player(giver)
+    giver_pos = format_player_pos(giver)
 
-	log('HP', giverName, giverPos, object)
+    log('HP', giver_name, giver_pos, object)
 
-def onPlayerKicked(player):
-	playerName = formatPlayer(player)
+def on_player_kicked(player):
+    player_name = format_player(player)
 
-	log('KK', playerName)
+    log('KK', player_name)
 
-def onPlayerKilled(victim, attacker, weapon, assists, object):
-	victimName = formatPlayer(victim)
-	victimPos = formatPlayerPos(victim)
-	attackerName = formatPlayer(attacker)
-	attackerPos = formatPlayerPos(attacker)
-	weaponName = formatWeapon(weapon)
+def on_player_killed(victim, attacker, weapon, assists, object):
+    victim_name = format_player(victim)
+    victim_pos = format_player_pos(victim)
+    attacker_name = format_player(attacker)
+    attacker_pos = format_player_pos(attacker)
+    weapon_name = format_weapon(weapon)
 
-	log('KL', victimName, victimPos, attackerName, attackerPos, weaponName, assists, object)
+    log('KL', victim_name, victim_pos, attacker_name, attacker_pos, weapon_name, assists, object)
 
-def onPlayerRepairPoint(giver, object):
-	giverName = formatPlayer(giver)
-	giverPos = formatPlayerPos(giver)
+def on_player_repair_point(giver, object):
+    giver_name = format_player(giver)
+    giver_pos = format_player_pos(giver)
 
-	log('RP', giverName, giverPos, object)
+    log('RP', giver_name, giver_pos, object)
 
-def onPlayerRevived(victim, reviver):
-	victimName = formatPlayer(victim)
-	victimPos = formatPlayerPos(victim)
-	reviverName = formatPlayer(reviver)
-	reviverPos = formatPlayerPos(reviver)
+def on_player_revived(victim, reviver):
+    victim_name = format_player(victim)
+    victim_pos = format_player_pos(victim)
+    reviver_name = format_player(reviver)
+    reviver_pos = format_player_pos(reviver)
 
-	log('RV', victimName, victimPos, reviverName, reviverPos)
+    log('RV', victim_name, victim_pos, reviver_name, reviver_pos)
 
-def onPlayerScore(player, difference):
-	playerName = formatPlayer(player)
+def on_player_score(player, difference):
+    player_name = format_player(player)
 
-	log('SC', playerName, difference)
+    log('SC', player_name, difference)
 
-def onPlayerSpawn(player, object):
-	playerName = formatPlayer(player)
-	playerPos = formatPlayerPos(player)
-	playerTeam = formatTeam(player.getTeam())
+def on_player_spawn(player, object):
+    player_name = format_player(player)
+    player_pos = format_player_pos(player)
+    team_name = format_team(player.getTeam())
 
-	log('SP', playerName, playerPos, playerTeam)
+    log('SP', player_name, player_pos, team_name)
 
-def onPlayerTeamDamagePoint(attacker, victim):
-	victimName = formatPlayer(victim)
-	victimPos = formatPlayerPos(victim)
-	attackerName = formatPlayer(attacker)
-	attackerPos = formatPlayerPos(attacker)
+def on_player_team_damage_point(attacker, victim):
+    victim_name = format_player(victim)
+    victim_pos = format_player_pos(victim)
+    attacker_name = format_player(attacker)
+    attacker_pos = format_player_pos(attacker)
 
-	log('TP', victimName, victimPos, attackerName, attackerPos)
+    log('TP', victim_name, victim_pos, attacker_name, attacker_pos)
 
-def onTicketLimitReached(teamId, limitId):
-	teamName = formatTeam(teamId)
+def on_ticket_limit_reached(team_id, limit_id):
+    team_name = format_team(team_id)
 
-	log('TL', teamName, limitId)
+    log('TL', team_name, limit_id)
 
-def onTimeLimitReached(value):
-	log('CL', value)
+def on_time_limit_reached(value):
+    log('CL', value)
 
-def onVehicleDestroyed(vehicle, attacker):
-	vehicleName = formatVehicle(vehicle)
-	vehiclePos = formatPos(vehicle.getPosition())
-	attackerName = formatPlayer(attacker)
-	attackerPos = formatPlayerPos(attacker)
+def on_vehicle_destroyed(vehicle, attacker):
+    vehicle_name = format_vehicle(vehicle)
+    vehicle_pos = format_pos(vehicle.getPosition())
+    attacker_name = format_player(attacker)
+    attacker_pos = format_player_pos(attacker)
 
-	log('VD', vehicleName, vehiclePos, attackerName, attackerPos)
+    log('VD', vehicle_name, vehicle_pos, attacker_name, attacker_pos)
 
-def formatKit(kit):
-	if kit:
-		return kit.templateName.lower()
-	return None
+def format_kit(kit):
+    if kit:
+        return kit.templateName.lower()
+    return None
 
-def formatPlayer(player):
-	if player:
-		return player.getName().strip()
-	return None
+def format_player(player):
+    if player:
+        return player.getName().strip()
+    return None
 
-def formatPlayerAddr(player):
-	if player and player.getAddress() != 'N/A':
-		return player.getAddress()
-	return None
+def format_player_addr(player):
+    if player and player.getAddress() != 'N/A':
+        return player.getAddress()
+    return None
 
-def formatPlayerPos(player):
-	if player and player.getVehicle():
-		return formatPos(player.getVehicle().getPosition())
-	return None
+def format_player_pos(player):
+    if player and player.getVehicle():
+        return format_pos(player.getVehicle().getPosition())
+    return None
 
-def formatPos(position):
-	if position and len(position) == 3:
-		return (fpformat.fix(position[0], 1) + ','
-				+ fpformat.fix(position[1], 1) + ','
-				+ fpformat.fix(position[2], 1))
-	return None
+def format_pos(pos):
+    if pos and len(pos) == 3:
+        return (fpformat.fix(pos[0], 1) + ','
+                + fpformat.fix(pos[1], 1) + ','
+                + fpformat.fix(pos[2], 1))
+    return None
 
-def formatStatus(status):
-	if status == bf2.GameStatus.Playing:
-		return 'play'
-	elif status == bf2.GameStatus.EndGame:
-		return 'end'
-	elif status == bf2.GameStatus.PreGame:
-		return 'pre'
-	elif status == bf2.GameStatus.Paused:
-		return 'pause'
-	elif status == bf2.GameStatus.RestartServer:
-		return 'restart'
-	elif status == bf2.GameStatus.NotConnected:
-		return 'idle'
-	return None
+def format_status(status):
+    if status == bf2.GameStatus.Playing:
+        return 'play'
+    elif status == bf2.GameStatus.EndGame:
+        return 'end'
+    elif status == bf2.GameStatus.PreGame:
+        return 'pre'
+    elif status == bf2.GameStatus.Paused:
+        return 'pause'
+    elif status == bf2.GameStatus.RestartServer:
+        return 'restart'
+    elif status == bf2.GameStatus.NotConnected:
+        return 'idle'
+    return None
 
-def formatTeam(team):
-	if team:
-		return bf2.gameLogic.getTeamName(team).lower()
-	return None
+def format_team(team_id):
+    if team:
+        return bf2.gameLogic.getTeamName(team_id).lower()
+    return None
 
-def formatVehicle(vehicle):
-	if vehicle:
-		return vehicle.templateName.lower()
-	return None
+def format_vehicle(vehicle):
+    if vehicle:
+        return vehicle.templateName.lower()
+    return None
 
-def formatWeapon(weapon):
-	if weapon:
-		return weapon.templateName.lower()
-	return None
+def format_weapon(weapon):
+    if weapon:
+        return weapon.templateName.lower()
+    return None
 
 def log(type, *args):
 
-	# Validate the given parameters
-	assert type and len(type) == 2, 'Invalid log type: %s' % `type`
+    # Validate the given parameters
+    assert type and len(type) == 2, 'Invalid log type: %s' % `type`
 
-	# Write the log entry time stamp
-	logFile.write(str(int(host.timer_getWallTime())).zfill(5))
-	logFile.write(';')
+    # Write the log entry time stamp
+    log_file.write(str(int(host.timer_getWallTime())).zfill(5))
+    log_file.write(';')
 
-	# Write the required type of log
-	logFile.write(type)
+    # Write the required type of log
+    log_file.write(type)
 
-	# Write any optional log values with delimiters
-	if args:
-		for arg in args:
-			logFile.write(';')
-			logFile.write(str(arg))
-		
-	# Make sure the log entry is output to disk immediately
-	logFile.write('\n')
-	logFile.flush()
+    # Write any optional log values with delimiters
+    if args:
+        for arg in args:
+            log_file.write(';')
+            log_file.write(str(arg))
+
+    # Make sure the log entry is output to disk immediately
+    log_file.write('\n')
+    log_file.flush()
