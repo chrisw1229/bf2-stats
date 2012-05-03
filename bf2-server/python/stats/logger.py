@@ -167,7 +167,9 @@ def on_chat_message(player_index, text, channel_id, flags):
     log('CM', channel_name, player_name, text)
 
 def on_control_point_changed_owner(control_point, team_id):
-    log('CP', control_point, team_id)
+    team_name = format_team(team_id)
+
+    log('CP', control_point, team_name)
 
 def on_drop_kit(player, kit):
     player_name = format_player(player)
