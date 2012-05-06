@@ -261,13 +261,23 @@ def on_player_kicked(player):
     log('KK', player_name)
 
 def on_player_killed(victim, attacker, weapon, assists, object):
+
+    # Check whether the kill was from an empty vehicle
+    if attacker == None and weapon == None and object != None:
+        if hasattr(object, 'lastDrivingPlayerIndex'):
+            attacker = bf2.playerManager.getPlayerByIndex(object.lastDrivingPlayerIndex)
+
     victim_name = format_player(victim)
     victim_pos = format_player_pos(victim)
     attacker_name = format_player(attacker)
     attacker_pos = format_player_pos(attacker)
     weapon_name = format_weapon(weapon)
 
-    log('KL', victim_name, victim_pos, attacker_name, attacker_pos, weapon_name, assists, object)
+    # Check whether the weapon was actually a vehicle
+    if weapon == None and object != None:
+        weapon_name = format_vehicle(object)
+
+    log('KL', victim_name, victim_pos, attacker_name, attacker_pos, weapon_name, assists)
 
 def on_player_repair_point(giver, object):
     giver_name = format_player(giver)
