@@ -371,7 +371,7 @@ def format_status(status):
     return None
 
 def format_team(team_id):
-    if team:
+    if team_id:
         return bf2.gameLogic.getTeamName(team_id).lower()
     return None
 
