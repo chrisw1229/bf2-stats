@@ -241,7 +241,7 @@ def on_player_death(victim, object):
     victim_name = format_player(victim)
     victim_pos = format_player_pos(victim)
 
-    log('DT', victim_name, victim_pos, object)
+    log('DT', victim_name, victim_pos)
 
 def on_player_give_ammo_point(giver, object):
     giver_name = format_player(giver)
