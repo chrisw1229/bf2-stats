@@ -2,8 +2,8 @@ import os.path
 
 import cherrypy
 
-# Importing the stats parser plugin registers it with the cherrypy engine
-import statparser
+# Importing the stats plugin registers it with the cherrypy engine
+import plugin
 import rest.award
 
 # Create an empty class to handle root directory requests

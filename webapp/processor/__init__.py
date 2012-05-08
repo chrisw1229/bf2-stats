@@ -1,5 +1,5 @@
 
-class BaseProcessor:
+class BaseProcessor(object):
 
     def start(self):
         pass
@@ -7,5 +7,5 @@ class BaseProcessor:
     def stop(self):
         pass
 
-    def onPlayerKilled(self, kill_log):
+    def on_kill(self, victim, attacker, weapon):
         pass

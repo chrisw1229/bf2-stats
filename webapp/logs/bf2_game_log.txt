@@ -1,0 +1,238 @@
+00000;SS;start;2012-05-08_17-57-46
+00000;GS;pre
+00000;RS;0
+00007;CN;None;L. Brown
+00007;CN;None;S. Wallberg
+00007;CN;None;D. Gothberg
+00007;CN;None;D. Yee
+00007;CN;None;D. Mod
+00007;CN;None;J. Aberg
+00007;CN;None;D. King
+00007;CN;None;F. Liliegren
+00007;CN;None;C. Grass
+00007;CN;None;J. Ross
+00007;CN;None;E. Sjovold
+00007;CN;None;J. Ostman
+00007;CN;None;C. Barnett
+00007;CN;None;L. Castillo
+00007;CN;None;H. Andersson
+00007;CN;None;S. Lindgren
+00007;GS;play;dalian_plant;0;0
+00007;GS;pre
+00007;RS;0
+00007;GS;play;dalian_plant;0;0
+00022;CN;192.168.1.15;Luda
+00045;GS;pre
+00045;RS;0
+00045;GS;play;dalian_plant;0;0
+00050;SP;Luda;-145.5,154.4,-42.0,90.0;us
+00050;WP;Luda;-145.5,154.4,-42.0,90.0;usrif_m203
+00050;KP;Luda;-145.5,154.4,-42.0,90.0;us_assault
+00050;SP;L. Brown;-146.8,155.6,-263.3,90.0;ch
+00050;WP;L. Brown;-146.8,155.6,-263.3,90.0;chsht_norinco982
+00050;KP;L. Brown;-146.8,155.6,-263.3,90.0;ch_engineer
+00050;SP;S. Wallberg;-44.0,154.4,-245.0,-90.0;ch
+00050;WP;S. Wallberg;-44.0,154.4,-245.0,-90.0;rurif_ak47
+00050;KP;S. Wallberg;-44.0,154.4,-245.0,-90.0;ch_medic
+00050;SP;D. Gothberg;-65.0,154.4,-257.0,135.0;ch
+00050;WP;D. Gothberg;-65.0,154.4,-257.0,135.0;rurif_gp25
+00050;KP;D. Gothberg;-65.0,154.4,-257.0,135.0;ch_assault
+00050;SP;D. Yee;-65.0,154.4,-257.0,135.0;ch
+00050;WP;D. Yee;-65.0,154.4,-257.0,135.0;chlmg_type95
+00050;KP;D. Yee;-65.0,154.4,-257.0,135.0;ch_support
+00050;SP;D. Mod;-93.0,154.4,-290.0,-90.0;ch
+00050;WP;D. Mod;-93.0,154.4,-290.0,-90.0;chrif_type85
+00050;KP;D. Mod;-93.0,154.4,-290.0,-90.0;ch_at
+00050;SP;J. Aberg;-44.0,154.4,-245.0,-90.0;ch
+00050;WP;J. Aberg;-44.0,154.4,-245.0,-90.0;rurif_ak47
+00050;KP;J. Aberg;-44.0,154.4,-245.0,-90.0;ch_medic
+00050;SP;D. King;-93.0,154.4,-290.0,-90.0;ch
+00050;WP;D. King;-93.0,154.4,-290.0,-90.0;rurif_gp25
+00050;KP;D. King;-93.0,154.4,-290.0,-90.0;ch_assault
+00050;SP;F. Liliegren;-44.0,154.4,-245.0,-90.0;ch
+00050;WP;F. Liliegren;-44.0,154.4,-245.0,-90.0;chlmg_type95
+00050;KP;F. Liliegren;-44.0,154.4,-245.0,-90.0;ch_support
+00050;SP;C. Grass;-149.2,158.9,-47.4,180.0;us
+00050;WP;C. Grass;-149.2,158.9,-47.4,180.0;usrif_remington11-87
+00050;KP;C. Grass;-149.2,158.9,-47.4,180.0;us_engineer
+00050;SP;J. Ross;-149.2,158.9,-47.4,180.0;us
+00050;WP;J. Ross;-149.2,158.9,-47.4,180.0;usrif_m16a2
+00050;KP;J. Ross;-149.2,158.9,-47.4,180.0;us_medic
+00050;SP;E. Sjovold;-186.0,154.7,-52.1,180.0;us
+00050;WP;E. Sjovold;-186.0,154.7,-52.1,180.0;usrif_remington11-87
+00050;KP;E. Sjovold;-186.0,154.7,-52.1,180.0;us_engineer
+00050;SP;J. Ostman;-179.0,154.6,-66.0,180.0;us
+00050;WP;J. Ostman;-179.0,154.6,-66.0,180.0;usrif_m24
+00050;KP;J. Ostman;-179.0,154.6,-66.0,180.0;us_sniper
+00050;SP;C. Barnett;-175.7,154.4,-92.4,-158.4;us
+00050;WP;C. Barnett;-175.7,154.4,-92.4,-158.4;usrif_remington11-87
+00050;KP;C. Barnett;-175.7,154.4,-92.4,-158.4;us_engineer
+00050;SP;L. Castillo;-175.7,154.4,-92.4,-158.4;us
+00050;WP;L. Castillo;-175.7,154.4,-92.4,-158.4;usrif_m16a2
+00050;KP;L. Castillo;-175.7,154.4,-92.4,-158.4;us_medic
+00050;SP;H. Andersson;-186.0,154.7,-52.1,180.0;us
+00050;WP;H. Andersson;-186.0,154.7,-52.1,180.0;uslmg_m249saw
+00050;KP;H. Andersson;-186.0,154.7,-52.1,180.0;us_support
+00050;SP;S. Lindgren;-186.0,154.7,-52.1,180.0;us
+00050;WP;S. Lindgren;-186.0,154.7,-52.1,180.0;usrif_m24
+00050;KP;S. Lindgren;-186.0,154.7,-52.1,180.0;us_sniper
+00053;VE;D. King;-107.1,154.1,-280.9,0.0;jep_nanjing;0
+00054;VE;Luda;-140.0,153.8,-49.0,-180.0;jeep_faav;0
+00057;VE;J. Ostman;-179.2,153.9,-33.8,151.8;ustnk_m1a2;0
+00060;VX;D. King;-109.0,154.4,-281.9,-9.3;jep_nanjing
+00061;VX;Luda;-113.8,154.6,-155.9,153.2;jeep_faav
+00067;VE;J. Aberg;-108.1,153.9,-253.7,0.0;tnk_type98;0
+00067;VE;C. Grass;-175.4,155.7,-39.1,0.0;ustnk_m1a2_cupolabase;0
+00069;VE;F. Liliegren;-107.2,154.1,-282.4,-9.3;jep_nanjing;0
+00071;SC;Luda;2
+00071;KL;L. Brown;-120.2,154.2,-222.6,15.0;Luda;-113.0,153.7,-166.4,169.8;usrif_m203;()
+00073;VE;D. King;-106.3,155.6,-286.3,0.0;jep_nanjing_cupolabase;0
+00075;WP;S. Wallberg;-92.3,154.2,-195.4,-33.5;chpis_qsz92
+00075;KD;L. Brown;-119.4,153.3,-224.2,0.0;ch_engineer
+00077;WP;C. Barnett;-124.1,154.2,-138.8,151.4;ushgr_m67
+00078;VE;D. Mod;-117.7,155.3,-284.1,-17.3;jep_nanjing_passenger_rr;1
+00079;VE;Luda;-106.6,152.5,-172.9,125.2;jeep_faav;0
+00079;WP;S. Wallberg;-100.0,152.8,-184.1,-30.3;rurif_ak47
+00082;SC;C. Barnett;2
+00082;SC;Luda;1
+00082;KL;S. Wallberg;-100.3,152.8,-184.9,-170.2;C. Barnett;-120.1,154.2,-146.3,163.1;ushgr_m67;((<bf2.PlayerManager.Player instance at 0x04492BE8>, 2),)
+00085;WP;D. Yee;-103.6,154.2,-229.9,-38.1;ushgr_m67
+00086;WP;D. Yee;-105.4,154.2,-228.9,-64.3;chlmg_type95
+00086;DT;L. Brown;-119.4,153.3,-224.2,0.0
+00086;SP;L. Brown;-44.0,154.4,-245.0,-90.0;ch
+00086;WP;L. Brown;-44.0,154.4,-245.0,-90.0;chrif_type85
+00086;KP;L. Brown;-44.0,154.4,-245.0,-90.0;ch_at
+00087;KD;S. Wallberg;-100.3,151.9,-185.5,0.0;ch_medic
+00097;DT;S. Wallberg;-100.3,151.9,-185.5,0.0
+00097;SP;S. Wallberg;-44.0,154.4,-245.0,-90.0;ch
+00097;WP;S. Wallberg;-44.0,154.4,-245.0,-90.0;rurif_ak47
+00097;KP;S. Wallberg;-44.0,154.4,-245.0,-90.0;ch_medic
+00099;WP;L. Brown;-74.0,154.2,-231.9,-39.4;chat_eryx
+00100;SC;Luda;2
+00100;KL;D. Yee;-101.9,154.2,-217.2,24.4;Luda;-104.0,153.8,-217.1,94.9;jeep_faav;()
+00102;WP;L. Brown;-76.8,154.2,-230.9,64.6;chrif_type85
+00102;SC;Luda;2
+00102;KL;L. Brown;-76.8,154.2,-230.9,64.6;Luda;-78.6,153.8,-230.9,90.8;jeep_faav;()
+00104;WP;J. Ross;-202.6,154.2,-135.5,-176.9;ushgr_m67
+00105;VX;D. Mod;-209.9,154.3,-212.4,160.2;jep_nanjing_passenger_rr
+00105;KD;D. Yee;-88.8,153.3,-220.2,0.0;ch_support
+00105;WP;D. Mod;-210.0,154.2,-212.1,55.5;chat_eryx
+00105;VX;F. Liliegren;-216.0,154.5,-209.2,-27.4;jep_nanjing
+00106;WP;F. Liliegren;-216.3,154.3,-208.8,-0.3;ushgr_m67
+00106;KD;L. Brown;-63.5,153.3,-226.7,0.0;ch_at
+00112;WP;F. Liliegren;-240.7,154.3,-209.6,27.9;chlmg_type95
+00113;VX;Luda;-193.3,154.6,-208.8,-88.6;jeep_faav
+00114;WP;E. Sjovold;-203.7,154.2,-135.6,-171.5;ushgr_m67
+00114;WP;L. Castillo;-166.9,154.2,-198.6,-99.0;ushgr_m67
+00114;WP;C. Barnett;-121.3,154.2,-208.6,106.3;usrif_remington11-87
+00115;WP;D. Mod;-243.2,154.3,-209.2,29.6;chrif_type85
+00115;DT;D. Yee;-88.8,153.3,-220.2,0.0
+00116;SP;D. Yee;-52.1,156.0,-276.7,0.0;ch
+00116;WP;D. Yee;-52.1,156.0,-276.7,0.0;rurif_gp25
+00116;KP;D. Yee;-52.1,156.0,-276.7,0.0;ch_assault
+00117;WP;F. Liliegren;-248.9,154.3,-211.4,88.0;ushgr_m67
+00117;DT;L. Brown;-63.5,153.3,-226.7,0.0
+00117;SP;L. Brown;-52.1,156.0,-276.7,0.0;ch
+00117;WP;L. Brown;-52.1,156.0,-276.7,0.0;rurif_gp25
+00117;KP;L. Brown;-52.1,156.0,-276.7,0.0;ch_assault
+00118;WP;S. Lindgren;-113.3,154.2,-158.5,156.4;ushgr_m67
+00118;WP;F. Liliegren;-251.3,154.3,-210.5,34.6;chlmg_type95
+00119;SC;C. Barnett;2
+00119;SC;H. Andersson;1
+00119;KL;S. Wallberg;-91.6,154.2,-213.1,-83.1;C. Barnett;-108.5,154.2,-211.0,97.2;usrif_remington11-87;((<bf2.PlayerManager.Player instance at 0x043BDDC8>, 2),)
+00119;SC;Luda;2
+00119;KL;D. King;-214.5,155.7,-208.4,0.0;Luda;-193.4,154.2,-209.5,-88.6;usrif_m203;()
+00119;KD;D. King;-214.5,155.7,-208.4,0.0;ch_assault
+00119;VX;D. King;-50.0,185.0,-285.0,-16.0;jep_nanjing_cupolabase
+00119;DT;D. King;-214.5,155.7,-208.4,-28.6
+00121;CP;<?.Object instance at 0x04449210>;ch
+00121;SC;F. Liliegren;2
+00121;SC;D. Mod;1
+00122;VE;Luda;-194.3,153.8,-206.6,-88.6;jeep_faav;0
+00122;WP;F. Liliegren;-252.9,154.3,-210.1,89.3;ushgr_m67
+00123;WP;L. Castillo;-167.8,154.2,-198.6,-90.6;usrif_m16a2
+00123;WP;D. Mod;-251.9,154.3,-211.6,49.7;chat_eryx
+00123;KD;S. Wallberg;-89.3,153.3,-212.3,0.0;ch_medic
+00123;WP;J. Ross;-204.2,154.2,-158.3,178.2;usrif_m16a2
+00123;WP;D. Gothberg;-138.3,154.2,-262.8,38.1;rurgl_gp25
+00124;WP;D. Gothberg;-138.2,154.2,-262.7,38.1;rurif_gp25
+00125;WP;D. Yee;-69.2,154.2,-265.4,-43.6;rurgl_gp25
+00125;VX;J. Aberg;-206.1,154.4,-197.2,19.6;tnk_type98
+00126;WP;D. Yee;-69.4,154.2,-265.4,-43.6;rurif_gp25
+00126;VD;tnk_type98;-203.8,153.9,-197.9,25.9;J. Ross;-206.3,154.2,-152.3,-147.6
+00126;SC;J. Ross;2
+00126;KL;J. Aberg;-206.2,154.3,-197.1,19.6;J. Ross;-206.3,154.2,-152.2,-147.5;tnk_type98;()
+00126;WP;S. Lindgren;-138.5,154.2,-170.6,90.3;usrif_m24
+00130;WP;D. Mod;-236.3,154.3,-212.4,23.7;chrif_type85
+00131;WP;D. Mod;-234.3,154.3,-211.8,80.2;chat_eryx
+00131;KD;J. Aberg;-211.6,153.4,-195.2,0.0;ch_medic
+00133;WP;L. Brown;-67.5,155.7,-271.1,-60.2;rurgl_gp25
+00133;SC;C. Grass;2
+00133;SC;J. Ostman;1
+00133;KL;F. Liliegren;-232.3,154.3,-180.0,113.0;C. Grass;-210.0,155.7,-170.2,0.0;hmg_m2hb;((<bf2.PlayerManager.Player instance at 0x04450800>, 3),)
+00134;DT;S. Wallberg;-89.3,153.3,-212.3,0.0
+00134;WP;L. Brown;-67.7,155.7,-271.1,-60.2;rurif_gp25
+00134;SP;S. Wallberg;-65.0,154.4,-257.0,135.0;ch
+00134;WP;S. Wallberg;-65.0,154.4,-257.0,135.0;rurif_ak47
+00134;KP;S. Wallberg;-65.0,154.4,-257.0,135.0;ch_medic
+00134;SP;D. King;-236.5,154.3,-204.6,37.8;ch
+00134;WP;D. King;-236.5,154.3,-204.6,37.8;chsht_norinco982
+00134;KP;D. King;-236.5,154.3,-204.6,37.8;ch_engineer
+00135;WP;S. Wallberg;-65.0,154.2,-257.0,92.5;ushgr_m67
+00135;WP;D. King;-236.5,154.3,-204.6,-69.3;ushgr_m67
+00136;VX;Luda;-217.3,154.8,-217.3,-21.9;jeep_faav
+00136;WP;S. Lindgren;-136.9,154.1,-177.0,179.1;ushgr_m67
+00137;SC;D. Yee;2
+00137;KL;C. Barnett;-97.3,154.2,-256.9,101.9;D. Yee;-86.6,154.3,-259.1,-77.6;rurif_gp25;()
+00137;SC;D. Yee;1
+00137;SC;D. Gothberg;2
+00137;KL;H. Andersson;-111.8,154.2,-202.7,-147.7;D. Gothberg;-128.5,154.2,-226.9,34.8;rurif_gp25;()
+00137;KD;F. Liliegren;-233.7,153.4,-180.6,0.0;ch_support
+00138;VD;jep_nanjing;-214.7,154.2,-208.1,-28.7;None;None
+00138;WP;D. Gothberg;-128.7,154.2,-225.4,-7.1;rurgl_gp25
+00138;WP;E. Sjovold;-211.4,154.2,-156.5,177.3;usrif_remington11-87
+00139;WP;D. Gothberg;-128.8,154.2,-225.3,-7.1;rurif_gp25
+00141;KD;C. Barnett;-98.9,153.3,-256.7,0.0;us_engineer
+00141;DT;J. Aberg;-211.6,153.4,-195.2,0.0
+00141;SP;J. Aberg;-232.4,154.3,-186.7,7.6;ch
+00141;WP;J. Aberg;-232.4,154.3,-186.7,7.6;rurif_ak47
+00141;KP;J. Aberg;-232.4,154.3,-186.7,7.6;ch_medic
+00141;WP;D. Gothberg;-128.7,154.2,-222.2,-1.6;rurgl_gp25
+00141;KD;H. Andersson;-110.5,153.3,-202.4,0.0;us_support
+00141;WP;E. Sjovold;-211.9,154.2,-147.4,-149.5;ushgr_m67
+00142;WP;S. Lindgren;-130.2,152.8,-171.8,178.0;usrif_m24
+00142;VD;jeep_faav;-215.7,153.9,-215.5,-22.2;None;None
+00142;KL;Luda;-217.3,154.3,-217.3,-21.9;Luda;-217.3,154.3,-217.3,-21.9;jeep_faav;()
+00142;WP;E. Sjovold;-211.5,154.2,-149.2,-147.5;usrif_remington11-87
+00143;WP;D. Gothberg;-128.8,154.2,-219.2,-1.7;rurif_gp25
+00144;WP;J. Ross;-229.8,154.1,-158.3,-174.0;uspis_92fs
+00144;WP;D. Mod;-228.0,154.5,-183.4,-167.9;chrif_type85
+00144;SC;S. Lindgren;2
+00144;SC;H. Andersson;1
+00144;KL;D. Gothberg;-128.9,154.2,-215.6,-1.7;S. Lindgren;-130.2,152.8,-171.8,178.0;ushgr_m67;((<bf2.PlayerManager.Player instance at 0x043BDDC8>, 2),)
+00145;WP;D. King;-230.8,154.3,-180.2,-125.1;chsht_norinco982
+00146;WP;S. Wallberg;-79.7,154.2,-242.7,3.3;medikit
+00146;WP;J. Ross;-230.2,154.1,-162.6,-165.6;ushgr_m67
+00147;WP;D. King;-239.7,154.1,-186.7,78.9;ushgr_m67
+00147;KD;Luda;-222.6,153.4,-220.1,0.0;us_assault
+00147;WP;J. Ross;-230.2,154.1,-162.7,-165.6;uspis_92fs
+00148;DT;F. Liliegren;-233.7,153.4,-180.6,0.0
+00149;SP;F. Liliegren;-232.8,154.3,-208.4,-14.3;ch
+00149;WP;F. Liliegren;-232.8,154.3,-208.4,-14.3;chrif_type85
+00149;KP;F. Liliegren;-232.8,154.3,-208.4,-14.3;ch_at
+00149;KD;D. Gothberg;-128.3,153.3,-214.2,0.0;ch_assault
+00150;WP;S. Wallberg;-76.0,154.2,-244.2,-176.8;rurif_ak47
+00150;WP;F. Liliegren;-232.6,154.3,-205.7,2.8;chat_eryx
+00152;DT;C. Barnett;-98.9,153.3,-256.7,0.0
+00152;SP;C. Barnett;-175.7,154.4,-92.4,-158.4;us
+00152;WP;C. Barnett;-175.7,154.4,-92.4,-158.4;usrif_m203
+00152;KP;C. Barnett;-175.7,154.4,-92.4,-158.4;us_assault
+00152;DT;H. Andersson;-110.5,153.3,-202.4,0.0
+00152;SP;H. Andersson;-186.0,154.7,-52.1,180.0;us
+00152;WP;H. Andersson;-186.0,154.7,-52.1,180.0;usrif_mp5_a3
+00152;KP;H. Andersson;-186.0,154.7,-52.1,180.0;us_at
+00153;WP;D. King;-226.3,154.3,-194.4,145.7;chsht_norinco982
+00153;VE;D. Mod;-253.0,153.9,-224.5,0.0;jep_paratrooper_gunbase;0
+00153;SC;J. Ostman;2
+00153;SC;C. Grass;1
+00153;KL;D. King;-226.0,154.3,-193.8,-33.3;J. Ostman;-232.7,153.9,-179.9,-149.4;coaxial_browning;((<bf2.PlayerManager.Player instance at 0x0437A288>, 3),)

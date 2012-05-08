@@ -107,7 +107,7 @@ def on_game_status(status):
         host.registerHandler('PlayerSpawn', on_spawn)
         host.registerHandler('PlayerTeamDamagePoint', on_team_damage)
         host.registerHandler('TicketLimitReached', on_ticket_limit)
-        host.registerHandler('TimeLimitReached', on_time_limit)
+        host.registerHandler('TimeLimitReached', on_clock_limit)
         host.registerHandler('VehicleDestroyed', on_vehicle_destroy)
     elif status == bf2.GameStatus.EndGame:
         host.unregisterHandler('ChangedCommander', on_commander)
@@ -133,7 +133,7 @@ def on_game_status(status):
         host.unregisterHandler('PlayerSpawn', on_spawn)
         host.unregisterHandler('PlayerTeamDamagePoint', on_team_damage)
         host.unregisterHandler('TicketLimitReached', on_ticket_limit)
-        host.unregisterHandler('TimeLimitReached', on_time_limit)
+        host.unregisterHandler('TimeLimitReached', on_clock_limit)
         host.unregisterHandler('VehicleDestroyed', on_vehicle_destroy)
 
 def on_commander(team_id, old_player, new_player):
@@ -318,7 +318,7 @@ def on_ticket_limit(team_id, limit_id):
 
     log('TL', team_name, limit_id)
 
-def on_time_limit(value):
+def on_clock_limit(value):
     log('CL', value)
 
 def on_vehicle_destroy(vehicle, attacker):

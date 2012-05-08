@@ -3,10 +3,10 @@ from processor import BaseProcessor
 class Processor(BaseProcessor):
 
     def start(self):
-        print 'START'
+        print 'AWARD START'
 
     def stop(self):
-        print 'STOP'
+        print 'AWARD STOP'
 
-    def onPlayerKilled(self, kill_log):
-        print 'AWARD'
+    def on_kill(self, victim, attacker, weapon):
+        print 'AWARD KILL'
