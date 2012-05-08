@@ -89,12 +89,15 @@ class StatParser(cherrypy.process.plugins.SimplePlugin):
         values = elements[2:]
         print timestamp, log_type, values
 
+        #TODO Wrap whole thing in try/except in case list->log class fails?
         #Determine log type and turn into proper data structure
         if log_type == 'CR':
             return ChangedCommander(elements)
         else:
             #TODO Probably want to implement our own UnknownLogEntryException
-            raise Exception("Unknown log entry: " + line)
+            #raise Exception("Unknown log entry: " + line)
+            #TODO Actually, what to do with unknown log entries?
+            pass
 
     def process(self, data):
         '''
