@@ -7,5 +7,5 @@ class BaseProcessor:
     def stop(self):
         pass
 
-    def onPlayerKilled(self):
+    def onPlayerKilled(self, kill_log):
         pass
