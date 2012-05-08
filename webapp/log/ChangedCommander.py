@@ -5,9 +5,10 @@ class ChangedCommander(object):
         Creates a new ChangedCommander log entry.
 
         Args:
-           data (list): data[0] = 'CR'
-                        data[1] = 'New Team Name'
-                        data[2] = 'New Player Name'
+           data (list): data[1] = 'CR'
+                        data[2] = 'New Team Name'
+                        data[3] = 'New Player Name'
         '''
-        self.team = data[1]
-        self.player = data[2]
+        self.time = data[0]
+        self.team = data[2]
+        self.player = data[3]
