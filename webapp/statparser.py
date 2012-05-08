@@ -1,4 +1,6 @@
 import cherrypy
+
+import log
 import processor.award
 
 class StatParser(cherrypy.process.plugins.SimplePlugin):
@@ -44,7 +46,8 @@ class StatParser(cherrypy.process.plugins.SimplePlugin):
 
             # Parse valid log entries
             if (len(line) > 0):
-                self.parse(line)
+                log_data = self.parse(line)
+                self.process(log_data)
             else:
                 running = False
 
@@ -64,6 +67,17 @@ class StatParser(cherrypy.process.plugins.SimplePlugin):
         print 'STAT PARSER - STOPPED'
 
     def parse(self, line):
+        '''
+        Takes in a log entry line and parses it into a log data structure more
+        convenient to use.
+
+        Args:
+           line (string): Raw log entry from Battle Field 2 mod.
+
+        Returns:
+           log entry datastructure: Returns a log data structure dependent on the
+           type of log entry that is parsed.
+        '''
 
         # Break the line into individual elements
         elements = line.split(';')
@@ -71,9 +85,34 @@ class StatParser(cherrypy.process.plugins.SimplePlugin):
 
         # Extract the log time and type
         timestamp = int(elements[0])
-        type = elements[1]
+        log_type = elements[1]
         values = elements[2:]
-        print timestamp, type, values
+        print timestamp, log_type, values
+
+        #TODO Wrap whole thing in try/except in case list->log class fails?
+        #Determine log type and turn into proper data structure
+        if log_type == 'CR':
+            return ChangedCommander(elements)
+        else:
+            #TODO Probably want to implement our own UnknownLogEntryException
+            #raise Exception("Unknown log entry: " + line)
+            #TODO Actually, what to do with unknown log entries?
+            pass
+
+    def process(self, data):
+        '''
+        Passes parsed data through all of the processors to accumulate statistics.
+
+        Args:
+           data (parsed data entry): Should already be parsed so that individual
+           processors do not need to cast strings to numbers, etc.
+        '''
+        #Identify what kind of log entry we have
+
+        for processor in self.processors:
+            #TODO Will need to change based on each type of log entry in the big
+            #TODO if/else clause on the identity of the log entry
+            processor.onPlayerKilled(data)
 
 # Register this class with the plugin engine
 cherrypy.engine.statparser = StatParser(cherrypy.engine)

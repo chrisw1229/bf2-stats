@@ -214,10 +214,10 @@ def on_pickup_kit(player, kit):
 
     log('PK', player_name, player_pos, kit_name)
 
-def on_player_banned(player, time, type):
+def on_player_banned(player, time, ban_type):
     player_name = format_player(player)
 
-    log('BN', player_name, time, type)
+    log('BN', player_name, time, ban_type)
 
 def on_player_changed_squad(player, old_squad_id, new_squad_id):
     player_name = format_player(player)
@@ -237,35 +237,35 @@ def on_player_change_weapon(player, old_weapon, new_weapon):
 
     log('WP', player_name, player_pos, new_weapon_name)
 
-def on_player_death(victim, object):
+def on_player_death(victim, bf2_object):
     victim_name = format_player(victim)
     victim_pos = format_player_pos(victim)
 
     log('DT', victim_name, victim_pos)
 
-def on_player_give_ammo_point(giver, object):
+def on_player_give_ammo_point(giver, bf2_object):
     giver_name = format_player(giver)
     giver_pos = format_player_pos(giver)
 
-    log('AP', giver_name, giver_pos, object)
+    log('AP', giver_name, giver_pos, bf2_object)
 
-def on_player_heal_point(giver, object):
+def on_player_heal_point(giver, bf2_object):
     giver_name = format_player(giver)
     giver_pos = format_player_pos(giver)
 
-    log('HP', giver_name, giver_pos, object)
+    log('HP', giver_name, giver_pos, bf2_object)
 
 def on_player_kicked(player):
     player_name = format_player(player)
 
     log('KK', player_name)
 
-def on_player_killed(victim, attacker, weapon, assists, object):
+def on_player_killed(victim, attacker, weapon, assists, bf2_object):
 
     # Check whether the kill was from an empty vehicle
-    if attacker == None and weapon == None and object != None:
-        if hasattr(object, 'lastDrivingPlayerIndex'):
-            attacker = bf2.playerManager.getPlayerByIndex(object.lastDrivingPlayerIndex)
+    if attacker == None and weapon == None and bf2_object != None:
+        if hasattr(bf2_object, 'lastDrivingPlayerIndex'):
+            attacker = bf2.playerManager.getPlayerByIndex(bf2_object.lastDrivingPlayerIndex)
 
     victim_name = format_player(victim)
     victim_pos = format_player_pos(victim)
@@ -274,16 +274,16 @@ def on_player_killed(victim, attacker, weapon, assists, object):
     weapon_name = format_weapon(weapon)
 
     # Check whether the weapon was actually a vehicle
-    if weapon == None and object != None:
-        weapon_name = format_vehicle(object)
+    if weapon == None and bf2_object != None:
+        weapon_name = format_vehicle(bf2_object)
 
     log('KL', victim_name, victim_pos, attacker_name, attacker_pos, weapon_name, assists)
 
-def on_player_repair_point(giver, object):
+def on_player_repair_point(giver, bf2_object):
     giver_name = format_player(giver)
     giver_pos = format_player_pos(giver)
 
-    log('RP', giver_name, giver_pos, object)
+    log('RP', giver_name, giver_pos, bf2_object)
 
 def on_player_revived(victim, reviver):
     victim_name = format_player(victim)
@@ -298,7 +298,7 @@ def on_player_score(player, difference):
 
     log('SC', player_name, difference)
 
-def on_player_spawn(player, object):
+def on_player_spawn(player, bf2_object):
     player_name = format_player(player)
     player_pos = format_player_pos(player)
     team_name = format_team(player.getTeam())
@@ -398,17 +398,17 @@ def format_weapon(weapon):
 def is_soldier(vehicle):
     return vehicle and getVehicleType(vehicle.templateName) == VEHICLE_TYPE_SOLDIER
 
-def log(type, *args):
+def log(log_type, *args):
 
     # Validate the given parameters
-    assert type and len(type) == 2, 'Invalid log type: %s' % `type`
+    assert log_type and len(log_type) == 2, 'Invalid log type: %s' % `log_type`
 
     # Write the log entry time stamp
     log_file.write(str(int(host.timer_getWallTime())).zfill(5))
     log_file.write(';')
 
     # Write the required type of log
-    log_file.write(type)
+    log_file.write(log_type)
 
     # Write any optional log values with delimiters
     if args:

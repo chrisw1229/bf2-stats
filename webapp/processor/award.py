@@ -8,5 +8,5 @@ class Processor(BaseProcessor):
     def stop(self):
         print 'STOP'
 
-    def onPlayerKilled(self):
+    def onPlayerKilled(self, kill_log):
         print 'AWARD'
