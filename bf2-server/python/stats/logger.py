@@ -73,14 +73,19 @@ def on_reset(data):
 def on_game_status(status):
 
     # Log the game status
-    if status == bf2.GameStatus.Playing:
-        map_name = bf2.serverSettings.getMapName()
-        time_limit = bf2.serverSettings.getTimeLimit()
-        score_limit = bf2.serverSettings.getScoreLimit()
+    map_name = bf2.serverSettings.getMapName()
+    time_limit = bf2.serverSettings.getTimeLimit()
+    score_limit = bf2.serverSettings.getScoreLimit()
+    log('GS', format_status(status), map_name, time_limit, score_limit)
 
-        log('GS', format_status(status), map_name, time_limit, score_limit)
-    else:
-        log('GS', format_status(status))
+    # Log the initial control point states when the game starts
+    if status == bf2.GameStatus.Playing:
+        control_points = bf2.objectManager.getObjectsOfType('dice.hfe.world.ObjectTemplate.ControlPoint')
+        for control_point in control_points:
+            flag_top = 0
+            if control_point.flagPosition == 0:
+                flag_top = 1
+            on_control_point(control_point, flag_top)
 
     # Update the callback function registrations
     if status == bf2.GameStatus.Playing:
@@ -171,10 +176,13 @@ def on_chat(player_index, text, channel_id, flags):
 
     log('CH', channel_name, player_name, text)
 
-def on_control_point(control_point, team_id):
-    team_name = format_team(team_id)
+def on_control_point(control_point, flag_top):
+    cp_id = control_point.triggerId
+    cp_pos = format_pos(control_point)
+    flag_state = format_flag_state(control_point.flagPosition)
+    team_name = format_team(control_point.cp_getParam('team'))
 
-    log('CP', control_point, team_name)
+    log('CP', cp_id, cp_pos, flag_state, team_name)
 
 def on_kit_drop(player, kit):
     player_name = format_player(player)
@@ -338,21 +346,29 @@ def on_vehicle_destroy(vehicle, attacker):
         return
 
     vehicle_name = format_vehicle(vehicle)
-    vehicle_pos = format_vehicle_pos(vehicle)
+    vehicle_pos = format_pos(vehicle)
     attacker_name = format_player(attacker)
     attacker_pos = format_player_pos(attacker)
 
     log('VD', vehicle_name, vehicle_pos, attacker_name, attacker_pos)
 
 def format_assist_type(assist_type):
-    if assist_type:
-        if assist_type == 1:
-            return 'target'
-        elif assist_type == 2:
-            return 'damage'
-        elif assist_type == 3:
-            return 'driver'
+    if assist_type == 1:
+        return 'target'
+    elif assist_type == 2:
+        return 'damage'
+    elif assist_type == 3:
+        return 'driver'
     return None
+
+def format_flag_state(flag_state):
+    if flag_state == 0:
+        return 'top'
+    elif flag_state == 1:
+        return 'middle'
+    elif flag_state == 2:
+        return 'bottom'
+    return flag_state
 
 def format_kit(kit):
     if kit:
@@ -371,13 +387,13 @@ def format_player_addr(player):
 
 def format_player_pos(player):
     if player:
-        return format_vehicle_pos(player.getVehicle())
+        return format_pos(player.getVehicle())
     return None
 
-def format_vehicle_pos(vehicle):
-    if vehicle:
-        pos = vehicle.getPosition()
-        rot = vehicle.getRotation()
+def format_pos(bf2_object):
+    if bf2_object:
+        pos = bf2_object.getPosition()
+        rot = bf2_object.getRotation()
         if pos and len(pos) == 3 and rot and len(rot) == 3:
             return (fpformat.fix(pos[0], 1) + ','
                     + fpformat.fix(pos[1], 1) + ','
