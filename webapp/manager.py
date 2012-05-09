@@ -14,6 +14,7 @@ class StatManager(object):
 
         # Register all the parse functions
         self.parsers['AM'] = self.parse_ammo
+        self.parsers['AS'] = self.parse_assist
         self.parsers['BN'] = self.parse_ban
         self.parsers['CH'] = self.parse_chat
         self.parsers['CL'] = self.parse_clock_limit
@@ -94,6 +95,9 @@ class StatManager(object):
 
     def parse_ammo(self, values):
         print 'PARSE AMMO: ', values
+
+    def parse_assist(self, values):
+        print 'PARSE ASSIST: ', values
 
     def parse_ban(self, values):
         print 'PARSE BAN: ', values

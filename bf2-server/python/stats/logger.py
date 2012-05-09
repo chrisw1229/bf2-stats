@@ -277,7 +277,17 @@ def on_kill(victim, attacker, weapon, assists, bf2_object):
     if weapon == None and bf2_object != None:
         weapon_name = format_vehicle(bf2_object)
 
-    log('KL', victim_name, victim_pos, attacker_name, attacker_pos, weapon_name, assists)
+    log('KL', victim_name, victim_pos, attacker_name, attacker_pos, weapon_name)
+
+    # Log any assists to the kill
+    if assists:
+        for assist in assists:
+            assister = assist[0]
+            assister_name = format_player(assister)
+            assister_pos = format_player_pos(assister)
+            assist_type = format_assist_type(assist[1])
+
+            log('AS', assister_name, assister_pos, assist_type)
 
 def on_repair(giver, bf2_object):
     giver_name = format_player(giver)
@@ -333,6 +343,16 @@ def on_vehicle_destroy(vehicle, attacker):
     attacker_pos = format_player_pos(attacker)
 
     log('VD', vehicle_name, vehicle_pos, attacker_name, attacker_pos)
+
+def format_assist_type(assist_type):
+    if assist_type:
+        if assist_type == 1:
+            return 'target'
+        elif assist_type == 2:
+            return 'damage'
+        elif assist_type == 3:
+            return 'driver'
+    return None
 
 def format_kit(kit):
     if kit:
