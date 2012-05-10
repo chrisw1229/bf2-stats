@@ -60,7 +60,23 @@ class StatManager(object):
             ticked = False
 
         # Allow each processor to handle the event
-        if event.CALLBACK:
+        self.fire(event)
+
+        # Store the current event for future use
+        self.curr_events.append(event)
+        self.last_events[event.ID] = event
+
+    def fire(self, event):
+        '''
+        Passes the given log event to all the registered processors.
+
+        Args:
+           event (BaseEvent): Object representation of a log entry.
+
+        Returns:
+            None
+        '''
+        if event and event.CALLBACK:
             for processor in self.processors:
 
                 # Attempt to invoke the processor callback
@@ -75,9 +91,5 @@ class StatManager(object):
                     print 'Missing callback for processor: %s[%s]' % (processor, event.callback)
         else:
             print 'Missing callback for event: ', event
-
-        # Store the current event for future use
-        self.curr_events.append(event)
-        self.last_events[event.ID] = event
 
 stat_mgr = StatManager()
