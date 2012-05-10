@@ -8,5 +8,5 @@ class Processor(BaseProcessor):
     def stop(self):
         print 'AWARD STOP'
 
-    def on_kill(self, victim, attacker, weapon):
-        print 'AWARD KILL'
+    def on_kill(self, event):
+        print 'AWARD KILL: ', event

@@ -1,6 +1,7 @@
 import cherrypy
 
-from manager import statMgr
+from parse import stat_parser
+from manager import stat_mgr
 
 class StatPlugin(cherrypy.process.plugins.SimplePlugin):
 
@@ -11,8 +12,9 @@ class StatPlugin(cherrypy.process.plugins.SimplePlugin):
     def start(self):
         print 'STAT PLUGIN - STARTING'
 
-        # Start the manager singleton
-        statMgr.start()
+        # Start the singletons
+        stat_parser.start()
+        stat_mgr.start()
 
         # Build a path to the log file
         if not self.log_file_path:
@@ -37,12 +39,15 @@ class StatPlugin(cherrypy.process.plugins.SimplePlugin):
         running = True
         while running:
 
-            # Attempt to read the next log entry
+            # Attempt to read the next available log entry
             line = self.log_file.readline().strip()
-
-            # Parse valid log entries
             if (len(line) > 0):
-                statMgr.parse(line)
+
+                # Parse the line into an event model
+                event = stat_parser.parse(line)
+
+                # Process the event into useable statistics
+                stat_mgr.process(event)
             else:
                 running = False
 
@@ -55,8 +60,9 @@ class StatPlugin(cherrypy.process.plugins.SimplePlugin):
             print 'Closing stats log file: ', self.log_file_path
             self.log_file.close()
 
-        # Stop the manager singleton
-        statMgr.stop()
+        # Stop the singletons
+        stat_mgr.stop()
+        stat_parser.stop()
 
         print 'STAT PLUGIN - STOPPED'
 
