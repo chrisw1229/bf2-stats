@@ -283,7 +283,8 @@ def on_kill(victim, attacker, weapon, assists, bf2_object):
 
     # Check whether the weapon was actually a vehicle
     if weapon == None and bf2_object != None:
-        weapon_name = format_vehicle(bf2_object)
+        if not is_soldier(bf2_object):
+            weapon_name = format_vehicle(bf2_object)
 
     log('KL', victim_name, victim_pos, attacker_name, attacker_pos, weapon_name)
 
@@ -371,7 +372,7 @@ def format_flag_state(flag_state):
     return flag_state
 
 def format_kit(kit):
-    if kit:
+    if kit and kit.templateName:
         return kit.templateName.lower()
     return None
 
@@ -422,17 +423,18 @@ def format_team(team_id):
     return None
 
 def format_vehicle(vehicle):
-    if vehicle:
+    if vehicle and vehicle.templateName:
         return vehicle.templateName.lower()
     return None
 
 def format_weapon(weapon):
-    if weapon:
+    if weapon and weapon.templateName:
         return weapon.templateName.lower()
     return None
 
 def is_soldier(vehicle):
-    return vehicle and getVehicleType(vehicle.templateName) == VEHICLE_TYPE_SOLDIER
+    return (vehicle and vehicle.templateName
+            and getVehicleType(vehicle.templateName) == VEHICLE_TYPE_SOLDIER)
 
 def log(log_type, *args):
 
