@@ -1,3 +1,4 @@
+from event import *
 import processor.award
 
 class StatManager(object):
@@ -9,7 +10,7 @@ class StatManager(object):
     prev_events = []
     curr_events = []
     last_events = {}
-    players = {}
+    players = []
 
     # This method will be called to initialize the manager
     def start(self):
@@ -36,7 +37,26 @@ class StatManager(object):
 
         print 'STAT MANAGER - STOPPED'
 
-    def process(self, event):
+    def process_log(self, entry):
+        '''
+        Takes in a log entry and processes it to keep the core stat models consistent.
+
+        Args:
+           entry (LogEntry): Object representation of a log entry.
+
+        Returns:
+            None
+        '''
+        if not entry: return
+
+        # Handle log entries that affect the core features
+        log_type = entry.log_type
+        if log_type == ConnectEvent.ID:
+            self._proc_connect(entry)
+        elif log_type == DisconnectEvent.ID:
+            self._proc_disconnect(entry)
+
+    def process_event(self, event):
         '''
         Takes in a log event and processes it into useful statistics.
 
@@ -60,13 +80,21 @@ class StatManager(object):
             ticked = False
 
         # Allow each processor to handle the event
-        self.fire(event)
+        self._fire(event)
 
         # Store the current event for future use
         self.curr_events.append(event)
         self.last_events[event.ID] = event
 
-    def fire(self, event):
+    def _proc_connect(self, entry):
+        # TODO Update player model mappings here
+        pass
+    
+    def _proc_disconnect(self, entry):
+        # TODO Update player model mappings here
+        pass
+
+    def _fire(self, event):
         '''
         Passes the given log event to all the registered processors.
 

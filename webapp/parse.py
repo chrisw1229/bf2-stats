@@ -1,5 +1,12 @@
 import event
 
+class LogEntry(object):
+
+    def __init__(self, time, log_type, values):
+        self.time = time
+        self.log_type = log_type
+        self.values = values
+
 class StatParser(object):
 
     event_types = {}
@@ -32,13 +39,13 @@ class StatParser(object):
 
     def parse(self, line):
         '''
-        Takes in a log entry line and parses it into an event data structure more convenient to use.
+        Takes in a log line and parses it into a raw value model more convenient to use.
 
         Args:
-           line (string): Raw log entry from Battle Field 2 mod.
+           line (string): Raw log line from Battle Field 2 mod.
 
         Returns:
-            Event (BaseEvent): Returns an event data structure dependent on the log entry type.
+            LogEntry (LogEntry): Returns a model of the parsed log line.
         '''
         if not line: return
 
@@ -47,17 +54,30 @@ class StatParser(object):
         assert len(elements) > 1, 'Invalid log line %s' % line
 
         # Extract the log time and type
-        timestamp = int(elements[0])
+        time = int(elements[0])
         log_type = str(elements[1])
         values = elements[2:]
 
-        # Attempt to parse the log entry based on type
+        return LogEntry(time, log_type, values)
+
+    def convert(self, entry):
+        '''
+        Takes in a log entry and converts it into a type-safe event model more convenient to use.
+
+        Args:
+           entry (LogEntry): Parsed log entry from Battle Field 2 mod.
+
+        Returns:
+            Event (BaseEvent): Returns an event data structure dependent on the log entry type.
+        '''
+        if not entry: return
+ 
+        # Attempt to convert the log entry to an event based on type
         try:
-            event_type = self.event_types[log_type]
-            event = event_type(values)
-            event.time = timestamp
+            event_type = self.event_types[entry.log_type]
+            event = event_type(entry.time, entry.values)
             return event
         except KeyError:
-            print 'Unknown log entry type: ', log_type
+            print 'Unknown log entry type: ', entry.log_type
 
 stat_parser = StatParser()

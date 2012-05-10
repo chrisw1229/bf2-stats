@@ -43,11 +43,17 @@ class StatPlugin(cherrypy.process.plugins.SimplePlugin):
             line = self.log_file.readline().strip()
             if (len(line) > 0):
 
-                # Parse the line into an event model
-                event = stat_parser.parse(line)
+                # Parse the line into a raw values model
+                entry = stat_parser.parse(line)
+
+                # Pass the log entry through the manager for pre-processing
+                stat_mgr.process_log(entry)
+
+                # Convert the log entry into a type-safe event
+                event = stat_parser.convert(entry)
 
                 # Process the event into useable statistics
-                stat_mgr.process(event)
+                stat_mgr.process_event(event)
             else:
                 running = False
 
