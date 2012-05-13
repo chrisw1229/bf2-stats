@@ -1,7 +1,6 @@
-from event import *
 import processor.award
 
-class StatManager(object):
+class StatsManager(object):
 
     processors = []
     ticked = False
@@ -10,11 +9,10 @@ class StatManager(object):
     prev_events = []
     curr_events = []
     last_events = {}
-    players = []
 
     # This method will be called to initialize the manager
     def start(self):
-        print 'STAT MANAGER - STARTING'
+        print 'STATS MANAGER - STARTING'
 
         # Register all the processors
         # TODO Load these dynamically
@@ -25,36 +23,17 @@ class StatManager(object):
         for proc in self.processors:
             proc.start()
 
-        print 'STAT MANAGER - STARTED'
+        print 'STATS MANAGER - STARTED'
 
     # This method will be called to shutdown the manager
     def stop(self):
-        print 'STAT MANAGER - STOPPING'
+        print 'STATS MANAGER - STOPPING'
 
         # Stop all the log processors
         for proc in reversed(self.processors):
             proc.stop()
 
-        print 'STAT MANAGER - STOPPED'
-
-    def process_log(self, entry):
-        '''
-        Takes in a log entry and processes it to keep the core stat models consistent.
-
-        Args:
-           entry (LogEntry): Object representation of a log entry.
-
-        Returns:
-            None
-        '''
-        if not entry: return
-
-        # Handle log entries that affect the core features
-        log_type = entry.log_type
-        if log_type == ConnectEvent.ID:
-            self._proc_connect(entry)
-        elif log_type == DisconnectEvent.ID:
-            self._proc_disconnect(entry)
+        print 'STATS MANAGER - STOPPED'
 
     def process_event(self, event):
         '''
@@ -86,14 +65,6 @@ class StatManager(object):
         self.curr_events.append(event)
         self.last_events[event.ID] = event
 
-    def _proc_connect(self, entry):
-        # TODO Update player model mappings here
-        pass
-    
-    def _proc_disconnect(self, entry):
-        # TODO Update player model mappings here
-        pass
-
     def _fire(self, event):
         '''
         Passes the given log event to all the registered processors.
@@ -120,4 +91,5 @@ class StatManager(object):
         else:
             print 'Missing callback for event: ', event
 
-stat_mgr = StatManager()
+# Create a shared singleton instance of the stats manager
+stats_mgr = StatsManager()

@@ -1,20 +1,23 @@
 import cherrypy
 
-from parse import stat_parser
-from manager import stat_mgr
+from event import ConnectEvent,DisconnectEvent
+from parse import parse_mgr
+from player import player_mgr
+from stats import stats_mgr
 
-class StatPlugin(cherrypy.process.plugins.SimplePlugin):
+class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
 
     log_file_path = None
     log_file = None
 
     # This method will be called when the plugin engine starts
     def start(self):
-        print 'STAT PLUGIN - STARTING'
+        print 'STATS PLUGIN - STARTING'
 
         # Start the singletons
-        stat_parser.start()
-        stat_mgr.start()
+        parse_mgr.start()
+        player_mgr.start()
+        stats_mgr.start()
 
         # Build a path to the log file
         if not self.log_file_path:
@@ -25,41 +28,34 @@ class StatPlugin(cherrypy.process.plugins.SimplePlugin):
         try:
             self.log_file = open(self.log_file_path, 'r')
         except IOError:
-            raise Exception('Unable to open stat log file: ' + self.log_file_path)
+            raise Exception('Unable to open stats log file: ' + self.log_file_path)
 
-        print 'STAT PLUGIN - STARTED'
+        print 'STATS PLUGIN - STARTED'
     start.priority = 100
 
     # This method will be called by the plugin engine at regular intervals (about every 100ms)
     def main(self):
-        if not self.log_file:
+        if not self.log_file or self.log_file.closed:
             return
 
         # Keep reading lines until the stream is exhausted
         running = True
+        count = 0
         while running:
 
             # Attempt to read the next available log entry
             line = self.log_file.readline().strip()
             if (len(line) > 0):
-
-                # Parse the line into a raw values model
-                entry = stat_parser.parse(line)
-
-                # Pass the log entry through the manager for pre-processing
-                stat_mgr.process_log(entry)
-
-                # Convert the log entry into a type-safe event
-                event = stat_parser.convert(entry)
-
-                # Process the event into useable statistics
-                stat_mgr.process_event(event)
+                self._process(line)
+                count += 1
             else:
                 running = False
+        if count > 0:
+            print 'Log lines read: ', count
 
     # This method will be called when the plugin engine stops
     def stop(self):
-        print 'STAT PLUGIN - STOPPING'
+        print 'STATS PLUGIN - STOPPING'
 
         # Clean up the file log file handle
         if self.log_file:
@@ -67,10 +63,29 @@ class StatPlugin(cherrypy.process.plugins.SimplePlugin):
             self.log_file.close()
 
         # Stop the singletons
-        stat_mgr.stop()
-        stat_parser.stop()
+        stats_mgr.stop()
+        player_mgr.stop()
+        parse_mgr.stop()
 
-        print 'STAT PLUGIN - STOPPED'
+        print 'STATS PLUGIN - STOPPED'
+
+    def _process(self, line):
+
+        # Parse the line into a raw values model
+        entry = parse_mgr.parse(line)
+
+        # Pre-process player connect and disconnect events
+        log_type = entry.log_type
+        if log_type == ConnectEvent.ID:
+            player_mgr.add_player(entry.values[0], entry.values[1])
+        elif log_type == DisconnectEvent.ID:
+            player_mgr.remove_player(entry.values[0], entry.values[1])
+
+        # Convert the log entry into a type-safe event
+        event = parse_mgr.convert(entry)
+
+        # Process the event into useable statistics
+        stats_mgr.process_event(event)
 
 # Register this class with the plugin engine
-cherrypy.engine.statplugin = StatPlugin(cherrypy.engine)
+cherrypy.engine.statsplugin = StatsPlugin(cherrypy.engine)

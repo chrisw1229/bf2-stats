@@ -7,7 +7,7 @@ class LogEntry(object):
         self.log_type = log_type
         self.values = values
 
-class StatParser(object):
+class ParseManager(object):
 
     event_types = {}
 
@@ -58,6 +58,9 @@ class StatParser(object):
         log_type = str(elements[1])
         values = elements[2:]
 
+        # Decode special case values
+        values = [self._decode(value) for value in values]
+
         return LogEntry(time, log_type, values)
 
     def convert(self, entry):
@@ -80,4 +83,22 @@ class StatParser(object):
         except KeyError:
             print 'Unknown log entry type: ', entry.log_type
 
-stat_parser = StatParser()
+    def parse_pos(self, position):
+        if not position: return None
+
+        values = position.split(',')
+        assert len(values) == 4, 'Invalid position array size: %i' % len(values)
+
+        return [float(value) for value in values]
+
+    def _decode(self, value):
+        if value == 'None':
+            return None
+        elif value == 'True':
+            return True
+        elif value == 'False':
+            return False
+        return value
+
+# Create a shared singleton instance of the parse manager
+parse_mgr = ParseManager()

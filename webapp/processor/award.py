@@ -9,4 +9,5 @@ class Processor(BaseProcessor):
         print 'AWARD STOP'
 
     def on_kill(self, event):
-        print 'AWARD KILL: ', event
+        #print 'AWARD KILL: ', event
+        pass

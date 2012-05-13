@@ -1,3 +1,7 @@
+from parse import parse_mgr
+from player import player_mgr
+
+# Create a shared registry of all the event types
 registry = []
 
 class BaseEvent(object):
@@ -18,7 +22,11 @@ class AmmoEvent(BaseEvent):
     def __init__(self, time, values):
         super(AmmoEvent, self).__init__(time, values)
 
-        print 'AMMO EVENT: ', values
+        assert len(values) == 3, 'AmmoEvent - Wrong number of values: %i' % len(values)
+ 
+        self.giver = player_mgr.get_player(values[0])
+        self.giver_pos = parse_mgr.parse_pos(values[1])
+        self.bf2_object = values[2]
 registry.append(AmmoEvent)
 
 class AssistEvent(BaseEvent):
@@ -29,7 +37,11 @@ class AssistEvent(BaseEvent):
     def __init__(self, time, values):
         super(AssistEvent, self).__init__(time, values)
 
-        print 'ASSIST EVENT: ', values
+        assert len(values) == 3, 'AssistEvent - Wrong number of values: %i' % len(values)
+
+        self.assister = player_mgr.get_player(values[0])
+        self.assister_pos = parse_mgr.parse_pos(values[1])
+        self.assist_type = values[2]
 registry.append(AssistEvent)
 
 class BanEvent(BaseEvent):
@@ -40,7 +52,11 @@ class BanEvent(BaseEvent):
     def __init__(self, time, values):
         super(BanEvent, self).__init__(time, values)
 
-        print 'BAN EVENT: ', values
+        assert len(values) == 3, 'BanEvent - Wrong number of values: %i' % len(values)
+
+        self.player = player_mgr.get_player(values[0])
+        self.duration = values[1]
+        self.ban_type = values[2]
 registry.append(BanEvent)
 
 class ChatEvent(BaseEvent):
@@ -51,7 +67,11 @@ class ChatEvent(BaseEvent):
     def __init__(self, time, values):
         super(ChatEvent, self).__init__(time, values)
 
-        print 'CHAT EVENT: ', values
+        assert len(values) == 3, 'ChatEvent - Wrong number of values: %i' % len(values)
+
+        self.channel = values[0]
+        self.player = player_mgr.get_player(values[1])
+        self.text = values[2]
 registry.append(ChatEvent)
 
 class ClockLimitEvent(BaseEvent):
@@ -62,7 +82,9 @@ class ClockLimitEvent(BaseEvent):
     def __init__(self, time, values):
         super(ClockLimitEvent, self).__init__(time, values)
 
-        print 'CLOCK LIMIT EVENT: ', values
+        assert len(values) == 1, 'ClockLimitEvent - Wrong number of values: %i' % len(values)
+
+        self.value = values[0]
 registry.append(ClockLimitEvent)
 
 class CommanderEvent(BaseEvent):
@@ -73,7 +95,10 @@ class CommanderEvent(BaseEvent):
     def __init__(self, time, values):
         super(CommanderEvent, self).__init__(time, values)
 
-        print 'COMMANDER EVENT: ', values
+        assert len(values) == 2, 'CommanderEvent - Wrong number of values: %i' % len(values)
+
+        self.team = values[0]
+        self.player = player_mgr.get_player(values[1])
 registry.append(CommanderEvent)
 
 class ConnectEvent(BaseEvent):
@@ -84,7 +109,9 @@ class ConnectEvent(BaseEvent):
     def __init__(self, time, values):
         super(ConnectEvent, self).__init__(time, values)
 
-        print 'CONNECT EVENT: ', values
+        assert len(values) == 2, 'ConnectEvent - Wrong number of values: %i' % len(values)
+
+        self.player = player_mgr.get_player(values[1])
 registry.append(ConnectEvent)
 
 class ControlPointEvent(BaseEvent):
@@ -95,7 +122,12 @@ class ControlPointEvent(BaseEvent):
     def __init__(self, time, values):
         super(ControlPointEvent, self).__init__(time, values)
 
-        print 'CONTROL POINT EVENT: ', values
+        assert len(values) == 4, 'ControlPointEvent - Wrong number of values: %i' % len(values)
+
+        self.control_point = values[0]
+        self.control_point_pos = parse_mgr.parse_pos(values[1])
+        self.flag_state = values[2]
+        self.team = values[3]
 registry.append(ControlPointEvent)
 
 class DisconnectEvent(BaseEvent):
@@ -106,7 +138,9 @@ class DisconnectEvent(BaseEvent):
     def __init__(self, time, values):
         super(DisconnectEvent, self).__init__(time, values)
 
-        print 'DISCONNECT EVENT: ', values
+        assert len(values) == 2, 'DisconnectEvent - Wrong number of values: %i' % len(values)
+
+        self.player = player_mgr.get_player(values[1])
 registry.append(DisconnectEvent)
 
 class DeathEvent(BaseEvent):
@@ -117,7 +151,10 @@ class DeathEvent(BaseEvent):
     def __init__(self, time, values):
         super(DeathEvent, self).__init__(time, values)
 
-        print 'DEATH EVENT: ', values
+        assert len(values) == 2, 'DeathEvent - Wrong number of values: %i' % len(values)
+
+        self.player = player_mgr.get_player(values[0])
+        self.player_pos = parse_mgr.parse_pos(values[1])
 registry.append(DeathEvent)
 
 class GameStatusEvent(BaseEvent):
@@ -128,7 +165,12 @@ class GameStatusEvent(BaseEvent):
     def __init__(self, time, values):
         super(GameStatusEvent, self).__init__(time, values)
 
-        print 'GAME STATUS EVENT: ', values
+        assert len(values) == 4, 'GameStatusEvent - Wrong number of values: %i' % len(values)
+
+        self.status = values[0]
+        self.map = values[1]
+        self.time = values[2]
+        self.score = values[3]
 registry.append(GameStatusEvent)
 
 class HealEvent(BaseEvent):
@@ -139,7 +181,11 @@ class HealEvent(BaseEvent):
     def __init__(self, time, values):
         super(HealEvent, self).__init__(time, values)
 
-        print 'HEAL EVENT: ', values
+        assert len(values) == 3, 'HealEvent - Wrong number of values: %i' % len(values)
+
+        self.giver = player_mgr.get_player(values[0])
+        self.giver_pos = parse_mgr.parse_pos(values[1])
+        self.bf2_object = values[2]
 registry.append(HealEvent)
 
 class KickEvent(BaseEvent):
@@ -150,7 +196,9 @@ class KickEvent(BaseEvent):
     def __init__(self, time, values):
         super(KickEvent, self).__init__(time, values)
 
-        print 'KICK EVENT: ', values
+        assert len(values) == 1, 'KickEvent - Wrong number of values: %i' % len(values)
+
+        self.player = player_mgr.get_player(values[0])
 registry.append(KickEvent)
 
 class KitDropEvent(BaseEvent):
@@ -161,7 +209,11 @@ class KitDropEvent(BaseEvent):
     def __init__(self, time, values):
         super(KitDropEvent, self).__init__(time, values)
 
-        print 'KIT DROP EVENT: ', values
+        assert len(values) == 3, 'KitDropEvent - Wrong number of values: %i' % len(values)
+
+        self.player = player_mgr.get_player(values[0])
+        self.player_pos = parse_mgr.parse_pos(values[1])
+        self.kit = values[2]
 registry.append(KitDropEvent)
 
 class KillEvent(BaseEvent):
@@ -172,7 +224,13 @@ class KillEvent(BaseEvent):
     def __init__(self, time, values):
         super(KillEvent, self).__init__(time, values)
 
-        print 'KILL EVENT: ', values
+        assert len(values) == 5, 'KillEvent - Wrong number of values: %i' % len(values)
+
+        self.victim = player_mgr.get_player(values[0])
+        self.victim_pos = parse_mgr.parse_pos(values[1])
+        self.attacker = player_mgr.get_player(values[2])
+        self.attacker_pos = parse_mgr.parse_pos(values[3])
+        self.weapon = values[4]
 registry.append(KillEvent)
 
 class KitPickupEvent(BaseEvent):
@@ -183,7 +241,11 @@ class KitPickupEvent(BaseEvent):
     def __init__(self, time, values):
         super(KitPickupEvent, self).__init__(time, values)
 
-        print 'KIT PICKUP EVENT: ', values
+        assert len(values) == 3, 'KitPickupEvent - Wrong number of values: %i' % len(values)
+
+        self.player = player_mgr.get_player(values[0])
+        self.player_pos = parse_mgr.parse_pos(values[1])
+        self.kit = values[2]
 registry.append(KitPickupEvent)
 
 class RepairEvent(BaseEvent):
@@ -194,7 +256,11 @@ class RepairEvent(BaseEvent):
     def __init__(self, time, values):
         super(RepairEvent, self).__init__(time, values)
 
-        print 'REPAIR EVENT: ', values
+        assert len(values) == 3, 'RepairEvent - Wrong number of values: %i' % len(values)
+
+        self.giver = player_mgr.get_player(values[0])
+        self.giver_pos = parse_mgr.parse_pos(values[1])
+        self.bf2_object = values[2]
 registry.append(RepairEvent)
 
 class ResetEvent(BaseEvent):
@@ -205,7 +271,9 @@ class ResetEvent(BaseEvent):
     def __init__(self, time, values):
         super(ResetEvent, self).__init__(time, values)
 
-        print 'RESET EVENT: ', values
+        assert len(values) == 1, 'ResetEvent - Wrong number of values: %i' % len(values)
+
+        self.data = values[0]
 registry.append(ResetEvent)
 
 class ReviveEvent(BaseEvent):
@@ -216,7 +284,12 @@ class ReviveEvent(BaseEvent):
     def __init__(self, time, values):
         super(ReviveEvent, self).__init__(time, values)
 
-        print 'REVIVE EVENT: ', values
+        assert len(values) == 4, 'ReviveEvent - Wrong number of values: %i' % len(values)
+
+        self.victim = player_mgr.get_player(values[0])
+        self.victim_pos = parse_mgr.parse_pos(values[1])
+        self.reviver = player_mgr.get_player(values[2])
+        self.reviver_pos = parse_mgr.parse_pos(values[3])
 registry.append(ReviveEvent)
 
 class ScoreEvent(BaseEvent):
@@ -227,7 +300,10 @@ class ScoreEvent(BaseEvent):
     def __init__(self, time, values):
         super(ScoreEvent, self).__init__(time, values)
 
-        print 'SCORE EVENT: ', values
+        assert len(values) == 2, 'ScoreEvent - Wrong number of values: %i' % len(values)
+
+        self.player = player_mgr.get_player(values[0])
+        self.value = int(values[1])
 registry.append(ScoreEvent)
 
 class SquadLeaderEvent(BaseEvent):
@@ -238,7 +314,10 @@ class SquadLeaderEvent(BaseEvent):
     def __init__(self, time, values):
         super(SquadLeaderEvent, self).__init__(time, values)
 
-        print 'SQUAD LEADER EVENT: ', values
+        assert len(values) == 2, 'SquadLeaderEvent - Wrong number of values: %i' % len(values)
+
+        self.squad = values[0]
+        self.player = player_mgr.get_player(values[1])
 registry.append(SquadLeaderEvent)
 
 class SpawnEvent(BaseEvent):
@@ -249,7 +328,11 @@ class SpawnEvent(BaseEvent):
     def __init__(self, time, values):
         super(SpawnEvent, self).__init__(time, values)
 
-        print 'SPAWN EVENT: ', values
+        assert len(values) == 3, 'SpawnEvent - Wrong number of values: %i' % len(values)
+
+        self.player = player_mgr.get_player(values[0])
+        self.player_pos = parse_mgr.parse_pos(values[1])
+        self.team = values[2]
 registry.append(SpawnEvent)
 
 class SquadEvent(BaseEvent):
@@ -260,7 +343,10 @@ class SquadEvent(BaseEvent):
     def __init__(self, time, values):
         super(SquadEvent, self).__init__(time, values)
 
-        print 'SQUAD EVENT: ', values
+        assert len(values) == 2, 'SquadEvent - Wrong number of values: %i' % len(values)
+
+        self.player = player_mgr.get_player(values[0])
+        self.squad = values[1]
 registry.append(SquadEvent)
 
 class ServerStatusEvent(BaseEvent):
@@ -271,7 +357,10 @@ class ServerStatusEvent(BaseEvent):
     def __init__(self, time, values):
         super(ServerStatusEvent, self).__init__(time, values)
 
-        print 'SERVER STATUS EVENT: ', values
+        assert len(values) == 2, 'ServerStatusEvent - Wrong number of values: %i' % len(values)
+
+        self.status = values[0]
+        self.timestamp = values[1]
 registry.append(ServerStatusEvent)
 
 class TeamDamageEvent(BaseEvent):
@@ -282,7 +371,12 @@ class TeamDamageEvent(BaseEvent):
     def __init__(self, time, values):
         super(TeamDamageEvent, self).__init__(time, values)
 
-        print 'TEAM DAMAGE EVENT: ', values
+        assert len(values) == 4, 'TeamDamageEvent - Wrong number of values: %i' % len(values)
+
+        self.victim = player_mgr.get_player(values[0])
+        self.victim_pos = parse_mgr.parse_pos(values[1])
+        self.attacker = player_mgr.get_player(values[2])
+        self.attacker_pos = parse_mgr.parse_pos(values[3])
 registry.append(TeamDamageEvent)
 
 class TicketLimitEvent(BaseEvent):
@@ -293,7 +387,10 @@ class TicketLimitEvent(BaseEvent):
     def __init__(self, time, values):
         super(TicketLimitEvent, self).__init__(time, values)
 
-        print 'TICKET LIMIT EVENT: ', values
+        assert len(values) == 2, 'TicketLimitEvent - Wrong number of values: %i' % len(values)
+
+        self.team = values[0]
+        self.value = int(values[1])
 registry.append(TicketLimitEvent)
 
 class TeamEvent(BaseEvent):
@@ -304,7 +401,10 @@ class TeamEvent(BaseEvent):
     def __init__(self, time, values):
         super(TeamEvent, self).__init__(time, values)
 
-        print 'TEAM EVENT: ', values
+        assert len(values) == 2, 'TeamEvent - Wrong number of values: %i' % len(values)
+
+        self.player = player_mgr.get_player(values[0])
+        self.team = values[1]
 registry.append(TeamEvent)
 
 class VehicleDestroyEvent(BaseEvent):
@@ -315,7 +415,12 @@ class VehicleDestroyEvent(BaseEvent):
     def __init__(self, time, values):
         super(VehicleDestroyEvent, self).__init__(time, values)
 
-        print 'VEHICLE DESTROY EVENT: ', values
+        assert len(values) == 4, 'VehicleDestroyEvent - Wrong number of values: %i' % len(values)
+
+        self.vehicle = values[0]
+        self.vehicle_pos = parse_mgr.parse_pos(values[1])
+        self.attacker = player_mgr.get_player(values[2])
+        self.attacker_pos = parse_mgr.parse_pos(values[3])
 registry.append(VehicleDestroyEvent)
 
 class VehicleEnterEvent(BaseEvent):
@@ -326,7 +431,12 @@ class VehicleEnterEvent(BaseEvent):
     def __init__(self, time, values):
         super(VehicleEnterEvent, self).__init__(time, values)
 
-        print 'VEHICLE ENTER EVENT: ', values
+        assert len(values) == 4, 'VehicleEnterEvent - Wrong number of values: %i' % len(values)
+
+        self.player = player_mgr.get_player(values[0])
+        self.player_pos = parse_mgr.parse_pos(values[1])
+        self.vehicle = values[2]
+        self.vehicle_slot = values[3]
 registry.append(VehicleEnterEvent)
 
 class VehicleExitEvent(BaseEvent):
@@ -337,7 +447,11 @@ class VehicleExitEvent(BaseEvent):
     def __init__(self, time, values):
         super(VehicleExitEvent, self).__init__(time, values)
 
-        print 'VEHICLE EXIT EVENT: ', values
+        assert len(values) == 3, 'VehicleExitEvent - Wrong number of values: %i' % len(values)
+
+        self.player = player_mgr.get_player(values[0])
+        self.player_pos = parse_mgr.parse_pos(values[1])
+        self.vehicle = values[2]
 registry.append(VehicleExitEvent)
 
 class WeaponEvent(BaseEvent):
@@ -348,5 +462,9 @@ class WeaponEvent(BaseEvent):
     def __init__(self, time, values):
         super(WeaponEvent, self).__init__(time, values)
 
-        print 'WEAPON EVENT: ', values
+        assert len(values) == 3, 'WeaponEvent - Wrong number of values: %i' % len(values)
+
+        self.player = player_mgr.get_player(values[0])
+        self.player_pos = parse_mgr.parse_pos(values[1])
+        self.weapon = values[2]
 registry.append(WeaponEvent)
