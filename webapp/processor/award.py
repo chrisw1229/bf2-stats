@@ -8,6 +8,6 @@ class Processor(BaseProcessor):
     def stop(self):
         print 'AWARD STOP'
 
-    def on_kill(self, event):
-        #print 'AWARD KILL: ', event
+    def on_kill(self, e):
+        #print 'AWARD KILL: ', e
         pass

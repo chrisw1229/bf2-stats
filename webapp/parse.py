@@ -25,7 +25,7 @@ class ParseManager(object):
             assert len(event_callback) > 0, 'Invalid event callback: %s' % event_callback
 
             # Make sure the id is not already registered
-            assert not hasattr(self.event_types, event_id), 'Duplicate event ID: %s' % event_id
+            assert not event_id in self.event_types, 'Duplicate event ID: %s' % event_id
             self.event_types[event_id] = event_class
         print 'Event types registered: ', len(self.event_types)
 

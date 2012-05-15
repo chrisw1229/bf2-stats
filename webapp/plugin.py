@@ -1,8 +1,12 @@
+
 import cherrypy
 
 from event import ConnectEvent,DisconnectEvent
+import processor.core
+import processor.award
+
 from parse import parse_mgr
-from player import player_mgr
+from model import model_mgr
 from stats import stats_mgr
 
 class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
@@ -14,9 +18,13 @@ class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
     def start(self):
         print 'STATS PLUGIN - STARTING'
 
+        # Register all the processors
+        # TODO Load these dynamically
+        stats_mgr.processors = [processor.core.Processor(), processor.award.Processor()]
+
         # Start the singletons
         parse_mgr.start()
-        player_mgr.start()
+        model_mgr.start()
         stats_mgr.start()
 
         # Build a path to the log file
@@ -64,7 +72,7 @@ class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
 
         # Stop the singletons
         stats_mgr.stop()
-        player_mgr.stop()
+        model_mgr.stop()
         parse_mgr.stop()
 
         print 'STATS PLUGIN - STOPPED'
@@ -77,9 +85,9 @@ class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
         # Pre-process player connect and disconnect events
         log_type = entry.log_type
         if log_type == ConnectEvent.ID:
-            player_mgr.add_player(entry.values[0], entry.values[1])
+            model_mgr.add_player(entry.values[0], entry.values[1])
         elif log_type == DisconnectEvent.ID:
-            player_mgr.remove_player(entry.values[0], entry.values[1])
+            model_mgr.remove_player(entry.values[0], entry.values[1])
 
         # Convert the log entry into a type-safe event
         event = parse_mgr.convert(entry)
