@@ -1,22 +1,22 @@
-00000;SS;start;2012-05-09_10-01-43
+00000;SS;start;2012-05-15_00-02-18
 00000;GS;pre;;0;0
 00000;RS;0
-00009;CN;None;C. Clarke
-00009;CN;None;P. OShaughnessy
-00009;CN;None;D. Aberin
-00009;CN;None;S. Wallberg
-00009;CN;None;S. Strandberg
-00009;CN;None;J. Aberg
-00009;CN;None;E. Smith
-00009;CN;None;M. Hornlund
-00009;CN;None;J. VanRooyen
-00009;CN;None;T. Karlsson
-00009;CN;None;M. Hedlund
-00009;CN;None;R. Linde
+00009;CN;None;D. Gothberg
+00009;CN;None;S. Parkinson
+00009;CN;None;L. Gustavsson
 00009;CN;None;H. Karlsson
-00009;CN;None;R. Hallwood
-00009;CN;None;B. Hedberg
-00009;CN;None;C. Barnett
+00009;CN;None;N. Goksu
+00009;CN;None;R. Smedberg
+00009;CN;None;T. Soderman
+00009;CN;None;P. OShaughnessy
+00009;CN;None;M. Bagge
+00009;CN;None;M. Sjoberg
+00009;CN;None;T. Karlsson
+00009;CN;None;J. Hartling
+00009;CN;None;U. Rask
+00009;CN;None;L. Castillo
+00009;CN;None;S. Pinkerton
+00009;CN;None;M. Fritze
 00009;GS;play;dalian_plant;0;0
 00009;GS;pre;dalian_plant;0;0
 00009;RS;0
@@ -25,686 +25,1986 @@
 00009;CP;4002;-151.8,153.2,-58.9,0.0;top;us
 00009;CP;4003;88.0,153.2,-40.0,0.0;bottom;None
 00009;CP;4004;-254.0,153.3,-210.0,0.0;bottom;None
-00024;CN;192.168.1.217;Luda
-00042;GS;pre;dalian_plant;0;0
-00042;RS;0
-00042;GS;play;dalian_plant;0;0
-00042;CP;4005;-92.3,153.2,-260.8,0.0;top;ch
-00042;CP;4006;-151.8,153.2,-58.9,0.0;top;us
-00042;CP;4007;88.0,153.2,-40.0,0.0;bottom;None
-00042;CP;4008;-254.0,153.3,-210.0,0.0;bottom;None
-00064;SP;Luda;-149.2,158.9,-47.4,180.0;us
-00064;WP;Luda;-149.2,158.9,-47.4,180.0;usrif_m203
-00064;KP;Luda;-149.2,158.9,-47.4,180.0;us_assault
-00064;SP;C. Clarke;-123.0,156.2,-250.0,0.0;ch
-00064;WP;C. Clarke;-123.0,156.2,-250.0,0.0;chrif_type85
-00064;KP;C. Clarke;-123.0,156.2,-250.0,0.0;ch_at
-00064;SP;P. OShaughnessy;-123.0,156.2,-250.0,0.0;ch
-00064;WP;P. OShaughnessy;-123.0,156.2,-250.0,0.0;rurif_ak47
-00064;KP;P. OShaughnessy;-123.0,156.2,-250.0,0.0;ch_medic
-00064;SP;D. Aberin;-146.8,155.6,-263.3,90.0;ch
-00064;WP;D. Aberin;-146.8,155.6,-263.3,90.0;chrif_type95
-00064;KP;D. Aberin;-146.8,155.6,-263.3,90.0;ch_specops
-00064;SP;S. Wallberg;-93.0,154.4,-290.0,-90.0;ch
-00064;WP;S. Wallberg;-93.0,154.4,-290.0,-90.0;rurif_gp25
-00064;KP;S. Wallberg;-93.0,154.4,-290.0,-90.0;ch_assault
-00064;SP;S. Strandberg;-93.0,154.4,-290.0,-90.0;ch
-00064;WP;S. Strandberg;-93.0,154.4,-290.0,-90.0;chrif_type95
-00064;KP;S. Strandberg;-93.0,154.4,-290.0,-90.0;ch_specops
-00064;SP;J. Aberg;-52.1,156.0,-276.7,0.0;ch
-00064;WP;J. Aberg;-52.1,156.0,-276.7,0.0;rurif_ak47
-00064;KP;J. Aberg;-52.1,156.0,-276.7,0.0;ch_medic
-00064;SP;E. Smith;-146.8,155.6,-263.3,90.0;ch
-00064;WP;E. Smith;-146.8,155.6,-263.3,90.0;chrif_type85
-00064;KP;E. Smith;-146.8,155.6,-263.3,90.0;ch_at
-00064;SP;M. Hornlund;-65.0,154.4,-257.0,135.0;ch
-00064;WP;M. Hornlund;-65.0,154.4,-257.0,135.0;chlmg_type95
-00064;KP;M. Hornlund;-65.0,154.4,-257.0,135.0;ch_support
-00064;SP;J. VanRooyen;-186.0,154.7,-52.1,180.0;us
-00064;WP;J. VanRooyen;-186.0,154.7,-52.1,180.0;uslmg_m249saw
-00064;KP;J. VanRooyen;-186.0,154.7,-52.1,180.0;us_support
-00064;SP;T. Karlsson;-179.0,154.6,-66.0,180.0;us
-00064;WP;T. Karlsson;-179.0,154.6,-66.0,180.0;usrif_m16a2
-00064;KP;T. Karlsson;-179.0,154.6,-66.0,180.0;us_medic
-00064;SP;M. Hedlund;-181.0,154.7,-78.0,180.0;us
-00064;WP;M. Hedlund;-181.0,154.7,-78.0,180.0;usrif_m4
-00064;KP;M. Hedlund;-181.0,154.7,-78.0,180.0;us_specops
-00064;SP;R. Linde;-179.0,154.6,-66.0,180.0;us
-00064;WP;R. Linde;-179.0,154.6,-66.0,180.0;usrif_remington11-87
-00064;KP;R. Linde;-179.0,154.6,-66.0,180.0;us_engineer
-00064;SP;H. Karlsson;-179.0,154.6,-66.0,180.0;us
-00064;WP;H. Karlsson;-179.0,154.6,-66.0,180.0;usrif_m203
-00064;KP;H. Karlsson;-179.0,154.6,-66.0,180.0;us_assault
-00064;SP;R. Hallwood;-181.0,154.7,-78.0,180.0;us
-00064;WP;R. Hallwood;-181.0,154.7,-78.0,180.0;usrif_m16a2
-00064;KP;R. Hallwood;-181.0,154.7,-78.0,180.0;us_medic
-00064;SP;B. Hedberg;-186.0,154.7,-52.1,180.0;us
-00064;WP;B. Hedberg;-186.0,154.7,-52.1,180.0;usrif_m4
-00064;KP;B. Hedberg;-186.0,154.7,-52.1,180.0;us_specops
-00064;SP;C. Barnett;-181.0,154.7,-78.0,180.0;us
-00064;WP;C. Barnett;-181.0,154.7,-78.0,180.0;usrif_m24
-00064;KP;C. Barnett;-181.0,154.7,-78.0,180.0;us_sniper
-00071;VE;H. Karlsson;-179.2,153.9,-33.8,151.8;ustnk_m1a2;0
-00071;VE;C. Clarke;-108.1,153.9,-253.7,0.0;tnk_type98;0
-00076;VE;J. VanRooyen;-174.9,155.7,-43.1,0.0;ustnk_m1a2_cupolabase;0
-00077;VE;P. OShaughnessy;-107.5,155.7,-252.8,0.0;tnk_type98_cupolabase;0
-00079;VE;R. Linde;-140.0,153.8,-49.0,-180.0;jeep_faav;0
-00079;VE;J. Aberg;-107.1,154.1,-280.9,0.0;jep_nanjing;0
-00081;VE;M. Hornlund;-107.3,155.2,-285.2,-9.7;jep_nanjing_passenger_rl;1
-00081;WP;C. Barnett;-166.6,154.2,-108.1,156.9;ushgr_m67
-00082;WP;C. Barnett;-164.7,154.2,-109.1,155.2;usrif_m24
-00084;VE;S. Wallberg;-107.9,155.6,-284.1,0.0;jep_nanjing_cupolabase;0
-00087;WP;D. Aberin;-106.7,154.2,-262.8,-13.8;c4_explosives
-00089;WP;D. Aberin;-106.7,154.2,-262.7,-13.9;chrif_type95
-00090;VE;S. Strandberg;-107.1,155.2,-284.5,-17.3;jep_nanjing_passenger_rr;1
-00092;VE;C. Barnett;-148.8,154.8,-101.2,0.0;jeep_faav_rear_passenger;0
-00098;WP;B. Hedberg;-150.1,154.2,-99.1,163.4;ushgr_m67
-00100;SC;P. OShaughnessy;2
-00100;SC;C. Clarke;1
-00100;KL;B. Hedberg;-149.8,154.2,-106.1,175.0;P. OShaughnessy;-147.7,155.7,-162.1,0.0;chhmg_type85
-00100;AS;C. Clarke;-147.8,153.9,-161.8,-0.1;driver
-00101;WP;R. Hallwood;-206.0,154.2,-118.5,-150.6;ushgr_m67
-00103;VE;R. Hallwood;-205.7,154.1,-114.9,0.0;jeep_faav_front_gun;0
-00104;KD;B. Hedberg;-149.8,153.3,-106.0,0.0;us_specops
-00106;WP;T. Karlsson;-150.8,154.2,-60.2,178.6;ushgr_m67
-00106;WP;D. Aberin;-96.9,154.2,-198.7,-27.9;ushgr_m67
-00106;VX;J. VanRooyen;-133.6,154.5,-126.6,-97.2;ustnk_m1a2_cupolabase
-00106;WP;M. Hedlund;-206.8,154.2,-108.1,-45.1;c4_explosives
-00106;VX;P. OShaughnessy;-144.8,154.4,-124.5,100.1;tnk_type98_cupolabase
-00107;WP;J. VanRooyen;-133.6,154.2,-126.6,-154.2;ushgr_m67
-00107;WP;P. OShaughnessy;-144.6,154.2,-124.5,100.1;ushgr_m67
-00111;WP;D. Aberin;-100.9,152.8,-186.0,-27.7;chrif_type95
-00111;VX;H. Karlsson;-138.7,154.5,-113.7,34.7;ustnk_m1a2
-00111;VD;ustnk_m1a2;-135.8,153.9,-115.6,34.4;C. Clarke;-147.6,153.9,-129.4,13.9
-00111;WP;P. OShaughnessy;-158.7,154.2,-126.3,64.2;rurif_ak47
-00114;WP;M. Hedlund;-179.9,154.2,-106.1,119.5;ushgr_m67
-00115;DT;B. Hedberg;-149.8,153.3,-106.0,0.0
-00115;SP;B. Hedberg;-144.4,154.2,-106.5,15.3;us
-00115;WP;B. Hedberg;-144.4,154.2,-106.5,15.3;usrif_remington11-87
-00115;KP;B. Hedberg;-144.4,154.2,-106.5,15.3;us_engineer
-00116;WP;M. Hedlund;-178.2,154.2,-106.3,84.7;c4_explosives
-00116;WP;B. Hedberg;-143.0,154.2,-104.2,149.5;ushgr_m67
-00117;SC;C. Clarke;2
-00117;KL;B. Hedberg;-143.1,154.2,-104.0,-135.6;C. Clarke;-158.9,153.9,-98.4,-13.8;coaxial_mg_china
-00117;WP;T. Karlsson;-154.6,154.2,-90.5,158.1;usrif_m16a2
-00118;WP;M. Hedlund;-170.0,154.2,-102.5,45.4;ushgr_m67
-00118;WP;T. Karlsson;-152.4,154.2,-90.2,69.5;ushgr_m67
-00118;WP;H. Karlsson;-141.4,154.2,-91.8,164.2;usrgl_m203
-00119;SC;M. Hedlund;-4
-00119;SC;C. Clarke;1
-00119;KL;H. Karlsson;-141.4,154.2,-91.4,-113.8;M. Hedlund;-168.9,154.2,-101.2,26.2;ushgr_m67
-00119;AS;C. Clarke;-159.2,153.9,-80.2,1.8;damage
-00119;SC;P. OShaughnessy;2
-00119;KL;M. Hedlund;-168.9,154.2,-101.2,26.2;P. OShaughnessy;-165.6,154.2,-115.5,-39.3;rurif_ak47
-00119;SC;Luda;2
-00119;SC;R. Linde;1
-00119;CP;4012;-254.0,153.3,-210.0,0.0;top;us
-00121;KD;B. Hedberg;-142.0,153.3,-104.3,0.0;us_engineer
-00121;WP;D. Aberin;-112.9,154.2,-157.0,-27.2;ushgr_m67
-00121;VX;C. Barnett;-250.3,154.4,-219.4,73.3;jeep_faav_rear_passenger
-00122;WP;P. OShaughnessy;-165.6,154.2,-115.5,26.3;chpis_qsz92
-00122;WP;C. Barnett;-249.1,154.3,-219.0,23.1;ushgr_m67
-00123;WP;C. Barnett;-249.1,154.3,-219.0,119.0;usrif_m24
-00123;WP;D. Aberin;-113.4,154.2,-156.1,-27.2;chrif_type95
-00123;WP;E. Smith;-215.9,154.3,-232.1,8.2;chat_eryx
-00123;KD;M. Hedlund;-169.1,153.3,-98.7,0.0;us_specops
-00123;KD;H. Karlsson;-141.7,153.3,-90.6,0.0;us_assault
-00124;VX;J. Aberg;-159.3,154.4,-213.8,-82.8;jep_nanjing
-00124;WP;J. VanRooyen;-134.9,154.2,-114.2,-30.7;uslmg_m249saw
-00125;VX;M. Hornlund;-162.6,154.4,-214.2,97.8;jep_nanjing_passenger_rl
-00125;SC;P. OShaughnessy;2
-00125;KL;T. Karlsson;-161.3,154.2,-110.7,21.9;P. OShaughnessy;-165.6,154.2,-115.5,26.3;chpis_qsz92
-00126;SC;D. Aberin;2
-00126;KL;J. VanRooyen;-134.9,154.2,-114.2,132.3;D. Aberin;-116.9,154.2,-149.2,-27.2;ushgr_m67
-00126;WP;C. Barnett;-244.4,154.3,-222.3,106.7;uspis_92fs_silencer
-00126;WP;P. OShaughnessy;-164.7,154.2,-115.4,87.6;rurif_ak47
-00127;WP;M. Hornlund;-164.4,154.2,-214.1,-88.8;ushgr_m67
-00128;VX;R. Linde;-168.1,154.6,-204.1,87.5;jeep_faav
-00128;WP;M. Hornlund;-166.0,154.2,-213.5,-42.7;chlmg_type95
-00128;VX;S. Strandberg;-162.6,154.3,-209.1,97.9;jep_nanjing_passenger_rr
-00129;VX;R. Hallwood;-163.6,154.8,-208.7,98.2;jeep_faav_front_gun
-00129;WP;M. Hornlund;-166.9,154.2,-212.3,29.7;chpis_qsz92
-00129;WP;E. Smith;-212.7,154.2,-227.9,-29.3;chrif_type85
-00129;KD;T. Karlsson;-159.4,153.3,-108.1,0.0;us_medic
-00129;WP;R. Hallwood;-163.6,154.2,-208.7,-162.3;usrif_m16a2
-00131;KD;J. VanRooyen;-136.6,153.3,-116.6,0.0;us_support
-00132;SC;M. Hornlund;2
-00132;SC;J. Aberg;1
-00132;KL;R. Linde;-177.9,154.2,-207.7,132.7;M. Hornlund;-167.1,154.2,-212.4,-56.2;chpis_qsz92
-00132;AS;J. Aberg;-173.9,154.2,-214.0,-24.5;damage
-00132;WP;J. Aberg;-173.9,154.2,-214.0,-24.5;ushgr_m67
-00132;DT;B. Hedberg;-142.0,153.3,-104.3,0.0
-00132;SP;B. Hedberg;-145.5,154.4,-42.0,90.0;us
-00132;WP;B. Hedberg;-145.5,154.4,-42.0,90.0;usrif_mp5_a3
-00132;KP;B. Hedberg;-145.5,154.4,-42.0,90.0;us_at
-00132;SC;S. Wallberg;2
-00132;KL;R. Hallwood;-154.3,154.2,-212.2,-107.5;S. Wallberg;-163.6,155.6,-211.6,0.0;chhmg_type85
-00132;WP;M. Hornlund;-166.6,154.2,-213.0,82.1;chlmg_type95
-00133;VX;S. Wallberg;-164.3,154.4,-209.8,-82.1;jep_nanjing_cupolabase
-00133;VE;S. Strandberg;-163.0,154.8,-206.2,0.0;jeep_faav_rear_passenger;0
-00133;WP;C. Barnett;-224.8,154.3,-229.6,101.5;kni_knife
-00134;DT;H. Karlsson;-141.7,153.3,-90.6,0.0
-00134;SP;H. Karlsson;-149.2,158.9,-47.4,180.0;us
-00134;WP;H. Karlsson;-149.2,158.9,-47.4,180.0;usrif_mp5_a3
-00134;KP;H. Karlsson;-149.2,158.9,-47.4,180.0;us_at
-00134;VE;S. Wallberg;-162.6,153.8,-206.3,98.3;jeep_faav;0
-00134;DT;M. Hedlund;-169.1,153.3,-98.7,0.0
-00134;SP;M. Hedlund;-179.0,154.6,-66.0,180.0;us
-00134;WP;M. Hedlund;-179.0,154.6,-66.0,180.0;usrif_mp5_a3
-00134;KP;M. Hedlund;-179.0,154.6,-66.0,180.0;us_at
-00134;WP;C. Barnett;-224.1,154.3,-229.6,-128.6;usrif_m24
-00135;WP;J. Aberg;-173.9,154.2,-214.0,-101.5;rurif_ak47
-00135;WP;C. Barnett;-222.8,154.3,-230.1,67.9;uspis_92fs_silencer
-00136;KD;R. Linde;-181.6,153.3,-207.7,0.0;us_engineer
-00136;KD;R. Hallwood;-150.8,153.3,-212.7,0.0;us_medic
-00137;SC;C. Barnett;2
-00137;SC;C. Barnett;1
-00137;KL;E. Smith;-240.2,154.3,-225.0,108.1;C. Barnett;-227.8,154.3,-229.1,-71.5;uspis_92fs_silencer
-00138;WP;C. Barnett;-228.1,154.3,-228.9,-17.5;usrif_m24
-00140;DT;T. Karlsson;-159.4,153.3,-108.1,0.0
-00140;SP;T. Karlsson;-145.5,154.4,-42.0,90.0;us
-00140;WP;T. Karlsson;-145.5,154.4,-42.0,90.0;usrif_m16a2
-00140;KP;T. Karlsson;-145.5,154.4,-42.0,90.0;us_medic
-00141;DT;J. VanRooyen;-136.6,153.3,-116.6,0.0
-00141;SP;J. VanRooyen;-181.0,154.7,-78.0,180.0;us
-00141;WP;J. VanRooyen;-181.0,154.7,-78.0,180.0;usrif_mp5_a3
-00141;KP;J. VanRooyen;-181.0,154.7,-78.0,180.0;us_at
-00142;WP;C. Barnett;-219.6,154.3,-220.8,65.9;uspis_92fs_silencer
-00142;KD;E. Smith;-243.8,153.4,-222.8,0.0;ch_at
-00143;WP;H. Karlsson;-150.7,154.3,-50.5,-176.5;usatp_predator
-00144;WP;B. Hedberg;-155.7,154.3,-53.6,159.4;usatp_predator
-00144;SC;J. Aberg;2
-00144;KL;C. Barnett;-211.3,154.2,-217.0,67.2;J. Aberg;-198.1,154.2,-222.4,-84.3;rurif_ak47
-00144;WP;T. Karlsson;-139.5,154.2,-50.2,-139.6;ushgr_m67
-00144;WP;J. VanRooyen;-179.8,154.3,-84.3,52.7;usatp_predator
-00145;VD;tnk_type98;-152.3,153.9,-63.6,12.6;B. Hedberg;-155.7,154.3,-54.3,159.8
-00145;SC;B. Hedberg;2
-00145;SC;H. Karlsson;1
-00145;SC;B. Hedberg;1
-00145;KL;C. Clarke;-152.3,153.9,-63.6,12.6;B. Hedberg;-155.7,154.3,-54.3,159.8;usatp_predator
-00145;AS;H. Karlsson;-155.7,154.3,-53.8,160.0;damage
-00145;KD;C. Clarke;-152.3,153.9,-63.6,12.6;ch_at
-00145;VX;C. Clarke;-50.0,185.0,-285.0,-16.0;tnk_type98
-00145;DT;C. Clarke;-152.3,153.9,-63.6,12.6
-00145;WP;M. Hedlund;-164.8,154.2,-56.2,120.6;usatp_predator
-00145;WP;J. VanRooyen;-178.2,154.3,-84.4,51.6;usrif_mp5_a3
-00145;WP;T. Karlsson;-140.5,154.2,-51.9,-133.8;usrif_m16a2
-00145;WP;B. Hedberg;-155.8,154.3,-54.1,159.5;usrif_mp5_a3
-00146;WP;M. Hedlund;-164.7,154.2,-56.3,120.6;usrif_mp5_a3
-00147;DT;R. Linde;-181.6,153.3,-207.7,0.0
-00147;WP;H. Karlsson;-155.4,154.3,-54.0,159.7;usrif_mp5_a3
-00147;SP;R. Linde;-176.4,154.2,-82.0,89.7;us
-00147;WP;R. Linde;-176.4,154.2,-82.0,89.7;uslmg_m249saw
-00147;KP;R. Linde;-176.4,154.2,-82.0,89.7;us_support
-00147;DT;R. Hallwood;-150.8,153.3,-212.7,0.0
-00147;SP;R. Hallwood;-175.7,154.4,-92.4,-158.4;us
-00147;WP;R. Hallwood;-175.7,154.4,-92.4,-158.4;usrif_m16a2
-00147;KP;R. Hallwood;-175.7,154.4,-92.4,-158.4;us_medic
-00148;CP;4010;-151.8,153.2,-58.9,0.0;top;us
-00149;KD;C. Barnett;-211.5,153.3,-215.6,0.0;us_sniper
-00152;DT;E. Smith;-243.8,153.4,-222.8,0.0
-00152;SP;E. Smith;-124.1,153.7,-182.6,3.8;ch
-00152;WP;E. Smith;-124.1,153.7,-182.6,3.8;chsht_norinco982
-00152;KP;E. Smith;-124.1,153.7,-182.6,3.8;ch_engineer
-00152;VE;E. Smith;-123.7,152.7,-181.2,0.0;jeep_faav_front_gun;0
-00159;DT;C. Barnett;-211.5,153.3,-215.6,0.0
-00159;SP;C. Barnett;-229.0,154.5,-255.0,-90.0;us
-00159;WP;C. Barnett;-229.0,154.5,-255.0,-90.0;usrif_m4
-00159;KP;C. Barnett;-229.0,154.5,-255.0,-90.0;us_specops
-00160;SP;C. Clarke;-65.0,154.4,-257.0,135.0;ch
-00160;WP;C. Clarke;-65.0,154.4,-257.0,135.0;chsht_norinco982
-00160;KP;C. Clarke;-65.0,154.4,-257.0,135.0;ch_engineer
-00161;WP;H. Karlsson;-142.3,154.2,-81.8,-169.0;usatp_predator
-00161;WP;M. Hedlund;-167.2,154.2,-68.6,155.6;usatp_predator
-00161;KD;M. Hornlund;-195.4,154.2,-210.4,-87.3;ch_support
-00162;WP;B. Hedberg;-153.3,154.2,-65.1,-89.9;usatp_predator
-00162;VE;J. VanRooyen;-179.2,153.9,-33.8,151.8;ustnk_m1a2;0
-00163;SC;M. Hedlund;2
-00163;KL;S. Wallberg;-158.2,153.8,-100.1,-24.6;M. Hedlund;-166.9,154.2,-68.9,165.0;usatp_predator
-00163;KD;S. Wallberg;-158.2,153.8,-100.1,-24.6;ch_assault
-00163;VX;S. Wallberg;-50.0,185.0,-285.0,-16.0;jeep_faav
-00163;DT;S. Wallberg;-158.2,153.8,-100.1,-24.6
-00163;SC;M. Hedlund;2
-00163;KL;E. Smith;-158.1,154.1,-99.6,0.0;M. Hedlund;-166.9,154.2,-68.9,165.0;usatp_predator
-00163;KD;E. Smith;-158.1,154.1,-99.6,0.0;ch_engineer
-00163;VX;E. Smith;-243.8,153.4,-222.8,0.0;jeep_faav_front_gun
-00163;DT;E. Smith;-158.1,154.1,-99.6,-24.6
-00163;VX;S. Strandberg;-156.1,154.3,-99.6,-26.2;jeep_faav_rear_passenger
-00163;WP;M. Hedlund;-166.9,154.2,-68.9,165.0;usrif_mp5_a3
-00163;WP;H. Karlsson;-141.3,154.2,-88.8,-128.7;usrif_mp5_a3
-00163;WP;B. Hedberg;-153.4,154.2,-65.5,-166.1;usrif_mp5_a3
-00164;WP;R. Linde;-185.8,154.3,-59.1,42.8;ushgr_m67
-00164;WP;T. Karlsson;-175.7,154.2,-89.2,27.4;ushgr_m67
-00165;WP;R. Hallwood;-179.8,154.2,-107.6,-90.5;ushgr_m67
-00165;SC;M. Hedlund;2
-00165;KL;S. Strandberg;-154.5,154.2,-99.6,89.1;M. Hedlund;-165.5,154.2,-72.7,157.8;usrif_mp5_a3
-00165;WP;R. Linde;-185.8,154.3,-59.8,-151.7;uslmg_m249saw
-00166;WP;R. Hallwood;-178.8,154.2,-107.2,45.0;usrif_m16a2
-00169;WP;T. Karlsson;-170.2,154.2,-78.2,15.3;medikit
-00169;KD;S. Strandberg;-151.8,153.3,-101.0,0.0;ch_specops
-00171;VE;J. Aberg;-249.2,154.1,-246.3,90.0;usaav_m6;0
-00171;VD;jeep_faav;-158.4,153.8,-99.6,-26.3;None;None
-00174;WP;B. Hedberg;-124.6,154.8,-74.5,111.3;uspis_92fs
-00174;WP;T. Karlsson;-178.8,154.3,-84.0,-95.0;usrif_m16a2
-00176;WP;R. Hallwood;-153.0,154.2,-93.3,79.5;ushgr_m67
-00176;SP;M. Hornlund;-52.6,154.9,-258.2,-179.5;ch
-00176;WP;M. Hornlund;-52.6,154.9,-258.2,-179.5;chrif_type95
-00176;KP;M. Hornlund;-52.6,154.9,-258.2,-179.5;ch_specops
-00177;WP;R. Hallwood;-151.4,154.2,-94.4,78.2;usrif_m16a2
-00177;WP;D. Aberin;-101.5,154.2,-83.8,-79.4;ushgr_m67
-00177;VE;C. Clarke;-108.1,153.9,-253.7,0.0;tnk_type98;0
-00178;SP;S. Wallberg;-146.8,155.6,-263.3,90.0;ch
-00178;WP;S. Wallberg;-146.8,155.6,-263.3,90.0;chrif_type85
-00178;KP;S. Wallberg;-146.8,155.6,-263.3,90.0;ch_at
-00178;SP;E. Smith;-65.0,154.4,-257.0,135.0;ch
-00178;WP;E. Smith;-65.0,154.4,-257.0,135.0;rurif_gp25
-00178;KP;E. Smith;-65.0,154.4,-257.0,135.0;ch_assault
-00179;WP;R. Hallwood;-143.1,154.2,-98.4,72.2;ushgr_m67
-00180;DT;S. Strandberg;-151.8,153.3,-101.0,0.0
-00180;SP;S. Strandberg;-52.6,154.9,-258.2,-179.5;ch
-00180;WP;S. Strandberg;-52.6,154.9,-258.2,-179.5;chsht_norinco982
-00180;KP;S. Strandberg;-52.6,154.9,-258.2,-179.5;ch_engineer
-00180;WP;B. Hedberg;-117.2,154.3,-82.8,95.1;usrif_mp5_a3
-00182;WP;R. Hallwood;-141.6,154.2,-98.2,72.9;uspis_92fs
-00183;WP;T. Karlsson;-162.3,154.2,-93.6,85.7;ushgr_m67
-00183;WP;D. Aberin;-111.4,154.2,-90.2,-137.2;chrif_type95
-00184;WP;T. Karlsson;-162.2,154.2,-93.6,85.7;usrif_m16a2
-00185;WP;D. Aberin;-121.3,154.3,-86.1,-60.0;ushgr_m67
-00185;SC;J. VanRooyen;-4
-00185;KL;R. Hallwood;-130.2,154.2,-103.7,25.2;J. VanRooyen;-135.8,153.9,-115.9,134.7;ustnk_m1a2_barrel
-00185;KD;R. Hallwood;-130.2,154.2,-103.7,25.2;us_medic
-00185;DT;R. Hallwood;-130.2,154.2,-103.7,25.2
-00186;WP;P. OShaughnessy;-65.3,154.2,-157.6,-61.7;ushgr_m67
-00187;WP;M. Hornlund;-80.7,154.2,-267.2,-73.4;c4_explosives
-00187;SC;B. Hedberg;2
-00187;SC;R. Hallwood;1
-00187;KL;D. Aberin;-124.6,154.3,-82.1,180.0;B. Hedberg;-125.6,154.9,-74.4,153.9;usrif_mp5_a3
-00187;AS;R. Hallwood;-130.2,154.2,-103.7,25.2;damage
-00189;WP;M. Hornlund;-81.3,154.2,-267.2,-73.5;chrif_type95
-00191;WP;C. Barnett;-200.7,154.2,-194.0,37.4;ushgr_m67
-00191;KD;D. Aberin;-125.5,153.4,-82.5,0.0;ch_specops
-00193;WP;C. Barnett;-194.9,154.2,-194.8,77.7;c4_explosives
-00197;WP;C. Barnett;-181.5,154.2,-194.2,78.9;ushgr_m67
-00198;SC;J. Aberg;2
-00198;KL;Luda;-253.7,154.3,-207.6,92.3;J. Aberg;-239.6,153.9,-186.1,-143.8;usaav_m6_barrel
-00199;WP;C. Barnett;-180.3,154.2,-193.8,10.5;c4_explosives
-00200;SP;R. Hallwood;-137.3,156.3,-34.3,-177.6;us
-00200;WP;R. Hallwood;-137.3,156.3,-34.3,-177.6;usrif_m16a2
-00200;KP;R. Hallwood;-137.3,156.3,-34.3,-177.6;us_medic
-00201;VE;B. Hedberg;-140.3,154.1,-49.3,0.0;jeep_faav_front_gun;0
-00202;KD;Luda;-254.1,153.4,-208.1,0.0;us_assault
-00202;VE;H. Karlsson;-140.0,154.8,-48.5,0.0;jeep_faav_rear_passenger;0
-00202;DT;D. Aberin;-125.5,153.4,-82.5,0.0
-00202;SP;D. Aberin;-52.6,154.9,-258.2,-179.5;ch
-00202;WP;D. Aberin;-52.6,154.9,-258.2,-179.5;chrif_type85
-00202;KP;D. Aberin;-52.6,154.9,-258.2,-179.5;ch_at
-00202;WP;R. Linde;-136.9,154.2,-93.5,-167.1;ushgr_m67
-00203;WP;T. Karlsson;-121.2,154.2,-125.7,111.7;ushgr_m67
-00204;VX;H. Karlsson;-142.0,154.3,-48.0,-180.0;jeep_faav_rear_passenger
-00204;VX;B. Hedberg;-142.5,154.8,-48.3,-180.0;jeep_faav_front_gun
-00205;WP;R. Hallwood;-137.8,154.1,-43.0,-133.8;medikit
-00209;WP;S. Wallberg;-146.6,154.2,-195.2,-40.0;chat_eryx
-00211;VX;J. VanRooyen;-147.1,154.5,-177.7,-102.5;ustnk_m1a2
-00211;WP;P. OShaughnessy;-98.7,153.1,-151.2,-123.6;chpis_qsz92
-00211;WP;S. Wallberg;-146.7,154.2,-194.9,-4.3;chrif_type85
-00213;DT;Luda;-254.1,153.4,-208.1,0.0
-00213;SP;Luda;-179.0,154.6,-66.0,180.0;us
-00213;WP;Luda;-179.0,154.6,-66.0,180.0;usrif_m203
-00213;KP;Luda;-179.0,154.6,-66.0,180.0;us_assault
-00213;WP;R. Hallwood;-135.8,154.4,-56.2,-170.6;usrif_m16a2
-00214;VE;M. Hedlund;-140.0,153.8,-49.0,-180.0;jeep_faav;0
-00214;WP;P. OShaughnessy;-105.9,154.2,-150.9,-96.4;ushgr_m67
-00214;SC;R. Linde;-4
-00214;SC;C. Clarke;1
-00214;KL;J. VanRooyen;-151.4,154.2,-185.6,168.4;R. Linde;-146.3,154.2,-134.8,-156.8;ushgr_m67
-00214;AS;C. Clarke;-156.8,153.9,-174.4,-4.8;damage
-00215;VE;B. Hedberg;-139.5,154.8,-50.9,0.0;jeep_faav_rear_passenger;0
-00215;WP;P. OShaughnessy;-106.2,154.2,-150.9,-97.2;rurif_ak47
-00217;WP;C. Barnett;-170.6,154.2,-187.3,30.4;ushgr_m67
-00217;WP;T. Karlsson;-131.8,154.2,-154.2,-66.4;usrif_m16a2
-00218;SC;J. Aberg;2
-00218;CP;4012;-254.0,153.3,-210.0,0.0;middle;None
-00218;KD;J. VanRooyen;-152.1,153.3,-187.8,0.0;us_at
-00219;VX;C. Clarke;-160.1,154.3,-141.1,-1.7;tnk_type98
-00219;WP;C. Barnett;-167.8,154.2,-179.8,14.7;usrif_m4
-00219;WP;S. Wallberg;-155.0,154.2,-192.3,-69.8;chpis_qsz92
-00219;WP;R. Linde;-148.8,154.2,-140.0,-164.7;uslmg_m249saw
-00219;VD;tnk_type98;-157.6,153.9,-139.4,-2.1;R. Linde;-148.8,154.2,-140.0,-164.7
-00219;SC;R. Linde;2
-00219;KL;C. Clarke;-160.1,154.2,-140.3,157.7;R. Linde;-148.8,154.2,-140.0,-164.7;tnk_type98
-00221;SC;P. OShaughnessy;2
-00221;KL;T. Karlsson;-131.8,154.2,-154.2,88.9;P. OShaughnessy;-112.3,154.2,-150.5,-100.6;rurif_ak47
-00222;SC;S. Wallberg;2
-00222;KL;C. Barnett;-167.8,154.2,-179.8,141.8;S. Wallberg;-159.4,154.2,-188.0,-45.6;chpis_qsz92
-00223;WP;S. Wallberg;-159.4,154.2,-188.0,-45.6;chrif_type85
-00225;KD;C. Clarke;-166.1,153.3,-145.5,0.0;ch_engineer
-00225;KD;T. Karlsson;-134.5,153.3,-155.5,0.0;us_medic
-00226;WP;P. OShaughnessy;-121.8,154.2,-145.7,-78.1;ushgr_m67
-00227;KD;C. Barnett;-169.6,153.3,-177.8,0.0;us_specops
-00227;WP;P. OShaughnessy;-121.9,154.2,-145.6,-78.1;rurif_ak47
-00228;VD;jep_nanjing;-164.0,154.1,-211.5,-82.1;R. Linde;-148.8,154.2,-140.0,-164.7
-00229;DT;J. VanRooyen;-152.1,153.3,-187.8,0.0
-00229;SP;J. VanRooyen;-145.5,154.4,-42.0,90.0;us
-00229;WP;J. VanRooyen;-145.5,154.4,-42.0,90.0;usrif_remington11-87
-00229;KP;J. VanRooyen;-145.5,154.4,-42.0,90.0;us_engineer
-00230;SC;R. Linde;2
-00230;SC;C. Barnett;1
-00230;KL;S. Wallberg;-153.3,154.2,-160.4,12.5;R. Linde;-148.8,154.2,-140.0,-164.7;uslmg_m249saw
-00230;AS;C. Barnett;-169.6,153.3,-177.8,0.0;damage
-00230;WP;R. Linde;-148.8,154.2,-140.0,-164.7;ushgr_m67
-00231;WP;R. Linde;-148.8,154.2,-140.0,75.2;uspis_92fs
-00233;SC;P. OShaughnessy;2
-00233;KL;R. Linde;-145.9,154.2,-140.0,92.4;P. OShaughnessy;-129.4,154.2,-140.6,-88.0;rurif_ak47
-00234;WP;R. Hallwood;-127.8,154.2,-87.1,-177.9;ushgr_m67
-00234;DT;C. Clarke;-166.1,153.3,-145.5,0.0
-00234;KD;S. Wallberg;-153.2,153.3,-160.8,0.0;ch_at
-00235;SP;C. Clarke;-52.6,154.9,-258.2,-179.5;ch
-00235;WP;C. Clarke;-52.6,154.9,-258.2,-179.5;chsni_type88
-00235;KP;C. Clarke;-52.6,154.9,-258.2,-179.5;ch_sniper
-00235;WP;R. Hallwood;-127.9,154.2,-87.2,-177.9;usrif_m16a2
-00236;DT;T. Karlsson;-134.5,153.3,-155.5,0.0
-00236;SP;T. Karlsson;-145.5,154.4,-42.0,90.0;us
-00236;WP;T. Karlsson;-145.5,154.4,-42.0,90.0;usrif_m16a2
-00236;KP;T. Karlsson;-145.5,154.4,-42.0,90.0;us_medic
-00237;KD;R. Linde;-146.3,153.3,-138.9,0.0;us_support
-00237;WP;R. Hallwood;-129.5,154.2,-96.9,-167.0;ushgr_m67
-00237;DT;C. Barnett;-169.6,153.3,-177.8,0.0
-00238;SP;C. Barnett;-180.9,154.2,-105.5,120.8;us
-00238;WP;C. Barnett;-180.9,154.2,-105.5,120.8;usrif_remington11-87
-00238;KP;C. Barnett;-180.9,154.2,-105.5,120.8;us_engineer
-00238;SC;J. Aberg;2
-00238;CP;4012;-254.0,153.3,-210.0,0.0;top;ch
-00238;WP;C. Barnett;-180.9,154.2,-105.5,120.8;ushgr_m67
-00239;WP;R. Hallwood;-129.6,154.2,-97.4,-167.2;uspis_92fs
-00241;WP;J. VanRooyen;-142.0,154.2,-64.9,173.1;ushgr_m67
-00242;SC;R. Hallwood;2
-00242;KL;P. OShaughnessy;-135.3,154.2,-122.9,12.8;R. Hallwood;-131.7,154.2,-106.6,-167.2;ushgr_m67
-00242;WP;R. Hallwood;-131.8,154.2,-107.0,-167.2;usrif_m16a2
-00242;WP;J. VanRooyen;-142.0,154.2,-65.6,159.4;usrif_remington11-87
-00243;VX;B. Hedberg;-224.5,154.1,-172.0,-97.1;jeep_faav_rear_passenger
-00243;SC;J. Aberg;2
-00243;SC;D. Aberin;1
-00243;KL;B. Hedberg;-224.5,154.2,-172.1,-97.1;J. Aberg;-235.0,153.9,-174.2,90.6;usaav_m6_barrel
-00243;AS;D. Aberin;-111.4,154.2,-146.1,-27.5;damage
-00243;SC;J. Aberg;2
-00243;KL;M. Hedlund;-225.4,153.7,-174.2,-97.8;J. Aberg;-235.0,153.9,-174.2,90.6;usaav_m6_barrel
-00243;KD;M. Hedlund;-225.4,153.7,-174.2,-97.8;us_at
-00243;VX;M. Hedlund;-169.1,153.3,-98.7,0.0;jeep_faav
-00243;DT;M. Hedlund;-225.4,153.7,-174.2,-97.8
-00245;WP;R. Hallwood;-127.1,154.2,-115.7,152.6;uspis_92fs
-00245;DT;S. Wallberg;-153.2,153.3,-160.8,0.0
-00246;SP;S. Wallberg;-56.8,154.2,-242.5,-87.1;ch
-00246;WP;S. Wallberg;-56.8,154.2,-242.5,-87.1;chrif_type95
-00246;KP;S. Wallberg;-56.8,154.2,-242.5,-87.1;ch_specops
-00247;WP;D. Aberin;-116.1,154.2,-136.9,-27.3;chpis_qsz92
-00247;KD;P. OShaughnessy;-132.5,153.3,-123.9,0.0;ch_medic
-00247;KD;B. Hedberg;-224.4,153.2,-171.6,0.0;us_at
-00248;DT;R. Linde;-146.3,153.3,-138.9,0.0
-00248;SP;R. Linde;-158.6,154.2,-74.2,94.7;us
-00248;WP;R. Linde;-158.6,154.2,-74.2,94.7;usrif_mp5_a3
-00248;KP;R. Linde;-158.6,154.2,-74.2,94.7;us_at
-00249;WP;H. Karlsson;-149.2,154.2,-121.0,113.6;uspis_92fs
-00249;WP;R. Hallwood;-123.3,154.2,-123.1,152.3;usrif_m16a2
-00251;VE;S. Strandberg;-108.1,153.9,-253.7,0.0;tnk_type98;0
-00251;WP;D. Aberin;-116.6,154.2,-134.9,112.9;chrif_type85
-00251;SC;C. Barnett;2
-00251;KL;D. Aberin;-116.2,154.3,-135.0,112.3;C. Barnett;-156.5,154.2,-121.7,109.7;ushgr_m67
-00252;WP;H. Karlsson;-143.3,154.2,-123.5,92.5;usrif_mp5_a3
-00256;KD;D. Aberin;-111.2,153.4,-138.0,0.0;ch_at
-00257;DT;P. OShaughnessy;-132.5,153.3,-123.9,0.0
-00257;SP;P. OShaughnessy;-64.4,154.2,-225.1,-43.6;ch
-00257;WP;P. OShaughnessy;-64.4,154.2,-225.1,-43.6;rurif_ak47
-00257;KP;P. OShaughnessy;-64.4,154.2,-225.1,-43.6;ch_medic
-00258;WP;H. Karlsson;-126.1,154.2,-132.2,149.7;usatp_predator
-00258;SP;M. Hedlund;-173.2,154.2,-83.9,-159.2;us
-00258;WP;M. Hedlund;-173.2,154.2,-83.9,-159.2;usrif_remington11-87
-00258;KP;M. Hedlund;-173.2,154.2,-83.9,-159.2;us_engineer
-00258;DT;B. Hedberg;-224.4,153.2,-171.6,0.0
-00258;SP;B. Hedberg;-186.0,154.7,-52.1,180.0;us
-00258;WP;B. Hedberg;-186.0,154.7,-52.1,180.0;usrif_remington11-87
-00258;KP;B. Hedberg;-186.0,154.7,-52.1,180.0;us_engineer
-00259;WP;R. Hallwood;-133.2,154.2,-121.3,158.2;ushgr_m67
-00260;VE;M. Hornlund;-107.1,155.6,-281.2,0.0;jep_nanjing_cupolabase;0
-00261;VX;M. Hornlund;-105.4,154.4,-280.3,0.0;jep_nanjing_cupolabase
-00264;WP;H. Karlsson;-127.8,154.2,-133.8,132.7;usrif_mp5_a3
-00265;WP;C. Barnett;-140.1,154.2,-155.6,-117.3;usrif_remington11-87
-00265;WP;R. Hallwood;-129.3,154.2,-128.6,-54.5;usrif_m16a2
-00265;WP;T. Karlsson;-175.2,154.2,-88.9,134.8;ushgr_m67
-00266;DT;D. Aberin;-111.2,153.4,-138.0,0.0
-00266;WP;H. Karlsson;-141.6,154.2,-136.2,-98.9;usatp_predator
-00266;SP;D. Aberin;-60.6,154.2,-196.1,-115.5;ch
-00266;WP;D. Aberin;-60.6,154.2,-196.1,-115.5;chlmg_type95
-00266;KP;D. Aberin;-60.6,154.2,-196.1,-115.5;ch_support
-00266;WP;R. Hallwood;-136.9,154.2,-123.2,-54.5;ushgr_m67
-00267;WP;R. Linde;-179.5,154.2,-95.3,124.3;usatp_predator
-00267;WP;R. Hallwood;-136.3,154.2,-123.4,11.1;usrif_m16a2
-00269;WP;C. Barnett;-145.8,154.2,-169.5,-156.8;wrench
-00269;WP;R. Hallwood;-141.7,154.2,-129.9,-142.8;ushgr_m67
-00269;WP;B. Hedberg;-182.5,154.3,-79.2,132.2;ushgr_m67
-00270;WP;J. VanRooyen;-188.8,154.3,-92.7,120.0;ushgr_m67
-00270;WP;M. Hedlund;-193.3,154.2,-89.1,116.3;ushgr_m67
-00271;WP;C. Barnett;-145.9,154.2,-169.6,-156.8;usrif_remington11-87
-00271;VD;tnk_type98;-152.4,153.9,-97.9,-41.6;H. Karlsson;-141.7,154.2,-134.6,-1.3
-00271;SC;H. Karlsson;2
-00271;KL;S. Strandberg;-152.4,153.9,-97.9,-41.6;H. Karlsson;-141.7,154.2,-134.6,-1.3;usatp_predator
-00271;KD;S. Strandberg;-152.4,153.9,-97.9,-41.6;ch_engineer
-00271;VX;S. Strandberg;-151.8,153.3,-101.0,0.0;tnk_type98
-00271;DT;S. Strandberg;-152.4,153.9,-97.9,-41.6
-00271;WP;M. Hedlund;-198.3,154.2,-88.9,101.4;usrif_remington11-87
-00271;WP;R. Linde;-168.8,154.2,-101.3,84.8;usrif_mp5_a3
-00271;WP;H. Karlsson;-141.7,154.2,-134.6,-1.3;usrif_mp5_a3
-00271;WP;R. Hallwood;-142.4,154.2,-125.2,-17.1;medikit
-00271;WP;B. Hedberg;-178.8,154.3,-84.4,117.1;usrif_remington11-87
-00272;WP;J. VanRooyen;-188.8,154.2,-93.7,-152.3;usrif_remington11-87
-00272;WP;T. Karlsson;-172.3,154.2,-99.3,-142.3;usrif_m16a2
-00275;WP;S. Wallberg;-102.9,153.4,-189.0,-78.7;ushgr_m67
-00276;WP;R. Hallwood;-130.8,154.2,-130.8,120.5;usrif_m16a2
-00276;WP;S. Wallberg;-104.4,153.6,-189.5,-55.1;chrif_type95
-00277;WP;E. Smith;-113.1,154.2,-196.2,-67.2;rurgl_gp25
-00278;WP;E. Smith;-113.0,154.2,-196.2,-67.2;rurif_gp25
-00280;WP;J. VanRooyen;-206.3,154.2,-111.4,108.7;ushgr_m67
-00280;WP;M. Hedlund;-203.1,154.2,-118.1,-162.0;ushgr_m67
-00281;VE;P. OShaughnessy;-107.1,155.6,-281.2,0.0;jep_nanjing_cupolabase;0
-00283;SC;S. Wallberg;2
-00283;KL;C. Barnett;-133.4,154.1,-191.3,106.1;S. Wallberg;-118.2,154.2,-195.6,-71.4;chrif_type95
-00283;KD;S. Wallberg;-118.2,154.2,-195.6,-71.4;ch_specops
-00285;WP;R. Linde;-201.9,154.2,-107.0,103.4;usatp_predator
-00286;SP;S. Strandberg;-261.0,154.6,-232.0,0.1;ch
-00286;WP;S. Strandberg;-261.0,154.6,-232.0,0.1;chsht_norinco982
-00286;KP;S. Strandberg;-261.0,154.6,-232.0,0.1;ch_engineer
-00287;KD;C. Barnett;-133.3,153.3,-190.7,0.0;us_engineer
-00289;WP;T. Karlsson;-193.8,154.2,-102.8,102.0;ushgr_m67
-00289;WP;H. Karlsson;-114.7,154.2,-128.1,149.1;kni_knife
-00290;WP;H. Karlsson;-114.0,154.2,-130.1,161.9;usrif_mp5_a3
-00292;WP;R. Hallwood;-83.6,154.2,-130.3,85.6;ushgr_m67
-00292;WP;T. Karlsson;-185.0,154.2,-104.9,132.2;usrif_m16a2
-00293;WP;T. Karlsson;-186.5,154.2,-105.4,95.2;ushgr_m67
-00294;WP;B. Hedberg;-125.5,154.2,-129.7,85.7;ushgr_m67
-00295;WP;E. Smith;-96.8,152.8,-169.4,-25.1;chpis_qsz92
-00298;WP;C. Clarke;-24.5,154.2,-113.6,-107.2;ushgr_m67
-00298;DT;C. Barnett;-133.3,153.3,-190.7,0.0
-00298;SP;S. Wallberg;-223.5,155.3,-182.4,-90.0;ch
-00298;WP;S. Wallberg;-223.5,155.3,-182.4,-90.0;chsht_norinco982
-00298;KP;S. Wallberg;-223.5,155.3,-182.4,-90.0;ch_engineer
-00298;SP;C. Barnett;-106.0,154.2,-148.4,-1.7;us
-00298;WP;C. Barnett;-106.0,154.2,-148.4,-1.7;usrif_m24
-00298;KP;C. Barnett;-106.0,154.2,-148.4,-1.7;us_sniper
-00298;WP;S. Strandberg;-236.6,154.3,-211.4,28.0;ushgr_m67
-00298;WP;E. Smith;-100.2,152.8,-161.8,61.7;rurif_gp25
-00298;SC;B. Hedberg;2
-00298;KL;E. Smith;-100.0,152.8,-161.7,101.7;B. Hedberg;-123.9,154.2,-131.6,126.6;ushgr_m67
-00299;WP;R. Hallwood;-68.6,154.2,-127.2,72.1;usrif_m16a2
-00299;WP;B. Hedberg;-122.7,154.2,-132.1,94.1;usrif_remington11-87
-00299;VE;M. Hornlund;-107.1,154.1,-280.9,-0.0;jep_nanjing;0
-00300;WP;C. Clarke;-25.3,154.2,-113.8,-107.1;chsni_type88
-00300;SC;B. Hedberg;-4
-00300;KL;C. Barnett;-105.4,154.2,-147.3,10.5;B. Hedberg;-120.8,154.2,-132.2,92.4;ushgr_m67
-00300;SC;B. Hedberg;-4
-00300;SC;D. Aberin;1
-00300;KL;H. Karlsson;-101.6,154.2,-138.9,69.8;B. Hedberg;-120.8,154.2,-132.2,92.4;ushgr_m67
-00300;AS;D. Aberin;2.1,154.2,-92.3,-117.0;damage
-00302;SC;R. Hallwood;2
-00302;KL;C. Clarke;-25.3,154.2,-113.8,-107.1;R. Hallwood;-60.0,154.2,-124.6,72.8;ushgr_m67
-00302;WP;J. VanRooyen;-205.6,154.2,-166.7,139.9;usrif_remington11-87
-00302;WP;R. Hallwood;-59.7,154.2,-124.4,72.9;medikit
-00302;WP;M. Hedlund;-211.5,154.2,-168.3,70.0;usrif_remington11-87
-00302;WP;R. Linde;-211.0,154.2,-166.4,-176.9;usrif_mp5_a3
-00303;WP;R. Hallwood;-59.7,154.2,-124.4,72.9;defibrillator
-00303;SC;C. Clarke;2
-00303;SC;S. Strandberg;1
-00303;KL;R. Hallwood;-59.7,154.2,-124.4,72.9;C. Clarke;-24.4,153.3,-113.5,0.0;ushgr_m67
-00303;AS;S. Strandberg;-235.2,154.3,-196.4,40.2;damage
-00303;WP;S. Strandberg;-235.0,154.3,-195.2,40.6;chsht_norinco982
-00303;KD;E. Smith;-96.2,151.9,-161.0,0.0;ch_assault
-00303;WP;T. Karlsson;-205.9,154.2,-134.4,-159.2;usrif_m16a2
-00304;SC;J. VanRooyen;-4
-00304;KL;M. Hedlund;-209.0,154.2,-161.4,14.9;J. VanRooyen;-202.1,154.2,-178.1,163.2;ushgr_m67
-00304;KD;C. Barnett;-105.2,153.3,-146.3,0.0;us_sniper
-00305;KD;H. Karlsson;-99.1,153.3,-138.0,0.0;us_at
-00305;SC;S. Wallberg;2
-00305;KL;R. Linde;-210.5,154.2,-179.7,162.7;S. Wallberg;-212.5,154.2,-185.9,18.4;chsht_norinco982
-00305;VD;jeep_faav;-212.4,153.8,-171.5,-140.0;M. Hedlund;-208.6,153.3,-156.3,0.0
-00306;KD;C. Clarke;-24.4,153.3,-113.5,0.0;ch_sniper
-00306;SC;J. Aberg;2
-00306;KL;J. VanRooyen;-199.4,154.2,-182.8,-90.0;J. Aberg;-217.5,154.0,-172.6,77.0;usaav_m6_barrel
-00306;WP;S. Wallberg;-210.4,154.2,-184.9,79.1;ushgr_m67
-00306;WP;T. Karlsson;-207.2,154.2,-144.4,-175.9;ushgr_m67
-00307;KD;R. Hallwood;-60.7,153.3,-124.5,0.0;us_medic
-00308;WP;S. Wallberg;-210.2,154.2,-184.4,4.6;chsht_norinco982
-00308;KD;M. Hedlund;-208.6,153.3,-156.3,0.0;us_engineer
-00309;KD;R. Linde;-209.0,153.3,-180.4,0.0;us_at
-00310;KD;J. VanRooyen;-200.4,153.3,-184.7,0.0;us_engineer
-00311;SC;S. Wallberg;2
-00311;KL;T. Karlsson;-208.3,154.2,-160.1,-153.5;S. Wallberg;-209.5,154.2,-174.9,4.5;ushgr_m67
-00313;VE;S. Strandberg;-252.4,154.9,-224.5,0.0;jeep_faav_rear_passenger;0
-00313;DT;E. Smith;-96.2,151.9,-161.0,0.0
-00314;SP;E. Smith;-253.0,155.2,-224.5,90.0;ch
-00314;WP;E. Smith;-253.0,155.2,-224.5,90.0;chlmg_type95
-00314;KP;E. Smith;-253.0,155.2,-224.5,90.0;ch_support
-00314;VE;E. Smith;-252.0,153.9,-224.5,90.0;jeep_faav;0
-00315;DT;H. Karlsson;-99.1,153.3,-138.0,0.0
-00315;DT;C. Barnett;-105.2,153.3,-146.3,0.0
-00315;KD;T. Karlsson;-208.1,153.3,-161.8,0.0;us_medic
-00316;SP;H. Karlsson;-186.0,154.7,-52.1,180.0;us
-00316;WP;H. Karlsson;-186.0,154.7,-52.1,180.0;usrif_m4
-00316;KP;H. Karlsson;-186.0,154.7,-52.1,180.0;us_specops
-00316;SP;C. Barnett;-145.5,154.4,-42.0,90.0;us
-00316;WP;C. Barnett;-145.5,154.4,-42.0,90.0;usrif_m4
-00316;KP;C. Barnett;-145.5,154.4,-42.0,90.0;us_specops
-00317;DT;C. Clarke;-24.4,153.3,-113.5,0.0
-00317;SP;C. Clarke;-232.5,154.5,-270.0,0.8;ch
-00317;WP;C. Clarke;-232.5,154.5,-270.0,0.8;chlmg_type95
-00317;KP;C. Clarke;-232.5,154.5,-270.0,0.8;ch_support
-00318;DT;R. Hallwood;-60.7,153.3,-124.5,0.0
-00318;SP;R. Hallwood;-145.5,154.4,-42.0,90.0;us
-00318;WP;R. Hallwood;-145.5,154.4,-42.0,90.0;usrif_m16a2
-00318;KP;R. Hallwood;-145.5,154.4,-42.0,90.0;us_medic
-00319;DT;M. Hedlund;-208.6,153.3,-156.3,0.0
-00319;SP;M. Hedlund;-181.0,154.7,-78.0,180.0;us
-00319;WP;M. Hedlund;-181.0,154.7,-78.0,180.0;usrif_mp5_a3
-00319;KP;M. Hedlund;-181.0,154.7,-78.0,180.0;us_at
-00320;DT;R. Linde;-209.0,153.3,-180.4,0.0
-00320;SP;R. Linde;-186.0,154.7,-52.1,180.0;us
-00320;WP;R. Linde;-186.0,154.7,-52.1,180.0;uslmg_m249saw
-00320;KP;R. Linde;-186.0,154.7,-52.1,180.0;us_support
-00321;DT;J. VanRooyen;-200.5,153.3,-184.6,0.0
-00321;SP;J. VanRooyen;-175.7,154.4,-92.4,-158.4;us
-00321;WP;J. VanRooyen;-175.7,154.4,-92.4,-158.4;usrif_mp5_a3
-00321;KP;J. VanRooyen;-175.7,154.4,-92.4,-158.4;us_at
-00326;DT;T. Karlsson;-208.1,153.3,-161.8,0.0
-00326;SP;T. Karlsson;-181.8,154.2,-101.2,-0.1;us
-00326;WP;T. Karlsson;-181.8,154.2,-101.2,-0.1;usrif_m16a2
-00326;KP;T. Karlsson;-181.8,154.2,-101.2,-0.1;us_medic
-00326;VE;S. Wallberg;-238.3,154.2,-199.2,0.0;jeep_faav_front_gun;0
-00330;WP;M. Hedlund;-176.1,154.2,-92.9,161.3;usatp_predator
-00333;WP;J. VanRooyen;-200.6,154.2,-107.6,121.1;usatp_predator
-00334;WP;H. Karlsson;-169.5,154.2,-102.3,163.0;c4_explosives
-00334;WP;B. Hedberg;-11.6,154.2,-116.7,61.1;ushgr_m67
-00335;VD;jep_nanjing;-165.4,154.1,-115.6,-9.6;J. VanRooyen;-198.2,154.2,-107.4,90.4
-00335;SC;J. VanRooyen;2
-00335;SC;M. Hedlund;1
-00335;KL;M. Hornlund;-165.4,154.1,-115.6,-9.6;J. VanRooyen;-198.2,154.2,-107.4,90.4;usatp_predator
-00335;AS;M. Hedlund;-175.7,154.2,-96.4,146.4;damage
-00335;KD;M. Hornlund;-165.4,154.1,-115.6,-9.6;ch_specops
-00335;VX;M. Hornlund;-195.4,154.2,-210.4,-87.3;jep_nanjing
-00335;DT;M. Hornlund;-165.4,154.1,-115.6,-9.6
-00335;SC;J. VanRooyen;2
-00335;SC;M. Hedlund;1
-00335;KL;P. OShaughnessy;-165.3,155.5,-116.1,0.0;J. VanRooyen;-198.2,154.2,-107.4,90.4;usatp_predator
-00335;AS;M. Hedlund;-175.7,154.2,-96.4,146.4;damage
-00335;KD;P. OShaughnessy;-165.3,155.5,-116.1,0.0;ch_medic
-00335;VX;P. OShaughnessy;-132.5,153.3,-123.9,0.0;jep_nanjing_cupolabase
-00335;DT;P. OShaughnessy;-165.3,155.5,-116.1,-9.6
-00335;WP;J. VanRooyen;-198.2,154.2,-107.4,90.4;usrif_mp5_a3
-00335;WP;M. Hedlund;-176.4,154.2,-96.4,0.5;usrif_mp5_a3
-00336;WP;H. Karlsson;-168.3,154.2,-104.3,76.9;usrif_m4
-00336;WP;B. Hedberg;-10.3,154.2,-115.3,54.2;usrif_remington11-87
-00337;WP;J. VanRooyen;-201.2,154.2,-110.7,-134.9;usatp_predator
-00340;WP;M. Hedlund;-191.5,154.2,-95.7,-163.2;usatp_predator
-00342;VD;ustnk_m1a2;-147.9,153.9,-174.3,-102.4;None;None
-00342;VD;jeep_faav;-205.5,153.8,-126.1,10.2;J. VanRooyen;-201.5,154.2,-111.9,-171.5
-00342;SC;J. VanRooyen;2
-00342;KL;E. Smith;-205.5,153.8,-126.1,10.2;J. VanRooyen;-201.5,154.2,-111.9,-171.5;usatp_predator
-00342;KD;E. Smith;-205.5,153.8,-126.1,10.2;ch_support
-00342;VX;E. Smith;-96.2,151.9,-161.0,0.0;jeep_faav
-00342;DT;E. Smith;-205.5,153.8,-126.1,10.2
-00342;SC;J. VanRooyen;2
-00342;KL;S. Strandberg;-205.5,154.8,-126.5,0.0;J. VanRooyen;-201.5,154.2,-111.9,-171.5;usatp_predator
-00342;KD;S. Strandberg;-205.5,154.8,-126.5,0.0;ch_engineer
-00342;VX;S. Strandberg;-152.4,153.9,-97.9,-41.6;jeep_faav_rear_passenger
-00342;DT;S. Strandberg;-205.5,154.8,-126.5,10.2
-00342;SC;J. VanRooyen;2
-00342;KL;S. Wallberg;-205.1,154.1,-125.7,0.0;J. VanRooyen;-201.5,154.2,-111.9,-171.5;usatp_predator
-00342;KD;S. Wallberg;-205.1,154.1,-125.7,0.0;ch_engineer
-00342;VX;S. Wallberg;-118.2,154.2,-195.6,-71.4;jeep_faav_front_gun
-00342;DT;S. Wallberg;-205.1,154.1,-125.7,10.2
-00342;WP;J. VanRooyen;-201.5,154.2,-111.9,-141.8;usrif_mp5_a3
-00342;WP;M. Hedlund;-195.5,154.2,-100.6,-159.5;usrif_mp5_a3
-00347;WP;H. Karlsson;-130.6,154.2,-113.1,76.9;c4_explosives
-00350;SC;D. Aberin;2
-00350;CP;4011;88.0,153.2,-40.0,0.0;top;ch
-00350;SP;P. OShaughnessy;-159.6,154.2,-213.2,21.9;ch
-00350;WP;P. OShaughnessy;-159.6,154.2,-213.2,21.9;rurif_ak47
-00350;KP;P. OShaughnessy;-159.6,154.2,-213.2,21.9;ch_medic
-00350;SP;M. Hornlund;-146.8,155.6,-263.3,90.0;ch
-00350;WP;M. Hornlund;-146.8,155.6,-263.3,90.0;chrif_type95
-00350;KP;M. Hornlund;-146.8,155.6,-263.3,90.0;ch_specops
-00351;VE;R. Linde;-140.0,153.8,-49.0,-180.0;jeep_faav;0
-00354;WP;H. Karlsson;-122.0,154.2,-135.3,-173.0;ushgr_m67
-00356;WP;H. Karlsson;-120.6,154.2,-141.4,-170.8;c4_explosives
-00357;SP;S. Wallberg;-218.6,155.3,-246.1,0.0;ch
-00357;WP;S. Wallberg;-218.6,155.3,-246.1,0.0;chrif_type95
-00357;KP;S. Wallberg;-218.6,155.3,-246.1,0.0;ch_specops
-00357;SP;S. Strandberg;-44.0,154.4,-245.0,-90.0;ch
-00357;WP;S. Strandberg;-44.0,154.4,-245.0,-90.0;chsht_norinco982
-00357;KP;S. Strandberg;-44.0,154.4,-245.0,-90.0;ch_engineer
-00357;SP;E. Smith;-65.0,154.4,-257.0,135.0;ch
-00357;WP;E. Smith;-65.0,154.4,-257.0,135.0;chrif_type95
-00357;KP;E. Smith;-65.0,154.4,-257.0,135.0;ch_specops
-00360;WP;C. Clarke;-138.8,154.2,-206.8,18.8;ushgr_m67
-00362;WP;H. Karlsson;-123.1,154.2,-161.5,-142.1;ushgr_m67
-00363;WP;H. Karlsson;-124.6,154.2,-163.5,-164.6;c4_explosives
-00363;KD;H. Karlsson;-124.6,154.2,-163.6,-164.6;us_specops
-00363;WP;C. Clarke;-142.2,154.2,-206.4,47.3;chlmg_type95
-00363;WP;E. Smith;-79.8,154.2,-263.4,-90.0;c4_explosives
-00365;WP;E. Smith;-80.0,154.2,-263.5,89.9;chrif_type95
-00367;WP;B. Hedberg;71.8,154.2,-89.6,27.8;ushgr_m67
-00368;VE;M. Hedlund;-198.9,154.8,-111.0,0.0;jeep_faav_rear_passenger;0
-00368;WP;D. Aberin;100.1,154.2,-58.9,179.9;ushgr_m67
-00370;WP;B. Hedberg;75.4,154.1,-85.9,38.5;usrif_remington11-87
-00370;VE;T. Karlsson;-204.9,154.1,-115.1,0.0;jeep_faav_front_gun;0
-00371;VE;P. OShaughnessy;-108.1,153.9,-253.7,0.0;tnk_type98;0
-00371;WP;D. Aberin;100.2,154.2,-59.2,-138.5;chlmg_type95
-00373;WP;S. Wallberg;-195.9,154.2,-217.7,-40.6;ushgr_m67
-00374;VE;D. Aberin;93.5,154.1,-65.5,-125.2;jep_nanjing;0
-00374;WP;B. Hedberg;85.0,154.2,-75.9,40.5;ushgr_m67
-00374;WP;S. Wallberg;-196.5,154.2,-215.6,-41.2;chrif_type95
-00375;VX;D. Aberin;93.7,154.4,-67.4,-125.2;jep_nanjing
-00375;VE;D. Aberin;93.8,155.6,-65.3,0.0;jep_nanjing_cupolabase;0
-00375;WP;C. Barnett;18.2,154.2,-85.0,65.5;c4_explosives
-00375;VE;C. Clarke;-104.5,155.7,-225.0,0.0;tnk_type98_cupolabase;0
-00377;SC;D. Aberin;2
-00377;KL;B. Hedberg;88.1,154.2,-70.9,45.3;D. Aberin;93.8,155.6,-65.3,0.0;chhmg_type85
-00378;SP;H. Karlsson;-175.7,154.4,-92.4,-158.4;us
-00378;WP;H. Karlsson;-175.7,154.4,-92.4,-158.4;usrif_mp5_a3
-00378;KP;H. Karlsson;-175.7,154.4,-92.4,-158.4;us_at
+00020;CN;192.168.1.15;Luda
+00037;GS;pre;dalian_plant;0;0
+00037;RS;0
+00037;GS;play;dalian_plant;0;0
+00037;CP;4005;-92.3,153.2,-260.8,0.0;top;ch
+00037;CP;4006;-151.8,153.2,-58.9,0.0;top;us
+00037;CP;4007;88.0,153.2,-40.0,0.0;bottom;None
+00037;CP;4008;-254.0,153.3,-210.0,0.0;bottom;None
+00044;SP;Luda;-179.0,154.6,-66.0,180.0;us
+00044;WP;Luda;-179.0,154.6,-66.0,180.0;usrif_m203
+00044;KP;Luda;-179.0,154.6,-66.0,180.0;us_assault
+00045;SP;D. Gothberg;-65.0,154.4,-257.0,135.0;ch
+00045;WP;D. Gothberg;-65.0,154.4,-257.0,135.0;chrif_type95
+00045;KP;D. Gothberg;-65.0,154.4,-257.0,135.0;ch_specops
+00045;SP;S. Parkinson;-123.0,156.2,-250.0,0.0;ch
+00045;WP;S. Parkinson;-123.0,156.2,-250.0,0.0;rurif_ak47
+00045;KP;S. Parkinson;-123.0,156.2,-250.0,0.0;ch_medic
+00045;SP;L. Gustavsson;-52.6,154.9,-258.2,-179.5;ch
+00045;WP;L. Gustavsson;-52.6,154.9,-258.2,-179.5;rurif_gp25
+00045;KP;L. Gustavsson;-52.6,154.9,-258.2,-179.5;ch_assault
+00045;SP;H. Karlsson;-146.8,155.6,-263.3,90.0;ch
+00045;WP;H. Karlsson;-146.8,155.6,-263.3,90.0;rurif_gp25
+00045;KP;H. Karlsson;-146.8,155.6,-263.3,90.0;ch_assault
+00045;SP;N. Goksu;-65.0,154.4,-257.0,135.0;ch
+00045;WP;N. Goksu;-65.0,154.4,-257.0,135.0;chsni_type88
+00045;KP;N. Goksu;-65.0,154.4,-257.0,135.0;ch_sniper
+00045;SP;R. Smedberg;-52.1,156.0,-276.7,0.0;ch
+00045;WP;R. Smedberg;-52.1,156.0,-276.7,0.0;rurif_ak47
+00045;KP;R. Smedberg;-52.1,156.0,-276.7,0.0;ch_medic
+00045;SP;T. Soderman;-52.1,156.0,-276.7,0.0;ch
+00045;WP;T. Soderman;-52.1,156.0,-276.7,0.0;chsni_type88
+00045;KP;T. Soderman;-52.1,156.0,-276.7,0.0;ch_sniper
+00045;SP;P. OShaughnessy;-123.0,156.2,-250.0,0.0;ch
+00045;WP;P. OShaughnessy;-123.0,156.2,-250.0,0.0;chrif_type85
+00045;KP;P. OShaughnessy;-123.0,156.2,-250.0,0.0;ch_at
+00045;SP;M. Bagge;-181.0,154.7,-78.0,180.0;us
+00045;WP;M. Bagge;-181.0,154.7,-78.0,180.0;usrif_m203
+00045;KP;M. Bagge;-181.0,154.7,-78.0,180.0;us_assault
+00045;SP;M. Sjoberg;-175.7,154.4,-92.4,-158.4;us
+00045;WP;M. Sjoberg;-175.7,154.4,-92.4,-158.4;usrif_m16a2
+00045;KP;M. Sjoberg;-175.7,154.4,-92.4,-158.4;us_medic
+00045;SP;T. Karlsson;-149.2,158.9,-47.4,180.0;us
+00045;WP;T. Karlsson;-149.2,158.9,-47.4,180.0;usrif_mp5_a3
+00045;KP;T. Karlsson;-149.2,158.9,-47.4,180.0;us_at
+00045;SP;J. Hartling;-186.0,154.7,-52.1,180.0;us
+00045;WP;J. Hartling;-186.0,154.7,-52.1,180.0;uslmg_m249saw
+00045;KP;J. Hartling;-186.0,154.7,-52.1,180.0;us_support
+00045;SP;U. Rask;-186.0,154.7,-52.1,180.0;us
+00045;WP;U. Rask;-186.0,154.7,-52.1,180.0;usrif_m4
+00045;KP;U. Rask;-186.0,154.7,-52.1,180.0;us_specops
+00045;SP;L. Castillo;-186.0,154.7,-52.1,180.0;us
+00045;WP;L. Castillo;-186.0,154.7,-52.1,180.0;usrif_m16a2
+00045;KP;L. Castillo;-186.0,154.7,-52.1,180.0;us_medic
+00045;SP;S. Pinkerton;-149.2,158.9,-47.4,180.0;us
+00045;WP;S. Pinkerton;-149.2,158.9,-47.4,180.0;usrif_m203
+00045;KP;S. Pinkerton;-149.2,158.9,-47.4,180.0;us_assault
+00045;SP;M. Fritze;-175.7,154.4,-92.4,-158.4;us
+00045;WP;M. Fritze;-175.7,154.4,-92.4,-158.4;uslmg_m249saw
+00045;KP;M. Fritze;-175.7,154.4,-92.4,-158.4;us_support
+00052;WP;D. Gothberg;-78.9,154.2,-263.1,-108.3;c4_explosives
+00054;WP;D. Gothberg;-79.0,154.2,-263.1,-108.4;chrif_type95
+00056;VE;L. Castillo;-140.0,153.8,-49.0,-180.0;jeep_faav;jeep_faav_driver;False
+00058;VE;S. Pinkerton;-179.2,153.9,-33.8,151.8;ustnk_m1a2;ustnk_m1a2_driver;False
+00058;VE;N. Goksu;-107.1,154.1,-280.9,0.0;jep_nanjing;jep_nanjing_driver;False
+00058;VE;L. Gustavsson;-108.1,153.9,-253.7,0.0;tnk_type98;tnk_type98_driver;False
+00060;VE;S. Parkinson;-107.4,155.7,-254.0,0.0;tnk_type98;tnk_type98_cupolabase;False
+00060;VE;P. OShaughnessy;-106.6,155.3,-273.0,-17.3;jep_nanjing;jep_nanjing_passenger_rr;True
+00065;VE;M. Sjoberg;-171.6,155.7,-50.4,0.0;ustnk_m1a2;ustnk_m1a2_cupolabase;False
+00066;VE;T. Soderman;-103.3,155.3,-262.1,-9.7;jep_nanjing;jep_nanjing_passenger_rl;True
+00066;VE;M. Fritze;-175.2,154.8,-103.8,0.0;jeep_faav;jeep_faav_rear_passenger;False
+00066;VE;R. Smedberg;-102.3,155.6,-261.5,0.0;jep_nanjing;jep_nanjing_cupolabase;False
+00083;WP;M. Bagge;-94.3,154.2,-125.7,152.2;usrgl_m203
+00085;WP;T. Karlsson;-118.1,154.2,-116.7,165.8;usatp_predator
+00087;VX;P. OShaughnessy;-91.0,154.3,-140.9,143.0;jep_nanjing;jep_nanjing_passenger_rr
+00087;VX;R. Smedberg;-93.0,154.3,-139.9,-39.2;jep_nanjing;jep_nanjing_cupolabase
+00087;VX;T. Soderman;-95.3,154.4,-143.6,137.6;jep_nanjing;jep_nanjing_passenger_rl
+00088;VX;N. Goksu;-96.1,154.3,-141.6,-43.0;jep_nanjing;jep_nanjing_driver
+00088;WP;T. Karlsson;-117.4,154.2,-117.5,130.2;usrif_mp5_a3
+00088;WP;M. Bagge;-93.5,154.2,-126.9,152.8;usrif_m203
+00088;WP;J. Hartling;-114.4,154.2,-108.3,-163.0;ushgr_m67
+00089;WP;P. OShaughnessy;-86.8,154.2,-140.0,82.6;chat_eryx
+00090;WP;T. Soderman;-97.7,153.9,-147.9,-154.4;ushgr_m67
+00090;WP;N. Goksu;-103.0,154.2,-143.5,-106.2;chpis_qsz92_silencer
+00090;VD;jep_nanjing;-94.3,154.1,-141.0,-43.6;T. Karlsson;-112.4,154.2,-121.8,157.4
+00091;WP;T. Soderman;-97.7,153.9,-148.0,3.1;chpis_qsz92_silencer
+00091;WP;J. Hartling;-114.4,154.2,-108.3,137.6;uslmg_m249saw
+00093;SC;S. Parkinson;2
+00093;SC;L. Gustavsson;1
+00093;KL;J. Hartling;-114.4,154.2,-108.3,137.6;S. Parkinson;-133.3,155.7,-202.0,0.0;chhmg_type85
+00093;AS;L. Gustavsson;-133.4,153.9,-201.7,-42.9;driver
+00094;WP;M. Bagge;-93.5,154.2,-126.9,152.8;uspis_92fs
+00094;WP;T. Karlsson;-111.4,154.2,-124.0,155.3;uspis_92fs
+00096;WP;R. Smedberg;-88.6,154.2,-133.1,-36.6;chpis_qsz92
+00097;KD;J. Hartling;-114.1,153.5,-109.1,0.0;us_support
+00099;SC;M. Sjoberg;-2
+00100;VX;M. Sjoberg;-113.8,153.1,-186.0,-135.1;ustnk_m1a2;ustnk_m1a2_cupolabase
+00100;SC;T. Soderman;2
+00100;KL;M. Bagge;-93.5,154.2,-126.9,127.7;T. Soderman;-101.2,154.2,-136.7,38.5;chpis_qsz92_silencer
+00101;WP;T. Soderman;-101.2,154.2,-136.7,-1.8;chsni_type88
+00101;WP;R. Smedberg;-88.6,154.2,-133.1,-36.6;ushgr_m67
+00101;WP;T. Soderman;-101.2,154.2,-136.7,-9.8;chpis_qsz92_silencer
+00101;SC;U. Rask;1
+00101;SC;L. Castillo;2
+00101;CP;4012;-254.0,153.3,-210.0,0.0;top;us
+00101;WP;T. Karlsson;-109.0,154.2,-127.2,142.1;usrif_mp5_a3
+00101;WP;U. Rask;-244.8,154.3,-206.0,75.1;c4_explosives
+00103;VX;L. Gustavsson;-135.5,154.3,-204.1,-47.9;tnk_type98;tnk_type98_driver
+00103;WP;U. Rask;-244.8,154.3,-206.1,75.2;usrif_m4
+00103;WP;L. Gustavsson;-135.5,154.2,-204.1,-0.0;rurgl_gp25
+00103;KD;L. Gustavsson;-135.5,154.2,-204.1,24.0;ch_assault
+00104;WP;M. Sjoberg;-110.6,154.2,-197.9,126.8;ushgr_m67
+00104;KD;M. Bagge;-92.3,153.3,-126.8,0.0;us_assault
+00104;WP;R. Smedberg;-101.3,154.2,-133.6,-162.7;chpis_qsz92
+00104;WP;P. OShaughnessy;-104.3,154.2,-141.1,-162.5;chrif_type85
+00106;VX;S. Pinkerton;-118.8,154.5,-202.8,-165.0;ustnk_m1a2;ustnk_m1a2_driver
+00107;WP;R. Smedberg;-101.6,154.2,-133.6,-36.7;rurif_ak47
+00107;VD;ustnk_m1a2;-122.2,153.9,-201.8,-165.0;None;None
+00108;WP;P. OShaughnessy;-104.4,154.2,-141.3,-15.0;chpis_qsz92
+00108;DT;J. Hartling;-114.0,153.5,-109.1,0.0
+00109;SP;J. Hartling;-223.5,155.3,-182.4,-90.0;us
+00109;WP;J. Hartling;-223.5,155.3,-182.4,-90.0;usrif_m24
+00109;KP;J. Hartling;-223.5,155.3,-182.4,-90.0;us_sniper
+00109;WP;M. Sjoberg;-111.4,154.2,-198.5,-99.1;usrif_m16a2
+00109;KD;S. Pinkerton;-122.9,153.9,-190.6,-27.2;us_assault
+00110;WP;M. Sjoberg;-111.1,154.2,-196.1,5.7;ushgr_m67
+00110;WP;J. Hartling;-224.8,155.0,-182.4,-8.6;ushgr_m67
+00110;WP;U. Rask;-223.5,154.3,-217.6,66.1;ushgr_m67
+00114;VX;M. Fritze;-212.4,154.4,-237.6,97.7;jeep_faav;jeep_faav_rear_passenger
+00114;VX;L. Castillo;-208.0,154.7,-234.6,110.5;jeep_faav;jeep_faav_driver
+00114;WP;U. Rask;-223.4,154.3,-217.7,157.1;usrif_m4
+00114;WP;M. Fritze;-211.0,154.3,-238.1,-161.7;uspis_92fs
+00114;WP;L. Castillo;-206.4,154.3,-235.1,176.0;ushgr_m67
+00115;SC;R. Smedberg;2
+00115;KL;T. Karlsson;-109.0,154.2,-127.2,142.1;R. Smedberg;-101.6,154.2,-133.6,-36.7;rurif_ak47
+00115;WP;N. Goksu;-101.4,154.2,-134.9,-43.6;chsni_type88
+00115;WP;P. OShaughnessy;-105.4,154.2,-138.2,-18.1;chrif_type85
+00115;WP;T. Soderman;-101.3,154.2,-135.8,-42.9;chsni_type88
+00115;DT;M. Bagge;-92.3,153.3,-126.8,0.0
+00115;SP;M. Bagge;-175.7,154.4,-92.4,-158.4;us
+00115;WP;M. Bagge;-175.7,154.4,-92.4,-158.4;usrif_m4
+00115;KP;M. Bagge;-175.7,154.4,-92.4,-158.4;us_specops
+00116;WP;N. Goksu;-101.4,154.2,-134.9,-108.3;ushgr_m67
+00116;WP;L. Castillo;-203.8,154.3,-234.7,70.4;usrif_m16a2
+00116;WP;T. Soderman;-99.0,154.2,-137.4,-43.1;ushgr_m67
+00117;WP;N. Goksu;-101.4,154.2,-134.9,-108.3;chsni_type88
+00117;WP;T. Soderman;-98.8,154.2,-137.5,-111.1;chsni_type88
+00117;WP;R. Smedberg;-101.6,154.2,-133.6,-107.9;ushgr_m67
+00118;WP;M. Sjoberg;-111.9,154.2,-196.9,-104.0;usrif_m16a2
+00118;WP;R. Smedberg;-101.6,154.2,-133.6,-107.9;rurif_ak47
+00118;SP;L. Gustavsson;-224.8,154.3,-238.8,-5.5;ch
+00118;WP;L. Gustavsson;-224.8,154.3,-238.8,-5.5;chsht_norinco982
+00118;KP;L. Gustavsson;-224.8,154.3,-238.8,-5.5;ch_engineer
+00119;SC;S. Parkinson;2
+00119;KL;M. Sjoberg;-111.4,154.2,-194.0,8.5;S. Parkinson;-134.5,155.7,-202.6,0.0;chhmg_type85
+00119;KD;T. Karlsson;-111.6,153.3,-125.9,0.0;us_at
+00119;VX;S. Parkinson;-135.6,154.3,-204.1,-47.6;tnk_type98;tnk_type98_cupolabase
+00119;WP;J. Hartling;-199.7,154.2,-189.2,101.2;usrif_m24
+00120;KD;S. Parkinson;-135.6,154.2,-204.1,57.9;ch_medic
+00121;WP;L. Castillo;-204.2,154.3,-234.6,-80.1;uspis_92fs
+00122;WP;U. Rask;-224.7,154.3,-223.8,-102.9;uspis_92fs_silencer
+00122;WP;M. Fritze;-211.3,154.3,-238.0,-71.4;kni_knife
+00122;SC;L. Gustavsson;2
+00122;KL;M. Fritze;-211.7,154.3,-238.0,-93.7;L. Gustavsson;-214.9,154.2,-238.2,86.5;chsht_norinco982
+00122;WP;H. Karlsson;-188.0,154.2,-282.6,-28.1;rurgl_gp25
+00123;KD;M. Sjoberg;-108.3,153.3,-191.1,0.0;us_medic
+00123;WP;H. Karlsson;-188.0,154.2,-282.6,-28.1;rurif_gp25
+00124;WP;L. Castillo;-205.4,154.3,-234.9,-105.2;defibrillator
+00124;SP;S. Pinkerton;-261.0,154.6,-232.0,0.1;us
+00124;WP;S. Pinkerton;-261.0,154.6,-232.0,0.1;usrif_remington11-87
+00124;KP;S. Pinkerton;-261.0,154.6,-232.0,0.1;us_engineer
+00125;SC;L. Gustavsson;2
+00125;KL;L. Castillo;-206.7,154.3,-235.4,-109.8;L. Gustavsson;-208.3,154.3,-236.0,70.2;chsht_norinco982
+00126;KD;M. Fritze;-210.0,153.4,-237.5,0.0;us_support
+00126;WP;D. Gothberg;-240.7,154.3,-218.1,107.3;chpis_qsz92_silencer
+00127;WP;U. Rask;-227.3,154.3,-222.6,-71.5;usrif_m4
+00128;WP;N. Goksu;-113.1,154.2,-139.1,-98.9;ushgr_m67
+00128;WP;T. Soderman;-113.5,154.2,-141.0,-94.0;ushgr_m67
+00129;KD;L. Castillo;-206.7,153.4,-235.6,0.0;us_medic
+00129;SC;S. Pinkerton;2
+00129;SC;S. Pinkerton;1
+00129;KL;D. Gothberg;-240.7,154.3,-218.1,107.3;S. Pinkerton;-255.7,154.3,-217.7,91.6;usrif_remington11-87
+00130;DT;T. Karlsson;-111.6,153.3,-125.9,0.0
+00130;SP;T. Karlsson;-162.6,154.2,-104.2,84.1;us
+00130;WP;T. Karlsson;-162.6,154.2,-104.2,84.1;usrif_remington11-87
+00130;KP;T. Karlsson;-162.6,154.2,-104.2,84.1;us_engineer
+00130;WP;N. Goksu;-113.2,154.2,-139.1,-98.9;chsni_type88
+00130;WP;T. Soderman;-113.7,154.2,-141.1,-94.0;chsni_type88
+00131;WP;M. Bagge;-156.6,154.2,-103.6,147.0;uspis_92fs_silencer
+00132;CP;4012;-254.0,153.3,-210.0,0.0;top;us
+00133;WP;R. Smedberg;-142.3,154.2,-122.7,-36.9;ushgr_m67
+00134;KD;D. Gothberg;-238.1,153.4,-218.6,0.0;ch_specops
+00134;DT;M. Sjoberg;-108.3,153.3,-191.1,0.0
+00134;SP;M. Sjoberg;-159.4,154.2,-110.8,85.8;us
+00134;WP;M. Sjoberg;-159.4,154.2,-110.8,85.8;usrif_m16a2
+00134;KP;M. Sjoberg;-159.4,154.2,-110.8,85.8;us_medic
+00134;WP;R. Smedberg;-142.3,154.2,-122.3,23.8;rurif_ak47
+00135;SP;S. Parkinson;-44.0,154.4,-245.0,-90.0;ch
+00135;WP;S. Parkinson;-44.0,154.4,-245.0,-90.0;rurif_ak47
+00135;KP;S. Parkinson;-44.0,154.4,-245.0,-90.0;ch_medic
+00135;WP;S. Pinkerton;-253.0,154.3,-210.0,131.5;uspis_92fs
+00136;WP;H. Karlsson;-200.5,154.2,-244.0,-57.2;rurgl_gp25
+00136;SC;T. Karlsson;2
+00136;SC;M. Bagge;1
+00136;KL;R. Smedberg;-142.6,154.2,-121.4,-55.4;T. Karlsson;-148.5,154.2,-117.4,131.4;usrif_remington11-87
+00136;AS;M. Bagge;-151.4,154.2,-111.2,145.3;damage
+00136;WP;H. Karlsson;-200.9,154.2,-243.6,-57.5;rurif_gp25
+00137;WP;P. OShaughnessy;-145.0,154.2,-120.5,-33.7;kni_knife
+00137;WP;M. Bagge;-151.4,154.2,-111.2,145.3;usrif_m4
+00137;SC;T. Karlsson;2
+00137;KL;P. OShaughnessy;-145.1,154.2,-120.4,-49.5;T. Karlsson;-147.0,154.2,-118.7,130.6;usrif_remington11-87
+00137;DT;M. Fritze;-210.0,153.4,-237.5,0.0
+00137;WP;M. Bagge;-151.4,154.2,-111.2,145.3;ushgr_m67
+00137;SP;M. Fritze;-261.0,154.6,-232.0,0.1;us
+00137;WP;M. Fritze;-261.0,154.6,-232.0,0.1;usrif_mp5_a3
+00137;KP;M. Fritze;-261.0,154.6,-232.0,0.1;us_at
+00137;WP;H. Karlsson;-202.7,154.2,-242.5,-57.6;rurgl_gp25
+00138;SC;S. Pinkerton;2
+00138;SC;S. Pinkerton;1
+00138;KL;L. Gustavsson;-243.8,154.3,-212.7,134.6;S. Pinkerton;-250.7,154.3,-211.7,121.4;uspis_92fs
+00138;WP;S. Pinkerton;-250.7,154.3,-211.7,137.4;usrif_remington11-87
+00138;WP;M. Sjoberg;-153.6,154.2,-114.7,121.0;ushgr_m67
+00138;WP;H. Karlsson;-203.3,154.2,-242.1,-57.9;rurif_gp25
+00139;WP;T. Soderman;-119.1,154.2,-135.2,-2.5;ushgr_m67
+00139;WP;M. Sjoberg;-153.5,154.2,-114.8,121.0;usrif_m16a2
+00139;VE;S. Pinkerton;-252.4,154.9,-224.5,0.0;jeep_faav;jeep_faav_rear_passenger;False
+00139;WP;H. Karlsson;-204.9,154.2,-240.8,-58.1;chpis_qsz92
+00139;WP;N. Goksu;-115.6,154.2,-136.1,-4.9;ushgr_m67
+00140;KD;R. Smedberg;-140.4,153.3,-121.6,0.0;ch_medic
+00140;DT;L. Castillo;-206.7,153.4,-235.6,0.0
+00140;WP;M. Bagge;-151.1,154.2,-111.5,128.6;usrif_m4
+00140;SP;L. Castillo;-261.0,154.6,-232.0,0.1;us
+00140;WP;L. Castillo;-261.0,154.6,-232.0,0.1;usrif_m16a2
+00140;KP;L. Castillo;-261.0,154.6,-232.0,0.1;us_medic
+00140;WP;N. Goksu;-115.7,154.2,-135.6,-78.7;chpis_qsz92_silencer
+00141;WP;T. Karlsson;-135.4,154.2,-125.9,119.0;uspis_92fs
+00141;WP;T. Soderman;-119.2,154.2,-134.9,-62.6;chpis_qsz92_silencer
+00141;KD;P. OShaughnessy;-143.5,153.3,-122.7,0.0;ch_at
+00142;KD;L. Gustavsson;-241.2,153.4,-212.7,0.0;ch_engineer
+00143;VE;L. Castillo;-251.7,154.2,-224.7,0.0;jeep_faav;jeep_faav_front_gun;False
+00143;SC;M. Bagge;2
+00143;SC;T. Karlsson;1
+00143;KL;N. Goksu;-120.1,154.2,-133.5,-64.1;M. Bagge;-145.3,154.2,-115.8,126.9;ushgr_m67
+00143;AS;T. Karlsson;-130.9,154.2,-128.2,115.9;damage
+00144;SC;T. Soderman;-2
+00144;KL;T. Soderman;-122.3,154.2,-133.0,-60.4;T. Soderman;-122.3,154.2,-133.0,-60.4;ushgr_m67
+00144;AS;M. Bagge;-145.3,154.2,-115.8,126.9;damage
+00144;SC;T. Soderman;2
+00144;SC;N. Goksu;1
+00144;KL;T. Karlsson;-130.9,154.2,-128.2,115.9;T. Soderman;-122.3,154.2,-133.0,-60.4;ushgr_m67
+00144;AS;N. Goksu;-121.0,153.3,-134.1,0.0;damage
+00144;WP;M. Sjoberg;-141.0,154.2,-122.1,120.3;defibrillator
+00144;DT;D. Gothberg;-238.1,153.4,-218.6,0.0
+00145;SP;D. Gothberg;-93.0,154.4,-290.0,-90.0;ch
+00145;WP;D. Gothberg;-93.0,154.4,-290.0,-90.0;chrif_type85
+00145;KP;D. Gothberg;-93.0,154.4,-290.0,-90.0;ch_at
+00146;WP;H. Karlsson;-221.9,154.3,-231.5,-52.1;rurgl_gp25
+00146;KD;T. Karlsson;-132.2,154.3,-128.4,40.4;us_engineer
+00146;WP;T. Karlsson;-132.2,154.3,-128.4,40.4;rurif_ak47
+00146;KP;T. Karlsson;-132.2,154.3,-128.4,40.4;ch_medic
+00146;SC;M. Sjoberg;2
+00146;RV;T. Karlsson;-132.2,154.3,-128.4,40.4;M. Sjoberg;-133.0,154.2,-127.7,128.2
+00147;WP;M. Sjoberg;-133.2,154.2,-127.4,118.8;usrif_m16a2
+00147;KD;N. Goksu;-121.3,153.3,-134.2,0.0;ch_sniper
+00148;VE;M. Fritze;-252.1,153.9,-224.4,90.4;jeep_faav;jeep_faav_driver;False
+00148;KD;T. Soderman;-121.0,153.3,-133.2,0.0;ch_sniper
+00148;VE;D. Gothberg;-107.1,154.1,-280.9,0.0;jep_nanjing;jep_nanjing_driver;False
+00148;WP;H. Karlsson;-222.0,154.3,-231.4,-52.1;rurif_gp25
+00151;DT;R. Smedberg;-140.3,153.3,-121.6,0.0
+00151;SP;R. Smedberg;-52.6,154.9,-258.2,-179.5;ch
+00151;WP;R. Smedberg;-52.6,154.9,-258.2,-179.5;rurif_ak47
+00151;KP;R. Smedberg;-52.6,154.9,-258.2,-179.5;ch_medic
+00152;DT;P. OShaughnessy;-143.5,153.3,-122.7,0.0
+00152;SP;P. OShaughnessy;-44.0,154.4,-245.0,-90.0;ch
+00152;WP;P. OShaughnessy;-44.0,154.4,-245.0,-90.0;chlmg_type95
+00152;KP;P. OShaughnessy;-44.0,154.4,-245.0,-90.0;ch_support
+00153;DT;L. Gustavsson;-241.2,153.4,-212.7,0.0
+00153;SP;L. Gustavsson;-123.0,156.2,-250.0,0.0;ch
+00153;WP;L. Gustavsson;-123.0,156.2,-250.0,0.0;chlmg_type95
+00153;KP;L. Gustavsson;-123.0,156.2,-250.0,0.0;ch_support
+00154;SC;U. Rask;2
+00154;KL;H. Karlsson;-223.3,154.3,-230.1,-65.2;U. Rask;-229.8,154.3,-225.3,121.9;usrif_m4
+00158;DT;N. Goksu;-121.3,153.3,-134.2,0.0
+00158;SP;N. Goksu;-146.8,155.6,-263.3,90.0;ch
+00158;WP;N. Goksu;-146.8,155.6,-263.3,90.0;chrif_type85
+00158;KP;N. Goksu;-146.8,155.6,-263.3,90.0;ch_at
+00159;DT;T. Soderman;-121.0,153.3,-133.2,0.0
+00159;KD;H. Karlsson;-222.0,153.4,-230.7,0.0;ch_assault
+00159;SP;T. Soderman;-44.0,154.4,-245.0,-90.0;ch
+00159;WP;T. Soderman;-44.0,154.4,-245.0,-90.0;chsht_norinco982
+00159;KP;T. Soderman;-44.0,154.4,-245.0,-90.0;ch_engineer
+00160;VE;U. Rask;-249.2,154.1,-246.3,90.0;usaav_m6;usaav_m6_driver;False
+00165;VX;D. Gothberg;-191.3,154.4,-274.9,-10.6;jep_nanjing;jep_nanjing_driver
+00165;WP;D. Gothberg;-191.5,154.2,-273.8,-37.7;chat_eryx
+00169;DT;H. Karlsson;-222.0,153.4,-230.7,0.0
+00171;SP;H. Karlsson;-123.0,156.2,-250.0,0.0;ch
+00171;WP;H. Karlsson;-123.0,156.2,-250.0,0.0;chlmg_type95
+00171;KP;H. Karlsson;-123.0,156.2,-250.0,0.0;ch_support
+00173;SC;U. Rask;-2
+00173;SC;U. Rask;-4
+00173;KL;S. Pinkerton;-195.9,154.8,-264.5,0.0;U. Rask;-215.5,154.1,-231.3,26.5;usaav_m6_barrel
+00173;KD;S. Pinkerton;-195.9,154.8,-264.5,0.0;us_engineer
+00173;VX;S. Pinkerton;-122.9,153.9,-190.6,-27.2;jeep_faav;jeep_faav_rear_passenger
+00173;DT;S. Pinkerton;-195.9,154.8,-264.5,-176.2
+00175;WP;T. Karlsson;-89.4,154.2,-141.2,-176.1;defibrillator
+00176;WP;T. Karlsson;-89.2,154.2,-143.3,164.0;rurif_ak47
+00177;WP;T. Karlsson;-86.7,154.2,-143.1,-174.0;defibrillator
+00178;WP;T. Karlsson;-87.1,154.2,-144.5,164.5;rurif_ak47
+00180;SC;Luda;2
+00180;KL;N. Goksu;-132.9,154.2,-211.6,19.8;Luda;-122.8,196.7,-183.6,164.5;usrif_m203
+00183;VE;S. Parkinson;-190.4,155.6,-270.9,0.0;jep_nanjing;jep_nanjing_cupolabase;False
+00184;VX;S. Parkinson;-188.9,154.4,-269.7,-11.0;jep_nanjing;jep_nanjing_cupolabase
+00184;SC;Luda;2
+00184;KL;L. Gustavsson;-122.9,155.9,-244.9,0.2;Luda;-122.8,196.7,-183.6,164.5;usrif_m203
+00185;KD;N. Goksu;-133.0,153.3,-211.5,0.0;ch_at
+00188;WP;T. Soderman;-71.0,154.2,-241.7,0.8;ushgr_m67
+00188;WP;H. Karlsson;-122.7,155.9,-251.9,20.5;ushgr_m67
+00188;SP;S. Pinkerton;-123.0,154.0,-215.5,151.1;us
+00188;WP;S. Pinkerton;-123.0,154.0,-215.5,151.1;usrif_m203
+00188;KP;S. Pinkerton;-123.0,154.0,-215.5,151.1;us_assault
+00188;VE;S. Pinkerton;-123.7,156.5,-215.5,0.0;usaav_m6;usaav_m6_cupolabase;True
+00188;KD;L. Gustavsson;-122.1,155.0,-246.3,0.0;ch_support
+00189;WP;D. Gothberg;-191.7,154.2,-221.8,76.8;chrif_type85
+00190;VX;S. Pinkerton;-116.1,154.5,-220.6,131.2;usaav_m6;usaav_m6_cupolabase
+00190;WP;P. OShaughnessy;-67.3,154.2,-217.7,-5.8;ushgr_m67
+00191;WP;M. Sjoberg;-70.9,154.2,-164.6,176.2;ushgr_m67
+00191;WP;T. Karlsson;-64.6,154.2,-184.2,-174.6;ushgr_m67
+00191;SC;U. Rask;2
+00191;KL;T. Soderman;-76.9,154.2,-231.0,-87.4;U. Rask;-109.4,154.0,-230.7,147.0;usaav_m6_barrel
+00194;WP;T. Karlsson;-64.6,154.2,-184.9,-174.6;rurif_ak47
+00195;DT;N. Goksu;-133.0,153.3,-211.3,0.0
+00195;KD;T. Soderman;-78.1,153.3,-230.8,0.0;ch_engineer
+00195;SP;N. Goksu;-52.1,156.0,-276.7,0.0;ch
+00195;WP;N. Goksu;-52.1,156.0,-276.7,0.0;chrif_type85
+00195;KP;N. Goksu;-52.1,156.0,-276.7,0.0;ch_at
+00198;WP;S. Parkinson;-174.1,154.2,-295.3,70.5;ushgr_m67
+00198;VX;M. Fritze;-92.4,154.6,-261.2,65.8;jeep_faav;jeep_faav_driver
+00198;VE;M. Fritze;-90.9,154.8,-262.9,0.0;jeep_faav;jeep_faav_rear_passenger;False
+00198;VX;L. Castillo;-90.1,154.8,-265.3,65.8;jeep_faav;jeep_faav_front_gun
+00198;WP;M. Sjoberg;-69.8,154.2,-191.2,-173.3;usrif_m16a2
+00199;WP;N. Goksu;-54.7,155.7,-271.4,-25.5;chat_eryx
+00199;DT;L. Gustavsson;-122.1,155.0,-246.3,0.0
+00200;SP;L. Gustavsson;-93.0,154.4,-290.0,-90.0;ch
+00200;WP;L. Gustavsson;-93.0,154.4,-290.0,-90.0;chrif_type85
+00200;KP;L. Gustavsson;-93.0,154.4,-290.0,-90.0;ch_at
+00200;VE;R. Smedberg;-113.1,153.2,-234.9,0.0;ats_tow;ats_tow_driver;False
+00201;WP;L. Castillo;-93.5,154.8,-263.3,-94.4;ushgr_m67
+00201;VX;U. Rask;-99.3,154.6,-260.3,-172.5;usaav_m6;usaav_m6_driver
+00201;WP;S. Parkinson;-161.6,154.2,-293.0,61.2;rurif_ak47
+00201;WP;P. OShaughnessy;-81.8,154.5,-239.1,-85.3;chlmg_type95
+00202;WP;H. Karlsson;-121.4,154.2,-259.4,81.3;chlmg_type95
+00202;WP;L. Castillo;-93.5,154.2,-263.3,-87.0;usrif_m16a2
+00202;VD;usaav_m6;-101.8,154.0,-260.0,-172.5;H. Karlsson;-121.3,154.2,-259.4,93.8
+00202;SC;H. Karlsson;2
+00202;SC;H. Karlsson;1
+00202;KL;S. Pinkerton;-97.5,154.2,-262.2,160.8;H. Karlsson;-121.2,154.2,-259.4,93.8;usaav_m6
+00202;SC;H. Karlsson;2
+00202;SC;H. Karlsson;1
+00202;KL;U. Rask;-99.3,154.2,-260.3,59.2;H. Karlsson;-121.2,154.2,-259.4,93.8;usaav_m6
+00202;KD;U. Rask;-99.3,154.2,-260.3,59.2;us_specops
+00202;DT;U. Rask;-99.3,154.2,-260.3,59.2
+00205;WP;H. Karlsson;-111.6,154.2,-261.7,95.7;chpis_qsz92
+00206;DT;T. Soderman;-78.1,153.3,-230.8,0.0
+00206;SP;T. Soderman;-63.1,154.2,-266.3,-82.9;ch
+00206;WP;T. Soderman;-63.1,154.2,-266.3,-82.9;chrif_type85
+00206;KP;T. Soderman;-63.1,154.2,-266.3,-82.9;ch_at
+00206;WP;L. Castillo;-93.5,154.2,-263.3,-87.0;uspis_92fs
+00207;VD;jeep_faav;-90.6,153.8,-262.6,69.3;N. Goksu;-68.6,154.2,-265.8,-79.5
+00207;SC;N. Goksu;2
+00207;SC;N. Goksu;1
+00207;KL;M. Fritze;-91.0,154.8,-262.8,0.0;N. Goksu;-68.6,154.2,-265.8,-79.5;chat_eryx
+00207;KD;M. Fritze;-91.0,154.8,-262.8,0.0;us_at
+00207;VX;M. Fritze;-210.0,153.4,-237.5,0.0;jeep_faav;jeep_faav_rear_passenger
+00207;DT;M. Fritze;-91.0,154.8,-262.8,69.3
+00207;SC;N. Goksu;2
+00207;SC;N. Goksu;1
+00207;KL;L. Castillo;-93.5,154.2,-263.3,-87.0;N. Goksu;-68.6,154.2,-265.8,-79.5;jeep_faav
+00207;WP;L. Gustavsson;-100.3,154.2,-278.2,24.5;chat_eryx
+00207;WP;H. Karlsson;-108.4,154.2,-264.4,85.9;chlmg_type95
+00207;WP;N. Goksu;-68.8,154.2,-265.8,-79.5;chrif_type85
+00207;KD;S. Pinkerton;-93.0,153.3,-268.1,0.0;us_assault
+00207;VX;R. Smedberg;-113.1,154.4,-236.4,0.0;ats_tow;ats_tow_driver
+00208;WP;L. Gustavsson;-100.7,154.2,-277.9,13.9;chrif_type85
+00209;WP;M. Sjoberg;-74.8,154.2,-216.5,-170.0;uspis_92fs
+00210;WP;L. Gustavsson;-108.2,154.2,-274.6,21.6;kni_knife
+00211;SC;Luda;2
+00211;KL;R. Smedberg;-107.1,154.2,-242.7,-14.7;Luda;-122.8,196.7,-183.6,164.5;usrif_m203
+00211;KD;L. Castillo;-95.5,153.3,-263.0,0.0;us_medic
+00211;WP;P. OShaughnessy;-81.4,154.2,-238.0,21.0;chpis_qsz92
+00212;WP;H. Karlsson;-99.2,154.2,-262.6,35.3;ushgr_m67
+00213;WP;L. Gustavsson;-102.9,154.2,-269.6,29.7;chrif_type85
+00215;KD;R. Smedberg;-106.1,153.3,-245.1,0.0;ch_medic
+00215;VE;S. Parkinson;-190.4,155.6,-270.9,0.0;jep_nanjing;jep_nanjing_cupolabase;False
+00215;WP;M. Sjoberg;-74.1,154.2,-231.8,-164.3;usrif_m16a2
+00216;WP;P. OShaughnessy;-79.1,154.2,-251.9,14.2;chlmg_type95
+00216;VX;S. Parkinson;-188.9,154.4,-269.7,-11.0;jep_nanjing;jep_nanjing_cupolabase
+00216;VE;S. Parkinson;-190.5,154.1,-270.5,-11.0;jep_nanjing;jep_nanjing_driver;False
+00216;SC;M. Bagge;2
+00216;KL;P. OShaughnessy;-79.1,154.2,-252.2,10.8;M. Bagge;-75.4,154.2,-224.7,-172.4;usrif_m4
+00217;SP;U. Rask;-261.0,154.6,-232.0,0.1;us
+00217;WP;U. Rask;-261.0,154.6,-232.0,0.1;uslmg_m249saw
+00217;KP;U. Rask;-261.0,154.6,-232.0,0.1;us_support
+00217;DT;S. Pinkerton;-93.0,153.3,-268.1,0.0
+00217;SP;S. Pinkerton;-229.0,154.5,-255.0,-90.0;us
+00217;WP;S. Pinkerton;-229.0,154.5,-255.0,-90.0;usrif_mp5_a3
+00217;KP;S. Pinkerton;-229.0,154.5,-255.0,-90.0;us_at
+00218;VX;S. Parkinson;-196.0,154.4,-265.3,-39.2;jep_nanjing;jep_nanjing_driver
+00218;VE;S. Parkinson;-193.9,155.6,-265.3,0.0;jep_nanjing;jep_nanjing_cupolabase;False
+00219;VX;S. Parkinson;-195.3,154.4,-261.0,-40.4;jep_nanjing;jep_nanjing_cupolabase
+00219;WP;H. Karlsson;-99.2,154.2,-262.6,35.3;chlmg_type95
+00219;CP;4009;-92.3,153.2,-260.8,0.0;top;ch
+00220;WP;S. Parkinson;-195.4,154.2,-260.9,4.4;ushgr_m67
+00220;SC;Luda;2
+00220;KL;L. Gustavsson;-99.8,154.2,-264.9,42.9;Luda;-122.8,196.7,-183.6,164.5;usrif_m203
+00220;KD;P. OShaughnessy;-79.8,153.3,-255.8,0.0;ch_support
+00222;DT;L. Castillo;-95.5,153.3,-263.0,0.0
+00222;SP;M. Fritze;-218.6,155.3,-246.1,0.0;us
+00222;WP;M. Fritze;-218.6,155.3,-246.1,0.0;usrif_m203
+00222;KP;M. Fritze;-218.6,155.3,-246.1,0.0;us_assault
+00222;WP;H. Karlsson;-93.8,154.2,-260.6,67.8;chpis_qsz92
+00222;SP;L. Castillo;-259.3,154.3,-245.6,-3.2;us
+00222;WP;L. Castillo;-259.3,154.3,-245.6,-3.2;usrif_m16a2
+00222;KP;L. Castillo;-259.3,154.3,-245.6,-3.2;us_medic
+00222;WP;T. Soderman;-81.4,154.2,-260.7,18.6;chpis_qsz92
+00222;WP;S. Parkinson;-195.4,154.2,-260.9,-78.5;rurif_ak47
+00223;WP;T. Soderman;-81.4,154.2,-260.7,18.6;kni_knife
+00223;VD;tnk_type98;-133.9,153.9,-202.3,-47.7;None;None
+00224;WP;M. Sjoberg;-81.8,154.2,-259.8,152.4;kni_knife
+00224;WP;N. Goksu;-86.7,154.2,-260.5,56.8;chpis_qsz92
+00224;KD;L. Gustavsson;-98.9,153.3,-264.2,0.0;ch_at
+00224;SC;M. Sjoberg;2
+00224;KL;T. Soderman;-81.4,154.2,-260.1,-76.7;M. Sjoberg;-81.9,154.2,-260.0,100.4;kni_knife
+00226;WP;M. Sjoberg;-84.8,154.2,-260.4,-91.0;defibrillator
+00226;DT;R. Smedberg;-106.1,153.3,-245.1,0.0
+00226;WP;H. Karlsson;-88.7,154.2,-262.3,66.2;kni_knife
+00226;WP;N. Goksu;-86.4,154.2,-260.5,84.0;kni_knife
+00226;SP;R. Smedberg;-93.0,154.4,-290.0,-90.0;ch
+00226;WP;R. Smedberg;-93.0,154.4,-290.0,-90.0;rurif_ak47
+00226;KP;R. Smedberg;-93.0,154.4,-290.0,-90.0;ch_medic
+00227;WP;R. Smedberg;-93.0,154.2,-290.0,-172.4;ushgr_m67
+00227;WP;M. Sjoberg;-86.5,154.3,-260.2,-92.4;kni_knife
+00227;SC;N. Goksu;2
+00227;SC;N. Goksu;1
+00227;KL;M. Sjoberg;-86.5,154.3,-260.2,-113.4;N. Goksu;-86.2,154.2,-260.6,-20.1;kni_knife
+00227;WP;U. Rask;-247.4,154.3,-250.8,101.1;ushgr_m67
+00227;WP;R. Smedberg;-93.0,154.2,-290.0,120.4;defibrillator
+00227;WP;H. Karlsson;-85.4,154.2,-262.1,7.9;chlmg_type95
+00227;WP;N. Goksu;-86.2,154.2,-260.6,-42.6;chpis_qsz92
+00228;WP;S. Parkinson;-202.5,154.2,-259.5,-99.5;chpis_qsz92
+00228;WP;H. Karlsson;-84.1,154.2,-261.3,32.2;chpis_qsz92
+00229;KD;T. Soderman;-79.7,153.3,-260.8,0.0;ch_at
+00229;WP;U. Rask;-251.1,154.3,-248.3,102.8;uslmg_m249saw
+00229;WP;S. Pinkerton;-218.7,154.3,-262.3,80.3;uspis_92fs
+00229;WP;L. Castillo;-245.6,154.3,-251.6,100.4;ushgr_m67
+00230;SC;Luda;2
+00230;KL;H. Karlsson;-82.7,154.2,-261.4,28.8;Luda;-122.8,196.7,-183.6,164.5;usrif_m203
+00230;WP;R. Smedberg;-102.3,154.2,-290.5,36.7;rurif_ak47
+00231;KD;M. Sjoberg;-87.4,153.4,-259.1,0.0;us_medic
+00231;DT;P. OShaughnessy;-79.8,153.3,-255.8,0.0
+00231;WP;S. Parkinson;-203.1,154.2,-259.6,-99.6;defibrillator
+00231;VE;M. Fritze;-196.1,155.6,-262.6,0.0;jep_nanjing;jep_nanjing_cupolabase;False
+00231;SP;P. OShaughnessy;-44.0,154.4,-245.0,-90.0;ch
+00231;WP;P. OShaughnessy;-44.0,154.4,-245.0,-90.0;chrif_type85
+00231;KP;P. OShaughnessy;-44.0,154.4,-245.0,-90.0;ch_at
+00231;SC;N. Goksu;2
+00231;SC;N. Goksu;1
+00231;KL;M. Bagge;-79.2,154.2,-254.9,-143.8;N. Goksu;-82.2,154.2,-259.1,31.8;chpis_qsz92
+00232;SC;T. Karlsson;2
+00232;KL;N. Goksu;-82.2,154.2,-259.1,6.9;T. Karlsson;-72.4,154.2,-259.5,-87.3;rurif_ak47
+00232;WP;T. Karlsson;-72.6,154.2,-259.5,-87.3;defibrillator
+00232;WP;S. Parkinson;-202.6,154.2,-260.0,122.2;rurif_ak47
+00232;WP;L. Castillo;-245.4,154.3,-251.7,100.4;usrif_m16a2
+00232;WP;R. Smedberg;-105.2,154.2,-286.3,42.9;defibrillator
+00233;WP;S. Parkinson;-202.6,154.2,-260.0,122.2;chpis_qsz92
+00233;WP;L. Castillo;-243.9,154.3,-252.8,100.0;ushgr_m67
+00234;KD;H. Karlsson;-80.8,153.3,-263.0,0.0;ch_support
+00234;KD;M. Bagge;-78.5,154.3,-254.8,5.8;us_specops
+00234;WP;M. Bagge;-78.5,154.3,-254.8,5.8;chlmg_type95
+00234;KP;M. Bagge;-78.5,154.3,-254.8,5.8;ch_support
+00234;SC;T. Karlsson;2
+00234;RV;M. Bagge;-78.5,154.3,-254.8,5.8;T. Karlsson;-77.9,154.2,-255.7,-42.6
+00234;SC;D. Gothberg;2
+00234;CP;4012;-254.0,153.3,-210.0,0.0;middle;None
+00234;WP;L. Castillo;-242.3,154.3,-251.3,101.9;usrif_m16a2
+00234;WP;M. Bagge;-78.5,154.2,-254.8,-96.0;ushgr_m67
+00234;WP;T. Karlsson;-77.9,154.2,-255.7,-103.1;rurif_ak47
+00234;WP;T. Karlsson;-77.9,154.2,-255.7,-111.1;defibrillator
+00235;DT;L. Gustavsson;-98.9,153.3,-264.2,0.0
+00235;SP;L. Gustavsson;-258.5,154.3,-212.0,140.4;ch
+00235;WP;L. Gustavsson;-258.5,154.3,-212.0,140.4;chrif_type85
+00235;KP;L. Gustavsson;-258.5,154.3,-212.0,140.4;ch_at
+00235;WP;S. Pinkerton;-215.0,154.3,-261.6,80.4;usrif_mp5_a3
+00235;WP;M. Bagge;-78.7,154.2,-253.0,74.4;chlmg_type95
+00236;KD;N. Goksu;-84.7,153.4,-258.2,0.0;ch_at
+00236;WP;R. Smedberg;-99.7,154.2,-273.0,33.1;rurif_ak47
+00237;WP;U. Rask;-260.3,154.3,-232.0,115.8;uspis_92fs
+00237;WP;M. Sjoberg;-87.4,154.4,-259.1,-4.8;usrif_m16a2
+00237;KP;M. Sjoberg;-87.4,154.4,-259.1,-4.8;us_medic
+00237;SC;T. Karlsson;2
+00237;RV;M. Sjoberg;-87.4,154.4,-259.1,-4.8;T. Karlsson;-86.3,154.3,-258.7,-110.0
+00237;WP;T. Karlsson;-86.3,154.3,-258.7,-110.0;rurif_ak47
+00238;WP;S. Parkinson;-203.6,154.2,-259.5,-99.8;rurif_ak47
+00239;WP;M. Bagge;-87.3,154.2,-260.3,49.3;chpis_qsz92
+00239;DT;T. Soderman;-79.7,153.3,-260.8,0.0
+00240;SP;T. Soderman;-44.0,154.4,-245.0,-90.0;ch
+00240;WP;T. Soderman;-44.0,154.4,-245.0,-90.0;chlmg_type95
+00240;KP;T. Soderman;-44.0,154.4,-245.0,-90.0;ch_support
+00240;WP;J. Hartling;-61.1,154.2,-196.3,-164.2;uspis_92fs_silencer
+00241;WP;U. Rask;-259.9,154.3,-228.1,-40.0;kni_knife
+00241;WP;D. Gothberg;-262.9,154.3,-226.9,-140.7;kni_knife
+00242;SC;M. Fritze;2
+00242;KL;S. Parkinson;-204.5,154.2,-259.1,-104.1;M. Fritze;-196.1,155.6,-262.6,0.0;chhmg_type85
+00243;SC;U. Rask;2
+00243;KL;D. Gothberg;-261.9,154.3,-227.7,-8.5;U. Rask;-262.1,154.3,-227.2,167.3;kni_knife
+00243;VD;jeep_faav;-203.9,153.9,-238.8,123.3;None;None
+00243;WP;U. Rask;-262.1,154.3,-227.2,159.3;uspis_92fs
+00243;WP;P. OShaughnessy;-57.1,154.2,-221.1,-9.0;chpis_qsz92
+00244;WP;R. Smedberg;-94.4,154.2,-264.3,54.5;chpis_qsz92
+00245;DT;H. Karlsson;-80.8,153.3,-263.0,0.0
+00245;SP;H. Karlsson;-44.0,154.4,-245.0,-90.0;ch
+00245;WP;H. Karlsson;-44.0,154.4,-245.0,-90.0;chlmg_type95
+00245;KP;H. Karlsson;-44.0,154.4,-245.0,-90.0;ch_support
+00245;WP;U. Rask;-264.1,154.3,-223.2,-28.8;kni_knife
+00245;WP;L. Gustavsson;-265.6,154.3,-220.4,-169.3;kni_knife
+00246;KD;S. Parkinson;-207.3,153.3,-257.1,0.0;ch_medic
+00246;SC;L. Gustavsson;2
+00246;KL;U. Rask;-264.6,154.3,-221.6,-93.6;L. Gustavsson;-265.1,154.3,-221.9,84.4;kni_knife
+00247;WP;L. Gustavsson;-265.1,154.3,-221.9,56.4;chrif_type85
+00247;DT;N. Goksu;-84.7,153.4,-258.2,0.0
+00247;SC;Luda;2
+00247;KL;R. Smedberg;-94.4,154.2,-264.3,54.5;Luda;-122.8,196.7,-183.6,164.5;usrif_m203
+00247;KD;D. Gothberg;-261.6,153.4,-229.3,0.0;ch_at
+00247;SP;N. Goksu;-93.0,154.4,-290.0,-90.0;ch
+00247;WP;N. Goksu;-93.0,154.4,-290.0,-90.0;chlmg_type95
+00247;KP;N. Goksu;-93.0,154.4,-290.0,-90.0;ch_support
+00247;WP;M. Bagge;-87.4,154.2,-260.3,-120.6;chlmg_type95
+00247;WP;T. Karlsson;-86.3,154.3,-258.7,-110.0;ushgr_m67
+00248;VE;S. Pinkerton;-249.2,154.1,-246.3,90.0;usaav_m6;usaav_m6_driver;False
+00249;WP;M. Sjoberg;-89.1,154.2,-258.9,14.9;medikit
+00249;WP;T. Karlsson;-87.5,154.3,-258.0,57.1;rurif_ak47
+00249;WP;P. OShaughnessy;-57.6,154.2,-218.3,-8.9;chrif_type85
+00249;WP;M. Sjoberg;-90.0,154.2,-259.9,-138.5;usrif_m16a2
+00250;WP;M. Sjoberg;-90.1,154.2,-260.0,18.0;ushgr_m67
+00250;KD;U. Rask;-261.4,153.4,-219.9,0.0;us_support
+00251;KD;R. Smedberg;-93.5,153.3,-265.6,0.0;ch_medic
+00252;SC;M. Sjoberg;1
+00252;SC;T. Karlsson;2
+00252;SC;M. Bagge;1
+00252;CP;4009;-92.3,153.2,-260.8,0.0;middle;None
+00253;WP;M. Bagge;-91.4,154.2,-261.6,37.9;ushgr_m67
+00253;WP;M. Sjoberg;-90.4,154.2,-260.0,40.5;usrif_m16a2
+00254;WP;N. Goksu;-97.1,154.2,-273.4,29.1;chpis_qsz92
+00255;SC;L. Gustavsson;2
+00255;CP;4012;-254.0,153.3,-210.0,0.0;top;ch
+00256;WP;M. Bagge;-91.4,154.2,-261.6,37.9;chlmg_type95
+00257;WP;M. Bagge;-91.4,154.2,-261.6,37.9;chpis_qsz92
+00257;DT;S. Parkinson;-207.3,153.3,-257.1,0.0
+00257;SP;S. Parkinson;-261.0,154.6,-232.0,0.1;ch
+00257;WP;S. Parkinson;-261.0,154.6,-232.0,0.1;rurif_ak47
+00257;KP;S. Parkinson;-261.0,154.6,-232.0,0.1;ch_medic
+00258;DT;D. Gothberg;-261.6,153.4,-229.3,0.0
+00258;SP;D. Gothberg;-223.5,155.3,-182.4,-90.0;ch
+00258;WP;D. Gothberg;-223.5,155.3,-182.4,-90.0;chrif_type85
+00258;KP;D. Gothberg;-223.5,155.3,-182.4,-90.0;ch_at
+00259;WP;L. Castillo;-258.0,154.3,-220.5,-94.9;uspis_92fs
+00259;VX;M. Fritze;-195.4,154.4,-260.8,-40.6;jep_nanjing;jep_nanjing_cupolabase
+00260;WP;L. Gustavsson;-270.2,153.9,-221.6,91.0;chpis_qsz92
+00261;SC;M. Bagge;2
+00261;KL;N. Goksu;-103.1,154.2,-265.4,73.5;M. Bagge;-91.4,154.2,-261.6,-107.4;chpis_qsz92
+00261;WP;M. Bagge;-91.4,154.2,-261.6,-107.4;chlmg_type95
+00261;DT;U. Rask;-261.4,153.4,-219.9,0.0
+00262;SP;U. Rask;-145.5,154.4,-42.0,90.0;us
+00262;WP;U. Rask;-145.5,154.4,-42.0,90.0;usrif_m203
+00262;KP;U. Rask;-145.5,154.4,-42.0,90.0;us_assault
+00262;DT;R. Smedberg;-93.5,153.3,-265.6,0.0
+00262;SC;S. Parkinson;2
+00262;SC;S. Parkinson;1
+00262;KL;L. Castillo;-257.9,154.3,-220.3,-94.9;S. Parkinson;-261.0,154.3,-232.0,0.1;rurif_ak47
+00262;SP;R. Smedberg;-218.6,155.3,-246.1,0.0;ch
+00262;WP;R. Smedberg;-218.6,155.3,-246.1,0.0;rurif_ak47
+00262;KP;R. Smedberg;-218.6,155.3,-246.1,0.0;ch_medic
+00262;WP;L. Gustavsson;-269.6,153.9,-221.7,99.1;chrif_type85
+00264;VE;M. Fritze;-186.7,156.5,-291.9,0.0;usaav_m6;usaav_m6_cupolabase;True
+00264;SC;T. Soderman;2
+00264;SC;P. OShaughnessy;1
+00264;KL;J. Hartling;-59.5,154.2,-206.1,171.0;T. Soderman;-47.9,154.2,-241.0,-18.2;chlmg_type95
+00264;AS;P. OShaughnessy;-57.6,154.2,-218.3,-8.9;damage
+00264;SC;M. Bagge;-4
+00264;SC;R. Smedberg;1
+00264;KL;M. Sjoberg;-91.2,154.2,-260.9,37.7;M. Bagge;-91.4,154.2,-261.6,38.0;chlmg_type95
+00264;AS;R. Smedberg;-218.6,155.0,-245.4,79.4;damage
+00265;KD;N. Goksu;-104.8,153.3,-267.2,0.0;ch_support
+00266;VE;L. Gustavsson;-253.0,153.9,-224.5,0.0;jep_paratrooper;jep_paratrooper_gunbase;False
+00266;KD;L. Castillo;-257.9,153.4,-218.4,0.0;us_medic
+00268;KD;J. Hartling;-61.8,153.3,-204.4,0.0;us_sniper
+00268;KD;M. Sjoberg;-90.0,153.3,-259.0,0.0;us_medic
+00269;WP;M. Bagge;-91.4,154.2,-261.6,38.0;ushgr_m67
+00269;WP;T. Karlsson;-93.3,154.2,-262.9,38.7;ushgr_m67
+00269;SC;T. Karlsson;2
+00269;SC;M. Bagge;1
+00269;CP;4009;-92.3,153.2,-260.8,0.0;top;us
+00269;VE;U. Rask;-179.2,153.9,-33.8,151.8;ustnk_m1a2;ustnk_m1a2_driver;False
+00272;WP;M. Bagge;-91.4,154.2,-261.6,38.0;chlmg_type95
+00273;WP;T. Karlsson;-93.3,154.2,-262.9,38.7;rurif_ak47
+00274;WP;T. Soderman;-76.1,154.2,-252.0,-122.4;chpis_qsz92
+00274;WP;M. Bagge;-84.2,154.2,-262.0,48.1;chpis_qsz92
+00276;DT;N. Goksu;-104.8,153.3,-267.2,0.0
+00276;SP;N. Goksu;-232.5,154.5,-270.0,0.8;ch
+00276;WP;N. Goksu;-232.5,154.5,-270.0,0.8;chsht_norinco982
+00276;KP;N. Goksu;-232.5,154.5,-270.0,0.8;ch_engineer
+00277;DT;L. Castillo;-257.9,153.4,-218.4,0.0
+00277;SP;L. Castillo;-181.0,154.7,-78.0,180.0;us
+00277;WP;L. Castillo;-181.0,154.7,-78.0,180.0;usrif_m16a2
+00277;KP;L. Castillo;-181.0,154.7,-78.0,180.0;us_medic
+00278;WP;T. Soderman;-80.0,154.2,-239.5,-170.7;chlmg_type95
+00279;WP;H. Karlsson;-79.2,154.2,-245.9,-34.8;chpis_qsz92
+00279;VX;L. Gustavsson;-254.0,154.4,-226.3,90.0;jep_paratrooper;jep_paratrooper_gunbase
+00279;DT;J. Hartling;-61.8,153.3,-204.4,0.0
+00279;DT;M. Sjoberg;-90.0,153.3,-259.0,0.0
+00280;SP;M. Sjoberg;-81.5,154.2,-266.4,4.1;us
+00280;WP;M. Sjoberg;-81.5,154.2,-266.4,4.1;usrif_m16a2
+00280;KP;M. Sjoberg;-81.5,154.2,-266.4,4.1;us_medic
+00280;SP;J. Hartling;-76.0,154.2,-265.2,-58.7;us
+00280;WP;J. Hartling;-76.0,154.2,-265.2,-58.7;usrif_remington11-87
+00280;KP;J. Hartling;-76.0,154.2,-265.2,-58.7;us_engineer
+00280;WP;T. Soderman;-78.8,154.2,-244.9,-172.6;chpis_qsz92
+00280;WP;P. OShaughnessy;-67.3,154.2,-259.6,-100.3;chat_eryx
+00280;WP;H. Karlsson;-80.1,154.2,-240.1,179.5;chlmg_type95
+00281;SC;P. OShaughnessy;-2
+00281;KL;P. OShaughnessy;-70.3,154.2,-259.7,-66.0;P. OShaughnessy;-70.3,154.2,-259.7,-66.0;chat_eryx
+00281;AS;J. Hartling;-74.5,154.2,-264.1,43.3;damage
+00281;WP;M. Bagge;-80.2,154.2,-261.0,96.2;ushgr_m67
+00281;WP;M. Sjoberg;-81.5,154.2,-266.4,73.6;ushgr_m67
+00281;WP;J. Hartling;-74.3,154.2,-263.9,41.2;ushgr_m67
+00282;VE;L. Castillo;-163.4,155.7,-91.7,0.0;ustnk_m1a2;ustnk_m1a2_cupolabase;False
+00282;WP;M. Bagge;-80.2,154.2,-258.7,-54.7;chpis_qsz92
+00282;WP;H. Karlsson;-79.8,154.2,-242.4,-178.9;chpis_qsz92
+00282;WP;J. Hartling;-74.2,154.2,-263.7,-27.5;usrif_remington11-87
+00283;WP;M. Sjoberg;-81.5,154.2,-266.4,26.3;usrif_m16a2
+00284;WP;M. Bagge;-80.3,154.2,-258.3,12.2;kni_knife
+00284;WP;T. Soderman;-78.4,154.2,-255.8,-140.5;kni_knife
+00285;KD;P. OShaughnessy;-72.8,153.3,-259.6,0.0;ch_at
+00286;WP;H. Karlsson;-78.9,154.2,-254.9,143.2;kni_knife
+00286;SC;T. Soderman;2
+00286;KL;J. Hartling;-76.7,154.2,-257.3,-21.9;T. Soderman;-76.7,154.2,-256.8,165.3;kni_knife
+00286;SC;M. Bagge;2
+00286;KL;T. Soderman;-76.7,154.2,-256.8,-178.7;M. Bagge;-77.2,154.2,-256.8,117.5;kni_knife
+00287;SC;M. Bagge;2
+00287;SC;T. Karlsson;1
+00287;SC;M. Bagge;1
+00287;KL;H. Karlsson;-77.5,154.2,-256.4,133.2;M. Bagge;-77.2,154.2,-256.8,-30.0;kni_knife
+00287;AS;T. Karlsson;-77.1,154.2,-257.4,-19.7;damage
+00287;VE;D. Gothberg;-252.0,154.0,-224.5,90.0;jep_paratrooper;jep_paratrooper_driver;False
+00287;WP;M. Sjoberg;-77.5,154.2,-260.3,4.6;defibrillator
+00287;WP;T. Karlsson;-77.0,154.2,-257.0,-19.1;medikit
+00287;WP;M. Bagge;-77.2,154.2,-256.5,-67.6;chlmg_type95
+00288;KD;J. Hartling;-76.4,154.3,-259.1,-19.4;us_engineer
+00288;WP;J. Hartling;-76.4,154.3,-259.1,-19.4;chrif_type85
+00288;KP;J. Hartling;-76.4,154.3,-259.1,-19.4;ch_at
+00288;SC;M. Sjoberg;2
+00288;RV;J. Hartling;-76.4,154.3,-259.1,-19.4;M. Sjoberg;-76.2,154.2,-260.5,31.1
+00288;VE;L. Gustavsson;-253.0,153.9,-224.5,0.0;jep_paratrooper;jep_paratrooper_gunbase;False
+00288;WP;M. Sjoberg;-76.5,154.2,-260.0,-46.5;medikit
+00288;WP;T. Karlsson;-77.0,154.2,-255.9,179.1;rurif_ak47
+00288;WP;T. Karlsson;-77.0,154.2,-255.9,149.8;medikit
+00290;VE;R. Smedberg;-196.1,155.6,-262.6,0.0;jep_nanjing;jep_nanjing_cupolabase;False
+00290;KD;T. Soderman;-74.7,153.3,-257.2,0.0;ch_support
+00291;KD;H. Karlsson;-77.9,153.3,-255.9,0.0;ch_support
+00293;WP;M. Sjoberg;-90.4,154.2,-259.2,-100.4;usrif_m16a2
+00293;WP;T. Karlsson;-88.6,154.2,-258.8,-113.4;rurif_ak47
+00296;DT;P. OShaughnessy;-72.8,153.3,-259.6,0.0
+00296;SP;P. OShaughnessy;-180.9,154.2,-298.2,11.3;ch
+00296;WP;P. OShaughnessy;-180.9,154.2,-298.2,11.3;rurif_gp25
+00296;KP;P. OShaughnessy;-180.9,154.2,-298.2,11.3;ch_assault
+00297;VX;D. Gothberg;-201.4,154.4,-244.1,164.9;jep_paratrooper;jep_paratrooper_driver
+00297;VX;L. Gustavsson;-203.8,154.5,-246.4,-174.7;jep_paratrooper;jep_paratrooper_gunbase
+00297;WP;S. Parkinson;-215.1,154.2,-240.5,125.4;medikit
+00298;VE;D. Gothberg;-202.2,153.9,-250.0,-156.6;jep_paratrooper;jep_paratrooper_driver;False
+00299;VE;L. Gustavsson;-202.2,153.9,-250.0,0.0;jep_paratrooper;jep_paratrooper_front_gunpos;False
+00300;VE;S. Parkinson;-202.7,153.8,-252.3,0.0;jep_paratrooper;jep_paratrooper_gunbase;False
+00301;DT;T. Soderman;-74.7,153.3,-257.2,0.0
+00301;SP;T. Soderman;-229.0,154.5,-255.0,-90.0;ch
+00301;WP;T. Soderman;-229.0,154.5,-255.0,-90.0;rurif_gp25
+00301;KP;T. Soderman;-229.0,154.5,-255.0,-90.0;ch_assault
+00302;DT;H. Karlsson;-77.9,153.3,-255.9,0.0
+00302;SP;H. Karlsson;-255.6,155.0,-237.3,0.0;ch
+00302;WP;H. Karlsson;-255.6,155.0,-237.3,0.0;chlmg_type95
+00302;KP;H. Karlsson;-255.6,155.0,-237.3,0.0;ch_support
+00303;VE;P. OShaughnessy;-196.3,154.1,-262.3,-40.6;jep_nanjing;jep_nanjing_driver;False
+00308;WP;N. Goksu;-142.3,154.2,-289.1,56.4;ushgr_m67
+00309;VE;T. Karlsson;-93.7,155.2,-245.0,-24.5;ats_hj8;ats_hj8_driver;False
+00309;WP;M. Sjoberg;-123.2,154.2,-260.2,-89.9;ushgr_m67
+00309;WP;N. Goksu;-142.1,154.2,-288.5,29.5;chsht_norinco982
+00309;VE;T. Soderman;-190.5,155.2,-265.8,-17.3;jep_nanjing;jep_nanjing_passenger_rr;True
+00310;VX;T. Karlsson;-93.1,156.4,-246.4,-24.5;ats_hj8;ats_hj8_driver
+00311;WP;M. Bagge;-122.8,155.9,-253.2,-135.1;ushgr_m67
+00311;WP;N. Goksu;-137.2,154.2,-287.7,27.3;ushgr_m67
+00313;WP;M. Sjoberg;-123.4,154.2,-260.2,-148.0;usrif_m16a2
+00314;WP;N. Goksu;-137.0,154.2,-287.7,27.3;chsht_norinco982
+00314;WP;M. Bagge;-122.8,155.9,-253.2,-135.1;chlmg_type95
+00317;WP;T. Karlsson;-101.3,154.2,-244.3,-136.9;ushgr_m67
+00318;WP;T. Karlsson;-102.6,154.2,-246.2,-120.9;rurif_ak47
+00319;WP;M. Sjoberg;-130.1,154.2,-265.4,-158.6;uspis_92fs
+00320;WP;M. Bagge;-122.9,155.1,-257.8,-150.0;ushgr_m67
+00320;SC;T. Karlsson;2
+00320;SC;M. Sjoberg;1
+00320;KL;N. Goksu;-134.8,154.2,-273.0,31.7;T. Karlsson;-106.1,154.2,-251.8,-126.6;rurif_ak47
+00320;AS;M. Sjoberg;-130.1,154.2,-265.4,-158.6;damage
+00321;WP;M. Bagge;-122.9,155.1,-257.8,-150.0;chlmg_type95
+00321;WP;M. Sjoberg;-130.1,154.2,-265.4,-158.6;medikit
+00325;KD;N. Goksu;-135.1,153.3,-272.4,0.0;ch_engineer
+00325;WP;M. Sjoberg;-127.4,154.2,-263.2,-138.5;usrif_m16a2
+00325;WP;J. Hartling;-124.9,154.2,-279.6,-112.2;chat_eryx
+00328;WP;M. Bagge;-128.3,154.2,-267.9,-126.5;ushgr_m67
+00329;WP;T. Karlsson;-121.6,154.2,-259.7,-164.7;ushgr_m67
+00331;WP;T. Karlsson;-121.2,154.2,-264.7,166.2;rurif_ak47
+00333;WP;T. Karlsson;-120.5,154.2,-265.6,129.7;ushgr_m67
+00334;WP;Luda;-122.8,196.7,-183.6,-176.9;uspis_92fs
+00334;SC;U. Rask;2
+00334;SC;S. Pinkerton;1
+00334;CP;4011;88.0,153.2,-40.0,0.0;top;us
+00334;VX;L. Castillo;77.4,154.5,-37.8,7.0;ustnk_m1a2;ustnk_m1a2_cupolabase
+00335;DT;N. Goksu;-135.2,153.3,-272.4,0.0
+00335;SP;N. Goksu;-229.0,154.5,-255.0,-90.0;ch
+00335;WP;N. Goksu;-229.0,154.5,-255.0,-90.0;rurif_gp25
+00335;KP;N. Goksu;-229.0,154.5,-255.0,-90.0;ch_assault
+00335;WP;M. Bagge;-129.7,154.2,-264.8,82.0;chlmg_type95
+00336;WP;T. Karlsson;-120.1,154.2,-265.6,97.3;rurif_ak47
+00339;VD;jep_nanjing;-89.2,154.1,-264.8,98.5;J. Hartling;-119.2,154.2,-273.4,59.8
+00339;SC;J. Hartling;2
+00339;SC;J. Hartling;1
+00339;KL;P. OShaughnessy;-89.2,154.1,-264.8,98.5;J. Hartling;-119.2,154.2,-273.4,59.8;chat_eryx
+00339;KD;P. OShaughnessy;-89.2,154.1,-264.8,98.5;ch_assault
+00339;VX;P. OShaughnessy;-72.8,153.3,-259.6,0.0;jep_nanjing;jep_nanjing_driver
+00339;DT;P. OShaughnessy;-89.2,154.1,-264.8,98.5
+00339;SC;J. Hartling;2
+00339;SC;J. Hartling;1
+00339;KL;R. Smedberg;-89.5,155.6,-264.7,0.0;J. Hartling;-119.2,154.2,-273.4,59.8;chat_eryx
+00339;KD;R. Smedberg;-89.5,155.6,-264.7,0.0;ch_medic
+00339;VX;R. Smedberg;-93.5,153.3,-265.6,0.0;jep_nanjing;jep_nanjing_cupolabase
+00339;DT;R. Smedberg;-89.5,155.6,-264.7,98.5
+00339;SC;J. Hartling;2
+00339;SC;J. Hartling;1
+00339;KL;T. Soderman;-90.5,155.3,-264.9,-97.3;J. Hartling;-119.2,154.2,-273.4,59.8;chat_eryx
+00339;KD;T. Soderman;-90.5,155.3,-264.9,-97.3;ch_assault
+00339;VX;T. Soderman;-74.7,153.3,-257.2,0.0;jep_nanjing;jep_nanjing_passenger_rr
+00339;DT;T. Soderman;-90.3,155.2,-265.1,-81.5
+00339;WP;M. Sjoberg;-118.2,154.2,-266.1,87.4;medikit
+00340;WP;M. Sjoberg;-118.2,154.2,-266.1,-57.6;usrif_m16a2
+00344;VD;jep_paratrooper;-95.3,153.9,-264.6,146.3;J. Hartling;-102.2,154.2,-265.6,82.1
+00344;SC;J. Hartling;2
+00344;SC;J. Hartling;1
+00344;KL;D. Gothberg;-95.3,153.9,-264.6,146.3;J. Hartling;-102.2,154.2,-265.6,82.1;chat_eryx
+00344;KD;D. Gothberg;-95.3,153.9,-264.6,146.3;ch_at
+00344;VX;D. Gothberg;-261.6,153.4,-229.3,0.0;jep_paratrooper;jep_paratrooper_driver
+00344;DT;D. Gothberg;-95.3,153.9,-264.6,146.3
+00344;SC;J. Hartling;2
+00344;SC;J. Hartling;1
+00344;KL;S. Parkinson;-95.8,153.8,-263.9,0.0;J. Hartling;-102.2,154.2,-265.6,82.1;chat_eryx
+00344;KD;S. Parkinson;-95.8,153.8,-263.9,0.0;ch_medic
+00344;VX;S. Parkinson;-207.3,153.3,-257.1,0.0;jep_paratrooper;jep_paratrooper_gunbase
+00344;DT;S. Parkinson;-95.8,153.8,-263.9,146.3
+00344;SC;J. Hartling;2
+00344;SC;J. Hartling;1
+00344;KL;L. Gustavsson;-95.3,153.9,-264.6,0.0;J. Hartling;-102.2,154.2,-265.6,82.1;chat_eryx
+00344;KD;L. Gustavsson;-95.3,153.9,-264.6,0.0;ch_at
+00344;VX;L. Gustavsson;-98.9,153.3,-264.2,0.0;jep_paratrooper;jep_paratrooper_front_gunpos
+00344;DT;L. Gustavsson;-95.3,153.9,-264.6,146.3
+00344;WP;M. Sjoberg;-103.6,154.2,-259.4,122.8;ushgr_m67
+00345;WP;J. Hartling;-101.7,154.2,-265.4,83.8;chrif_type85
+00345;WP;H. Karlsson;-144.6,154.2,-292.7,41.0;ushgr_m67
+00345;WP;M. Sjoberg;-102.4,154.2,-260.4,-128.3;usrif_m16a2
+00346;WP;T. Karlsson;-105.6,154.2,-262.3,-104.6;ushgr_m67
+00347;CP;4009;-92.3,153.2,-260.8,0.0;top;us
+00349;WP;H. Karlsson;-144.5,154.2,-292.6,41.0;chlmg_type95
+00351;VE;L. Castillo;115.1,154.4,-95.0,-32.0;ahe_ah1z;ahe_ah1z_driver;False
+00351;VX;M. Fritze;98.7,154.5,-53.4,-90.0;usaav_m6;usaav_m6_cupolabase
+00354;SP;R. Smedberg;-182.5,154.2,-296.9,69.0;ch
+00354;WP;R. Smedberg;-182.5,154.2,-296.9,69.0;rurif_ak47
+00354;KP;R. Smedberg;-182.5,154.2,-296.9,69.0;ch_medic
+00354;SP;T. Soderman;-179.1,154.2,-301.4,6.3;ch
+00354;WP;T. Soderman;-179.1,154.2,-301.4,6.3;chsht_norinco982
+00354;KP;T. Soderman;-179.1,154.2,-301.4,6.3;ch_engineer
+00354;SP;P. OShaughnessy;-179.7,154.2,-302.7,9.6;ch
+00354;WP;P. OShaughnessy;-179.7,154.2,-302.7,9.6;rurif_gp25
+00354;KP;P. OShaughnessy;-179.7,154.2,-302.7,9.6;ch_assault
+00355;WP;T. Karlsson;-105.6,154.2,-262.3,-133.1;rurif_ak47
+00356;WP;T. Soderman;-176.8,154.2,-298.1,72.0;ushgr_m67
+00357;WP;P. OShaughnessy;-173.8,154.2,-300.6,68.4;rurgl_gp25
+00357;WP;M. Sjoberg;-123.1,154.2,-280.5,-114.3;uspis_92fs
+00357;WP;R. Smedberg;-173.3,154.2,-297.2,72.2;ushgr_m67
+00357;WP;H. Karlsson;-142.3,154.2,-289.0,39.1;chpis_qsz92
+00357;WP;P. OShaughnessy;-171.3,154.2,-299.7,68.2;rurif_gp25
+00358;VE;M. Fritze;113.2,154.3,-92.0,0.0;ahe_ah1z;ahe_ah1z_cogunner;False
+00359;WP;M. Bagge;-124.3,154.2,-266.5,-146.2;ushgr_m67
+00359;WP;R. Smedberg;-172.6,154.2,-297.3,72.2;rurif_ak47
+00359;SP;D. Gothberg;-229.0,154.5,-255.0,-90.0;ch
+00359;WP;D. Gothberg;-229.0,154.5,-255.0,-90.0;chlmg_type95
+00359;KP;D. Gothberg;-229.0,154.5,-255.0,-90.0;ch_support
+00359;SP;S. Parkinson;-232.5,154.5,-270.0,0.8;ch
+00359;WP;S. Parkinson;-232.5,154.5,-270.0,0.8;rurif_ak47
+00359;KP;S. Parkinson;-232.5,154.5,-270.0,0.8;ch_medic
+00359;SP;L. Gustavsson;-218.6,155.3,-246.1,0.0;ch
+00359;WP;L. Gustavsson;-218.6,155.3,-246.1,0.0;chsht_norinco982
+00359;KP;L. Gustavsson;-218.6,155.3,-246.1,0.0;ch_engineer
+00360;WP;T. Soderman;-163.3,154.2,-294.5,71.4;chsht_norinco982
+00362;WP;M. Bagge;-124.4,154.2,-266.5,-146.2;chlmg_type95
+00363;WP;N. Goksu;-149.6,154.2,-290.6,74.8;rurgl_gp25
+00363;WP;M. Sjoberg;-127.4,154.2,-284.5,-109.5;usrif_m16a2
+00364;WP;T. Karlsson;-121.5,154.2,-278.5,-121.0;ushgr_m67
+00364;WP;N. Goksu;-149.5,154.2,-290.6,74.8;rurif_gp25
+00365;WP;M. Bagge;-134.0,154.2,-270.9,-172.3;chpis_qsz92
+00366;WP;T. Karlsson;-124.6,154.2,-278.7,170.5;rurif_ak47
+00369;WP;P. OShaughnessy;-152.0,154.2,-297.5,62.7;chpis_qsz92
+00369;SC;T. Karlsson;-4
+00369;SC;T. Soderman;1
+00369;KL;M. Sjoberg;-127.4,154.2,-284.5,-109.5;T. Karlsson;-125.0,154.2,-278.8,-128.7;ushgr_m67
+00369;AS;T. Soderman;-132.8,154.3,-290.4,42.8;damage
+00369;WP;H. Karlsson;-135.9,154.2,-287.9,68.6;chlmg_type95
+00369;WP;H. Karlsson;-135.9,154.2,-287.9,68.6;chpis_qsz92
+00369;WP;P. OShaughnessy;-151.8,154.2,-297.6,62.0;rurgl_gp25
+00371;VE;J. Hartling;-107.1,153.7,-281.0,0.0;usjep_hmmwv;usjep_hmmwv_cupolabase;False
+00373;SC;T. Soderman;2
+00373;KL;T. Karlsson;-125.0,154.2,-278.8,-128.7;T. Soderman;-126.7,154.2,-282.1,27.2;chsht_norinco982
+00373;WP;T. Soderman;-126.5,154.2,-281.7,27.0;ushgr_m67
+00373;KD;M. Sjoberg;-127.9,153.3,-284.1,0.0;us_medic
+00375;WP;N. Goksu;-141.6,154.2,-291.7,11.3;chpis_qsz92
+00375;WP;T. Soderman;-126.3,154.2,-281.8,68.9;chsht_norinco982
+00376;WP;R. Smedberg;-142.8,154.2,-292.3,52.0;chpis_qsz92
+00377;KD;T. Karlsson;-124.2,153.3,-276.1,0.0;ch_medic
+00377;WP;N. Goksu;-141.1,154.2,-289.4,12.2;rurgl_gp25
+00377;WP;T. Soderman;-122.3,154.2,-279.0,-81.3;ushgr_m67
+00378;WP;N. Goksu;-140.6,154.2,-289.3,64.4;chpis_qsz92
+00381;WP;R. Smedberg;-142.5,154.2,-291.9,16.0;ushgr_m67
+00382;WP;L. Gustavsson;-190.1,154.2,-296.6,74.4;ushgr_m67
+00382;WP;T. Soderman;-107.0,154.2,-269.5,-4.1;chsht_norinco982
+00383;WP;N. Goksu;-140.6,154.2,-289.3,4.4;rurgl_gp25
+00384;WP;R. Smedberg;-142.5,154.2,-291.8,15.3;rurif_ak47
+00384;WP;T. Soderman;-107.9,154.2,-257.0,-4.0;ushgr_m67
+00384;DT;M. Sjoberg;-127.9,153.3,-284.1,0.0
+00384;SP;M. Sjoberg;-139.3,154.2,-272.5,167.8;us
+00384;WP;M. Sjoberg;-139.3,154.2,-272.5,167.8;usrif_m16a2
+00384;KP;M. Sjoberg;-139.3,154.2,-272.5,167.8;us_medic
+00384;SC;M. Fritze;2
+00384;SC;J. Hartling;1
+00384;SC;L. Castillo;1
+00384;SC;M. Fritze;1
+00384;KL;T. Soderman;-107.4,154.2,-257.1,-80.2;M. Fritze;-45.2,197.8,-217.4,0.0;ahe_ah1z_gun
+00384;AS;J. Hartling;-107.0,153.7,-281.1,0.0;damage
+00384;AS;L. Castillo;-42.6,199.5,-216.1,-118.9;driver
+00385;VD;usjep_hmmwv;-107.0,154.0,-281.0,-0.5;P. OShaughnessy;-143.0,154.2,-295.4,68.0
+00385;SC;P. OShaughnessy;2
+00385;SC;T. Soderman;1
+00385;KL;J. Hartling;-107.0,153.7,-281.1,0.0;P. OShaughnessy;-143.0,154.2,-295.4,68.0;rurgl_gp25
+00385;AS;T. Soderman;-106.7,154.2,-257.5,0.0;damage
+00385;KD;J. Hartling;-107.0,153.7,-281.1,0.0;ch_at
+00385;VX;J. Hartling;-61.8,153.3,-204.4,0.0;usjep_hmmwv;usjep_hmmwv_cupolabase
+00385;DT;J. Hartling;-107.0,153.7,-281.1,-0.5
+00385;WP;P. OShaughnessy;-143.0,154.2,-295.4,68.0;rurif_gp25
+00385;WP;P. OShaughnessy;-143.0,154.2,-295.4,68.0;chpis_qsz92
+00386;WP;N. Goksu;-140.6,154.2,-289.3,4.4;rurif_gp25
+00386;SC;R. Smedberg;2
+00386;KL;M. Bagge;-139.2,154.2,-278.2,166.6;R. Smedberg;-141.8,154.2,-291.3,12.6;ushgr_m67
+00386;SC;R. Smedberg;2
+00386;KL;M. Sjoberg;-140.9,154.2,-275.5,162.1;R. Smedberg;-141.8,154.2,-291.3,12.6;ushgr_m67
+00387;WP;R. Smedberg;-141.8,154.2,-291.3,12.6;medikit
+00387;WP;L. Gustavsson;-173.2,154.2,-295.9,29.4;chsht_norinco982
+00387;WP;H. Karlsson;-136.7,154.2,-287.2,-9.9;chlmg_type95
+00387;WP;P. OShaughnessy;-140.1,154.2,-292.7,4.5;rurif_gp25
+00388;DT;T. Karlsson;-124.2,153.3,-276.1,0.0
+00388;SP;T. Karlsson;-123.0,156.2,-250.0,0.0;us
+00388;WP;T. Karlsson;-123.0,156.2,-250.0,0.0;uslmg_m249saw
+00388;KP;T. Karlsson;-123.0,156.2,-250.0,0.0;us_support
+00388;CP;4009;-92.3,153.2,-260.8,0.0;top;us
+00389;WP;R. Smedberg;-139.7,154.2,-291.9,25.8;rurif_ak47
+00389;KD;T. Soderman;-105.9,153.3,-258.5,0.0;ch_engineer
+00390;WP;H. Karlsson;-148.9,154.2,-290.3,34.4;ushgr_m67
+00390;KD;M. Bagge;-140.6,153.3,-279.2,0.0;ch_support
+00391;KD;M. Sjoberg;-141.8,153.3,-276.2,0.0;us_medic
+00391;WP;S. Parkinson;-152.0,154.2,-293.6,42.3;ushgr_m67
+00392;WP;P. OShaughnessy;-137.9,154.2,-284.1,26.9;chpis_qsz92
+00393;WP;D. Gothberg;-142.0,154.2,-293.6,28.2;ushgr_m67
+00393;WP;L. Gustavsson;-158.6,154.2,-296.7,47.6;ushgr_m67
+00393;WP;H. Karlsson;-149.1,154.2,-290.3,34.4;chlmg_type95
+00394;WP;S. Parkinson;-151.8,154.2,-293.4,42.3;rurif_ak47
+00395;WP;Luda;-122.8,196.7,-183.6,172.5;kni_knife
+00396;WP;D. Gothberg;-142.0,154.2,-293.7,28.2;chlmg_type95
+00397;WP;T. Karlsson;-122.9,155.9,-253.8,-116.9;uspis_92fs
+00397;WP;Luda;-122.8,196.7,-183.6,172.5;uspis_92fs
+00398;WP;Luda;-122.8,196.7,-183.6,172.5;usrif_m203
+00399;WP;T. Karlsson;-122.9,155.9,-250.9,-163.6;ushgr_m67
+00399;DT;T. Soderman;-105.9,153.3,-258.5,0.0
+00400;SP;T. Soderman;-223.5,155.3,-182.4,-90.0;ch
+00400;WP;T. Soderman;-223.5,155.3,-182.4,-90.0;chlmg_type95
+00400;KP;T. Soderman;-223.5,155.3,-182.4,-90.0;ch_support
+00400;SP;J. Hartling;-52.1,156.0,-276.7,0.0;us
+00400;WP;J. Hartling;-52.1,156.0,-276.7,0.0;usrif_remington11-87
+00400;KP;J. Hartling;-52.1,156.0,-276.7,0.0;us_engineer
+00400;WP;L. Gustavsson;-140.4,154.2,-283.1,27.8;chsht_norinco982
+00400;WP;N. Goksu;-127.0,154.2,-279.1,5.6;rurgl_gp25
+00400;WP;Luda;-122.8,196.7,-183.6,172.5;usrgl_m203
+00400;WP;T. Karlsson;-124.3,155.9,-250.5,-19.2;uspis_92fs
+00401;WP;N. Goksu;-125.4,154.2,-278.3,5.2;rurif_gp25
+00401;DT;M. Bagge;-140.6,153.3,-279.2,0.0
+00401;DT;M. Sjoberg;-141.8,153.3,-276.2,0.0
+00402;SP;M. Bagge;68.0,154.4,-31.0,60.1;us
+00402;WP;M. Bagge;68.0,154.4,-31.0,60.1;uslmg_m249saw
+00402;KP;M. Bagge;68.0,154.4,-31.0,60.1;us_support
+00402;SP;M. Sjoberg;68.0,154.4,-31.0,60.1;us
+00402;WP;M. Sjoberg;68.0,154.4,-31.0,60.1;usrif_m16a2
+00402;KP;M. Sjoberg;68.0,154.4,-31.0,60.1;us_medic
+00403;WP;J. Hartling;-55.5,155.7,-271.8,-93.0;ushgr_m67
+00404;WP;H. Karlsson;-130.1,154.2,-269.7,62.5;chpis_qsz92
+00404;WP;T. Karlsson;-122.8,155.7,-256.9,106.5;uslmg_m249saw
+00404;WP;P. OShaughnessy;-107.1,154.2,-261.1,-76.9;rurif_gp25
+00405;WP;T. Karlsson;-122.8,155.1,-257.8,-170.9;uspis_92fs
+00406;VE;M. Bagge;80.3,155.7,-44.3,0.0;ustnk_m1a2;ustnk_m1a2_cupolabase;False
+00406;WP;J. Hartling;-59.4,155.7,-271.5,-77.2;usrif_remington11-87
+00408;WP;S. Parkinson;-133.1,154.2,-272.2,29.2;chpis_qsz92
+00409;SC;J. Hartling;2
+00409;SC;J. Hartling;1
+00409;KL;R. Smedberg;-93.6,154.2,-264.7,-80.3;J. Hartling;-68.1,155.7,-271.1,-75.7;ushgr_m67
+00409;SC;J. Hartling;2
+00409;SC;J. Hartling;1
+00409;KL;P. OShaughnessy;-91.5,154.2,-263.1,-83.2;J. Hartling;-68.1,155.7,-271.1,-75.7;ushgr_m67
+00409;WP;J. Hartling;-68.3,155.7,-271.0,-75.7;ushgr_m67
+00410;VE;M. Sjoberg;94.4,156.5,-45.3,0.0;usaav_m6;usaav_m6_cupolabase;True
+00410;WP;L. Gustavsson;-121.7,154.2,-263.4,69.7;chpis_qsz92
+00413;KD;R. Smedberg;-95.6,153.3,-264.7,0.0;ch_medic
+00414;KD;P. OShaughnessy;-90.1,153.3,-263.1,0.0;ch_assault
+00415;WP;J. Hartling;-55.0,155.0,-269.3,-81.2;usrif_remington11-87
+00415;WP;S. Parkinson;-112.0,154.2,-260.4,89.0;ushgr_m67
+00415;WP;H. Karlsson;-90.6,154.2,-262.0,-77.3;kni_knife
+00416;WP;T. Karlsson;-94.7,154.2,-259.9,116.0;kni_knife
+00416;WP;L. Gustavsson;-101.0,154.2,-264.9,59.8;chsht_norinco982
+00417;SC;H. Karlsson;2
+00417;KL;T. Karlsson;-92.8,154.2,-260.9,119.8;H. Karlsson;-92.1,154.2,-261.3,-58.9;kni_knife
+00417;WP;L. Gustavsson;-100.9,154.2,-264.9,59.8;ushgr_m67
+00417;WP;H. Karlsson;-92.1,154.2,-261.3,-58.9;ushgr_m67
+00418;WP;H. Karlsson;-92.1,154.2,-261.3,97.4;chlmg_type95
+00419;WP;S. Parkinson;-100.4,154.2,-263.1,93.9;rurif_ak47
+00419;WP;L. Gustavsson;-100.9,154.2,-264.9,59.8;chsht_norinco982
+00421;WP;H. Karlsson;-92.1,154.2,-261.3,97.4;chpis_qsz92
+00421;KD;T. Karlsson;-94.5,153.3,-259.9,0.0;us_support
+00421;WP;J. Hartling;-75.2,154.2,-264.6,-79.4;uspis_92fs
+00422;SC;L. Gustavsson;2
+00422;SC;S. Parkinson;1
+00422;KL;J. Hartling;-77.0,154.2,-264.4,-78.4;L. Gustavsson;-100.9,154.2,-264.9,59.8;ushgr_m67
+00422;AS;S. Parkinson;-100.4,154.2,-263.1,93.9;damage
+00422;WP;H. Karlsson;-92.1,154.2,-261.3,97.4;chlmg_type95
+00422;WP;S. Parkinson;-100.4,154.2,-263.1,93.9;medikit
+00424;SC;H. Karlsson;2
+00424;SC;L. Gustavsson;1
+00424;SC;D. Gothberg;1
+00424;SC;N. Goksu;1
+00424;SC;S. Parkinson;1
+00424;CP;4009;-92.3,153.2,-260.8,0.0;middle;None
+00424;DT;R. Smedberg;-95.6,153.3,-264.7,0.0
+00424;DT;P. OShaughnessy;-90.1,153.3,-263.1,0.0
+00424;SP;R. Smedberg;-101.2,154.2,-258.8,69.1;ch
+00424;WP;R. Smedberg;-101.2,154.2,-258.8,69.1;rurif_ak47
+00424;KP;R. Smedberg;-101.2,154.2,-258.8,69.1;ch_medic
+00424;SP;P. OShaughnessy;-97.8,154.2,-263.3,6.4;ch
+00424;WP;P. OShaughnessy;-97.8,154.2,-263.3,6.4;chrif_type85
+00424;KP;P. OShaughnessy;-97.8,154.2,-263.3,6.4;ch_at
+00427;SC;S. Parkinson;1
+00427;HL;S. Parkinson;-100.4,154.2,-263.1,-160.6;<?.Object instance at 0x0D1529B8>
+00427;KD;J. Hartling;-80.9,153.3,-265.0,0.0;us_engineer
+00429;WP;S. Parkinson;-99.9,154.2,-263.3,68.7;rurif_ak47
+00430;SC;H. Karlsson;2
+00430;SC;L. Gustavsson;1
+00430;SC;D. Gothberg;1
+00430;SC;N. Goksu;1
+00430;SC;S. Parkinson;1
+00430;SC;P. OShaughnessy;1
+00430;SC;R. Smedberg;1
+00430;CP;4009;-92.3,153.2,-260.8,0.0;top;ch
+00432;DT;T. Karlsson;-94.5,153.3,-259.9,0.0
+00432;SP;T. Karlsson;-186.0,154.7,-52.1,180.0;us
+00432;WP;T. Karlsson;-186.0,154.7,-52.1,180.0;usrif_m4
+00432;KP;T. Karlsson;-186.0,154.7,-52.1,180.0;us_specops
+00432;VE;N. Goksu;-108.1,153.9,-253.7,0.0;tnk_type98;tnk_type98_driver;False
+00433;VE;R. Smedberg;-107.1,154.0,-280.9,0.0;usjep_hmmwv;usjep_hmmwv_driver;False
+00434;VE;L. Gustavsson;-108.2,155.7,-253.2,0.0;tnk_type98;tnk_type98_cupolabase;False
+00437;DT;J. Hartling;-80.9,153.3,-265.0,0.0
+00437;SP;J. Hartling;-179.0,154.6,-66.0,180.0;us
+00437;WP;J. Hartling;-179.0,154.6,-66.0,180.0;usrif_remington11-87
+00437;KP;J. Hartling;-179.0,154.6,-66.0,180.0;us_engineer
+00439;VE;S. Parkinson;-106.5,153.7,-260.2,0.0;usjep_hmmwv;usjep_hmmwv_cupolabase;False
+00439;VX;L. Gustavsson;-100.8,154.3,-210.7,72.2;tnk_type98;tnk_type98_cupolabase
+00439;WP;L. Gustavsson;-100.0,154.2,-210.3,28.9;ushgr_m67
+00440;VX;S. Parkinson;-104.3,154.4,-251.4,2.7;usjep_hmmwv;usjep_hmmwv_cupolabase
+00440;VX;R. Smedberg;-107.8,154.3,-245.9,2.7;usjep_hmmwv;usjep_hmmwv_driver
+00440;VE;R. Smedberg;-105.8,153.7,-246.1,0.0;usjep_hmmwv;usjep_hmmwv_cupolabase;False
+00444;WP;Luda;-122.8,196.7,-183.6,172.5;hgr_smoke
+00445;WP;M. Sjoberg;-44.2,156.5,-139.0,30.5;ushgr_m67
+00447;WP;Luda;-122.8,196.7,-183.6,172.5;usrgl_m203
+00447;WP;T. Karlsson;-155.6,154.3,-51.0,149.8;c4_explosives
+00449;WP;T. Karlsson;-155.5,154.3,-51.0,89.9;usrif_m4
+00450;VE;P. OShaughnessy;-105.5,154.0,-240.2,2.5;usjep_hmmwv;usjep_hmmwv_driver;False
+00450;WP;D. Gothberg;-99.7,154.2,-230.0,-18.0;ushgr_m67
+00452;WP;S. Parkinson;-105.8,154.2,-226.4,-21.3;ushgr_m67
+00452;WP;H. Karlsson;-102.4,154.2,-244.6,-18.4;ushgr_m67
+00454;WP;M. Sjoberg;-45.2,156.5,-140.1,22.9;usrif_m16a2
+00458;WP;Luda;-122.8,196.7,-183.6,172.5;usrif_m203
+00459;WP;Luda;-122.8,196.7,-183.6,172.5;uspis_92fs
+00461;WP;Luda;-122.8,196.7,-183.6,172.5;kni_knife
+00462;WP;L. Gustavsson;-78.1,154.2,-190.9,55.0;chsht_norinco982
+00463;SC;L. Gustavsson;-2
+00463;WP;D. Gothberg;-84.2,154.2,-209.3,35.2;chlmg_type95
+00463;VD;usjep_hmmwv;-67.3,154.0,-175.5,-8.6;U. Rask;-59.1,153.9,-176.8,-68.9
+00463;SC;U. Rask;2
+00463;SC;M. Bagge;1
+00463;KL;P. OShaughnessy;-67.3,154.0,-175.5,-8.6;U. Rask;-59.1,153.9,-176.8,-68.9;ustnk_m1a2_barrel
+00463;AS;M. Bagge;-58.7,155.7,-176.3,0.0;driver
+00463;KD;P. OShaughnessy;-67.3,154.0,-175.5,-8.6;ch_at
+00463;VX;P. OShaughnessy;-90.1,153.3,-263.1,0.0;usjep_hmmwv;usjep_hmmwv_driver
+00463;DT;P. OShaughnessy;-67.3,154.0,-175.5,-8.6
+00463;SC;U. Rask;2
+00463;SC;M. Bagge;1
+00463;KL;R. Smedberg;-67.3,153.7,-175.6,0.0;U. Rask;-59.1,153.9,-176.8,-68.9;ustnk_m1a2_barrel
+00463;AS;M. Bagge;-58.7,155.7,-176.3,0.0;driver
+00463;KD;R. Smedberg;-67.3,153.7,-175.6,0.0;ch_medic
+00463;VX;R. Smedberg;-95.6,153.3,-264.7,0.0;usjep_hmmwv;usjep_hmmwv_cupolabase
+00463;DT;R. Smedberg;-67.3,153.7,-175.6,-8.6
+00464;WP;Luda;-122.8,196.7,-183.6,172.5;uspis_92fs
+00465;SC;S. Parkinson;2
+00465;KL;M. Bagge;-60.1,155.7,-175.7,0.0;S. Parkinson;-84.6,154.2,-203.0,44.2;ushgr_m67
+00465;KD;M. Bagge;-60.1,155.7,-175.7,0.0;us_support
+00465;VX;M. Bagge;-140.6,153.3,-279.2,0.0;ustnk_m1a2;ustnk_m1a2_cupolabase
+00465;DT;M. Bagge;-60.1,155.7,-175.7,-127.2
+00465;WP;S. Parkinson;-84.6,154.2,-203.0,44.2;rurif_ak47
+00467;WP;M. Sjoberg;-71.8,156.5,-164.2,-36.6;ushgr_m67
+00467;WP;H. Karlsson;-82.5,154.2,-209.0,39.8;chlmg_type95
+00467;WP;S. Parkinson;-84.6,154.2,-203.0,-37.8;ushgr_m67
+00467;WP;D. Gothberg;-85.9,154.2,-210.8,-60.4;ushgr_m67
+00468;VX;U. Rask;-59.7,154.5,-179.3,-150.4;ustnk_m1a2;ustnk_m1a2_driver
+00469;WP;S. Parkinson;-84.3,154.2,-202.7,45.4;rurif_ak47
+00469;VD;ustnk_m1a2;-62.8,153.9,-177.5,-155.0;H. Karlsson;-82.5,154.2,-209.0,-61.9
+00471;WP;S. Parkinson;-79.2,154.2,-199.4,59.0;ushgr_m67
+00472;WP;T. Karlsson;-90.4,154.1,-75.3,162.5;ushgr_m67
+00472;WP;U. Rask;-57.6,154.2,-187.5,-131.0;usrgl_m203
+00473;WP;M. Sjoberg;-75.6,156.5,-166.2,-36.6;usrif_m16a2
+00474;WP;S. Parkinson;-78.9,154.2,-198.9,-18.7;rurif_ak47
+00474;SC;L. Gustavsson;2
+00474;SC;H. Karlsson;1
+00474;KL;U. Rask;-58.8,154.2,-193.0,-16.0;L. Gustavsson;-71.8,154.3,-201.2,58.0;chsht_norinco982
+00474;AS;H. Karlsson;-79.9,154.2,-207.0,56.8;damage
+00475;WP;H. Karlsson;-79.5,154.2,-206.7,56.9;ushgr_m67
+00475;WP;D. Gothberg;-85.2,154.2,-207.1,10.4;chlmg_type95
+00476;VD;usaav_m6;-79.6,154.0,-167.2,-78.4;N. Goksu;-70.0,153.9,-155.0,-138.0
+00476;SC;N. Goksu;2
+00476;KL;S. Pinkerton;-79.6,154.0,-167.2,-78.4;N. Goksu;-70.0,153.9,-155.0,-138.0;tnk_type98
+00476;KD;S. Pinkerton;-79.6,154.0,-167.2,-78.4;us_at
+00476;VX;S. Pinkerton;-93.0,153.3,-268.1,0.0;usaav_m6;usaav_m6_driver
+00476;DT;S. Pinkerton;-79.6,154.0,-167.2,-78.4
+00476;SC;N. Goksu;2
+00476;KL;M. Sjoberg;-79.1,156.5,-167.5,-36.6;N. Goksu;-70.0,153.9,-155.0,-138.0;tnk_type98
+00476;KD;M. Sjoberg;-79.1,156.5,-167.5,-36.6;us_medic
+00476;VX;M. Sjoberg;-141.8,153.3,-276.2,0.0;usaav_m6;usaav_m6_cupolabase
+00476;DT;M. Sjoberg;-79.1,155.2,-167.5,43.1
+00476;WP;H. Karlsson;-79.3,154.2,-204.8,0.8;chlmg_type95
+00477;KL;Luda;-119.4,154.0,-205.3,174.7;None;None;None
+00478;SP;P. OShaughnessy;-232.5,154.5,-270.0,0.8;ch
+00478;WP;P. OShaughnessy;-232.5,154.5,-270.0,0.8;chsht_norinco982
+00478;KP;P. OShaughnessy;-232.5,154.5,-270.0,0.8;ch_engineer
+00479;KD;U. Rask;-57.7,153.3,-193.8,0.0;us_assault
+00479;SP;R. Smedberg;-146.8,155.6,-263.3,90.0;ch
+00479;WP;R. Smedberg;-146.8,155.6,-263.3,90.0;rurif_ak47
+00479;KP;R. Smedberg;-146.8,155.6,-263.3,90.0;ch_medic
+00480;SP;M. Bagge;97.0,154.4,-100.0,-31.4;us
+00480;WP;M. Bagge;97.0,154.4,-100.0,-31.4;uslmg_m249saw
+00480;KP;M. Bagge;97.0,154.4,-100.0,-31.4;us_support
+00481;KD;Luda;-118.9,153.3,-208.3,0.0;us_assault
+00482;WP;S. Parkinson;-76.6,154.2,-208.8,-129.5;medikit
+00484;WP;S. Parkinson;-81.0,154.2,-209.6,-85.8;rurif_ak47
+00489;DT;U. Rask;-57.7,153.3,-193.8,0.0
+00490;SP;U. Rask;-181.0,154.7,-78.0,180.0;us
+00490;WP;U. Rask;-181.0,154.7,-78.0,180.0;usrif_m24
+00490;KP;U. Rask;-181.0,154.7,-78.0,180.0;us_sniper
+00491;SP;M. Sjoberg;78.8,155.4,-53.5,152.4;us
+00491;WP;M. Sjoberg;78.8,155.4,-53.5,152.4;usrif_m16a2
+00491;KP;M. Sjoberg;78.8,155.4,-53.5,152.4;us_medic
+00491;SP;S. Pinkerton;91.0,155.3,-59.0,53.1;us
+00491;WP;S. Pinkerton;91.0,155.3,-59.0,53.1;usrif_remington11-87
+00491;KP;S. Pinkerton;91.0,155.3,-59.0,53.1;us_engineer
+00492;DT;Luda;-118.9,153.3,-208.3,0.0
+00492;SP;Luda;-149.2,158.9,-47.4,180.0;us
+00492;WP;Luda;-149.2,158.9,-47.4,180.0;usrif_m203
+00492;KP;Luda;-149.2,158.9,-47.4,180.0;us_assault
+00497;VE;Luda;-140.0,153.8,-49.0,-180.0;jeep_faav;jeep_faav_driver;False
+00499;WP;U. Rask;-179.9,154.3,-84.1,-0.1;ushgr_m67
+00499;VE;M. Sjoberg;93.5,154.0,-65.5,-125.2;usjep_hmmwv;usjep_hmmwv_driver;False
+00499;VX;N. Goksu;-121.7,154.4,-151.5,3.9;tnk_type98;tnk_type98_driver
+00499;WP;T. Karlsson;-77.4,154.2,-129.4,-128.2;usrif_m4
+00500;WP;U. Rask;-179.2,154.3,-84.2,117.4;usrif_m24
+00500;VD;tnk_type98;-119.2,153.9,-151.5,4.6;T. Karlsson;-77.0,154.2,-131.1,169.4
+00500;SC;T. Karlsson;2
+00500;KL;N. Goksu;-122.5,154.2,-151.2,-85.4;T. Karlsson;-77.0,154.2,-131.2,169.4;tnk_type98
+00502;VE;T. Soderman;-252.0,154.0,-224.5,90.0;jep_paratrooper;jep_paratrooper_driver;False
+00502;VE;S. Pinkerton;93.6,153.7,-65.4,0.0;usjep_hmmwv;usjep_hmmwv_cupolabase;False
+00503;VD;ahe_ah1z;-232.8,157.5,-163.5,137.8;None;None
+00503;KL;L. Castillo;-232.8,157.5,-163.5,137.8;None;None;None
+00503;KD;L. Castillo;-232.8,157.5,-163.5,137.8;us_medic
+00503;VX;L. Castillo;-257.9,153.4,-218.4,0.0;ahe_ah1z;ahe_ah1z_driver
+00503;DT;L. Castillo;-232.8,157.5,-163.5,137.8
+00503;KL;M. Fritze;-230.7,158.9,-165.8,0.0;None;None;None
+00503;KD;M. Fritze;-230.7,158.9,-165.8,0.0;us_assault
+00503;VX;M. Fritze;-91.0,154.8,-262.8,69.3;ahe_ah1z;ahe_ah1z_cogunner
+00503;DT;M. Fritze;-230.7,158.9,-165.8,137.8
+00503;WP;J. Hartling;-68.1,154.3,-122.5,179.7;ushgr_m67
+00504;WP;L. Gustavsson;-48.8,154.2,-186.8,-30.2;ushgr_m67
+00504;KD;N. Goksu;-127.0,153.3,-150.8,0.0;ch_assault
+00507;WP;T. Karlsson;-74.3,154.2,-145.9,169.3;uspis_92fs_silencer
+00508;SC;J. Hartling;2
+00508;KL;H. Karlsson;-69.2,154.2,-174.1,-174.8;J. Hartling;-68.1,154.2,-127.9,-178.9;ushgr_m67
+00509;VX;T. Soderman;-236.6,154.5,-182.3,39.5;jep_paratrooper;jep_paratrooper_driver
+00509;WP;T. Karlsson;-73.5,154.2,-149.7,170.1;usrif_m4
+00509;WP;J. Hartling;-68.1,154.2,-127.9,-178.9;usrif_remington11-87
+00509;WP;J. Hartling;-68.1,154.2,-127.9,-178.9;ushgr_m67
+00509;WP;L. Gustavsson;-50.8,154.2,-183.4,-31.9;chsht_norinco982
+00509;VE;T. Soderman;-234.3,154.0,-182.6,44.5;jep_paratrooper;jep_paratrooper_driver;False
+00511;WP;S. Parkinson;-59.1,154.2,-175.4,129.1;ushgr_m67
+00511;VE;U. Rask;-179.2,153.9,-33.8,151.8;ustnk_m1a2;ustnk_m1a2_driver;False
+00512;WP;T. Karlsson;-76.2,154.2,-153.2,132.4;uspis_92fs_silencer
+00513;KD;H. Karlsson;-70.0,153.3,-178.9,0.0;ch_support
+00514;WP;S. Parkinson;-59.0,154.2,-175.5,-37.2;rurif_ak47
+00514;WP;J. Hartling;-66.0,154.2,-134.2,160.8;usrif_remington11-87
+00515;DT;N. Goksu;-127.0,153.3,-150.8,0.0
+00515;SP;N. Goksu;-52.1,156.0,-276.7,0.0;ch
+00515;WP;N. Goksu;-52.1,156.0,-276.7,0.0;chsht_norinco982
+00515;KP;N. Goksu;-52.1,156.0,-276.7,0.0;ch_engineer
+00517;SC;J. Hartling;2
+00517;KL;S. Parkinson;-64.2,154.2,-168.4,-36.2;J. Hartling;-66.0,154.2,-143.0,-168.8;ushgr_m67
+00517;SC;J. Hartling;-4
+00517;KL;T. Karlsson;-72.1,154.2,-157.7,140.7;J. Hartling;-66.6,154.2,-145.7,-165.1;usrif_remington11-87
+00518;SP;L. Castillo;-168.6,153.9,-67.2,172.3;us
+00518;WP;L. Castillo;-168.6,153.9,-67.2,172.3;usrif_m16a2
+00518;KP;L. Castillo;-168.6,153.9,-67.2,172.3;us_medic
+00518;VE;L. Castillo;-169.2,155.7,-67.4,0.0;ustnk_m1a2;ustnk_m1a2_cupolabase;False
+00518;SP;M. Fritze;-186.0,154.7,-52.1,180.0;us
+00518;WP;M. Fritze;-186.0,154.7,-52.1,180.0;usrif_remington11-87
+00518;KP;M. Fritze;-186.0,154.7,-52.1,180.0;us_engineer
+00520;WP;L. Gustavsson;-68.9,154.2,-154.5,15.2;kni_knife
+00520;SC;L. Gustavsson;2
+00520;KL;J. Hartling;-68.2,154.2,-151.8,-164.8;L. Gustavsson;-68.4,154.2,-152.6,15.1;kni_knife
+00520;WP;L. Gustavsson;-68.4,154.2,-152.3,15.2;ushgr_m67
+00521;KD;S. Parkinson;-65.7,153.3,-166.2,0.0;ch_medic
+00522;KD;T. Karlsson;-72.8,153.3,-160.2,0.0;us_specops
+00523;WP;P. OShaughnessy;-209.8,154.3,-199.0,-78.6;ushgr_m67
+00523;WP;L. Gustavsson;-61.5,154.2,-147.5,55.5;kni_knife
+00523;WP;L. Gustavsson;-61.5,154.2,-147.5,55.5;chsht_norinco982
+00523;DT;H. Karlsson;-70.0,153.3,-178.9,0.0
+00524;SP;H. Karlsson;-52.7,154.2,-165.9,-51.1;ch
+00524;WP;H. Karlsson;-52.7,154.2,-165.9,-51.1;chrif_type85
+00524;KP;H. Karlsson;-52.7,154.2,-165.9,-51.1;ch_at
+00524;VX;Luda;-265.7,154.6,-196.3,157.3;jeep_faav;jeep_faav_driver
+00524;KD;J. Hartling;-68.0,153.3,-150.2,0.0;us_engineer
+00525;WP;P. OShaughnessy;-213.3,154.3,-200.2,-11.9;chsht_norinco982
+00525;WP;D. Gothberg;-53.9,154.2,-160.3,-15.9;ushgr_m67
+00525;VE;R. Smedberg;-249.2,154.0,-246.3,90.0;aav_type95;aav_type95_driver;False
+00526;SC;M. Bagge;2
+00526;KL;L. Gustavsson;-54.9,154.2,-142.9,55.5;M. Bagge;-26.5,154.2,-123.4,-124.5;uslmg_m249saw
+00526;WP;D. Gothberg;-53.5,154.2,-159.8,36.5;chlmg_type95
+00530;KD;L. Gustavsson;-56.3,153.3,-144.0,0.0;ch_engineer
+00532;DT;S. Parkinson;-65.7,153.3,-166.2,0.0
+00532;SP;S. Parkinson;-50.5,154.2,-156.1,18.0;ch
+00532;WP;S. Parkinson;-50.5,154.2,-156.1,18.0;rurif_ak47
+00532;KP;S. Parkinson;-50.5,154.2,-156.1,18.0;ch_medic
+00533;DT;T. Karlsson;-72.8,153.3,-160.2,0.0
+00533;WP;S. Parkinson;-50.5,154.2,-156.1,18.0;ushgr_m67
+00533;SP;T. Karlsson;97.0,154.4,-100.0,-31.4;us
+00533;WP;T. Karlsson;97.0,154.4,-100.0,-31.4;usrif_m24
+00533;KP;T. Karlsson;97.0,154.4,-100.0,-31.4;us_sniper
+00535;DT;J. Hartling;-68.0,153.3,-150.2,0.0
+00536;SP;J. Hartling;-35.6,154.2,-124.5,176.4;us
+00536;WP;J. Hartling;-35.6,154.2,-124.5,176.4;usrif_m203
+00536;KP;J. Hartling;-35.6,154.2,-124.5,176.4;us_assault
+00536;VX;T. Soderman;-230.1,154.5,-179.1,-134.8;jep_paratrooper;jep_paratrooper_driver
+00536;VE;T. Karlsson;115.1,154.4,-95.0,-32.0;ahe_ah1z;ahe_ah1z_driver;False
+00537;VE;T. Soderman;-232.3,153.9,-178.3,-146.0;jep_paratrooper;jep_paratrooper_driver;False
+00538;WP;M. Bagge;-35.1,154.2,-131.9,-124.0;uspis_92fs
+00538;SC;D. Gothberg;2
+00538;KL;M. Bagge;-35.1,154.2,-131.9,-124.0;D. Gothberg;-49.5,154.2,-153.2,35.9;chlmg_type95
+00538;WP;S. Parkinson;-50.5,154.2,-156.1,18.0;rurif_ak47
+00538;VX;T. Soderman;-230.4,154.5,-179.0,-145.7;jep_paratrooper;jep_paratrooper_driver
+00538;SC;Luda;2
+00538;KL;P. OShaughnessy;-216.5,154.3,-209.1,-86.9;Luda;-255.5,154.3,-209.2,100.1;usrif_m203
+00539;VE;T. Soderman;-232.3,153.9,-178.3,-145.3;jep_paratrooper;jep_paratrooper_driver;False
+00541;VX;T. Soderman;-230.4,154.5,-179.0,-145.1;jep_paratrooper;jep_paratrooper_driver
+00541;DT;L. Gustavsson;-56.3,153.3,-144.0,0.0
+00541;SP;L. Gustavsson;-261.0,154.6,-232.0,0.1;ch
+00541;WP;L. Gustavsson;-261.0,154.6,-232.0,0.1;chrif_type95
+00541;KP;L. Gustavsson;-261.0,154.6,-232.0,0.1;ch_specops
+00541;VE;T. Soderman;-232.3,153.9,-178.3,-145.1;jep_paratrooper;jep_paratrooper_driver;False
+00542;WP;H. Karlsson;-44.1,154.2,-144.3,23.6;chpis_qsz92
+00542;KD;M. Bagge;-35.3,153.3,-130.6,0.0;us_support
+00542;KD;P. OShaughnessy;-214.4,153.4,-208.1,0.0;ch_engineer
+00543;VX;T. Soderman;-232.3,154.6,-182.2,-149.9;jep_paratrooper;jep_paratrooper_driver
+00543;WP;J. Hartling;-35.6,154.2,-124.5,176.4;uspis_92fs
+00544;VE;T. Soderman;-235.0,154.0,-182.9,-152.6;jep_paratrooper;jep_paratrooper_driver;False
+00545;WP;D. Gothberg;-43.9,154.2,-147.8,4.8;chpis_qsz92
+00545;VX;T. Soderman;-233.1,154.6,-183.3,-152.9;jep_paratrooper;jep_paratrooper_driver
+00546;WP;S. Parkinson;-47.0,154.2,-145.6,28.7;chpis_qsz92
+00546;VE;T. Soderman;-235.1,154.0,-182.9,-153.1;jep_paratrooper;jep_paratrooper_driver;False
+00547;VX;T. Soderman;-233.1,154.6,-183.3,-153.1;jep_paratrooper;jep_paratrooper_driver
+00548;VE;T. Soderman;-235.1,154.0,-182.9,-153.1;jep_paratrooper;jep_paratrooper_driver;False
+00548;WP;J. Hartling;-37.6,154.2,-129.2,-156.8;usrgl_m203
+00549;WP;H. Karlsson;-41.9,154.2,-139.3,23.3;chrif_type85
+00549;VX;T. Soderman;-233.1,154.6,-183.3,-153.1;jep_paratrooper;jep_paratrooper_driver
+00550;WP;J. Hartling;-37.6,154.2,-129.2,-156.8;usrif_m203
+00550;VE;T. Soderman;-235.1,154.0,-182.9,-153.1;jep_paratrooper;jep_paratrooper_driver;False
+00550;SC;J. Hartling;2
+00550;KL;H. Karlsson;-41.9,154.2,-139.3,23.3;J. Hartling;-37.6,154.2,-129.2,-156.8;usrgl_m203
+00551;WP;D. Gothberg;-39.6,154.2,-145.4,7.1;ushgr_m67
+00552;VX;T. Soderman;-233.1,154.6,-183.3,-153.1;jep_paratrooper;jep_paratrooper_driver
+00552;WP;S. Parkinson;-44.5,154.2,-141.0,30.0;rurif_ak47
+00553;VE;T. Soderman;-235.1,154.0,-182.9,-153.1;jep_paratrooper;jep_paratrooper_driver;False
+00553;DT;M. Bagge;-35.3,153.3,-130.6,0.0
+00553;DT;P. OShaughnessy;-214.4,153.4,-208.1,0.0
+00553;SP;M. Bagge;73.0,154.4,-23.0,-113.2;us
+00553;WP;M. Bagge;73.0,154.4,-23.0,-113.2;usrif_remington11-87
+00553;KP;M. Bagge;73.0,154.4,-23.0,-113.2;us_engineer
+00553;WP;D. Gothberg;-39.5,154.2,-145.3,-17.1;chlmg_type95
+00554;SP;P. OShaughnessy;-91.5,154.2,-297.0,-61.5;ch
+00554;WP;P. OShaughnessy;-91.5,154.2,-297.0,-61.5;chsni_type88
+00554;KP;P. OShaughnessy;-91.5,154.2,-297.0,-61.5;ch_sniper
+00554;VX;T. Soderman;-233.1,154.6,-183.3,-153.1;jep_paratrooper;jep_paratrooper_driver
+00555;KD;H. Karlsson;-41.0,153.3,-137.6,0.0;ch_at
+00555;VE;T. Soderman;-235.1,154.0,-182.9,-153.1;jep_paratrooper;jep_paratrooper_driver;False
+00555;VE;L. Gustavsson;-252.9,156.9,-216.4,0.0;aav_type95;aav_type95_passenger;True
+00556;VX;T. Soderman;-233.1,154.6,-183.3,-153.1;jep_paratrooper;jep_paratrooper_driver
+00556;WP;D. Gothberg;-39.6,154.2,-145.9,112.3;chpis_qsz92
+00556;WP;S. Parkinson;-58.6,154.2,-140.1,-109.5;ushgr_m67
+00557;VE;T. Soderman;-235.1,154.0,-182.9,-153.1;jep_paratrooper;jep_paratrooper_driver;False
+00557;WP;M. Fritze;-111.2,154.2,-159.7,69.5;ushgr_m67
+00558;VX;T. Soderman;-233.1,154.6,-183.3,-153.1;jep_paratrooper;jep_paratrooper_driver
+00559;VE;P. OShaughnessy;-107.1,154.1,-280.9,0.0;jep_nanjing;jep_nanjing_driver;False
+00559;VE;T. Soderman;-235.1,154.0,-182.9,-153.1;jep_paratrooper;jep_paratrooper_driver;False
+00559;WP;S. Parkinson;-58.6,154.2,-140.1,70.3;rurif_ak47
+00560;VE;N. Goksu;-107.1,155.6,-281.2,0.0;jep_nanjing;jep_nanjing_cupolabase;False
+00560;VX;T. Soderman;-233.1,154.6,-183.3,-153.1;jep_paratrooper;jep_paratrooper_driver
+00561;VE;T. Soderman;-235.1,154.0,-182.9,-153.1;jep_paratrooper;jep_paratrooper_driver;False
+00562;VX;T. Soderman;-235.3,154.6,-187.0,-150.9;jep_paratrooper;jep_paratrooper_driver
+00564;VE;T. Soderman;-237.6,153.8,-187.1,0.0;jep_paratrooper;jep_paratrooper_gunbase;False
+00564;SC;R. Smedberg;1
+00564;HL;R. Smedberg;-253.4,154.0,-216.0,-39.9;<?.Object instance at 0x0D19F210>
+00564;CP;4012;-254.0,153.3,-210.0,0.0;top;ch
+00565;VX;T. Soderman;-238.8,154.2,-185.4,-151.5;jep_paratrooper;jep_paratrooper_gunbase
+00565;SC;M. Fritze;2
+00565;SC;J. Hartling;1
+00565;KL;S. Parkinson;-55.5,154.2,-138.5,62.6;M. Fritze;-99.9,152.9,-155.4,69.2;ushgr_m67
+00565;AS;J. Hartling;-37.7,154.2,-129.3,-177.3;damage
+00565;VX;N. Goksu;-114.1,154.3,-280.9,-63.5;jep_nanjing;jep_nanjing_cupolabase
+00566;DT;H. Karlsson;-41.0,153.3,-137.6,0.0
+00566;WP;M. Fritze;-99.8,152.9,-155.6,129.3;usrif_remington11-87
+00566;WP;N. Goksu;-114.0,154.2,-281.0,2.5;ushgr_m67
+00566;SP;H. Karlsson;-41.1,154.2,-144.1,106.3;ch
+00566;WP;H. Karlsson;-41.1,154.2,-144.1,106.3;chsht_norinco982
+00566;KP;H. Karlsson;-41.1,154.2,-144.1,106.3;ch_engineer
+00566;SC;M. Sjoberg;2
+00566;SC;U. Rask;1
+00566;CP;4009;-92.3,153.2,-260.8,0.0;middle;None
+00566;VE;T. Soderman;-238.2,153.9,-188.0,-152.2;jep_paratrooper;jep_paratrooper_driver;False
+00566;VX;P. OShaughnessy;-114.1,154.5,-284.3,-49.6;jep_nanjing;jep_nanjing_driver
+00567;VX;T. Soderman;-236.3,154.5,-188.4,-152.8;jep_paratrooper;jep_paratrooper_driver
+00567;VD;ahe_ah1z;-114.6,213.2,-154.4,-113.7;R. Smedberg;-253.4,154.0,-216.0,-39.8
+00567;SC;R. Smedberg;2
+00567;SC;L. Gustavsson;1
+00567;KL;T. Karlsson;-114.6,213.2,-154.4,-113.7;R. Smedberg;-253.4,154.0,-216.0,-39.8;aav_type95_qw2launcher
+00567;AS;L. Gustavsson;-252.3,156.9,-217.2,0.0;driver
+00567;KD;T. Karlsson;-114.6,213.2,-154.4,-113.7;us_sniper
+00567;VX;T. Karlsson;-72.8,153.3,-160.2,0.0;ahe_ah1z;ahe_ah1z_driver
+00567;DT;T. Karlsson;-114.6,213.2,-154.4,-113.7
+00568;VE;T. Soderman;-238.3,153.9,-187.9,-153.9;jep_paratrooper;jep_paratrooper_driver;False
+00568;WP;P. OShaughnessy;-113.2,154.2,-276.1,12.9;ushgr_m67
+00568;SC;H. Karlsson;2
+00568;SC;D. Gothberg;1
+00568;KL;J. Hartling;-37.7,154.2,-129.3,-177.3;H. Karlsson;-35.1,154.2,-141.7,-12.4;chsht_norinco982
+00568;AS;D. Gothberg;-35.9,154.2,-143.9,-6.8;damage
+00568;WP;D. Gothberg;-35.9,154.2,-143.9,-6.8;chlmg_type95
+00569;VX;T. Soderman;-236.3,154.4,-188.3,-155.3;jep_paratrooper;jep_paratrooper_driver
+00570;WP;N. Goksu;-101.7,154.2,-275.9,141.7;chsht_norinco982
+00570;VE;T. Soderman;-238.4,153.9,-187.9,-155.3;jep_paratrooper;jep_paratrooper_driver;False
+00570;KD;S. Parkinson;-55.9,153.3,-134.0,0.0;ch_medic
+00570;WP;P. OShaughnessy;-108.2,154.2,-272.6,120.3;chsni_type88
+00571;VX;T. Soderman;-236.3,154.4,-188.3,-155.3;jep_paratrooper;jep_paratrooper_driver
+00572;WP;P. OShaughnessy;-111.6,154.2,-277.9,-143.1;ushgr_m67
+00572;WP;N. Goksu;-99.0,154.2,-286.8,89.4;ushgr_m67
+00572;SC;L. Gustavsson;2
+00572;SC;R. Smedberg;1
+00572;SC;L. Gustavsson;1
+00572;KL;Luda;-255.5,154.3,-209.2,98.7;L. Gustavsson;-255.1,156.8,-215.0,5.5;chrif_type95
+00572;AS;R. Smedberg;-254.6,154.0,-213.5,18.2;driver
+00572;VE;T. Soderman;-238.4,153.9,-187.9,-155.3;jep_paratrooper;jep_paratrooper_driver;False
+00572;SC;U. Rask;2
+00572;SC;L. Castillo;1
+00572;KL;N. Goksu;-99.0,154.2,-286.6,-0.8;U. Rask;-99.4,153.9,-261.8,149.8;coaxial_browning
+00572;AS;L. Castillo;-99.7,155.7,-261.5,0.0;driver
+00572;KD;J. Hartling;-38.5,153.3,-126.5,0.0;us_assault
+00576;WP;P. OShaughnessy;-100.7,154.2,-269.5,133.7;chsni_type88
+00576;KD;Luda;-255.2,153.4,-207.8,0.0;us_assault
+00576;KD;N. Goksu;-98.9,153.3,-287.7,0.0;ch_engineer
+00577;WP;P. OShaughnessy;-97.4,154.2,-279.5,163.2;ushgr_m67
+00578;SC;M. Sjoberg;1
+00578;HL;M. Sjoberg;-89.0,154.0,-263.7,106.5;<?.Object instance at 0x0D157968>
+00580;DT;S. Parkinson;-55.9,153.3,-134.0,0.0
+00580;SP;S. Parkinson;-255.6,155.0,-237.3,0.0;ch
+00580;WP;S. Parkinson;-255.6,155.0,-237.3,0.0;rurif_ak47
+00580;KP;S. Parkinson;-255.6,155.0,-237.3,0.0;ch_medic
+00581;WP;P. OShaughnessy;-96.4,154.2,-270.2,-105.5;chsni_type88
+00581;SC;U. Rask;2
+00581;SC;L. Castillo;1
+00581;KL;P. OShaughnessy;-101.6,154.2,-271.6,-105.6;U. Rask;-99.3,153.9,-261.5,149.9;coaxial_browning
+00581;AS;L. Castillo;-99.6,155.7,-261.1,0.0;driver
+00582;SP;T. Karlsson;-179.0,154.6,-66.0,180.0;us
+00582;WP;T. Karlsson;-179.0,154.6,-66.0,180.0;usrif_m4
+00582;KP;T. Karlsson;-179.0,154.6,-66.0,180.0;us_specops
+00583;DT;J. Hartling;-38.5,153.3,-126.5,0.0
+00584;SP;J. Hartling;68.0,154.4,-31.0,60.1;us
+00584;WP;J. Hartling;68.0,154.4,-31.0,60.1;usrif_m203
+00584;KP;J. Hartling;68.0,154.4,-31.0,60.1;us_assault
+00586;KD;P. OShaughnessy;-103.4,153.3,-272.2,0.0;ch_sniper
+00587;DT;Luda;-255.2,153.4,-207.8,0.0
+00587;SP;Luda;-149.2,158.9,-47.4,180.0;us
+00587;WP;Luda;-149.2,158.9,-47.4,180.0;usrif_m203
+00587;KP;Luda;-149.2,158.9,-47.4,180.0;us_assault
+00587;DT;N. Goksu;-98.9,153.3,-287.7,0.0
+00588;SP;N. Goksu;-261.0,154.6,-232.0,0.1;ch
+00588;WP;N. Goksu;-261.0,154.6,-232.0,0.1;rurif_gp25
+00588;KP;N. Goksu;-261.0,154.6,-232.0,0.1;ch_assault
+00588;SC;M. Sjoberg;2
+00588;SC;U. Rask;1
+00588;CP;4009;-92.3,153.2,-260.8,0.0;top;us
+00589;VX;T. Soderman;-155.3,154.4,-293.1,80.4;jep_paratrooper;jep_paratrooper_driver
+00590;VE;T. Soderman;-154.1,153.9,-294.9,79.8;jep_paratrooper;jep_paratrooper_driver;False
+00590;VE;M. Fritze;-108.1,153.9,-253.7,-0.0;tnk_type98;tnk_type98_driver;False
+00590;WP;D. Gothberg;-55.9,154.2,-188.7,-142.1;ushgr_m67
+00591;VX;T. Soderman;-154.9,154.4,-293.1,79.8;jep_paratrooper;jep_paratrooper_driver
+00592;VE;T. Soderman;-154.1,153.9,-294.9,79.8;jep_paratrooper;jep_paratrooper_driver;False
+00592;VX;S. Pinkerton;-79.8,154.4,-260.2,31.0;usjep_hmmwv;usjep_hmmwv_cupolabase
+00593;VX;M. Sjoberg;-83.7,154.3,-259.1,24.8;usjep_hmmwv;usjep_hmmwv_driver
+00593;VX;R. Smedberg;-257.0,154.5,-213.1,9.1;aav_type95;aav_type95_driver
+00593;VE;S. Pinkerton;-82.0,153.7,-260.3,0.0;usjep_hmmwv;usjep_hmmwv_cupolabase;False
+00593;VX;L. Gustavsson;-257.0,154.5,-213.1,9.1;aav_type95;aav_type95_passenger
+00594;WP;L. Gustavsson;-256.9,154.3,-212.7,9.1;c4_explosives
+00594;VE;M. Sjoberg;-81.9,154.0,-260.1,23.2;usjep_hmmwv;usjep_hmmwv_driver;False
+00595;VX;S. Pinkerton;-80.3,154.3,-261.0,23.2;usjep_hmmwv;usjep_hmmwv_cupolabase
+00595;WP;L. Gustavsson;-256.9,154.3,-212.7,9.1;chrif_type95
+00596;VX;M. Sjoberg;-83.8,154.3,-259.4,23.2;usjep_hmmwv;usjep_hmmwv_driver
+00596;VE;M. Sjoberg;-82.0,153.7,-260.3,0.0;usjep_hmmwv;usjep_hmmwv_cupolabase;False
+00596;VX;M. Sjoberg;-80.3,154.3,-261.0,23.2;usjep_hmmwv;usjep_hmmwv_cupolabase
+00596;DT;P. OShaughnessy;-103.4,153.3,-272.2,0.0
+00596;SP;P. OShaughnessy;-262.7,154.3,-209.4,-4.2;ch
+00596;WP;P. OShaughnessy;-262.7,154.3,-209.4,-4.2;chrif_type85
+00596;KP;P. OShaughnessy;-262.7,154.3,-209.4,-4.2;ch_at
+00597;VE;N. Goksu;-263.0,153.7,-196.0,176.4;jeep_faav;jeep_faav_driver;False
+00598;WP;H. Karlsson;-54.5,154.2,-199.3,-139.3;ushgr_m67
+00599;VX;N. Goksu;-265.3,154.5,-195.2,176.4;jeep_faav;jeep_faav_driver
+00602;WP;S. Pinkerton;-92.9,154.2,-268.1,109.3;ushgr_m67
+00602;WP;M. Sjoberg;-76.8,154.2,-242.0,4.6;ushgr_m67
+00603;SC;M. Fritze;2
+00603;KL;D. Gothberg;-73.8,154.2,-204.2,-116.4;M. Fritze;-110.6,153.9,-221.7,-62.1;tnk_type98_barrel
+00603;WP;M. Sjoberg;-76.7,154.2,-241.2,13.8;usrif_m16a2
+00604;WP;S. Parkinson;-197.2,154.2,-218.6,89.8;ushgr_m67
+00605;VE;J. Hartling;115.1,154.4,-95.0,-32.0;ahe_ah1z;ahe_ah1z_driver;False
+00607;VX;T. Soderman;-101.3,154.4,-304.2,-17.4;jep_paratrooper;jep_paratrooper_driver
+00608;WP;S. Pinkerton;-101.0,154.2,-273.5,177.0;usrif_remington11-87
+00608;VE;M. Sjoberg;-82.0,153.7,-260.3,0.0;usjep_hmmwv;usjep_hmmwv_cupolabase;False
+00608;SC;S. Pinkerton;2
+00608;SC;M. Fritze;1
+00608;KL;T. Soderman;-101.5,154.2,-303.4,-17.4;S. Pinkerton;-101.0,154.2,-273.6,-151.5;ushgr_m67
+00608;AS;M. Fritze;-152.5,153.9,-208.4,-86.5;damage
+00608;WP;L. Gustavsson;-222.3,154.3,-222.1,107.3;ushgr_m67
+00608;KD;D. Gothberg;-71.0,153.4,-201.7,0.0;ch_support
+00609;WP;H. Karlsson;-76.3,154.2,-211.8,-173.3;chsht_norinco982
+00610;WP;N. Goksu;-248.6,154.3,-214.5,106.7;rurgl_gp25
+00610;WP;S. Parkinson;-183.4,154.2,-210.4,-179.5;rurif_ak47
+00611;WP;S. Parkinson;-183.6,154.2,-211.9,-169.7;ushgr_m67
+00611;WP;R. Smedberg;-261.3,154.3,-203.2,106.7;ushgr_m67
+00611;SC;M. Fritze;2
+00611;KL;S. Parkinson;-183.8,154.2,-211.5,-171.9;M. Fritze;-188.0,153.9,-205.3,-87.0;tnk_type98_barrel
+00611;KD;S. Parkinson;-183.8,154.2,-211.5,-171.9;ch_medic
+00611;DT;S. Parkinson;-183.8,154.2,-211.5,-171.9
+00611;WP;H. Karlsson;-73.7,154.2,-218.0,-84.5;ushgr_m67
+00613;KD;T. Soderman;-101.3,153.3,-302.6,0.0;ch_support
+00613;VE;P. OShaughnessy;-219.1,153.3,-216.0,72.9;ats_tow;ats_tow_driver;False
+00615;WP;N. Goksu;-245.7,154.3,-213.7,-86.3;rurif_gp25
+00615;WP;R. Smedberg;-248.6,154.3,-204.0,-10.9;rurif_ak47
+00616;VE;S. Pinkerton;-111.4,155.6,-284.4,0.0;jep_nanjing;jep_nanjing_cupolabase;False
+00617;SC;M. Fritze;2
+00617;KL;P. OShaughnessy;-219.1,153.3,-216.0,72.9;M. Fritze;-241.7,154.0,-206.1,-83.9;tnk_type98_barrel
+00617;KD;P. OShaughnessy;-219.1,153.3,-216.0,72.9;ch_at
+00617;VX;P. OShaughnessy;-103.4,153.3,-272.2,0.0;ats_tow;ats_tow_driver
+00617;DT;P. OShaughnessy;-219.1,153.3,-216.0,72.9
+00617;WP;N. Goksu;-252.7,154.3,-213.5,-55.2;rurgl_gp25
+00618;WP;H. Karlsson;-73.0,154.2,-219.5,-163.4;chsht_norinco982
+00618;DT;D. Gothberg;-71.0,153.4,-201.7,0.0
+00618;SP;D. Gothberg;-232.5,154.5,-270.0,0.8;ch
+00618;WP;D. Gothberg;-232.5,154.5,-270.0,0.8;chrif_type85
+00618;KP;D. Gothberg;-232.5,154.5,-270.0,0.8;ch_at
+00619;VX;S. Pinkerton;-111.0,154.4,-282.5,-48.2;jep_nanjing;jep_nanjing_cupolabase
+00621;VE;S. Pinkerton;-111.4,155.6,-284.4,0.0;jep_nanjing;jep_nanjing_cupolabase;False
+00622;VD;jep_paratrooper;-100.1,153.9,-301.0,-32.8;None;None
+00622;WP;L. Gustavsson;-214.7,154.3,-218.7,-69.0;c4_explosives
+00623;DT;T. Soderman;-101.3,153.3,-302.6,0.0
+00623;SP;T. Soderman;-250.0,154.3,-210.1,-141.6;ch
+00623;WP;T. Soderman;-250.0,154.3,-210.1,-141.6;chrif_type85
+00623;KP;T. Soderman;-250.0,154.3,-210.1,-141.6;ch_at
+00624;VX;M. Fritze;-249.3,154.5,-208.4,-42.9;tnk_type98;tnk_type98_driver
+00624;WP;T. Soderman;-250.0,154.3,-210.1,105.4;chat_eryx
+00624;WP;N. Goksu;-250.8,154.3,-213.4,86.3;rurif_gp25
+00624;WP;T. Soderman;-250.0,154.3,-210.1,16.9;chrif_type85
+00624;VX;M. Sjoberg;-80.3,154.3,-261.1,23.0;usjep_hmmwv;usjep_hmmwv_cupolabase
+00625;WP;L. Gustavsson;-215.0,154.3,-216.0,158.4;chrif_type95
+00625;WP;D. Gothberg;-217.2,154.3,-255.5,119.9;chat_eryx
+00625;WP;R. Smedberg;-221.4,154.3,-199.4,69.4;ushgr_m67
+00625;VD;tnk_type98;-247.5,154.0,-206.7,-42.9;L. Gustavsson;-214.2,154.3,-215.9,-91.1
+00625;VE;M. Sjoberg;-82.0,153.7,-260.4,0.0;usjep_hmmwv;usjep_hmmwv_cupolabase;False
+00626;SP;S. Parkinson;-232.5,154.5,-270.0,0.8;ch
+00626;WP;S. Parkinson;-232.5,154.5,-270.0,0.8;rurif_ak47
+00626;KP;S. Parkinson;-232.5,154.5,-270.0,0.8;ch_medic
+00626;WP;N. Goksu;-251.3,154.3,-220.9,-107.2;rurgl_gp25
+00627;WP;L. Gustavsson;-210.5,154.2,-214.7,-88.6;c4_explosives
+00627;WP;S. Parkinson;-232.5,154.3,-270.0,-82.1;ushgr_m67
+00627;WP;N. Goksu;-250.0,154.3,-221.6,115.4;rurif_gp25
+00628;WP;L. Gustavsson;-209.7,154.2,-216.9,165.8;ushgr_m67
+00628;SC;M. Fritze;2
+00628;KL;T. Soderman;-253.2,154.3,-216.3,8.7;M. Fritze;-252.8,154.3,-213.7,-176.7;usrif_remington11-87
+00628;WP;L. Gustavsson;-209.3,154.2,-218.7,-178.4;chrif_type95
+00629;WP;R. Smedberg;-217.7,154.3,-206.5,-27.9;rurif_ak47
+00629;SC;N. Goksu;2
+00629;SC;N. Goksu;1
+00629;KL;M. Fritze;-252.8,154.3,-213.7,-176.7;N. Goksu;-250.6,154.3,-220.1,-14.6;rurif_gp25
+00630;WP;N. Goksu;-250.6,154.3,-220.1,-14.6;rurgl_gp25
+00630;WP;L. Gustavsson;-201.3,154.2,-216.0,68.6;ushgr_m67
+00630;WP;H. Karlsson;-79.3,154.2,-254.7,-151.3;ushgr_m67
+00631;WP;R. Smedberg;-224.9,154.3,-194.2,-30.6;ushgr_m67
+00631;SC;M. Sjoberg;2
+00631;SC;M. Sjoberg;1
+00631;KL;H. Karlsson;-78.7,154.2,-256.1,-141.9;M. Sjoberg;-82.0,153.7,-260.4,0.0;hmg_m2hb
+00632;SP;P. OShaughnessy;-252.1,154.3,-226.3,24.8;ch
+00632;WP;P. OShaughnessy;-252.1,154.3,-226.3,24.8;chrif_type85
+00632;KP;P. OShaughnessy;-252.1,154.3,-226.3,24.8;ch_at
+00632;KD;T. Soderman;-252.4,153.4,-218.0,0.0;ch_at
+00632;WP;P. OShaughnessy;-252.1,154.3,-226.3,24.8;chat_eryx
+00633;VX;L. Castillo;-215.2,154.6,-213.1,-39.2;ustnk_m1a2;ustnk_m1a2_cupolabase
+00634;KD;M. Fritze;-251.7,153.4,-212.9,0.0;us_engineer
+00634;VD;ustnk_m1a2;-214.4,154.0,-209.2,-76.8;P. OShaughnessy;-252.1,154.3,-226.3,66.3
+00634;SC;P. OShaughnessy;2
+00634;SC;D. Gothberg;1
+00634;KL;U. Rask;-214.4,154.0,-209.2,-76.8;P. OShaughnessy;-252.1,154.3,-226.3,66.3;chat_eryx
+00634;AS;D. Gothberg;-215.2,154.2,-253.6,-12.4;damage
+00634;KD;U. Rask;-214.4,154.0,-209.2,-76.8;us_sniper
+00634;VX;U. Rask;-57.7,153.3,-193.8,0.0;ustnk_m1a2;ustnk_m1a2_driver
+00634;DT;U. Rask;-214.4,154.0,-209.2,-76.8
+00634;WP;S. Parkinson;-212.8,154.2,-256.0,138.8;rurif_ak47
+00634;WP;N. Goksu;-248.9,154.3,-221.1,87.5;rurif_gp25
+00634;WP;D. Gothberg;-215.1,154.2,-253.3,-12.4;chrif_type85
+00635;WP;R. Smedberg;-223.5,154.3,-197.3,-44.8;rurif_ak47
+00635;WP;P. OShaughnessy;-252.1,154.3,-226.3,66.3;chrif_type85
+00635;WP;L. Gustavsson;-190.3,154.2,-215.6,-91.9;chrif_type95
+00636;KD;H. Karlsson;-76.6,153.3,-255.1,0.0;ch_engineer
+00636;SC;S. Parkinson;2
+00636;SC;P. OShaughnessy;1
+00636;KL;L. Castillo;-209.7,154.2,-218.8,-135.0;S. Parkinson;-208.9,154.2,-261.0,-1.2;rurif_ak47
+00636;AS;P. OShaughnessy;-248.1,154.3,-224.2,82.3;damage
+00639;VX;M. Sjoberg;-80.3,154.3,-261.1,22.9;usjep_hmmwv;usjep_hmmwv_cupolabase
+00640;KD;L. Castillo;-210.8,153.3,-216.7,0.0;us_medic
+00643;DT;T. Soderman;-252.4,153.4,-218.0,0.0
+00643;SP;T. Soderman;-234.5,154.3,-235.7,49.8;ch
+00643;WP;T. Soderman;-234.5,154.3,-235.7,49.8;chrif_type85
+00643;KP;T. Soderman;-234.5,154.3,-235.7,49.8;ch_at
+00645;DT;M. Fritze;-251.7,153.4,-212.9,0.0
+00645;SP;M. Fritze;-65.0,154.4,-257.0,135.0;us
+00645;WP;M. Fritze;-65.0,154.4,-257.0,135.0;usrif_remington11-87
+00645;KP;M. Fritze;-65.0,154.4,-257.0,135.0;us_engineer
+00646;DT;H. Karlsson;-76.6,153.3,-255.1,0.0
+00646;SP;H. Karlsson;-192.8,154.2,-284.4,-29.7;ch
+00646;WP;H. Karlsson;-192.8,154.2,-284.4,-29.7;chrif_type95
+00646;KP;H. Karlsson;-192.8,154.2,-284.4,-29.7;ch_specops
+00646;VD;ats_tow;-219.1,153.3,-216.0,72.9;None;None
+00648;VE;M. Sjoberg;-111.7,154.1,-284.1,-48.2;jep_nanjing;jep_nanjing_driver;False
+00649;SP;U. Rask;-52.1,156.0,-276.7,0.0;us
+00649;WP;U. Rask;-52.1,156.0,-276.7,0.0;usrif_remington11-87
+00649;KP;U. Rask;-52.1,156.0,-276.7,0.0;us_engineer
+00651;DT;L. Castillo;-210.8,153.3,-216.7,0.0
+00652;SP;L. Castillo;-52.4,155.7,-275.8,179.8;us
+00652;WP;L. Castillo;-52.4,155.7,-275.8,179.8;usrif_m16a2
+00652;KP;L. Castillo;-52.4,155.7,-275.8,179.8;us_medic
+00655;VE;P. OShaughnessy;-216.3,154.4,-218.1,96.9;us_bipod;us_bipod_driver;False
+00656;WP;D. Gothberg;-174.1,154.2,-293.7,-51.9;chat_eryx
+00656;VX;P. OShaughnessy;-217.6,154.4,-217.9,96.9;us_bipod;us_bipod_driver
+00656;WP;H. Karlsson;-191.1,154.2,-299.3,84.7;c4_explosives
+00657;WP;H. Karlsson;-188.4,154.2,-299.0,84.1;chrif_type95
+00658;WP;D. Gothberg;-172.0,154.2,-294.0,75.5;chrif_type85
+00658;SC;S. Pinkerton;2
+00658;SC;M. Sjoberg;1
+00658;KL;D. Gothberg;-171.9,154.2,-293.2,-1.2;S. Pinkerton;-160.1,155.6,-295.3,0.0;chhmg_type85
+00658;AS;M. Sjoberg;-160.5,154.1,-295.3,-89.6;driver
+00660;WP;H. Karlsson;-184.5,154.2,-298.5,81.0;c4_explosives
+00661;WP;N. Goksu;-198.2,154.2,-273.9,147.6;rurgl_gp25
+00661;WP;T. Soderman;-208.0,154.2,-247.8,-65.0;chat_eryx
+00662;KD;D. Gothberg;-174.0,153.3,-290.5,0.0;ch_at
+00663;VD;jep_nanjing;-186.5,154.1,-289.7,-41.0;T. Soderman;-206.5,154.2,-249.9,154.3
+00663;SC;T. Soderman;2
+00663;KL;M. Sjoberg;-186.5,154.1,-289.7,-41.0;T. Soderman;-206.5,154.2,-249.9,154.3;chat_eryx
+00663;KD;M. Sjoberg;-186.5,154.1,-289.7,-41.0;us_medic
+00663;VX;M. Sjoberg;-79.1,155.2,-167.5,43.1;jep_nanjing;jep_nanjing_driver
+00663;DT;M. Sjoberg;-186.5,154.1,-289.7,-41.0
+00663;SC;T. Soderman;2
+00663;KL;S. Pinkerton;-186.3,155.6,-290.0,0.0;T. Soderman;-206.5,154.2,-249.9,154.3;chat_eryx
+00663;KD;S. Pinkerton;-186.3,155.6,-290.0,0.0;us_engineer
+00663;VX;S. Pinkerton;-79.6,154.0,-167.2,-78.4;jep_nanjing;jep_nanjing_cupolabase
+00663;DT;S. Pinkerton;-186.3,155.6,-290.0,-41.0
+00663;WP;P. OShaughnessy;-203.4,154.2,-201.2,51.6;chpis_qsz92
+00663;WP;N. Goksu;-198.0,154.2,-274.0,135.4;rurif_gp25
+00664;WP;H. Karlsson;-183.6,154.2,-293.9,180.0;chrif_type95
+00664;WP;T. Soderman;-206.5,154.2,-249.9,168.0;chrif_type85
+00667;WP;M. Bagge;-145.3,154.2,-162.9,-126.0;ushgr_m67
+00668;SC;Luda;2
+00668;KL;P. OShaughnessy;-192.4,154.2,-192.6,51.0;Luda;-181.9,154.2,-184.1,-122.0;usrif_m203
+00668;WP;R. Smedberg;-196.2,154.2,-206.5,32.6;chpis_qsz92
+00668;WP;M. Bagge;-147.0,154.2,-164.0,-128.6;usrif_remington11-87
+00670;WP;M. Bagge;-150.6,154.2,-166.8,-128.6;ushgr_m67
+00670;SC;Luda;2
+00670;KL;R. Smedberg;-192.5,154.2,-200.8,32.5;Luda;-181.9,154.2,-184.1,-122.0;usrif_m203
+00671;WP;M. Bagge;-151.2,154.2,-167.3,-126.2;usrif_remington11-87
+00672;KD;P. OShaughnessy;-193.3,153.3,-194.8,0.0;ch_at
+00673;DT;D. Gothberg;-174.0,153.3,-290.5,0.0
+00673;SP;D. Gothberg;-223.5,155.3,-182.4,-90.0;ch
+00673;WP;D. Gothberg;-223.5,155.3,-182.4,-90.0;chsht_norinco982
+00673;KP;D. Gothberg;-223.5,155.3,-182.4,-90.0;ch_engineer
+00674;KD;R. Smedberg;-192.3,153.3,-200.7,0.0;ch_medic
+00676;WP;H. Karlsson;-148.2,154.2,-295.8,83.3;ushgr_m67
+00677;WP;M. Bagge;-167.8,154.2,-177.7,-125.7;ushgr_m67
+00677;WP;S. Parkinson;-212.4,154.3,-207.9,20.1;chpis_qsz92
+00677;WP;U. Rask;-96.4,154.2,-294.9,-69.9;ushgr_m67
+00678;WP;D. Gothberg;-227.8,154.3,-188.2,124.8;ushgr_m67
+00678;SP;M. Sjoberg;-52.1,156.0,-276.7,0.0;us
+00678;WP;M. Sjoberg;-52.1,156.0,-276.7,0.0;usrif_m16a2
+00678;KP;M. Sjoberg;-52.1,156.0,-276.7,0.0;us_medic
+00678;SP;S. Pinkerton;-149.2,158.9,-47.4,180.0;us
+00678;WP;S. Pinkerton;-149.2,158.9,-47.4,180.0;usrif_remington11-87
+00678;KP;S. Pinkerton;-149.2,158.9,-47.4,180.0;us_engineer
+00679;WP;H. Karlsson;-148.0,154.2,-295.8,83.3;chrif_type95
+00680;WP;D. Gothberg;-231.7,154.3,-191.1,-121.8;chsht_norinco982
+00680;WP;S. Parkinson;-211.9,154.3,-202.6,-12.9;ushgr_m67
+00681;WP;M. Bagge;-176.8,154.2,-183.1,-118.6;usrif_remington11-87
+00681;WP;S. Parkinson;-207.7,154.3,-200.2,62.2;rurif_ak47
+00681;WP;S. Parkinson;-207.7,154.3,-200.2,62.2;chpis_qsz92
+00683;DT;P. OShaughnessy;-193.3,153.3,-194.8,0.0
+00683;SP;P. OShaughnessy;-255.6,155.0,-237.3,0.0;ch
+00683;WP;P. OShaughnessy;-255.6,155.0,-237.3,0.0;chrif_type85
+00683;KP;P. OShaughnessy;-255.6,155.0,-237.3,0.0;ch_at
+00684;WP;U. Rask;-99.4,154.2,-294.9,-86.1;usrif_remington11-87
+00685;DT;R. Smedberg;-192.3,153.3,-200.7,0.0
+00685;SP;R. Smedberg;-149.5,154.2,-296.6,92.7;ch
+00685;WP;R. Smedberg;-149.5,154.2,-296.6,92.7;rurif_ak47
+00685;KP;R. Smedberg;-149.5,154.2,-296.6,92.7;ch_medic
+00685;WP;L. Gustavsson;-133.5,154.5,-292.6,94.0;chpis_qsz92_silencer
+00685;WP;T. Karlsson;-168.3,155.0,-161.6,-124.0;ushgr_m67
+00686;WP;M. Fritze;-73.1,154.3,-301.3,-85.4;ushgr_m67
+00687;WP;R. Smedberg;-147.1,154.2,-296.8,87.4;ushgr_m67
+00687;VE;P. OShaughnessy;-253.0,153.9,-224.5,0.0;jep_paratrooper;jep_paratrooper_gunbase;False
+00687;WP;T. Karlsson;-168.3,155.0,-161.7,-124.0;usrif_m4
+00688;WP;R. Smedberg;-147.0,154.2,-296.8,87.4;rurif_ak47
+00688;WP;N. Goksu;-140.5,154.2,-291.5,91.2;rurgl_gp25
+00688;VX;P. OShaughnessy;-254.0,154.4,-226.3,90.0;jep_paratrooper;jep_paratrooper_gunbase
+00688;VE;L. Castillo;-82.0,153.7,-260.4,0.0;usjep_hmmwv;usjep_hmmwv_cupolabase;False
+00689;VX;L. Castillo;-80.3,154.3,-261.1,22.9;usjep_hmmwv;usjep_hmmwv_cupolabase
+00689;VE;L. Castillo;-81.9,154.0,-260.3,22.9;usjep_hmmwv;usjep_hmmwv_driver;False
+00689;WP;H. Karlsson;-128.9,155.7,-295.3,88.8;chpis_qsz92_silencer
+00689;WP;N. Goksu;-140.5,154.2,-291.4,91.2;rurif_gp25
+00689;WP;T. Karlsson;-168.3,155.0,-166.2,-127.5;ushgr_m67
+00689;WP;M. Bagge;-201.7,154.2,-188.6,-90.1;uspis_92fs
+00690;VX;L. Castillo;-83.7,154.3,-259.5,22.9;usjep_hmmwv;usjep_hmmwv_driver
+00690;WP;S. Parkinson;-211.6,154.2,-188.6,101.4;rurif_ak47
+00690;WP;M. Fritze;-88.3,154.2,-301.1,-77.8;usrif_remington11-87
+00691;WP;L. Gustavsson;-123.6,155.2,-293.3,95.8;chrif_type95
+00691;WP;S. Parkinson;-211.6,154.2,-188.6,101.4;defibrillator
+00691;WP;M. Bagge;-201.9,154.2,-188.6,-148.9;kni_knife
+00692;WP;L. Gustavsson;-123.5,155.2,-293.3,95.4;kni_knife
+00692;SC;Luda;2
+00692;KL;D. Gothberg;-203.6,154.2,-191.0,35.2;Luda;-216.4,155.0,-189.7,107.3;usrif_m203
+00693;WP;T. Karlsson;-168.3,155.0,-166.4,-127.5;usrif_m4
+00693;WP;M. Bagge;-203.3,154.2,-190.6,-144.8;uspis_92fs
+00693;WP;L. Castillo;-88.8,154.2,-261.1,-128.0;ushgr_m67
+00693;SC;L. Gustavsson;2
+00693;KL;U. Rask;-120.5,155.3,-293.6,-82.9;L. Gustavsson;-121.0,155.4,-293.5,97.2;kni_knife
+00693;WP;L. Gustavsson;-121.0,155.4,-293.5,97.2;chrif_type95
+00694;VD;jeep_faav;-263.0,153.7,-196.0,176.4;None;None
+00694;SC;S. Parkinson;2
+00694;KL;Luda;-216.4,155.0,-189.7,107.3;S. Parkinson;-215.2,155.0,-190.3,-61.2;defibrillator
+00694;WP;S. Parkinson;-215.9,155.0,-190.0,-61.2;rurif_ak47
+00696;WP;L. Castillo;-89.0,154.2,-261.1,-128.0;usrif_m16a2
+00696;KD;D. Gothberg;-200.4,153.3,-190.6,0.0;ch_engineer
+00697;VE;L. Gustavsson;-107.1,153.7,-281.0,0.0;usjep_hmmwv;usjep_hmmwv_cupolabase;False
+00697;SC;T. Karlsson;2
+00697;SC;M. Bagge;1
+00697;KL;S. Parkinson;-213.5,154.2,-186.8,127.8;T. Karlsson;-173.0,154.2,-177.2,-103.4;usrif_m4
+00697;AS;M. Bagge;-203.3,154.2,-190.5,-72.6;damage
+00697;WP;M. Fritze;-108.4,154.6,-292.4,4.6;ushgr_m67
+00697;KD;U. Rask;-118.4,154.3,-293.2,0.0;us_engineer
+00697;WP;M. Bagge;-203.7,154.2,-190.1,-116.0;usrif_remington11-87
+00698;KD;Luda;-216.6,154.1,-188.2,0.0;us_assault
+00698;WP;H. Karlsson;-117.8,155.7,-295.8,52.6;chrif_type95
+00698;VE;S. Pinkerton;-179.2,153.9,-33.8,151.8;ustnk_m1a2;ustnk_m1a2_driver;False
+00700;WP;M. Fritze;-123.0,154.2,-282.5,-56.5;usrif_remington11-87
+00701;KD;S. Parkinson;-214.8,153.3,-186.7,0.0;ch_medic
+00701;SC;L. Gustavsson;2
+00701;KL;M. Fritze;-122.8,154.2,-284.8,166.9;L. Gustavsson;-107.1,153.7,-281.0,0.0;hmg_m2hb
+00702;WP;H. Karlsson;-117.8,155.7,-295.8,-7.6;ushgr_m67
+00702;WP;L. Castillo;-90.3,154.2,-262.8,-140.3;ushgr_m67
+00702;SC;J. Hartling;2
+00702;KL;H. Karlsson;-117.4,155.6,-295.2,39.3;J. Hartling;-179.9,189.2,-204.4,138.1;ahe_ah1z_hydralauncher
+00704;WP;T. Karlsson;-191.2,154.2,-193.9,-114.1;uspis_92fs_silencer
+00704;WP;L. Castillo;-90.3,154.2,-262.8,-140.3;usrif_m16a2
+00705;KD;M. Fritze;-124.5,153.3,-285.3,0.0;us_engineer
+00706;VE;T. Soderman;-107.1,154.0,-280.9,-0.0;usjep_hmmwv;usjep_hmmwv_driver;False
+00706;WP;R. Smedberg;-122.5,154.2,-279.4,63.1;chpis_qsz92
+00706;WP;L. Castillo;-94.4,154.2,-265.5,-140.3;uspis_92fs
+00707;KD;H. Karlsson;-117.8,154.2,-292.6,0.0;ch_specops
+00707;DT;D. Gothberg;-200.4,153.3,-190.6,0.0
+00707;WP;L. Castillo;-96.8,154.2,-266.6,-113.8;usrif_m16a2
+00707;SP;D. Gothberg;-232.5,154.5,-270.0,0.8;ch
+00707;WP;D. Gothberg;-232.5,154.5,-270.0,0.8;chrif_type95
+00707;KP;D. Gothberg;-232.5,154.5,-270.0,0.8;ch_specops
+00708;DT;U. Rask;-118.4,154.3,-293.2,0.0
+00708;WP;P. OShaughnessy;-211.9,154.3,-203.2,66.0;chpis_qsz92
+00708;WP;L. Castillo;-97.1,154.2,-266.8,-146.6;uspis_92fs
+00709;SP;U. Rask;-149.2,158.9,-47.4,180.0;us
+00709;WP;U. Rask;-149.2,158.9,-47.4,180.0;uslmg_m249saw
+00709;KP;U. Rask;-149.2,158.9,-47.4,180.0;us_support
+00709;DT;Luda;-216.6,154.1,-188.2,0.0
+00709;SP;Luda;-179.0,154.6,-66.0,180.0;us
+00709;WP;Luda;-179.0,154.6,-66.0,180.0;usrif_m203
+00709;KP;Luda;-179.0,154.6,-66.0,180.0;us_assault
+00709;WP;R. Smedberg;-114.7,154.2,-273.0,-50.2;rurif_ak47
+00709;WP;T. Karlsson;-198.6,154.2,-197.3,-113.8;usrif_m4
+00710;WP;L. Castillo;-102.5,154.2,-268.7,-108.3;usrif_m16a2
+00710;WP;R. Smedberg;-119.2,154.2,-274.2,179.1;chpis_qsz92
+00711;SC;L. Gustavsson;2
+00711;SC;T. Soderman;1
+00711;KL;L. Castillo;-102.6,154.2,-268.7,-10.8;L. Gustavsson;-101.1,153.7,-264.2,0.0;hmg_m2hb
+00711;AS;T. Soderman;-101.0,154.0,-264.2,73.1;driver
+00711;WP;N. Goksu;-99.6,154.2,-272.9,-32.5;rurgl_gp25
+00711;WP;R. Smedberg;-117.5,154.2,-273.7,71.5;ushgr_m67
+00711;WP;M. Bagge;-234.8,154.3,-189.7,141.4;uspis_92fs
+00712;VE;M. Sjoberg;-113.1,153.2,-234.9,0.0;ats_tow;ats_tow_driver;False
+00712;DT;S. Parkinson;-214.8,153.3,-186.7,0.0
+00712;SP;S. Parkinson;-226.4,154.3,-272.5,91.5;ch
+00712;WP;S. Parkinson;-226.4,154.3,-272.5,91.5;rurif_ak47
+00712;KP;S. Parkinson;-226.4,154.3,-272.5,91.5;ch_medic
+00713;TL;ch;-4
+00713;VX;M. Sjoberg;-113.1,154.4,-236.4,0.0;ats_tow;ats_tow_driver
+00713;WP;N. Goksu;-97.6,154.2,-270.8,-58.5;rurif_gp25
+00713;WP;R. Smedberg;-112.4,154.2,-271.2,25.4;rurif_ak47
+00713;WP;M. Sjoberg;-113.1,154.2,-236.4,111.5;ushgr_m67
+00714;WP;P. OShaughnessy;-211.9,154.3,-203.2,66.0;chrif_type85
+00714;WP;M. Sjoberg;-114.9,154.2,-235.5,178.5;usrif_m16a2
+00715;WP;R. Smedberg;-107.7,154.2,-268.6,112.2;chpis_qsz92
+00715;KD;L. Castillo;-103.0,153.3,-270.5,0.0;us_medic
+00715;WP;M. Bagge;-244.1,154.3,-199.5,96.8;usrif_remington11-87
+00716;DT;M. Fritze;-124.5,153.3,-285.3,0.0
+00716;SP;M. Fritze;-152.2,154.3,-52.5,9.0;us
+00716;WP;M. Fritze;-152.2,154.3,-52.5,9.0;uslmg_m249saw
+00716;KP;M. Fritze;-152.2,154.3,-52.5,9.0;us_support
+00717;WP;R. Smedberg;-102.3,154.2,-265.2,-28.0;ushgr_m67
+00717;DT;H. Karlsson;-117.8,154.2,-292.6,0.0
+00717;SP;H. Karlsson;-211.1,154.2,-284.3,38.8;ch
+00717;WP;H. Karlsson;-211.1,154.2,-284.3,38.8;chsht_norinco982
+00717;KP;H. Karlsson;-211.1,154.2,-284.3,38.8;ch_engineer
+00721;WP;R. Smedberg;-102.1,154.2,-265.1,-28.0;chpis_qsz92
+00722;WP;R. Smedberg;-102.1,154.2,-265.1,-28.0;ushgr_m67
+00722;WP;R. Smedberg;-102.1,154.2,-265.1,-28.0;rurif_ak47
+00726;SC;R. Smedberg;1
+00726;SC;T. Soderman;2
+00726;SC;N. Goksu;1
+00726;CP;4009;-92.3,153.2,-260.8,0.0;middle;None
+00726;DT;L. Castillo;-103.0,153.3,-270.5,0.0
+00726;SP;L. Castillo;-142.0,154.2,-66.9,158.6;us
+00726;WP;L. Castillo;-142.0,154.2,-66.9,158.6;usrif_m16a2
+00726;KP;L. Castillo;-142.0,154.2,-66.9,158.6;us_medic
+00727;WP;R. Smedberg;-102.1,154.2,-265.1,-28.0;medikit
+00729;VE;L. Castillo;-140.0,153.8,-49.0,-180.0;jeep_faav;jeep_faav_driver;False
+00730;WP;M. Sjoberg;-164.3,154.2,-209.9,132.4;ushgr_m67
+00731;WP;M. Sjoberg;-164.4,154.2,-209.9,-86.2;usrif_m16a2
+00732;WP;R. Smedberg;-102.6,154.2,-261.7,1.2;rurif_ak47
+00733;SC;M. Bagge;2
+00733;CP;4012;-254.0,153.3,-210.0,0.0;middle;None
+00737;WP;M. Sjoberg;-185.0,154.2,-207.0,-81.9;uspis_92fs
+00739;SC;R. Smedberg;1
+00739;SC;T. Soderman;2
+00739;SC;N. Goksu;1
+00739;CP;4009;-92.3,153.2,-260.8,0.0;top;ch
+00740;SC;T. Karlsson;2
+00740;KL;P. OShaughnessy;-211.9,154.3,-203.2,66.0;T. Karlsson;-198.6,154.2,-197.3,-113.8;usrif_m4
+00741;WP;M. Sjoberg;-195.8,154.2,-205.5,-159.0;usrif_m16a2
+00744;KD;P. OShaughnessy;-214.0,153.4,-204.9,0.0;ch_at
+00744;WP;M. Sjoberg;-199.8,154.2,-208.3,-140.0;ushgr_m67
+00746;WP;S. Parkinson;-233.2,154.3,-252.0,-175.7;ushgr_m67
+00749;WP;T. Karlsson;-206.5,154.2,-206.8,-149.4;ushgr_m67
+00749;WP;S. Parkinson;-233.2,154.3,-252.2,36.0;rurif_ak47
+00751;WP;M. Sjoberg;-211.4,154.2,-216.3,-149.3;usrif_m16a2
+00751;WP;T. Karlsson;-206.5,154.2,-206.9,-149.4;usrif_m4
+00752;WP;M. Sjoberg;-213.0,154.2,-213.3,-153.7;uspis_92fs
+00752;VX;L. Castillo;-116.4,154.6,-166.3,82.5;jeep_faav;jeep_faav_driver
+00754;WP;M. Bagge;-256.2,154.3,-199.3,151.1;ushgr_m67
+00755;DT;P. OShaughnessy;-214.0,153.4,-204.9,0.0
+00755;WP;T. Karlsson;-211.2,154.2,-214.4,-153.8;ushgr_m67
+00756;SP;P. OShaughnessy;-115.4,155.1,-258.3,51.3;ch
+00756;WP;P. OShaughnessy;-115.4,155.1,-258.3,51.3;chrif_type95
+00756;KP;P. OShaughnessy;-115.4,155.1,-258.3,51.3;ch_specops
+00757;WP;H. Karlsson;-133.6,154.4,-292.1,63.4;wrench
+00758;WP;R. Smedberg;-116.5,154.2,-263.5,-63.7;ushgr_m67
+00758;WP;P. OShaughnessy;-119.8,155.1,-257.8,-90.0;c4_explosives
+00759;WP;H. Karlsson;-133.3,154.4,-291.9,63.4;ushgr_m67
+00759;WP;D. Gothberg;-162.5,154.2,-292.4,-38.0;ushgr_m67
+00759;WP;P. OShaughnessy;-121.6,155.1,-257.3,45.9;ushgr_m67
+00760;WP;T. Karlsson;-222.1,154.3,-214.5,-123.4;usrif_m4
+00760;WP;D. Gothberg;-161.1,154.2,-292.1,52.8;c4_explosives
+00760;WP;M. Bagge;-256.2,154.3,-199.5,151.1;usrif_remington11-87
+00761;WP;P. OShaughnessy;-122.9,155.9,-256.2,81.5;c4_explosives
+00762;SC;S. Parkinson;2
+00762;SC;P. OShaughnessy;1
+00762;KL;T. Karlsson;-226.5,154.3,-213.0,-153.7;S. Parkinson;-232.6,154.3,-225.3,25.7;rurif_ak47
+00762;AS;P. OShaughnessy;-122.8,155.9,-255.9,95.3;damage
+00763;WP;N. Goksu;-112.5,155.1,-242.4,134.7;rurgl_gp25
+00763;SC;M. Bagge;2
+00763;SC;T. Karlsson;1
+00763;KL;S. Parkinson;-233.7,154.3,-222.7,-44.2;M. Bagge;-256.2,154.3,-199.5,151.1;ushgr_m67
+00763;AS;T. Karlsson;-226.8,153.4,-210.5,0.0;damage
+00763;WP;M. Sjoberg;-222.9,154.3,-230.1,-55.8;defibrillator
+00763;VX;L. Gustavsson;-127.3,154.4,-284.4,165.1;usjep_hmmwv;usjep_hmmwv_cupolabase
+00763;VE;L. Gustavsson;-125.8,155.1,-282.9,-166.6;usjep_hmmwv;usjep_hmmwv_codriver;True
+00766;KD;T. Karlsson;-226.8,153.4,-210.4,0.0;us_specops
+00767;WP;T. Karlsson;-226.8,154.4,-210.4,-165.9;usrif_m4
+00767;KP;T. Karlsson;-226.8,154.4,-210.4,-165.9;us_specops
+00767;SC;M. Sjoberg;2
+00767;RV;T. Karlsson;-226.8,154.4,-210.4,-165.9;M. Sjoberg;-226.6,154.3,-211.5,-7.4
+00767;WP;M. Sjoberg;-226.6,154.3,-211.5,27.1;usrif_m16a2
+00767;KD;S. Parkinson;-234.2,153.4,-220.8,0.0;ch_medic
+00768;SC;M. Bagge;2
+00768;CP;4012;-254.0,153.3,-210.0,0.0;top;us
+00769;SC;R. Smedberg;-4
+00769;KL;P. OShaughnessy;-98.5,154.2,-261.0,-53.7;R. Smedberg;-116.7,154.2,-260.7,96.0;ushgr_m67
+00769;VX;T. Soderman;-121.2,154.2,-282.0,62.1;usjep_hmmwv;usjep_hmmwv_driver
+00769;WP;H. Karlsson;-128.3,154.2,-279.9,61.5;chsht_norinco982
+00769;VX;L. Gustavsson;-122.5,154.4,-283.0,-119.6;usjep_hmmwv;usjep_hmmwv_codriver
+00770;VE;L. Gustavsson;-120.6,154.1,-283.9,59.5;usjep_hmmwv;usjep_hmmwv_driver;False
+00771;WP;R. Smedberg;-116.7,154.2,-260.7,104.0;rurif_ak47
+00771;WP;T. Karlsson;-235.5,154.3,-208.7,134.6;c4_explosives
+00771;VE;M. Bagge;-252.0,154.0,-224.5,90.0;jep_paratrooper;jep_paratrooper_driver;False
+00772;WP;R. Smedberg;-114.4,154.2,-260.1,130.8;ushgr_m67
+00773;WP;T. Karlsson;-235.5,154.3,-208.7,150.6;usrif_m4
+00773;VX;L. Gustavsson;-121.1,154.3,-281.5,53.7;usjep_hmmwv;usjep_hmmwv_driver
+00773;VE;L. Gustavsson;-120.0,153.8,-283.2,0.0;usjep_hmmwv;usjep_hmmwv_cupolabase;False
+00774;KD;P. OShaughnessy;-99.7,153.3,-258.6,0.0;ch_specops
+00774;VE;T. Soderman;-107.7,155.7,-253.8,0.0;tnk_type98;tnk_type98_cupolabase;False
+00774;VE;H. Karlsson;-108.1,153.9,-253.7,-0.0;tnk_type98;tnk_type98_driver;False
+00774;VE;M. Sjoberg;-253.0,153.9,-224.5,0.0;jep_paratrooper;jep_paratrooper_gunbase;False
+00774;WP;U. Rask;-106.4,152.8,-180.8,-174.6;ushgr_m67
+00774;WP;L. Castillo;-97.9,154.2,-255.1,-56.7;ushgr_m67
+00775;WP;R. Smedberg;-104.8,154.2,-262.5,100.9;rurif_ak47
+00775;WP;M. Fritze;-97.0,152.8,-175.9,-167.5;ushgr_m67
+00775;VX;L. Gustavsson;-118.5,154.4,-284.4,50.5;usjep_hmmwv;usjep_hmmwv_cupolabase
+00775;VE;T. Karlsson;-251.2,154.0,-224.4,0.0;jep_paratrooper;jep_paratrooper_front_gunpos;False
+00776;VE;L. Gustavsson;-119.6,154.1,-282.9,50.4;usjep_hmmwv;usjep_hmmwv_driver;False
+00777;WP;L. Castillo;-97.9,154.2,-255.2,-122.5;usrif_m16a2
+00778;DT;S. Parkinson;-234.2,153.4,-220.8,0.0
+00778;SP;S. Parkinson;-107.0,154.2,-281.7,-5.9;ch
+00778;WP;S. Parkinson;-107.0,154.2,-281.7,-5.9;rurif_ak47
+00778;KP;S. Parkinson;-107.0,154.2,-281.7,-5.9;ch_medic
+00778;SC;S. Pinkerton;2
+00778;KL;R. Smedberg;-99.9,154.2,-259.3,-115.0;S. Pinkerton;-98.7,153.9,-263.7,139.2;ustnk_m1a2
+00778;KD;R. Smedberg;-99.9,154.2,-259.3,-115.0;ch_medic
+00778;DT;R. Smedberg;-99.9,154.2,-259.3,-115.0
+00779;WP;S. Parkinson;-107.0,154.2,-281.7,-5.9;ushgr_m67
+00779;VX;L. Gustavsson;-126.4,154.4,-288.8,-6.2;usjep_hmmwv;usjep_hmmwv_driver
+00779;VE;L. Gustavsson;-124.4,153.9,-288.7,0.0;usjep_hmmwv;usjep_hmmwv_cupolabase;False
+00780;WP;L. Castillo;-110.3,154.2,-248.4,63.1;ushgr_m67
+00783;DT;P. OShaughnessy;-99.8,153.3,-258.9,0.0
+00783;WP;L. Castillo;-103.1,154.2,-242.7,-136.6;usrif_m16a2
+00784;SP;P. OShaughnessy;-44.0,154.4,-245.0,-90.0;ch
+00784;WP;P. OShaughnessy;-44.0,154.4,-245.0,-90.0;chsht_norinco982
+00784;KP;P. OShaughnessy;-44.0,154.4,-245.0,-90.0;ch_engineer
+00784;WP;S. Parkinson;-102.0,154.2,-264.8,-162.2;rurif_ak47
+00785;SC;U. Rask;-4
+00785;KL;L. Castillo;-107.9,154.2,-238.4,-44.4;U. Rask;-105.6,154.2,-208.5,179.5;ushgr_m67
+00785;SC;H. Karlsson;-2
+00785;VD;ustnk_m1a2;-97.2,153.9,-265.8,139.6;D. Gothberg;-113.0,154.2,-274.0,70.9
+00785;SC;D. Gothberg;2
+00785;SC;H. Karlsson;1
+00785;SC;D. Gothberg;1
+00785;KL;S. Pinkerton;-97.2,153.9,-265.8,139.6;D. Gothberg;-113.0,154.2,-274.0,70.9;c4_explosives
+00785;AS;H. Karlsson;-102.3,153.9,-251.5,141.9;damage
+00785;KD;S. Pinkerton;-97.2,153.9,-265.8,139.6;us_engineer
+00785;VX;S. Pinkerton;-186.3,155.6,-290.0,-41.0;ustnk_m1a2;ustnk_m1a2_driver
+00785;DT;S. Pinkerton;-97.2,153.9,-265.8,139.6
+00785;SC;D. Gothberg;-4
+00785;KL;S. Parkinson;-102.8,154.3,-266.7,-153.0;D. Gothberg;-113.0,154.2,-274.0,70.9;c4_explosives
+00785;WP;D. Gothberg;-113.0,154.2,-274.0,62.1;chrif_type95
+00785;VX;L. Gustavsson;-122.5,154.6,-288.9,-18.4;usjep_hmmwv;usjep_hmmwv_cupolabase
+00786;WP;N. Goksu;-112.4,155.1,-244.9,33.1;rurif_gp25
+00787;VX;T. Soderman;-102.3,154.4,-248.3,115.8;tnk_type98;tnk_type98_cupolabase
+00787;VE;L. Gustavsson;-124.3,154.3,-289.2,-18.6;usjep_hmmwv;usjep_hmmwv_driver;False
+00787;SC;H. Karlsson;-4
+00787;KL;T. Soderman;-102.5,154.2,-248.2,31.3;H. Karlsson;-104.3,153.9,-250.1,90.5;tnk_type98
+00788;VE;D. Gothberg;-124.2,154.0,-289.4,0.0;usjep_hmmwv;usjep_hmmwv_cupolabase;False
+00788;WP;P. OShaughnessy;-53.6,154.2,-241.0,-54.6;ushgr_m67
+00789;WP;U. Rask;-104.9,154.2,-216.3,179.4;uslmg_m249saw
+00789;WP;M. Fritze;-99.9,154.2,-208.2,-174.4;uslmg_m249saw
+00789;KD;L. Castillo;-112.8,153.3,-233.6,0.0;us_medic
+00790;KD;S. Parkinson;-108.7,153.3,-272.0,0.0;ch_medic
+00790;VX;M. Bagge;-157.2,154.5,-293.8,84.2;jep_paratrooper;jep_paratrooper_driver
+00790;VX;T. Karlsson;-155.8,154.5,-297.6,85.3;jep_paratrooper;jep_paratrooper_front_gunpos
+00790;WP;M. Bagge;-156.5,154.2,-293.7,84.2;ushgr_m67
+00791;KD;T. Soderman;-109.9,153.3,-243.4,0.0;ch_at
+00791;CP;4009;-92.3,153.2,-260.8,0.0;top;ch
+00792;VD;ats_hj8;-93.7,155.2,-245.0,-24.5;M. Fritze;-100.5,154.2,-209.5,-161.7
+00793;SP;R. Smedberg;-52.1,156.0,-276.7,0.0;ch
+00793;WP;R. Smedberg;-52.1,156.0,-276.7,0.0;rurif_ak47
+00793;KP;R. Smedberg;-52.1,156.0,-276.7,0.0;ch_medic
+00795;WP;U. Rask;-104.9,154.2,-216.3,179.4;ushgr_m67
+00795;WP;M. Bagge;-143.1,154.2,-295.8,58.6;usrif_remington11-87
+00796;WP;P. OShaughnessy;-68.3,154.2,-231.1,-56.2;chsht_norinco982
+00798;WP;N. Goksu;-112.4,155.1,-245.2,26.3;rurgl_gp25
+00798;TL;ch;-2
+00799;VX;M. Sjoberg;-156.3,154.3,-297.4,87.8;jep_paratrooper;jep_paratrooper_gunbase
+00799;VE;M. Sjoberg;-154.5,153.9,-295.5,87.8;jep_paratrooper;jep_paratrooper_driver;False
+00800;DT;L. Castillo;-112.8,153.3,-233.6,0.0
+00800;SP;L. Castillo;-179.0,154.6,-66.0,180.0;us
+00800;WP;L. Castillo;-179.0,154.6,-66.0,180.0;usrif_m16a2
+00800;KP;L. Castillo;-179.0,154.6,-66.0,180.0;us_medic
+00800;WP;N. Goksu;-112.6,155.1,-240.5,21.6;chpis_qsz92
+00800;DT;S. Parkinson;-108.7,153.3,-272.0,0.0
+00800;SP;S. Pinkerton;-91.9,154.2,-221.0,-11.5;us
+00800;WP;S. Pinkerton;-91.9,154.2,-221.0,-11.5;usrif_mp5_a3
+00800;KP;S. Pinkerton;-91.9,154.2,-221.0,-11.5;us_at
+00800;SP;S. Parkinson;-123.0,156.2,-250.0,0.0;ch
+00800;WP;S. Parkinson;-123.0,156.2,-250.0,0.0;rurif_ak47
+00800;KP;S. Parkinson;-123.0,156.2,-250.0,0.0;ch_medic
+00801;WP;S. Pinkerton;-89.5,154.2,-224.5,147.1;usatp_predator
+00802;WP;S. Parkinson;-123.0,155.9,-252.2,29.5;ushgr_m67
+00802;DT;T. Soderman;-109.9,153.3,-243.4,0.0
+00802;SP;T. Soderman;-115.0,154.2,-230.9,-163.3;ch
+00802;WP;T. Soderman;-115.0,154.2,-230.9,-163.3;chrif_type85
+00802;KP;T. Soderman;-115.0,154.2,-230.9,-163.3;ch_at
+00803;WP;S. Parkinson;-122.9,155.9,-252.4,29.5;rurif_ak47
+00803;WP;M. Bagge;-137.3,154.2,-277.6,39.3;ushgr_m67
+00804;WP;R. Smedberg;-83.6,155.7,-270.2,-16.7;ushgr_m67
+00806;WP;M. Bagge;-137.2,154.2,-277.5,39.3;usrif_remington11-87
+00806;WP;S. Pinkerton;-97.2,154.2,-237.8,34.7;usrif_mp5_a3
+00807;WP;R. Smedberg;-83.7,155.7,-270.2,-16.7;rurif_ak47
+00807;WP;N. Goksu;-119.1,154.2,-230.0,44.7;rurif_gp25
+00808;WP;T. Soderman;-112.1,154.2,-230.5,87.2;chat_eryx
+00808;WP;M. Fritze;-99.4,154.2,-210.2,174.1;uspis_92fs
+00809;WP;U. Rask;-85.5,154.2,-201.0,-173.8;uslmg_m249saw
+00809;SC;M. Bagge;2
+00809;KL;S. Parkinson;-122.8,155.1,-258.3,117.5;M. Bagge;-131.5,154.2,-269.9,36.7;ushgr_m67
+00809;WP;M. Bagge;-131.3,154.2,-269.6,36.7;ushgr_m67
+00809;WP;U. Rask;-84.8,154.2,-202.2,91.6;uspis_92fs
+00809;VD;jep_paratrooper;-95.4,153.9,-262.8,52.8;T. Soderman;-112.1,154.2,-230.5,150.2
+00809;SC;T. Soderman;2
+00809;SC;T. Soderman;1
+00809;KL;M. Sjoberg;-95.4,153.9,-262.8,52.8;T. Soderman;-112.1,154.2,-230.5,150.2;chat_eryx
+00809;KD;M. Sjoberg;-95.4,153.9,-262.8,52.8;us_medic
+00809;VX;M. Sjoberg;-186.5,154.1,-289.7,-41.0;jep_paratrooper;jep_paratrooper_driver
+00809;DT;M. Sjoberg;-95.4,153.9,-262.8,52.8
+00810;WP;T. Soderman;-112.1,154.2,-230.5,150.2;chpis_qsz92
+00811;WP;M. Fritze;-99.1,154.2,-210.6,149.5;kni_knife
+00811;VX;H. Karlsson;-16.1,154.3,-107.6,66.3;tnk_type98;tnk_type98_driver
+00811;SC;P. OShaughnessy;2
+00811;KL;M. Fritze;-98.8,154.2,-211.3,149.5;P. OShaughnessy;-97.8,154.2,-213.0,-30.5;chsht_norinco982
+00811;WP;P. OShaughnessy;-97.8,154.2,-213.0,-30.5;chpis_qsz92
+00812;WP;M. Bagge;-129.1,154.2,-269.6,90.5;usrif_remington11-87
+00813;SC;U. Rask;2
+00813;KL;P. OShaughnessy;-97.8,154.2,-213.0,52.5;U. Rask;-88.8,154.2,-206.1,-127.6;uspis_92fs
+00813;KD;S. Parkinson;-123.5,154.2,-258.1,0.0;ch_medic
+00813;WP;U. Rask;-88.8,154.2,-206.1,-127.6;uslmg_m249saw
+00814;SC;R. Smedberg;2
+00814;SC;R. Smedberg;1
+00814;KL;T. Karlsson;-100.5,154.2,-261.0,129.1;R. Smedberg;-89.5,155.7,-270.0,-62.5;rurif_ak47
+00814;VD;tnk_type98;-13.6,153.9,-109.1,68.7;None;None
+00815;WP;S. Pinkerton;-95.5,154.2,-259.9,-27.2;uspis_92fs
+00815;KD;M. Fritze;-99.2,153.3,-211.2,0.0;us_support
+00816;WP;T. Soderman;-102.6,154.2,-246.2,152.8;chrif_type85
+00817;SC;R. Smedberg;2
+00817;SC;R. Smedberg;1
+00817;KL;S. Pinkerton;-95.4,154.2,-260.1,151.8;R. Smedberg;-89.5,155.7,-270.0,-62.5;rurif_ak47
+00817;KD;P. OShaughnessy;-99.7,153.3,-213.9,0.0;ch_engineer
+00818;KD;T. Karlsson;-100.5,153.3,-259.7,0.0;us_specops
+00820;WP;R. Smedberg;-89.5,155.7,-270.0,-62.5;chpis_qsz92
+00821;KD;S. Pinkerton;-97.2,153.3,-258.7,0.0;us_at
+00821;WP;M. Bagge;-94.7,154.2,-260.3,152.3;kni_knife
+00822;CP;4009;-92.3,153.2,-260.8,0.0;top;ch
+00823;VE;Luda;-113.8,152.6,-169.3,15.0;jeep_faav;jeep_faav_driver;False
+00824;WP;M. Bagge;-94.2,154.2,-262.3,163.8;usrif_remington11-87
+00824;DT;S. Parkinson;-123.5,154.2,-258.1,0.0
+00824;SP;S. Parkinson;-123.0,156.2,-250.0,0.0;ch
+00824;WP;S. Parkinson;-123.0,156.2,-250.0,0.0;rurif_ak47
+00824;KP;S. Parkinson;-123.0,156.2,-250.0,0.0;ch_medic
+00824;WP;T. Soderman;-92.2,154.2,-261.6,3.2;kni_knife
+00824;WP;H. Karlsson;-42.3,154.2,-132.3,-142.1;wrench
+00824;WP;R. Smedberg;-95.1,154.2,-268.0,12.5;defibrillator
+00824;SP;M. Sjoberg;-92.8,154.2,-259.0,-157.2;us
+00824;WP;M. Sjoberg;-92.8,154.2,-259.0,-157.2;usrif_m16a2
+00824;KP;M. Sjoberg;-92.8,154.2,-259.0,-157.2;us_medic
+00825;WP;H. Karlsson;-42.4,154.2,-132.4,-142.1;chsht_norinco982
+00826;SC;T. Soderman;2
+00826;SC;T. Soderman;1
+00826;KL;M. Bagge;-94.4,154.2,-262.5,18.8;T. Soderman;-94.2,154.2,-262.0,-156.4;kni_knife
+00826;WP;T. Soderman;-94.2,154.2,-262.0,-158.2;chrif_type85
+00826;WP;R. Smedberg;-94.6,154.2,-264.0,7.9;chpis_qsz92
+00826;DT;M. Fritze;-99.2,153.3,-211.2,0.0
+00826;SP;M. Fritze;-87.0,154.2,-203.3,-146.5;us
+00826;WP;M. Fritze;-87.0,154.2,-203.3,-146.5;uslmg_m249saw
+00826;KP;M. Fritze;-87.0,154.2,-203.3,-146.5;us_support
+00827;SC;M. Sjoberg;2
+00827;KL;T. Soderman;-94.2,154.2,-262.0,32.2;M. Sjoberg;-92.8,154.2,-259.0,-163.3;usrif_m16a2
+00828;DT;P. OShaughnessy;-99.7,153.3,-213.9,0.0
+00828;SP;P. OShaughnessy;-52.1,156.0,-276.7,0.0;ch
+00828;WP;P. OShaughnessy;-52.1,156.0,-276.7,0.0;chlmg_type95
+00828;KP;P. OShaughnessy;-52.1,156.0,-276.7,0.0;ch_support
+00829;WP;R. Smedberg;-93.5,154.2,-263.2,9.0;kni_knife
+00829;DT;T. Karlsson;-100.5,153.3,-259.7,0.0
+00829;SP;T. Karlsson;-181.0,154.7,-78.0,180.0;us
+00829;WP;T. Karlsson;-181.0,154.7,-78.0,180.0;usrif_remington11-87
+00829;KP;T. Karlsson;-181.0,154.7,-78.0,180.0;us_engineer
+00830;WP;R. Smedberg;-93.1,154.2,-260.9,9.0;defibrillator
+00830;KD;M. Bagge;-94.8,153.3,-264.2,0.0;us_engineer
+00830;SC;M. Sjoberg;2
+00830;KL;R. Smedberg;-93.0,154.2,-260.1,9.0;M. Sjoberg;-92.8,154.2,-259.0,-163.3;usrif_m16a2
+00830;WP;M. Sjoberg;-92.8,154.2,-259.0,-163.3;defibrillator
+00830;WP;P. OShaughnessy;-53.0,155.7,-270.9,-29.0;ushgr_m67
+00831;WP;N. Goksu;-122.8,154.2,-220.9,66.6;rurgl_gp25
+00831;KD;T. Soderman;-94.4,153.3,-265.2,0.0;ch_at
+00831;WP;P. OShaughnessy;-53.1,155.7,-270.8,-76.0;chlmg_type95
+00832;DT;S. Pinkerton;-97.2,153.3,-258.7,0.0
+00832;SP;S. Pinkerton;-82.9,154.2,-208.1,-71.2;us
+00832;WP;S. Pinkerton;-82.9,154.2,-208.1,-71.2;usrif_m4
+00832;KP;S. Pinkerton;-82.9,154.2,-208.1,-71.2;us_specops
+00832;VE;M. Fritze;-101.3,154.0,-189.0,0.0;jeep_faav;jeep_faav_rear_passenger;False
+00832;WP;M. Bagge;-94.8,154.3,-264.2,-15.1;usrif_remington11-87
+00832;KP;M. Bagge;-94.8,154.3,-264.2,-15.1;us_engineer
+00832;SC;M. Sjoberg;2
+00832;RV;M. Bagge;-94.8,154.3,-264.2,-15.1;M. Sjoberg;-94.5,154.2,-263.2,-157.3
+00833;WP;M. Sjoberg;-94.5,154.2,-263.2,-36.1;usrif_m16a2
+00834;KD;R. Smedberg;-93.0,153.3,-260.6,0.0;ch_medic
+00835;WP;N. Goksu;-133.3,154.2,-218.7,150.5;rurif_gp25
+00835;WP;M. Bagge;-94.8,154.2,-264.2,0.0;ushgr_m67
+00836;WP;S. Parkinson;-105.6,154.2,-223.6,43.7;chpis_qsz92
+00836;VE;L. Castillo;-179.2,153.9,-33.8,151.8;ustnk_m1a2;ustnk_m1a2_driver;False
+00838;WP;M. Bagge;-94.8,154.2,-264.2,0.0;usrif_remington11-87
+00839;SC;S. Parkinson;2
+00839;SC;P. OShaughnessy;1
+00839;KL;U. Rask;-88.8,154.2,-206.1,-127.6;S. Parkinson;-99.6,154.2,-232.3,22.1;chpis_qsz92
+00839;AS;P. OShaughnessy;-57.6,154.2,-268.0,-84.1;damage
+00840;WP;M. Sjoberg;-94.5,154.2,-263.2,95.3;ushgr_m67
+00841;WP;S. Parkinson;-99.3,154.2,-227.2,162.7;rurif_ak47
+00842;DT;T. Soderman;-94.4,153.3,-265.2,0.0
+00842;GS;end;dalian_plant;0;0
+00857;GS;pre;dalian_plant;0;0
+00857;RS;0
+00857;GS;play;dalian_plant;0;0
+00857;CP;4009;-92.3,153.2,-260.8,0.0;middle;ch
+00857;CP;4010;-151.8,153.2,-58.9,0.0;top;us
+00857;CP;4011;88.0,153.2,-40.0,0.0;top;None
+00857;CP;4012;-254.0,153.3,-210.0,0.0;top;None
+00857;GS;pre;dalian_plant;0;0
+00857;RS;0
+00857;GS;play;dalian_plant;0;0
+00857;CP;4013;-92.3,153.2,-260.8,0.0;top;ch
+00857;CP;4014;-151.8,153.2,-58.9,0.0;top;us
+00857;CP;4015;88.0,153.2,-40.0,0.0;bottom;None
+00857;CP;4016;-254.0,153.3,-210.0,0.0;bottom;None
+00857;GS;pre;dalian_plant;0;0
+00857;RS;0
+00857;GS;play;dalian_plant;0;0
+00857;CP;4017;-92.3,153.2,-260.8,0.0;top;ch
+00857;CP;4018;-151.8,153.2,-58.9,0.0;top;us
+00857;CP;4019;88.0,153.2,-40.0,0.0;bottom;None
+00857;CP;4020;-254.0,153.3,-210.0,0.0;bottom;None

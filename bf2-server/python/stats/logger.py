@@ -2,8 +2,9 @@ import datetime
 import fpformat
 
 import host
-import bf2.PlayerManager
 import bf2.GameLogic
+import bf2.ObjectManager
+import bf2.PlayerManager
 
 from constants import *
 from bf2.stats.stats import getStatsMap
@@ -200,8 +201,10 @@ def on_vehicle_enter(player, vehicle, free_soldier=False):
     player_name = format_player(player)
     player_pos = format_player_pos(player)
     vehicle_name = format_vehicle(vehicle)
+    vehicle_slot = format_vehicle_slot(vehicle)
+    free_flag = format_bool(free_soldier)
 
-    log('VE', player_name, player_pos, vehicle_name, free_soldier)
+    log('VE', player_name, player_pos, vehicle_name, vehicle_slot, free_flag)
 
 def on_vehicle_exit(player, vehicle):
 
@@ -212,8 +215,9 @@ def on_vehicle_exit(player, vehicle):
     player_name = format_player(player)
     player_pos = format_player_pos(player)
     vehicle_name = format_vehicle(vehicle)
+    vehicle_slot = format_vehicle_slot(vehicle)
 
-    log('VX', player_name, player_pos, vehicle_name)
+    log('VX', player_name, player_pos, vehicle_name, vehicle_slot)
 
 def on_kit_pickup(player, kit):
     player_name = format_player(player)
@@ -362,6 +366,9 @@ def format_assist_type(assist_type):
         return 'driver'
     return None
 
+def format_bool(value):
+    return value == True or value == 1
+
 def format_flag_state(flag_state):
     if flag_state == 0:
         return 'top'
@@ -423,7 +430,18 @@ def format_team(team_id):
     return None
 
 def format_vehicle(vehicle):
+    if vehicle:
+        root_vehicle = bf2.objectManager.getRootParent(vehicle)
+        if root_vehicle and root_vehicle.templateName:
+            return root_vehicle.templateName.lower()
+    return None
+
+def format_vehicle_slot(vehicle):
     if vehicle and vehicle.templateName:
+        root_vehicle = bf2.objectManager.getRootParent(vehicle)
+        if root_vehicle and root_vehicle.templateName:
+            if root_vehicle.templateName == vehicle.templateName:
+                return root_vehicle.templateName.lower() + '_driver'
         return vehicle.templateName.lower()
     return None
 

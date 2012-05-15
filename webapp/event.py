@@ -381,19 +381,19 @@ class TeamDamageEvent(BaseEvent):
         self.attacker_pos = parse_mgr.parse_pos(values[3])
 registry.append(TeamDamageEvent)
 
-class TimeLimitEvent(BaseEvent):
+class TicketLimitEvent(BaseEvent):
 
     ID = 'TL'
-    CALLBACK = 'on_time_limit'
+    CALLBACK = 'on_ticket_limit'
 
     def __init__(self, tick, values):
-        super(TimeLimitEvent, self).__init__(tick, values)
+        super(TicketLimitEvent, self).__init__(tick, values)
 
-        assert len(values) == 2, 'TimeLimitEvent - Wrong number of values: %i' % len(values)
+        assert len(values) == 2, 'TicketLimitEvent - Wrong number of values: %i' % len(values)
 
         self.team = values[0]
         self.value = int(values[1])
-registry.append(TimeLimitEvent)
+registry.append(TicketLimitEvent)
 
 class TeamEvent(BaseEvent):
 
@@ -433,12 +433,13 @@ class VehicleEnterEvent(BaseEvent):
     def __init__(self, tick, values):
         super(VehicleEnterEvent, self).__init__(tick, values)
 
-        assert len(values) == 4, 'VehicleEnterEvent - Wrong number of values: %i' % len(values)
+        assert len(values) == 5, 'VehicleEnterEvent - Wrong number of values: %i' % len(values)
 
         self.player = model_mgr.get_player(values[0])
         self.player_pos = parse_mgr.parse_pos(values[1])
         self.vehicle = values[2]
         self.vehicle_slot = values[3]
+        self.free_soldier = values[4]
 registry.append(VehicleEnterEvent)
 
 class VehicleExitEvent(BaseEvent):
@@ -449,11 +450,12 @@ class VehicleExitEvent(BaseEvent):
     def __init__(self, tick, values):
         super(VehicleExitEvent, self).__init__(tick, values)
 
-        assert len(values) == 3, 'VehicleExitEvent - Wrong number of values: %i' % len(values)
+        assert len(values) == 4, 'VehicleExitEvent - Wrong number of values: %i' % len(values)
 
         self.player = model_mgr.get_player(values[0])
         self.player_pos = parse_mgr.parse_pos(values[1])
         self.vehicle = values[2]
+        self.vehicle_slot = values[3]
 registry.append(VehicleExitEvent)
 
 class WeaponEvent(BaseEvent):
