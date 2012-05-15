@@ -256,16 +256,22 @@ def on_death(victim, bf2_object):
     log('DT', victim_name, victim_pos)
 
 def on_ammo(giver, bf2_object):
+    receiver = get_owner(bf2_object)
+    receiver_name = format_player(receiver)
+    receiver_pos = format_player_pos(receiver)
     giver_name = format_player(giver)
     giver_pos = format_player_pos(giver)
 
-    log('AM', giver_name, giver_pos, bf2_object)
+    log('AM', receiver_name, receiver_pos, giver_name, giver_pos)
 
 def on_heal(giver, bf2_object):
+    receiver = get_owner(bf2_object)
+    receiver_name = format_player(receiver)
+    receiver_pos = format_player_pos(receiver)
     giver_name = format_player(giver)
     giver_pos = format_player_pos(giver)
 
-    log('HL', giver_name, giver_pos, bf2_object)
+    log('HL', receiver_name, receiver_pos, giver_name, giver_pos)
 
 def on_kick(player):
     player_name = format_player(player)
@@ -302,19 +308,21 @@ def on_kill(victim, attacker, weapon, assists, bf2_object):
 
             log('AS', assister_name, assister_pos, assist_type)
 
-def on_repair(giver, bf2_object):
+def on_repair(giver, vehicle):
+    vehicle_name = format_vehicle(vehicle)
+    vehicle_pos = format_pos(vehicle)
     giver_name = format_player(giver)
     giver_pos = format_player_pos(giver)
 
-    log('RP', giver_name, giver_pos, bf2_object)
+    log('RP', vehicle_name, vehicle_pos, giver_name, giver_pos)
 
-def on_revive(victim, reviver):
-    victim_name = format_player(victim)
-    victim_pos = format_player_pos(victim)
-    reviver_name = format_player(reviver)
-    reviver_pos = format_player_pos(reviver)
+def on_revive(receiver, giver):
+    receiver_name = format_player(receiver)
+    receiver_pos = format_player_pos(receiver)
+    giver_name = format_player(giver)
+    giver_pos = format_player_pos(giver)
 
-    log('RV', victim_name, victim_pos, reviver_name, reviver_pos)
+    log('RV', receiver_name, receiver_pos, giver_name, giver_pos)
 
 def on_score(player, difference):
     player_name = format_player(player)
@@ -453,6 +461,13 @@ def format_weapon(weapon):
 def is_soldier(vehicle):
     return (vehicle and vehicle.templateName
             and getVehicleType(vehicle.templateName) == VEHICLE_TYPE_SOLDIER)
+
+def get_owner(bf2_object):
+    if bf2_object and bf2_object.isPlayerControlObject:
+        players = bf2_object.getOccupyingPlayers()
+        if players and len(players) > 0:
+            return players[0]
+    return None
 
 def log(log_type, *args):
 

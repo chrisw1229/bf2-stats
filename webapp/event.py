@@ -24,11 +24,12 @@ class AmmoEvent(BaseEvent):
     def __init__(self, tick, values):
         super(AmmoEvent, self).__init__(tick, values)
 
-        assert len(values) == 3, 'AmmoEvent - Wrong number of values: %i' % len(values)
+        assert len(values) == 4, 'AmmoEvent - Wrong number of values: %i' % len(values)
  
-        self.giver = model_mgr.get_player(values[0])
-        self.giver_pos = parse_mgr.parse_pos(values[1])
-        self.bf2_object = values[2]
+        self.receiver = model_mgr.get_player(values[0])
+        self.receiver_pos = parse_mgr.parse_pos(values[1])
+        self.giver = model_mgr.get_player(values[2])
+        self.giver_pos = parse_mgr.parse_pos(values[3])
 registry.append(AmmoEvent)
 
 class AssistEvent(BaseEvent):
@@ -183,11 +184,12 @@ class HealEvent(BaseEvent):
     def __init__(self, tick, values):
         super(HealEvent, self).__init__(tick, values)
 
-        assert len(values) == 3, 'HealEvent - Wrong number of values: %i' % len(values)
+        assert len(values) == 4, 'HealEvent - Wrong number of values: %i' % len(values)
 
-        self.giver = model_mgr.get_player(values[0])
-        self.giver_pos = parse_mgr.parse_pos(values[1])
-        self.bf2_object = values[2]
+        self.receiver = model_mgr.get_player(values[0])
+        self.receiver_pos = parse_mgr.parse_pos(values[1])
+        self.giver = model_mgr.get_player(values[2])
+        self.giver_pos = parse_mgr.parse_pos(values[3])
 registry.append(HealEvent)
 
 class KickEvent(BaseEvent):
@@ -258,11 +260,12 @@ class RepairEvent(BaseEvent):
     def __init__(self, tick, values):
         super(RepairEvent, self).__init__(tick, values)
 
-        assert len(values) == 3, 'RepairEvent - Wrong number of values: %i' % len(values)
+        assert len(values) == 4, 'RepairEvent - Wrong number of values: %i' % len(values)
 
-        self.giver = model_mgr.get_player(values[0])
-        self.giver_pos = parse_mgr.parse_pos(values[1])
-        self.bf2_object = values[2]
+        self.vehicle = values[0]
+        self.vehicle_pos = parse_mgr.parse_pos(values[1])
+        self.giver = model_mgr.get_player(values[2])
+        self.giver_pos = parse_mgr.parse_pos(values[3])
 registry.append(RepairEvent)
 
 class ResetEvent(BaseEvent):
@@ -288,10 +291,10 @@ class ReviveEvent(BaseEvent):
 
         assert len(values) == 4, 'ReviveEvent - Wrong number of values: %i' % len(values)
 
-        self.victim = model_mgr.get_player(values[0])
-        self.victim_pos = parse_mgr.parse_pos(values[1])
-        self.reviver = model_mgr.get_player(values[2])
-        self.reviver_pos = parse_mgr.parse_pos(values[3])
+        self.receiver = model_mgr.get_player(values[0])
+        self.receiver_pos = parse_mgr.parse_pos(values[1])
+        self.giver = model_mgr.get_player(values[2])
+        self.giver_pos = parse_mgr.parse_pos(values[3])
 registry.append(ReviveEvent)
 
 class ScoreEvent(BaseEvent):
