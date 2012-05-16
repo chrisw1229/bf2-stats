@@ -262,7 +262,7 @@ class RepairEvent(BaseEvent):
 
         assert len(values) == 4, 'RepairEvent - Wrong number of values: %i' % len(values)
 
-        self.vehicle = values[0]
+        self.vehicle = model_mgr.get_vehicle(values[0])
         self.vehicle_pos = parse_mgr.parse_pos(values[1])
         self.giver = model_mgr.get_player(values[2])
         self.giver_pos = parse_mgr.parse_pos(values[3])
@@ -422,7 +422,7 @@ class VehicleDestroyEvent(BaseEvent):
 
         assert len(values) == 4, 'VehicleDestroyEvent - Wrong number of values: %i' % len(values)
 
-        self.vehicle = values[0]
+        self.vehicle = model_mgr.get_vehicle(values[0])
         self.vehicle_pos = parse_mgr.parse_pos(values[1])
         self.attacker = model_mgr.get_player(values[2])
         self.attacker_pos = parse_mgr.parse_pos(values[3])
@@ -440,7 +440,7 @@ class VehicleEnterEvent(BaseEvent):
 
         self.player = model_mgr.get_player(values[0])
         self.player_pos = parse_mgr.parse_pos(values[1])
-        self.vehicle = values[2]
+        self.vehicle = model_mgr.get_vehicle(values[2])
         self.vehicle_slot = values[3]
         self.free_soldier = values[4]
 registry.append(VehicleEnterEvent)
@@ -457,7 +457,7 @@ class VehicleExitEvent(BaseEvent):
 
         self.player = model_mgr.get_player(values[0])
         self.player_pos = parse_mgr.parse_pos(values[1])
-        self.vehicle = values[2]
+        self.vehicle = model_mgr.get_vehicle(values[2])
         self.vehicle_slot = values[3]
 registry.append(VehicleExitEvent)
 

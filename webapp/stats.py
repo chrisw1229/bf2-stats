@@ -12,6 +12,16 @@ class Stats(object):
         self.new_event_types = {} # A map of event type to event for newest events
 
     def add_event(self, event):
+        '''
+        Adds a log event to the history of this statistics model for use by processors.
+
+        Args:
+           event (BaseEvent): Object representation of a log entry.
+
+        Returns:
+            None
+        '''
+
         if not event: return
 
         # Update the event history based on game time ticks
@@ -32,12 +42,32 @@ class Stats(object):
         self.new_event_types[event.ID] = event
 
     def get_old_event(self, event_id):
-        if event_id in self.old_event_types:
+        '''
+        Gets the older/previous registered event that matches the given identifier.
+
+        Args:
+           event_id (string): The unique identifier for a type of event.
+
+        Returns:
+            event (BaseEvent): An event that occurred at a previous tick.
+        '''
+
+        if event_id and event_id in self.old_event_types:
             return self.old_event_types[event_id]
         return None
 
     def get_new_event(self, event_id):
-        if event_id in self.new_event_types:
+        '''
+        Gets the newest/recent registered event that matches the given identifier.
+
+        Args:
+           event_id (string): The unique identifier for a type of event.
+
+        Returns:
+            event (BaseEvent): An event that occurred at the most recent tick.
+        '''
+
+        if event_id and event_id in self.new_event_types:
             return self.new_event_types[event_id]
         return None
 
@@ -49,11 +79,19 @@ class PlayerStats(Stats):
         self.kills = 0
         self.deaths = 0
 
+class VehicleStats(Stats):
+
+    def __init__(self):
+        super(VehicleStats, self).__init__()
+
+        pass
+
 class StatsManager(object):
 
     processors = []
     stats = Stats()
     players = {}
+    vehicles = {}
 
     # This method will be called to initialize the manager
     def start(self):
@@ -94,10 +132,34 @@ class StatsManager(object):
         self._fire(event)
 
     def get_player_stats(self, player):
-        stats = None
+        '''
+        Gets the statistics object for the given player model.
+
+        Args:
+           player (Player): Object representation of a player.
+
+        Returns:
+            stats (PlayerStats): The statistics model associated with the player.
+        '''
+
         if not player in self.players:
             self.players[player] = PlayerStats()
         return self.players[player]
+
+    def get_vehicle_stats(self, vehicle):
+        '''
+        Gets the statistics object for the given vehicle model.
+
+        Args:
+           vehicle (Vehicle): Object representation of a vehicle.
+
+        Returns:
+            stats (VehicleStats): The statistics model associated with the vehicle.
+        '''
+
+        if not vehicle in self.vehicles:
+            self.vehicle[vehicle] = VehicleStats()
+        return self.vehicle[vehicle]
 
     def _fire(self, event):
         '''
