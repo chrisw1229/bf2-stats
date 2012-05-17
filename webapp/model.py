@@ -1,5 +1,6 @@
 
 import vehicle
+import weapon
 
 class Player(object):
 
@@ -28,18 +29,35 @@ class ModelManager(object):
     id_to_vehicle = {}
     type_to_vehicles = {}
 
+    weapons = []
+    id_to_weapon = {}
+    type_to_weapons = {}
+
     # This method will be called to initialize the manager
     def start(self):
         print 'MODEL MANAGER - STARTING'
 
+        # Register all the vehicle models
         self.vehicles = vehicle.registry
         for v in self.vehicles:
+            assert not v.id in self.id_to_vehicle, 'Duplicate vehicle ID: %s' % v.id
             self.id_to_vehicle[v.id] = v
-            
+
             if not v.vehicle_type in self.type_to_vehicles:
                 self.type_to_vehicles[v.vehicle_type] = []
             self.type_to_vehicles[v.vehicle_type].append(v)
         print 'Vehicles registered: ', len(self.vehicles)
+
+        # Register all the weapon models
+        self.weapons = weapon.registry
+        for w in self.weapons:
+            assert not w.id in self.id_to_weapon, 'Duplicate weapon ID: %s' % w.id
+            self.id_to_weapon[w.id] = w
+
+            if not w.weapon_type in self.type_to_weapons:
+                self.type_to_weapons[w.weapon_type] = []
+            self.type_to_weapons[w.weapon_type].append(w)
+        print 'Weapons registered: ', len(self.weapons)
 
         print 'MODEL MANAGER - STARTED'
 
@@ -133,7 +151,7 @@ class ModelManager(object):
         Looks up the vehicle object associated with the given id.
 
         Args:
-           id (string): The id of the player to get.
+           id (string): The id of the vehicle to get.
 
         Returns:
             vehicle (Vehicle): Returns a registered vehicle model.
@@ -171,11 +189,61 @@ class ModelManager(object):
            vehicle_type (string): The type of vehicles to get.
 
         Returns:
-            vehicles (list): Returns a list vehicles based on type.
+            vehicles (list): Returns a list of vehicles based on type.
         '''
 
         if vehicle_type and vehicle_type in self.type_to_vehicles:
             return self.type_to_vehicles[vehicle_type]
+        return None
+
+    def get_weapon(self, id):
+        '''
+        Looks up the weapon object associated with the given id.
+
+        Args:
+           id (string): The id of the weapon to get.
+
+        Returns:
+            weapon (Weapon): Returns a registered weapon model.
+        '''
+
+        # Handle requests for missing weapons
+        if not id:
+            return weapon.EMPTY
+
+        # Get a model for the weapon
+        if id in self.id_to_weapon:
+            return self.id_to_weapon[id]
+
+        print 'ERROR - Missing weapon reference: ', id
+        return None
+
+    def get_weapon_types(self):
+        '''
+        Gets a list of registered weapon types.
+
+        Args:
+           None
+
+        Returns:
+            types (list): Returns a list of registered weapon types.
+        '''
+
+        return self.type_to_weapons.keys()
+
+    def get_weapons(self, weapon_type):
+        '''
+        Gets a list of registered weapons that match the given type.
+
+        Args:
+           weapon_type (string): The type of weapons to get.
+
+        Returns:
+            weapons (list): Returns a list of weapons based on type.
+        '''
+
+        if weapon_type and weapon_type in self.type_to_weapons:
+            return self.type_to_weapons[weapon_type]
         return None
 
     def _update_player(self, address, name):

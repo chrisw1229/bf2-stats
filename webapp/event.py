@@ -234,7 +234,7 @@ class KillEvent(BaseEvent):
         self.victim_pos = parse_mgr.parse_pos(values[1])
         self.attacker = model_mgr.get_player(values[2])
         self.attacker_pos = parse_mgr.parse_pos(values[3])
-        self.weapon = values[4]
+        self.weapon = model_mgr.get_weapon(values[4])
 registry.append(KillEvent)
 
 class KitPickupEvent(BaseEvent):
@@ -473,5 +473,5 @@ class WeaponEvent(BaseEvent):
 
         self.player = model_mgr.get_player(values[0])
         self.player_pos = parse_mgr.parse_pos(values[1])
-        self.weapon = values[2]
+        self.weapon = model_mgr.get_weapon(values[2])
 registry.append(WeaponEvent)
