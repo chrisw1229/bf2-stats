@@ -17,6 +17,13 @@ EMPTY = Weapon('', '', '', '', '', '', '')
 def _add(id, weapon_type, make, model, name, game_desc, real_desc):
     registry.append(Weapon(id, weapon_type, make, model, name, game_desc, real_desc))
 
+_add('ammokit', 'tool', '', '', 'Ammunition Bag',
+'In Battlefield 2, ammunition is dispensed either by the Ammo Bags from Support Class or Supply \
+Crate deployed by the Commander. The Ammo Bags can be held to replenish the player''s own ammo or \
+those of others and they can be dropped as well. The Supply Crates are typically requested by \
+Squad leaders and supply ammo to any player within range of the crate.',
+'')
+
 _add('at_mine', 'explosive', '', 'M15', 'Anti-Tank Mine',
 'The Anti-Tank Mine is issued to the Engineer Kit in Battlefield 2. Like Mines from its \
 predecessors, the Anti-Tank Mine is very effective against vehicles, especially armored ones. It \
@@ -187,6 +194,14 @@ mm cartridge but can also fire standard 5.8 mm ammunition. This is a very effect
 distance of around 800 m and with 10 rounds and semi-auto fire it allows you that extra chance of \
 finishing the enemy off.')
 
+_add('hgr_smoke', 'explosive', '', '', 'Smoke Grenade',
+'The Smoke Grenade is included in the Assault kit in the game Battlefield 2. Instead of having a \
+spherical shape like the frag grenade, it has a cylindrical shape (sort of looks like a tiny can). \
+It is thrown like a frag grenade (default Left-Mouse-Button for normal throw, default \
+Right-Mouse-Button for a controlled distance throw), but instead releases smoke. The smoke grenade \
+has many uses.',
+'')
+
 _add('kni_knife', 'melee', '', '', 'Combat Knife',
 'In Battlefield 2, the Knife is issued to every kit, and can kill in a single hit. Unlike previous \
 games, the combat knife''s skin does not change between factions: there is a single game file \
@@ -194,6 +209,14 @@ related to the knife, which is used for all soldiers, rather than multiple for e
 'Most modern combat knives are approximately 7 inch in length and made of carbon steel with an \
 epoxy coating to protect the knife and prevent light reflection. The knife is a hand to hand \
 combat weapon that can prove vital when out of ammunition or when silence is necessary.')
+
+_add('medikit', 'tool', '', '', 'Medical Bag',
+'In Battlefield 2, the Medic Bag issued to the Medic kit. It takes the form of a bag with medical \
+supplies inside and strapped tight. It gradually heals player for a short period of time or can be \
+thrown on the ground to instantly heal players to full health. The Medkits are also very useful as \
+bait for enemy infantry. The player can use one to lure an enemy toward a booby trap (e.g. a \
+Claymore anti-personnel mine).',
+'')
 
 _add('rulmg_pkm', 'light_machine_gun', 'Kalashnikov', 'PKM', '',
 'In Battlefield 2, the PKM is the Tier One unlock for the Support Kit in Battlefield 2. It is both \
@@ -621,3 +644,9 @@ designed by Barrett Firearms Manufacturing in 1995. It''s very useful in anti-ma
 due to its incredibly large .50 Caliber round, which easily penetrates heavy armor. It uses a \
 triangular bolt head and, because of its bullpup configuration, is fairly short for a sniper \
 rifle. Furthermore, its recoil is remarkably low.')
+
+_add('wrench', 'tool', '', '', 'Wrench',
+'In Battlefield 2, the Wrench is issued to the Engineer kit. After a short animation, where the \
+user widens the mouth of the wrench, the player can use it to repair friendly or neutral vehicles. \
+It can also rebuild bridges which have been damaged or destroyed by C4 or other explosives.',
+'')
