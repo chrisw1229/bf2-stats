@@ -9,6 +9,7 @@ class Vehicle(object):
         self.vehicle_type = vehicle_type
         self.name = name
         self.desc = desc
+EMPTY = Vehicle('', '', '', '')
 
 def _add(id, vehicle_type, name, desc):
     registry.append(Vehicle(id, vehicle_type, name, desc))

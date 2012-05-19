@@ -71,6 +71,27 @@ class Stats(object):
             return self.new_event_types[event_id]
         return None
 
+class GameStats(Stats):
+
+    def __init__(self):
+        super(GameStats, self).__init__()
+
+        pass
+
+class KitStats(Stats):
+
+    def __init__(self):
+        super(KitStats, self).__init__()
+
+        pass
+
+class MapStats(Stats):
+
+    def __init__(self):
+        super(MapStats, self).__init__()
+
+        pass
+
 class PlayerStats(Stats):
 
     def __init__(self):
@@ -79,6 +100,13 @@ class PlayerStats(Stats):
         self.kills = 0
         self.deaths = 0
 
+class TeamStats(Stats):
+
+    def __init__(self):
+        super(TeamStats, self).__init__()
+
+        pass
+
 class VehicleStats(Stats):
 
     def __init__(self):
@@ -86,12 +114,25 @@ class VehicleStats(Stats):
 
         pass
 
+class WeaponStats(Stats):
+
+    def __init__(self):
+        super(WeaponStats, self).__init__()
+
+        pass
+
 class StatsManager(object):
 
     processors = []
     stats = Stats()
+
+    games = {}
+    kits = {}
+    maps = {}
     players = {}
+    teams = {}
     vehicles = {}
+    weapons = {}
 
     # This method will be called to initialize the manager
     def start(self):
@@ -131,6 +172,51 @@ class StatsManager(object):
         # Allow each processor to handle the event
         self._fire(event)
 
+    def get_game_stats(self, game):
+        '''
+        Gets the statistics object for the given game model.
+
+        Args:
+           game (Game): Object representation of a game.
+
+        Returns:
+            stats (GameStats): The statistics model associated with the game.
+        '''
+
+        if not game in self.games:
+            self.games[game] = GameStats()
+        return self.games[game]
+
+    def get_kit_stats(self, kit):
+        '''
+        Gets the statistics object for the given kit model.
+
+        Args:
+           kit (Kit): Object representation of a kit.
+
+        Returns:
+            stats (KitStats): The statistics model associated with the kit.
+        '''
+
+        if not kit in self.kits:
+            self.kits[kit] = KitStats()
+        return self.kits[kit]
+
+    def get_map_stats(self, map):
+        '''
+        Gets the statistics object for the given map model.
+
+        Args:
+           map (Map): Object representation of a map.
+
+        Returns:
+            stats (MapStats): The statistics model associated with the map.
+        '''
+
+        if not map in self.maps:
+            self.maps[map] = MapStats()
+        return self.maps[map]
+
     def get_player_stats(self, player):
         '''
         Gets the statistics object for the given player model.
@@ -146,6 +232,21 @@ class StatsManager(object):
             self.players[player] = PlayerStats()
         return self.players[player]
 
+    def get_team_stats(self, player):
+        '''
+        Gets the statistics object for the given team model.
+
+        Args:
+           team (Team): Object representation of a team.
+
+        Returns:
+            stats (TeamStats): The statistics model associated with the team.
+        '''
+
+        if not team in self.teams:
+            self.teams[team] = TeamStats()
+        return self.teams[team]
+
     def get_vehicle_stats(self, vehicle):
         '''
         Gets the statistics object for the given vehicle model.
@@ -158,8 +259,23 @@ class StatsManager(object):
         '''
 
         if not vehicle in self.vehicles:
-            self.vehicle[vehicle] = VehicleStats()
-        return self.vehicle[vehicle]
+            self.vehicles[vehicle] = VehicleStats()
+        return self.vehicles[vehicle]
+
+    def get_weapon_stats(self, weapon):
+        '''
+        Gets the statistics object for the given weapon model.
+
+        Args:
+           weapon (Weapon): Object representation of a weapon.
+
+        Returns:
+            stats (WeaponStats): The statistics model associated with the weapon.
+        '''
+
+        if not weapon in self.weapons:
+            self.weapons[weapon] = WeaponStats()
+        return self.weapons[weapon]
 
     def _fire(self, event):
         '''

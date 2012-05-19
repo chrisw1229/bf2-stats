@@ -1,7 +1,7 @@
 
 import cherrypy
 
-from event import ConnectEvent,DisconnectEvent
+from event import ConnectEvent,DisconnectEvent,GameStatusEvent
 import processor.core
 import processor.award
 
@@ -88,6 +88,9 @@ class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
             model_mgr.add_player(entry.values[0], entry.values[1])
         elif log_type == DisconnectEvent.ID:
             model_mgr.remove_player(entry.values[0], entry.values[1])
+        elif log_type == GameStatusEvent.ID:
+            model_mgr.set_game_status(entry.values[0], entry.values[1], int(entry.values[2]),
+                    int(entry.values[3]))
 
         # Convert the log entry into a type-safe event
         event = parse_mgr.convert(entry)

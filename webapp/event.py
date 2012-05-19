@@ -100,7 +100,7 @@ class CommanderEvent(BaseEvent):
 
         assert len(values) == 2, 'CommanderEvent - Wrong number of values: %i' % len(values)
 
-        self.team = values[0]
+        self.team = model_mgr.get_team(values[0])
         self.player = model_mgr.get_player(values[1])
 registry.append(CommanderEvent)
 
@@ -130,7 +130,7 @@ class ControlPointEvent(BaseEvent):
         self.control_point = values[0]
         self.control_point_pos = parse_mgr.parse_pos(values[1])
         self.flag_state = values[2]
-        self.team = values[3]
+        self.team = model_mgr.get_team(values[3])
 registry.append(ControlPointEvent)
 
 class DisconnectEvent(BaseEvent):
@@ -170,10 +170,7 @@ class GameStatusEvent(BaseEvent):
 
         assert len(values) == 4, 'GameStatusEvent - Wrong number of values: %i' % len(values)
 
-        self.status = values[0]
-        self.map = values[1]
-        self.tick = values[2]
-        self.score = values[3]
+        self.game = model_mgr.get_game()
 registry.append(GameStatusEvent)
 
 class HealEvent(BaseEvent):
@@ -217,7 +214,7 @@ class KitDropEvent(BaseEvent):
 
         self.player = model_mgr.get_player(values[0])
         self.player_pos = parse_mgr.parse_pos(values[1])
-        self.kit = values[2]
+        self.kit = model_mgr.get_kit(values[2])
 registry.append(KitDropEvent)
 
 class KillEvent(BaseEvent):
@@ -249,7 +246,7 @@ class KitPickupEvent(BaseEvent):
 
         self.player = model_mgr.get_player(values[0])
         self.player_pos = parse_mgr.parse_pos(values[1])
-        self.kit = values[2]
+        self.kit = model_mgr.get_kit(values[2])
 registry.append(KitPickupEvent)
 
 class RepairEvent(BaseEvent):
@@ -337,7 +334,7 @@ class SpawnEvent(BaseEvent):
 
         self.player = model_mgr.get_player(values[0])
         self.player_pos = parse_mgr.parse_pos(values[1])
-        self.team = values[2]
+        self.team = model_mgr.get_team(values[2])
 registry.append(SpawnEvent)
 
 class SquadEvent(BaseEvent):
@@ -394,7 +391,7 @@ class TicketLimitEvent(BaseEvent):
 
         assert len(values) == 2, 'TicketLimitEvent - Wrong number of values: %i' % len(values)
 
-        self.team = values[0]
+        self.team = model_mgr.get_team(values[0])
         self.value = int(values[1])
 registry.append(TicketLimitEvent)
 
@@ -409,7 +406,7 @@ class TeamEvent(BaseEvent):
         assert len(values) == 2, 'TeamEvent - Wrong number of values: %i' % len(values)
 
         self.player = model_mgr.get_player(values[0])
-        self.team = values[1]
+        self.team = model_mgr.get_team(values[1])
 registry.append(TeamEvent)
 
 class VehicleDestroyEvent(BaseEvent):
