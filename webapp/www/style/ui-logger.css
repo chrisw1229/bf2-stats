@@ -1,0 +1,17 @@
+﻿.ui-logger {
+   display: none;
+   margin: 2px;
+   position: absolute;
+   z-index: 20000;
+}
+
+.ui-logger-icon {
+   float: left;
+   margin: 7px 5px;
+}
+
+.ui-logger-message {
+   min-height: 50px;
+   margin: 5px;
+   width: 300px;
+}

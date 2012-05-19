@@ -7,6 +7,7 @@ $.extend({ mgr: {
 }});
 
 // Load the custom jQuery user interface components
+$('.logger-widget').logger();
 $('.olmap-widget').olmap({ baseUrl: 'http://tobe.name/codstats2/tiles', mapName: 'mp_uo_carentan' });
 
 });
