@@ -3,6 +3,7 @@ import cherrypy
 
 from event import ConnectEvent,DisconnectEvent,GameStatusEvent
 import processor.core
+import processor.live
 import processor.award
 
 from parse import parse_mgr
@@ -20,7 +21,10 @@ class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
 
         # Register all the processors
         # TODO Load these dynamically
-        stats_mgr.processors = [processor.core.Processor(), processor.award.Processor()]
+        stats_mgr.core_processor = processor.core.Processor()
+        stats_mgr.live_processor = processor.live.Processor()
+        stats_mgr.processors = [stats_mgr.core_processor, stats_mgr.live_processor,
+                processor.award.Processor()]
 
         # Start the singletons
         parse_mgr.start()
@@ -82,7 +86,7 @@ class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
         # Parse the line into a raw values model
         entry = parse_mgr.parse(line)
 
-        # Pre-process player connect and disconnect events
+        # Pre-process player connect, player disconnect, and game status events
         log_type = entry.log_type
         if log_type == ConnectEvent.ID:
             model_mgr.add_player(entry.values[0], entry.values[1])

@@ -123,8 +123,10 @@ class WeaponStats(Stats):
 
 class StatsManager(object):
 
+    core_processor = None
+    live_processor = None
     processors = []
-    stats = Stats()
+    stats = GameStats()
 
     games = {}
     kits = {}

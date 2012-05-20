@@ -5,6 +5,7 @@ import cherrypy
 # Importing the stats plugin registers it with the cherrypy engine
 import plugin
 import rest.award
+import rest.live
 import rest.player
 
 # Create an empty class to handle root directory requests
@@ -14,6 +15,7 @@ root = Root()
 
 # Register all the REST request handlers
 root.award = rest.award.Handler()
+root.live = rest.live.Handler()
 root.player = rest.player.Handler()
 
 # The current directory is needed in the config file
@@ -21,6 +23,9 @@ current_dir = os.path.abspath(os.path.dirname(__file__))
 
 # Get the path to the configuration file
 confPath = os.path.join(os.path.dirname(__file__), 'application.conf')
+
+# Disable screen output for the access log
+cherrypy.log._set_screen_handler(cherrypy.log.access_log, False)
 
 # Start the web application server
 if __name__ == '__main__':

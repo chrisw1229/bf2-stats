@@ -12,9 +12,14 @@ class BaseEvent(object):
     ID = None
     CALLBACK = None
 
+    counter = 0
+
     def __init__(self, tick, values):
+        self.id = BaseEvent.counter
         self.timestamp = int(round(time.time() * 1000))
         self.tick = tick
+
+        BaseEvent.counter += 1
 
 class AmmoEvent(BaseEvent):
 
