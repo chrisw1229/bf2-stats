@@ -1,116 +1,41 @@
 
-class Stats(object):
+from event import GameStatusEvent
+
+class BaseStats(object):
 
     def __init__(self):
 
-        self.ticked = False # Whether or not the newest event caused the game time to advance
-        self.old_tick = 0 # The game time of the older batch of events
-        self.new_tick = 0 # The game time of the newest batch of events
-        self.old_events = [] # A list of events for the older game time
-        self.new_events = [] # A list of events for the newest game time
-        self.old_event_types = {} # A map of event type to event for older events
-        self.new_event_types = {} # A map of event type to event for newest events
+        # Make sure the resettable values are initialized
+        self.reset()
 
-    def add_event(self, event):
-        '''
-        Adds a log event to the history of this statistics model for use by processors.
+    def reset(self):
+        pass
 
-        Args:
-           event (BaseEvent): Object representation of a log entry.
-
-        Returns:
-            None
-        '''
-
-        if not event: return
-
-        # Update the event history based on game time ticks
-        if event.tick > self.new_tick:
-            self.old_tick = self.new_tick
-            self.old_events = self.new_events
-
-            self.new_tick = event.tick
-            self.new_events = []
-            ticked = True
-        else:
-            ticked = False
-        self.new_events.append(event)
-
-        # Update the event history based on event type
-        if event.ID in self.new_event_types:
-            self.old_event_types[event.ID] = self.new_event_types[event.ID]
-        self.new_event_types[event.ID] = event
-
-    def get_old_event(self, event_id):
-        '''
-        Gets the older/previous registered event that matches the given identifier.
-
-        Args:
-           event_id (string): The unique identifier for a type of event.
-
-        Returns:
-            event (BaseEvent): An event that occurred at a previous tick.
-        '''
-
-        if event_id and event_id in self.old_event_types:
-            return self.old_event_types[event_id]
-        return None
-
-    def get_new_event(self, event_id):
-        '''
-        Gets the newest/recent registered event that matches the given identifier.
-
-        Args:
-           event_id (string): The unique identifier for a type of event.
-
-        Returns:
-            event (BaseEvent): An event that occurred at the most recent tick.
-        '''
-
-        if event_id and event_id in self.new_event_types:
-            return self.new_event_types[event_id]
-        return None
-
-class GameStats(Stats):
+class GameStats(BaseStats):
 
     def __init__(self):
         super(GameStats, self).__init__()
 
         pass
 
-class KitStats(Stats):
+class KitStats(BaseStats):
 
     def __init__(self):
         super(KitStats, self).__init__()
 
         pass
 
-class MapStats(Stats):
+class MapStats(BaseStats):
 
     def __init__(self):
         super(MapStats, self).__init__()
 
         pass
 
-class PlayerStats(Stats):
+class PlayerStats(BaseStats):
 
     def __init__(self):
         super(PlayerStats, self).__init__()
-
-        # Game values
-        self.ammo_points = 0
-        self.assists = 0
-        self.deaths = 0
-        self.death_streak = 0
-        self.heal_points = 0
-        self.kills = 0
-        self.kill_streak = 0
-        self.repair_points = 0
-        self.revive_points = 0
-        self.score = 0
-        self.suicides = 0
-        self.team_kills = 0
-        self.wounds = 0
 
         # Cumulative values
         self.ammo_points_total = 0
@@ -127,21 +52,38 @@ class PlayerStats(Stats):
         self.team_kills_total = 0
         self.wounds_total = 0
 
-class TeamStats(Stats):
+    def reset(self):
+
+        # Game values
+        self.ammo_points = 0
+        self.assists = 0
+        self.deaths = 0
+        self.death_streak = 0
+        self.heal_points = 0
+        self.kills = 0
+        self.kill_streak = 0
+        self.repair_points = 0
+        self.revive_points = 0
+        self.score = 0
+        self.suicides = 0
+        self.team_kills = 0
+        self.wounds = 0
+
+class TeamStats(BaseStats):
 
     def __init__(self):
         super(TeamStats, self).__init__()
 
         pass
 
-class VehicleStats(Stats):
+class VehicleStats(BaseStats):
 
     def __init__(self):
         super(VehicleStats, self).__init__()
 
         pass
 
-class WeaponStats(Stats):
+class WeaponStats(BaseStats):
 
     def __init__(self):
         super(WeaponStats, self).__init__()
@@ -150,18 +92,19 @@ class WeaponStats(Stats):
 
 class StatsManager(object):
 
-    core_processor = None
-    live_processor = None
-    processors = []
-    stats = GameStats()
+    def __init__(self):
+        self.core_processor = None
+        self.live_processor = None
+        self.processors = []
+        self.stats = GameStats()
 
-    games = {}
-    kits = {}
-    maps = {}
-    players = {}
-    teams = {}
-    vehicles = {}
-    weapons = {}
+        self.games = {}
+        self.kits = {}
+        self.maps = {}
+        self.players = {}
+        self.teams = {}
+        self.vehicles = {}
+        self.weapons = {}
 
     # This method will be called to initialize the manager
     def start(self):
@@ -195,11 +138,54 @@ class StatsManager(object):
             None
         '''
 
-        # Update the stats history for the event
-        self.stats.add_event(event)
+        # Reset the stats when a new game starts
+        if isinstance(event, GameStatusEvent) and event.game.is_started():
+            self.reset_stats()
 
         # Allow each processor to handle the event
-        self._fire(event)
+        if event and event.CALLBACK:
+            for processor in self.processors:
+
+                # Attempt to invoke the processor callback
+                try:
+                    callback = getattr(processor, event.CALLBACK)
+                    consumed = callback(event)
+
+                    # Terminate the loop if the processor consumed the event
+                    if consumed:
+                        break
+                except AttributeError:
+                    print 'Missing callback for processor: %s[%s]' % (processor, event.callback)
+        else:
+            print 'Missing callback for event: ', event
+
+    def reset_stats(self):
+        '''
+        Resets all the statistic models. This is typically only called when a new game starts.
+
+        Args:
+           None
+
+        Returns:
+            None
+        '''
+
+        self.stats.reset()
+
+        for s in self.games.itervalues():
+            s.reset()
+        for s in self.kits.itervalues():
+            s.reset()
+        for s in self.maps.itervalues():
+            s.reset()
+        for s in self.players.itervalues():
+            s.reset()
+        for s in self.teams.itervalues():
+            s.reset()
+        for s in self.vehicles.itervalues():
+            s.reset()
+        for s in self.weapons.itervalues():
+            s.reset()
 
     def get_game_stats(self, game):
         '''
@@ -305,33 +291,6 @@ class StatsManager(object):
         if not weapon in self.weapons:
             self.weapons[weapon] = WeaponStats()
         return self.weapons[weapon]
-
-    def _fire(self, event):
-        '''
-        Passes the given log event to all the registered processors.
-
-        Args:
-           event (BaseEvent): Object representation of a log entry.
-
-        Returns:
-            None
-        '''
-
-        if event and event.CALLBACK:
-            for processor in self.processors:
-
-                # Attempt to invoke the processor callback
-                try:
-                    callback = getattr(processor, event.CALLBACK)
-                    consumed = callback(event)
-
-                    # Terminate the loop if the processor consumed the event
-                    if consumed:
-                        break
-                except AttributeError:
-                    print 'Missing callback for processor: %s[%s]' % (processor, event.callback)
-        else:
-            print 'Missing callback for event: ', event
 
 # Create a shared singleton instance of the stats manager
 stats_mgr = StatsManager()

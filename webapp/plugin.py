@@ -1,19 +1,21 @@
 
 import cherrypy
 
-from event import ConnectEvent,DisconnectEvent,GameStatusEvent
 import processor.core
 import processor.live
 import processor.award
 
-from parse import parse_mgr
+from event import event_mgr
 from model import model_mgr
 from stats import stats_mgr
 
 class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
 
-    log_file_path = None
-    log_file = None
+    def __init__(self, engine):
+        super(StatsPlugin, self).__init__(engine)
+
+        self.log_file_path = None
+        self.log_file = None
 
     # This method will be called when the plugin engine starts
     def start(self):
@@ -27,8 +29,8 @@ class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
                 processor.award.Processor()]
 
         # Start the singletons
-        parse_mgr.start()
         model_mgr.start()
+        event_mgr.start()
         stats_mgr.start()
 
         # Build a path to the log file
@@ -76,28 +78,15 @@ class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
 
         # Stop the singletons
         stats_mgr.stop()
+        event_mgr.stop()
         model_mgr.stop()
-        parse_mgr.stop()
 
         print 'STATS PLUGIN - STOPPED'
 
     def _process(self, line):
 
-        # Parse the line into a raw values model
-        entry = parse_mgr.parse(line)
-
-        # Pre-process player connect, player disconnect, and game status events
-        log_type = entry.log_type
-        if log_type == ConnectEvent.ID:
-            model_mgr.add_player(entry.values[0], entry.values[1])
-        elif log_type == DisconnectEvent.ID:
-            model_mgr.remove_player(entry.values[0], entry.values[1])
-        elif log_type == GameStatusEvent.ID:
-            model_mgr.set_game_status(entry.values[0], entry.values[1], int(entry.values[2]),
-                    int(entry.values[3]))
-
-        # Convert the log entry into a type-safe event
-        event = parse_mgr.convert(entry)
+        # Parse the log line into a into a type-safe event
+        event = event_mgr.create_event(line)
 
         # Process the event into useable statistics
         stats_mgr.process_event(event)

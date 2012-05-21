@@ -1,15 +1,235 @@
 
 import time
 
-from parse import parse_mgr
 from model import model_mgr
 
-# Create a shared registry of all the event types
-registry = []
+class EventHistory(object):
+
+    def __init__(self):
+
+        self.ticked = False # Whether or not the newest event caused the game time to advance
+        self.old_tick = 0 # The game time of the older batch of events
+        self.new_tick = 0 # The game time of the newest batch of events
+        self.old_events = [] # A list of events for the older game time
+        self.new_events = [] # A list of events for the newest game time
+        self.old_event_types = {} # A map of event type to event for older events
+        self.new_event_types = {} # A map of event type to event for newest events
+
+    def add_event(self, event):
+        '''
+        Adds a log event to the history of this statistics model for use by processors.
+
+        Args:
+           event (BaseEvent): Object representation of a log entry.
+
+        Returns:
+            None
+        '''
+
+        if not event: return
+
+        # Update the event history based on game time ticks
+        if event.tick > self.new_tick:
+            self.old_tick = self.new_tick
+            self.old_events = self.new_events
+
+            self.new_tick = event.tick
+            self.new_events = []
+            ticked = True
+        else:
+            ticked = False
+        self.new_events.append(event)
+
+        # Update the event history based on event type
+        if event.TYPE in self.new_event_types:
+            self.old_event_types[event.TYPE] = self.new_event_types[event.TYPE]
+        self.new_event_types[event.TYPE] = event
+
+    def get_old_event(self, event_type):
+        '''
+        Gets the older/previous registered event that matches the given identifier.
+
+        Args:
+           event_type (string): The unique identifier for a type of event.
+
+        Returns:
+            event (BaseEvent): An event that occurred at a previous tick.
+        '''
+
+        if event_type and event_type in self.old_event_types:
+            return self.old_event_types[event_type]
+        return None
+
+    def get_new_event(self, event_type):
+        '''
+        Gets the newest/recent registered event that matches the given identifier.
+
+        Args:
+           event_type (string): The unique identifier for a type of event.
+
+        Returns:
+            event (BaseEvent): An event that occurred at the most recent tick.
+        '''
+
+        if event_type and event_type in self.new_event_types:
+            return self.new_event_types[event_type]
+        return None
+
+class EventManager(object):
+
+    def __init__(self):
+        self.event_types = {}
+        self.event_history = EventHistory()
+        self.model_to_history = {}
+
+    # This method will be called to initialize the manager
+    def start(self):
+        print 'EVENT MANAGER - STARTING'
+
+        print 'Event types registered: ', len(self.event_types)
+
+        print 'EVENT MANAGER - STARTED'
+
+    # This method will be called to shutdown the manager
+    def stop(self):
+        print 'EVENT MANAGER - STOPPING'
+
+        print 'EVENT MANAGER - STOPPED'
+
+    def add_event_class(self, event_class):
+        '''
+        Registers the given event class so that it can be used when converting raw log entries.
+
+        Args:
+           event_class (class): Event class definition.
+
+        Returns:
+            None
+        '''
+
+        assert ((event_class and event_class.TYPE and event_class.CALLBACK),
+                'Invalid event class: %s' % event_class)
+
+        # Make sure the event constants are valid
+        event_type = event_class.TYPE
+        event_callback = event_class.CALLBACK
+        assert len(event_type) == 2, 'Invalid event TYPE: %s' % event_type
+        assert len(event_callback) > 0, 'Invalid event CALLBACK: %s' % event_callback
+
+        # Make sure the type is not already registered
+        assert not event_type in self.event_types, 'Duplicate event TYPE: %s' % event_type
+        self.event_types[event_type] = event_class
+
+    def create_event(self, line):
+        '''
+        Takes in a log line and converts it into a type-safe event model more convenient to use.
+
+        Args:
+            line (string): Raw log line from Battlefield 2 mod.
+
+        Returns:
+            event (BaseEvent): Returns an event data structure dependent on the log entry type.
+        '''
+
+        if not line: return
+
+        # Break the line into individual elements
+        elements = line.split(';')
+        assert len(elements) > 1, 'Invalid log line %s' % line
+
+        # Extract the log time and type
+        time = int(elements[0])
+        event_type = str(elements[1])
+        values = elements[2:]
+
+        # Decode special case values
+        values = [self._decode(value) for value in values]
+ 
+        try:
+
+            # Attempt to convert the values into a type-safe event model
+            event_class = self.event_types[event_type]
+            event = event_class(time, values)
+
+            # Reset the event history when a new game starts
+            if isinstance(event, GameStatusEvent) and event.game.is_started():
+                self.reset_history()
+
+            # Register the event with the global history system
+            self.event_history.add_event(event)
+            return event
+        except KeyError:
+            print 'Unknown event type: ', event_type
+
+    def get_history(self, model):
+        '''
+        Gets the event history for the given model or gets the global event history if no model is
+        provided.
+
+        Args:
+            model (object): Model for various Battlefield entities such as players, vehicles,
+                    weapons, etc. None is equivalent to the global event history.
+
+        Returns:
+            history (EventHistory): The event history for the given model.
+        '''
+
+        # Use the global history if no model is given
+        if not model: return self.event_history
+
+        # Get the history for the given model
+        if not model in self.model_to_history:
+            self.model_to_history[model] = EventHistory()
+        return self.model_to_history[model]
+
+    def reset_history(self):
+        '''
+        Resets all the event history. This is typically only called when a new game starts.
+
+        Args:
+           None
+
+        Returns:
+            None
+        '''
+
+        self.event_history = EventHistory()
+        self.model_to_history = {}
+
+    def parse_pos(self, position):
+        '''
+        Takes a string of position values and converts it into an array of type-safe floating point
+        coordinate values.
+
+        Args:
+           position (string): Position values to parse.
+
+        Returns:
+            coordinates (array): Returns an array of parsed floating point coordinates.
+        '''
+
+        if not position: return None
+
+        values = position.split(',')
+        assert len(values) == 4, 'Invalid position array size: %i' % len(values)
+
+        return [float(value) for value in values]
+
+    def _decode(self, value):
+        if value == 'None':
+            return None
+        elif value == 'True':
+            return True
+        elif value == 'False':
+            return False
+        return value
+
+# Create a shared singleton instance of the event manager
+event_mgr = EventManager()
 
 class BaseEvent(object):
 
-    ID = None
+    TYPE = None
     CALLBACK = None
 
     counter = 0
@@ -23,7 +243,7 @@ class BaseEvent(object):
 
 class AmmoEvent(BaseEvent):
 
-    ID = 'AM'
+    TYPE =  'AM'
     CALLBACK = 'on_ammo'
 
     def __init__(self, tick, values):
@@ -32,14 +252,18 @@ class AmmoEvent(BaseEvent):
         assert len(values) == 4, 'AmmoEvent - Wrong number of values: %i' % len(values)
  
         self.receiver = model_mgr.get_player(values[0])
-        self.receiver_pos = parse_mgr.parse_pos(values[1])
+        self.receiver_pos = event_mgr.parse_pos(values[1])
+
         self.giver = model_mgr.get_player(values[2])
-        self.giver_pos = parse_mgr.parse_pos(values[3])
-registry.append(AmmoEvent)
+        self.giver_pos = event_mgr.parse_pos(values[3])
+
+        event_mgr.get_history(self.receiver).add_event(self)
+        event_mgr.get_history(self.giver).add_event(self)
+event_mgr.add_event_class(AmmoEvent)
 
 class AssistEvent(BaseEvent):
 
-    ID = 'AS'
+    TYPE =  'AS'
     CALLBACK = 'on_assist'
 
     def __init__(self, tick, values):
@@ -48,13 +272,15 @@ class AssistEvent(BaseEvent):
         assert len(values) == 3, 'AssistEvent - Wrong number of values: %i' % len(values)
 
         self.player = model_mgr.get_player(values[0])
-        self.player_pos = parse_mgr.parse_pos(values[1])
+        self.player_pos = event_mgr.parse_pos(values[1])
         self.assist_type = values[2]
-registry.append(AssistEvent)
+
+        event_mgr.get_history(self.player).add_event(self)
+event_mgr.add_event_class(AssistEvent)
 
 class BanEvent(BaseEvent):
 
-    ID = 'BN'
+    TYPE =  'BN'
     CALLBACK = 'on_ban'
 
     def __init__(self, tick, values):
@@ -65,11 +291,13 @@ class BanEvent(BaseEvent):
         self.player = model_mgr.get_player(values[0])
         self.duration = values[1]
         self.ban_type = values[2]
-registry.append(BanEvent)
+
+        event_mgr.get_history(self.player).add_event(self)
+event_mgr.add_event_class(BanEvent)
 
 class ChatEvent(BaseEvent):
 
-    ID = 'CH'
+    TYPE =  'CH'
     CALLBACK = 'on_chat'
 
     def __init__(self, tick, values):
@@ -80,11 +308,13 @@ class ChatEvent(BaseEvent):
         self.channel = values[0]
         self.player = model_mgr.get_player(values[1])
         self.text = values[2]
-registry.append(ChatEvent)
+
+        event_mgr.get_history(self.player).add_event(self)
+event_mgr.add_event_class(ChatEvent)
 
 class ClockLimitEvent(BaseEvent):
 
-    ID = 'CL'
+    TYPE =  'CL'
     CALLBACK = 'on_clock_limit'
 
     def __init__(self, tick, values):
@@ -93,11 +323,11 @@ class ClockLimitEvent(BaseEvent):
         assert len(values) == 1, 'ClockLimitEvent - Wrong number of values: %i' % len(values)
 
         self.value = values[0]
-registry.append(ClockLimitEvent)
+event_mgr.add_event_class(ClockLimitEvent)
 
 class CommanderEvent(BaseEvent):
 
-    ID = 'CM'
+    TYPE =  'CM'
     CALLBACK = 'on_commander'
 
     def __init__(self, tick, values):
@@ -107,11 +337,14 @@ class CommanderEvent(BaseEvent):
 
         self.team = model_mgr.get_team(values[0])
         self.player = model_mgr.get_player(values[1])
-registry.append(CommanderEvent)
+
+        event_mgr.get_history(self.team).add_event(self)
+        event_mgr.get_history(self.player).add_event(self)
+event_mgr.add_event_class(CommanderEvent)
 
 class ConnectEvent(BaseEvent):
 
-    ID = 'CN'
+    TYPE =  'CN'
     CALLBACK = 'on_connect'
 
     def __init__(self, tick, values):
@@ -119,12 +352,16 @@ class ConnectEvent(BaseEvent):
 
         assert len(values) == 2, 'ConnectEvent - Wrong number of values: %i' % len(values)
 
-        self.player = model_mgr.get_player(values[1])
-registry.append(ConnectEvent)
+        # Pre-process - Make sure the player model exists in the model manager
+        self.player = model_mgr.add_player(values[0], values[1])
+
+        event_mgr.get_history(self.player).add_event(self)
+
+event_mgr.add_event_class(ConnectEvent)
 
 class ControlPointEvent(BaseEvent):
 
-    ID = 'CP'
+    TYPE =  'CP'
     CALLBACK = 'on_control_point'
 
     def __init__(self, tick, values):
@@ -133,14 +370,16 @@ class ControlPointEvent(BaseEvent):
         assert len(values) == 4, 'ControlPointEvent - Wrong number of values: %i' % len(values)
 
         self.control_point = values[0]
-        self.control_point_pos = parse_mgr.parse_pos(values[1])
+        self.control_point_pos = event_mgr.parse_pos(values[1])
         self.flag_state = values[2]
         self.team = model_mgr.get_team(values[3])
-registry.append(ControlPointEvent)
+
+        event_mgr.get_history(self.team).add_event(self)
+event_mgr.add_event_class(ControlPointEvent)
 
 class DisconnectEvent(BaseEvent):
 
-    ID = 'DC'
+    TYPE =  'DC'
     CALLBACK = 'on_disconnect'
 
     def __init__(self, tick, values):
@@ -148,12 +387,16 @@ class DisconnectEvent(BaseEvent):
 
         assert len(values) == 2, 'DisconnectEvent - Wrong number of values: %i' % len(values)
 
-        self.player = model_mgr.get_player(values[1])
-registry.append(DisconnectEvent)
+        # Pre-process - Make sure the player model exists in the model manager
+        self.player = model_mgr.remove_player(values[0], values[1])
+
+        event_mgr.get_history(self.player).add_event(self)
+
+event_mgr.add_event_class(DisconnectEvent)
 
 class DeathEvent(BaseEvent):
 
-    ID = 'DT'
+    TYPE =  'DT'
     CALLBACK = 'on_death'
 
     def __init__(self, tick, values):
@@ -162,12 +405,14 @@ class DeathEvent(BaseEvent):
         assert len(values) == 2, 'DeathEvent - Wrong number of values: %i' % len(values)
 
         self.player = model_mgr.get_player(values[0])
-        self.player_pos = parse_mgr.parse_pos(values[1])
-registry.append(DeathEvent)
+        self.player_pos = event_mgr.parse_pos(values[1])
+
+        event_mgr.get_history(self.player).add_event(self)
+event_mgr.add_event_class(DeathEvent)
 
 class GameStatusEvent(BaseEvent):
 
-    ID = 'GS'
+    TYPE =  'GS'
     CALLBACK = 'on_game_status'
 
     def __init__(self, tick, values):
@@ -175,12 +420,16 @@ class GameStatusEvent(BaseEvent):
 
         assert len(values) == 4, 'GameStatusEvent - Wrong number of values: %i' % len(values)
 
-        self.game = model_mgr.get_game()
-registry.append(GameStatusEvent)
+        # Pre-process - Make sure the game model exists in the model manager
+        self.game = model_mgr.set_game_status(values[0], values[1], int(values[2]), int(values[3]))
+
+        event_mgr.get_history(self.game).add_event(self)
+
+event_mgr.add_event_class(GameStatusEvent)
 
 class HealEvent(BaseEvent):
 
-    ID = 'HL'
+    TYPE =  'HL'
     CALLBACK = 'on_heal'
 
     def __init__(self, tick, values):
@@ -189,14 +438,17 @@ class HealEvent(BaseEvent):
         assert len(values) == 4, 'HealEvent - Wrong number of values: %i' % len(values)
 
         self.receiver = model_mgr.get_player(values[0])
-        self.receiver_pos = parse_mgr.parse_pos(values[1])
+        self.receiver_pos = event_mgr.parse_pos(values[1])
         self.giver = model_mgr.get_player(values[2])
-        self.giver_pos = parse_mgr.parse_pos(values[3])
-registry.append(HealEvent)
+        self.giver_pos = event_mgr.parse_pos(values[3])
+
+        event_mgr.get_history(self.receiver).add_event(self)
+        event_mgr.get_history(self.giver).add_event(self)
+event_mgr.add_event_class(HealEvent)
 
 class KickEvent(BaseEvent):
 
-    ID = 'KC'
+    TYPE =  'KC'
     CALLBACK = 'on_kick'
 
     def __init__(self, tick, values):
@@ -205,11 +457,13 @@ class KickEvent(BaseEvent):
         assert len(values) == 1, 'KickEvent - Wrong number of values: %i' % len(values)
 
         self.player = model_mgr.get_player(values[0])
-registry.append(KickEvent)
+
+        event_mgr.get_history(self.player).add_event(self)
+event_mgr.add_event_class(KickEvent)
 
 class KitDropEvent(BaseEvent):
 
-    ID = 'KD'
+    TYPE =  'KD'
     CALLBACK = 'on_kit_drop'
 
     def __init__(self, tick, values):
@@ -218,13 +472,16 @@ class KitDropEvent(BaseEvent):
         assert len(values) == 3, 'KitDropEvent - Wrong number of values: %i' % len(values)
 
         self.player = model_mgr.get_player(values[0])
-        self.player_pos = parse_mgr.parse_pos(values[1])
+        self.player_pos = event_mgr.parse_pos(values[1])
         self.kit = model_mgr.get_kit(values[2])
-registry.append(KitDropEvent)
+
+        event_mgr.get_history(self.player).add_event(self)
+        event_mgr.get_history(self.kit).add_event(self)
+event_mgr.add_event_class(KitDropEvent)
 
 class KillEvent(BaseEvent):
 
-    ID = 'KL'
+    TYPE =  'KL'
     CALLBACK = 'on_kill'
 
     def __init__(self, tick, values):
@@ -233,15 +490,19 @@ class KillEvent(BaseEvent):
         assert len(values) == 5, 'KillEvent - Wrong number of values: %i' % len(values)
 
         self.victim = model_mgr.get_player(values[0])
-        self.victim_pos = parse_mgr.parse_pos(values[1])
+        self.victim_pos = event_mgr.parse_pos(values[1])
         self.attacker = model_mgr.get_player(values[2])
-        self.attacker_pos = parse_mgr.parse_pos(values[3])
+        self.attacker_pos = event_mgr.parse_pos(values[3])
         self.weapon = model_mgr.get_weapon(values[4])
-registry.append(KillEvent)
+
+        event_mgr.get_history(self.victim).add_event(self)
+        event_mgr.get_history(self.attacker).add_event(self)
+        event_mgr.get_history(self.weapon).add_event(self)
+event_mgr.add_event_class(KillEvent)
 
 class KitPickupEvent(BaseEvent):
 
-    ID = 'KP'
+    TYPE =  'KP'
     CALLBACK = 'on_kit_pickup'
 
     def __init__(self, tick, values):
@@ -250,13 +511,16 @@ class KitPickupEvent(BaseEvent):
         assert len(values) == 3, 'KitPickupEvent - Wrong number of values: %i' % len(values)
 
         self.player = model_mgr.get_player(values[0])
-        self.player_pos = parse_mgr.parse_pos(values[1])
+        self.player_pos = event_mgr.parse_pos(values[1])
         self.kit = model_mgr.get_kit(values[2])
-registry.append(KitPickupEvent)
+
+        event_mgr.get_history(self.player).add_event(self)
+        event_mgr.get_history(self.kit).add_event(self)
+event_mgr.add_event_class(KitPickupEvent)
 
 class RepairEvent(BaseEvent):
 
-    ID = 'RP'
+    TYPE =  'RP'
     CALLBACK = 'on_repair'
 
     def __init__(self, tick, values):
@@ -265,14 +529,17 @@ class RepairEvent(BaseEvent):
         assert len(values) == 4, 'RepairEvent - Wrong number of values: %i' % len(values)
 
         self.vehicle = model_mgr.get_vehicle(values[0])
-        self.vehicle_pos = parse_mgr.parse_pos(values[1])
+        self.vehicle_pos = event_mgr.parse_pos(values[1])
         self.giver = model_mgr.get_player(values[2])
-        self.giver_pos = parse_mgr.parse_pos(values[3])
-registry.append(RepairEvent)
+        self.giver_pos = event_mgr.parse_pos(values[3])
+
+        event_mgr.get_history(self.vehicle).add_event(self)
+        event_mgr.get_history(self.giver).add_event(self)
+event_mgr.add_event_class(RepairEvent)
 
 class ResetEvent(BaseEvent):
 
-    ID = 'RS'
+    TYPE =  'RS'
     CALLBACK = 'on_reset'
 
     def __init__(self, tick, values):
@@ -281,11 +548,11 @@ class ResetEvent(BaseEvent):
         assert len(values) == 1, 'ResetEvent - Wrong number of values: %i' % len(values)
 
         self.data = values[0]
-registry.append(ResetEvent)
+event_mgr.add_event_class(ResetEvent)
 
 class ReviveEvent(BaseEvent):
 
-    ID = 'RV'
+    TYPE =  'RV'
     CALLBACK = 'on_revive'
 
     def __init__(self, tick, values):
@@ -294,14 +561,17 @@ class ReviveEvent(BaseEvent):
         assert len(values) == 4, 'ReviveEvent - Wrong number of values: %i' % len(values)
 
         self.receiver = model_mgr.get_player(values[0])
-        self.receiver_pos = parse_mgr.parse_pos(values[1])
+        self.receiver_pos = event_mgr.parse_pos(values[1])
         self.giver = model_mgr.get_player(values[2])
-        self.giver_pos = parse_mgr.parse_pos(values[3])
-registry.append(ReviveEvent)
+        self.giver_pos = event_mgr.parse_pos(values[3])
+
+        event_mgr.get_history(self.receiver).add_event(self)
+        event_mgr.get_history(self.giver).add_event(self)
+event_mgr.add_event_class(ReviveEvent)
 
 class ScoreEvent(BaseEvent):
 
-    ID = 'SC'
+    TYPE =  'SC'
     CALLBACK = 'on_score'
 
     def __init__(self, tick, values):
@@ -311,11 +581,13 @@ class ScoreEvent(BaseEvent):
 
         self.player = model_mgr.get_player(values[0])
         self.value = int(values[1])
-registry.append(ScoreEvent)
+
+        event_mgr.get_history(self.player).add_event(self)
+event_mgr.add_event_class(ScoreEvent)
 
 class SquadLeaderEvent(BaseEvent):
 
-    ID = 'SL'
+    TYPE =  'SL'
     CALLBACK = 'on_squad_leader'
 
     def __init__(self, tick, values):
@@ -325,11 +597,13 @@ class SquadLeaderEvent(BaseEvent):
 
         self.squad = values[0]
         self.player = model_mgr.get_player(values[1])
-registry.append(SquadLeaderEvent)
+
+        event_mgr.get_history(self.player).add_event(self)
+event_mgr.add_event_class(SquadLeaderEvent)
 
 class SpawnEvent(BaseEvent):
 
-    ID = 'SP'
+    TYPE =  'SP'
     CALLBACK = 'on_spawn'
 
     def __init__(self, tick, values):
@@ -338,13 +612,16 @@ class SpawnEvent(BaseEvent):
         assert len(values) == 3, 'SpawnEvent - Wrong number of values: %i' % len(values)
 
         self.player = model_mgr.get_player(values[0])
-        self.player_pos = parse_mgr.parse_pos(values[1])
+        self.player_pos = event_mgr.parse_pos(values[1])
         self.team = model_mgr.get_team(values[2])
-registry.append(SpawnEvent)
+
+        event_mgr.get_history(self.player).add_event(self)
+        event_mgr.get_history(self.team).add_event(self)
+event_mgr.add_event_class(SpawnEvent)
 
 class SquadEvent(BaseEvent):
 
-    ID = 'SQ'
+    TYPE =  'SQ'
     CALLBACK = 'on_squad'
 
     def __init__(self, tick, values):
@@ -354,11 +631,13 @@ class SquadEvent(BaseEvent):
 
         self.player = model_mgr.get_player(values[0])
         self.squad = values[1]
-registry.append(SquadEvent)
+
+        event_mgr.get_history(self.player).add_event(self)
+event_mgr.add_event_class(SquadEvent)
 
 class ServerStatusEvent(BaseEvent):
 
-    ID = 'SS'
+    TYPE =  'SS'
     CALLBACK = 'on_server_status'
 
     def __init__(self, tick, values):
@@ -368,11 +647,11 @@ class ServerStatusEvent(BaseEvent):
 
         self.status = values[0]
         self.status_time = values[1]
-registry.append(ServerStatusEvent)
+event_mgr.add_event_class(ServerStatusEvent)
 
 class TeamDamageEvent(BaseEvent):
 
-    ID = 'TD'
+    TYPE =  'TD'
     CALLBACK = 'on_team_damage'
 
     def __init__(self, tick, values):
@@ -381,14 +660,17 @@ class TeamDamageEvent(BaseEvent):
         assert len(values) == 4, 'TeamDamageEvent - Wrong number of values: %i' % len(values)
 
         self.victim = model_mgr.get_player(values[0])
-        self.victim_pos = parse_mgr.parse_pos(values[1])
+        self.victim_pos = event_mgr.parse_pos(values[1])
         self.attacker = model_mgr.get_player(values[2])
-        self.attacker_pos = parse_mgr.parse_pos(values[3])
-registry.append(TeamDamageEvent)
+        self.attacker_pos = event_mgr.parse_pos(values[3])
+
+        event_mgr.get_history(self.victim).add_event(self)
+        event_mgr.get_history(self.attacker).add_event(self)
+event_mgr.add_event_class(TeamDamageEvent)
 
 class TicketLimitEvent(BaseEvent):
 
-    ID = 'TL'
+    TYPE =  'TL'
     CALLBACK = 'on_ticket_limit'
 
     def __init__(self, tick, values):
@@ -398,11 +680,13 @@ class TicketLimitEvent(BaseEvent):
 
         self.team = model_mgr.get_team(values[0])
         self.value = int(values[1])
-registry.append(TicketLimitEvent)
+
+        event_mgr.get_history(self.team).add_event(self)
+event_mgr.add_event_class(TicketLimitEvent)
 
 class TeamEvent(BaseEvent):
 
-    ID = 'TM'
+    TYPE =  'TM'
     CALLBACK = 'on_team'
 
     def __init__(self, tick, values):
@@ -412,11 +696,14 @@ class TeamEvent(BaseEvent):
 
         self.player = model_mgr.get_player(values[0])
         self.team = model_mgr.get_team(values[1])
-registry.append(TeamEvent)
+
+        event_mgr.get_history(self.player).add_event(self)
+        event_mgr.get_history(self.team).add_event(self)
+event_mgr.add_event_class(TeamEvent)
 
 class VehicleDestroyEvent(BaseEvent):
 
-    ID = 'VD'
+    TYPE =  'VD'
     CALLBACK = 'on_vehicle_destroy'
 
     def __init__(self, tick, values):
@@ -425,14 +712,17 @@ class VehicleDestroyEvent(BaseEvent):
         assert len(values) == 4, 'VehicleDestroyEvent - Wrong number of values: %i' % len(values)
 
         self.vehicle = model_mgr.get_vehicle(values[0])
-        self.vehicle_pos = parse_mgr.parse_pos(values[1])
+        self.vehicle_pos = event_mgr.parse_pos(values[1])
         self.attacker = model_mgr.get_player(values[2])
-        self.attacker_pos = parse_mgr.parse_pos(values[3])
-registry.append(VehicleDestroyEvent)
+        self.attacker_pos = event_mgr.parse_pos(values[3])
+
+        event_mgr.get_history(self.vehicle).add_event(self)
+        event_mgr.get_history(self.attacker).add_event(self)
+event_mgr.add_event_class(VehicleDestroyEvent)
 
 class VehicleEnterEvent(BaseEvent):
 
-    ID = 'VE'
+    TYPE =  'VE'
     CALLBACK = 'on_vehicle_enter'
 
     def __init__(self, tick, values):
@@ -441,15 +731,18 @@ class VehicleEnterEvent(BaseEvent):
         assert len(values) == 5, 'VehicleEnterEvent - Wrong number of values: %i' % len(values)
 
         self.player = model_mgr.get_player(values[0])
-        self.player_pos = parse_mgr.parse_pos(values[1])
+        self.player_pos = event_mgr.parse_pos(values[1])
         self.vehicle = model_mgr.get_vehicle(values[2])
         self.vehicle_slot = values[3]
         self.free_soldier = values[4]
-registry.append(VehicleEnterEvent)
+
+        event_mgr.get_history(self.player).add_event(self)
+        event_mgr.get_history(self.vehicle).add_event(self)
+event_mgr.add_event_class(VehicleEnterEvent)
 
 class VehicleExitEvent(BaseEvent):
 
-    ID = 'VX'
+    TYPE =  'VX'
     CALLBACK = 'on_vehicle_exit'
 
     def __init__(self, tick, values):
@@ -458,14 +751,17 @@ class VehicleExitEvent(BaseEvent):
         assert len(values) == 4, 'VehicleExitEvent - Wrong number of values: %i' % len(values)
 
         self.player = model_mgr.get_player(values[0])
-        self.player_pos = parse_mgr.parse_pos(values[1])
+        self.player_pos = event_mgr.parse_pos(values[1])
         self.vehicle = model_mgr.get_vehicle(values[2])
         self.vehicle_slot = values[3]
-registry.append(VehicleExitEvent)
+
+        event_mgr.get_history(self.player).add_event(self)
+        event_mgr.get_history(self.vehicle).add_event(self)
+event_mgr.add_event_class(VehicleExitEvent)
 
 class WeaponEvent(BaseEvent):
 
-    ID = 'WP'
+    TYPE =  'WP'
     CALLBACK = 'on_weapon'
 
     def __init__(self, tick, values):
@@ -474,6 +770,9 @@ class WeaponEvent(BaseEvent):
         assert len(values) == 3, 'WeaponEvent - Wrong number of values: %i' % len(values)
 
         self.player = model_mgr.get_player(values[0])
-        self.player_pos = parse_mgr.parse_pos(values[1])
+        self.player_pos = event_mgr.parse_pos(values[1])
         self.weapon = model_mgr.get_weapon(values[2])
-registry.append(WeaponEvent)
+
+        event_mgr.get_history(self.player).add_event(self)
+        event_mgr.get_history(self.weapon).add_event(self)
+event_mgr.add_event_class(WeaponEvent)

@@ -32,36 +32,46 @@ class Game(object):
 
         Game.counter += 1
 
+    def is_started(self):
+        return self.status == 'pre'
+
+    def is_running(self):
+        return self.status == 'play'
+
+    def is_ended(self):
+        return self.status == 'end'
+
 class ModelManager(object):
 
     # Sentinel objects to avoid none checks everywhere
     EMPTY_PLAYER = Player('', '')
     EMPTY_GAME = Game('', '', 0, 0)
 
-    players = []
-    name_to_player = {}
-    addr_to_player = {}
+    def __init__(self):
+        self.players = []
+        self.name_to_player = {}
+        self.addr_to_player = {}
 
-    games = []
-    id_to_game = {}
+        self.games = []
+        self.id_to_game = {}
 
-    kits = []
-    id_to_kit = {}
-    type_to_kits = {}
+        self.kits = []
+        self.id_to_kit = {}
+        self.type_to_kits = {}
 
-    maps = []
-    id_to_map = {}
+        self.maps = []
+        self.id_to_map = {}
 
-    teams = []
-    id_to_team = {}
+        self.teams = []
+        self.id_to_team = {}
 
-    vehicles = []
-    id_to_vehicle = {}
-    type_to_vehicles = {}
+        self.vehicles = []
+        self.id_to_vehicle = {}
+        self.type_to_vehicles = {}
 
-    weapons = []
-    id_to_weapon = {}
-    type_to_weapons = {}
+        self.weapons = []
+        self.id_to_weapon = {}
+        self.type_to_weapons = {}
 
     # This method will be called to initialize the manager
     def start(self):
