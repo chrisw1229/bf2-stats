@@ -47,8 +47,8 @@ class AssistEvent(BaseEvent):
 
         assert len(values) == 3, 'AssistEvent - Wrong number of values: %i' % len(values)
 
-        self.assister = model_mgr.get_player(values[0])
-        self.assister_pos = parse_mgr.parse_pos(values[1])
+        self.player = model_mgr.get_player(values[0])
+        self.player_pos = parse_mgr.parse_pos(values[1])
         self.assist_type = values[2]
 registry.append(AssistEvent)
 

@@ -40,7 +40,7 @@ class Processor(BaseProcessor):
         values = {
             'id': e.player.id,
             'name': e.player.name,
-            'team': e.player.team
+            'team': e.player.team_id
         }
         self._add_packet(e.id, 'player', values)
 

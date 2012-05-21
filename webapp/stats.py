@@ -96,9 +96,36 @@ class PlayerStats(Stats):
 
     def __init__(self):
         super(PlayerStats, self).__init__()
-        
-        self.kills = 0
+
+        # Game values
+        self.ammo_points = 0
+        self.assists = 0
         self.deaths = 0
+        self.death_streak = 0
+        self.heal_points = 0
+        self.kills = 0
+        self.kill_streak = 0
+        self.repair_points = 0
+        self.revive_points = 0
+        self.score = 0
+        self.suicides = 0
+        self.team_kills = 0
+        self.wounds = 0
+
+        # Cumulative values
+        self.ammo_points_total = 0
+        self.assists_total = 0
+        self.deaths_total = 0
+        self.death_streak_max = 0
+        self.heal_points_total = 0
+        self.kills_total = 0
+        self.kill_streak_max = 0
+        self.repair_points_total = 0
+        self.revive_points_total = 0
+        self.score_total = 0
+        self.suicides_total = 0
+        self.team_kills_total = 0
+        self.wounds_total = 0
 
 class TeamStats(Stats):
 

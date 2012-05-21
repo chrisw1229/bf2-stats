@@ -13,7 +13,7 @@ class Player(object):
         self.id = Player.counter
         self.address = address
         self.name = name
-        self.team = None
+        self.team_id = None
         self.artificial = False
         self.connected = False
 
