@@ -52,12 +52,12 @@ class Processor(BaseProcessor):
         self._add_packet(e.id, 'player', values)
 
     def on_game_status(self, e):
-        if e.game.status == 'pre':
+        if e.game.is_started():
 
             # Clear the packet queue when the game resets
             self.packets = []
             self.id_to_index = {}
-        elif e.game.status == 'play':
+        elif e.game.is_playing():
 
             # Add a packet when the game starts
             values = {

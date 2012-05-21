@@ -35,7 +35,7 @@ class Game(object):
     def is_started(self):
         return self.status == 'pre'
 
-    def is_running(self):
+    def is_playing(self):
         return self.status == 'play'
 
     def is_ended(self):
