@@ -1,7 +1,7 @@
 
 import cherrypy
 
-from stats import stats_mgr
+from stats import stat_mgr
 
 @cherrypy.expose()
 @cherrypy.tools.json_out()
@@ -26,8 +26,8 @@ class Handler:
             threshold = long(threshold)
 
         # Use the live stats processor to get the requested packets
-        processor = stats_mgr.live_processor
-        if processor: 
+        processor = stat_mgr.get_processor('defaults.live')
+        if processor:
             return processor.get_packets(packet_type, threshold)
         return None
         

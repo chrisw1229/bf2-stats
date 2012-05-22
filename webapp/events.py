@@ -1,7 +1,7 @@
 
 import time
 
-from model import model_mgr
+from models import model_mgr
 
 class EventHistory(object):
 
@@ -152,7 +152,7 @@ class EventManager(object):
             event = event_class(time, values)
 
             # Reset the event history when a new game starts
-            if isinstance(event, GameStatusEvent) and event.game.is_started():
+            if isinstance(event, GameStatusEvent) and event.game.is_starting():
                 self.reset_history()
 
             # Register the event with the global history system

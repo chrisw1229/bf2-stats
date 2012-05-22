@@ -1,6 +1,9 @@
 
 class BaseProcessor(object):
 
+    def __init__(self):
+        self.priority = 100
+
     def start(self):
         pass
 

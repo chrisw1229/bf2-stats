@@ -1,5 +1,7 @@
+import traceback
 
-from event import GameStatusEvent
+from events import GameStatusEvent
+from processors import BaseProcessor
 
 class BaseStats(object):
 
@@ -90,14 +92,13 @@ class WeaponStats(BaseStats):
 
         pass
 
-class StatsManager(object):
+class StatManager(object):
 
     def __init__(self):
-        self.core_processor = None
-        self.live_processor = None
         self.processors = []
-        self.stats = GameStats()
+        self.id_to_processor = {}
 
+        self.game = None
         self.games = {}
         self.kits = {}
         self.maps = {}
@@ -111,9 +112,12 @@ class StatsManager(object):
         print 'STATS MANAGER - STARTING'
         print 'Processors registered: ', len(self.processors)
 
+        # Sort the log processors by priority
+        self.processors.sort(key=lambda p: p.priority)
+
         # Start all the log processors
-        for proc in self.processors:
-            proc.start()
+        for processor in self.processors:
+            processor.start()
 
         print 'STATS MANAGER - STARTED'
 
@@ -122,10 +126,66 @@ class StatsManager(object):
         print 'STATS MANAGER - STOPPING'
 
         # Stop all the log processors
-        for proc in reversed(self.processors):
-            proc.stop()
+        for processor in reversed(self.processors):
+            processor.stop()
 
         print 'STATS MANAGER - STOPPED'
+
+    def add_processor(self, id, processor):
+        '''
+        Registers the given processor instance so that it can be used to calculate statistics.
+
+        Args:
+            id (string): A unique identifier for the processor which is typically just based on the
+                processor's module name.
+            processor (BaseProcessor): The processor instance to register.
+
+        Returns:
+            None
+        '''
+
+        assert id and processor, 'Invalid processor registration: %s (%s)' % (id, processor)
+        assert not id in self.id_to_processor, 'Duplicate processor registration: %s' % id
+        assert isinstance(processor, BaseProcessor), 'Must inherit BaseProcessor: %s' % processor
+
+        self.processors.append(processor)
+        self.id_to_processor[id] = processor
+
+    def get_processor(self, id):
+        '''
+        Gets the processor instance associated with the given identifier.
+
+        Args:
+            id (string): A unique identifier that was previously registered to a processor instance.
+
+        Returns:
+            processor (BaseProcessor): The requested processor instance.
+        '''
+
+        if id and id in self.id_to_processor:
+            return self.id_to_processor[id]
+
+        print 'ERROR - Missing processor reference: ', id
+        return None
+
+    def get_processors(self, id_prefix):
+        '''
+        Gets a list of processor instances that match the given identifier prefix.
+
+        Args:
+            id_prefix (string): A partial unique identifier that will be used to match previously
+                    registered processor instances.
+
+        Returns:
+            processors (list): A list of processor instances that have identifiers starting with the
+                    given prefix.
+        '''
+
+        results = []
+        for id in self.id_to_processor.iterkeys():
+            if id.startswith(id_prefix):
+                results.append(self.id_to_processor[id])
+        return results
 
     def process_event(self, event):
         '''
@@ -139,7 +199,9 @@ class StatsManager(object):
         '''
 
         # Reset the stats when a new game starts
-        if isinstance(event, GameStatusEvent) and event.game.is_started():
+        # Store a reference to the current game
+        if isinstance(event, GameStatusEvent) and event.game.is_starting():
+            self.game = event.game
             self.reset_stats()
 
         # Allow each processor to handle the event
@@ -147,17 +209,24 @@ class StatsManager(object):
             for processor in self.processors:
 
                 # Attempt to invoke the processor callback
-                try:
-                    callback = getattr(processor, event.CALLBACK)
-                    consumed = callback(event)
+                if hasattr(processor, event.CALLBACK):
+                    try:
+                        callback = getattr(processor, event.CALLBACK)
+                        consumed = callback(event)
 
-                    # Terminate the loop if the processor consumed the event
-                    if consumed:
-                        break
-                except AttributeError:
-                    print 'Missing callback for processor: %s[%s]' % (processor, event.callback)
+                        # Terminate the loop if the processor consumed the event
+                        if consumed:
+                            break
+                    except Exception, err:
+                        print ('ERROR - Failed to invoke processor callback: %s.%s[%s]'
+                                % (processor.__class__.__module__,
+                                processor.__class__.__name__, event.CALLBACK))
+                        traceback.print_exc(err)
+                else:
+                    print 'ERROR - Missing callback: %s.%s[%s]' % (processor.__class__.__module__,
+                            processor.__class__.__name__, event.CALLBACK)
         else:
-            print 'Missing callback for event: ', event
+            print 'Missing event CALLBACK constant: ', event
 
     def reset_stats(self):
         '''
@@ -170,33 +239,27 @@ class StatsManager(object):
             None
         '''
 
-        self.stats.reset()
-
-        for s in self.games.itervalues():
-            s.reset()
-        for s in self.kits.itervalues():
-            s.reset()
-        for s in self.maps.itervalues():
-            s.reset()
-        for s in self.players.itervalues():
-            s.reset()
-        for s in self.teams.itervalues():
-            s.reset()
-        for s in self.vehicles.itervalues():
-            s.reset()
-        for s in self.weapons.itervalues():
-            s.reset()
+        self._reset_stats(self.kits)
+        self._reset_stats(self.maps)
+        self._reset_stats(self.players)
+        self._reset_stats(self.teams)
+        self._reset_stats(self.vehicles)
+        self._reset_stats(self.weapons)
 
     def get_game_stats(self, game):
         '''
         Gets the statistics object for the given game model.
 
         Args:
-           game (Game): Object representation of a game.
+           game (Game): Object representation of a game. None will retrieve the statistics for the
+                    currently active game.
 
         Returns:
             stats (GameStats): The statistics model associated with the game.
         '''
+
+        if not game:
+            game = self.game
 
         if not game in self.games:
             self.games[game] = GameStats()
@@ -292,5 +355,10 @@ class StatsManager(object):
             self.weapons[weapon] = WeaponStats()
         return self.weapons[weapon]
 
+    def _reset_stats(self, mapping):
+        if mapping:
+            for stats in mapping.itervalues():
+                stats.reset()
+
 # Create a shared singleton instance of the stats manager
-stats_mgr = StatsManager()
+stat_mgr = StatManager()

@@ -1,9 +1,9 @@
 
-import kit
-import map
-import team
-import vehicle
-import weapon
+import kits
+import maps
+import teams
+import vehicles
+import weapons
 
 class Player(object):
 
@@ -32,13 +32,13 @@ class Game(object):
 
         Game.counter += 1
 
-    def is_started(self):
+    def is_starting(self):
         return self.status == 'pre'
 
     def is_playing(self):
         return self.status == 'play'
 
-    def is_ended(self):
+    def is_ending(self):
         return self.status == 'end'
 
 class ModelManager(object):
@@ -78,50 +78,50 @@ class ModelManager(object):
         print 'MODEL MANAGER - STARTING'
 
         # Register all the kit models
-        self.kits = kit.registry
-        for k in self.kits:
-            assert not k.id in self.id_to_kit, 'Duplicate kit ID: %s' % k.id
-            self.id_to_kit[k.id] = k
+        self.kits = kits.registry
+        for kit in self.kits:
+            assert not kit.id in self.id_to_kit, 'Duplicate kit ID: %s' % kit.id
+            self.id_to_kit[kit.id] = kit
 
-            if not k.kit_type in self.type_to_kits:
-                self.type_to_kits[k.kit_type] = []
-            self.type_to_kits[k.kit_type].append(k)
+            if not kit.kit_type in self.type_to_kits:
+                self.type_to_kits[kit.kit_type] = []
+            self.type_to_kits[kit.kit_type].append(kit)
         print 'Kits registered: ', len(self.kits)
 
         # Register all the map models
-        self.maps = map.registry
-        for m in self.maps:
-            assert not m.id in self.id_to_map, 'Duplicate map ID: %s' % m.id
-            self.id_to_map[m.id] = m
+        self.maps = maps.registry
+        for map in self.maps:
+            assert not map.id in self.id_to_map, 'Duplicate map ID: %s' % map.id
+            self.id_to_map[map.id] = map
         print 'Maps registered: ', len(self.maps)
 
         # Register all the team models
-        self.teams = team.registry
-        for t in self.teams:
-            assert not t.id in self.id_to_team, 'Duplicate team ID: %s' % t.id
-            self.id_to_team[t.id] = t
+        self.teams = teams.registry
+        for team in self.teams:
+            assert not team.id in self.id_to_team, 'Duplicate team ID: %s' % team.id
+            self.id_to_team[team.id] = team
         print 'Teams registered: ', len(self.teams)
 
         # Register all the vehicle models
-        self.vehicles = vehicle.registry
-        for v in self.vehicles:
-            assert not v.id in self.id_to_vehicle, 'Duplicate vehicle ID: %s' % v.id
-            self.id_to_vehicle[v.id] = v
+        self.vehicles = vehicles.registry
+        for vehicle in self.vehicles:
+            assert not vehicle.id in self.id_to_vehicle, 'Duplicate vehicle ID: %s' % vehicle.id
+            self.id_to_vehicle[vehicle.id] = vehicle
 
-            if not v.vehicle_type in self.type_to_vehicles:
-                self.type_to_vehicles[v.vehicle_type] = []
-            self.type_to_vehicles[v.vehicle_type].append(v)
+            if not vehicle.vehicle_type in self.type_to_vehicles:
+                self.type_to_vehicles[vehicle.vehicle_type] = []
+            self.type_to_vehicles[vehicle.vehicle_type].append(vehicle)
         print 'Vehicles registered: ', len(self.vehicles)
 
         # Register all the weapon models
-        self.weapons = weapon.registry
-        for w in self.weapons:
-            assert not w.id in self.id_to_weapon, 'Duplicate weapon ID: %s' % w.id
-            self.id_to_weapon[w.id] = w
+        self.weapons = weapons.registry
+        for weapon in self.weapons:
+            assert not weapon.id in self.id_to_weapon, 'Duplicate weapon ID: %s' % weapon.id
+            self.id_to_weapon[weapon.id] = weapon
 
-            if not w.weapon_type in self.type_to_weapons:
-                self.type_to_weapons[w.weapon_type] = []
-            self.type_to_weapons[w.weapon_type].append(w)
+            if not weapon.weapon_type in self.type_to_weapons:
+                self.type_to_weapons[weapon.weapon_type] = []
+            self.type_to_weapons[weapon.weapon_type].append(weapon)
         print 'Weapons registered: ', len(self.weapons)
 
         print 'MODEL MANAGER - STARTED'
@@ -280,7 +280,7 @@ class ModelManager(object):
 
         # Handle requests for missing kits
         if not id:
-            return kit.EMPTY
+            return kits.EMPTY
 
         # Get a model for the kit
         if id in self.id_to_kit:
@@ -330,7 +330,7 @@ class ModelManager(object):
 
         # Handle requests for missing maps
         if not id:
-            return map.EMPTY
+            return maps.EMPTY
 
         # Get a model for the map
         if id in self.id_to_map:
@@ -352,7 +352,7 @@ class ModelManager(object):
 
         # Handle requests for missing teams
         if not id:
-            return team.EMPTY
+            return teams.EMPTY
 
         # Get a model for the team
         if id in self.id_to_team:
@@ -374,7 +374,7 @@ class ModelManager(object):
 
         # Handle requests for missing vehicles
         if not id:
-            return vehicle.EMPTY
+            return vehicles.EMPTY
 
         # Get a model for the vehicle
         if id in self.id_to_vehicle:
@@ -424,7 +424,7 @@ class ModelManager(object):
 
         # Handle requests for missing weapons
         if not id:
-            return weapon.EMPTY
+            return weapons.EMPTY
 
         # Get a model for the weapon
         if id in self.id_to_weapon:

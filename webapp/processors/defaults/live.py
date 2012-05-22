@@ -1,9 +1,10 @@
 
-from processor import BaseProcessor
+from processors import BaseProcessor
 
 class Processor(BaseProcessor):
 
     def __init__(self):
+        self.priority = 10
         self.packets = [] # List of all packets for the current game
         self.id_to_index = {}; # Mapping of event id to packet index
         self.last_id = None # Identifier of the last packet added
@@ -52,7 +53,7 @@ class Processor(BaseProcessor):
         self._add_packet(e.id, 'player', values)
 
     def on_game_status(self, e):
-        if e.game.is_started():
+        if e.game.is_starting():
 
             # Clear the packet queue when the game resets
             self.packets = []

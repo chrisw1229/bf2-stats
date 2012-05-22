@@ -1,13 +1,12 @@
 
+import pkgutil
+import traceback
+
 import cherrypy
 
-import processor.core
-import processor.live
-import processor.award
-
-from event import event_mgr
-from model import model_mgr
-from stats import stats_mgr
+from events import event_mgr
+from models import model_mgr
+from stats import stat_mgr
 
 class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
 
@@ -21,17 +20,13 @@ class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
     def start(self):
         print 'STATS PLUGIN - STARTING'
 
-        # Register all the processors
-        # TODO Load these dynamically
-        stats_mgr.core_processor = processor.core.Processor()
-        stats_mgr.live_processor = processor.live.Processor()
-        stats_mgr.processors = [stats_mgr.core_processor, stats_mgr.live_processor,
-                processor.award.Processor()]
+        # Register all the processors dynamically
+        self._load_processor_modules('processors')
 
         # Start the singletons
         model_mgr.start()
         event_mgr.start()
-        stats_mgr.start()
+        stat_mgr.start()
 
         # Build a path to the log file
         if not self.log_file_path:
@@ -77,11 +72,49 @@ class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
             self.log_file.close()
 
         # Stop the singletons
-        stats_mgr.stop()
+        stat_mgr.stop()
         event_mgr.stop()
         model_mgr.stop()
 
         print 'STATS PLUGIN - STOPPED'
+
+    def _load_processor_modules(self, root_package, parent_package=None):
+
+        # Build paths to the current module for look-up and import purposes
+        full_package = root_package
+        if parent_package:
+            full_package += '.' + parent_package
+        package_path = full_package.replace('.', '/')
+
+        # Loop over all the sub-modules in the parent package
+        for importer, modname, ispkg in pkgutil.walk_packages([package_path]):
+
+            # Dynamically import each sub-module
+            full_module = full_package + '.' + modname
+            processor_module = __import__(full_module, fromlist=[''])
+
+            if ispkg:
+
+                # Recursively load any sub-packages
+                self._load_processor_modules(full_package, modname)
+            elif hasattr(processor_module, 'Processor'):
+                try:
+
+                    # Build a unique id for the processor using its package and module
+                    processor_id = modname
+                    if parent_package:
+                        processor_id = parent_package + '.' + modname
+
+                    # Create and register the processor class
+                    processor_class = getattr(processor_module, 'Processor')
+                    processor = processor_class()
+                    stat_mgr.add_processor(processor_id, processor)
+                except Exception, err:
+                    print ('ERROR - Failed to invoke processor constructor: %s.%s'
+                            % (processor.__class__.__module__, processor.__class__.__name__))
+                    traceback.print_exc(err)
+            else:
+                print 'ERROR - Missing processor class from module: ', full_module
 
     def _process(self, line):
 
@@ -89,7 +122,7 @@ class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
         event = event_mgr.create_event(line)
 
         # Process the event into useable statistics
-        stats_mgr.process_event(event)
+        stat_mgr.process_event(event)
 
 # Register this class with the plugin engine
 cherrypy.engine.statsplugin = StatsPlugin(cherrypy.engine)

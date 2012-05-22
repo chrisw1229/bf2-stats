@@ -1,25 +1,30 @@
 
-from processor import BaseProcessor
-from stats import stats_mgr
+from processors import BaseProcessor
+from stats import stat_mgr
 
 class Processor(BaseProcessor):
 
+    def __init__(self):
+        super(Processor, self).__init__()
+
+        self.priority = 0
+
     def on_ammo(self, e):
-        giver_stats = stats_mgr.get_player_stats(e.giver)
+        giver_stats = stat_mgr.get_player_stats(e.giver)
 
         # Increment ammo points for the player
         giver_stats.ammo_points += 1
         giver_stats.ammo_points_total += 1
 
     def on_assist(self, e):
-        player_stats = stats_mgr.get_player_stats(e.player)
+        player_stats = stat_mgr.get_player_stats(e.player)
 
         # Increment assist count for the player
         player_stats.assists += 1
         player_stats.assists_total += 1
 
     def on_death(self, e):
-        player_stats = stats_mgr.get_player_stats(e.player)
+        player_stats = stat_mgr.get_player_stats(e.player)
 
         # Increment death count for the player
         player_stats.deaths += 1
@@ -32,15 +37,15 @@ class Processor(BaseProcessor):
         player_stats.kill_streak = 0
 
     def on_heal(self, e):
-        giver_stats = stats_mgr.get_player_stats(e.giver)
+        giver_stats = stat_mgr.get_player_stats(e.giver)
 
         # Increment heal points for the player
         giver_stats.heal_points += 1
         giver_stats.heal_points_total += 1
 
     def on_kill(self, e):
-        victim_stats = stats_mgr.get_player_stats(e.victim)
-        attacker_stats = stats_mgr.get_player_stats(e.attacker)
+        victim_stats = stat_mgr.get_player_stats(e.victim)
+        attacker_stats = stat_mgr.get_player_stats(e.attacker)
 
         # Check whether the kill was actually a suicide
         if e.victim == e.attacker:
@@ -69,21 +74,21 @@ class Processor(BaseProcessor):
         attacker_stats.death_streak = 0
 
     def on_repair(self, e):
-        giver_stats = stats_mgr.get_player_stats(e.giver)
+        giver_stats = stat_mgr.get_player_stats(e.giver)
 
         # Increment repair points for the player
         giver_stats.repair_points += 1
         giver_stats.repair_points_total += 1
 
     def on_revive(self, e):
-        giver_stats = stats_mgr.get_player_stats(e.giver)
+        giver_stats = stat_mgr.get_player_stats(e.giver)
 
         # Increment revive points for the player
         giver_stats.revive_points += 1
         giver_stats.revive_points_total += 1
 
     def on_score(self, e):
-        player_stats = stats_mgr.get_player_stats(e.player)
+        player_stats = stat_mgr.get_player_stats(e.player)
 
         # Increment score count for the player
         player_stats.score += e.value

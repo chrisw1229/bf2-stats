@@ -1,4 +1,4 @@
-from processor import BaseProcessor
+from processors import BaseProcessor
 
 class Processor(BaseProcessor):
 
