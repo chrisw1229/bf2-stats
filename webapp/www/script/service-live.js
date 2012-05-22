@@ -56,7 +56,7 @@ $.extend({ service: {
 
          // Check if this is a threshold packet
          if (packet.type == 'threshold') {
-            this.threshold = packet.data;
+            this.threshold = packet.values;
          } else {
 
             // Pass the packet to all registered listeners
