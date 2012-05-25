@@ -1,4 +1,4 @@
-
+﻿
 import cherrypy
 
 from stats import stat_mgr
@@ -30,4 +30,3 @@ class Handler:
         if processor:
             return processor.get_packets(packet_type, threshold)
         return None
-        

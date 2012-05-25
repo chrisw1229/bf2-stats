@@ -1,4 +1,4 @@
-
+﻿
 # Create a shared registry of all the vehicle types
 registry = set()
 
