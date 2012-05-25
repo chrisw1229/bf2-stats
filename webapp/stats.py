@@ -96,18 +96,18 @@ class WeaponStats(BaseStats):
 class StatManager(object):
 
     def __init__(self):
-        self.processors = []
-        self.id_to_processor = {}
-        self.type_to_processors = {}
+        self.processors = list()
+        self.id_to_processor = dict()
+        self.type_to_processors = dict()
 
         self.game = None
-        self.game_to_stats = {}
-        self.kit_to_stats = {}
-        self.map_to_stats = {}
-        self.player_to_stats = {}
-        self.team_to_stats = {}
-        self.vehicle_to_stats = {}
-        self.weapon_to_stats = {}
+        self.game_to_stats = dict()
+        self.kit_to_stats = dict()
+        self.map_to_stats = dict()
+        self.player_to_stats = dict()
+        self.team_to_stats = dict()
+        self.vehicle_to_stats = dict()
+        self.weapon_to_stats = dict()
 
     # This method will be called to initialize the manager
     def start(self):
@@ -214,7 +214,7 @@ class StatManager(object):
 
         # Reset the stats when a new game starts
         # Store a reference to the current game
-        if isinstance(event, GameStatusEvent) and event.game.is_starting():
+        if isinstance(event, GameStatusEvent) and event.game.starting:
             self.game = event.game
             self.reset_stats()
 
@@ -222,23 +222,9 @@ class StatManager(object):
         if event and event.CALLBACK:
             for processor in self.processors:
 
-                # Attempt to invoke the processor callback
-                if hasattr(processor, event.CALLBACK):
-                    try:
-                        callback = getattr(processor, event.CALLBACK)
-                        consumed = callback(event)
-
-                        # Terminate the loop if the processor consumed the event
-                        if consumed:
-                            break
-                    except Exception, err:
-                        print ('ERROR - Failed to invoke processor callback: %s.%s[%s]'
-                                % (processor.__class__.__module__,
-                                processor.__class__.__name__, event.CALLBACK))
-                        traceback.print_exc(err)
-                else:
-                    print 'ERROR - Missing callback: %s.%s[%s]' % (processor.__class__.__module__,
-                            processor.__class__.__name__, event.CALLBACK)
+                # Terminate processing if the event was consumed
+                if self._process_event(processor, event):
+                    break
         else:
             print 'Missing event CALLBACK constant: ', event
 
@@ -373,6 +359,26 @@ class StatManager(object):
         if mapping:
             for stats in mapping.itervalues():
                 stats.reset()
+
+    def _process_event(self, processor, event):
+
+        # Make sure the processor has the event callback function
+        if hasattr(processor, event.CALLBACK):
+            try:
+
+                # Attempt to invoke the processor callback
+                callback = getattr(processor, event.CALLBACK)
+
+                # Terminate processing if the event was consumed
+                return callback(event)
+            except Exception, err:
+                print ('ERROR - Failed to invoke processor callback: %s.%s[%s]'
+                        % (processor.__class__.__module__,
+                        processor.__class__.__name__, event.CALLBACK))
+                traceback.print_exc(err)
+        else:
+            print 'ERROR - Missing callback: %s.%s[%s]' % (processor.__class__.__module__,
+                    processor.__class__.__name__, event.CALLBACK)
 
 # Create a shared singleton instance of the stats manager
 stat_mgr = StatManager()

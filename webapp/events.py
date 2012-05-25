@@ -10,10 +10,10 @@ class EventHistory(object):
         self.ticked = False # Whether or not the newest event caused the game time to advance
         self.old_tick = 0 # The game time of the older batch of events
         self.new_tick = 0 # The game time of the newest batch of events
-        self.old_events = [] # A list of events for the older game time
-        self.new_events = [] # A list of events for the newest game time
-        self.old_event_types = {} # A map of event type to event for older events
-        self.new_event_types = {} # A map of event type to event for newest events
+        self.old_events = list() # A list of events for the older game time
+        self.new_events = list() # A list of events for the newest game time
+        self.old_event_types = dict() # A map of event type to event for older events
+        self.new_event_types = dict() # A map of event type to event for newest events
 
     def add_event(self, event):
         '''
@@ -34,7 +34,7 @@ class EventHistory(object):
             self.old_events = self.new_events
 
             self.new_tick = event.tick
-            self.new_events = []
+            del self.new_events[:]
             ticked = True
         else:
             ticked = False
@@ -78,9 +78,9 @@ class EventHistory(object):
 class EventManager(object):
 
     def __init__(self):
-        self.event_types = {}
+        self.event_types = dict()
         self.event_history = EventHistory()
-        self.model_to_history = {}
+        self.model_to_history = dict()
 
     # This method will be called to initialize the manager
     def start(self):
@@ -152,7 +152,7 @@ class EventManager(object):
             event = event_class(time, values)
 
             # Reset the event history when a new game starts
-            if isinstance(event, GameStatusEvent) and event.game.is_starting():
+            if isinstance(event, GameStatusEvent) and event.game.starting:
                 self.reset_history()
 
             # Register the event with the global history system
@@ -194,7 +194,7 @@ class EventManager(object):
         '''
 
         self.event_history = EventHistory()
-        self.model_to_history = {}
+        self.model_to_history.clear()
 
     def parse_pos(self, position):
         '''

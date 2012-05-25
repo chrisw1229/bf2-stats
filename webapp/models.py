@@ -13,13 +13,19 @@ class Player(object):
         self.id = Player.counter
         self.address = address
         self.name = name
-        self.team_id = None
+
+        self.aliases = set()
         self.artificial = False
         self.connected = False
+        self.team_id = None
 
         Player.counter += 1
 
 class Game(object):
+
+    STARTING = 'pre'
+    PLAYING = 'play'
+    ENDING = 'end'
 
     counter = 0
 
@@ -29,17 +35,11 @@ class Game(object):
         self.map_id = map_id
         self.clock_limit = clock_limit
         self.score_limit = score_limit
+        self.starting = False
+        self.playing = False
+        self.ending = False
 
         Game.counter += 1
-
-    def is_starting(self):
-        return self.status == 'pre'
-
-    def is_playing(self):
-        return self.status == 'play'
-
-    def is_ending(self):
-        return self.status == 'end'
 
 class ModelManager(object):
 
@@ -48,80 +48,85 @@ class ModelManager(object):
     EMPTY_GAME = Game('', '', 0, 0)
 
     def __init__(self):
-        self.players = []
-        self.name_to_player = {}
-        self.addr_to_player = {}
+        self.players = set()
+        self.name_to_player = dict()
+        self.addr_to_player = dict()
 
-        self.games = []
-        self.id_to_game = {}
+        self.games = list()
+        self.id_to_game = dict()
 
-        self.kits = []
-        self.id_to_kit = {}
-        self.type_to_kits = {}
+        self.kits = set()
+        self.id_to_kit = dict()
+        self.type_to_kits = dict()
 
-        self.maps = []
-        self.id_to_map = {}
+        self.maps = set()
+        self.id_to_map = dict()
 
-        self.teams = []
-        self.id_to_team = {}
+        self.teams = set()
+        self.id_to_team = dict()
 
-        self.vehicles = []
-        self.id_to_vehicle = {}
-        self.type_to_vehicles = {}
+        self.vehicles = set()
+        self.id_to_vehicle = dict()
+        self.type_to_vehicles = dict()
+        self.group_to_vehicles = dict()
 
-        self.weapons = []
-        self.id_to_weapon = {}
-        self.type_to_weapons = {}
+        self.weapons = set()
+        self.id_to_weapon = dict()
+        self.type_to_weapons = dict()
 
     # This method will be called to initialize the manager
     def start(self):
         print 'MODEL MANAGER - STARTING'
 
         # Register all the kit models
-        self.kits = kits.registry
+        self.kits.update(kits.registry)
         for kit in self.kits:
             assert not kit.id in self.id_to_kit, 'Duplicate kit ID: %s' % kit.id
             self.id_to_kit[kit.id] = kit
 
             if not kit.kit_type in self.type_to_kits:
-                self.type_to_kits[kit.kit_type] = []
-            self.type_to_kits[kit.kit_type].append(kit)
+                self.type_to_kits[kit.kit_type] = set()
+            self.type_to_kits[kit.kit_type].add(kit)
         print 'Kits registered: ', len(self.kits)
 
         # Register all the map models
-        self.maps = maps.registry
+        self.maps.update(maps.registry)
         for map in self.maps:
             assert not map.id in self.id_to_map, 'Duplicate map ID: %s' % map.id
             self.id_to_map[map.id] = map
         print 'Maps registered: ', len(self.maps)
 
         # Register all the team models
-        self.teams = teams.registry
+        self.teams.update(teams.registry)
         for team in self.teams:
             assert not team.id in self.id_to_team, 'Duplicate team ID: %s' % team.id
             self.id_to_team[team.id] = team
         print 'Teams registered: ', len(self.teams)
 
         # Register all the vehicle models
-        self.vehicles = vehicles.registry
+        self.vehicles.update(vehicles.registry)
         for vehicle in self.vehicles:
             assert not vehicle.id in self.id_to_vehicle, 'Duplicate vehicle ID: %s' % vehicle.id
             self.id_to_vehicle[vehicle.id] = vehicle
 
             if not vehicle.vehicle_type in self.type_to_vehicles:
-                self.type_to_vehicles[vehicle.vehicle_type] = []
-            self.type_to_vehicles[vehicle.vehicle_type].append(vehicle)
+                self.type_to_vehicles[vehicle.vehicle_type] = set()
+            self.type_to_vehicles[vehicle.vehicle_type].add(vehicle)
+
+            if not vehicle.group in self.group_to_vehicles:
+                self.group_to_vehicles[vehicle.group] = set()
+            self.group_to_vehicles[vehicle.group].add(vehicle)
         print 'Vehicles registered: ', len(self.vehicles)
 
         # Register all the weapon models
-        self.weapons = weapons.registry
+        self.weapons.update(weapons.registry)
         for weapon in self.weapons:
             assert not weapon.id in self.id_to_weapon, 'Duplicate weapon ID: %s' % weapon.id
             self.id_to_weapon[weapon.id] = weapon
 
             if not weapon.weapon_type in self.type_to_weapons:
-                self.type_to_weapons[weapon.weapon_type] = []
-            self.type_to_weapons[weapon.weapon_type].append(weapon)
+                self.type_to_weapons[weapon.weapon_type] = set()
+            self.type_to_weapons[weapon.weapon_type].add(weapon)
         print 'Weapons registered: ', len(self.weapons)
 
         print 'MODEL MANAGER - STARTED'
@@ -226,7 +231,7 @@ class ModelManager(object):
         '''
 
         game = None
-        if status == 'pre':
+        if status == Game.STARTING:
 
             # Create a new model when the game is starting
             game = Game(status, map_id, clock_limit, score_limit)
@@ -234,12 +239,17 @@ class ModelManager(object):
             print 'Game added: %i %s' % (game.id, game.map_id)
         else:
 
-            # Update the game to reflect the current status    
+            # Update the game to reflect the new state
             game = self.get_game()
             game.status = status
             game.map_id = map_id
             game.clock_limit = clock_limit
             game.score_limit = score_limit
+
+        # Update the game status convenience flags
+        game.starting = (status == Game.STARTING)
+        game.playing = (status == Game.PLAYING)
+        game.ending = (status == Game.ENDING)
         return game
 
     def get_game(self, id=None):
@@ -302,12 +312,12 @@ class ModelManager(object):
 
         return self.type_to_kits.keys()
 
-    def get_kits(self, kit_type):
+    def get_kits(self, kit_type=None):
         '''
         Gets a list of registered kits that match the given type.
 
         Args:
-           kit_type (string): The type of kits to get.
+           kit_type (string): The type of kits to get or None to get all kits.
 
         Returns:
             kits (list): Returns a list of kits based on type.
@@ -315,7 +325,7 @@ class ModelManager(object):
 
         if kit_type and kit_type in self.type_to_kits:
             return self.type_to_kits[kit_type]
-        return []
+        return self.kits
 
     def get_map(self, id):
         '''
@@ -396,12 +406,13 @@ class ModelManager(object):
 
         return self.type_to_vehicles.keys()
 
-    def get_vehicles(self, vehicle_type):
+    def get_vehicles(self, vehicle_type=None, vehicle_group=None):
         '''
         Gets a list of registered vehicles that match the given type.
 
         Args:
-           vehicle_type (string): The type of vehicles to get.
+           vehicle_type (string): The type of vehicles to get or None to get all vehicles.
+           vehicle_group (string): The group of vehicles to get or None to get all vehicles.
 
         Returns:
             vehicles (list): Returns a list of vehicles based on type.
@@ -409,7 +420,9 @@ class ModelManager(object):
 
         if vehicle_type and vehicle_type in self.type_to_vehicles:
             return self.type_to_vehicles[vehicle_type]
-        return []
+        if vehicle_group and vehicle_group in self.group_to_vehicles:
+            return self.group_to_vehicles[vehicle_group]
+        return self.vehicles
 
     def get_weapon(self, id):
         '''
@@ -446,12 +459,12 @@ class ModelManager(object):
 
         return self.type_to_weapons.keys()
 
-    def get_weapons(self, weapon_type):
+    def get_weapons(self, weapon_type=None):
         '''
         Gets a list of registered weapons that match the given type.
 
         Args:
-           weapon_type (string): The type of weapons to get.
+           weapon_type (string): The type of weapons to get or None to get all weapons.
 
         Returns:
             weapons (list): Returns a list of weapons based on type.
@@ -459,7 +472,7 @@ class ModelManager(object):
 
         if weapon_type and weapon_type in self.type_to_weapons:
             return self.type_to_weapons[weapon_type]
-        return []
+        return self.weapons
 
     def _update_player(self, address, name):
 
@@ -477,6 +490,9 @@ class ModelManager(object):
         player.name = name
         player.artificial = (address == None)
 
+        # Update the set of player aliases
+        player.aliases.add(name)
+
         # Update the address mapping for human players
         if address:
             self.addr_to_player[address] = player
@@ -486,7 +502,7 @@ class ModelManager(object):
 
         # Update the master player index
         if not player in self.players:
-            self.players.append(player)
+            self.players.add(player)
         return player
 
 # Create a shared singleton instance of the model manager
