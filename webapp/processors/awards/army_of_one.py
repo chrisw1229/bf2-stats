@@ -3,19 +3,26 @@ from processors.awards import AwardProcessor,Column
 
 class Processor(AwardProcessor):
     '''
+    Overview
     This processor keeps track of the number of kills for each player that do not include any
-    assisting help from other players. This implementation takes advantage of the fact that every
-    kill event is guaranteed to be immediately followed by its associatd assists. Whenever a kill
-    event is received, the attacker gets an award point and the kill event is cached. If there are
-    no subsequent assists, then the point stands as is. If there is at least one assist event
-    received, then we remove the most recently awarded point. We also have to make sure the point is
-    only subtracted once, since a kill could have multiple assists.
+    assisting help from other players.
+
+    Implementation
+    This implementation takes advantage of the fact that every kill event is guaranteed to be
+    immediately followed by its associatd assists. Whenever a kill event is received, the attacker
+    gets an award point and the kill event is cached. If there are no subsequent assists, then the
+    point stands as is. If there is at least one assist event received, then we remove the most
+    recently awarded point.
+
+    Pitfalls
+    Make sure a point is only subtracted once, since a kill could have multiple assists.
     '''
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Army of One', 'Most Kills Without Assists', [
                 Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
 
+        # Keep track of the last kill event
         self.last_kill = None
 
     def on_assist(self, e):
