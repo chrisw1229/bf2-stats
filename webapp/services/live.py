@@ -26,7 +26,7 @@ class Handler:
             threshold = long(threshold)
 
         # Use the live stats processor to get the requested packets
-        processor = stat_mgr.get_processor('defaults.live')
+        processor = stat_mgr.get_processor('live')
         if processor:
             return processor.get_packets(packet_type, threshold)
         return None
