@@ -1,6 +1,6 @@
 
 # Create a shared registry of all the team types
-registry = []
+registry = set()
 
 class Team(object):
 
@@ -11,9 +11,12 @@ class Team(object):
 EMPTY = Team('', '', '')
 
 def _add(id, name, desc):
-    registry.append(Team(id, name, desc))
+    registry.add(Team(id, name, desc))
 
 _add('ch', 'China',
+'')
+
+_add('eu', 'European Union',
 '')
 
 _add('mec', 'Mercenaries',
