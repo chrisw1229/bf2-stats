@@ -8,6 +8,10 @@ class AwardProcessor(BaseProcessor):
     def __init__(self, name, desc, columns, notes=''):
         BaseProcessor.__init__(self)
 
+        assert name and len(name) > 0, 'Award processor requires a name.'
+        assert desc and len(desc) > 0, 'Award processor requires a description.'
+        assert columns and len(columns) > 0, 'Award processor requires at least one column.'
+
         self.name = name
         self.desc = desc
         self.columns = columns
@@ -52,6 +56,31 @@ class AwardProcessor(BaseProcessor):
         for player,value in values.iteritems():
             results.append([ player.name, values[player] ])
 
-        # Sort the results in descending order by value
-        results.sort(key=lambda row: row[1], reverse=True)
+        # Figure out the column and direction to use when sorting
+        sort_index = None
+        sort_dir = None
+        for index,column in enumerate(self.columns):
+            if column.sorted != None:
+                sort_index = index
+                sort_dir = column.sorted
+                break
+
+        # Sort the results if applicable
+        if sort_index:
+            results.sort(key=lambda row: row[sort_index], reverse=sort_dir)
         return results
+
+class Column(object):
+
+    # Data constants
+    NUMBER = 'number'
+    STRING = 'string'
+
+    # Sorted constants
+    ASC = False
+    DESC = True
+
+    def __init__(self, name, data=STRING, sorted=None):
+        self.name = name
+        self.data = data
+        self.sorted = sorted

@@ -15,9 +15,14 @@ class Handler:
             # Get the processor for the requested award
             processor = stat_mgr.get_processor(id)
 
+            # Convert the column definitions to tuples
+            columns = []
+            for column in processor.columns:
+                columns.append(column.__dict__)
+
             # Respond with a summary of the award information
             return { 'id': processor.id, 'name': processor.name, 'desc': processor.desc,
-                    'columns' : processor.columns, 'notes': processor.notes,
+                    'columns' : columns, 'notes': processor.notes,
                     'results': processor.get_results() }
 
         # Get a list of all the award processors
