@@ -14,7 +14,7 @@ class Handler:
             if not player: return None
 
             if statistics:
-                return stat_mgr.get_player_stats(player).__dict__
-            return model_mgr.get_player(name).__dict__
+                return stat_mgr.get_player_stats(player)
+            return model_mgr.get_player(name)
 
         return model_mgr.get_player_names()

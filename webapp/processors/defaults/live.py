@@ -7,12 +7,12 @@ class Processor(BaseProcessor):
         BaseProcessor.__init__(self)
 
         self.priority = 10
-        self.packets = [] # List of all packets for the current game
-        self.id_to_index = {}; # Mapping of event id to packet index
+        self.packets = list() # List of all packets for the current game
+        self.id_to_index = dict() # Mapping of event id to packet index
         self.last_id = None # Identifier of the last packet added
 
     def get_packets(self, packet_type, threshold):
-        packets = []
+        packets = list()
 
         # Check whether a valid id threshold was given
         if threshold and threshold in self.id_to_index:
@@ -26,7 +26,7 @@ class Processor(BaseProcessor):
         else:
 
             # Copy all of the packets if a sub-set could not be extracted
-            packets = list(self.packets)
+            packets.extend(self.packets)
 
         # Filter the list of packets based on the given type
         if packet_type and len(packets) > 0:
@@ -55,12 +55,12 @@ class Processor(BaseProcessor):
         self._add_packet(e.id, 'player', values)
 
     def on_game_status(self, e):
-        if e.game.is_starting():
+        if e.game.starting:
 
             # Clear the packet queue when the game resets
-            self.packets = []
-            self.id_to_index = {}
-        elif e.game.is_playing():
+            del self.packets[:]
+            self.id_to_index.clear()
+        elif e.game.playing:
 
             # Add a packet when the game starts
             values = {
