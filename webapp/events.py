@@ -107,7 +107,7 @@ class EventManager(object):
             None
         '''
 
-        assert ((event_class and event_class.TYPE and event_class.CALLBACK),
+        assert event_class and event_class.TYPE and event_class.CALLBACK, (
                 'Invalid event class: %s' % event_class)
 
         # Make sure the event constants are valid
@@ -234,7 +234,11 @@ class BaseEvent(object):
 
     counter = 0
 
-    def __init__(self, tick, values):
+    def __init__(self, tick, values, arg_count):
+
+        assert len(values) == arg_count, '%s - Wrong number of values (expected %i, got %i)' % (
+                self.__class__.__name__, arg_count, len(values))
+
         self.id = BaseEvent.counter
         self.timestamp = int(round(time.time() * 1000))
         self.tick = tick
@@ -247,10 +251,8 @@ class AmmoEvent(BaseEvent):
     CALLBACK = 'on_ammo'
 
     def __init__(self, tick, values):
-        super(AmmoEvent, self).__init__(tick, values)
+        BaseEvent.__init__(self, tick, values, 4)
 
-        assert len(values) == 4, 'AmmoEvent - Wrong number of values: %i' % len(values)
- 
         self.receiver = model_mgr.get_player(values[0])
         self.receiver_pos = event_mgr.parse_pos(values[1])
 
@@ -267,9 +269,7 @@ class AssistEvent(BaseEvent):
     CALLBACK = 'on_assist'
 
     def __init__(self, tick, values):
-        super(AssistEvent, self).__init__(tick, values)
-
-        assert len(values) == 3, 'AssistEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 3)
 
         self.player = model_mgr.get_player(values[0])
         self.player_pos = event_mgr.parse_pos(values[1])
@@ -284,9 +284,7 @@ class BanEvent(BaseEvent):
     CALLBACK = 'on_ban'
 
     def __init__(self, tick, values):
-        super(BanEvent, self).__init__(tick, values)
-
-        assert len(values) == 3, 'BanEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 3)
 
         self.player = model_mgr.get_player(values[0])
         self.duration = values[1]
@@ -301,9 +299,7 @@ class ChatEvent(BaseEvent):
     CALLBACK = 'on_chat'
 
     def __init__(self, tick, values):
-        super(ChatEvent, self).__init__(tick, values)
-
-        assert len(values) == 3, 'ChatEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 3)
 
         self.channel = values[0]
         self.player = model_mgr.get_player(values[1])
@@ -318,9 +314,7 @@ class ClockLimitEvent(BaseEvent):
     CALLBACK = 'on_clock_limit'
 
     def __init__(self, tick, values):
-        super(ClockLimitEvent, self).__init__(tick, values)
-
-        assert len(values) == 1, 'ClockLimitEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 1)
 
         self.value = values[0]
 event_mgr.add_event_class(ClockLimitEvent)
@@ -331,9 +325,7 @@ class CommanderEvent(BaseEvent):
     CALLBACK = 'on_commander'
 
     def __init__(self, tick, values):
-        super(CommanderEvent, self).__init__(tick, values)
-
-        assert len(values) == 2, 'CommanderEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 2)
 
         self.team = model_mgr.get_team(values[0])
         self.player = model_mgr.get_player(values[1])
@@ -348,9 +340,7 @@ class ConnectEvent(BaseEvent):
     CALLBACK = 'on_connect'
 
     def __init__(self, tick, values):
-        super(ConnectEvent, self).__init__(tick, values)
-
-        assert len(values) == 2, 'ConnectEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 2)
 
         # Pre-process - Make sure the player model exists in the model manager
         self.player = model_mgr.add_player(values[0], values[1])
@@ -365,9 +355,7 @@ class ControlPointEvent(BaseEvent):
     CALLBACK = 'on_control_point'
 
     def __init__(self, tick, values):
-        super(ControlPointEvent, self).__init__(tick, values)
-
-        assert len(values) == 4, 'ControlPointEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 4)
 
         self.control_point = values[0]
         self.control_point_pos = event_mgr.parse_pos(values[1])
@@ -383,9 +371,7 @@ class DisconnectEvent(BaseEvent):
     CALLBACK = 'on_disconnect'
 
     def __init__(self, tick, values):
-        super(DisconnectEvent, self).__init__(tick, values)
-
-        assert len(values) == 2, 'DisconnectEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 2)
 
         # Pre-process - Make sure the player model exists in the model manager
         self.player = model_mgr.remove_player(values[0], values[1])
@@ -400,9 +386,7 @@ class DeathEvent(BaseEvent):
     CALLBACK = 'on_death'
 
     def __init__(self, tick, values):
-        super(DeathEvent, self).__init__(tick, values)
-
-        assert len(values) == 2, 'DeathEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 2)
 
         self.player = model_mgr.get_player(values[0])
         self.player_pos = event_mgr.parse_pos(values[1])
@@ -416,9 +400,7 @@ class GameStatusEvent(BaseEvent):
     CALLBACK = 'on_game_status'
 
     def __init__(self, tick, values):
-        super(GameStatusEvent, self).__init__(tick, values)
-
-        assert len(values) == 4, 'GameStatusEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 4)
 
         # Pre-process - Make sure the game model exists in the model manager
         self.game = model_mgr.set_game_status(values[0], values[1], int(values[2]), int(values[3]))
@@ -433,9 +415,7 @@ class HealEvent(BaseEvent):
     CALLBACK = 'on_heal'
 
     def __init__(self, tick, values):
-        super(HealEvent, self).__init__(tick, values)
-
-        assert len(values) == 4, 'HealEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 4)
 
         self.receiver = model_mgr.get_player(values[0])
         self.receiver_pos = event_mgr.parse_pos(values[1])
@@ -452,9 +432,7 @@ class KickEvent(BaseEvent):
     CALLBACK = 'on_kick'
 
     def __init__(self, tick, values):
-        super(KickEvent, self).__init__(tick, values)
-
-        assert len(values) == 1, 'KickEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 1)
 
         self.player = model_mgr.get_player(values[0])
 
@@ -467,9 +445,7 @@ class KitDropEvent(BaseEvent):
     CALLBACK = 'on_kit_drop'
 
     def __init__(self, tick, values):
-        super(KitDropEvent, self).__init__(tick, values)
-
-        assert len(values) == 3, 'KitDropEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 3)
 
         self.player = model_mgr.get_player(values[0])
         self.player_pos = event_mgr.parse_pos(values[1])
@@ -485,9 +461,7 @@ class KillEvent(BaseEvent):
     CALLBACK = 'on_kill'
 
     def __init__(self, tick, values):
-        super(KillEvent, self).__init__(tick, values)
-
-        assert len(values) == 5, 'KillEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 5)
 
         self.victim = model_mgr.get_player(values[0])
         self.victim_pos = event_mgr.parse_pos(values[1])
@@ -506,9 +480,7 @@ class KitPickupEvent(BaseEvent):
     CALLBACK = 'on_kit_pickup'
 
     def __init__(self, tick, values):
-        super(KitPickupEvent, self).__init__(tick, values)
-
-        assert len(values) == 3, 'KitPickupEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 3)
 
         self.player = model_mgr.get_player(values[0])
         self.player_pos = event_mgr.parse_pos(values[1])
@@ -524,9 +496,7 @@ class RepairEvent(BaseEvent):
     CALLBACK = 'on_repair'
 
     def __init__(self, tick, values):
-        super(RepairEvent, self).__init__(tick, values)
-
-        assert len(values) == 4, 'RepairEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 4)
 
         self.vehicle = model_mgr.get_vehicle(values[0])
         self.vehicle_pos = event_mgr.parse_pos(values[1])
@@ -543,9 +513,7 @@ class ResetEvent(BaseEvent):
     CALLBACK = 'on_reset'
 
     def __init__(self, tick, values):
-        super(ResetEvent, self).__init__(tick, values)
-
-        assert len(values) == 1, 'ResetEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 1)
 
         self.data = values[0]
 event_mgr.add_event_class(ResetEvent)
@@ -556,9 +524,7 @@ class ReviveEvent(BaseEvent):
     CALLBACK = 'on_revive'
 
     def __init__(self, tick, values):
-        super(ReviveEvent, self).__init__(tick, values)
-
-        assert len(values) == 4, 'ReviveEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 4)
 
         self.receiver = model_mgr.get_player(values[0])
         self.receiver_pos = event_mgr.parse_pos(values[1])
@@ -575,9 +541,7 @@ class ScoreEvent(BaseEvent):
     CALLBACK = 'on_score'
 
     def __init__(self, tick, values):
-        super(ScoreEvent, self).__init__(tick, values)
-
-        assert len(values) == 2, 'ScoreEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 2)
 
         self.player = model_mgr.get_player(values[0])
         self.value = int(values[1])
@@ -591,9 +555,7 @@ class SquadLeaderEvent(BaseEvent):
     CALLBACK = 'on_squad_leader'
 
     def __init__(self, tick, values):
-        super(SquadLeaderEvent, self).__init__(tick, values)
-
-        assert len(values) == 2, 'SquadLeaderEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 2)
 
         self.squad = values[0]
         self.player = model_mgr.get_player(values[1])
@@ -607,9 +569,7 @@ class SpawnEvent(BaseEvent):
     CALLBACK = 'on_spawn'
 
     def __init__(self, tick, values):
-        super(SpawnEvent, self).__init__(tick, values)
-
-        assert len(values) == 3, 'SpawnEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 3)
 
         self.player = model_mgr.get_player(values[0])
         self.player_pos = event_mgr.parse_pos(values[1])
@@ -625,9 +585,7 @@ class SquadEvent(BaseEvent):
     CALLBACK = 'on_squad'
 
     def __init__(self, tick, values):
-        super(SquadEvent, self).__init__(tick, values)
-
-        assert len(values) == 2, 'SquadEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 2)
 
         self.player = model_mgr.get_player(values[0])
         self.squad = values[1]
@@ -641,9 +599,7 @@ class ServerStatusEvent(BaseEvent):
     CALLBACK = 'on_server_status'
 
     def __init__(self, tick, values):
-        super(ServerStatusEvent, self).__init__(tick, values)
-
-        assert len(values) == 2, 'ServerStatusEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 2)
 
         self.status = values[0]
         self.status_time = values[1]
@@ -655,9 +611,7 @@ class TeamDamageEvent(BaseEvent):
     CALLBACK = 'on_team_damage'
 
     def __init__(self, tick, values):
-        super(TeamDamageEvent, self).__init__(tick, values)
-
-        assert len(values) == 4, 'TeamDamageEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 4)
 
         self.victim = model_mgr.get_player(values[0])
         self.victim_pos = event_mgr.parse_pos(values[1])
@@ -674,9 +628,7 @@ class TicketLimitEvent(BaseEvent):
     CALLBACK = 'on_ticket_limit'
 
     def __init__(self, tick, values):
-        super(TicketLimitEvent, self).__init__(tick, values)
-
-        assert len(values) == 2, 'TicketLimitEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 2)
 
         self.team = model_mgr.get_team(values[0])
         self.value = int(values[1])
@@ -690,9 +642,7 @@ class TeamEvent(BaseEvent):
     CALLBACK = 'on_team'
 
     def __init__(self, tick, values):
-        super(TeamEvent, self).__init__(tick, values)
-
-        assert len(values) == 2, 'TeamEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 2)
 
         self.player = model_mgr.get_player(values[0])
         self.team = model_mgr.get_team(values[1])
@@ -707,9 +657,7 @@ class VehicleDestroyEvent(BaseEvent):
     CALLBACK = 'on_vehicle_destroy'
 
     def __init__(self, tick, values):
-        super(VehicleDestroyEvent, self).__init__(tick, values)
-
-        assert len(values) == 4, 'VehicleDestroyEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 4)
 
         self.vehicle = model_mgr.get_vehicle(values[0])
         self.vehicle_pos = event_mgr.parse_pos(values[1])
@@ -726,9 +674,7 @@ class VehicleEnterEvent(BaseEvent):
     CALLBACK = 'on_vehicle_enter'
 
     def __init__(self, tick, values):
-        super(VehicleEnterEvent, self).__init__(tick, values)
-
-        assert len(values) == 5, 'VehicleEnterEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 5)
 
         self.player = model_mgr.get_player(values[0])
         self.player_pos = event_mgr.parse_pos(values[1])
@@ -746,9 +692,7 @@ class VehicleExitEvent(BaseEvent):
     CALLBACK = 'on_vehicle_exit'
 
     def __init__(self, tick, values):
-        super(VehicleExitEvent, self).__init__(tick, values)
-
-        assert len(values) == 4, 'VehicleExitEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 4)
 
         self.player = model_mgr.get_player(values[0])
         self.player_pos = event_mgr.parse_pos(values[1])
@@ -765,9 +709,7 @@ class WeaponEvent(BaseEvent):
     CALLBACK = 'on_weapon'
 
     def __init__(self, tick, values):
-        super(WeaponEvent, self).__init__(tick, values)
-
-        assert len(values) == 3, 'WeaponEvent - Wrong number of values: %i' % len(values)
+        BaseEvent.__init__(self, tick, values, 3)
 
         self.player = model_mgr.get_player(values[0])
         self.player_pos = event_mgr.parse_pos(values[1])
