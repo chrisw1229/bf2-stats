@@ -97,24 +97,33 @@ class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
 
                 # Recursively load any sub-packages
                 self._load_processor_modules(full_package, modname)
-            elif hasattr(processor_module, 'Processor'):
-                try:
-
-                    # Build a unique id for the processor using its package and module
-                    processor_id = modname
-                    if parent_package:
-                        processor_id = parent_package + '.' + modname
-
-                    # Create and register the processor class
-                    processor_class = getattr(processor_module, 'Processor')
-                    processor = processor_class()
-                    stat_mgr.add_processor(processor_id, processor)
-                except Exception, err:
-                    print ('ERROR - Failed to invoke processor constructor: %s.%s'
-                            % (processor.__class__.__module__, processor.__class__.__name__))
-                    traceback.print_exc(err)
             else:
-                print 'ERROR - Missing processor class from module: ', full_module
+
+                # Attempt to get the constructor definition
+                processor_class = None
+                try:
+                    processor_class = getattr(processor_module, 'Processor')
+                except Exception, err:
+                    print 'ERROR - Module must contain a class called "Processor": ', (
+                            processor_module.__name__)
+                    traceback.print_exc(err)
+                    continue
+
+                # Attempt to create an instance of the class
+                processor = None
+                try:
+                    processor = processor_class()
+                except Exception, err:
+                    print ('ERROR - Unable to invoke processor constructor: %s.%s'
+                            % (processor_class.__module__, processor_class.__name__))
+                    traceback.print_exc(err)
+                    continue
+
+                # Register the processor using a unique id based on its package and module
+                processor_id = modname
+                if parent_package:
+                    processor_id = parent_package + '.' + modname
+                stat_mgr.add_processor(processor_id, processor)
 
     def _process(self, line):
 
