@@ -315,7 +315,7 @@ class ModelManager(object):
 
         if kit_type and kit_type in self.type_to_kits:
             return self.type_to_kits[kit_type]
-        return None
+        return []
 
     def get_map(self, id):
         '''
@@ -409,7 +409,7 @@ class ModelManager(object):
 
         if vehicle_type and vehicle_type in self.type_to_vehicles:
             return self.type_to_vehicles[vehicle_type]
-        return None
+        return []
 
     def get_weapon(self, id):
         '''
@@ -459,7 +459,7 @@ class ModelManager(object):
 
         if weapon_type and weapon_type in self.type_to_weapons:
             return self.type_to_weapons[weapon_type]
-        return None
+        return []
 
     def _update_player(self, address, name):
 

@@ -2,6 +2,10 @@
 class BaseProcessor(object):
 
     def __init__(self):
+
+        module_names = self.__class__.__module__.split('.')
+        self.id = module_names[-1]
+        self.processor_type = '.'.join(module_names[1:-1])
         self.priority = 100
 
     def start(self):

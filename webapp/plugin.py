@@ -78,52 +78,46 @@ class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
 
         print 'STATS PLUGIN - STOPPED'
 
-    def _load_processor_modules(self, root_package, parent_package=None):
-
-        # Build paths to the current module for look-up and import purposes
-        full_package = root_package
-        if parent_package:
-            full_package += '.' + parent_package
-        package_path = full_package.replace('.', '/')
-
+    def _load_processor_modules(self, parent_package):
+ 
         # Loop over all the sub-modules in the parent package
+        package_path = parent_package.replace('.', '/')
         for importer, modname, ispkg in pkgutil.walk_packages([package_path]):
 
             # Dynamically import each sub-module
-            full_module = full_package + '.' + modname
+            full_module = parent_package + '.' + modname
             processor_module = __import__(full_module, fromlist=[''])
 
+            # Recursively load any sub-packages or load the processor class in the current module
             if ispkg:
-
-                # Recursively load any sub-packages
-                self._load_processor_modules(full_package, modname)
+                self._load_processor_modules(full_module)
             else:
+                self._load_processor_module(processor_module)
 
-                # Attempt to get the constructor definition
-                processor_class = None
-                try:
-                    processor_class = getattr(processor_module, 'Processor')
-                except Exception, err:
-                    print 'ERROR - Module must contain a class called "Processor": ', (
-                            processor_module.__name__)
-                    traceback.print_exc(err)
-                    continue
+    def _load_processor_module(self, processor_module):
 
-                # Attempt to create an instance of the class
-                processor = None
-                try:
-                    processor = processor_class()
-                except Exception, err:
-                    print ('ERROR - Unable to invoke processor constructor: %s.%s'
-                            % (processor_class.__module__, processor_class.__name__))
-                    traceback.print_exc(err)
-                    continue
+        # Attempt to get the constructor definition
+        processor_class = None
+        try:
+            processor_class = getattr(processor_module, 'Processor')
+        except Exception, err:
+            print 'ERROR - Module must contain a class called "Processor": ', (
+                    processor_module.__name__)
+            traceback.print_exc(err)
+            return
 
-                # Register the processor using a unique id based on its package and module
-                processor_id = modname
-                if parent_package:
-                    processor_id = parent_package + '.' + modname
-                stat_mgr.add_processor(processor_id, processor)
+        # Attempt to create an instance of the class
+        processor = None
+        try:
+            processor = processor_class()
+        except Exception, err:
+            print ('ERROR - Unable to invoke processor constructor: %s.%s'
+                    % (processor_class.__module__, processor_class.__name__))
+            traceback.print_exc(err)
+            return
+
+        # Register the processor for stats purposes
+        stat_mgr.add_processor(processor)
 
     def _process(self, line):
 

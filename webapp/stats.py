@@ -98,15 +98,16 @@ class StatManager(object):
     def __init__(self):
         self.processors = []
         self.id_to_processor = {}
+        self.type_to_processors = {}
 
         self.game = None
-        self.games = {}
-        self.kits = {}
-        self.maps = {}
-        self.players = {}
-        self.teams = {}
-        self.vehicles = {}
-        self.weapons = {}
+        self.game_to_stats = {}
+        self.kit_to_stats = {}
+        self.map_to_stats = {}
+        self.player_to_stats = {}
+        self.team_to_stats = {}
+        self.vehicle_to_stats = {}
+        self.weapon_to_stats = {}
 
     # This method will be called to initialize the manager
     def start(self):
@@ -132,25 +133,28 @@ class StatManager(object):
 
         print 'STATS MANAGER - STOPPED'
 
-    def add_processor(self, id, processor):
+    def add_processor(self, processor):
         '''
         Registers the given processor instance so that it can be used to calculate statistics.
 
         Args:
-            id (string): A unique identifier for the processor which is typically just based on the
-                processor's module name.
             processor (BaseProcessor): The processor instance to register.
 
         Returns:
             None
         '''
 
-        assert id and processor, 'Invalid processor registration: %s (%s)' % (id, processor)
-        assert not id in self.id_to_processor, 'Duplicate processor registration: %s' % id
+        assert processor and processor.id and processor.processor_type, (
+                'Invalid processor registration: %s (%s)' % (id, processor))
+        assert not processor.id in self.id_to_processor, 'Duplicate processor registration: %s' % id
         assert isinstance(processor, BaseProcessor), 'Must inherit BaseProcessor: %s' % processor
 
         self.processors.append(processor)
-        self.id_to_processor[id] = processor
+        self.id_to_processor[processor.id] = processor
+
+        if not processor.processor_type in self.type_to_processors:
+            self.type_to_processors[processor.processor_type] = []
+        self.type_to_processors[processor.processor_type].append(processor)
 
     def get_processor(self, id):
         '''
@@ -169,24 +173,33 @@ class StatManager(object):
         print 'ERROR - Missing processor reference: ', id
         return None
 
-    def get_processors(self, id_prefix):
+    def get_processor_types(self):
         '''
-        Gets a list of processor instances that match the given identifier prefix.
+        Gets a list of registered processor types.
 
         Args:
-            id_prefix (string): A partial unique identifier that will be used to match previously
-                    registered processor instances.
+           None
 
         Returns:
-            processors (list): A list of processor instances that have identifiers starting with the
-                    given prefix.
+            types (list): Returns a list of registered processor types.
         '''
 
-        results = []
-        for id in self.id_to_processor.iterkeys():
-            if id.startswith(id_prefix):
-                results.append(self.id_to_processor[id])
-        return results
+        return self.type_to_processors.keys()
+
+    def get_processors(self, processor_type):
+        '''
+        Gets a list of registered processor that match the given type.
+
+        Args:
+            processor_type (string): The type of processors to get.
+
+        Returns:
+            processors (list): Returns a list of processors based on type.
+        '''
+
+        if processor_type and processor_type in self.type_to_processors:
+            return self.type_to_processors[processor_type]
+        return []
 
     def process_event(self, event):
         '''
@@ -240,12 +253,12 @@ class StatManager(object):
             None
         '''
 
-        self._reset_stats(self.kits)
-        self._reset_stats(self.maps)
-        self._reset_stats(self.players)
-        self._reset_stats(self.teams)
-        self._reset_stats(self.vehicles)
-        self._reset_stats(self.weapons)
+        self._reset_stats(self.kit_to_stats)
+        self._reset_stats(self.map_to_stats)
+        self._reset_stats(self.player_to_stats)
+        self._reset_stats(self.team_to_stats)
+        self._reset_stats(self.vehicle_to_stats)
+        self._reset_stats(self.weapon_to_stats)
 
     def get_game_stats(self, game):
         '''
@@ -262,9 +275,9 @@ class StatManager(object):
         if not game:
             game = self.game
 
-        if not game in self.games:
-            self.games[game] = GameStats()
-        return self.games[game]
+        if not game in self.game_to_stats:
+            self.game_to_stats[game] = GameStats()
+        return self.game_to_stats[game]
 
     def get_kit_stats(self, kit):
         '''
@@ -277,9 +290,9 @@ class StatManager(object):
             stats (KitStats): The statistics model associated with the kit.
         '''
 
-        if not kit in self.kits:
-            self.kits[kit] = KitStats()
-        return self.kits[kit]
+        if not kit in self.kit_to_stats:
+            self.kit_to_stats[kit] = KitStats()
+        return self.kit_to_stats[kit]
 
     def get_map_stats(self, map):
         '''
@@ -292,9 +305,9 @@ class StatManager(object):
             stats (MapStats): The statistics model associated with the map.
         '''
 
-        if not map in self.maps:
-            self.maps[map] = MapStats()
-        return self.maps[map]
+        if not map in self.map_to_stats:
+            self.map_to_stats[map] = MapStats()
+        return self.map_to_stats[map]
 
     def get_player_stats(self, player):
         '''
@@ -307,9 +320,9 @@ class StatManager(object):
             stats (PlayerStats): The statistics model associated with the player.
         '''
 
-        if not player in self.players:
-            self.players[player] = PlayerStats()
-        return self.players[player]
+        if not player in self.player_to_stats:
+            self.player_to_stats[player] = PlayerStats()
+        return self.player_to_stats[player]
 
     def get_team_stats(self, player):
         '''
@@ -322,9 +335,9 @@ class StatManager(object):
             stats (TeamStats): The statistics model associated with the team.
         '''
 
-        if not team in self.teams:
-            self.teams[team] = TeamStats()
-        return self.teams[team]
+        if not team in self.team_to_stats:
+            self.team_to_stats[team] = TeamStats()
+        return self.team_to_stats[team]
 
     def get_vehicle_stats(self, vehicle):
         '''
@@ -337,9 +350,9 @@ class StatManager(object):
             stats (VehicleStats): The statistics model associated with the vehicle.
         '''
 
-        if not vehicle in self.vehicles:
-            self.vehicles[vehicle] = VehicleStats()
-        return self.vehicles[vehicle]
+        if not vehicle in self.vehicle_to_stats:
+            self.vehicle_to_stats[vehicle] = VehicleStats()
+        return self.vehicle_to_stats[vehicle]
 
     def get_weapon_stats(self, weapon):
         '''
@@ -352,9 +365,9 @@ class StatManager(object):
             stats (WeaponStats): The statistics model associated with the weapon.
         '''
 
-        if not weapon in self.weapons:
-            self.weapons[weapon] = WeaponStats()
-        return self.weapons[weapon]
+        if not weapon in self.weapon_to_stats:
+            self.weapon_to_stats[weapon] = WeaponStats()
+        return self.weapon_to_stats[weapon]
 
     def _reset_stats(self, mapping):
         if mapping:

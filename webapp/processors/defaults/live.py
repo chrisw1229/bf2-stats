@@ -4,6 +4,8 @@ from processors import BaseProcessor
 class Processor(BaseProcessor):
 
     def __init__(self):
+        BaseProcessor.__init__(self)
+
         self.priority = 10
         self.packets = [] # List of all packets for the current game
         self.id_to_index = {}; # Mapping of event id to packet index

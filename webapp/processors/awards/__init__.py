@@ -5,7 +5,7 @@ from processors import BaseProcessor
 
 class AwardProcessor(BaseProcessor):
 
-    def __init__(self, name, desc, columns, notes=None):
+    def __init__(self, name, desc, columns, notes=''):
         BaseProcessor.__init__(self)
 
         self.name = name

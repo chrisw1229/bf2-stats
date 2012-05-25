@@ -22,7 +22,7 @@ $.extend({ service: {
 
       // Configure the request options
       var options = {
-         url: this.baseUrl,
+         url: 'services/' + this.baseUrl,
          data: params,
          dataType: 'json',
          cache: false,

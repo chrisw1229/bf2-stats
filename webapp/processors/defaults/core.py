@@ -5,7 +5,7 @@ from stats import stat_mgr
 class Processor(BaseProcessor):
 
     def __init__(self):
-        super(Processor, self).__init__()
+        BaseProcessor.__init__(self)
 
         self.priority = 0
 

@@ -1,22 +1,28 @@
+
 import os.path
 
 import cherrypy
 
 # Importing the stats plugin registers it with the cherrypy engine
 import plugin
-import rest.award
-import rest.live
-import rest.player
+import services.awards
+import services.live
+import services.players
 
 # Create an empty class to handle root directory requests
 class Root(object):
     pass
 root = Root()
 
-# Register all the REST request handlers
-root.award = rest.award.Handler()
-root.live = rest.live.Handler()
-root.player = rest.player.Handler()
+# Create an empty class to handle service requests
+class Services(object):
+    pass
+root.services = Services()
+
+# Register all the service request handlers
+root.services.awards = services.awards.Handler()
+root.services.live = services.live.Handler()
+root.services.players = services.players.Handler()
 
 # The current directory is needed in the config file
 current_dir = os.path.abspath(os.path.dirname(__file__))
