@@ -1,3 +1,4 @@
+
 import traceback
 
 from events import GameStatusEvent
@@ -16,28 +17,28 @@ class BaseStats(object):
 class GameStats(BaseStats):
 
     def __init__(self):
-        super(GameStats, self).__init__()
+        BaseStats.__init__(self)
 
         pass
 
 class KitStats(BaseStats):
 
     def __init__(self):
-        super(KitStats, self).__init__()
+        BaseStats.__init__(self)
 
         pass
 
 class MapStats(BaseStats):
 
     def __init__(self):
-        super(MapStats, self).__init__()
+        BaseStats.__init__(self)
 
         pass
 
 class PlayerStats(BaseStats):
 
     def __init__(self):
-        super(PlayerStats, self).__init__()
+        BaseStats.__init__(self)
 
         # Cumulative values
         self.ammo_points_total = 0
@@ -74,21 +75,21 @@ class PlayerStats(BaseStats):
 class TeamStats(BaseStats):
 
     def __init__(self):
-        super(TeamStats, self).__init__()
+        BaseStats.__init__(self)
 
         pass
 
 class VehicleStats(BaseStats):
 
     def __init__(self):
-        super(VehicleStats, self).__init__()
+        BaseStats.__init__(self)
 
         pass
 
 class WeaponStats(BaseStats):
 
     def __init__(self):
-        super(WeaponStats, self).__init__()
+        BaseStats.__init__(self)
 
         pass
 
