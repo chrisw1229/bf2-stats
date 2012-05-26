@@ -15,7 +15,7 @@ class Processor(AwardProcessor):
     point if they are currently enabled. When a player subsequently respawns, we disable them from
     receiving award points.
 
-    Pitfalls
+    Notes
     Make sure a player is disabled for any other cases that would allow them to continue getting
     kills normally, such as being revived by a medic. Kills must occur at a later game tick time to
     count towards this award to avoid counting the more common case of simultaneous kills.
@@ -38,7 +38,7 @@ class Processor(AwardProcessor):
 
             # Make sure the kill was not simultaneous
             old_event = self.killed[e.attacker]
-            if (e.tick > old_event.tick):
+            if e.after(old_event):
                 self.results[e.attacker] += 1
 
     def on_revive(self, e):

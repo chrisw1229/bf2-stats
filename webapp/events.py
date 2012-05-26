@@ -245,6 +245,83 @@ class BaseEvent(object):
 
         BaseEvent.counter += 1
 
+    def after(self, event):
+        '''
+        Checks whether this event occurs after the given event, based on game tick time.
+
+        Args:
+           event (BaseEvent): The event to compare.
+
+        Returns:
+            result (boolean): Returns True if this event is after the given event, False otherwise.
+        '''
+
+        if event and event.tick:
+            return self.tick > event.tick
+        return False
+
+    def before(self, event):
+        '''
+        Checks whether this event occurs before the given event, based on game tick time.
+
+        Args:
+           event (BaseEvent): The event to compare.
+
+        Returns:
+            result (boolean): Returns True if this event is before the given event, False otherwise.
+        '''
+
+        if event and event.tick:
+            return self.tick < event.tick
+        return False
+
+    def consec(self, event):
+        '''
+        Checks whether this event is consecutive relative to the given event, based on game tick
+        time. The actual test used looks for events that have a time difference of exactly 1.
+
+        Args:
+           event (BaseEvent): The event to compare.
+
+        Returns:
+            result (boolean): Returns True if this event occurs within 1 game tick of the given
+                    event, False otherwise.
+        '''
+
+        return self.elapsed(event) == 1
+
+    def elapsed(self, event):
+        '''
+        Calculates the time elapsed between this event and the given event, based on game tick time.
+
+        Args:
+           event (BaseEvent): The event to compare.
+
+        Returns:
+            ticks (int): Returns the amount of elapsed time between the events.
+        '''
+
+        if event and event.tick:
+            return abs(self.tick - event.tick)
+        return 0
+
+    def synched(self, event):
+        '''
+        Checks whether this event occurs simultaneously relative to the given event, based on game
+        tick time.
+
+        Args:
+           event (BaseEvent): The event to compare.
+
+        Returns:
+            result (boolean): Returns True if this event is at the same time as the given event,
+                    False otherwise.
+        '''
+
+        if event and event.tick:
+            return self.tick == event.tick
+        return False
+
 class AmmoEvent(BaseEvent):
 
     TYPE =  'AM'

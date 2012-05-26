@@ -14,7 +14,7 @@ class Processor(AwardProcessor):
     point stands as is. If there is at least one assist event received, then we remove the most
     recently awarded point.
 
-    Pitfalls
+    Notes
     Make sure a point is only subtracted once, since a kill could have multiple assists.
     '''
 
