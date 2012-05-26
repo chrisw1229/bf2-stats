@@ -13,7 +13,6 @@ PROJECTILE = 'projectile'
 SHOTGUN = 'shotgun'
 SNIPER_RIFLE = 'sniper_rifle'
 SUB_MACHINE_GUN = 'sub_machine_gun'
-TARGET = 'target'
 TOOL = 'tool'
 
 class Weapon(object):
@@ -408,11 +407,6 @@ weapon has only one firing mode. The S12K uses smaller shell sizes than conventi
 shotguns and therefore it causes less damage although it is ready to fire again more quickly. As \
 with all shotguns it will kill point blank but has bad recoil and added to that you can quickly \
 and ineffectively use up all your ammo, it can be wise to switch to a pistol.')
-
-# TODO Figure out the details for this weapon
-_add('simrad', TARGET, '', 'Simrad', '',
-'',
-'')
 
 _add('usatp_predator', PROJECTILE, 'Lockheed Martin', 'FGM-172', 'Predator SRAW',
 'In Battlefield 2, the SRAW is issued to the USMC Anti-Tank kit. Like its counterpart weapon in \
