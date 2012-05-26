@@ -17,6 +17,7 @@ class Player(object):
         self.aliases = set()
         self.artificial = False
         self.connected = False
+        self.vehicle_id = None
         self.team_id = None
 
         Player.counter += 1

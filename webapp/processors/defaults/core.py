@@ -103,3 +103,14 @@ class Processor(BaseProcessor):
 
         # Update the player team
         e.player.team_id = e.team.id
+
+    def on_vehicle_enter(self, e):
+
+        # Update the player vehicle
+        e.player.vehicle_id = e.vehicle.id
+        print e.player.vehicle_id
+
+    def on_vehicle_exit(self, e):
+
+        # Update the player vehicle
+        e.player.vehicle_id = None
