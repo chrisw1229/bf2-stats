@@ -37,19 +37,19 @@ _add('greatwall', 'Great Wall', ASIA, ['eu', 'ch'],
 _add('gulf_of_oman', 'Gulf of Oman', MIDDLE_EAST, ['us', 'mec'],
 '')
 
-_add('hingan_hills', 'Hingan Hills', ASIA, ['?', '?'],
+_add('highway_tampa', 'Highway Tampa', MIDDLE_EAST, ['us', 'mec'],
 '')
 
-_add('kubra_dam', 'Kubra Dam', MIDDLE_EAST, ['?', '?'],
+_add('kubra_dam', 'Kubra Dam', MIDDLE_EAST, ['us', 'mec'],
 '')
 
-_add('mashtuur_city', 'Mashtuur City', MIDDLE_EAST, ['?', '?'],
+_add('mashtuur_city', 'Mashtuur City', MIDDLE_EAST, ['us', 'mec'],
 '')
 
 _add('midnight_sun', 'Midnight Sun', UNITED_STATES, ['us', 'ch'],
 '')
 
-_add('operation_blue_pearl', 'Operation Blue Pearl', ASIA, ['?', '?'],
+_add('operation_blue_pearl', 'Operation Blue Pearl', ASIA, ['us', 'ch'],
 '')
 
 _add('operation_clean_sweep', 'Operation Clean Sweep', MIDDLE_EAST, ['us', 'mec'],
@@ -77,6 +77,9 @@ _add('strike_at_karkand', 'Strike at Karkand', MIDDLE_EAST, ['us', 'mec'],
 '')
 
 _add('taraba_quarry', 'Taraba Quarry', MIDDLE_EAST, ['eu', 'mec'],
+'')
+
+_add('wake_island_2007', 'Wake Island 2007', ASIA, ['us', 'ch'],
 '')
 
 _add('zatar_wetlands', 'Zatar Wetlands', MIDDLE_EAST, ['us', 'mec'],
