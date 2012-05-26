@@ -1,6 +1,8 @@
 ﻿
 import time
 
+import models
+
 from models import model_mgr
 
 class EventHistory(object):
@@ -634,7 +636,8 @@ class SquadLeaderEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 2)
 
-        self.squad = values[0]
+        # Pre-process - Make sure the squad model exists in the model manager
+        self.squad = model_mgr.add_squad(values[0])
         self.player = model_mgr.get_player(values[1])
 
         event_mgr.get_history(self.player).add_event(self)
@@ -665,7 +668,9 @@ class SquadEvent(BaseEvent):
         BaseEvent.__init__(self, tick, values, 2)
 
         self.player = model_mgr.get_player(values[0])
-        self.squad = values[1]
+
+        # Pre-process - Make sure the squad model exists in the model manager
+        self.squad = model_mgr.add_squad(values[1])
 
         event_mgr.get_history(self.player).add_event(self)
 event_mgr.add_event_class(SquadEvent)

@@ -1,53 +1,14 @@
 ﻿
+import games
 import kits
 import maps
+import players
+import squads
 import teams
 import vehicles
 import weapons
 
-class Game(object):
-
-    STARTING = 'pre'
-    PLAYING = 'play'
-    ENDING = 'end'
-
-    counter = 0
-
-    def __init__(self, status, map_id, clock_limit, score_limit):
-        self.id = Game.counter
-        self.status = status
-        self.map_id = map_id
-        self.clock_limit = clock_limit
-        self.score_limit = score_limit
-        self.starting = False
-        self.playing = False
-        self.ending = False
-
-        Game.counter += 1
-
-class Player(object):
-
-    counter = 0
-
-    def __init__(self, address, name):
-        self.id = Player.counter
-        self.address = address
-        self.name = name
-
-        self.aliases = set()
-        self.artificial = False
-        self.commander = False
-        self.connected = False
-        self.team_id = None
-        self.vehicle_id = None
-
-        Player.counter += 1
-
 class ModelManager(object):
-
-    # Sentinel objects to avoid none checks everywhere
-    EMPTY_PLAYER = Player('', '')
-    EMPTY_GAME = Game('', '', 0, 0)
 
     def __init__(self):
         self.players = set()
@@ -63,6 +24,9 @@ class ModelManager(object):
 
         self.maps = set()
         self.id_to_map = dict()
+
+        self.squads = set()
+        self.id_to_squad = dict()
 
         self.teams = set()
         self.id_to_team = dict()
@@ -148,111 +112,38 @@ class ModelManager(object):
            name (string): The name of the player.
 
         Returns:
-            Player (Player): Returns the registered player model.
+            player (Player): Returns the registered player model.
         '''
 
         # Get a model for the player
         player = self._update_player(address, name)
-        if not player: return None
+        if not player: return players.EMPTY
+
         print 'Player added: %s (%s)' % (name, address)
-
-        # Flag the player as connected
-        player.connected = True
         return player
 
-    def remove_player(self, address, name):
+    def add_squad(self, id):
         '''
-        Removes the player model registered for the given unique composite key.
+        Adds or updates the squad model registered for the given id.
 
         Args:
-           address (string): The IP address of the player. This could be 'None' for bot players.
-           name (string): The name of the player.
+           id (string): The id of the squad.
 
         Returns:
-            Player (Player): Returns the unregistered player model.
+            squad (Squad): Returns the registered squad model.
         '''
 
-        # Get a model for the player
-        player = self._update_player(address, name)
-        if not player: return None
-        print 'Player removed: %s (%s)' % (name, address)
+        # Handle requests for missing squads
+        if not id:
+            return squads.EMPTY
 
-        # Flag the player as disconnected
-        player.connected = False
-        return player
+        # Get a model for the squad
+        if not id in self.id_to_squad:
+            squad = squads.Squad(id)
+            self.id_to_squad[id] = squad
+            self.squads.add(squad)
 
-    def get_player(self, name):
-        '''
-        Looks up the player object associated with the given name.
-
-        Args:
-           name (string): The name of the player to get.
-
-        Returns:
-            Player (Player): Returns a registered player model.
-        '''
-
-        # Handle requests for missing players
-        if not name:
-            return self.EMPTY_PLAYER
-
-        # Get a model for the player
-        if name in self.name_to_player:
-            return self.name_to_player[name]
-
-        print 'ERROR - Missing player reference: ', name
-        return None
-
-    def get_player_names(self):
-        '''
-        Gets a sorted list of names for all the player objects.
-
-        Args:
-           None
-
-        Returns:
-            Names (list): Returns a sorted list of names for all the player objects.
-        '''
-
-        names = [p.name for p in self.players]
-        names.sort(key=str.lower)
-        return names
-
-    def set_game_status(self, status, map_id, clock_limit, score_limit):
-        '''
-        Sets the current game status based on the given parameters.
-
-        Args:
-           status (string): The current status of the game.
-           map_id (string): The unique identifier of the current map.
-           clock_limit (integer): The maximum number of seconds before the game ends.
-           score_limit (integer): The maximum score before the game ends.
-
-        Returns:
-            game (Game): Returns the registered game model.
-        '''
-
-        game = None
-        if status == Game.STARTING:
-
-            # Create a new model when the game is starting
-            game = Game(status, map_id, clock_limit, score_limit)
-            self.games.append(game)
-            print 'Game added: %i %s' % (game.id, game.map_id)
-        else:
-
-            # Update the game to reflect the new state
-            game = self.get_game()
-            game.status = status
-            game.map_id = map_id
-            game.clock_limit = clock_limit
-            game.score_limit = score_limit
-
-        # Update the game status convenience flags
-        game.starting = (status == Game.STARTING)
-        game.playing = (status == Game.PLAYING)
-        game.ending = (status == Game.ENDING)
-        return game
+        return self.id_to_squad[id]
 
     def get_game(self, id=None):
         '''
@@ -269,7 +160,7 @@ class ModelManager(object):
         # Handle requests for missing games or the current game
         if not id:
             if len(self.games) == 0:
-                return self.EMPTY_GAME
+                return games.EMPTY
             return self.games[-1]
 
         # Get a model for the game
@@ -349,6 +240,65 @@ class ModelManager(object):
             return self.id_to_map[id]
 
         print 'ERROR - Missing map reference: ', id
+        return None
+
+    def get_player(self, name):
+        '''
+        Looks up the player object associated with the given name.
+
+        Args:
+           name (string): The name of the player to get.
+
+        Returns:
+            Player (Player): Returns a registered player model.
+        '''
+
+        # Handle requests for missing players
+        if not name:
+            return players.EMPTY
+
+        # Get a model for the player
+        if name in self.name_to_player:
+            return self.name_to_player[name]
+
+        print 'ERROR - Missing player reference: ', name
+        return None
+
+    def get_player_names(self):
+        '''
+        Gets a sorted list of names for all the player objects.
+
+        Args:
+           None
+
+        Returns:
+            Names (list): Returns a sorted list of names for all the player objects.
+        '''
+
+        names = [p.name for p in self.players]
+        names.sort(key=str.lower)
+        return names
+
+    def get_squad(self, id):
+        '''
+        Looks up the squad object associated with the given id.
+
+        Args:
+           id (string): The id of the squad to get.
+
+        Returns:
+            squad (Squad): Returns a registered squad model.
+        '''
+
+        # Handle requests for missing squads
+        if not id:
+            return squads.EMPTY
+
+        # Get a model for the squad
+        if id in self.id_to_squad:
+            return self.id_to_squad[id]
+
+        print 'ERROR - Missing squad reference: ', id
         return None
 
     def get_team(self, id):
@@ -476,6 +426,79 @@ class ModelManager(object):
             return self.type_to_weapons[weapon_type]
         return self.weapons
 
+    def remove_player(self, address, name):
+        '''
+        Removes the player model registered for the given unique composite key.
+
+        Args:
+           address (string): The IP address of the player. This could be 'None' for bot players.
+           name (string): The name of the player.
+
+        Returns:
+            player (Player): Returns the unregistered player model.
+        '''
+
+        # Get a model for the player
+        player = self._update_player(address, name)
+        if not player: return players.EMPTY
+
+        print 'Player removed: %s (%s)' % (name, address)
+        return player
+
+    def remove_squad(self, id):
+        '''
+        Removes the squad model registered for the given unique id.
+
+        Args:
+           id (string): The unique id of a squad.
+
+        Returns:
+            squad (Squad): Returns the unregistered squad model.
+        '''
+
+        if id and id in self.id_to_squad:
+            squad = self.id_to_squad[id]
+            self.id_to_squad.remove(id)
+            self.squads.remove(squad)
+            return squad
+        return squads.EMPTY
+
+    def set_game_status(self, status, map_id, clock_limit, score_limit):
+        '''
+        Sets the current game status based on the given parameters.
+
+        Args:
+           status (string): The current status of the game.
+           map_id (string): The unique identifier of the current map.
+           clock_limit (integer): The maximum number of seconds before the game ends.
+           score_limit (integer): The maximum score before the game ends.
+
+        Returns:
+            game (Game): Returns the registered game model.
+        '''
+
+        game = None
+        if status == games.Game.STARTING:
+
+            # Create a new model when the game is starting
+            game = games.Game(status, map_id, clock_limit, score_limit)
+            self.games.append(game)
+            print 'Game added: %s %s' % (game.id, game.map_id)
+        else:
+
+            # Update the game to reflect the new state
+            game = self.get_game()
+            game.status = status
+            game.map_id = map_id
+            game.clock_limit = clock_limit
+            game.score_limit = score_limit
+
+        # Update the game status convenience flags
+        game.starting = (status == games.Game.STARTING)
+        game.playing = (status == games.Game.PLAYING)
+        game.ending = (status == games.Game.ENDING)
+        return game
+
     def _update_player(self, address, name):
 
         # Attempt to get the player by name and then address
@@ -485,12 +508,11 @@ class ModelManager(object):
         elif address and address in self.addr_to_player:
             player = self.addr_to_player[address]
         else:
-            player = Player(address, name)
+            player = players.Player(address, name)
 
         # Make sure the player model is up to date
         player.address = address
         player.name = name
-        player.artificial = (address == None)
 
         # Update the set of player aliases
         player.aliases.add(name)
@@ -503,8 +525,7 @@ class ModelManager(object):
         self.name_to_player[name] = player
 
         # Update the master player index
-        if not player in self.players:
-            self.players.add(player)
+        self.players.add(player)
         return player
 
 # Create a shared singleton instance of the model manager

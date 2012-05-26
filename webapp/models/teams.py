@@ -10,6 +10,9 @@ class Team(object):
         self.desc = desc
 
         self.commander_id = None
+        self.squad_ids = set()
+        self.player_ids = set()
+
 EMPTY = Team('', '', '')
 
 def _add(id, name, desc):
