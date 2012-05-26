@@ -8,6 +8,8 @@ class Team(object):
         self.id = id
         self.name = name
         self.desc = desc
+
+        self.commander_id = None
 EMPTY = Team('', '', '')
 
 def _add(id, name, desc):

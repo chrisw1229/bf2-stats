@@ -5,23 +5,6 @@ import teams
 import vehicles
 import weapons
 
-class Player(object):
-
-    counter = 0
-
-    def __init__(self, address, name):
-        self.id = Player.counter
-        self.address = address
-        self.name = name
-
-        self.aliases = set()
-        self.artificial = False
-        self.connected = False
-        self.vehicle_id = None
-        self.team_id = None
-
-        Player.counter += 1
-
 class Game(object):
 
     STARTING = 'pre'
@@ -41,6 +24,24 @@ class Game(object):
         self.ending = False
 
         Game.counter += 1
+
+class Player(object):
+
+    counter = 0
+
+    def __init__(self, address, name):
+        self.id = Player.counter
+        self.address = address
+        self.name = name
+
+        self.aliases = set()
+        self.artificial = False
+        self.commander = False
+        self.connected = False
+        self.team_id = None
+        self.vehicle_id = None
+
+        Player.counter += 1
 
 class ModelManager(object):
 

@@ -23,6 +23,17 @@ class Processor(BaseProcessor):
         player_stats.assists += 1
         player_stats.assists_total += 1
 
+    def on_commander(self, e):
+
+        # Update the commander flag for the previous player
+        if e.team.commander_id:
+            old_player = model_mgr.get_player(e.team.commander_id)
+            if old_player:
+                old_player.commander = False
+
+        # Update the commander for the new player
+        e.player.commander = True
+
     def on_death(self, e):
         player_stats = stat_mgr.get_player_stats(e.player)
 
@@ -108,7 +119,6 @@ class Processor(BaseProcessor):
 
         # Update the player vehicle
         e.player.vehicle_id = e.vehicle.id
-        print e.player.vehicle_id
 
     def on_vehicle_exit(self, e):
 
