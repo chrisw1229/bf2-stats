@@ -6,7 +6,7 @@ class Processor(BaseProcessor):
     def __init__(self):
         BaseProcessor.__init__(self)
 
-        self.priority = 10
+        self.priority = 30
         self.packets = list() # List of all packets for the current game
         self.id_to_index = dict() # Mapping of event id to packet index
         self.last_id = None # Identifier of the last packet added
