@@ -37,6 +37,16 @@ class Processor(BaseProcessor):
         # Update the connection flags for the player
         e.player.connected = False
 
+    def on_kit_drop(self, e):
+    
+        # Update the kit for the player
+        e.player.kit_id = e.kit.id
+
+    def on_kit_pickup(self, e):
+    
+        # Update the kit for the player
+        e.player.kit_id = None
+
     def on_spawn(self, e):
 
         # Update the team for the player
@@ -88,13 +98,18 @@ class Processor(BaseProcessor):
 
     def on_vehicle_enter(self, e):
 
-        # Update the player vehicle
+        # Update the vehicle for the player
         e.player.vehicle_id = e.vehicle.id
 
     def on_vehicle_exit(self, e):
 
-        # Update the player vehicle
+        # Update the vehicle for the player
         e.player.vehicle_id = None
+
+    def on_weapon(self, e):
+
+        # Update the weapon for the player
+        e.player.weapon_id = e.weapon.id
 
     def _update_team(self, player, team):
 
