@@ -57,313 +57,407 @@ def deinit():
     log_file.close()
 
 def on_connect(player):
-    player_addr = format_player_addr(player)
-    player_name = format_player(player)
+    try:
+        player_addr = format_player_addr(player)
+        player_name = format_player(player)
 
-    log('CN', player_addr, player_name)
+        log('CN', player_addr, player_name)
+    except Exception, err:
+        error('connect', err)
 
 def on_disconnect(player):
-    player_addr = format_player_addr(player)
-    player_name = format_player(player)
+    try:
+        player_addr = format_player_addr(player)
+        player_name = format_player(player)
 
-    log('DC', player_addr, player_name)
-
-def on_reset(data):
-    log('RS', data)
+        log('DC', player_addr, player_name)
+    except Exception, err:
+        error('disconnect', err)
 
 def on_game_status(status):
+    try:
 
-    # Log the game status
-    map_name = bf2.serverSettings.getMapName()
-    time_limit = bf2.serverSettings.getTimeLimit()
-    score_limit = bf2.serverSettings.getScoreLimit()
-    log('GS', format_status(status), map_name, time_limit, score_limit)
+        # Log the game status
+        map_name = bf2.serverSettings.getMapName()
+        time_limit = bf2.serverSettings.getTimeLimit()
+        score_limit = bf2.serverSettings.getScoreLimit()
+        log('GS', format_status(status), map_name, time_limit, score_limit)
 
-    # Log the initial control point states when the game starts
-    if status == bf2.GameStatus.Playing:
-        control_points = bf2.objectManager.getObjectsOfType('dice.hfe.world.ObjectTemplate.ControlPoint')
-        for control_point in control_points:
-            flag_top = 0
-            if control_point.flagPosition == 0:
-                flag_top = 1
-            on_control_point(control_point, flag_top)
+        # Log the initial control point states when the game starts
+        if status == bf2.GameStatus.Playing:
+            control_points = bf2.objectManager.getObjectsOfType('dice.hfe.world.ObjectTemplate.ControlPoint')
+            for control_point in control_points:
+                if hasattr(control_point, 'triggerId'):
+                    flag_top = 0
+                    if control_point.flagPosition == 0:
+                        flag_top = 1
+                    on_control_point(control_point, flag_top)
 
-    # Update the callback function registrations
-    if status == bf2.GameStatus.Playing:
-        host.registerHandler('ChangedCommander', on_commander)
-        host.registerHandler('ChangedSquadLeader', on_squad_leader)
-        host.registerHandler('ChatMessage', on_chat)
-        host.registerHandler('ControlPointChangedOwner', on_control_point)
-        host.registerHandler('DropKit', on_kit_drop)
-        host.registerHandler('EnterVehicle', on_vehicle_enter)
-        host.registerHandler('ExitVehicle', on_vehicle_exit)
-        host.registerHandler('PickupKit', on_kit_pickup)
-        host.registerHandler('PlayerBanned', on_ban)
-        host.registerHandler('PlayerChangedSquad', on_squad)
-        host.registerHandler('PlayerChangeTeams', on_team)
-        host.registerHandler('PlayerChangeWeapon', on_weapon)
-        host.registerHandler('PlayerDeath', on_death)
-        host.registerHandler('PlayerGiveAmmoPoint', on_ammo)
-        host.registerHandler('PlayerHealPoint', on_heal)
-        host.registerHandler('PlayerKicked', on_kick)
-        host.registerHandler('PlayerKilled', on_kill)
-        host.registerHandler('PlayerRepairPoint', on_repair)
-        host.registerHandler('PlayerRevived', on_revive)
-        host.registerHandler('PlayerScore', on_score)
-        host.registerHandler('PlayerSpawn', on_spawn)
-        host.registerHandler('PlayerTeamDamagePoint', on_team_damage)
-        host.registerHandler('TicketLimitReached', on_ticket_limit)
-        host.registerHandler('TimeLimitReached', on_clock_limit)
-        host.registerHandler('VehicleDestroyed', on_vehicle_destroy)
-    elif status == bf2.GameStatus.EndGame:
-        host.unregisterHandler('ChangedCommander', on_commander)
-        host.unregisterHandler('ChangedSquadLeader', on_squad_leader)
-        host.unregisterHandler('ChatMessage', on_chat)
-        host.unregisterHandler('ControlPointChangedOwner', on_control_point)
-        host.unregisterHandler('DropKit', on_kit_drop)
-        host.unregisterHandler('EnterVehicle', on_vehicle_enter)
-        host.unregisterHandler('ExitVehicle', on_vehicle_exit)
-        host.unregisterHandler('PickupKit', on_kit_pickup)
-        host.unregisterHandler('PlayerBanned', on_ban)
-        host.unregisterHandler('PlayerChangedSquad', on_squad)
-        host.unregisterHandler('PlayerChangeTeams', on_team)
-        host.unregisterHandler('PlayerChangeWeapon', on_weapon)
-        host.unregisterHandler('PlayerDeath', on_death)
-        host.unregisterHandler('PlayerGiveAmmoPoint', on_ammo)
-        host.unregisterHandler('PlayerHealPoint', on_heal)
-        host.unregisterHandler('PlayerKicked', on_kick)
-        host.unregisterHandler('PlayerKilled', on_kill)
-        host.unregisterHandler('PlayerRepairPoint', on_repair)
-        host.unregisterHandler('PlayerRevived', on_revive)
-        host.unregisterHandler('PlayerScore', on_score)
-        host.unregisterHandler('PlayerSpawn', on_spawn)
-        host.unregisterHandler('PlayerTeamDamagePoint', on_team_damage)
-        host.unregisterHandler('TicketLimitReached', on_ticket_limit)
-        host.unregisterHandler('TimeLimitReached', on_clock_limit)
-        host.unregisterHandler('VehicleDestroyed', on_vehicle_destroy)
+        # Update the callback function registrations
+        if status == bf2.GameStatus.Playing:
+            host.registerHandler('ChangedCommander', on_commander)
+            host.registerHandler('ChangedSquadLeader', on_squad_leader)
+            host.registerHandler('ChatMessage', on_chat)
+            host.registerHandler('ControlPointChangedOwner', on_control_point)
+            host.registerHandler('DropKit', on_kit_drop)
+            host.registerHandler('EnterVehicle', on_vehicle_enter)
+            host.registerHandler('ExitVehicle', on_vehicle_exit)
+            host.registerHandler('PickupKit', on_kit_pickup)
+            host.registerHandler('PlayerBanned', on_ban)
+            host.registerHandler('PlayerChangedSquad', on_squad)
+            host.registerHandler('PlayerChangeTeams', on_team)
+            host.registerHandler('PlayerChangeWeapon', on_weapon)
+            host.registerHandler('PlayerDeath', on_death)
+            host.registerHandler('PlayerGiveAmmoPoint', on_ammo)
+            host.registerHandler('PlayerHealPoint', on_heal)
+            host.registerHandler('PlayerKicked', on_kick)
+            host.registerHandler('PlayerKilled', on_kill)
+            host.registerHandler('PlayerRepairPoint', on_repair)
+            host.registerHandler('PlayerRevived', on_revive)
+            host.registerHandler('PlayerScore', on_score)
+            host.registerHandler('PlayerSpawn', on_spawn)
+            host.registerHandler('PlayerTeamDamagePoint', on_team_damage)
+            host.registerHandler('TicketLimitReached', on_ticket_limit)
+            host.registerHandler('TimeLimitReached', on_clock_limit)
+            host.registerHandler('VehicleDestroyed', on_vehicle_destroy)
+        elif status == bf2.GameStatus.EndGame:
+            host.unregisterHandler('ChangedCommander', on_commander)
+            host.unregisterHandler('ChangedSquadLeader', on_squad_leader)
+            host.unregisterHandler('ChatMessage', on_chat)
+            host.unregisterHandler('ControlPointChangedOwner', on_control_point)
+            host.unregisterHandler('DropKit', on_kit_drop)
+            host.unregisterHandler('EnterVehicle', on_vehicle_enter)
+            host.unregisterHandler('ExitVehicle', on_vehicle_exit)
+            host.unregisterHandler('PickupKit', on_kit_pickup)
+            host.unregisterHandler('PlayerBanned', on_ban)
+            host.unregisterHandler('PlayerChangedSquad', on_squad)
+            host.unregisterHandler('PlayerChangeTeams', on_team)
+            host.unregisterHandler('PlayerChangeWeapon', on_weapon)
+            host.unregisterHandler('PlayerDeath', on_death)
+            host.unregisterHandler('PlayerGiveAmmoPoint', on_ammo)
+            host.unregisterHandler('PlayerHealPoint', on_heal)
+            host.unregisterHandler('PlayerKicked', on_kick)
+            host.unregisterHandler('PlayerKilled', on_kill)
+            host.unregisterHandler('PlayerRepairPoint', on_repair)
+            host.unregisterHandler('PlayerRevived', on_revive)
+            host.unregisterHandler('PlayerScore', on_score)
+            host.unregisterHandler('PlayerSpawn', on_spawn)
+            host.unregisterHandler('PlayerTeamDamagePoint', on_team_damage)
+            host.unregisterHandler('TicketLimitReached', on_ticket_limit)
+            host.unregisterHandler('TimeLimitReached', on_clock_limit)
+            host.unregisterHandler('VehicleDestroyed', on_vehicle_destroy)
+    except Exception, err:
+        error('game_status', err)
 
-def on_commander(team_id, old_player, new_player):
-    team_name = format_team(team_id)
-    new_player_name = format_player(new_player)
-
-    log('CM', team_name, new_player_name)
-
-def on_squad_leader(squad_id, old_player, new_player):
-    new_player_name = format_player(new_player)
-
-    log('SL', squad_id, new_player_name)
-
-def on_chat(player_index, text, channel_id, flags):
-
-    # Determine the name of the player that sent the message
-    player_name = player_index
-    if player_index < 0:
-        player_name = 'Server'
-    else:
-        player = bf2.playerManager.getPlayerByIndex(player_index)
-        if player:
-            player_name = format_player(player)
-
-    # Remove localization prefixes from messages
-    if text.startswith('HUD_TEXT_CHAT_TEAM'):
-        text = text[len('HUD_TEXT_CHAT_TEAM'):]
-    elif text.startswith('HUD_TEXT_CHAT_SQUAD'):
-        text = text[len('HUD_TEXT_CHAT_SQUAD'):]
-    elif text.startswith('HUD_CHAT_DEADPREFIX'):
-        text = text[len('HUD_CHAT_DEADPREFIX'):]
-
-    # Format the channel name
-    channel_name = channel_id.lower()
-
-    log('CH', channel_name, player_name, text)
-
-def on_control_point(control_point, flag_top):
-    cp_id = control_point.triggerId
-    cp_pos = format_pos(control_point)
-    flag_state = format_flag_state(control_point.flagPosition)
-    team_name = format_team(control_point.cp_getParam('team'))
-
-    log('CP', cp_id, cp_pos, flag_state, team_name)
-
-def on_kit_drop(player, kit):
-    player_name = format_player(player)
-    player_pos = format_player_pos(player)
-    kit_name = format_kit(kit)
-
-    log('KD', player_name, player_pos, kit_name)
-
-def on_vehicle_enter(player, vehicle, free_soldier=False):
-
-    # Ignore the actual soldier model vehicle type
-    if is_soldier(vehicle):
-        return
-
-    player_name = format_player(player)
-    player_pos = format_player_pos(player)
-    vehicle_name = format_vehicle(vehicle)
-    vehicle_slot = format_vehicle_slot(vehicle)
-    free_flag = format_bool(free_soldier)
-
-    log('VE', player_name, player_pos, vehicle_name, vehicle_slot, free_flag)
-
-def on_vehicle_exit(player, vehicle):
-
-    # Ignore the actual soldier model vehicle type
-    if is_soldier(vehicle):
-        return
-
-    player_name = format_player(player)
-    player_pos = format_player_pos(player)
-    vehicle_name = format_vehicle(vehicle)
-    vehicle_slot = format_vehicle_slot(vehicle)
-
-    log('VX', player_name, player_pos, vehicle_name, vehicle_slot)
-
-def on_kit_pickup(player, kit):
-    player_name = format_player(player)
-    player_pos = format_player_pos(player)
-    kit_name = format_kit(kit)
-
-    log('KP', player_name, player_pos, kit_name)
-
-def on_ban(player, time, ban_type):
-    player_name = format_player(player)
-
-    log('BN', player_name, time, ban_type)
-
-def on_squad(player, old_squad_id, new_squad_id):
-    player_name = format_player(player)
-
-    log('SQ', player_name, new_squad_id)
-
-def on_team(player, human_has_spawned):
-    player_name = format_player(player)
-    team_name = format_team(player.getTeam())
-
-    log('TM', player_name, team_name)
-
-def on_weapon(player, old_weapon, new_weapon):
-    player_name = format_player(player)
-    player_pos = format_player_pos(player)
-    new_weapon_name = format_weapon(new_weapon)
-
-    log('WP', player_name, player_pos, new_weapon_name)
-
-def on_death(victim, bf2_object):
-    victim_name = format_player(victim)
-    victim_pos = format_player_pos(victim)
-
-    log('DT', victim_name, victim_pos)
+def on_reset(data):
+    try:
+        log('RS', data)
+    except Exception, err:
+        error('reset', err)
 
 def on_ammo(giver, bf2_object):
-    receiver = get_owner(bf2_object)
-    receiver_name = format_player(receiver)
-    receiver_pos = format_player_pos(receiver)
-    giver_name = format_player(giver)
-    giver_pos = format_player_pos(giver)
+    try:
+        receiver = get_owner(bf2_object)
+        receiver_name = format_player(receiver)
+        receiver_pos = format_player_pos(receiver)
+        giver_name = format_player(giver)
+        giver_pos = format_player_pos(giver)
 
-    log('AM', receiver_name, receiver_pos, giver_name, giver_pos)
+        log('AM', receiver_name, receiver_pos, giver_name, giver_pos)
+    except Exception, err:
+        error('ammo', err)
 
-def on_heal(giver, bf2_object):
-    receiver = get_owner(bf2_object)
-    receiver_name = format_player(receiver)
-    receiver_pos = format_player_pos(receiver)
-    giver_name = format_player(giver)
-    giver_pos = format_player_pos(giver)
+def on_ban(player, time, ban_type):
+    try:
+        player_name = format_player(player)
 
-    log('HL', receiver_name, receiver_pos, giver_name, giver_pos)
+        log('BN', player_name, time, ban_type)
+    except Exception, err:
+        error('ban', err)
 
-def on_kick(player):
-    player_name = format_player(player)
+def on_chat(player_index, text, channel_id, flags):
+    try:
 
-    log('KC', player_name)
+        # Determine the name of the player that sent the message
+        player_name = player_index
+        if player_index < 0:
+            player_name = 'Server'
+        else:
+            player = bf2.playerManager.getPlayerByIndex(player_index)
+            if player:
+                player_name = format_player(player)
 
-def on_kill(victim, attacker, weapon, assists, bf2_object):
+        # Remove localization prefixes from messages
+        if text.startswith('HUD_TEXT_CHAT_TEAM'):
+            text = text[len('HUD_TEXT_CHAT_TEAM'):]
+        elif text.startswith('HUD_TEXT_CHAT_SQUAD'):
+            text = text[len('HUD_TEXT_CHAT_SQUAD'):]
+        elif text.startswith('HUD_CHAT_DEADPREFIX'):
+            text = text[len('HUD_CHAT_DEADPREFIX'):]
 
-    # Check whether the kill was from an empty vehicle
-    if attacker == None and weapon == None and bf2_object != None:
-        if hasattr(bf2_object, 'lastDrivingPlayerIndex'):
-            attacker = bf2.playerManager.getPlayerByIndex(bf2_object.lastDrivingPlayerIndex)
+        # Format the channel name
+        channel_name = channel_id.lower()
 
-    victim_name = format_player(victim)
-    victim_pos = format_player_pos(victim)
-    attacker_name = format_player(attacker)
-    attacker_pos = format_player_pos(attacker)
-    weapon_name = format_weapon(weapon)
-
-    # Check whether the weapon was actually a vehicle
-    if weapon == None and bf2_object != None:
-        if not is_soldier(bf2_object):
-            weapon_name = format_vehicle(bf2_object)
-
-    log('KL', victim_name, victim_pos, attacker_name, attacker_pos, weapon_name)
-
-    # Log any assists to the kill
-    if assists:
-        for assist in assists:
-            assister = assist[0]
-            assister_name = format_player(assister)
-            assister_pos = format_player_pos(assister)
-            assist_type = format_assist_type(assist[1])
-
-            log('AS', assister_name, assister_pos, assist_type)
-
-def on_repair(giver, vehicle):
-    vehicle_name = format_vehicle(vehicle)
-    vehicle_pos = format_pos(vehicle)
-    giver_name = format_player(giver)
-    giver_pos = format_player_pos(giver)
-
-    log('RP', vehicle_name, vehicle_pos, giver_name, giver_pos)
-
-def on_revive(receiver, giver):
-    receiver_name = format_player(receiver)
-    receiver_pos = format_player_pos(receiver)
-    giver_name = format_player(giver)
-    giver_pos = format_player_pos(giver)
-
-    log('RV', receiver_name, receiver_pos, giver_name, giver_pos)
-
-def on_score(player, difference):
-    player_name = format_player(player)
-
-    log('SC', player_name, difference)
-
-def on_spawn(player, bf2_object):
-    player_name = format_player(player)
-    player_pos = format_player_pos(player)
-    team_name = format_team(player.getTeam())
-
-    log('SP', player_name, player_pos, team_name)
-
-def on_team_damage(attacker, victim):
-    victim_name = format_player(victim)
-    victim_pos = format_player_pos(victim)
-    attacker_name = format_player(attacker)
-    attacker_pos = format_player_pos(attacker)
-
-    log('TD', victim_name, victim_pos, attacker_name, attacker_pos)
-
-def on_ticket_limit(team_id, limit_id):
-    team_name = format_team(team_id)
-
-    log('TL', team_name, limit_id)
+        log('CH', channel_name, player_name, text)
+    except Exception, err:
+        error('chat', err)
 
 def on_clock_limit(value):
-    log('CL', value)
+    try:
+        log('CL', value)
+    except Exception, err:
+        error('clock_limit', err)
+
+def on_commander(team_id, old_player, new_player):
+    try:
+        team_name = format_team(team_id)
+        new_player_name = format_player(new_player)
+
+        log('CM', team_name, new_player_name)
+    except Exception, err:
+        log('commander', err)
+
+def on_control_point(control_point, flag_top):
+    try:
+        cp_id = control_point.triggerId
+        cp_pos = format_pos(control_point)
+        flag_state = format_flag_state(control_point.flagPosition)
+        team_name = format_team(control_point.cp_getParam('team'))
+
+        log('CP', cp_id, cp_pos, flag_state, team_name)
+    except Exception, err:
+        error('control_point', err)
+
+def on_death(victim, bf2_object):
+    try:
+        victim_name = format_player(victim)
+        victim_pos = format_player_pos(victim)
+
+        log('DT', victim_name, victim_pos)
+    except Exception, err:
+        error('death', err)
+
+def on_heal(giver, bf2_object):
+    try:
+        receiver = get_owner(bf2_object)
+        receiver_name = format_player(receiver)
+        receiver_pos = format_player_pos(receiver)
+        giver_name = format_player(giver)
+        giver_pos = format_player_pos(giver)
+
+        log('HL', receiver_name, receiver_pos, giver_name, giver_pos)
+    except Exception, err:
+        error('heal', err)
+
+def on_kick(player):
+    try:
+        player_name = format_player(player)
+
+        log('KC', player_name)
+    except Exception, err:
+        error('kick', err)
+
+def on_kill(victim, attacker, weapon, assists, bf2_object):
+    try:
+
+        # Check whether the kill was from an empty vehicle
+        if attacker == None and weapon == None and bf2_object != None:
+            if hasattr(bf2_object, 'lastDrivingPlayerIndex'):
+                attacker = bf2.playerManager.getPlayerByIndex(bf2_object.lastDrivingPlayerIndex)
+
+        victim_name = format_player(victim)
+        victim_pos = format_player_pos(victim)
+        attacker_name = format_player(attacker)
+        attacker_pos = format_player_pos(attacker)
+        weapon_name = format_weapon(weapon)
+
+        # Check whether the weapon was actually a vehicle
+        if weapon == None and bf2_object != None:
+            if not is_soldier(bf2_object):
+                weapon_name = format_vehicle(bf2_object)
+
+        log('KL', victim_name, victim_pos, attacker_name, attacker_pos, weapon_name)
+    except Exception, err:
+        error('kill', err)
+
+    # Log any assists to the kill
+    try:
+        if assists:
+            for assist in assists:
+                assister = assist[0]
+                assister_name = format_player(assister)
+                assister_pos = format_player_pos(assister)
+                assist_type = format_assist_type(assist[1])
+
+                log('AS', assister_name, assister_pos, assist_type)
+    except Exception, err:
+        error('assist', err)
+
+def on_kit_drop(player, kit):
+    try:
+        player_name = format_player(player)
+        player_pos = format_player_pos(player)
+        kit_name = format_kit(kit)
+
+        log('KD', player_name, player_pos, kit_name)
+    except Exception, err:
+        error('kit_drop', err)
+
+def on_kit_pickup(player, kit):
+    try:
+        player_name = format_player(player)
+        player_pos = format_player_pos(player)
+        kit_name = format_kit(kit)
+
+        log('KP', player_name, player_pos, kit_name)
+    except Exception, err:
+        error('kit_pickup', err)
+
+def on_repair(giver, vehicle):
+    try:
+        vehicle_name = format_vehicle(vehicle)
+        vehicle_pos = format_pos(vehicle)
+        giver_name = format_player(giver)
+        giver_pos = format_player_pos(giver)
+
+        log('RP', vehicle_name, vehicle_pos, giver_name, giver_pos)
+    except Exception, err:
+        error('repair', err)
+
+def on_revive(receiver, giver):
+    try:
+        receiver_name = format_player(receiver)
+        receiver_pos = format_player_pos(receiver)
+        giver_name = format_player(giver)
+        giver_pos = format_player_pos(giver)
+
+        log('RV', receiver_name, receiver_pos, giver_name, giver_pos)
+    except Exception, err:
+        error('revive', err)
+
+def on_score(player, difference):
+    try:
+        player_name = format_player(player)
+
+        log('SC', player_name, difference)
+    except Exception, err:
+        error('score', err)
+
+def on_spawn(player, bf2_object):
+    try:
+        player_name = format_player(player)
+        player_pos = format_player_pos(player)
+        team_name = format_team(player.getTeam())
+
+        log('SP', player_name, player_pos, team_name)
+    except Exception, err:
+        error('spawn', err)
+
+def on_squad(player, old_squad_id, new_squad_id):
+    try:
+        player_name = format_player(player)
+        squad_name = format_player_squad(player)
+
+        log('SQ', player_name, squad_name)
+    except Exception, err:
+        error('squad', err)
+
+def on_squad_leader(squad_id, old_player, new_player):
+    try:
+        squad_name = format_player_squad(new_player)
+        new_player_name = format_player(new_player)
+
+        log('SL', squad_name, new_player_name)
+    except Exception, err:
+        log('squad_leader', err)
+
+def on_team(player, human_has_spawned):
+    try:
+        player_name = format_player(player)
+        team_name = format_team(player.getTeam())
+
+        log('TM', player_name, team_name)
+    except Exception, err:
+        error('team', err)
+
+def on_team_damage(attacker, bf2_object):
+    try:
+        victim = get_owner(bf2_object)
+        victim_name = format_player(victim)
+        victim_pos = format_player_pos(victim)
+        attacker_name = format_player(attacker)
+        attacker_pos = format_player_pos(attacker)
+
+        log('TD', victim_name, victim_pos, attacker_name, attacker_pos)
+    except Exception, err:
+        error('team_damage', err)
+
+def on_ticket_limit(team_id, limit_id):
+    try:
+        team_name = format_team(team_id)
+
+        log('TL', team_name, limit_id)
+    except Exception, err:
+        error('ticket_limit', err)
 
 def on_vehicle_destroy(vehicle, attacker):
+    try:
 
-    # Ignore the actual soldier model vehicle type
-    if is_soldier(vehicle):
-        return
+        # Ignore the actual soldier model vehicle type
+        if is_soldier(vehicle):
+            return
 
-    vehicle_name = format_vehicle(vehicle)
-    vehicle_pos = format_pos(vehicle)
-    attacker_name = format_player(attacker)
-    attacker_pos = format_player_pos(attacker)
+        vehicle_name = format_vehicle(vehicle)
+        vehicle_pos = format_pos(vehicle)
+        attacker_name = format_player(attacker)
+        attacker_pos = format_player_pos(attacker)
 
-    log('VD', vehicle_name, vehicle_pos, attacker_name, attacker_pos)
+        log('VD', vehicle_name, vehicle_pos, attacker_name, attacker_pos)
+    except Exception, err:
+        error('vehicle_destroy', err)
+
+def on_vehicle_enter(player, vehicle, free_soldier=False):
+    try:
+
+        # Ignore the actual soldier model vehicle type
+        if is_soldier(vehicle):
+            return
+
+        player_name = format_player(player)
+        player_pos = format_player_pos(player)
+        vehicle_name = format_vehicle(vehicle)
+        vehicle_slot = format_vehicle_slot(vehicle)
+        free_flag = format_bool(free_soldier)
+
+        log('VE', player_name, player_pos, vehicle_name, vehicle_slot, free_flag)
+    except Exception, err:
+        error('vehicle_enter', err)
+
+def on_vehicle_exit(player, vehicle):
+    try:
+
+        # Ignore the actual soldier model vehicle type
+        if is_soldier(vehicle):
+            return
+
+        player_name = format_player(player)
+        player_pos = format_player_pos(player)
+        vehicle_name = format_vehicle(vehicle)
+        vehicle_slot = format_vehicle_slot(vehicle)
+
+        log('VX', player_name, player_pos, vehicle_name, vehicle_slot)
+    except Exception, err:
+        error('vehicle_exit', err)
+
+def on_weapon(player, old_weapon, new_weapon):
+    try:
+        player_name = format_player(player)
+        player_pos = format_player_pos(player)
+        new_weapon_name = format_weapon(new_weapon)
+
+        log('WP', player_name, player_pos, new_weapon_name)
+    except Exception, err:
+        error('weapon', err)
 
 def format_assist_type(assist_type):
     if assist_type == 1:
@@ -404,6 +498,11 @@ def format_player_addr(player):
 def format_player_pos(player):
     if player:
         return format_pos(player.getVehicle())
+    return None
+
+def format_player_squad(player):
+    if player and player.getSquadId():
+        return format_team(player.getTeam()) + '_' + str(player.getSquadId())
     return None
 
 def format_pos(bf2_object):
@@ -468,6 +567,9 @@ def get_owner(bf2_object):
         if players and len(players) > 0:
             return players[0]
     return None
+
+def error(callback_type, exception):
+    log('ER', callback_type + ' event callback failed: ', exception)
 
 def log(log_type, *args):
 
