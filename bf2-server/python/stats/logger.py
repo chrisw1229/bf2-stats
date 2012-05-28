@@ -79,6 +79,8 @@ def on_game_status(status):
 
         # Log the game status
         map_name = bf2.serverSettings.getMapName()
+        if len(map_name) == 0:
+            map_name = None
         time_limit = bf2.serverSettings.getTimeLimit()
         score_limit = bf2.serverSettings.getScoreLimit()
         log('GS', format_status(status), map_name, time_limit, score_limit)
