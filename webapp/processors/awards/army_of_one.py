@@ -15,7 +15,8 @@ class Processor(AwardProcessor):
     recently awarded point.
 
     Notes
-    Make sure a point is only subtracted once, since a kill could have multiple assists.
+    Make sure a point is only subtracted once, since a kill could have multiple assists. Do not
+    count suicides or team kills.
     '''
 
     def __init__(self):
@@ -35,6 +36,11 @@ class Processor(AwardProcessor):
             self.last_kill = None
 
     def on_kill(self, e):
+
+        # Ignore suicides and team kills
+        if not e.valid_kill:
+            self.last_kill = None
+            return
 
         # Give the attacker an award point for now
         self.results[e.attacker] += 1

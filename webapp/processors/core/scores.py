@@ -51,13 +51,13 @@ class Processor(BaseProcessor):
         attacker_stats = stat_mgr.get_player_stats(e.attacker)
 
         # Check whether the kill was actually a suicide
-        if e.victim == e.attacker:
+        if e.suicide:
             attacker_stats.suicides += 1
             attacker_stats.suicides_total += 1
             return
 
         # Check whether the kill was actually a teammate
-        if e.victim.team_id == e.attacker.team_id:
+        if e.team_kill:
             attacker_stats.team_kills += 1
             attacker_stats.team_kills_total += 1
             return

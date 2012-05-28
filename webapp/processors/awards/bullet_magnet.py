@@ -14,7 +14,8 @@ class Processor(AwardProcessor):
 
     Notes
     Make sure the assist count is reset for each kill and that the award points are given based on
-    the current sequence of assists, rather than being accumulated for the entire session.
+    the current sequence of assists, rather than being accumulated for the entire session. Do not
+    count suicides or team kills.
     '''
 
     def __init__(self):
@@ -37,6 +38,11 @@ class Processor(AwardProcessor):
             self.results[self.last_kill.victim] = self.assist_count
 
     def on_kill(self, e):
+
+        # Ignore suicides and team kills
+        if not e.valid_kill:
+            self.last_kill = None
+            return
 
         # Reset the assist count
         self.assist_count = 0

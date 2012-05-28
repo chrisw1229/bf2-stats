@@ -18,7 +18,8 @@ class Processor(AwardProcessor):
     Notes
     Make sure a player is disabled for any other cases that would allow them to continue getting
     kills normally, such as being revived by a medic. Kills must occur at a later game tick time to
-    count towards this award to avoid counting the more common case of simultaneous kills.
+    count towards this award to avoid counting the more common case of simultaneous kills. Do not
+    count suicides or team kills.
     '''
 
     def __init__(self):
@@ -29,6 +30,10 @@ class Processor(AwardProcessor):
         self.killed = dict()
 
     def on_kill(self, e):
+
+        # Ignore suicides and team kills
+        if not e.valid_kill:
+            return
 
         # Enable this award for a player upon being killed
         self.killed[e.victim] = e

@@ -548,6 +548,11 @@ class KillEvent(BaseEvent):
         self.attacker_pos = event_mgr.parse_pos(values[3])
         self.weapon = model_mgr.get_weapon(values[4])
 
+        self.suicide = (self.victim == self.attacker)
+        self.team_kill = ((self.suicide == False)
+                and (self.victim.team_id == self.attacker.team_id))
+        self.valid_kill = (self.suicide == False and self.team_kill == False)
+
         event_mgr.get_history(self.victim).add_event(self)
         event_mgr.get_history(self.attacker).add_event(self)
         event_mgr.get_history(self.weapon).add_event(self)
