@@ -545,13 +545,14 @@ class KillEvent(BaseEvent):
     CALLBACK = 'on_kill'
 
     def __init__(self, tick, values):
-        BaseEvent.__init__(self, tick, values, 5)
+        BaseEvent.__init__(self, tick, values, 6)
 
         self.victim = model_mgr.get_player(values[0])
         self.victim_pos = event_mgr.parse_pos(values[1])
         self.attacker = model_mgr.get_player(values[2])
         self.attacker_pos = event_mgr.parse_pos(values[3])
         self.weapon = model_mgr.get_weapon(values[4])
+        self.vehicle = model_mgr.get_vehicle(values[5])
 
         self.suicide = (self.victim == self.attacker)
         self.team_kill = ((self.suicide == False)

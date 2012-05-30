@@ -41,14 +41,6 @@ def init():
 def deinit():
     print 'LOGGER - DEINIT'
 
-    # Unregister the pre-game callbacks
-    host.unregisterHandler('PlayerConnect', on_connect)
-    host.unregisterHandler('PlayerDisconnect', on_disconnect)
-    host.unregisterHandler('Reset', on_reset)
-
-    # Unregister the game status callback
-    host.unregisterGameStatusHandler(on_game_status)
-
     # Log the change in server status
     timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
     log('SS', 'stop', timestamp)
@@ -122,32 +114,6 @@ def on_game_status(status):
             host.registerHandler('TicketLimitReached', on_ticket_limit)
             host.registerHandler('TimeLimitReached', on_clock_limit)
             host.registerHandler('VehicleDestroyed', on_vehicle_destroy)
-        elif status == bf2.GameStatus.EndGame:
-            host.unregisterHandler('ChangedCommander', on_commander)
-            host.unregisterHandler('ChangedSquadLeader', on_squad_leader)
-            host.unregisterHandler('ChatMessage', on_chat)
-            host.unregisterHandler('ControlPointChangedOwner', on_control_point)
-            host.unregisterHandler('DropKit', on_kit_drop)
-            host.unregisterHandler('EnterVehicle', on_vehicle_enter)
-            host.unregisterHandler('ExitVehicle', on_vehicle_exit)
-            host.unregisterHandler('PickupKit', on_kit_pickup)
-            host.unregisterHandler('PlayerBanned', on_ban)
-            host.unregisterHandler('PlayerChangedSquad', on_squad)
-            host.unregisterHandler('PlayerChangeTeams', on_team)
-            host.unregisterHandler('PlayerChangeWeapon', on_weapon)
-            host.unregisterHandler('PlayerDeath', on_death)
-            host.unregisterHandler('PlayerGiveAmmoPoint', on_ammo)
-            host.unregisterHandler('PlayerHealPoint', on_heal)
-            host.unregisterHandler('PlayerKicked', on_kick)
-            host.unregisterHandler('PlayerKilled', on_kill)
-            host.unregisterHandler('PlayerRepairPoint', on_repair)
-            host.unregisterHandler('PlayerRevived', on_revive)
-            host.unregisterHandler('PlayerScore', on_score)
-            host.unregisterHandler('PlayerSpawn', on_spawn)
-            host.unregisterHandler('PlayerTeamDamagePoint', on_team_damage)
-            host.unregisterHandler('TicketLimitReached', on_ticket_limit)
-            host.unregisterHandler('TimeLimitReached', on_clock_limit)
-            host.unregisterHandler('VehicleDestroyed', on_vehicle_destroy)
     except Exception, err:
         error('game_status', err)
 
@@ -261,24 +227,26 @@ def on_kick(player):
 
 def on_kill(victim, attacker, weapon, assists, bf2_object):
     try:
+        vehicle = None
+        if (attacker == None and weapon == None and bf2_object != None
+                and hasattr(bf2_object, 'lastDrivingPlayerIndex')):
 
-        # Check whether the kill was from an empty vehicle
-        if attacker == None and weapon == None and bf2_object != None:
-            if hasattr(bf2_object, 'lastDrivingPlayerIndex'):
-                attacker = bf2.playerManager.getPlayerByIndex(bf2_object.lastDrivingPlayerIndex)
+            # Find the last driver for empty vehicle kills
+            attacker = bf2.playerManager.getPlayerByIndex(bf2_object.lastDrivingPlayerIndex)
+            vehicle = bf2_object
+        elif not is_soldier(attacker.getVehicle()):
+
+            # Get the current vehicle for the attacker
+            vehicle = attacker.getVehicle()
 
         victim_name = format_player(victim)
         victim_pos = format_player_pos(victim)
         attacker_name = format_player(attacker)
         attacker_pos = format_player_pos(attacker)
         weapon_name = format_weapon(weapon)
+        vehicle_name = format_vehicle(vehicle)
 
-        # Check whether the weapon was actually a vehicle
-        if weapon == None and bf2_object != None:
-            if not is_soldier(bf2_object):
-                weapon_name = format_vehicle(bf2_object)
-
-        log('KL', victim_name, victim_pos, attacker_name, attacker_pos, weapon_name)
+        log('KL', victim_name, victim_pos, attacker_name, attacker_pos, weapon_name, vehicle_name)
     except Exception, err:
         error('kill', err)
 
