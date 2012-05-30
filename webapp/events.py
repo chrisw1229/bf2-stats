@@ -144,6 +144,11 @@ class EventManager(object):
         event_type = str(elements[1])
         values = elements[2:]
 
+        # Check whether a log error was detected
+        if event_type == 'ER':
+            print 'ERROR - Invalid log entry detected: ', values
+            return
+
         # Decode special case values
         values = [self._decode(value) for value in values]
  

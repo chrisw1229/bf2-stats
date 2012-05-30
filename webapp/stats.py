@@ -212,6 +212,8 @@ class StatManager(object):
             None
         '''
 
+        if not event: return
+
         # Reset the stats when a new game starts
         # Store a reference to the current game
         if isinstance(event, GameStatusEvent) and event.game.starting:
