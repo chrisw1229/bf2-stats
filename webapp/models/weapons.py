@@ -6,6 +6,7 @@ registry = set()
 ASSAULT = 'assault_rifle'
 CARBINE = 'carbine_rifle'
 EXPLOSIVE = 'explosive'
+HMG = 'heavy_machine_gun'
 LMG = 'light_machine_gun'
 MELEE = 'melee'
 PISTOL = 'pistol'
@@ -58,6 +59,13 @@ catastrophic kill that disables vehicle and crew. The fact they have a higher tr
 means they are prevented from being set off by infantry. AT mines are very good for preventing \
 enemy vehicles approaching certain areas but they do not discriminate and can be set off by your \
 own sides vehicles as well.')
+
+_add('ats_tow_launcher', PROJECTILE, VEHICLE, '', 'BGM-71', 'BGM-71 TOW',
+'',
+'The BGM-71 TOW is an anti-tank missile. BGM is a weapon classification that stands for Multiple \
+Environment (B), Surface-Attack (G), Missile (M). TOW is an acronym that stands for Tube-launched, \
+Optically-tracked, Wire command data link, guided missile. The TOW was first produced in 1970 and \
+is one of the two most widely used anti-tank guided missiles by Western nations.')
 
 _add('c4_explosives', EXPLOSIVE, SOLDIER, '', 'C-4', '',
 'In Battlefield 2, C4 is issued to the Special Forces Kit. It is most commonly used to destroy \
@@ -219,6 +227,15 @@ It is thrown like a frag grenade (default Left-Mouse-Button for normal throw, de
 Right-Mouse-Button for a controlled distance throw), but instead releases smoke. The smoke grenade \
 has many uses.',
 '')
+
+_add('hmg_m2hb', HMG, VEHICLE, 'Browning', 'M2', 'Browning M2',
+'',
+'The M2 Machine Gun, Browning .50 Caliber Machine Gun, is a heavy machine gun designed towards the \
+end of World War I by John Browning. It is very similar in design to Browning''s earlier M1919 \
+Browning machine gun, which was chambered for the .30-06 cartridge. The M2 uses the larger and \
+more powerful .50 BMG cartridge, which was named for the gun itself (BMG standing for Browning \
+Machine Gun). It is effective against infantry, unarmored or lightly armored vehicles and boats, \
+light fortifications and low-flying aircraft.')
 
 _add('kni_knife', MELEE, SOLDIER, '', '', 'Combat Knife',
 'In Battlefield 2, the Knife is issued to every kit, and can kill in a single hit. Unlike previous \

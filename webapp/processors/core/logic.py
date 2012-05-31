@@ -171,9 +171,24 @@ class Processor(BaseProcessor):
         e.player.vehicle_slot_id = e.vehicle_slot_id
 
         # Update the vehicle states for the player
-        e.player.driving = (e.vehicle_slot_id and e.vehicle_slot_id.endswith('driver'))
-        e.player.using = (e.vehicle_slot_id and e.vehicle_slot_id.endswith('user'))
-        e.player.riding = not (e.player.driving and e.player.using)
+        if e.vehicle_slot_id:
+            if e.vehicle_slot_id.endswith('driver'):
+                if e.vehicle.group == models.vehicles.STATION:
+                    e.player.driving = False
+                    e.player.riding = False
+                    e.player.using = True
+                else:
+                    e.player.driving = True
+                    e.player.riding = False
+                    e.player.using = False
+            else:
+                e.player.driving = False
+                e.player.riding = True
+                e.player.using = False
+        else:
+            e.player.driving = False
+            e.player.riding = False
+            e.player.using = False
 
         # Update position for the player
         e.player.pos = e.player_pos

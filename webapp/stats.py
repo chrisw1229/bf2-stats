@@ -429,8 +429,8 @@ class StatManager(object):
                 # Terminate processing if the event was consumed
                 return callback(event)
             except Exception, err:
-                print ('ERROR - Failed to invoke processor callback: %s.%s[%s]'
-                        % (processor.__class__.__module__,
+                print ('ERROR - Failed to invoke processor callback: [%i] %s.%s[%s]'
+                        % (event.tick, processor.__class__.__module__,
                         processor.__class__.__name__, event.CALLBACK))
                 traceback.print_exc(err)
         else:

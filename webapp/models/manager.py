@@ -167,7 +167,7 @@ class ModelManager(object):
         if id in self.id_to_game:
             return self.id_to_game[id]
 
-        print 'ERROR - Missing game reference: ', id
+        print 'ERROR - Missing game reference:', id
         return None
 
     def get_kit(self, id):
@@ -189,7 +189,7 @@ class ModelManager(object):
         if id in self.id_to_kit:
             return self.id_to_kit[id]
 
-        print 'ERROR - Missing kit reference: ', id
+        print 'ERROR - Missing kit reference:', id
         return None
 
     def get_kit_types(self):
@@ -239,7 +239,7 @@ class ModelManager(object):
         if id in self.id_to_map:
             return self.id_to_map[id]
 
-        print 'ERROR - Missing map reference: ', id
+        print 'ERROR - Missing map reference:', id
         return None
 
     def get_player(self, name):
@@ -261,7 +261,7 @@ class ModelManager(object):
         if name in self.name_to_player:
             return self.name_to_player[name]
 
-        print 'ERROR - Missing player reference: ', name
+        print 'ERROR - Missing player reference:', name
         return None
 
     def get_player_names(self):
@@ -298,7 +298,7 @@ class ModelManager(object):
         if id in self.id_to_squad:
             return self.id_to_squad[id]
 
-        print 'ERROR - Missing squad reference: ', id
+        print 'ERROR - Missing squad reference:', id
         return None
 
     def get_team(self, id):
@@ -320,7 +320,7 @@ class ModelManager(object):
         if id in self.id_to_team:
             return self.id_to_team[id]
 
-        print 'ERROR - Missing team reference: ', id
+        print 'ERROR - Missing team reference:', id
         return None
 
     def get_vehicle(self, id):
@@ -342,7 +342,7 @@ class ModelManager(object):
         if id in self.id_to_vehicle:
             return self.id_to_vehicle[id]
 
-        print 'ERROR - Missing vehicle reference: ', id
+        print 'ERROR - Missing vehicle reference:', id
         return None
 
     def get_vehicle_types(self):
@@ -395,7 +395,7 @@ class ModelManager(object):
         if id in self.id_to_weapon:
             return self.id_to_weapon[id]
 
-        print 'ERROR - Missing weapon reference: ', id
+        print 'ERROR - Missing weapon reference:', id
         return None
 
     def get_weapon_types(self):
