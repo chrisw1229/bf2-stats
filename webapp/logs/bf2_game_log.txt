@@ -1191,12 +1191,12 @@
 00599;WP;I. Ackworth;-105.5,154.2,-259.4,126.8;usrif_mp5_a3
 00599;VD;ahe_ah1z;-5.2,166.0,-191.9,-115.0;D. Rickard;-102.1,153.9,-262.7,-141.7
 00599;SC;D. Rickard;2
-00599;KL;Luda;-5.2,166.0,-191.9,-115.0;D. Rickard;-102.1,153.9,-262.7,-141.7;aav_type95_qw2launcher;multiplayerfreecamera
+00599;KL;Luda;-5.2,166.0,-191.9,-115.0;D. Rickard;-102.1,153.9,-262.7,-141.7;aav_type95_qw2launcher;None
 00599;KD;Luda;-5.2,166.0,-191.9,-115.0;us_assault
 00599;VX;Luda;-117.9,154.4,-150.8,29.0;ahe_ah1z;ahe_ah1z_driver
 00599;DT;Luda;-5.2,166.0,-191.9,-115.0
 00599;SC;D. Rickard;2
-00599;KL;M. Livesey;-8.3,165.7,-193.4,0.0;D. Rickard;-102.1,153.9,-262.7,-141.7;aav_type95_qw2launcher;multiplayerfreecamera
+00599;KL;M. Livesey;-8.3,165.7,-193.4,0.0;D. Rickard;-102.1,153.9,-262.7,-141.7;aav_type95_qw2launcher;None
 00599;KD;M. Livesey;-8.3,165.7,-193.4,0.0;us_engineer
 00599;VX;M. Livesey;-36.4,146.4,-59.7,0.0;ahe_ah1z;ahe_ah1z_cogunner
 00599;DT;M. Livesey;-8.3,165.7,-193.4,-115.0
@@ -3590,7 +3590,7 @@
 02100;DT;W. Young;67.6,154.2,-57.7,51.9
 02101;VD;tnk_type98;80.1,153.9,-46.8,27.6;W. Young;67.6,154.2,-57.7,51.9
 02101;SC;W. Young;2
-02101;KL;M. Brassard;80.1,153.9,-46.8,27.6;W. Young;67.6,154.2,-57.7,51.9;chat_eryx;multiplayerfreecamera
+02101;KL;M. Brassard;80.1,153.9,-46.8,27.6;W. Young;67.6,154.2,-57.7,51.9;chat_eryx;None
 02101;SC;W. Young;1
 02101;KD;M. Brassard;80.1,153.9,-46.8,27.6;us_medic
 02101;VX;M. Brassard;1.3,153.3,-107.1,0.0;tnk_type98;tnk_type98_driver
