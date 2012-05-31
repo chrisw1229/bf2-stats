@@ -510,15 +510,21 @@ def format_vehicle(vehicle):
     if vehicle:
         root_vehicle = bf2.objectManager.getRootParent(vehicle)
         if root_vehicle and root_vehicle.templateName:
-            return root_vehicle.templateName.lower()
+            vehicle_name = root_vehicle.templateName.lower()
+            if vehicle_name.startswith('wasp_defence'):
+                vehicle_name = 'wasp_defence'
+            return vehicle_name
     return None
 
 def format_vehicle_slot(vehicle):
     if vehicle and vehicle.templateName:
         root_vehicle = bf2.objectManager.getRootParent(vehicle)
         if root_vehicle and root_vehicle.templateName:
-            if root_vehicle.templateName == vehicle.templateName:
-                return root_vehicle.templateName.lower() + '_driver'
+            vehicle_name = root_vehicle.templateName.lower()
+            if (root_vehicle.templateName == vehicle.templateName
+                    and not vehicle_name.startswith('wasp_defence')):
+                vehicle_name += '_driver'
+            return vehicle_name
         return vehicle.templateName.lower()
     return None
 
