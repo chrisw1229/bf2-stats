@@ -234,7 +234,7 @@ def on_kill(victim, attacker, weapon, assists, bf2_object):
             # Find the last driver for empty vehicle kills
             attacker = bf2.playerManager.getPlayerByIndex(bf2_object.lastDrivingPlayerIndex)
             vehicle = bf2_object
-        elif not is_soldier(attacker.getVehicle()):
+        elif attacker != None and not is_soldier(attacker.getVehicle()):
 
             # Get the current vehicle for the attacker
             vehicle = attacker.getVehicle()
@@ -509,7 +509,8 @@ def format_team(team_id):
 def format_vehicle(vehicle):
     if vehicle:
         root_vehicle = bf2.objectManager.getRootParent(vehicle)
-        if root_vehicle and root_vehicle.templateName:
+        if (root_vehicle and root_vehicle.templateName
+                and root_vehicle.templateName != 'multiplayerfreecamera'):
             vehicle_name = root_vehicle.templateName.lower()
             if vehicle_name.startswith('wasp_defence'):
                 vehicle_name = 'wasp_defence'
