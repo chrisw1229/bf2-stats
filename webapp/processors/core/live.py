@@ -72,13 +72,15 @@ class Processor(BaseProcessor):
 
     def on_kill(self, e):
         values = {
-            'attacker': e.attacker.name,
-            'ax': e.attacker_pos[0],
-            'ay': e.attacker_pos[2],
             'victim': e.victim.name,
             'vx': e.victim_pos[0],
             'vy': e.victim_pos[2]
         }
+        if e.attacker:
+            values['attacker'] = e.attacker.name
+        if e.attacker_pos and len(e.attacker_pos) == 4:
+            values['ax'] = e.attacker_pos[0]
+            values['ay'] = e.attacker_pos[2]
         self._add_packet(e.id, 'map', values)
 
     def _add_packet(self, id, packet_type, values):
