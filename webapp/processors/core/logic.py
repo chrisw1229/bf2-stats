@@ -12,6 +12,17 @@ class Processor(BaseProcessor):
 
         self.priority = 10
 
+    def on_ammo(self, e):
+
+        # Update position for the players
+        e.receiver.pos = e.receiver_pos
+        e.giver.pos = e.giver_pos
+
+    def on_assist(self, e):
+
+        # Update position for the player
+        e.player.pos = e.player_pos
+
     def on_commander(self, e):
 
         # Remove the commander flag from the previous player
@@ -32,25 +43,71 @@ class Processor(BaseProcessor):
         e.player.connected = True
         e.player.artificial = (e.player.address == None)
 
+    def on_death(self, e):
+
+        # Update the state of the player
+        e.player.playing = False
+        e.player.pos = e.player_pos
+        e.player.wounded = False
+
     def on_disconnect(self, e):
 
-        # Update the connection flags for the player
+        # Update the connected flag for the player
         e.player.connected = False
+
+    def on_heal(self, e):
+
+        # Update position for the players
+        e.receiver.pos = e.receiver_pos
+        e.giver.pos = e.giver_pos
+
+    def on_kill(self, e):
+
+        # Update position for the players
+        e.victim.pos = e.victim_pos
+        e.attacker.pos = e.attacker_pos
 
     def on_kit_drop(self, e):
     
         # Update the kit for the player
         e.player.kit_id = e.kit.id
 
+        # Update the position for the player
+        e.player.pos = e.player_pos
+
     def on_kit_pickup(self, e):
     
         # Update the kit for the player
         e.player.kit_id = None
 
+        # Update the position for the player
+        e.player.pos = e.player_pos
+
+    def on_repair(self, e):
+
+        # Update position for the players
+        e.receiver.pos = e.receiver_pos
+        e.giver.pos = e.giver_pos
+
+    def on_revive(self, e):
+
+        # Update the wounded status for the player
+        e.receiver.wounded = False
+
+        # Update position for the players
+        e.receiver.pos = e.receiver_pos
+        e.giver.pos = e.giver_pos
+
     def on_spawn(self, e):
+
+        # Update the playing status for the player
+        e.player.playing = True
 
         # Update the team for the player
         self._update_team(e.player, e.team)
+
+        # Update position for the player
+        e.player.pos = e.player_pos
 
     def on_squad(self, e):
 
@@ -96,20 +153,52 @@ class Processor(BaseProcessor):
         # Update the team for the player
         self._update_team(e.player, e.team)
 
+    def on_team_damage(self, e):
+
+        # Update position for the players
+        e.victim.pos = e.victim_pos
+        e.attacker.pos = e.attacker_pos
+
+    def on_vehicle_destroy(self, e):
+
+        # Update position for the player
+        e.attacker.pos = e.attacker_pos
+
     def on_vehicle_enter(self, e):
 
         # Update the vehicle for the player
         e.player.vehicle_id = e.vehicle.id
+        e.player.vehicle_slot_id = e.vehicle_slot_id
+
+        # Update the vehicle states for the player
+        e.player.driving = (e.vehicle_slot_id and e.vehicle_slot_id.endswith('driver'))
+        e.player.using = (e.vehicle_slot_id and e.vehicle_slot_id.endswith('user'))
+        e.player.riding = not (e.player.driving and e.player.using)
+
+        # Update position for the player
+        e.player.pos = e.player_pos
 
     def on_vehicle_exit(self, e):
 
         # Update the vehicle for the player
         e.player.vehicle_id = None
+        e.player.vehicle_slot_id = None
+        
+        # Update the vehicle states for the player
+        e.player.driving = False
+        e.player.riding = False
+        e.player.using = False
+
+        # Update position for the player
+        e.player.pos = e.player_pos
 
     def on_weapon(self, e):
 
         # Update the weapon for the player
         e.player.weapon_id = e.weapon.id
+
+        # Update position for the player
+        e.player.pos = e.player_pos
 
     def _update_team(self, player, team):
 
