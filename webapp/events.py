@@ -772,7 +772,7 @@ class VehicleEnterEvent(BaseEvent):
         self.player = model_mgr.get_player(values[0])
         self.player_pos = event_mgr.parse_pos(values[1])
         self.vehicle = model_mgr.get_vehicle(values[2])
-        self.vehicle_slot = values[3]
+        self.vehicle_slot_id = values[3]
         self.free_soldier = values[4]
 
         event_mgr.get_history(self.player).add_event(self)
@@ -790,7 +790,7 @@ class VehicleExitEvent(BaseEvent):
         self.player = model_mgr.get_player(values[0])
         self.player_pos = event_mgr.parse_pos(values[1])
         self.vehicle = model_mgr.get_vehicle(values[2])
-        self.vehicle_slot = values[3]
+        self.vehicle_slot_id = values[3]
 
         event_mgr.get_history(self.player).add_event(self)
         event_mgr.get_history(self.vehicle).add_event(self)
