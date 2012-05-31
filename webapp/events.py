@@ -775,6 +775,10 @@ class VehicleEnterEvent(BaseEvent):
         self.vehicle_slot_id = values[3]
         self.free_soldier = values[4]
 
+        if self.vehicle_slot_id and not self.vehicle_slot_id in self.vehicle.slot_ids:
+            print ('ERROR - Missing vehicle slot reference: %s -> %s'
+                    % (self.vehicle.id, self.vehicle_slot_id))
+
         event_mgr.get_history(self.player).add_event(self)
         event_mgr.get_history(self.vehicle).add_event(self)
 event_mgr.add_event_class(VehicleEnterEvent)
@@ -791,6 +795,10 @@ class VehicleExitEvent(BaseEvent):
         self.player_pos = event_mgr.parse_pos(values[1])
         self.vehicle = model_mgr.get_vehicle(values[2])
         self.vehicle_slot_id = values[3]
+
+        if self.vehicle_slot_id and not self.vehicle_slot_id in self.vehicle.slot_ids:
+            print ('ERROR - Missing vehicle slot reference: %s -> %s'
+                    % (self.vehicle.id, self.vehicle_slot_id))
 
         event_mgr.get_history(self.player).add_event(self)
         event_mgr.get_history(self.vehicle).add_event(self)
