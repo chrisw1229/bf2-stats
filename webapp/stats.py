@@ -1,4 +1,6 @@
 ﻿
+import fpformat
+import math
 import traceback
 
 from events import GameStatusEvent
@@ -356,6 +358,59 @@ class StatManager(object):
         if not weapon in self.weapon_to_stats:
             self.weapon_to_stats[weapon] = WeaponStats()
         return self.weapon_to_stats[weapon]
+
+    def dist_2d(self, pos1, pos2):
+        '''
+        Calculates the distance between the given position arrays in 2-dimensional space.
+
+        Args:
+           pos1 (array): Array of points in the form [x, z, y, a].
+           pos2 (array): Array of points in the form [x, z, y, a].
+
+        Returns:
+            distance (float): The distance between two points using the x and y coordinates.
+        '''
+
+        # Formula: sqrt((x2 - x1)^2 + (y2 - y1)^2)
+        if pos1 and len(pos1) == 4 and pos2 and len(pos2) == 4:
+            x_dist = math.pow(pos2[0] - pos1[0], 2)
+            y_dist = math.pow(pos2[2] - pos1[2], 2)
+            return fpformat.fix(math.sqrt(x_dist + y_dist), 1)
+
+    def dist_3d(self, pos1, pos2):
+        '''
+        Calculates the distance between the given position arrays in 3-dimensional space.
+
+        Args:
+           pos1 (array): Array of points in the form [x, z, y, a].
+           pos2 (array): Array of points in the form [x, z, y, a].
+
+        Returns:
+            distance (float): The distance between two points using the x, y, and z coordinates.
+        '''
+
+        # Formula: sqrt((x2 - x1)^2 + (y2 - y1)^2 + (z2 - z1)^2)
+        if pos1 and len(pos1) == 4 and pos2 and len(pos2) == 4:
+            x_dist = math.pow(pos2[0] - pos1[0], 2)
+            y_dist = math.pow(pos2[2] - pos1[2], 2)
+            z_dist = math.pow(pos2[1] - pos1[1], 2)
+            return fpformat.fix(math.sqrt(x_dist + y_dist + z_dist), 1)
+
+    def dist_alt(self, pos1, pos2):
+        '''
+        Calculates the altitude or height distance between the given position arrays.
+
+        Args:
+           pos1 (array): Array of points in the form [x, z, y, a].
+           pos2 (array): Array of points in the form [x, z, y, a].
+
+        Returns:
+            distance (float): The distance between two points using the z coordinate.
+        '''
+
+        if pos1 and len(pos1) == 4 and pos2 and len(pos2) == 4:
+            z_dist = math.fabs(pos2[1] - pos1[1])
+            return fpformat.fix(z_dist, 1)
 
     def _reset_stats(self, mapping):
         if mapping:
