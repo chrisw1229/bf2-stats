@@ -103,13 +103,7 @@ class StatManager(object):
         self.type_to_processors = dict()
 
         self.game = None
-        self.game_to_stats = dict()
-        self.kit_to_stats = dict()
-        self.map_to_stats = dict()
-        self.player_to_stats = dict()
-        self.team_to_stats = dict()
-        self.vehicle_to_stats = dict()
-        self.weapon_to_stats = dict()
+        self.type_to_stats = dict()
 
     # This method will be called to initialize the manager
     def start(self):
@@ -243,12 +237,9 @@ class StatManager(object):
             None
         '''
 
-        self._reset_stats(self.kit_to_stats)
-        self._reset_stats(self.map_to_stats)
-        self._reset_stats(self.player_to_stats)
-        self._reset_stats(self.team_to_stats)
-        self._reset_stats(self.vehicle_to_stats)
-        self._reset_stats(self.weapon_to_stats)
+        for model_to_stats in self.type_to_stats.itervalues():
+            for model_stats in model_to_stats.itervalues():
+                model_stats.reset()
 
     def get_game_stats(self, game):
         '''
@@ -264,10 +255,7 @@ class StatManager(object):
 
         if not game:
             game = self.game
-
-        if not game in self.game_to_stats:
-            self.game_to_stats[game] = GameStats()
-        return self.game_to_stats[game]
+        return self._get_stats(game, GameStats)
 
     def get_kit_stats(self, kit):
         '''
@@ -280,9 +268,7 @@ class StatManager(object):
             stats (KitStats): The statistics model associated with the kit.
         '''
 
-        if not kit in self.kit_to_stats:
-            self.kit_to_stats[kit] = KitStats()
-        return self.kit_to_stats[kit]
+        return self._get_stats(kit, KitStats)
 
     def get_map_stats(self, map):
         '''
@@ -295,9 +281,7 @@ class StatManager(object):
             stats (MapStats): The statistics model associated with the map.
         '''
 
-        if not map in self.map_to_stats:
-            self.map_to_stats[map] = MapStats()
-        return self.map_to_stats[map]
+        return self._get_stats(map, MapStats)
 
     def get_player_stats(self, player):
         '''
@@ -310,11 +294,9 @@ class StatManager(object):
             stats (PlayerStats): The statistics model associated with the player.
         '''
 
-        if not player in self.player_to_stats:
-            self.player_to_stats[player] = PlayerStats()
-        return self.player_to_stats[player]
+        return self._get_stats(player, PlayerStats)
 
-    def get_team_stats(self, player):
+    def get_team_stats(self, team):
         '''
         Gets the statistics object for the given team model.
 
@@ -325,9 +307,7 @@ class StatManager(object):
             stats (TeamStats): The statistics model associated with the team.
         '''
 
-        if not team in self.team_to_stats:
-            self.team_to_stats[team] = TeamStats()
-        return self.team_to_stats[team]
+        return self._get_stats(team, TeamStats)
 
     def get_vehicle_stats(self, vehicle):
         '''
@@ -340,9 +320,7 @@ class StatManager(object):
             stats (VehicleStats): The statistics model associated with the vehicle.
         '''
 
-        if not vehicle in self.vehicle_to_stats:
-            self.vehicle_to_stats[vehicle] = VehicleStats()
-        return self.vehicle_to_stats[vehicle]
+        return self._get_stats(vehicle, VehicleStats)
 
     def get_weapon_stats(self, weapon):
         '''
@@ -355,9 +333,7 @@ class StatManager(object):
             stats (WeaponStats): The statistics model associated with the weapon.
         '''
 
-        if not weapon in self.weapon_to_stats:
-            self.weapon_to_stats[weapon] = WeaponStats()
-        return self.weapon_to_stats[weapon]
+        return self._get_stats(weapon, WeaponStats)
 
     def dist_2d(self, pos1, pos2):
         '''
@@ -412,10 +388,18 @@ class StatManager(object):
             z_dist = math.fabs(pos2[1] - pos1[1])
             return fpformat.fix(z_dist, 1)
 
-    def _reset_stats(self, mapping):
-        if mapping:
-            for stats in mapping.itervalues():
-                stats.reset()
+    def _get_stats(self, model, stats_type):
+        if not (model and stats_type): return
+
+        # Make sure there is a mapping for the given type
+        if not stats_type in self.type_to_stats:
+            self.type_to_stats[stats_type] = dict()
+        model_to_stats = self.type_to_stats[stats_type]
+
+        # Make sure there is a mapping for the given model
+        if not model in model_to_stats:
+            model_to_stats[model] = stats_type()
+        return model_to_stats[model]
 
     def _process_event(self, processor, event):
 
