@@ -1,7 +1,5 @@
-# First, we import the required base classes
 from processors.awards import AwardProcessor,Column
 
-# Next, we define our new class, which must be called Processor to be auto-loaded.
 class Processor(AwardProcessor):
     '''
     Lemming is awarded to the player with the most suicides.
