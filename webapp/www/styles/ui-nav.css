@@ -1,0 +1,39 @@
+﻿.ui-nav {
+   font-size: 20px;
+   width: 250px;
+}
+
+.ui-nav-content {
+   padding: 15px;
+}
+
+.ui-nav-logo {
+   border: 1px solid black;
+   height: 125px;
+   margin-bottom: 20px;
+   text-align: center;
+   width: 215px;
+}
+
+.ui-nav-menu-header,
+.ui-nav-menu-footer {
+   margin-top: 1px;
+   padding: 6px 10px;
+   text-align: center;
+}
+
+.ui-nav-menu {
+   cursor: pointer;
+   margin-top: 1px;
+}
+
+.ui-nav-menu-icon {
+   display: inline-block;
+   margin-left: 10px;
+   margin-right: 5px;
+}
+
+.ui-nav-menu-link {
+   display: inline-block;
+   padding: 10px;
+}
