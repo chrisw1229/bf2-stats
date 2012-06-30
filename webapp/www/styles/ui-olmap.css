@@ -6,11 +6,11 @@
 }
 
 .ui-olmap-enabled .olDragDown {
-   cursor: url(../image/hand-closed.cur), default;
+   cursor: url(../images/hand-closed.cur), default;
 }
 
 .olControlPanPanel {
-   background: url(../image/pan-panel.png) no-repeat;
+   background: url(../images/pan-panel.png) no-repeat;
    cursor: default;
    height: 54px;
    left: 10px;
@@ -46,7 +46,7 @@
 }
 
 .olControlZoomPanel {
-   background: url(../image/zoom-panel.png) no-repeat;
+   background: url(../images/zoom-panel.png) no-repeat;
    cursor: default;
    height: 64px;
    left: 27px;
