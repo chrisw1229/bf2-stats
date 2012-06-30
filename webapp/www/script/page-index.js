@@ -36,7 +36,7 @@ $.extend({ mgr: {
 
 // Load the custom jQuery user interface components
 $('.logger-widget').logger();
-$('.olmap-widget').olmap({ baseUrl: 'http://tobe.name/codstats2/tiles', mapName: 'mp_uo_carentan' });
+$('.olmap-widget').olmap({ mapName: 'fushe_pass' });
 
 // Configure the network callbacks
 $.service.baseUrl = ($.mgr.test ? 'test' : 'live');

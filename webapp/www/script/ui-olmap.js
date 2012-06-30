@@ -3,18 +3,18 @@
 $.widget('ui.olmap', {
 
    // Configure the default widget options
-	options: {
+   options: {
       baseUrl: undefined,
       center: [2048, 2048],
       maxMarkers: 25,
       maxSize: 4096,
       maxTile: 256,
-      maxZoom: 5,
+      maxZoom: 7,
       mapName: undefined,
       zoom: 2
-	},
+   },
 
-	_create: function() {
+   _create: function() {
       this.element.addClass('ui-olmap');
 
       // Setup the map container
@@ -52,15 +52,15 @@ $.widget('ui.olmap', {
       $('.olControlZoomOutItemActive', zoomElm).attr('title', 'Zoom out');
    },
 
-	destroy: function() {
+   destroy: function() {
       this.olmap.destroy();
       this.mapElm.remove();
       this.element.removeClass('ui-olmap');
 
       $.Widget.prototype.destroy.call(this);
-	},
+   },
 
-	_setOption: function(key, value) {
+   _setOption: function(key, value) {
       $.Widget.prototype._setOption.apply(this, arguments);
 
       // Update the map tiles if requested
@@ -120,8 +120,8 @@ $.widget('ui.olmap', {
       };
 
       // Build the map tile query URL
-      var tileUrl = this.options.baseUrl ? this.options.baseUrl + '/' : '';
-      tileUrl += this.options.mapName + '/tile_${z}_${y}_${x}.jpg';
+      var tileUrl = this.options.baseUrl ? this.options.baseUrl + '/' : 'tiles/';
+      tileUrl += this.options.mapName + '/${z}/${x}_${y}.jpg';
 
       // Create the tile layer to the map
       var layer = new OpenLayers.Layer.XYZ('Tiles', tileUrl, layerOpts);
