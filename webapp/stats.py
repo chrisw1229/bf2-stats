@@ -67,6 +67,7 @@ class PlayerStats(BaseStats):
         self.heal_points = 0
         self.kills = 0
         self.kill_streak = 0
+        self.rank = 0        
         self.repair_points = 0
         self.revive_points = 0
         self.score = 0
