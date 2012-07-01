@@ -1,0 +1,36 @@
+﻿html,body {
+   background: url('../images/background.png') repeat scroll 50%;
+   font-size: 14px;
+   margin: 0;
+   padding: 0;
+}
+
+.common-container {
+   margin: 20px auto;
+   width: 960px;
+}
+
+.common-nav {
+   display: inline;
+   float: left;
+   margin: 0 10px;
+   width: 250px;
+}
+
+.common-content {
+   display: inline;
+   float: left;
+   margin: 0 10px;
+   width: 650px
+}
+
+.common-header {
+   font-size: 20px;
+   padding: 10px 20px;
+}
+
+.common-body {
+   border-top: 0;
+   min-height: 600px;
+   padding: 20px;
+}

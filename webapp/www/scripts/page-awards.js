@@ -8,6 +8,6 @@ $.extend({ mgr: {
 
 // Load the custom jQuery user interface components
 $('.logger-widget').logger();
-$('.nav-widget').nav();
+$('.common-nav').nav();
 
 });

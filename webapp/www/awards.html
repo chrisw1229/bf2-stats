@@ -6,6 +6,7 @@
       <link type="image/x-icon" href="images/favicon.png" rel="shortcut icon"/>
 
       <link type="text/css" href="themes/jquery-ui-1.8.20.custom.css" rel="stylesheet"/>
+      <link type="text/css" href="styles/common.css" rel="stylesheet"/>
       <link type="text/css" href="styles/ui-logger.css" rel="stylesheet"/>
       <link type="text/css" href="styles/ui-nav.css" rel="stylesheet"/>
       <link type="text/css" href="styles/page-awards.css" rel="stylesheet"/>
@@ -20,7 +21,13 @@
    </head>
 
    <body class="ui-widget">
-      <div class="nav-widget"></div>
+      <div class="common-container">
+         <div class="ui-widget-content ui-corner-all common-nav"></div>
+         <div class="common-content">
+            <div class="ui-widget-header ui-corner-top common-header">Awards</div>
+            <div class="ui-widget-content ui-corner-bottom common-body">Award list here</div>
+         </div>
+      </div>
       <div class="logger-widget"></div>
    </body>
 </html>
