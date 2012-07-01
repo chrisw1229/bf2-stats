@@ -1,0 +1,89 @@
+﻿.ui-table {
+
+}
+
+.ui-table-container {
+  border-spacing: 0;
+  width: 100%;
+}
+
+.ui-table-header th {
+  border-left: none;
+}
+
+.ui-table-row-even {
+  background-color: #E9E6DB;
+}
+
+.ui-table-row-odd {
+  background-color: #DED9C6;
+}
+
+.ui-table-cell {
+  border-color: #38563A;
+  border-style: solid;
+  border-width: 0 1px 1px 0;
+  margin: 0;
+  padding: 2px 4px;
+}
+
+.ui-table-empty,
+.ui-table-load,
+.ui-table-error {
+  background-color: #E9E6DB;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.ui-table-empty td,
+.ui-table-load td,
+.ui-table-error td {
+  border-color: #38563A;
+  border-style: solid;
+  border-width: 0 1px 1px 1px;
+  padding: 4px 8px;
+}
+
+.ui-table-header .ui-table-cell-empty,
+.ui-table-header .ui-table-cell-num,
+.ui-table-cell-num {
+  border-left: 1px solid #38563A;
+  cursor: default;
+  text-align: center;
+}
+
+.ui-table-load .ui-icon {
+  background: url('../images/table-load.gif') no-repeat;
+  float: left;
+  margin-right: 8px;
+  position: relative;
+  top: 1px;
+}
+
+.ui-table-error .ui-icon {
+  float: left;
+  margin-right: 8px;
+  position: relative;
+  top: 1px;
+}
+
+.ui-table-sort-icon {
+  float: right;
+}
+
+.ui-table-header,
+.ui-table-header-sorted {
+  cursor: pointer;
+}
+
+.ui-table-header .ui-table-sort-icon {
+  display: none;
+}
+
+.ui-table-header-sorted .ui-table-sort-icon {
+  display: inline;
+}
+
+.ui-table-footer td {
+  border-top: none;
+}

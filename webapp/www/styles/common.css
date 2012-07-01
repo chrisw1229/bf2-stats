@@ -6,21 +6,21 @@
 }
 
 .common-container {
-   margin: 20px auto;
+   margin: 0 auto;
    width: 960px;
 }
 
 .common-nav {
    display: inline;
    float: left;
-   margin: 0 10px;
+   margin: 20px 10px;
    width: 250px;
 }
 
 .common-content {
    display: inline;
    float: left;
-   margin: 0 10px;
+   margin: 20px 10px;
    width: 650px
 }
 
