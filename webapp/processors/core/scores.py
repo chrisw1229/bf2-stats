@@ -96,3 +96,14 @@ class Processor(BaseProcessor):
         # Increment score count for the player
         player_stats.score += e.value
         player_stats.score_total += e.value
+        rank = player_stats.score / 100
+        if rank > 10:
+            player_stats.rank = 1
+        elif rank > 20:
+            player_stats.rank = 2
+        elif rank > 30:
+            player_stats.rank = 3
+        elif rank > 40:
+            player_stats.rank = 4
+        elif rank > 50:
+            player_stats.rank = 5
