@@ -30,7 +30,7 @@ class Handler:
             # Respond with a summary of the award information
             return { 'id': processor.id, 'name': processor.name, 'desc': processor.desc,
                     'columns' : processor.columns, 'notes': processor.notes,
-                    'results': processor.get_results() }
+                    'rows': processor.get_results() }
 
         # Get a list of all the award processors
         processors = stat_mgr.get_processors('awards')
