@@ -30,6 +30,13 @@ $.widget('ui.table', {
       this.loadElm = $('<tr class="ui-state-active ui-table-load"><td colspan="0"><span class="ui-icon"/>Loading...</td></tr>');
       this.errorElm = $('<tr class="ui-state-error ui-table-error"><td colspan="0"><span class="ui-icon ui-icon-alert"/>ERROR - Records Not Found</td></tr>');
 
+      this.headerElm.on('mouseenter', '.ui-table-header',
+            function(e) { $(this).addClass('ui-state-hover'); });
+      this.headerElm.on('mouseleave', 'th',
+            function(e) { $(this).removeClass('ui-state-hover'); });
+      this.headerElm.on('click', 'th',
+            function(e) { self.setSort(e.data.index); });
+ 
       // Initialize the table columns
       this.setColumns(this.options.columns);
    },
@@ -37,7 +44,7 @@ $.widget('ui.table', {
    destroy: function() {
 
       // Clear the event handlers
-      this.headerElm.children().unbind();
+      this.headerElm.off('mouseenter mouseleave click');
 
       // Destroy the document model
       this.tableElm.remove();
@@ -58,10 +65,10 @@ $.widget('ui.table', {
 
       // Create a column element to store the row number
       this.headerElm.empty();
-      $('<th class="ui-state-default ui-corner-tl ui-table-cell-num">#</th>').appendTo(this.headerElm);
+      $('<th class="ui-state-default ui-corner-tl ui-table-cell-rank">#</th>').appendTo(this.headerElm);
 
       // Add the new table column header elements
-      var sortIndex = -1;
+      var sortIndex = undefined, sortAsc = undefined;
       for (var i = 0; i < columns.length; i++) {
 
          // Store the column data for future use
@@ -69,15 +76,14 @@ $.widget('ui.table', {
          this.columns.push(column);
 
          // Check if this is the default sort column
-         sortIndex = (column.sort != undefined ? i : sortIndex);
+         sortIndex = (column.sorted != undefined ? i : sortIndex);
+         sortAsc = (column.sorted != undefined ? column.sorted : sortAsc);
 
          // Create an element to represent the column header
-         column.div = $('<th class="ui-state-default ui-table-header'
-               + (i == this.sortIndex ? '-sorted' : '') + '">'
-               + column.name + '</th>').appendTo(this.headerElm);
-         $('<span class="ui-icon ui-icon-triangle-1-'
-               + (this.sortAsc ? 'n' : 's')
-               + ' ui-table-sort-icon"/>').appendTo(column.div);
+         var columnElm = $('<th class="ui-state-default ui-table-header' 
+               + (i == columns.length - 1 ? ' ui-corner-tr ' : '')
+               + '">' + column.name + '</th>').appendTo(this.headerElm);
+         $('<span class="ui-icon ui-table-sort-icon"/>').appendTo(columnElm);
       }
 
       // Align the various message and footer row elements
@@ -86,13 +92,8 @@ $.widget('ui.table', {
       this.errorElm.children(':first').attr('colspan', columns.length + 1);
       this.footerElm.children(':first').attr('colspan', columns.length + 1);
 
-      // Style the table boundaries
-      this.columns[this.columns.length - 1].div.addClass('ui-corner-tr');
-
       // Update the default sort if applicable
-      if (sortIndex >= 0) {
-         this.setSort(sortIndex, this.columns[sortIndex].sort);
-      }
+      this.setSort(sortIndex, sortAsc);
    },
 
    setRows: function(rows) {
@@ -135,9 +136,9 @@ $.widget('ui.table', {
 
       // Update the sort direction icon
       $('.ui-table-header-sorted', this.headerElm).removeClass(
-            'ui-table-header-sorted').addClass('ui-table-header');
-      $('.ui-table-header', this.headerElm).eq(this.sortIndex).removeClass(
-            'ui-table-header').addClass('ui-table-header-sorted');
+            'ui-table-header-sorted');
+      $('.ui-table-header', this.headerElm).eq(this.sortIndex).addClass(
+            'ui-table-header-sorted');
       $('.ui-table-sort-icon', this.headerElm).attr('class',
             'ui-icon ui-icon-triangle-1-' + (this.sortAsc ? 'n' : 's')
             + ' ui-table-sort-icon');
@@ -249,7 +250,7 @@ $.widget('ui.table', {
             + sequence + '"/>').insertBefore(this.footerElm);
 
       // Create a cell to display the row number
-      $('<td class="ui-table-cell ui-table-cell-num">'
+      $('<td class="ui-table-cell ui-table-cell-rank">'
             + (index + 1) + '</td>').appendTo(rowElm);
 
       // Add all the values as cells to the table row

@@ -35,7 +35,7 @@ $.extend({ mgr: {
 }});
 
 // Load the custom jQuery user interface components
-$('.logger-widget').logger();
+$('.common-logger').logger();
 $('.olmap-widget').olmap({ mapName: 'fushe_pass' });
 
 // Configure the network callbacks

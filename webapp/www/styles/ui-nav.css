@@ -16,14 +16,14 @@
 
 .ui-nav-menu-header,
 .ui-nav-menu-footer {
-   margin-top: 1px;
+   margin-top: 2px;
    padding: 6px 10px;
    text-align: center;
 }
 
 .ui-nav-menu {
    cursor: pointer;
-   margin-top: 1px;
+   margin-top: 2px;
 }
 
 .ui-nav-menu-icon {

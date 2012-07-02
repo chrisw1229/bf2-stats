@@ -56,7 +56,7 @@ $.widget('ui.nav', {
    destroy: function() {
 
       // Clear the event handlers
-      $('ui-nav-menu', this.menusElm).off('mouseenter mouseleave');
+      this.menusElm.off('mouseenter mouseleave');
 
       // Destroy the document model
       this.contentElm.remove();

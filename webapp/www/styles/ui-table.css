@@ -1,89 +1,92 @@
 ﻿.ui-table {
-
+   font-size: 18px;
 }
 
 .ui-table-container {
-  border-spacing: 0;
-  width: 100%;
+   border-spacing: 0;
+   width: 100%;
 }
 
-.ui-table-header th {
-  border-left: none;
+.ui-table-header th.ui-state-default {
+   border-left: none;
+   padding: 6px 8px;
 }
 
 .ui-table-row-even {
-  background-color: #E9E6DB;
+   background-color: #E9E6DB;
 }
 
 .ui-table-row-odd {
-  background-color: #DED9C6;
+   background-color: #DED9C6;
 }
 
 .ui-table-cell {
-  border-color: #38563A;
-  border-style: solid;
-  border-width: 0 1px 1px 0;
-  margin: 0;
-  padding: 2px 4px;
+   border-color: #38563A;
+   border-style: solid;
+   border-width: 0 1px 1px 0;
+   margin: 0;
+   padding: 6px 8px;
 }
 
 .ui-table-empty,
 .ui-table-load,
 .ui-table-error {
-  background-color: #E9E6DB;
-  font-style: italic;
-  font-weight: bold;
+   background-color: #E9E6DB;
+   font-style: italic;
+   font-weight: bold;
 }
 
 .ui-table-empty td,
 .ui-table-load td,
 .ui-table-error td {
-  border-color: #38563A;
-  border-style: solid;
-  border-width: 0 1px 1px 1px;
-  padding: 4px 8px;
+   border-color: #38563A;
+   border-style: solid;
+   border-width: 0 1px 1px 1px;
+   padding: 4px 8px;
 }
 
 .ui-table-header .ui-table-cell-empty,
-.ui-table-header .ui-table-cell-num,
-.ui-table-cell-num {
-  border-left: 1px solid #38563A;
-  cursor: default;
-  text-align: center;
+.ui-table-header .ui-table-cell-rank,
+.ui-table-cell-rank {
+   border-left: 1px solid #38563A;
+   cursor: default;
+   text-align: center;
 }
 
 .ui-table-load .ui-icon {
-  background: url('../images/table-load.gif') no-repeat;
-  float: left;
-  margin-right: 8px;
-  position: relative;
-  top: 1px;
+   background: url('../images/table-load.gif') no-repeat;
+   float: left;
+   margin-right: 8px;
+   position: relative;
+   top: 4px;
 }
 
 .ui-table-error .ui-icon {
-  float: left;
-  margin-right: 8px;
-  position: relative;
-  top: 1px;
+   float: left;
+   margin-right: 8px;
+   position: relative;
+   top: 4px;
 }
 
 .ui-table-sort-icon {
-  float: right;
+   float: right;
+   margin-top: 4px;
 }
 
 .ui-table-header,
 .ui-table-header-sorted {
-  cursor: pointer;
+   cursor: pointer;
 }
 
 .ui-table-header .ui-table-sort-icon {
-  display: none;
+   display: none;
 }
 
 .ui-table-header-sorted .ui-table-sort-icon {
-  display: inline;
+   display: inline;
 }
 
-.ui-table-footer td {
-  border-top: none;
+.ui-table-footer td.ui-state-default {
+   border-top: none;
+   padding: 6px 8px;
 }
