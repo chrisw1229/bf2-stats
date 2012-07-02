@@ -1,6 +1,8 @@
 ﻿
 import collections
 
+import models
+
 from processors import BaseProcessor
 
 class AwardProcessor(BaseProcessor):
@@ -54,7 +56,8 @@ class AwardProcessor(BaseProcessor):
         # Create a list of lists, where each row is a player name and value
         results = []
         for player,value in values.iteritems():
-            results.append([ player.name, values[player] ])
+            if player != models.players.EMPTY:
+                results.append([ player.name, values[player] ])
 
         # Figure out the column and direction to use when sorting
         sort_index = None
@@ -77,8 +80,8 @@ class Column(object):
     STRING = 'string'
 
     # Sorted constants
-    ASC = False
-    DESC = True
+    ASC = True
+    DESC = False
 
     def __init__(self, name, data=STRING, sorted=None):
         self.name = name
