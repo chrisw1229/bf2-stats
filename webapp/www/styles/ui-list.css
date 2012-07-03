@@ -1,0 +1,57 @@
+﻿.ui-list {
+
+}
+
+.ui-list-empty.ui-state-active,
+.ui-list-load.ui-state-active,
+.ui-list-error.ui-state-error {
+   border: none;
+}
+
+.ui-list-load .ui-icon {
+   background: url('../images/table-load.gif') no-repeat;
+   float: left;
+   margin-right: 8px;
+}
+
+.ui-list-empty .ui-icon {
+   float: left;
+   margin-right: 8px;
+   position: relative;
+   top: 1px;
+}
+
+.ui-list-error .ui-icon {
+   float: left;
+   margin-right: 8px;
+   position: relative;
+   top: 1px;
+}
+
+.ui-list-items {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+}
+
+.ui-list-row {
+   margin-bottom: 2px;
+   padding: 8px 10px;
+}
+
+.ui-list-item-link {
+   text-decoration: none;
+}
+
+.ui-list-item-name {
+   display: block;
+   font-size: 20px;
+   padding-bottom: 10px;
+}
+
+.ui-list-item-desc {
+   display: block;
+   font-size: 16px;
+   font-style: italic;
+   padding-left: 20px;
+}
