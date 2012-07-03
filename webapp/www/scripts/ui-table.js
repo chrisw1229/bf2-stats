@@ -26,16 +26,16 @@ $.widget('ui.table', {
       this.footerElm = $('<tr class="ui-table-footer"><td class="ui-state-default ui-corner-bottom" colspan="0">&nbsp;</td></tr>').appendTo(this.bodyElm);
 
       // Create the status message rows
-      this.emptyElm = $('<tr class="ui-state-active ui-table-empty"><td colspan="0">No Records Available</td></tr>');
+      this.emptyElm = $('<tr class="ui-state-active ui-table-empty"><td colspan="0"><span class="ui-icon ui-icon-alert"/>No Records Available</td></tr>');
       this.loadElm = $('<tr class="ui-state-active ui-table-load"><td colspan="0"><span class="ui-icon"/>Loading...</td></tr>');
       this.errorElm = $('<tr class="ui-state-error ui-table-error"><td colspan="0"><span class="ui-icon ui-icon-alert"/>ERROR - Records Not Found</td></tr>');
 
+      // Bind event handlers for the table header cells
       this.headerElm.on('mouseenter', '.ui-table-header',
             function(e) { $(this).addClass('ui-state-hover'); });
       this.headerElm.on('mouseleave', 'th',
             function(e) { $(this).removeClass('ui-state-hover'); });
-      this.headerElm.on('click', 'th',
-            function(e) { self.setSort(e.data.index); });
+      this.headerElm.on('click', 'th', $.proxy(this._onSort, this));
  
       // Initialize the table columns
       this.setColumns(this.options.columns);
@@ -82,7 +82,8 @@ $.widget('ui.table', {
          // Create an element to represent the column header
          var columnElm = $('<th class="ui-state-default ui-table-header' 
                + (i == columns.length - 1 ? ' ui-corner-tr ' : '')
-               + '">' + column.name + '</th>').appendTo(this.headerElm);
+               + '"/>').appendTo(this.headerElm);
+         $('<span class="">' + column.name + '</span>').appendTo(columnElm);
          $('<span class="ui-icon ui-table-sort-icon"/>').appendTo(columnElm);
       }
 
@@ -185,6 +186,7 @@ $.widget('ui.table', {
    },
 
    _sort: function() {
+      var columns = this.columns;
       var index = this.sortIndex;
       var asc = this.sortAsc;
 
@@ -195,10 +197,12 @@ $.widget('ui.table', {
          this.rows.sort(function(row1, row2) {
 
             // Make sure string comparisons are case-insensitive
+            var column = columns[index];
             var val1 = row1[index];
             var val2 = row2[index];
-            val1 = (typeof(val1) == 'string' ? val1.toLowerCase() : val1);
-            val2 = (typeof(val2) == 'string' ? val2.toLowerCase() : val2);
+
+            val1 = (column.data == 'string' ? val1.toLowerCase() : val1);
+            val2 = (column.data == 'string' ? val2.toLowerCase() : val2);
 
             // Adjust the result based on the sort direction
             if (val1 < val2) {
@@ -255,8 +259,16 @@ $.widget('ui.table', {
 
       // Add all the values as cells to the table row
       for (var i = 0; i < this.columns.length; i++) {
-         $('<td class="ui-table-cell"/>').appendTo(rowElm);
+         var column = this.columns[i];
+         $('<td class="ui-table-cell'
+               + (column.data ? ' ui-table-data-' + column.data : '')
+               + '"/>').appendTo(rowElm);
       }
+   },
+
+   _onSort: function(e) {
+      var cellElm = $(e.target).closest('th');
+      this.setSort(cellElm.index() - 1, !this.sortAsc);
    }
 
 });

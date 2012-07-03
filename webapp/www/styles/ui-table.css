@@ -53,6 +53,21 @@
    text-align: center;
 }
 
+.ui-table-data-string {
+   text-align: left;
+}
+
+.ui-table-data-number {
+   text-align: center;
+}
+
+.ui-table-empty .ui-icon {
+   float: left;
+   margin-right: 8px;
+   position: relative;
+   top: 4px;
+}
+
 .ui-table-load .ui-icon {
    background: url('../images/table-load.gif') no-repeat;
    float: left;
@@ -69,7 +84,7 @@
 }
 
 .ui-table-sort-icon {
-   float: right;
+   margin-left: 4px;
    margin-top: 4px;
 }
 
@@ -79,11 +94,12 @@
 }
 
 .ui-table-header .ui-table-sort-icon {
-   display: none;
+   display: inline-block;
+   visibility: hidden;
 }
 
 .ui-table-header-sorted .ui-table-sort-icon {
-   display: inline;
+   visibility: visible;
 }
 
 .ui-table-footer td.ui-state-default {
