@@ -27,12 +27,13 @@
 }
 
 .ui-nav-menu-icon {
-   display: inline-block;
+   float: left;
    margin-left: 10px;
    margin-right: 5px;
+   margin-top: 14px;
 }
 
 .ui-nav-menu-link {
-   display: inline-block;
+   display: block;
    padding: 10px;
 }
