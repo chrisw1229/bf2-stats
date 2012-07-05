@@ -36,6 +36,18 @@ EMPTY = Weapon('', '', '', '', '', '', '', '')
 def _add(id, weapon_type, group, make, model, name, game_desc, real_desc):
     registry.add(Weapon(id, weapon_type, group, make, model, name, game_desc, real_desc))
 
+_add('aav_type95_qw2launcher', PROJECTILE, VEHICLE, '', '', '',
+'',
+'')
+
+_add('aav_type95guns', PROJECTILE, VEHICLE, '', '', '',
+'',
+'')
+
+_add('ahe_ah1z_gun', PROJECTILE, VEHICLE, '', '', '',
+'',
+'')
+
 _add('ammokit', TOOL, SOLDIER, '', '', 'Ammunition Bag',
 'In Battlefield 2, ammunition is dispensed either by the Ammo Bags from Support Class or Supply \
 Crate deployed by the Commander. The Ammo Bags can be held to replenish the player''s own ammo or \
@@ -59,6 +71,10 @@ catastrophic kill that disables vehicle and crew. The fact they have a higher tr
 means they are prevented from being set off by infantry. AT mines are very good for preventing \
 enemy vehicles approaching certain areas but they do not discriminate and can be set off by your \
 own sides vehicles as well.')
+
+_add('ats_hj8_launcher', PROJECTILE, VEHICLE, '', '', '',
+'',
+'')
 
 _add('ats_tow_launcher', PROJECTILE, VEHICLE, '', 'BGM-71', 'BGM-71 TOW',
 '',
@@ -113,6 +129,10 @@ capable of firing 5 missiles in 2 minutes. With the misile being armed with a 13
 shaped charge high explosive warhead it is capable of penetrating 900 mm of ERA. All in all a very \
 effective anti-armour weapon that will also easily destroy other types of vehicles and even \
 concrete bunkers.')
+
+_add('chhmg_type85', HMG, VEHICLE, '', '', '',
+'',
+'')
 
 _add('chlmg_type95', LMG, SOLDIER, 'Norinco', 'QBB-95', 'Type 95',
 'In Battlefield 2, the Type 95 is the light machine gun issued to the People''s Liberation Army \
@@ -219,6 +239,10 @@ equiped with a 4x telescopic or night sight. The Type 88 was made for heavy load
 mm cartridge but can also fire standard 5.8 mm ammunition. This is a very effective rifle up to a \
 distance of around 800 m and with 10 rounds and semi-auto fire it allows you that extra chance of \
 finishing the enemy off.')
+
+_add('coaxial_mg_china', HMG, VEHICLE, '', '', '',
+'',
+'')
 
 _add('hgr_smoke', EXPLOSIVE, SOLDIER, '', '', 'Smoke Grenade',
 'The Smoke Grenade is included in the Assault kit in the game Battlefield 2. Instead of having a \
@@ -429,6 +453,18 @@ weapon has only one firing mode. The S12K uses smaller shell sizes than conventi
 shotguns and therefore it causes less damage although it is ready to fire again more quickly. As \
 with all shotguns it will kill point blank but has bad recoil and added to that you can quickly \
 and ineffectively use up all your ammo, it can be wise to switch to a pistol.')
+
+_add('tnk_type98_barrel', PROJECTILE, VEHICLE, '', '', '',
+'',
+'')
+
+_add('usaav_m6_barrel', PROJECTILE, VEHICLE, '', '', '',
+'',
+'')
+
+_add('usaav_m6_stinger_launcher', PROJECTILE, VEHICLE, '', '', '',
+'',
+'')
 
 _add('usatp_predator', PROJECTILE, SOLDIER, 'Lockheed Martin', 'FGM-172', 'Predator SRAW',
 'In Battlefield 2, the SRAW is issued to the USMC Anti-Tank kit. Like its counterpart weapon in \
@@ -653,6 +689,10 @@ been fired in full-auto. The G36E is more accurate, although it doesn''t mount a
 become the service rifle of the Armed Forces of Britain. It fires the 5.56x45mm NATO round and is \
 fed from a 30 round detachable STANAG box magazine with an effective range of up to 850 meters \
 depending on the variant and a 650 rounds per minute fire rate.')
+
+_add('ustnk_m1a2_barrel', PROJECTILE, VEHICLE, '', '', '',
+'',
+'')
 
 _add('ussht_jackhammer', SHOTGUN, SOLDIER, 'Pancor', 'MK3A1', 'Jackhammer',
 'In Battlefield 2, the MK3A1 is the Tier one unlock for the Engineer Kit. Its main advantage is \
