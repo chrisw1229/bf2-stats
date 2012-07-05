@@ -6,6 +6,7 @@ import cherrypy
 # Importing the stats plugin registers it with the cherrypy engine
 import plugin
 import services.awards
+import services.leaderboard
 import services.live
 import services.players
 
@@ -21,6 +22,7 @@ root.services = Services()
 
 # Register all the service request handlers
 root.services.awards = services.awards.Handler()
+root.services.leaderboard = services.leaderboard.Handler();
 root.services.live = services.live.Handler()
 root.services.players = services.players.Handler()
 

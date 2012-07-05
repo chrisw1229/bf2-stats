@@ -36,7 +36,7 @@ $.extend({ mgr: {
 
 // Load the custom jQuery user interface components
 $('.common-logger').logger();
-$('.olmap-widget').olmap({ mapName: 'fushe_pass' });
+$('.olmap-widget').olmap({ mapName: 'dalian_plant' });
 
 // Configure the network callbacks
 $.service.baseUrl = ($.mgr.test ? 'test' : 'live');

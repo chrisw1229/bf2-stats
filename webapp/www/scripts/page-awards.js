@@ -98,7 +98,6 @@ $.extend({ mgr: {
 $(window).on('hashchange', $.mgr.onHistory);
 
 // Load the custom jQuery user interface components
-$('.logger-widget').logger();
 $('.common-nav').nav();
 
 // Trigger the history event on initial page load
