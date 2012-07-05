@@ -1,15 +1,17 @@
 
 from processors.awards import AwardProcessor,Column
-from stats import StatManager
+from stats import stat_mgr
 
 class Processor(AwardProcessor):
     '''
     Overview
-    This processor keeps track of the most number of kills using a Knife.
+    This processor keeps track of the most number of kills where the difference
+    in height or altitude between the attacker and victim is more than a story.
 
     Implementation
-	Whenever a kill event is received involving a knife, the kill event
-    is cached.
+	Whenever a kill event is received calculate the altitude difference between
+    the two players involved. One story will be represented by 10 feet, which
+    is actually 3 meters in game units.
 
     Notes
 	None.
@@ -25,5 +27,6 @@ class Processor(AwardProcessor):
         if not e.valid_kill:
             return
 
-        if dist_alt(e.victim.pos, e.attacker.pos) > 10:
-			results[e.attacker] += 1
+        # Check whether the kill height was more than one story
+        if stat_mgr.dist_alt(e.victim.pos, e.attacker.pos) > 3:
+			self.results[e.attacker] += 1
