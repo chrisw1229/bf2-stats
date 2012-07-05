@@ -18,7 +18,7 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'High Ground', 'Max Kill Height Difference', [
+        AwardProcessor.__init__(self, 'High Ground', 'Most Kills with Height Difference', [
                 Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
 		
     def on_kill(self, e):
