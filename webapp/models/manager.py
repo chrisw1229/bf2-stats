@@ -12,6 +12,7 @@ class ModelManager(object):
 
     def __init__(self):
         self.players = set()
+        self.id_to_player = dict()
         self.name_to_player = dict()
         self.addr_to_player = dict()
 
@@ -242,7 +243,29 @@ class ModelManager(object):
         print 'ERROR - Missing map reference:', id
         return None
 
-    def get_player(self, name):
+    def get_player(self, id):
+        '''
+        Looks up the player object associated with the given id.
+
+        Args:
+           id (string): The id of the player to get.
+
+        Returns:
+            Player (Player): Returns a registered player model.
+        '''
+
+        # Handle requests for missing players
+        if not id:
+            return players.EMPTY
+
+        # Get a model for the player
+        if id in self.id_to_player:
+            return self.id_to_player[id]
+
+        print 'ERROR - Missing player reference:', id
+        return None
+
+    def get_player_by_name(self, name):
         '''
         Looks up the player object associated with the given name.
 
@@ -521,7 +544,8 @@ class ModelManager(object):
         if address:
             self.addr_to_player[address] = player
 
-        # Update the name mapping for all players
+        # Update the id and name mappings for the player
+        self.id_to_player[player.id] = player
         self.name_to_player[name] = player
 
         # Update the master player index

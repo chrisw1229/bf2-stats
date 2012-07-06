@@ -11,15 +11,13 @@
 }
 
 .common-nav {
-   display: inline;
-   float: left;
+   position: fixed;
    margin: 20px 10px;
    width: 250px;
 }
 
 .common-content {
-   display: inline;
-   float: left;
+   float: right;
    margin: 20px 10px;
    width: 650px
 }
@@ -31,7 +29,6 @@
 
 .common-body {
    border-top: 0;
-   min-height: 600px;
    padding: 20px;
 }
 

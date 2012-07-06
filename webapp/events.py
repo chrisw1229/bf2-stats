@@ -337,10 +337,10 @@ class AmmoEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 4)
 
-        self.receiver = model_mgr.get_player(values[0])
+        self.receiver = model_mgr.get_player_by_name(values[0])
         self.receiver_pos = event_mgr.parse_pos(values[1])
 
-        self.giver = model_mgr.get_player(values[2])
+        self.giver = model_mgr.get_player_by_name(values[2])
         self.giver_pos = event_mgr.parse_pos(values[3])
 
         event_mgr.get_history(self.receiver).add_event(self)
@@ -355,7 +355,7 @@ class AssistEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 3)
 
-        self.player = model_mgr.get_player(values[0])
+        self.player = model_mgr.get_player_by_name(values[0])
         self.player_pos = event_mgr.parse_pos(values[1])
         self.assist_type = values[2]
 
@@ -370,7 +370,7 @@ class BanEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 3)
 
-        self.player = model_mgr.get_player(values[0])
+        self.player = model_mgr.get_player_by_name(values[0])
         self.duration = values[1]
         self.ban_type = values[2]
 
@@ -386,7 +386,7 @@ class ChatEvent(BaseEvent):
         BaseEvent.__init__(self, tick, values, 3)
 
         self.channel = values[0]
-        self.player = model_mgr.get_player(values[1])
+        self.player = model_mgr.get_player_by_name(values[1])
         self.text = values[2]
 
         event_mgr.get_history(self.player).add_event(self)
@@ -412,7 +412,7 @@ class CommanderEvent(BaseEvent):
         BaseEvent.__init__(self, tick, values, 2)
 
         self.team = model_mgr.get_team(values[0])
-        self.player = model_mgr.get_player(values[1])
+        self.player = model_mgr.get_player_by_name(values[1])
 
         event_mgr.get_history(self.team).add_event(self)
         event_mgr.get_history(self.player).add_event(self)
@@ -472,7 +472,7 @@ class DeathEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 2)
 
-        self.player = model_mgr.get_player(values[0])
+        self.player = model_mgr.get_player_by_name(values[0])
         self.player_pos = event_mgr.parse_pos(values[1])
 
         event_mgr.get_history(self.player).add_event(self)
@@ -501,9 +501,9 @@ class HealEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 4)
 
-        self.receiver = model_mgr.get_player(values[0])
+        self.receiver = model_mgr.get_player_by_name(values[0])
         self.receiver_pos = event_mgr.parse_pos(values[1])
-        self.giver = model_mgr.get_player(values[2])
+        self.giver = model_mgr.get_player_by_name(values[2])
         self.giver_pos = event_mgr.parse_pos(values[3])
 
         event_mgr.get_history(self.receiver).add_event(self)
@@ -518,7 +518,7 @@ class KickEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 1)
 
-        self.player = model_mgr.get_player(values[0])
+        self.player = model_mgr.get_player_by_name(values[0])
 
         event_mgr.get_history(self.player).add_event(self)
 event_mgr.add_event_class(KickEvent)
@@ -531,7 +531,7 @@ class KitDropEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 3)
 
-        self.player = model_mgr.get_player(values[0])
+        self.player = model_mgr.get_player_by_name(values[0])
         self.player_pos = event_mgr.parse_pos(values[1])
         self.kit = model_mgr.get_kit(values[2])
 
@@ -547,9 +547,9 @@ class KillEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 6)
 
-        self.victim = model_mgr.get_player(values[0])
+        self.victim = model_mgr.get_player_by_name(values[0])
         self.victim_pos = event_mgr.parse_pos(values[1])
-        self.attacker = model_mgr.get_player(values[2])
+        self.attacker = model_mgr.get_player_by_name(values[2])
         self.attacker_pos = event_mgr.parse_pos(values[3])
         self.weapon = model_mgr.get_weapon(values[4])
         self.vehicle = model_mgr.get_vehicle(values[5])
@@ -572,7 +572,7 @@ class KitPickupEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 3)
 
-        self.player = model_mgr.get_player(values[0])
+        self.player = model_mgr.get_player_by_name(values[0])
         self.player_pos = event_mgr.parse_pos(values[1])
         self.kit = model_mgr.get_kit(values[2])
 
@@ -590,7 +590,7 @@ class RepairEvent(BaseEvent):
 
         self.vehicle = model_mgr.get_vehicle(values[0])
         self.vehicle_pos = event_mgr.parse_pos(values[1])
-        self.giver = model_mgr.get_player(values[2])
+        self.giver = model_mgr.get_player_by_name(values[2])
         self.giver_pos = event_mgr.parse_pos(values[3])
 
         event_mgr.get_history(self.vehicle).add_event(self)
@@ -616,9 +616,9 @@ class ReviveEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 4)
 
-        self.receiver = model_mgr.get_player(values[0])
+        self.receiver = model_mgr.get_player_by_name(values[0])
         self.receiver_pos = event_mgr.parse_pos(values[1])
-        self.giver = model_mgr.get_player(values[2])
+        self.giver = model_mgr.get_player_by_name(values[2])
         self.giver_pos = event_mgr.parse_pos(values[3])
 
         event_mgr.get_history(self.receiver).add_event(self)
@@ -633,7 +633,7 @@ class ScoreEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 2)
 
-        self.player = model_mgr.get_player(values[0])
+        self.player = model_mgr.get_player_by_name(values[0])
         self.value = int(values[1])
 
         event_mgr.get_history(self.player).add_event(self)
@@ -649,7 +649,7 @@ class SquadLeaderEvent(BaseEvent):
 
         # Pre-process - Make sure the squad model exists in the model manager
         self.squad = model_mgr.add_squad(values[0])
-        self.player = model_mgr.get_player(values[1])
+        self.player = model_mgr.get_player_by_name(values[1])
 
         event_mgr.get_history(self.player).add_event(self)
 event_mgr.add_event_class(SquadLeaderEvent)
@@ -662,7 +662,7 @@ class SpawnEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 3)
 
-        self.player = model_mgr.get_player(values[0])
+        self.player = model_mgr.get_player_by_name(values[0])
         self.player_pos = event_mgr.parse_pos(values[1])
         self.team = model_mgr.get_team(values[2])
 
@@ -678,7 +678,7 @@ class SquadEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 2)
 
-        self.player = model_mgr.get_player(values[0])
+        self.player = model_mgr.get_player_by_name(values[0])
 
         # Pre-process - Make sure the squad model exists in the model manager
         self.squad = model_mgr.add_squad(values[1])
@@ -706,9 +706,9 @@ class TeamDamageEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 4)
 
-        self.victim = model_mgr.get_player(values[0])
+        self.victim = model_mgr.get_player_by_name(values[0])
         self.victim_pos = event_mgr.parse_pos(values[1])
-        self.attacker = model_mgr.get_player(values[2])
+        self.attacker = model_mgr.get_player_by_name(values[2])
         self.attacker_pos = event_mgr.parse_pos(values[3])
 
         event_mgr.get_history(self.victim).add_event(self)
@@ -737,7 +737,7 @@ class TeamEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 2)
 
-        self.player = model_mgr.get_player(values[0])
+        self.player = model_mgr.get_player_by_name(values[0])
         self.team = model_mgr.get_team(values[1])
 
         event_mgr.get_history(self.player).add_event(self)
@@ -754,7 +754,7 @@ class VehicleDestroyEvent(BaseEvent):
 
         self.vehicle = model_mgr.get_vehicle(values[0])
         self.vehicle_pos = event_mgr.parse_pos(values[1])
-        self.attacker = model_mgr.get_player(values[2])
+        self.attacker = model_mgr.get_player_by_name(values[2])
         self.attacker_pos = event_mgr.parse_pos(values[3])
 
         event_mgr.get_history(self.vehicle).add_event(self)
@@ -769,7 +769,7 @@ class VehicleEnterEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 5)
 
-        self.player = model_mgr.get_player(values[0])
+        self.player = model_mgr.get_player_by_name(values[0])
         self.player_pos = event_mgr.parse_pos(values[1])
         self.vehicle = model_mgr.get_vehicle(values[2])
         self.vehicle_slot_id = values[3]
@@ -791,7 +791,7 @@ class VehicleExitEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 4)
 
-        self.player = model_mgr.get_player(values[0])
+        self.player = model_mgr.get_player_by_name(values[0])
         self.player_pos = event_mgr.parse_pos(values[1])
         self.vehicle = model_mgr.get_vehicle(values[2])
         self.vehicle_slot_id = values[3]
@@ -812,7 +812,7 @@ class WeaponEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 3)
 
-        self.player = model_mgr.get_player(values[0])
+        self.player = model_mgr.get_player_by_name(values[0])
         self.player_pos = event_mgr.parse_pos(values[1])
         self.weapon = model_mgr.get_weapon(values[2])
 

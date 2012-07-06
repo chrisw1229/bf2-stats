@@ -2,8 +2,9 @@
 $(function() {
 
 var awardsElm = $('.awards-content');
-var awardElm = $('.award-content');
 var listElm = $('.list-widget');
+
+var awardElm = $('.award-content');
 var tableElm = $('.table-widget');
 
 // Register the page manager as a jQuery extension
@@ -78,7 +79,7 @@ $.extend({ mgr: {
 
       // Update the header
       var headerElm = $('.common-header', awardElm);
-      headerElm.text(data.name + ' Award');
+      headerElm.text('Award - ' + data.name);
 
       // Update the award attributes
       $('.award-desc', awardElm).text(data.desc);

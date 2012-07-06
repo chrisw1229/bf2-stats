@@ -4,7 +4,7 @@ $.widget('ui.nav', {
 
    // Configure the default widget options
    options: {
-      header: 'Menu',
+      header: 'G-Day XII',
       footer: '08-25-2012',
       icon: 'ui-icon-triangle-1-e',
       menus: [

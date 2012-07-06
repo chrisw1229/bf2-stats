@@ -4,7 +4,7 @@ $.widget('ui.list', {
 
    // Configure the default widget options
    options: {
-
+      builder: undefined
    },
 
    _create: function() {
@@ -40,15 +40,18 @@ $.widget('ui.list', {
    setRows: function(rows) {
       rows = ($.isArray(rows) ? rows : [rows]);
 
-      // Clear the current table data
+      // Clear the current list data
       this.clear();
 
       // Add all the new rows to the model
       this.rows = this.rows.concat(rows);
 
-      // Fill the table elements with row values
+      // Fill the list elements with row values
       for (var i = 0; i < this.rows.length; i++) {
-         this._displayRow(i, this.rows[i]);
+         var item = this.rows[i];
+         if (item) {
+            this._displayRow(i, item);
+         }
       }
 
       // Remove the loading and empty list messages
@@ -62,7 +65,7 @@ $.widget('ui.list', {
       this.rows = [];
       $('.ui-list-row', this.bodyElm).remove();
 
-      // Display the empty table message
+      // Display the empty list message
       this.loadElm.remove();
       this.errorElm.remove();
       this.emptyElm.appendTo(this.element);
@@ -84,7 +87,7 @@ $.widget('ui.list', {
 
    _displayRow: function(index, item) {
 
-      // Create a new table row to store the data
+      // Create a new list row to store the data
       var sequence = (index % 2 == 0 ? 'even' : 'odd');
       var rowElm = $('<li class="ui-widget ui-state-default'
             + ' ui-list-row ui-list-row-' + sequence
@@ -92,9 +95,25 @@ $.widget('ui.list', {
             + (index == this.rows.length - 1 ? ' ui-corner-bottom' : '')
             + '"/>').appendTo(this.listElm);
 
-      var linkElm = $('<a class="ui-list-item-link" href="#id=' + item.id + '"/>').appendTo(rowElm);
-      var nameElm = $('<span class="ui-list-item-name">' + item.name + '</span>').appendTo(linkElm);
-      var descElm = $('<span class="ui-list-item-desc">' + item.desc + '</span>').appendTo(linkElm);
+      // Check whether a custom list item builder was provided
+      var contentElm;
+      if ($.isFunction(this.options.builder)) {
+         contentElm = this.options.builder(item);
+      } else {
+         contentElm = this._builder(item);
+      }
+      rowElm.append(contentElm);
+   },
+
+   _builder: function(item) {
+      var id = item.id ? item.id : '';
+      var name = item.name ? item.name : 'No name available';
+      var desc = item.desc ? item.desc : 'No description available';
+
+      var linkElm = $('<a class="ui-list-item-link" href="#id=' + id + '"/>');
+      $('<span class="ui-list-item-name">' + name + '</span>').appendTo(linkElm);
+      $('<span class="ui-list-item-desc">' + desc + '</span>').appendTo(linkElm);
+      return linkElm;
    }
 
 });

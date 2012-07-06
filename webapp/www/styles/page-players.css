@@ -1,0 +1,11 @@
+﻿
+.players-content {
+
+}
+
+.player-content,
+.weapons-content,
+.enemies-content,
+.maps-content {
+   display: none;
+}
