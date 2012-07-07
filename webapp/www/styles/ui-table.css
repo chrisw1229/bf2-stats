@@ -94,12 +94,11 @@
 }
 
 .ui-table-header .ui-table-sort-icon {
-   display: inline-block;
-   visibility: hidden;
+   display: none;
 }
 
 .ui-table-header-sorted .ui-table-sort-icon {
-   visibility: visible;
+   display: inline-block;
 }
 
 .ui-table-footer td.ui-state-default {
