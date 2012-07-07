@@ -449,6 +449,20 @@ class ControlPointEvent(BaseEvent):
         event_mgr.get_history(self.team).add_event(self)
 event_mgr.add_event_class(ControlPointEvent)
 
+class DeathEvent(BaseEvent):
+
+    TYPE =  'DT'
+    CALLBACK = 'on_death'
+
+    def __init__(self, tick, values):
+        BaseEvent.__init__(self, tick, values, 2)
+
+        self.player = model_mgr.get_player_by_name(values[0])
+        self.player_pos = event_mgr.parse_pos(values[1])
+
+        event_mgr.get_history(self.player).add_event(self)
+event_mgr.add_event_class(DeathEvent)
+
 class DisconnectEvent(BaseEvent):
 
     TYPE =  'DC'
@@ -463,20 +477,6 @@ class DisconnectEvent(BaseEvent):
         event_mgr.get_history(self.player).add_event(self)
 
 event_mgr.add_event_class(DisconnectEvent)
-
-class DeathEvent(BaseEvent):
-
-    TYPE =  'DT'
-    CALLBACK = 'on_death'
-
-    def __init__(self, tick, values):
-        BaseEvent.__init__(self, tick, values, 2)
-
-        self.player = model_mgr.get_player_by_name(values[0])
-        self.player_pos = event_mgr.parse_pos(values[1])
-
-        event_mgr.get_history(self.player).add_event(self)
-event_mgr.add_event_class(DeathEvent)
 
 class GameStatusEvent(BaseEvent):
 
@@ -523,22 +523,6 @@ class KickEvent(BaseEvent):
         event_mgr.get_history(self.player).add_event(self)
 event_mgr.add_event_class(KickEvent)
 
-class KitDropEvent(BaseEvent):
-
-    TYPE =  'KD'
-    CALLBACK = 'on_kit_drop'
-
-    def __init__(self, tick, values):
-        BaseEvent.__init__(self, tick, values, 3)
-
-        self.player = model_mgr.get_player_by_name(values[0])
-        self.player_pos = event_mgr.parse_pos(values[1])
-        self.kit = model_mgr.get_kit(values[2])
-
-        event_mgr.get_history(self.player).add_event(self)
-        event_mgr.get_history(self.kit).add_event(self)
-event_mgr.add_event_class(KitDropEvent)
-
 class KillEvent(BaseEvent):
 
     TYPE =  'KL'
@@ -563,6 +547,22 @@ class KillEvent(BaseEvent):
         event_mgr.get_history(self.attacker).add_event(self)
         event_mgr.get_history(self.weapon).add_event(self)
 event_mgr.add_event_class(KillEvent)
+
+class KitDropEvent(BaseEvent):
+
+    TYPE =  'KD'
+    CALLBACK = 'on_kit_drop'
+
+    def __init__(self, tick, values):
+        BaseEvent.__init__(self, tick, values, 3)
+
+        self.player = model_mgr.get_player_by_name(values[0])
+        self.player_pos = event_mgr.parse_pos(values[1])
+        self.kit = model_mgr.get_kit(values[2])
+
+        event_mgr.get_history(self.player).add_event(self)
+        event_mgr.get_history(self.kit).add_event(self)
+event_mgr.add_event_class(KitDropEvent)
 
 class KitPickupEvent(BaseEvent):
 
@@ -639,20 +639,17 @@ class ScoreEvent(BaseEvent):
         event_mgr.get_history(self.player).add_event(self)
 event_mgr.add_event_class(ScoreEvent)
 
-class SquadLeaderEvent(BaseEvent):
+class ServerStatusEvent(BaseEvent):
 
-    TYPE =  'SL'
-    CALLBACK = 'on_squad_leader'
+    TYPE =  'SS'
+    CALLBACK = 'on_server_status'
 
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 2)
 
-        # Pre-process - Make sure the squad model exists in the model manager
-        self.squad = model_mgr.add_squad(values[0])
-        self.player = model_mgr.get_player_by_name(values[1])
-
-        event_mgr.get_history(self.player).add_event(self)
-event_mgr.add_event_class(SquadLeaderEvent)
+        self.status = values[0]
+        self.status_time = values[1]
+event_mgr.add_event_class(ServerStatusEvent)
 
 class SpawnEvent(BaseEvent):
 
@@ -686,17 +683,20 @@ class SquadEvent(BaseEvent):
         event_mgr.get_history(self.player).add_event(self)
 event_mgr.add_event_class(SquadEvent)
 
-class ServerStatusEvent(BaseEvent):
+class SquadLeaderEvent(BaseEvent):
 
-    TYPE =  'SS'
-    CALLBACK = 'on_server_status'
+    TYPE =  'SL'
+    CALLBACK = 'on_squad_leader'
 
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 2)
 
-        self.status = values[0]
-        self.status_time = values[1]
-event_mgr.add_event_class(ServerStatusEvent)
+        # Pre-process - Make sure the squad model exists in the model manager
+        self.squad = model_mgr.add_squad(values[0])
+        self.player = model_mgr.get_player_by_name(values[1])
+
+        event_mgr.get_history(self.player).add_event(self)
+event_mgr.add_event_class(SquadLeaderEvent)
 
 class TeamDamageEvent(BaseEvent):
 
@@ -715,20 +715,6 @@ class TeamDamageEvent(BaseEvent):
         event_mgr.get_history(self.attacker).add_event(self)
 event_mgr.add_event_class(TeamDamageEvent)
 
-class TicketLimitEvent(BaseEvent):
-
-    TYPE =  'TL'
-    CALLBACK = 'on_ticket_limit'
-
-    def __init__(self, tick, values):
-        BaseEvent.__init__(self, tick, values, 2)
-
-        self.team = model_mgr.get_team(values[0])
-        self.value = int(values[1])
-
-        event_mgr.get_history(self.team).add_event(self)
-event_mgr.add_event_class(TicketLimitEvent)
-
 class TeamEvent(BaseEvent):
 
     TYPE =  'TM'
@@ -743,6 +729,20 @@ class TeamEvent(BaseEvent):
         event_mgr.get_history(self.player).add_event(self)
         event_mgr.get_history(self.team).add_event(self)
 event_mgr.add_event_class(TeamEvent)
+
+class TicketLimitEvent(BaseEvent):
+
+    TYPE =  'TL'
+    CALLBACK = 'on_ticket_limit'
+
+    def __init__(self, tick, values):
+        BaseEvent.__init__(self, tick, values, 2)
+
+        self.team = model_mgr.get_team(values[0])
+        self.value = int(values[1])
+
+        event_mgr.get_history(self.team).add_event(self)
+event_mgr.add_event_class(TicketLimitEvent)
 
 class VehicleDestroyEvent(BaseEvent):
 

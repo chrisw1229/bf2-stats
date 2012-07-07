@@ -12,5 +12,5 @@ class Processor(AwardProcessor):
                 Column('Players'), Column('Suicides', Column.NUMBER, Column.DESC)])
 
     def on_kill(self, e):
-        if e.attacker == e.victim:
+        if e.suicide:
             self.results[e.attacker] += 1
