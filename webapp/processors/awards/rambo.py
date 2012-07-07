@@ -32,7 +32,7 @@ class Processor(AwardProcessor):
         self.current[e.attacker] += 1
 
         # Update the personal best kill streak for the attacker
-        self.results[e.player] = max(self.results[e.attacker], self.current[e.attacker])
+        self.results[e.attacker] = max(self.results[e.attacker], self.current[e.attacker])
 
     def on_death(self, e):
 

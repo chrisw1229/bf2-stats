@@ -98,15 +98,15 @@ class Processor(BaseProcessor):
         player_stats.score_total += e.value
 
         # Calculate the player rank based on score
-        if player_stats.score > 50:
+        if player_stats.score >= 50:
             player_stats.rank = 5
-        elif player_stats.score > 40:
+        elif player_stats.score >= 40:
             player_stats.rank = 4
-        elif player_stats.score > 30:
+        elif player_stats.score >= 30:
             player_stats.rank = 3
-        elif player_stats.score > 20:
+        elif player_stats.score >= 20:
             player_stats.rank = 2
-        elif player_stats.score > 10:
+        elif player_stats.score >= 10:
             player_stats.rank = 1
 
     def on_spawn(self, e):
