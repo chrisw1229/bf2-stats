@@ -29,4 +29,4 @@ class Processor(AwardProcessor):
 
         # Check whether the kill height was more than one story
         if stat_mgr.dist_alt(e.victim.pos, e.attacker.pos) > 3:
-			self.results[e.attacker] += 1
+            self.results[e.attacker] += 1

@@ -1,5 +1,4 @@
 ﻿
-import fpformat
 import math
 import traceback
 
@@ -352,7 +351,7 @@ class StatManager(object):
         if pos1 and len(pos1) == 4 and pos2 and len(pos2) == 4:
             x_dist = math.pow(pos2[0] - pos1[0], 2)
             y_dist = math.pow(pos2[2] - pos1[2], 2)
-            return fpformat.fix(math.sqrt(x_dist + y_dist), 1)
+            return math.sqrt(x_dist + y_dist)
 
     def dist_3d(self, pos1, pos2):
         '''
@@ -371,7 +370,7 @@ class StatManager(object):
             x_dist = math.pow(pos2[0] - pos1[0], 2)
             y_dist = math.pow(pos2[2] - pos1[2], 2)
             z_dist = math.pow(pos2[1] - pos1[1], 2)
-            return fpformat.fix(math.sqrt(x_dist + y_dist + z_dist), 1)
+            return math.sqrt(x_dist + y_dist + z_dist)
 
     def dist_alt(self, pos1, pos2):
         '''
@@ -386,8 +385,7 @@ class StatManager(object):
         '''
 
         if pos1 and len(pos1) == 4 and pos2 and len(pos2) == 4:
-            z_dist = math.fabs(pos2[1] - pos1[1])
-            return fpformat.fix(z_dist, 1)
+            return math.fabs(pos2[1] - pos1[1])
 
     def _get_stats(self, model, stats_type):
         if not (model and stats_type): return
