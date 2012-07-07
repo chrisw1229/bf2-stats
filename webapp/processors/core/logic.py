@@ -41,12 +41,12 @@ class Processor(BaseProcessor):
 
         # Update the connection flag for the player
         e.player.connected = True
-        e.player.artificial = (e.player.address == None)
+        e.player.bot = (e.player.address == None)
 
     def on_death(self, e):
 
         # Update the state of the player
-        e.player.playing = False
+        e.player.spawned = False
         e.player.pos = e.player_pos
         e.player.wounded = False
 
@@ -100,8 +100,8 @@ class Processor(BaseProcessor):
 
     def on_spawn(self, e):
 
-        # Update the playing status for the player
-        e.player.playing = True
+        # Update the spawned status for the player
+        e.player.spawned = True
 
         # Update the team for the player
         self._update_team(e.player, e.team)
@@ -174,21 +174,21 @@ class Processor(BaseProcessor):
         if e.vehicle_slot_id:
             if e.vehicle_slot_id.endswith('driver'):
                 if e.vehicle.group == models.vehicles.STATION:
-                    e.player.driving = False
-                    e.player.riding = False
-                    e.player.using = True
+                    e.player.driver = False
+                    e.player.passenger = False
+                    e.player.operator = True
                 else:
-                    e.player.driving = True
-                    e.player.riding = False
-                    e.player.using = False
+                    e.player.driver = True
+                    e.player.passenger = False
+                    e.player.operator = False
             else:
-                e.player.driving = False
-                e.player.riding = True
-                e.player.using = False
+                e.player.driver = False
+                e.player.passenger = True
+                e.player.operator = False
         else:
-            e.player.driving = False
-            e.player.riding = False
-            e.player.using = False
+            e.player.driver = False
+            e.player.passenger = False
+            e.player.operator = False
 
         # Update position for the player
         e.player.pos = e.player_pos
@@ -200,9 +200,9 @@ class Processor(BaseProcessor):
         e.player.vehicle_slot_id = None
         
         # Update the vehicle states for the player
-        e.player.driving = False
-        e.player.riding = False
-        e.player.using = False
+        e.player.driver = False
+        e.player.passenger = False
+        e.player.operator = False
 
         # Update position for the player
         e.player.pos = e.player_pos

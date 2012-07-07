@@ -96,14 +96,23 @@ class Processor(BaseProcessor):
         # Increment score count for the player
         player_stats.score += e.value
         player_stats.score_total += e.value
-        rank = player_stats.score / 100
-        if rank > 10:
-            player_stats.rank = 1
-        elif rank > 20:
-            player_stats.rank = 2
-        elif rank > 30:
-            player_stats.rank = 3
-        elif rank > 40:
-            player_stats.rank = 4
-        elif rank > 50:
+
+        # Calculate the player rank based on score
+        if player_stats.score > 50:
             player_stats.rank = 5
+        elif player_stats.score > 40:
+            player_stats.rank = 4
+        elif player_stats.score > 30:
+            player_stats.rank = 3
+        elif player_stats.score > 20:
+            player_stats.rank = 2
+        elif player_stats.score > 10:
+            player_stats.rank = 1
+
+    def on_spawn(self, e):
+        player_stats = stat_mgr.get_player_stats(e.player)
+
+        # Increment the game count when the player first spawns
+        if not player_stats.played:
+            player_stats.games += 1
+            player_stats.played = True

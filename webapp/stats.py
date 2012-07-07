@@ -46,6 +46,7 @@ class PlayerStats(BaseStats):
         self.assists_total = 0
         self.deaths_total = 0
         self.death_streak_max = 0
+        self.games = 0
         self.heal_points_total = 0
         self.kills_total = 0
         self.kill_streak_max = 0
@@ -66,6 +67,7 @@ class PlayerStats(BaseStats):
         self.heal_points = 0
         self.kills = 0
         self.kill_streak = 0
+        self.played = False
         self.rank = 0        
         self.repair_points = 0
         self.revive_points = 0

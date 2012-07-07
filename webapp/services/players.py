@@ -29,6 +29,7 @@ class Handler:
 
             # Get the model for the requested player
             player = model_mgr.get_player(id)
+            if not player: raise cherrypy.HTTPError(404)
 
             # Get the stats for the requested player
             player_stats = stat_mgr.get_player_stats(player)
