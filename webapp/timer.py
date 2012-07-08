@@ -6,8 +6,15 @@ class TimerManager(object):
     def __init__(self):
         self.enabled_timers = dict()
         self.disabled_timers = dict()
+        self.last_tick = None
 
     def apply_tick(self, tick):
+
+        # Skip processing when no time has actually elapsed
+        if self.last_tick == tick: return
+        self.last_tick = tick
+
+        # Add elapsed time to each enabled timer
         for timer in self.enabled_timers.iterkeys():
             timer.update(tick)
 
