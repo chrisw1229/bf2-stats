@@ -9,12 +9,12 @@ class Handler:
 
     def GET(self, id=None):
         '''
-        Provides an index of available awards or details for a specific award based on the given
-        award identifier.
+        Provides an index of available awards or details for a specific award
+        based on the given award identifier.
 
         Args:
-           id (string): The unique identifier of an award. None indicates an index of all awards
-                should be returned.
+           id (string): The unique identifier of an award. None indicates an
+           index of all awards should be returned.
 
         Returns:
             awards (list): Returns the list of all awards.
@@ -28,9 +28,9 @@ class Handler:
             processor = stat_mgr.get_processor(id)
 
             # Respond with a summary of the award information
-            return { 'id': processor.id, 'name': processor.name, 'desc': processor.desc,
-                    'columns' : processor.columns, 'notes': processor.notes,
-                    'rows': processor.get_results() }
+            return { 'id': processor.id, 'name': processor.name,
+                    'desc': processor.desc, 'columns' : processor.columns,
+                    'notes': processor.notes, 'rows': processor.get_results() }
 
         # Get a list of all the award processors
         processors = stat_mgr.get_processors('awards')
@@ -38,7 +38,8 @@ class Handler:
         # Build an index of the available awards
         awards = list()
         for processor in processors:
-            awards.append({ 'id': processor.id, 'name': processor.name, 'desc': processor.desc })
+            awards.append({ 'id': processor.id, 'name': processor.name,
+                    'desc': processor.desc })
 
         # Sort the index by award name
         awards.sort(key=lambda a: a['name'].lower())

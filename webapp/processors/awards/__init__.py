@@ -57,7 +57,8 @@ class AwardProcessor(BaseProcessor):
         results = []
         for player,value in values.iteritems():
             if player != models.players.EMPTY:
-                results.append([ player.name, values[player] ])
+                value = self._format_value(values[player])
+                results.append([ player.name, value ])
 
         # Figure out the column and direction to use when sorting
         sort_index = None
@@ -73,11 +74,33 @@ class AwardProcessor(BaseProcessor):
             results.sort(key=lambda row: row[sort_index], reverse=sort_dir)
         return results
 
+    def _format_value(self, value):
+        '''
+        This function converts the given results value into formatted output
+        suitable for display. Typically, results just contain primitive numberic
+        values and no additional formatting is required. If the value contains
+        an object instance however, it may be desirable to change the output
+        format. If an object has a format function, then that function will be
+        called automatically. In other cases, this method can be overridden to
+        provide custom value formatting.
+
+        Args:
+           value (object)
+
+        Returns:
+            value (object): A formatted version of the given value.
+        '''
+
+        if hasattr(value, 'format'):
+            return value.format()
+        return value
+
 class Column(object):
 
     # Data constants
     NUMBER = 'number'
     STRING = 'string'
+    TIME = 'time'
 
     # Sorted constants
     ASC = True

@@ -4,6 +4,7 @@ import traceback
 
 from events import GameStatusEvent
 from processors import BaseProcessor
+from timer import timer_mgr
 
 class BaseStats(object):
 
@@ -227,6 +228,9 @@ class StatManager(object):
                     break
         else:
             print 'Missing event CALLBACK constant: ', event
+
+        # Update the elapsed time for all enabled timers
+        timer_mgr.apply_tick(event.tick)
 
     def reset_stats(self):
         '''

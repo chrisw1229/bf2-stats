@@ -57,7 +57,8 @@
    text-align: left;
 }
 
-.ui-table-data-number {
+.ui-table-data-number ,
+.ui-table-data-time {
    text-align: center;
 }
 
