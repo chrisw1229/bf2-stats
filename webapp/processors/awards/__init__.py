@@ -77,12 +77,11 @@ class AwardProcessor(BaseProcessor):
     def _format_value(self, value):
         '''
         This function converts the given results value into formatted output
-        suitable for display. Typically, results just contain primitive numberic
+        suitable for display. Typically, results just contain primitive numeric
         values and no additional formatting is required. If the value contains
         an object instance however, it may be desirable to change the output
-        format. If an object has a format function, then that function will be
-        called automatically. In other cases, this method can be overridden to
-        provide custom value formatting.
+        format. In such cases, this method can be overridden to provide custom
+        value formatting.
 
         Args:
            value (object)
@@ -90,9 +89,6 @@ class AwardProcessor(BaseProcessor):
         Returns:
             value (object): A formatted version of the given value.
         '''
-
-        if hasattr(value, 'format'):
-            return value.format()
         return value
 
 class Column(object):
@@ -110,3 +106,6 @@ class Column(object):
         self.name = name
         self.data = data
         self.sorted = sorted
+
+    def __repr__(self):
+        return self.__dict__

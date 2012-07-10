@@ -43,6 +43,10 @@ class Timer(object):
         self.stop_tick = None
         self.elapsed = 0
 
+    def __repr__(self):
+        delta_time = timedelta(seconds=self.elapsed)
+        return str((Timer._BASE_TIME + delta_time).time())
+
     def start(self, tick):
         if self.running: return
 
@@ -75,7 +79,3 @@ class Timer(object):
         self.elapsed = 0
 
         timer_mgr._update_timer(self)
-
-    def format(self):
-        delta_time = timedelta(seconds=self.elapsed)
-        return str((Timer._BASE_TIME + delta_time).time())

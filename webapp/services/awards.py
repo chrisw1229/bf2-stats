@@ -23,14 +23,42 @@ class Handler:
  
         # Handle requests for specific awards
         if id:
+            return self.get_award(id)
 
-            # Get the processor for the requested award
-            processor = stat_mgr.get_processor(id)
+        # Handle requests for the full award index
+        return self.get_awards()
 
-            # Respond with a summary of the award information
-            return { 'id': processor.id, 'name': processor.name,
-                    'desc': processor.desc, 'columns' : processor.columns,
-                    'notes': processor.notes, 'rows': processor.get_results() }
+    def get_award(self, id):
+        '''
+        Provides details for a specific award based on the given award
+        identifier.
+
+        Args:
+           id (string): The unique identifier of an award.
+
+        Returns:
+            award (object): Detailed information for a specific award.
+        '''
+
+        # Get the processor for the requested award
+        processor = stat_mgr.get_processor(id)
+        if not processor: raise cherrypy.HTTPError(404)
+
+        # Respond with a summary of the award information
+        return { 'id': processor.id, 'name': processor.name,
+                'desc': processor.desc, 'columns' : processor.columns,
+                'notes': processor.notes, 'rows': processor.get_results() }
+
+    def get_awards(self):
+        '''
+        Provides an index of available awards.
+
+        Args:
+            None
+
+        Returns:
+            awards (list): Returns the list of all awards.
+        '''
 
         # Get a list of all the award processors
         processors = stat_mgr.get_processors('awards')

@@ -5,12 +5,14 @@ var playersElm = $('.players-content');
 var playersLst = $('.list-widget');
 
 var playerElm = $('.player-content');
-var weaponsElm = $('.weapons-content');
-var weaponsTbl = $('.table-widget', weaponsElm);
 var enemiesElm = $('.enemies-content');
 var enemiesTbl = $('.table-widget', enemiesElm);
+var kitsElm = $('.kits-content');
+var kitsTbl = $('.table-widget', kitsElm);
 var mapsElm = $('.maps-content');
 var mapsTbl = $('.table-widget', mapsElm);
+var weaponsElm = $('.weapons-content');
+var weaponsTbl = $('.table-widget', weaponsElm);
 
 // Register the page manager as a jQuery extension
 $.extend({ mgr: {
@@ -21,20 +23,38 @@ $.extend({ mgr: {
       var id = e.getState('id');
       if (id) {
 
-         // Show the individual player screen
+         // Hide the player index screen
          playersElm.hide();
+
+         // Show the player statistics panel
          playerElm.show();
-         weaponsElm.show();
-         enemiesElm.show();
-         mapsElm.show();
          $.mgr.requestPlayer(id);
+
+         // Show the player enemies panel
+         enemiesElm.show();
+         $.mgr.requestEnemies(id);
+
+         // Show the player kits panel
+         kitsElm.show();
+         $.mgr.requestKits(id);
+
+         // Show the player maps panel
+         mapsElm.show();
+         $.mgr.requestMaps(id);
+
+         // Show the player weapons panel
+         weaponsElm.show();
+         $.mgr.requestWeapons(id);
       } else {
 
-         // Show the players list screen
-         mapsElm.hide();
-         enemiesElm.hide();
-         weaponsElm.hide();
+         // Hide the individual player panels
          playerElm.hide();
+         enemiesElm.hide();
+         kitsElm.hide();
+         mapsElm.hide();
+         weaponsElm.hide();
+
+         // Show the players list screen
          playersElm.show();
          $.mgr.requestPlayers();
       }
@@ -63,16 +83,78 @@ $.extend({ mgr: {
       // Display the loading indicator
       weaponsTbl.table();
       weaponsTbl.table('loading');
-      enemiesTbl.table();
-      enemiesTbl.table('loading');
       mapsTbl.table();
       mapsTbl.table('loading');
 
       // Configure the request options
       var options = {
-         url: 'services/players/' + id,
+         url: 'services/players/' + id + '/statistics',
          dataType: 'json',
          success: $.proxy($.mgr.onPlayer, $.mgr),
+         error: $.proxy($.mgr.onError, $.mgr)
+      };
+
+      // Fetch the content for the selected player
+      $.ajax(options);
+   },
+
+   requestEnemies: function(id) {
+      enemiesTbl.table();
+      enemiesTbl.table('loading');
+
+      // Configure the request options
+      var options = {
+         url: 'services/players/' + id + '/enemies',
+         dataType: 'json',
+         success: $.proxy($.mgr.onEnemies, $.mgr),
+         error: $.proxy($.mgr.onError, $.mgr)
+      };
+
+      // Fetch the content for the selected player
+      $.ajax(options);
+   },
+
+   requestKits: function(id) {
+      kitsTbl.table();
+      kitsTbl.table('loading');
+
+      // Configure the request options
+      var options = {
+         url: 'services/players/' + id + '/kits',
+         dataType: 'json',
+         success: $.proxy($.mgr.onKits, $.mgr),
+         error: $.proxy($.mgr.onError, $.mgr)
+      };
+
+      // Fetch the content for the selected player
+      $.ajax(options);
+   },
+
+   requestMaps: function(id) {
+      mapsTbl.table();
+      mapsTbl.table('loading');
+
+      // Configure the request options
+      var options = {
+         url: 'services/players/' + id + '/maps',
+         dataType: 'json',
+         success: $.proxy($.mgr.onMaps, $.mgr),
+         error: $.proxy($.mgr.onError, $.mgr)
+      };
+
+      // Fetch the content for the selected player
+      $.ajax(options);
+   },
+
+   requestWeapons: function(id) {
+      weaponsTbl.table();
+      weaponsTbl.table('loading');
+
+      // Configure the request options
+      var options = {
+         url: 'services/players/' + id + '/weapons',
+         dataType: 'json',
+         success: $.proxy($.mgr.onWeapons, $.mgr),
          error: $.proxy($.mgr.onError, $.mgr)
       };
 
@@ -96,9 +178,42 @@ $.extend({ mgr: {
       var headerElm = $('.common-header', playerElm);
       headerElm.text(data.aliases[data.aliases.length - 1]);
 
-      // Populate the table with player results
-      tableElm.table('setColumns', data.columns);
-      tableElm.table('setRows', data.rows);
+      $('.player-photo', playerElm).attr('src',
+            'images/players/' + data.id + '-large.jpg');
+
+      var statsElm = $('.player-stats', playerElm);
+      statsElm.empty();
+      for (var key in data) {
+         $('<li>' + key + ' ' + data[key] + '</li>').appendTo(statsElm);
+      }
+   },
+
+   onEnemies: function(data) {
+
+      // Populate the table with enemy results
+      enemiesTbl.table('setColumns', data.columns);
+      enemiesTbl.table('setRows', data.rows);
+   },
+
+   onKits: function(data) {
+
+      // Populate the table with kit results
+      kitsTbl.table('setColumns', data.columns);
+      kitsTbl.table('setRows', data.rows);
+   },
+
+   onMaps: function(data) {
+
+      // Populate the table with map results
+      mapsTbl.table('setColumns', data.columns);
+      mapsTbl.table('setRows', data.rows);
+   },
+
+   onWeapons: function(data) {
+
+      // Populate the table with weapon results
+      weaponsTbl.table('setColumns', data.columns);
+      weaponsTbl.table('setRows', data.rows);
    },
 
    onError: function(request, status, error) {

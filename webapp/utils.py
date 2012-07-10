@@ -21,6 +21,10 @@ class JsonEncoder(json.JSONEncoder):
 
             # Convert set objects to lists
             return list(o)
+        elif hasattr(o, '__repr__'):
+
+            # Convert custom objects using their preferred representation
+            return o.__repr__()
         elif hasattr(o, '__dict__'):
 
             # Convert arbitrary objects using their class definition dictionary

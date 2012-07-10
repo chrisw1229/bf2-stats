@@ -4,7 +4,7 @@ import traceback
 
 from events import GameStatusEvent
 from processors import BaseProcessor
-from timer import timer_mgr
+from timer import Timer, timer_mgr
 
 class BaseStats(object):
 
@@ -37,43 +37,67 @@ class MapStats(BaseStats):
 
         pass
 
+class PlayerItemStats(object):
+
+    def __init__(self):
+        self.kills = 0
+        self.deaths = 0
+
 class PlayerStats(BaseStats):
 
     def __init__(self):
         BaseStats.__init__(self)
 
         # Cumulative values
-        self.ammo_points_total = 0
         self.assists_total = 0
         self.deaths_total = 0
-        self.death_streak_max = 0
+        self.deaths_streak_max = 0
+        self.enemies = dict()
         self.games = 0
-        self.heal_points_total = 0
+        self.healed_total = 0
+        self.heals_total = 0
+        self.kills_5_total = 0
+        self.kills_10_total = 0
+        self.kills_streak_max = 0
         self.kills_total = 0
-        self.kill_streak_max = 0
-        self.repair_points_total = 0
-        self.revive_points_total = 0
+        self.kits = dict()
+        self.maps = dict()
+        self.play_time = Timer()
+        self.repairs_total = 0
+        self.revived_total = 0
+        self.revives_total = 0
         self.score_total = 0
+        self.spec_time = Timer()
         self.suicides_total = 0
+        self.supported_total = 0
+        self.supports_total = 0
+        self.team_killed_total = 0
         self.team_kills_total = 0
+        self.weapons = dict()
         self.wounds_total = 0
 
     def reset(self):
 
         # Game values
-        self.ammo_points = 0
         self.assists = 0
         self.deaths = 0
-        self.death_streak = 0
-        self.heal_points = 0
+        self.deaths_streak = 0
+        self.healed = 0
+        self.heals = 0
         self.kills = 0
-        self.kill_streak = 0
+        self.kills_5 = 0
+        self.kills_10 = 0
+        self.kills_streak = 0
         self.played = False
         self.rank = 0        
-        self.repair_points = 0
-        self.revive_points = 0
+        self.repairs = 0
+        self.revived = 0
+        self.revives = 0
         self.score = 0
         self.suicides = 0
+        self.supported = 0
+        self.supports = 0
+        self.team_killed = 0
         self.team_kills = 0
         self.wounds = 0
 
@@ -246,6 +270,22 @@ class StatManager(object):
         for model_to_stats in self.type_to_stats.itervalues():
             for model_stats in model_to_stats.itervalues():
                 model_stats.reset()
+
+    def get_stats(self, stats_type):
+        '''
+        Gets all the statistics objects of the given class type.
+
+        Args:
+           stats_type (class): Class definition for the type of statistics
+                objects to retrieve.
+
+        Returns:
+            stats (list): A list of statistics models of the specified type.
+        '''
+
+        if stats_type in self.type_to_stats:
+            return self.type_to_stats[stats_type].values()
+        return []
 
     def get_game_stats(self, game):
         '''

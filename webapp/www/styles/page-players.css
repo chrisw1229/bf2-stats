@@ -9,3 +9,8 @@
 .maps-content {
    display: none;
 }
+
+.player-photo {
+   height: 200px;
+   width: 200px;
+}
