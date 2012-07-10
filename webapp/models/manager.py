@@ -516,6 +516,9 @@ class ModelManager(object):
             game.clock_limit = clock_limit
             game.score_limit = score_limit
 
+        # Update the id mapping for the game
+        self.id_to_game[game.id] = game
+
         # Update the game status convenience flags
         game.starting = (status == games.Game.STARTING)
         game.playing = (status == games.Game.PLAYING)

@@ -16,12 +16,21 @@ class BaseStats(object):
     def reset(self):
         pass
 
+class GameItemStats(object):
+
+    def __init__(self):
+        self.deaths = 0
+        self.kills = 0
+        self.score = 0
+
 class GameStats(BaseStats):
 
     def __init__(self):
         BaseStats.__init__(self)
 
-        pass
+        self.deaths = 0
+        self.kills = 0
+        self.players = dict()
 
 class KitStats(BaseStats):
 
@@ -40,8 +49,8 @@ class MapStats(BaseStats):
 class PlayerItemStats(object):
 
     def __init__(self):
-        self.kills = 0
         self.deaths = 0
+        self.kills = 0
 
 class PlayerStats(BaseStats):
 
