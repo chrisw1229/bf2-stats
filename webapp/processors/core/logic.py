@@ -70,7 +70,7 @@ class Processor(BaseProcessor):
     def on_kit_drop(self, e):
     
         # Update the kit for the player
-        e.player.kit_id = e.kit.id
+        e.player.kit_id = None
 
         # Update the position for the player
         e.player.pos = e.player_pos
@@ -78,7 +78,7 @@ class Processor(BaseProcessor):
     def on_kit_pickup(self, e):
     
         # Update the kit for the player
-        e.player.kit_id = None
+        e.player.kit_id = e.kit.id
 
         # Update the position for the player
         e.player.pos = e.player_pos
