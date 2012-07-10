@@ -24,17 +24,19 @@ class Handler:
 
         # Build a list of columns
         columns = list()
-        columns.append({ 'sorted': None, 'data': 'string', 'name': 'Players' })
-        columns.append({ 'sorted': False, 'data': 'number', 'name': 'Score' })
-        columns.append({ 'sorted': None, 'data': 'number', 'name': 'Kills' })
-        columns.append({ 'sorted': None, 'data': 'number', 'name': 'Deaths' })
+        columns.append({ 'name': 'Players', 'data': 'string' })
+        columns.append({ 'name': 'Score', 'data': 'number', 'sorted': False })
+        columns.append({ 'name': 'Kills', 'data': 'number' })
+        columns.append({ 'name': 'Deaths', 'data': 'number' })
+        columns.append({ 'name': 'Time', 'data': 'string' })
 
         # Build a row of statistics for each player
         rows = list()
         for player in players:
             player_stats = stat_mgr.get_player_stats(player);
             rows.append([player.name, player_stats.score_total,
-                    player_stats.kills_total, player_stats.deaths_total])
+                    player_stats.kills_total, player_stats.deaths_total,
+                    player_stats.play_time])
 
         # Sort the results by score
         rows.sort(key=lambda r: r[1], reverse=True)
