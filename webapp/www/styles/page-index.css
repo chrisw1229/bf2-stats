@@ -11,6 +11,11 @@
    font-size: 14px;
 }
 
+.meter-widget {
+   position: absolute;
+   top: 120px;
+}
+
 .olmap-widget {
    bottom: 0;
    position: absolute;

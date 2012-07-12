@@ -7,6 +7,7 @@
 
       <link type="text/css" href="themes/jquery-ui-1.8.20.custom.css" rel="stylesheet"/>
       <link type="text/css" href="styles/ui-logger.css" rel="stylesheet"/>
+      <link type="text/css" href="styles/ui-meter.css" rel="stylesheet"/>
       <link type="text/css" href="styles/ui-olmap.css" rel="stylesheet"/>
       <link type="text/css" href="styles/page-index.css" rel="stylesheet"/>
 
@@ -17,11 +18,19 @@
       <script type="text/javascript" src="scripts/common.js"></script>
       <script type="text/javascript" src="scripts/service-live.js"></script>
       <script type="text/javascript" src="scripts/ui-logger.js"></script>
+      <script type="text/javascript" src="scripts/ui-meter.js"></script>
       <script type="text/javascript" src="scripts/ui-olmap.js"></script>
       <script type="text/javascript" src="scripts/page-index.js"></script>
    </head>
 
    <body class="ui-widget">
+      <div class="meter-widget ui-meter">
+         <div class="ui-progressbar ui-widget ui-widget-content ui-corner-all ui-meter-bar">
+            <div class="ui-progressbar-value ui-widget-header ui-corner-left ui-meter-value"></div>
+         </div>
+         <div class="ui-meter-marker"></div>
+      </div>
+
       <div class="ui-widget-content olmap-widget">
          <div class="ui-widget-overlay"></div>
       </div>

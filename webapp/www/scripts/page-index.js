@@ -36,6 +36,7 @@ $.extend({ mgr: {
 
 // Load the custom jQuery user interface components
 $('.common-logger').logger();
+$('.meter-widget').meter();
 $('.olmap-widget').olmap({ mapName: 'dalian_plant' });
 
 // Configure the network callbacks
