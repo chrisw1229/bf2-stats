@@ -42,6 +42,9 @@ class Processor(BaseProcessor):
     def on_score(self, e):
         game_stats = stat_mgr.get_game_stats(model_mgr.get_game())
 
+        # Increment the total game score
+        game_stats.kills += e.value
+
         # Increment score count for the player
         if not e.player in game_stats.players:
             game_stats.players[e.player] = GameItemStats()

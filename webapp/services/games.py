@@ -81,7 +81,7 @@ class Handler:
             games (list): Returns the list of all games.
         '''
 
-        # Build an index of the available players
+        # Build an index of the available games
         results = list()
         for game in model_mgr.games:
             game_stats = stat_mgr.get_game_stats(game)

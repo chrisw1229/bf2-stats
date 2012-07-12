@@ -168,7 +168,7 @@ class EventManager(object):
         except KeyError:
             print 'Unknown event type: ', event_type
 
-    def get_history(self, model):
+    def get_history(self, model=None):
         '''
         Gets the event history for the given model or gets the global event history if no model is
         provided.

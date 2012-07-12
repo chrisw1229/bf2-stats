@@ -12,12 +12,13 @@ class Handler:
 
     MODEL_FIELDS = ['aliases', 'id']
 
-    STATS_FIELDS = ['assists_total', 'deaths_total', 'deaths_streak_max',
-            'games', 'healed_total', 'heals_total', 'kills_5_total',
-            'kills_10_total', 'kills_streak_max', 'kills_total', 'play_time',
-            'repairs_total', 'revived_total','revives_total', 'score_total',
-            'spec_time', 'suicides_total', 'supported_total', 'supports_total',
-            'team_killed_total', 'team_kills_total', 'wounds_total']
+    STATS_FIELDS = ['ammoed_total', 'ammos_total', 'assisted_total',
+            'assists_total', 'deaths_total', 'deaths_streak_max', 'games',
+            'healed_total', 'heals_total', 'kills_5_total', 'kills_10_total',
+            'kills_streak_max', 'kills_total', 'play_time', 'repairs_total',
+            'revived_total','revives_total', 'score_total', 'spec_time',
+            'suicides_total', 'team_killed_total', 'team_kills_total',
+            'wounds_total']
 
     def GET(self, id=None, data_type=None):
         '''
@@ -147,7 +148,8 @@ class Handler:
 
         # Build a list of column descriptors
         columns = [{ 'name': 'Kits', 'data': 'string' },
-                { 'name': 'Kills', 'data': 'number', 'sorted': False },
+                { 'name': 'Score', 'data': 'number', 'sorted': False },
+                { 'name': 'Kills', 'data': 'number' },
                 { 'name': 'Deaths', 'data': 'number' }]
 
         # Build a list of kit statistics
@@ -155,7 +157,7 @@ class Handler:
         for kit in player_stats.kits:
             if kit != models.kits.EMPTY:
                 object_stats = player_stats.kits[kit]
-                rows.append([kit.id, object_stats.kills,
+                rows.append([kit.id, object_stats.score, object_stats.kills,
                         object_stats.deaths])
 
         # Sort the results by kills
@@ -184,7 +186,8 @@ class Handler:
 
         # Build a list of column descriptors
         columns = [{ 'name': 'Maps', 'data': 'string' },
-                { 'name': 'Kills', 'data': 'number', 'sorted': False },
+                { 'name': 'Score', 'data': 'number', 'sorted': False },
+                { 'name': 'Kills', 'data': 'number' },
                 { 'name': 'Deaths', 'data': 'number' }]
 
         # Build a list of map statistics
@@ -192,7 +195,7 @@ class Handler:
         for map_obj in player_stats.maps:
             if map_obj != models.maps.EMPTY:
                 object_stats = player_stats.maps[map_obj]
-                rows.append([map_obj.id, object_stats.kills,
+                rows.append([map_obj.id, object_stats.score, object_stats.kills,
                         object_stats.deaths])
 
         # Sort the results by kills

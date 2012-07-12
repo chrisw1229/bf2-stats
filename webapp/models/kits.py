@@ -23,7 +23,7 @@ EMPTY = Kit('', '', '', '')
 def _add(id, kit_type, name, desc):
     registry.add(Kit(id, kit_type, name, desc))
 
-_add('ch_assault', ASSAULT, ASSAULT,
+_add('ch_assault', ASSAULT, 'Assault',
 '')
 
 _add('ch_at', ANTI_TANK, 'Anti-Tank',

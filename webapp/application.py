@@ -7,6 +7,7 @@ import cherrypy
 import plugin
 import services.awards
 import services.games
+import services.kits
 import services.leaderboard
 import services.live
 import services.players
@@ -24,6 +25,7 @@ root.services = Services()
 # Register all the service request handlers
 root.services.awards = services.awards.Handler()
 root.services.games = services.games.Handler()
+root.services.kits = services.kits.Handler()
 root.services.leaderboard = services.leaderboard.Handler();
 root.services.live = services.live.Handler()
 root.services.players = services.players.Handler()

@@ -31,13 +31,24 @@ class GameStats(BaseStats):
         self.deaths = 0
         self.kills = 0
         self.players = dict()
+        self.score = 0
+
+class KitItemStats(object):
+
+    def __init__(self):
+        self.deaths = 0
+        self.kills = 0
+        self.score = 0
 
 class KitStats(BaseStats):
 
     def __init__(self):
         BaseStats.__init__(self)
 
-        pass
+        self.deaths = 0
+        self.kills = 0
+        self.players = dict()
+        self.score = 0
 
 class MapStats(BaseStats):
 
@@ -51,6 +62,7 @@ class PlayerItemStats(object):
     def __init__(self):
         self.deaths = 0
         self.kills = 0
+        self.score = 0
 
 class PlayerStats(BaseStats):
 
@@ -58,6 +70,9 @@ class PlayerStats(BaseStats):
         BaseStats.__init__(self)
 
         # Cumulative values
+        self.ammoed_total = 0
+        self.ammos_total = 0
+        self.assisted_total = 0
         self.assists_total = 0
         self.deaths_total = 0
         self.deaths_streak_max = 0
@@ -78,8 +93,6 @@ class PlayerStats(BaseStats):
         self.score_total = 0
         self.spec_time = Timer()
         self.suicides_total = 0
-        self.supported_total = 0
-        self.supports_total = 0
         self.team_killed_total = 0
         self.team_kills_total = 0
         self.weapons = dict()
@@ -88,6 +101,9 @@ class PlayerStats(BaseStats):
     def reset(self):
 
         # Game values
+        self.ammoed = 0
+        self.ammos = 0
+        self.assisted = 0
         self.assists = 0
         self.deaths = 0
         self.deaths_streak = 0
@@ -104,8 +120,6 @@ class PlayerStats(BaseStats):
         self.revives = 0
         self.score = 0
         self.suicides = 0
-        self.supported = 0
-        self.supports = 0
         self.team_killed = 0
         self.team_kills = 0
         self.wounds = 0

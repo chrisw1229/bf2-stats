@@ -70,6 +70,7 @@ class Processor(BaseProcessor):
     def on_kit_drop(self, e):
     
         # Update the kit for the player
+        e.player.kit_id_old = e.player.kit_id
         e.player.kit_id = None
 
         # Update the position for the player
@@ -196,6 +197,7 @@ class Processor(BaseProcessor):
     def on_vehicle_exit(self, e):
 
         # Update the vehicle for the player
+        e.player.vehicle_id_old = e.player.vehicle_id
         e.player.vehicle_id = None
         e.player.vehicle_slot_id = None
         
