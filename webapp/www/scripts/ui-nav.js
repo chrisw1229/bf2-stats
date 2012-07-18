@@ -16,6 +16,7 @@ $.widget('ui.nav', {
          { name: 'Maps', tip: '', url: 'maps.html' },
          { name: 'Matchups', tip: '', url: 'matchups.html' },
          { name: 'Players', tip: '', url: 'players.html' },
+         { name: 'Teams', tip: '', url: 'teams.html' },
          { name: 'Vehicles', tip: '', url: 'vehicles.html' },
          { name: 'Weapons', tip: '', url: 'weapons.html' }
       ]

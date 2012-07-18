@@ -12,6 +12,7 @@ class Processor(BaseProcessor):
         BaseProcessor.__init__(self)
 
         self.priority = 20
+        self.vehicles = dict()
 
     def on_ammo(self, e):
         receiver_stats = stat_mgr.get_player_stats(e.receiver)
@@ -43,11 +44,22 @@ class Processor(BaseProcessor):
 
     def on_death(self, e):
         player_stats = stat_mgr.get_player_stats(e.player)
+        player_history = event_mgr.get_history(e.player)
 
-        # Get the last known kit and weapon for the player
-        # Player will no longer have a kit at this point
-        player_kit = model_mgr.get_kit(e.player.kit_id_old)
+        # Get the last known kit for the player
+        # Player will no longer have an active kit at this point
+        player_kit = event_mgr.get_last_kit(e.player)
+
+        # Get the team and weapon for the player
+        player_team = model_mgr.get_team(e.player.team_id)
         player_weapon = model_mgr.get_weapon(e.player.weapon_id)
+
+        # Get the vehicle used by the player
+        vehicle_id = None
+        if e.player in self.vehicles:
+            vehicle_id = self.vehicles[e.player]
+            del self.vehicles[e.player]
+        player_vehicle = model_mgr.get_vehicle(vehicle_id)
 
         # Get the current game and map
         current_game = model_mgr.get_game()
@@ -64,7 +76,6 @@ class Processor(BaseProcessor):
         player_stats.kills_streak = 0
 
         # Increment the enemy death count for the player
-        player_history = event_mgr.get_history(e.player)
         kill_event = player_history.get_new_event(KillEvent.TYPE)
         if not kill_event.attacker in player_stats.enemies:
             player_stats.enemies[kill_event.attacker] = PlayerItemStats()
@@ -79,6 +90,16 @@ class Processor(BaseProcessor):
         if not current_map in player_stats.maps:
             player_stats.maps[current_map] = PlayerItemStats()
         player_stats.maps[current_map].deaths += 1
+
+        # Increment the team death count for the player
+        if not player_team in player_stats.teams:
+            player_stats.teams[player_team] = PlayerItemStats()
+        player_stats.teams[player_team].deaths += 1
+
+        # Increment the vehicle death count for the player
+        if not player_vehicle in player_stats.vehicles:
+            player_stats.vehicles[player_vehicle] = PlayerItemStats()
+        player_stats.vehicles[player_vehicle].deaths += 1
 
         # Increment the weapon death count for the player
         if not player_weapon in player_stats.weapons:
@@ -107,6 +128,14 @@ class Processor(BaseProcessor):
         victim_stats = stat_mgr.get_player_stats(e.victim)
         attacker_stats = stat_mgr.get_player_stats(e.attacker)
 
+        # Get the last known kit for the attacker
+        # Attacker may be dead and may not have an active kit
+        attacker_kit = event_mgr.get_last_kit(e.attacker)
+
+        # Get the team and vehicle for the attacker
+        attacker_team = model_mgr.get_team(e.attacker.team_id)
+        attacker_vehicle = model_mgr.get_vehicle(e.attacker.vehicle_id)
+
         # Get the current game and map
         current_game = model_mgr.get_game()
         current_map = model_mgr.get_map(current_game.map_id)
@@ -124,6 +153,10 @@ class Processor(BaseProcessor):
             attacker_stats.team_kills += 1
             attacker_stats.team_kills_total += 1
             return
+
+        # Store the vehicle of the victim for future use
+        if e.victim.vehicle_id:
+            self.vehicles[e.victim] = e.victim.vehicle_id
 
         # Increment wound count for the victim
         victim_stats.wounds += 1
@@ -145,28 +178,30 @@ class Processor(BaseProcessor):
             attacker_stats.kills_10 += 1
             attacker_stats.kills_10_total += 1
 
-        # Get the last known kit for the attacker
-        # Attacker may be dead and would not have a kit
-        attacker_kit = None
-        if e.attacker.kit_id:
-            attacker_kit = model_mgr.get_kit(e.attacker.kit_id)
-        else:
-            attacker_kit = model_mgr.get_kit(e.attacker.kit_id_old)
-
         # Increment the enemy kill count for the attacker
         if not e.victim in attacker_stats.enemies:
             attacker_stats.enemies[e.victim] = PlayerItemStats()
         attacker_stats.enemies[e.victim].kills += 1
+
+        # Increment the kit kill count for the attacker
+        if not attacker_kit in attacker_stats.kits:
+            attacker_stats.kits[attacker_kit] = PlayerItemStats()
+        attacker_stats.kits[attacker_kit].kills += 1
 
         # Increment the map kill count for the attacker
         if not current_map in attacker_stats.maps:
             attacker_stats.maps[current_map] = PlayerItemStats()
         attacker_stats.maps[current_map].kills += 1
 
-        # Increment the kit kill count for the attacker
-        if not attacker_kit in attacker_stats.kits:
-            attacker_stats.kits[attacker_kit] = PlayerItemStats()
-        attacker_stats.kits[attacker_kit].kills += 1
+        # Increment the vehicle kill count for the attacker
+        if not attacker_vehicle in attacker_stats.vehicles:
+            attacker_stats.vehicles[attacker_vehicle] = PlayerItemStats()
+        attacker_stats.vehicles[attacker_vehicle].kills += 1
+
+        # Increment the team kill count for the attacker
+        if not attacker_team in attacker_stats.teams:
+            attacker_stats.teams[attacker_team] = PlayerItemStats()
+        attacker_stats.teams[attacker_team].kills += 1
 
         # Increment the weapon kill count for the attacker
         if not e.weapon in attacker_stats.weapons:
@@ -197,16 +232,14 @@ class Processor(BaseProcessor):
 
         # Get the last known kit for the player
         # Player may be dead and would not have a kit
-        player_kit = None
-        if e.player.kit_id:
-            player_kit = model_mgr.get_kit(e.player.kit_id)
-        else:
-            player_kit = model_mgr.get_kit(e.player.kit_id_old)
-        player_weapon = model_mgr.get_weapon(e.player.weapon_id)
+        player_kit = event_mgr.get_last_kit(e.player)
 
-        # Get the current game and map
+        # Get the current map
         current_game = model_mgr.get_game()
         current_map = model_mgr.get_map(current_game.map_id)
+
+        # Get the team for the player
+        player_team = model_mgr.get_team(e.player.team_id)
 
         # Increment score count for the player
         player_stats.score += e.value
@@ -224,15 +257,20 @@ class Processor(BaseProcessor):
         elif player_stats.score >= 10:
             player_stats.rank = 1
 
+        # Increment the kit score for the player
+        if not player_kit in player_stats.kits:
+            player_stats.kits[player_kit] = PlayerItemStats()
+        player_stats.kits[player_kit].score += e.value
+
         # Increment the map score for the player
         if not current_map in player_stats.maps:
             player_stats.maps[current_map] = PlayerItemStats()
         player_stats.maps[current_map].score += e.value
 
-        # Increment the kit score for the player
-        if not player_kit in player_stats.kits:
-            player_stats.kits[player_kit] = PlayerItemStats()
-        player_stats.kits[player_kit].score += e.value
+        # Increment the team score for the player
+        if not player_team in player_stats.teams:
+            player_stats.teams[player_team] = PlayerItemStats()
+        player_stats.teams[player_team].score += e.value
 
     def on_spawn(self, e):
         player_stats = stat_mgr.get_player_stats(e.player)

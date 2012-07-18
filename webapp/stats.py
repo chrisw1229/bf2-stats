@@ -50,12 +50,22 @@ class KitStats(BaseStats):
         self.players = dict()
         self.score = 0
 
+class MapItemStats(object):
+
+    def __init__(self):
+        self.deaths = 0
+        self.kills = 0
+        self.score = 0
+
 class MapStats(BaseStats):
 
     def __init__(self):
         BaseStats.__init__(self)
 
-        pass
+        self.deaths = 0
+        self.kills = 0
+        self.players = dict()
+        self.score = 0
 
 class PlayerItemStats(object):
 
@@ -95,6 +105,8 @@ class PlayerStats(BaseStats):
         self.suicides_total = 0
         self.team_killed_total = 0
         self.team_kills_total = 0
+        self.teams = dict()
+        self.vehicles = dict()
         self.weapons = dict()
         self.wounds_total = 0
 
@@ -124,26 +136,52 @@ class PlayerStats(BaseStats):
         self.team_kills = 0
         self.wounds = 0
 
+class TeamItemStats(object):
+
+    def __init__(self):
+        self.deaths = 0
+        self.kills = 0
+        self.score = 0
+
 class TeamStats(BaseStats):
 
     def __init__(self):
         BaseStats.__init__(self)
 
-        pass
+        self.deaths = 0
+        self.kills = 0
+        self.players = dict()
+        self.score = 0
+
+class VehicleItemStats(object):
+
+    def __init__(self):
+        self.deaths = 0
+        self.kills = 0
 
 class VehicleStats(BaseStats):
 
     def __init__(self):
         BaseStats.__init__(self)
 
-        pass
+        self.deaths = 0
+        self.kills = 0
+        self.players = dict()
+
+class WeaponItemStats(object):
+
+    def __init__(self):
+        self.deaths = 0
+        self.kills = 0
 
 class WeaponStats(BaseStats):
 
     def __init__(self):
         BaseStats.__init__(self)
 
-        pass
+        self.deaths = 0
+        self.kills = 0
+        self.players = dict()
 
 class StatManager(object):
 

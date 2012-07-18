@@ -10,7 +10,11 @@ import services.games
 import services.kits
 import services.leaderboard
 import services.live
+import services.maps
 import services.players
+import services.teams
+import services.vehicles
+import services.weapons
 
 # Create an empty class to handle root directory requests
 class Root(object):
@@ -27,8 +31,12 @@ root.services.awards = services.awards.Handler()
 root.services.games = services.games.Handler()
 root.services.kits = services.kits.Handler()
 root.services.leaderboard = services.leaderboard.Handler();
+root.services.maps = services.maps.Handler()
 root.services.live = services.live.Handler()
 root.services.players = services.players.Handler()
+root.services.teams = services.teams.Handler()
+root.services.vehicles = services.vehicles.Handler()
+root.services.weapons = services.weapons.Handler()
 
 # The current directory is needed in the config file
 current_dir = os.path.abspath(os.path.dirname(__file__))

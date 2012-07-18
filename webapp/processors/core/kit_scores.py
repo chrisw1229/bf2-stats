@@ -2,6 +2,7 @@
 import models
 
 from processors import BaseProcessor
+from events import event_mgr
 from models import model_mgr
 from stats import KitItemStats, stat_mgr
 
@@ -14,9 +15,9 @@ class Processor(BaseProcessor):
 
     def on_death(self, e):
 
-        # Get the last known kit and weapon for the player
-        # Player will no longer have items at this point
-        player_kit = model_mgr.get_kit(e.player.kit_id_old)
+        # Get the last known kit for the player
+        # Player will no longer have an active kit at this point
+        player_kit = event_mgr.get_last_kit(e.player)
         kit_stats = stat_mgr.get_kit_stats(player_kit)
 
         # Increment the total kit deaths
@@ -33,13 +34,9 @@ class Processor(BaseProcessor):
         if not e.valid_kill:
             return
 
-        # Get the last known kit for the player
-        # Attacker may be dead and would not have a kit
-        attacker_kit = None
-        if e.attacker.kit_id:
-            attacker_kit = model_mgr.get_kit(e.attacker.kit_id)
-        else:
-            attacker_kit = model_mgr.get_kit(e.attacker.kit_id_old)
+        # Get the last known kit for the attacker
+        # Attacker may be dead and may not have an active kit
+        attacker_kit = event_mgr.get_last_kit(e.attacker)
         kit_stats = stat_mgr.get_kit_stats(attacker_kit)
 
         # Increment the total kit kills
@@ -54,11 +51,7 @@ class Processor(BaseProcessor):
 
         # Get the last known kit for the player
         # Player may be dead and would not have a kit
-        player_kit = None
-        if e.player.kit_id:
-            player_kit = model_mgr.get_kit(e.player.kit_id)
-        else:
-            player_kit = model_mgr.get_kit(e.player.kit_id_old)
+        player_kit = event_mgr.get_last_kit(e.player)
         kit_stats = stat_mgr.get_kit_stats(player_kit)
 
         # Increment the total kit score

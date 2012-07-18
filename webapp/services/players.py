@@ -50,6 +50,10 @@ class Handler:
                 return self.get_player_kits(id)
             elif data_type == 'maps':
                 return self.get_player_maps(id)
+            elif data_type == 'teams':
+                return self.get_player_teams(id)
+            elif data_type == 'vehicles':
+                return self.get_player_vehicles(id)
             elif data_type == 'weapons':
                 return self.get_player_weapons(id)
             else:
@@ -160,7 +164,7 @@ class Handler:
                 rows.append([kit.id, object_stats.score, object_stats.kills,
                         object_stats.deaths])
 
-        # Sort the results by kills
+        # Sort the results by score
         rows.sort(key=lambda r: r[1], reverse=True)
 
         return { 'columns' : columns, 'rows': rows }
@@ -196,6 +200,82 @@ class Handler:
             if map_obj != models.maps.EMPTY:
                 object_stats = player_stats.maps[map_obj]
                 rows.append([map_obj.id, object_stats.score, object_stats.kills,
+                        object_stats.deaths])
+
+        # Sort the results by score
+        rows.sort(key=lambda r: r[1], reverse=True)
+
+        return { 'columns' : columns, 'rows': rows }
+
+    def get_player_teams(self, id):
+        '''
+        Provides team details for a specific player based on the given player
+        identifier.
+
+        Args:
+           id (string): The unique identifier of a player.
+
+        Returns:
+            teams (object): Detailed team information for a specific player.
+        '''
+
+        # Get the model for the requested player
+        player = model_mgr.get_player(id)
+        if not player: raise cherrypy.HTTPError(404)
+
+        # Get the stats for the requested player
+        player_stats = stat_mgr.get_player_stats(player)
+
+        # Build a list of column descriptors
+        columns = [{ 'name': 'Teams', 'data': 'string' },
+                { 'name': 'Score', 'data': 'number', 'sorted': False },
+                { 'name': 'Kills', 'data': 'number' },
+                { 'name': 'Deaths', 'data': 'number' }]
+
+        # Build a list of team statistics
+        rows = list()
+        for team in player_stats.teams:
+            if team != models.teams.EMPTY:
+                object_stats = player_stats.teams[team]
+                rows.append([team.id, object_stats.score, object_stats.kills,
+                        object_stats.deaths])
+
+        # Sort the results by score
+        rows.sort(key=lambda r: r[1], reverse=True)
+
+        return { 'columns' : columns, 'rows': rows }
+
+    def get_player_vehicles(self, id):
+        '''
+        Provides vehicle details for a specific player based on the given player
+        identifier.
+
+        Args:
+           id (string): The unique identifier of a player.
+
+        Returns:
+            vehicles (object): Detailed vehicle information for a specific
+            player.
+        '''
+
+        # Get the model for the requested player
+        player = model_mgr.get_player(id)
+        if not player: raise cherrypy.HTTPError(404)
+
+        # Get the stats for the requested player
+        player_stats = stat_mgr.get_player_stats(player)
+
+        # Build a list of column descriptors
+        columns = [{ 'name': 'Vehicles', 'data': 'string' },
+                { 'name': 'Kills', 'data': 'number', 'sorted': False },
+                { 'name': 'Deaths', 'data': 'number' }]
+
+        # Build a list of vehicle statistics
+        rows = list()
+        for vehicle in player_stats.vehicles:
+            if vehicle != models.vehicles.EMPTY:
+                object_stats = player_stats.vehicles[vehicle]
+                rows.append([vehicle.id, object_stats.kills,
                         object_stats.deaths])
 
         # Sort the results by kills

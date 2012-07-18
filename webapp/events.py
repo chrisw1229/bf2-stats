@@ -189,6 +189,57 @@ class EventManager(object):
             self.model_to_history[model] = EventHistory()
         return self.model_to_history[model]
 
+    def get_last_kit(self, player):
+        '''
+        Gets the last known kit model for the given player based on the tracked
+        event history system. This convenience function is useful because kits
+        are dropped as soon as a player gets killed, which means the kit
+        information is not always readily available in certain cases such as
+        when final death actually occurs.
+
+        Args:
+            player (Player): The player model for which to get a kit.
+
+        Returns:
+            kit (Kit): The last known kit for the player determined by looking
+            up the most recent KitPickupEvent from the history system.
+        '''
+
+        if not player: return models.kits.EMPTY
+
+        # Get the event history for the given player
+        player_history = self.get_history(player)
+
+        # Get the event that defines the last known kit for the player
+        kit_event = player_history.get_new_event(KitPickupEvent.TYPE)
+        return kit_event.kit if kit_event else models.kits.EMPTY
+
+    def get_last_vehicle(self, player):
+        '''
+        Gets the last known vehicle model for the given player based on the
+        tracked event history system. This convenience function is useful
+        because vehicles are exited as soon as a player gets killed, which means
+        the vehicle information is not always readily available in certain cases
+        such as when final death actually occurs.
+
+        Args:
+            player (Player): The player model for which to get a vehicle.
+
+        Returns:
+            vehicle (Vehicle): The last known vehicle for the player determined
+            by looking up the most recent VehicleEnterEvent from the history
+            system.
+        '''
+
+        if not player: return models.vehicles.EMPTY
+
+        # Get the event history for the given player
+        player_history = self.get_history(player)
+
+        # Get the event that defines the last known vehicle for the player
+        vehicle_event = player_history.get_new_event(VehicleEnterEvent.TYPE)
+        return vehicle_event.vehicle if vehicle_event else models.vehicles.EMPTY
+
     def reset_history(self):
         '''
         Resets all the event history. This is typically only called when a new game starts.

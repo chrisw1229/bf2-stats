@@ -4,9 +4,10 @@
 }
 
 .player-content,
-.weapons-content,
 .enemies-content,
-.maps-content {
+.maps-content,
+.vehicles-content,
+.weapons-content {
    display: none;
 }
 

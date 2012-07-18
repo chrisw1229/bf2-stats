@@ -11,6 +11,10 @@ var kitsElm = $('.kits-content');
 var kitsTbl = $('.table-widget', kitsElm);
 var mapsElm = $('.maps-content');
 var mapsTbl = $('.table-widget', mapsElm);
+var teamsElm = $('.teams-content');
+var teamsTbl = $('.table-widget', teamsElm);
+var vehiclesElm = $('.vehicles-content');
+var vehiclesTbl = $('.table-widget', vehiclesElm);
 var weaponsElm = $('.weapons-content');
 var weaponsTbl = $('.table-widget', weaponsElm);
 
@@ -42,6 +46,14 @@ $.extend({ mgr: {
          mapsElm.show();
          $.mgr.requestMaps(id);
 
+         // Show the player teams panel
+         teamsElm.show();
+         $.mgr.requestTeams(id);
+
+         // Show the player vehicles panel
+         vehiclesElm.show();
+         $.mgr.requestVehicles(id);
+
          // Show the player weapons panel
          weaponsElm.show();
          $.mgr.requestWeapons(id);
@@ -52,6 +64,8 @@ $.extend({ mgr: {
          enemiesElm.hide();
          kitsElm.hide();
          mapsElm.hide();
+         teamsElm.hide();
+         vehiclesElm.hide();
          weaponsElm.hide();
 
          // Show the players list screen
@@ -146,6 +160,39 @@ $.extend({ mgr: {
       $.ajax(options);
    },
 
+   requestTeams: function(id) {
+      teamsTbl.table();
+      teamsTbl.table('loading');
+
+      // Configure the request options
+      var options = {
+         url: 'services/players/' + id + '/teams',
+         dataType: 'json',
+         success: $.proxy($.mgr.onTeams, $.mgr),
+         error: $.proxy($.mgr.onError, $.mgr)
+      };
+
+      // Fetch the content for the selected player
+      $.ajax(options);
+   },
+
+   requestVehicles: function(id) {
+      vehiclesTbl.table();
+      vehiclesTbl.table('loading');
+
+      // Configure the request options
+      var options = {
+         url: 'services/players/' + id + '/vehicles',
+         dataType: 'json',
+         success: $.proxy($.mgr.onVehicles, $.mgr),
+         error: $.proxy($.mgr.onError, $.mgr)
+      };
+
+      // Fetch the content for the selected player
+      $.ajax(options);
+   },
+
+
    requestWeapons: function(id) {
       weaponsTbl.table();
       weaponsTbl.table('loading');
@@ -207,6 +254,20 @@ $.extend({ mgr: {
       // Populate the table with map results
       mapsTbl.table('setColumns', data.columns);
       mapsTbl.table('setRows', data.rows);
+   },
+
+   onTeams: function(data) {
+
+      // Populate the table with team results
+      teamsTbl.table('setColumns', data.columns);
+      teamsTbl.table('setRows', data.rows);
+   },
+
+   onVehicles: function(data) {
+
+      // Populate the table with vehicle results
+      vehiclesTbl.table('setColumns', data.columns);
+      vehiclesTbl.table('setRows', data.rows);
    },
 
    onWeapons: function(data) {

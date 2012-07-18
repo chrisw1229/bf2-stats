@@ -14,7 +14,6 @@ class Player(object):
         self.connected = False      # Flag when player is connected
         self.driver = False         # Flag when player is vehicle driver
         self.kit_id = None          # ID for player's current kit
-        self.kit_id_old = None      # ID for player's last kit
         self.leader = False         # Flag when player is squad leader
         self.operator = False       # Flag when player is operating a station
         self.pos = [0, 0, 0, 0]     # Player's current position
@@ -23,7 +22,6 @@ class Player(object):
         self.squad_id = None        # ID for player's current squad
         self.team_id = None         # ID for player's current team
         self.vehicle_id = None      # ID for player's current vehicle
-        self.vehicle_id_old = None  # ID for player's last vehicle
         self.vehicle_slot_id = None # ID for player's current vehicle slot
         self.weapon_id = None       # ID for player's current weapon
         self.wounded = False        # Flag when player is killed but revivable
