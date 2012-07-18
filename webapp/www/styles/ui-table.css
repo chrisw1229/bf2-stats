@@ -106,3 +106,23 @@
    border-top: none;
    padding: 6px 8px;
 }
+
+.ui-table-show {
+   display: none;
+   cursor: pointer;
+   font-size: 14px;
+   left: -4px;
+   position: relative;
+   top: -2px;
+}
+
+.ui-table-show:hover {
+   text-decoration: underline;
+}
+
+.ui-table-show .ui-icon {
+   display: inline-block;
+   margin-right: 2px;
+   position: relative;
+   top: 3px;
+}

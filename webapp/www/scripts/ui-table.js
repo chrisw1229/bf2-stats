@@ -5,6 +5,8 @@ $.widget('ui.table', {
    // Configure the default widget options
    options: {
       columns: [],
+      maxRows: 10,
+      showAll: false,
       sortIndex: -1,
       sortAsc: undefined
    },
@@ -25,6 +27,14 @@ $.widget('ui.table', {
       this.headerElm = $('<tr class="ui-table-header"/>').appendTo(this.bodyElm);
       this.footerElm = $('<tr class="ui-table-footer"><td class="ui-state-default ui-corner-bottom" colspan="0">&nbsp;</td></tr>').appendTo(this.bodyElm);
 
+      var footerCell = $('td', this.footerElm);
+      this.showMoreElm = $('<a class="ui-table-show ui-table-show-more">'
+            + '<span class="ui-icon ui-icon-triangle-1-s"/>'
+            + '<span>Show more</span></a>').appendTo(footerCell);
+      this.showLessElm = $('<a class="ui-table-show ui-table-show-less">'
+            + '<span class="ui-icon ui-icon-triangle-1-n"/>'
+            + '<span>Show less</span></a>').appendTo(footerCell);
+
       // Create the status message rows
       this.emptyElm = $('<tr class="ui-state-active ui-table-empty"><td colspan="0"><span class="ui-icon ui-icon-alert"/>No Records Available</td></tr>');
       this.loadElm = $('<tr class="ui-state-active ui-table-load"><td colspan="0"><span class="ui-icon"/>Loading...</td></tr>');
@@ -35,8 +45,12 @@ $.widget('ui.table', {
             function(e) { $(this).addClass('ui-state-hover'); });
       this.headerElm.on('mouseleave', 'th',
             function(e) { $(this).removeClass('ui-state-hover'); });
-      this.headerElm.on('click', 'th', $.proxy(this._onSort, this));
+      this.headerElm.on('click', 'th', $.proxy(this._onSortClick, this));
  
+      // Bind event handlers for the footer cells
+      this.showMoreElm.on('click', $.proxy(this._onShowMoreClick, this));
+      this.showLessElm.on('click', $.proxy(this._onShowLessClick, this));
+
       // Initialize the table columns
       this.setColumns(this.options.columns);
    },
@@ -44,6 +58,8 @@ $.widget('ui.table', {
    destroy: function() {
 
       // Clear the event handlers
+      this.showMoreElm.off('click');
+      this.showLessElm.off('click');
       this.headerElm.off('mouseenter mouseleave click');
 
       // Destroy the document model
@@ -109,9 +125,26 @@ $.widget('ui.table', {
       // Sort the rows based on the current sort column
       this._sort();
 
+      // Determine the current number of rows to create
+      var maxRows = this.rows.length;
+      if (!this.options.showAll) {
+         maxRows = Math.min(this.rows.length, this.options.maxRows);
+      }
+
       // Create table elements for each row of values
-      for (var i = 0; i < this.rows.length; i++) {
+      for (var i = 0; i < maxRows; i++) {
          this._createRow(i);
+      }
+
+      // Update the footer actions
+      if (this.options.showAll) {
+         this.showMoreElm.hide();
+         this.showLessElm.show();
+      } else {
+         if (this.rows.length > this.options.maxRows) {
+            this.showMoreElm.show();
+         }
+         this.showLessElm.hide();
       }
 
       // Fill the table elements with row values
@@ -156,6 +189,10 @@ $.widget('ui.table', {
       this.loadElm.remove();
       this.errorElm.remove();
       this.emptyElm.insertBefore(this.footerElm);
+
+      // Hide the footer actions
+      this.showMoreElm.hide();
+      this.showLessElm.hide();
    },
 
    reset: function() {
@@ -266,9 +303,45 @@ $.widget('ui.table', {
       }
    },
 
-   _onSort: function(e) {
+   _onSortClick: function(e) {
       var cellElm = $(e.target).closest('th');
       this.setSort(cellElm.index() - 1, !this.sortAsc);
+   },
+
+   _onShowMoreClick: function(e) {
+      if (this.options.showAll) {
+         return;
+      }
+      this.options.showAll = true;
+
+      // Update the table footer actions
+      this.showMoreElm.hide();
+      this.showLessElm.show();
+
+      // Create table elements for the remaining hidden rows
+      for (var i = this.bodyElm.children().length - 2; i < this.rows.length; i++) {
+         this._createRow(i);
+      }
+
+      // Fill the table elements with row values
+      this._display();
+   },
+   
+   _onShowLessClick: function(e) {
+      if (!this.options.showAll) {
+         return;
+      }
+      this.options.showAll = false;
+
+      // Update the table footer actions
+      this.showMoreElm.show();
+      this.showLessElm.hide();
+
+      // Destroy table elements for the extra displayed rows
+      var rowElms = this.bodyElm.children();
+      var startIndex = Math.min(this.rows.length, this.options.maxRows) + 1;
+      var endIndex = rowElms.length - 1;
+      rowElms.slice(startIndex, endIndex).remove();
    }
 
 });
