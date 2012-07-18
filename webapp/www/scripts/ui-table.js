@@ -202,6 +202,8 @@ $.widget('ui.table', {
 
       // Cleanup any previous table columns
       this.columns = [];
+      this.sortIndex = undefined;
+      this.sortAsc = undefined;
       this.headerElm.empty();
 
       // Add a default column to display
