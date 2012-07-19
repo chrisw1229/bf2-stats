@@ -48,6 +48,27 @@ _add('ch_specops', SPEC_OPS, 'Special Ops',
 _add('ch_support', SUPPORT, 'Support',
 '')
 
+_add('eu_assault', ASSAULT, 'Assault',
+'')
+
+_add('eu_at', ANTI_TANK, 'Anti-Tank',
+'')
+
+_add('eu_engineer', ENGINEER, 'Engineer',
+'')
+
+_add('eu_medic', MEDIC, 'Medic',
+'')
+
+_add('eu_sniper', SNIPER, 'Sniper',
+'')
+
+_add('eu_specops', SPEC_OPS, 'Special Ops',
+'')
+
+_add('eu_support', SUPPORT, 'Support',
+'')
+
 _add('mec_assault', ASSAULT, 'Assault',
 '')
 
