@@ -6,20 +6,20 @@
 }
 
 .common-container {
-   margin: 0 auto;
+   margin: 20px auto;
    width: 960px;
 }
 
 .common-nav {
    position: fixed;
    margin: 20px 10px;
-   width: 250px;
+   width: 190px;
 }
 
 .common-content {
    float: right;
    margin: 20px 10px;
-   width: 650px
+   width: 715px
 }
 
 .common-header {

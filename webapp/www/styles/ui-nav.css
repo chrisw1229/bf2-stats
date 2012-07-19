@@ -1,5 +1,5 @@
 ﻿.ui-nav {
-   font-size: 18px;
+   font-size: 14px;
 }
 
 .ui-nav-content {
@@ -8,10 +8,10 @@
 
 .ui-nav-logo {
    border: 1px solid black;
-   height: 125px;
+   height: 75px;
    margin-bottom: 20px;
    text-align: center;
-   width: 210px;
+   width: 150px;
 }
 
 .ui-nav-menu-header,
