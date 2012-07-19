@@ -85,8 +85,7 @@ class Processor(BaseProcessor):
 
     def on_repair(self, e):
 
-        # Update position for the players
-        e.receiver.pos = e.receiver_pos
+        # Update position for the player
         e.giver.pos = e.giver_pos
 
     def on_revive(self, e):
@@ -198,7 +197,7 @@ class Processor(BaseProcessor):
         # Update the vehicle for the player
         e.player.vehicle_id = None
         e.player.vehicle_slot_id = None
-        
+
         # Update the vehicle states for the player
         e.player.driver = False
         e.player.passenger = False
@@ -225,7 +224,7 @@ class Processor(BaseProcessor):
         if player.team_id:
             old_team = model_mgr.get_team(player.team_id)
             if old_team:
-                old_team.players_ids.remove(player.id)
+                old_team.player_ids.remove(player.id)
                 if old_team.commander_id == player.id:
                     old_team.commander_id = None
                     player.commander = False
