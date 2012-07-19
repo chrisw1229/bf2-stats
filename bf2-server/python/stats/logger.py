@@ -509,12 +509,12 @@ def format_team(team_id):
 def format_vehicle(vehicle):
     if vehicle:
         root_vehicle = bf2.objectManager.getRootParent(vehicle)
-        if (root_vehicle and root_vehicle.templateName
-                and root_vehicle.templateName != 'multiplayerfreecamera'):
+        if (root_vehicle and root_vehicle.templateName):
             vehicle_name = root_vehicle.templateName.lower()
-            if vehicle_name.startswith('wasp_defence'):
-                vehicle_name = 'wasp_defence'
-            return vehicle_name
+            if vehicle_name != 'multiplayerfreecamera':
+                if vehicle_name.startswith('wasp_defence'):
+                    vehicle_name = 'wasp_defence'
+                return vehicle_name
     return None
 
 def format_vehicle_slot(vehicle):
