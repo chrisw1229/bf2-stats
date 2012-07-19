@@ -18,4 +18,8 @@ class Game(object):
         self.ending = False
 
         Game.counter += 1
+
+    def __repr__(self):
+        return self.__dict__
+
 EMPTY = Game('', '', 0, 0)

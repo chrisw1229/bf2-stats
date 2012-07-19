@@ -31,6 +31,10 @@ class Weapon(object):
         self.name = name
         self.game_desc = game_desc
         self.real_desc = real_desc
+
+    def __repr__(self):
+        return self.__dict__
+
 EMPTY = Weapon('', '', '', '', '', '', '', '')
 
 def _add(id, weapon_type, group, make, model, name, game_desc, real_desc):

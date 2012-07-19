@@ -13,6 +13,9 @@ class Team(object):
         self.squad_ids = set()
         self.player_ids = set()
 
+    def __repr__(self):
+        return self.__dict__
+
 EMPTY = Team('', '', '')
 
 def _add(id, name, desc):

@@ -18,6 +18,10 @@ class Kit(object):
         self.kit_type = kit_type
         self.name = name
         self.desc = desc
+
+    def __repr__(self):
+        return self.__dict__
+
 EMPTY = Kit('', '', '', '')
 
 def _add(id, kit_type, name, desc):

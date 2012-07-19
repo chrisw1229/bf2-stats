@@ -29,6 +29,10 @@ class Vehicle(object):
         self.slot_ids = set(slot_ids)
         self.weapon_ids = set(weapon_ids)
         self.desc = desc
+
+    def __repr__(self):
+        return self.__dict__
+
 EMPTY = Vehicle('', '', '', '', [], [], '')
 
 def _add(id, vehicle_type, group, name, slot_ids, weapon_ids, desc):

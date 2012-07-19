@@ -27,4 +27,8 @@ class Player(object):
         self.wounded = False        # Flag when player is killed but revivable
 
         Player.counter += 1
+
+    def __repr__(self):
+        return self.__dict__
+
 EMPTY = Player('', '')

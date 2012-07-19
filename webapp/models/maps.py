@@ -14,6 +14,10 @@ class Map(object):
         self.name = name
         self.region = region
         self.desc = desc
+
+    def __repr__(self):
+        return self.__dict__
+
 EMPTY = Map('', '', '', ['', ''], '')
 
 def _add(id, name, region, teams, desc):
