@@ -112,6 +112,13 @@ class Processor(BaseProcessor):
         # Start the spectator timer
         player_stats.spec_time.start(e.tick)
 
+    def on_disconnect(self, e):
+        player_stats = stat_mgr.get_player_stats(e.player)
+
+        # Stop any active timers
+        player_stats.play_time.stop(e.tick)
+        player_stats.spec_time.stop(e.tick)
+
     def on_heal(self, e):
         receiver_stats = stat_mgr.get_player_stats(e.receiver)
         giver_stats = stat_mgr.get_player_stats(e.giver)
@@ -212,8 +219,8 @@ class Processor(BaseProcessor):
         giver_stats = stat_mgr.get_player_stats(e.giver)
 
         # Increment repair points for the giver
-        giver_stats.repair_points += 1
-        giver_stats.repair_points_total += 1
+        giver_stats.repairs += 1
+        giver_stats.repairs_total += 1
 
     def on_revive(self, e):
         receiver_stats = stat_mgr.get_player_stats(e.receiver)
