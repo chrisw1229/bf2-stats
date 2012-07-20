@@ -32,7 +32,10 @@ class Processor(BaseProcessor):
                 old_player.commander = False
 
         # Update the commander for the team
-        e.team.commander_id = e.player.id
+        if e.player == models.players.EMPTY:
+            e.team.commander_id = None
+        else:
+            e.team.commander_id = e.player.id
 
         # Add the commander flag to the new player
         e.player.commander = True
@@ -54,6 +57,12 @@ class Processor(BaseProcessor):
 
         # Update the connected flag for the player
         e.player.connected = False
+
+    def on_game_status(self, e):
+
+        # Reset the game models on game start
+        if e.game.starting:
+            model_mgr.reset_models()
 
     def on_heal(self, e):
 
@@ -142,7 +151,10 @@ class Processor(BaseProcessor):
                 old_player.leader = False
 
         # Update the leader for the squad
-        e.squad.leader_id = e.player.id
+        if e.player == models.players.EMPTY:
+            e.squad.leader_id = None
+        else:
+            e.squad.leader_id = e.player.id
 
         # Add the squad leader flag to the new player
         e.player.leader = True
