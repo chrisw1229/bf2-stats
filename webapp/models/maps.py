@@ -15,8 +15,13 @@ class Map(object):
         self.region = region
         self.desc = desc
 
+        self.reset()
+
     def __repr__(self):
         return self.__dict__
+
+    def reset(self):
+        pass
 
 EMPTY = Map('', '', '', ['', ''], '')
 

@@ -30,8 +30,13 @@ class Vehicle(object):
         self.weapon_ids = set(weapon_ids)
         self.desc = desc
 
+        self.reset()
+
     def __repr__(self):
         return self.__dict__
+
+    def reset(self):
+        pass
 
 EMPTY = Vehicle('', '', '', '', [], [], '')
 
@@ -296,7 +301,7 @@ _add('us_bipod', GROUND_DEF, STATION, '?',
 
 _add('usaas_stinger', AIR_DEF, STATION, 'FIM-92',
 ['usaas_stinger_driver'],
-[],
+['usaas_stinger_launcher'],
 'The FIM-92 Stinger is a personal portable infrared homing surface-to-air missile (SAM), which can \
 be adapted to fire from ground vehicles and helicopters (as an AAM), developed in the United \
 States and entered into service in 1981. Used by the militaries of the U.S. and by 29 other \
@@ -389,3 +394,30 @@ _add('wasp_defence', AIR_DEF, STATION, 'CV-7',
 was the sole ship of her class. Built to use up the remaining tonnage allowed to the U.S. for \
 aircraft carriers under the treaties of the time, she was built on a reduced-size version of the \
 Yorktown-class hull.')
+
+_add('xpak2_faav', TRANSPORT, LAND, '?',
+['xpak2_faav_driver', 'xpak2_faav_rear_passenger'],
+[],
+'?')
+
+_add('xpak2_hmmwv', TRANSPORT, LAND, 'HMMWV',
+['xpak2_hmmwv_driver', 'xpak2_hmmwv_cupolabase'],
+[],
+'?')
+
+_add('xpak2_lav25', ARMOR, LAND, 'LAV-25',
+['xpak2_lav25_driver', 'xpak2_lav25_rearpassenger_l', 'xpak2_lav25_rearpassenger_br'],
+[],
+'The LAV-25 is an eight-wheeled amphibious reconnaissance vehicle used by the United States Marine \
+Corps. It was built by General Dynamics Land Systems Canada and is based on the Swiss MOWAG \
+Piranha I 8x8 family of armored fighting vehicles.')
+
+_add('xpak2_tnkl2a6', ARMOR, LAND, '?',
+['xpak2_tnkl2a6_driver'],
+[],
+'?')
+
+_add('xpak2_tnkc2', ARMOR, LAND, '?',
+['xpak2_tnkc2_driver', 'tnk_c2_gunner'],
+[],
+'?')

@@ -10,8 +10,17 @@ class Player(object):
 
         self.aliases = set()        # Set of all names used by the player
         self.bot = False            # Flag when player is a bot
-        self.commander = False      # Flag when player is commander
         self.connected = False      # Flag when player is connected
+
+        self.reset();
+
+        Player.counter += 1
+
+    def __repr__(self):
+        return self.__dict__
+
+    def reset(self):
+        self.commander = False      # Flag when player is commander
         self.driver = False         # Flag when player is vehicle driver
         self.kit_id = None          # ID for player's current kit
         self.leader = False         # Flag when player is squad leader
@@ -25,10 +34,5 @@ class Player(object):
         self.vehicle_slot_id = None # ID for player's current vehicle slot
         self.weapon_id = None       # ID for player's current weapon
         self.wounded = False        # Flag when player is killed but revivable
-
-        Player.counter += 1
-
-    def __repr__(self):
-        return self.__dict__
-
+        
 EMPTY = Player('', '')

@@ -17,9 +17,14 @@ class Game(object):
         self.playing = False
         self.ending = False
 
+        self.reset()
+
         Game.counter += 1
 
     def __repr__(self):
         return self.__dict__
+
+    def reset(self):
+        pass
 
 EMPTY = Game('', '', 0, 0)

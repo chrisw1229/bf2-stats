@@ -9,12 +9,18 @@ class Team(object):
         self.name = name
         self.desc = desc
 
-        self.commander_id = None
         self.squad_ids = set()
         self.player_ids = set()
 
+        self.reset()
+
     def __repr__(self):
         return self.__dict__
+
+    def reset(self):
+        self.commander_id = None
+        self.squad_ids.clear()
+        self.player_ids.clear()
 
 EMPTY = Team('', '', '')
 

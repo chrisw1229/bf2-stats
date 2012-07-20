@@ -19,8 +19,13 @@ class Kit(object):
         self.name = name
         self.desc = desc
 
+        self.reset()
+
     def __repr__(self):
         return self.__dict__
+
+    def reset(self):
+        pass
 
 EMPTY = Kit('', '', '', '')
 
