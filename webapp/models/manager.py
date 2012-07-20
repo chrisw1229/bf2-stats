@@ -486,6 +486,35 @@ class ModelManager(object):
             return squad
         return squads.EMPTY
 
+    def reset_models(self):
+        '''
+        Resets all the game models. This is typically only called when a new
+        game starts.
+
+        Args:
+           None
+
+        Returns:
+            None
+        '''
+
+        for player in self.players:
+            player.reset()
+        for game in self.games:
+            game.reset()
+        for kit in self.kits:
+            kit.reset()
+        for map_obj in self.maps:
+            map_obj.reset()
+        for squad in self.squads:
+            squad.reset()
+        for team in self.teams:
+            team.reset()
+        for vehicle in self.vehicles:
+            vehicle.reset()
+        for weapon in self.weapons:
+            weapon.reset()
+
     def set_game_status(self, status, map_id, clock_limit, score_limit):
         '''
         Sets the current game status based on the given parameters.
@@ -499,6 +528,8 @@ class ModelManager(object):
         Returns:
             game (Game): Returns the registered game model.
         '''
+
+        if not status or not map_id: return games.EMPTY
 
         game = None
         if status == games.Game.STARTING:
