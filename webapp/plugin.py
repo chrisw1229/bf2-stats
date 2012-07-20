@@ -15,6 +15,7 @@ class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
 
         self.log_file_path = None
         self.log_file = None
+        self.activated = False
 
     # This method will be called when the plugin engine starts
     def start(self):
@@ -59,7 +60,9 @@ class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
                 count += 1
             else:
                 running = False
-        if count > 0:
+
+        if not self.activated:
+            self.activated = True
             print 'Log lines read: ', count
 
     # This method will be called when the plugin engine stops
