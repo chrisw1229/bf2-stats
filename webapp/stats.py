@@ -2,7 +2,7 @@
 import math
 import traceback
 
-from events import GameStatusEvent
+from events import GameStatusEvent, ServerStatusEvent
 from processors import BaseProcessor
 from timer import Timer, timer_mgr
 
@@ -298,11 +298,16 @@ class StatManager(object):
 
         if not event: return
 
-        # Reset the stats when a new game starts
+        # Reset timers when the server starts
+        if isinstance(event, ServerStatusEvent):
+            timer_mgr.reset_timers()
+
+        # Reset the stats and timers when a new game starts
         # Store a reference to the current game
         if isinstance(event, GameStatusEvent) and event.game.starting:
             self.game = event.game
             self.reset_stats()
+            timer_mgr.reset_timers()
 
         # Allow each processor to handle the event
         if event and event.CALLBACK:
@@ -316,6 +321,10 @@ class StatManager(object):
 
         # Update the elapsed time for all enabled timers
         timer_mgr.apply_tick(event.tick)
+
+        # Reset timers when a game ends
+        if isinstance(event, GameStatusEvent) and event.game.ending:
+            timer_mgr.reset_timers()
 
     def reset_stats(self):
         '''

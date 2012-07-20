@@ -8,7 +8,18 @@ class TimerManager(object):
         self.disabled_timers = dict()
         self.last_tick = None
 
-    def apply_tick(self, tick):
+    def reset_timers(self):
+        self.last_tick = None
+
+        # Reset the state of each enabled timer
+        for timer in self.enabled_timers.iterkeys():
+            timer._reset()
+
+        # Disable all timers
+        self.disabled_timers.update(self.enabled_timers)
+        self.enabled_timers.clear()
+    
+    def apply_tick(self, tick, auto_stop=False):
 
         # Skip processing when no time has actually elapsed
         if self.last_tick == tick: return
@@ -42,6 +53,7 @@ class Timer(object):
         self.last_tick = None
         self.stop_tick = None
         self.elapsed = 0
+        self.debug = False
 
     def __repr__(self):
         delta_time = timedelta(seconds=self.elapsed)
@@ -57,7 +69,12 @@ class Timer(object):
         timer_mgr._update_timer(self)
 
     def update(self, tick):
-        if not self.running: return
+        if not self.running:
+            print 'WARNING - Attempted to update a stopped timer'
+            return
+
+        if tick < self.last_tick:
+            print 'WARNING - Elapsed time is going backwards'
 
         self.elapsed += (tick - self.last_tick)
         self.last_tick = tick
@@ -71,11 +88,8 @@ class Timer(object):
 
         timer_mgr._update_timer(self)
 
-    def reset(self):
+    def _reset(self):
         self.running = False
         self.start_tick = None
         self.last_tick = None
         self.stop_tick = None
-        self.elapsed = 0
-
-        timer_mgr._update_timer(self)
