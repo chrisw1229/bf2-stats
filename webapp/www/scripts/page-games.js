@@ -5,6 +5,7 @@ var gamesElm = $('.games-content');
 var listElm = $('.list-widget');
 
 var gameElm = $('.game-content');
+var replayBtn = $('.replay-button');
 var tableElm = $('.table-widget');
 
 // Register the page manager as a jQuery extension
@@ -80,6 +81,10 @@ $.extend({ mgr: {
       // Update the header
       var headerElm = $('.common-header', gameElm);
       headerElm.text('Game - ' + data.name);
+
+      // Update the replay button link
+      $('.replay-button').button({ icons: { secondary: 'ui-icon-extlink' } })
+            .attr('href', 'replays.html#id=' + data.id);
 
       // Populate the table with game results
       tableElm.table('setColumns', data.columns);

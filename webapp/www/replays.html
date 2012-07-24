@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+      <title>Replay - Battlefield 2 Stats</title>
+      <link type="image/x-icon" href="images/favicon.png" rel="shortcut icon"/>
+
+      <link type="text/css" href="themes/jquery-ui-1.8.20.custom.css" rel="stylesheet"/>
+      <link type="text/css" href="styles/common.css" rel="stylesheet"/>
+      <link type="text/css" href="styles/ui-olmap.css" rel="stylesheet"/>
+      <link type="text/css" href="styles/page-replays.css" rel="stylesheet"/>
+
+      <script type="text/javascript" src="scripts/lib/jquery-1.7.2.js"></script>
+      <script type="text/javascript" src="scripts/lib/jquery-ui-1.8.20.custom.js"></script>
+      <script type="text/javascript" src="scripts/lib/jquery-bbq-1.2.1.js"></script>
+      <script type="text/javascript" src="scripts/lib/open-layers-2.12.js"></script>
+
+      <script type="text/javascript" src="scripts/common.js"></script>
+      <script type="text/javascript" src="scripts/ui-olmap.js"></script>
+      <script type="text/javascript" src="scripts/page-replays.js"></script>
+   </head>
+
+   <body class="ui-widget">
+      <div class="header-container">
+         <div class="header-content">
+            <div class="ui-widget-header ui-corner-top common-header">Game</div>
+            <div class="ui-widget-content ui-corner-bottom common-body">
+               <div class="buttons">
+                  <button class="play-button" title="Play">Play</button>
+                  <button class="pause-button" title="Pause">Pause</button>
+                  <button class="stop-button" title="Stop">Stop</button>
+               </div>
+               <div class="ui-corner-all slider-widget"></div>
+            </div>
+         </div>
+      </div>
+      <div class="header-shadow"></div>
+      <div class="ui-widget-content olmap-widget">
+         <div class="ui-widget-overlay"></div>
+      </div>
+   </body>
+</html>

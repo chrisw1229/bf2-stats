@@ -12,6 +12,7 @@ import services.leaderboard
 import services.live
 import services.maps
 import services.players
+import services.replays
 import services.teams
 import services.vehicles
 import services.weapons
@@ -34,6 +35,7 @@ root.services.leaderboard = services.leaderboard.Handler();
 root.services.maps = services.maps.Handler()
 root.services.live = services.live.Handler()
 root.services.players = services.players.Handler()
+root.services.replays = services.replays.Handler()
 root.services.teams = services.teams.Handler()
 root.services.vehicles = services.vehicles.Handler()
 root.services.weapons = services.weapons.Handler()

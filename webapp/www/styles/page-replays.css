@@ -1,0 +1,55 @@
+﻿html,body {
+   font-size: 14px;
+   height: 100%;
+   margin: 0;
+   overflow: hidden;
+   padding: 0;
+   width: 100%;
+}
+
+.ui-widget {
+   font-size: 14px;
+}
+
+.header-container {
+   background: #C9C1A6;
+}
+
+.header-content {
+   margin: 0 auto;
+   padding: 20px;
+   width: 960px;
+}
+
+.buttons {
+   margin: 0 auto;
+   width: 180px;
+}
+
+.buttons .ui-button {
+   width: 85px;
+}
+
+.pause-button {
+   display: none;
+}
+
+.ui-slider {
+   margin-top: 10px;
+}
+
+.header-shadow {
+   background: url('../images/shadow.png') repeat-x scroll 0 0 transparent;
+   height: 5px;
+   position: absolute;
+   top: 185px;
+   width: 100%;
+   z-index: 1100;
+}
+
+.olmap-widget {
+   bottom: 0;
+   position: absolute;
+   top: 185px;
+   width: 100%;
+}

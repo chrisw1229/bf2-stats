@@ -6,3 +6,7 @@
 .game-content {
    display: none;
 }
+
+.replay-button {
+   margin-bottom: 10px;
+}
