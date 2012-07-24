@@ -88,6 +88,14 @@ class Timer(object):
 
         timer_mgr._update_timer(self)
 
+    def reset(self):
+        self.running = False
+        self.start_tick = None
+        self.last_tick = None
+        self.stop_tick = None
+
+        timer_mgr._update_timer(self)
+
     def _reset(self):
         self.running = False
         self.start_tick = None
