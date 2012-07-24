@@ -24,7 +24,7 @@ class Processor(AwardProcessor):
 
     def on_death(self, e):
         self.current[e.player] += 1
-        self.results[e.victim] = max(self.results[e.victim], self.current[e.victim])
+        self.results[e.player] = max(self.results[e.player], self.current[e.player])
 
     def on_kill(self, e):
 
