@@ -26,4 +26,4 @@ class Processor(AwardProcessor):
             return
 
         if e.vehicle.group == STATION:
-			self.results[e.attacker] += 1
+            self.results[e.attacker] += 1
