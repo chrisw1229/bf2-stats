@@ -23,14 +23,14 @@ class Processor(AwardProcessor):
         self.startPos = dict()
 
     def on_vehicle_enter(self, e):
-
         self.startPos[e.player] = e.player_pos[1]
 		
     def on_kill(self, e):
+        vehicle_type = e.vehicle.vehicle_type
 
+        if vehicle_type == HELICOPTER or vehicle_type == JET:
+            height = e.victim_pos[1] - self.startPos[e.victim]
 
-        type = e.vehicle.vehicle_type;
-        if type == HELICOPTER or type == JET:
-            height = e.victim_pos[1] - self.startPos[e.player]
-            if e.attacker is None and height > 100:''' need to playtest the height'''
+            if e.attacker is None and height > 100:
+                #need to playtest the height
                 self.results[e.victim] += 1
