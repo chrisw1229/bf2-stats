@@ -1,5 +1,4 @@
 from processors.awards import AwardProcessor,Column
-from collections import Counter
 
 class Processor(AwardProcessor):
     '''
