@@ -20,10 +20,10 @@ class Processor(AwardProcessor):
                 Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
 		
     def on_kill(self, e):
-
         # Ignore suicides and team kills
         if not e.valid_kill:
             return
 
         if e.vehicle.vehicle_type == HELICOPTER:
-			self.results[e.attacker] += 1
+            self.results[e.attacker] += 1
+                        
