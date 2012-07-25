@@ -25,6 +25,12 @@ class Processor(AwardProcessor):
         # Setup the results to store timers instead of numbers
         self.results = dict()
 
+    def on_disconnect(self, e):
+
+        # Reset the timer for the player
+        if e.player in self.results:
+            self.results[e.player].stop(e.tick)
+
     def on_vehicle_enter(self, e):
 
         # Create a timer for the player as needed
