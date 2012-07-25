@@ -1,4 +1,3 @@
-
 from processors.awards import AwardProcessor,Column
 
 class Processor(AwardProcessor):
@@ -20,7 +19,7 @@ class Processor(AwardProcessor):
 		
     def on_kill(self, e):
         # Ignore suicides
-        if not e.suicide:
+        if e.suicide:
             return
         
         if e.vehicle:
