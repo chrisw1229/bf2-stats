@@ -14,7 +14,7 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Crash Test Dummy', 'Most Deaths frm Vehicles', [
+        AwardProcessor.__init__(self, 'Crash Test Dummy', 'Most Deaths from Vehicles', [
                 Column('Players'), Column('Deaths', Column.NUMBER, Column.DESC)])
 		
     def on_kill(self, e):
