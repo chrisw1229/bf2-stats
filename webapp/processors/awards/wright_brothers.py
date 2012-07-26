@@ -20,6 +20,7 @@ class Processor(AwardProcessor):
     def on_vehicle_enter(self, e):
         if e.vehicle.group == AIR:
             enter_time = e.tick - self.spawn_times[e.player]
+
             air_timer = Timer()
             air_timer.elapsed = enter_time
 
