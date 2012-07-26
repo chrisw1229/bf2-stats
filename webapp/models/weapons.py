@@ -54,6 +54,11 @@ def _add(id, weapon_type, group, ammo, make, model, name, game_desc, real_desc):
     registry.add(Weapon(id, weapon_type, group, ammo, make, model, name,
             game_desc, real_desc))
 
+_add('aas_seasparrow', ROCKET, VEHICLE, EXPLOSIVE,
+'', '', '',
+'',
+'')
+
 _add('aav_tunguska_gun', CANNON, VEHICLE, PRECISION,
 '', '', '',
 '',
@@ -110,6 +115,11 @@ _add('ahe_z10_hj8launcher_tv', ROCKET, VEHICLE, EXPLOSIVE,
 '')
 
 _add('ahe_z10_s8launcher', ROCKET, VEHICLE, EXPLOSIVE,
+'', '', '',
+'',
+'')
+
+_add('air_f35b_sidewinderlauncher', ROCKET, VEHICLE, EXPLOSIVE,
 '', '', '',
 '',
 '')

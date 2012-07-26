@@ -11,6 +11,7 @@ GROUND_DEF = 'ground_defense'
 HELICOPTER = 'helicopter'
 JET = 'jet'
 PARACHUTE = 'parachute'
+SENSOR = 'sensor'
 TRANSPORT = 'transport'
 
 # Vehicle group constants
@@ -76,6 +77,11 @@ _add('ahe_z10', HELICOPTER, AIR, 'WZ-10',
 ['ahe_z10_s8launcher', 'ahe_z10_gun', 'ahe_z10_hj8launcher_tv'],
 'The WZ-10 is an attack helicopter developed by the People''s Republic of China. It is designed \
 primarily for anti-tank missions, but is also believed to have a secondary air-to-air capability.')
+
+_add('aircontroltower', SENSOR, STATION, 'Control Tower',
+[],
+[],
+'')
 
 _add('air_f35b', JET, AIR, 'F-35B',
 ['air_f35b_driver'],
@@ -234,6 +240,11 @@ _add('mec_bipod', GROUND_DEF, STATION, '?',
 ['mec_bipod_driver'],
 ['rulmg_rpk74_stationary'],
 '?')
+
+_add('mobileradar_us_dest', SENSOR, STATION, 'Mobile Radar',
+[],
+[],
+'')
 
 _add('parachute', PARACHUTE, AIR, 'Parachute',
 ['parachute_driver'],
