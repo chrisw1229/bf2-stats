@@ -24,8 +24,7 @@ class Processor(AwardProcessor):
             air_timer = Timer()
             air_timer.elapsed = enter_time
 
-            if self.results[e.player] != 0:
-                if air_timer.elapsed < self.results[e.player].elapsed:
-                    self.results[e.player] = air_timer
+            if e.player in self.results.keys():
+                self.results[e.player] = min(air_timer, self.results[e.player])
             else:
                 self.results[e.player] = air_timer
