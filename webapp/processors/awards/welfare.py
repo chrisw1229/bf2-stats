@@ -13,7 +13,7 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Welfare', 'Most Assisted Kills', [
-                Column('Players'), Column('Kills', Column.NUMBER, Column.ASC)])
+                Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
 
         self.last_kill = None
 
