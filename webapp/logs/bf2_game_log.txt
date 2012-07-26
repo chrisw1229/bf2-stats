@@ -2165,7 +2165,7 @@
 06522;KD;Jimini;-750.9,187.2,-216.1,-19.4;us_assault
 06522;VX;Jimini;-50.0,185.0,-285.0,-6.9;air_f35b;air_f35b_driver
 06522;DT;Jimini;-750.9,187.2,-216.1,-19.4
-06524;CH;team;Luda;HUD_CHAT_DEADPREFIXhowdy
+06524;CH;team;Luda;howdy
 06533;SP;NanoBennett;-773.5,185.4,-121.8,156.4;ch
 06533;WP;NanoBennett;-773.5,185.4,-121.8,156.4;chrif_type95
 06533;KP;NanoBennett;-773.5,185.4,-121.8,156.4;ch_specops
