@@ -128,6 +128,7 @@ class Timer(object):
         self.start_tick = None
         self.last_tick = None
         self.stop_tick = None
+        self.elapsed = 0
 
         timer_mgr._update_timer(self)
 
