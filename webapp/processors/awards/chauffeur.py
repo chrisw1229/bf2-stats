@@ -1,4 +1,4 @@
-﻿
+
 from processors.awards import AwardProcessor,Column
 from models.vehicles import LAND
 from timer import Timer
@@ -38,7 +38,7 @@ class Processor(AwardProcessor):
             self.results[e.player] = Timer()
 
         # Start the timer for land based vehicles
-        if e.vehicle.group == LAND:
+        if not e.player.passenger and e.vehicle.group == LAND:
             self.results[e.player].start(e.tick)
 
     def on_vehicle_exit(self, e):
