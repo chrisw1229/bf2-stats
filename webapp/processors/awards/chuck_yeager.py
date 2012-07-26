@@ -34,8 +34,9 @@ class Processor(AwardProcessor):
 
         # Start the timer for land based vehicles
         type = e.vehicle.vehicle_type;
-        if type == HELICOPTER or type == JET:
-            self.results[e.player].start(e.tick)
+        if not e.player.passenger:
+            if type == HELICOPTER or type == JET:
+                    self.results[e.player].start(e.tick)
 
     def on_vehicle_exit(self, e):
 
