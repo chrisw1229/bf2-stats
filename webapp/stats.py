@@ -97,6 +97,7 @@ class PlayerStats(BaseStats):
         self.kits = dict()
         self.maps = dict()
         self.play_time = Timer()
+        self.rank = 0
         self.repairs_total = 0
         self.revived_total = 0
         self.revives_total = 0

@@ -4,16 +4,23 @@ from models.vehicles import AIR
 class Processor(AwardProcessor):
     '''
     Overview
-    This award is given to players in order that they take to the air.
+    This award is given to the player who enters an air vehicle the fastest from spawn.
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Wright Brothers', 'Order players take to the air.', [
-                Column('Players'), Column('Air Vehicle Order', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Wright Brothers', 'Fastest to an Air Vehicle', [
+                Column('Players'), Column('Time to Air Vehicle (sec.)', Column.NUMBER, Column.ASC)])
 
-        self.flight_order = 1
+        self.spawn_times = dict()
+
+    def on_spawn(self, e):
+        self.spawn_times[e.player] = e.tick
 
     def on_vehicle_enter(self, e):
-        if e.vehicle.group == AIR and not e.player in self.results.keys():
-            self.results[e.player] = self.flight_order
-            self.flight_order += 1
+        if e.vehicle.group == AIR:
+            enter_time = e.tick - self.spawn_times[e.player]
+
+            if self.results[e.player] != 0:
+                self.results[e.player] = min(enter_time, self.results[e.player])
+            else:
+                self.results[e.player] = enter_time

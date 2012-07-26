@@ -8,7 +8,7 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Weapon Tester', 'Most Weapon Changes', [
-                Column('Players'), Column('Weapon Changes', Column.NUMBER, Column.ASC)])
+                Column('Players'), Column('Weapon Changes', Column.NUMBER, Column.DESC)])
 
     def on_weapon(self, e):
         self.results[e.player] += 1
