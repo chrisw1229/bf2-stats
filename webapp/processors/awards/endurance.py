@@ -16,8 +16,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Commander In Chief',
-                'Most Time As Commander', [
+        AwardProcessor.__init__(self, 'Endurance',
+                'Most Time Played', [
                 Column('Players'), Column('Time', Column.TIME, Column.DESC)])
 
     def on_spawn(self, e):
