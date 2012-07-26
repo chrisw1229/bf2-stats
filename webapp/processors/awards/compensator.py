@@ -33,7 +33,7 @@ class Processor(AwardProcessor):
 
         # Start the timer for land based vehicles
         type = e.vehicle.vehicle_type;
-        if type == ARMOR:
+        if not e.player.passenger and type == ARMOR:
             self.results[e.player].start(e.tick)
 
     def on_vehicle_exit(self, e):
