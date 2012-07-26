@@ -5,8 +5,8 @@ $.widget('ui.olmap', {
    // Configure the default widget options
    options: {
       baseUrl: undefined,
-      center: [2048, 2048],
-      maxSize: 4096,
+      center: [8192, 8192],
+      maxSize: 16384,
       maxTile: 256,
       maxZoom: 7,
       mapName: undefined,
