@@ -1,5 +1,6 @@
 from processors.awards import AwardProcessor,Column
 from models.vehicles import AIR
+from timer import Timer
 
 class Processor(AwardProcessor):
     '''
@@ -19,8 +20,11 @@ class Processor(AwardProcessor):
     def on_vehicle_enter(self, e):
         if e.vehicle.group == AIR:
             enter_time = e.tick - self.spawn_times[e.player]
+            air_timer = Timer()
+            air_timer.elapsed = enter_time
 
             if self.results[e.player] != 0:
-                self.results[e.player] = min(enter_time, self.results[e.player])
+                if air_timer.elapsed < self.results[e.player].elapsed:
+                    self.results[e.player] = air_timer
             else:
-                self.results[e.player] = enter_time
+                self.results[e.player] = air_timer
