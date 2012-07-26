@@ -32,12 +32,6 @@ class Processor(AwardProcessor):
         if e.player in self.timers:
             self.timers[e.player].reset()
 
-    def on_disconnect(self, e):
-
-        # Reset the timer for the player
-        if e.player in self.timers:
-            self.timers[e.player].reset()
-
     def on_kill(self, e):
 
         # Ignore team kills and suicides
@@ -46,8 +40,8 @@ class Processor(AwardProcessor):
 
         # Create timers for the attacker as needed
         if not e.attacker in self.results:
-            self.results[e.attacker] = Timer()
-            self.timers[e.attacker] = Timer()
+            self.results[e.attacker] = Timer(e.attacker)
+            self.timers[e.attacker] = Timer(e.attacker)
 
         # Check whether the attacker has killed previously for the current life
         if self.timers[e.attacker].running:

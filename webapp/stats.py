@@ -2,7 +2,7 @@
 import math
 import traceback
 
-from events import GameStatusEvent, ServerStatusEvent
+from events import DisconnectEvent, GameStatusEvent, ServerStatusEvent
 from processors import BaseProcessor
 from timer import Timer, timer_mgr
 
@@ -309,6 +309,10 @@ class StatManager(object):
             self.game = event.game
             self.reset_stats()
             timer_mgr.reset_timers()
+
+        # Stop any running timers associated with players that disconnect
+        if isinstance(event, DisconnectEvent):
+            timer_mgr.stop_player(event.player, event.tick)
 
         # Allow each processor to handle the event
         if event and event.CALLBACK:
