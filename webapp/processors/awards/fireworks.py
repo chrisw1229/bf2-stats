@@ -1,4 +1,5 @@
 from processors.awards import AwardProcessor,Column
+from models.weapons import EXPLOSIVE
 
 class Processor(AwardProcessor):
     '''

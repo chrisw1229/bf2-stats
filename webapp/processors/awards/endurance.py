@@ -1,6 +1,6 @@
-
 from processors.awards import AwardProcessor,Column
 from timer import Timer
+from stats import stat_mgr
 
 class Processor(AwardProcessor):
     '''
