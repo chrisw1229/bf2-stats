@@ -1,5 +1,6 @@
 
 from processors.awards import AwardProcessor,Column
+from models import model_mgr
 from models.vehicles import STATION
 
 class Processor(AwardProcessor):
@@ -25,5 +26,6 @@ class Processor(AwardProcessor):
         if not e.valid_kill:
             return
 
-        if e.vehicle.group == STATION:
+        victim_vehicle = model_mgr.get_vehicle(e.victim.vehicle_id)
+        if victim_vehicle.group == STATION:
             self.results[e.attacker] += 1

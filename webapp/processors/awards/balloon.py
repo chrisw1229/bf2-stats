@@ -27,16 +27,28 @@ class Processor(AwardProcessor):
         # Store temporary timers for each player
         self.timers = dict()
 
+    def on_disconnect(self, e):
+
+        # Same as exit event but make sure the timer exists
+        if e.player in self.timers:
+            self.timers[e.player].stop(e.tick)
+
+            # Swap timers if the time difference is the new maximum
+            if self.timers[e.player].elapsed > self.results[e.player].elapsed:
+                temp_timer = self.results[e.player]
+                self.results[e.player] = self.timers[e.player]
+                self.timers[e.player] = temp_timer
+
     def on_vehicle_enter(self, e):
 
-        type = e.vehicle.vehicle_type;
-        if not type == PARACHUTE:
+        vehicle_type = e.vehicle.vehicle_type;
+        if not vehicle_type == PARACHUTE:
             return;
-        
+
         # Create a timer for the player as needed
         if not e.player in self.results:
-            self.results[e.player] = Timer()
-            self.timers[e.player] = Timer()
+            self.results[e.player] = Timer(e.player)
+            self.timers[e.player] = Timer(e.player)
 
         # Start the timer
         self.timers[e.player].reset()
@@ -55,14 +67,3 @@ class Processor(AwardProcessor):
             temp_timer = self.results[e.player]
             self.results[e.player] = self.timers[e.player]
             self.timers[e.player] = temp_timer
-
-    def on_disconnect(self, e):
-
-        # same as exit event but make sure the timer exists
-        if e.player in self.timers:
-            self.timers[e.player].stop(e.tick)
-            # Swap timers if the time difference is the new maximum
-            if self.timers[e.player].elapsed > self.results[e.player].elapsed:
-                temp_timer = self.results[e.player]
-                self.results[e.player] = self.timers[e.player]
-                self.timers[e.player] = temp_timer

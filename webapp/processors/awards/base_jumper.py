@@ -16,8 +16,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Base Jumper', 'Most Parachute Flights', [
-                Column('Players'), Column('Drops', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Base Jumper', 'Most Parachute Jumps', [
+                Column('Players'), Column('Jumps', Column.NUMBER, Column.DESC)])
 
     def on_vehicle_enter(self, e):
 

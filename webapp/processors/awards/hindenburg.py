@@ -16,13 +16,12 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Hindenburg', 'Most Suicides as Vehicle Passenger', [
-                Column('Players'), Column('Deaths', Column.NUMBER, Column.DESC)])
-		
+                Column('Players'), Column('Suicides', Column.NUMBER, Column.DESC)])
+
     def on_kill(self, e):
         # only suicides
         if not e.suicide:
             return
-        
-        if e.vehicle and e.victim.passenger and e.weapon.ammo == EXPLOSIVE:
+
+        if e.victim.passenger and e.weapon.ammo == EXPLOSIVE:
             self.results[e.victim] += 1
-                        

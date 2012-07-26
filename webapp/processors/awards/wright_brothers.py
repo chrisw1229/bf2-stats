@@ -10,7 +10,7 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Wright Brothers', 'Fastest to an Air Vehicle', [
-                Column('Players'), Column('Time to Air Vehicle (sec.)', Column.NUMBER, Column.ASC)])
+                Column('Players'), Column('Time', Column.NUMBER, Column.ASC)])
 
         self.spawn_times = dict()
 
@@ -23,8 +23,10 @@ class Processor(AwardProcessor):
 
             air_timer = Timer()
             air_timer.elapsed = enter_time
+            if enter_time == 0:
+                print e.tick
 
-            if e.player in self.results.keys():
+            if e.player in self.results:
                 self.results[e.player] = min(air_timer, self.results[e.player])
             else:
                 self.results[e.player] = air_timer

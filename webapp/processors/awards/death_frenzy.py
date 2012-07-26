@@ -1,5 +1,6 @@
+
 from processors.awards import AwardProcessor,Column
-from collections import Counter
+from stats import stat_mgr
 
 class Processor(AwardProcessor):
     '''
@@ -8,30 +9,18 @@ class Processor(AwardProcessor):
     without a kill.
 
     Implementation
-    The basic idea is to keep track of the current death streak and check whether
-    it is a new personal best for the player.
+    Just use the maximum death streak that is included in the core player stats.
 
     Notes
-    
+    None.
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Death Frenzy', 'Most Deaths in a row', [
+        AwardProcessor.__init__(self, 'Death Frenzy', 'Max Death Streak', [
                 Column('Players'), Column('Deaths', Column.NUMBER, Column.DESC)])
 
-        # Keep track of the current kill streak
-        self.current = Counter()
-
     def on_death(self, e):
-        self.current[e.player] += 1
-        self.results[e.player] = max(self.results[e.player], self.current[e.player])
 
-    def on_kill(self, e):
-
-        # Ignore suicides
-        if e.suicide:
-            self.current[e.victim] -= 1
-            return
-        
-        #reset for attacker
-        self.current[e.attacker] = 0
+        # Get the current maximum death streak from the core stats
+        player_stats = stat_mgr.get_player_stats(e.player)
+        self.results[e.player] = player_stats.deaths_streak_max

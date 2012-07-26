@@ -9,7 +9,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Vengeance', 'Most Kills of Person Who Most Recently Killed You', [
+        AwardProcessor.__init__(self, 'Vengeance',
+                'Most Kills Against Your Last Attacker', [
                 Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
 
         self.last_killer = dict()
@@ -22,6 +23,6 @@ class Processor(AwardProcessor):
 
         self.last_killer[e.victim] = e.attacker
 
-        if e.attacker in self.last_killer.keys() and e.victim == self.last_killer[e.attacker]:
+        if e.attacker in self.last_killer and e.victim == self.last_killer[e.attacker]:
             self.results[e.attacker] += 1
 

@@ -1,5 +1,6 @@
 
 from processors.awards import AwardProcessor,Column
+from models import model_mgr
 from models.vehicles import HELICOPTER
 
 class Processor(AwardProcessor):
@@ -18,12 +19,13 @@ class Processor(AwardProcessor):
     def __init__(self):
         AwardProcessor.__init__(self, 'Airwolf', 'Most Kills from Helicopters', [
                 Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
-		
+
     def on_kill(self, e):
+
         # Ignore suicides and team kills
         if not e.valid_kill:
             return
 
-        if e.vehicle.vehicle_type == HELICOPTER:
+        attacker_vehicle = model_mgr.get_vehicle(e.attacker.vehicle_id)
+        if attacker_vehicle.vehicle_type == HELICOPTER:
             self.results[e.attacker] += 1
-                        

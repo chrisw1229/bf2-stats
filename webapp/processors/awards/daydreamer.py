@@ -32,6 +32,18 @@ class Processor(AwardProcessor):
         if e.player in self.timers:
             self.timers[e.player].reset()
 
+    def on_disconnect(self, e):
+
+        # Same as exit event but make sure the timer exists
+        if e.player in self.timers:
+            self.timers[e.player].stop(e.tick)
+
+            # Swap timers if the time difference is the new maximum
+            if self.timers[e.player].elapsed > self.results[e.player].elapsed:
+                temp_timer = self.results[e.player]
+                self.results[e.player] = self.timers[e.player]
+                self.timers[e.player] = temp_timer
+
     def on_kill(self, e):
 
         # Ignore team kills and suicides

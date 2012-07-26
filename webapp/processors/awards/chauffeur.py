@@ -32,7 +32,7 @@ class Processor(AwardProcessor):
             self.results[e.player] = Timer(e.player)
 
         # Start the timer for land based vehicles
-        if not e.player.passenger and e.vehicle.group == LAND:
+        if e.player.driver and e.vehicle.group == LAND:
             self.results[e.player].start(e.tick)
 
     def on_vehicle_exit(self, e):

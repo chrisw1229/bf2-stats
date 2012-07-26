@@ -1,4 +1,7 @@
+
 from processors.awards import AwardProcessor,Column
+
+from models import vehicles
 
 class Processor(AwardProcessor):
     '''
@@ -18,10 +21,11 @@ class Processor(AwardProcessor):
                 Column('Players'), Column('Deaths', Column.NUMBER, Column.DESC)])
 		
     def on_kill(self, e):
+
         # Ignore suicides
         if e.suicide:
             return
-        
-        if e.vehicle:
+
+        # Check whether the attacker was using a vehicle
+        if e.vehicle != vehicles.EMPTY:
             self.results[e.victim] += 1
-                        

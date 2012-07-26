@@ -3,7 +3,7 @@ from processors.awards import AwardProcessor,Column
 class Processor(AwardProcessor):
     '''
     Overview
-    This processor keeps track of the most typed messages
+    This processor keeps track of the most characters typed in chat channels.
 
     Implementation
 	Whenever a chat event is received the text is cached if it's over
@@ -14,17 +14,16 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Chatty Cathy', 'Most Typed Messages', [
+        AwardProcessor.__init__(self, 'Chatty Cathy', 'Most Text Typed', [
                 Column('Players'), Column('Text', Column.NUMBER, Column.DESC)])
 
-	self.previous = ""
+	self.previous = ''
 	
     def on_chat(self, e):
-        if "server" in e.channel:
+        if 'server' in e.channel:
             return
         if len(e.text) < 2 or e.text == self.previous:
             return
 
         self.previous = e.text
         self.results[e.player] += len(e.text)
-                        

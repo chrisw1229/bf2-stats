@@ -8,7 +8,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Underdog', 'Most Kills Against Higher Ranks', [
+        AwardProcessor.__init__(self, 'Underdog',
+                'Most Kills Against Higher Ranked Players', [
                 Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
 
     def on_kill(self, e):

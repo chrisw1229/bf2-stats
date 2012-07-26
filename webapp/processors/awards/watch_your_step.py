@@ -9,7 +9,7 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Watch Your Step', 'Most Deaths by Mines', [
-                Column('Players'), Column('Most Deaths by Mines', Column.NUMBER, Column.ASC)])
+                Column('Players'), Column('Deaths', Column.NUMBER, Column.DESC)])
 
     def on_kill(self, e):
         if e.weapon.weapon_type == MINE:

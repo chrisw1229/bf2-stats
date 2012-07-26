@@ -1,7 +1,9 @@
 
 from processors.awards import AwardProcessor,Column
+from models import players
 from models.vehicles import HELICOPTER
 from models.vehicles import JET
+from models import model_mgr
 
 class Processor(AwardProcessor):
     '''
@@ -10,27 +12,33 @@ class Processor(AwardProcessor):
 
     Implementation
 	Whenever a kill event is received involving a helicopter/jet, the attacker
-        is null, and the victim is above the ground the event is cached
+    is null, and the victim is above the ground the event is cached. The
+    threshold after some play testing is 100ft. or about 30m.
 
     Notes
 	None.
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Blindspot', 'Most Aircraft Deaths from Buildings', [
-                Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Blindspot',
+                'Most Aircraft Deaths from Buildings', [
+                Column('Players'), Column('Deaths', Column.NUMBER, Column.DESC)])
 
         self.startPos = dict()
 
     def on_vehicle_enter(self, e):
         self.startPos[e.player] = e.player_pos[1]
-		
-    def on_kill(self, e):
-        vehicle_type = e.vehicle.vehicle_type
 
-        if vehicle_type == HELICOPTER or vehicle_type == JET:
+    def on_kill(self, e):
+
+        # Check whether the victim vehicle was an aircraft
+        victim_vehicle = model_mgr.get_vehicle(e.victim.vehicle_id)
+        if (victim_vehicle.vehicle_type == HELICOPTER
+                or victim_vehicle.vehicle_type == JET):
+
+            # Compute the height difference of the victim
             height = e.victim_pos[1] - self.startPos[e.victim]
 
-            if e.attacker is None and height > 100:
-                #need to playtest the height
+            # Check whether the victim died to nobody at a sufficient height
+            if e.attacker == players.EMPTY and height > 30:
                 self.results[e.victim] += 1

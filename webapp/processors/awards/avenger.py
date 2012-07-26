@@ -22,7 +22,7 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Avenger', 'Most Kills Against Players that killed a Teammate', [
+        AwardProcessor.__init__(self, 'Avenger', 'Most Kills Against Players that Killed a Teammate', [
                 Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
         
         self.last_kill = dict()

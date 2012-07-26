@@ -1,5 +1,6 @@
 
 from processors.awards import AwardProcessor,Column
+from models import model_mgr
 from models.kits import MEDIC
 
 class Processor(AwardProcessor):
@@ -18,12 +19,13 @@ class Processor(AwardProcessor):
     def __init__(self):
         AwardProcessor.__init__(self, 'Dr. Kevorkian', 'Most Kills as Medic', [
                 Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
-		
+
     def on_kill(self, e):
 
         # Ignore suicides and team kills
         if not e.valid_kill:
             return
 
-        if e.attacker.kit_id == MEDIC:
+        attacker_kit = model_mgr.get_kit(e.attacker.kit_id)
+        if attacker_kit.kit_type == MEDIC:
             self.results[e.attacker] += 1
