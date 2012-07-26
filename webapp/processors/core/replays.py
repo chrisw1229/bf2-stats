@@ -105,7 +105,7 @@ class Processor(BaseProcessor):
         return packet
 
     def _convert_x(self, x):
-        return x
+        return 8 * x + 8191
 
     def _convert_y(self, y):
-        return y
+        return 8 * y + 8191
