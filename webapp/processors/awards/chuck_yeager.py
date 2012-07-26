@@ -30,7 +30,7 @@ class Processor(AwardProcessor):
 
         # Create a timer for the player as needed
         if not e.player in self.results:
-            self.results[e.player] = Timer()
+            self.results[e.player] = Timer(e.player)
 
         # Start the timer for aircraft vehicles
         vehicle_type = e.vehicle.vehicle_type;
