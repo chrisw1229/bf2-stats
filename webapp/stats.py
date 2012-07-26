@@ -310,10 +310,6 @@ class StatManager(object):
             self.reset_stats()
             timer_mgr.reset_timers()
 
-        # Stop any running timers associated with players that disconnect
-        if isinstance(event, DisconnectEvent):
-            timer_mgr.stop_player(event.player, event.tick)
-
         # Allow each processor to handle the event
         if event and event.CALLBACK:
             for processor in self.processors:
@@ -326,6 +322,10 @@ class StatManager(object):
 
         # Update the elapsed time for all enabled timers
         timer_mgr.apply_tick(event.tick)
+
+        # Stop any running timers associated with players that disconnect
+        if isinstance(event, DisconnectEvent):
+            timer_mgr.stop_player(event.player, event.tick)
 
         # Reset timers when a game ends
         if isinstance(event, GameStatusEvent) and event.game.ending:
