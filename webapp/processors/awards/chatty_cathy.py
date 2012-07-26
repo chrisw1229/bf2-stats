@@ -20,6 +20,8 @@ class Processor(AwardProcessor):
 	self.previous = ""
 	
     def on_chat(self, e):
+        if "server" in e.channel:
+            return
         if len(e.text) < 2 or e.text == self.previous:
             return
 
