@@ -160,7 +160,7 @@ def on_chat(player_index, text, channel_id, flags):
             text = text[len('HUD_TEXT_CHAT_TEAM'):]
         elif text.startswith('HUD_TEXT_CHAT_SQUAD'):
             text = text[len('HUD_TEXT_CHAT_SQUAD'):]
-        elif text.startswith('HUD_CHAT_DEADPREFIX'):
+        if text.startswith('HUD_CHAT_DEADPREFIX'):
             text = text[len('HUD_CHAT_DEADPREFIX'):]
 
         # Format the channel name
