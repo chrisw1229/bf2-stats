@@ -1,6 +1,5 @@
 
 from processors.awards import AwardProcessor,Column
-from models.vehicles import PARACHUTE
 
 class Processor(AwardProcessor):
     '''
