@@ -19,7 +19,7 @@ class Processor(AwardProcessor):
     def __init__(self):
         AwardProcessor.__init__(self, 'Herb Sobel',
                 'Most Soldier Deaths as Squad Leader', [
-                Column('Players'), Column('Deaths', Column.TIME, Column.DESC)])
+                Column('Players'), Column('Deaths', Column.NUMBER, Column.DESC)])
 
 
     def on_death(self, e):
