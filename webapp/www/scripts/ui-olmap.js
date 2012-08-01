@@ -21,6 +21,9 @@ $.widget('ui.olmap', {
  
       // Create the map controls
       var keyCtrl = new OpenLayers.Control.KeyboardDefaults();
+      var layerCtrl = new OpenLayers.Control.LayerSwitcher({
+         'ascending': false
+      });
       var navCtrl = new OpenLayers.Control.Navigation({
          dragPanOptions: { enableKinetic: true }
       });
@@ -30,8 +33,9 @@ $.widget('ui.olmap', {
       var zoomCtrl = new OpenLayers.Control.ZoomPanel();
 
       // Create the actual map component
+      OpenLayers.ImgPath = '../images/';
       var mapOpts = {
-         controls: [keyCtrl, navCtrl, panCtrl, zoomCtrl],
+         controls: [keyCtrl, layerCtrl, navCtrl, panCtrl, zoomCtrl],
          theme: null
       };
       this.olmap = new OpenLayers.Map(this.mapElm[0], mapOpts);
@@ -39,18 +43,28 @@ $.widget('ui.olmap', {
       // Create the map layers
       this.tileLayer = this._updateTileLayer();
       this.overlays = {};
-      this._addLineLayer('target', 'Targetting lines');
-      this._addPointLayer('victim', 'Victims');
-      this._addPointLayer('attacker', 'Attackers');
-      this._addPointLayer('vehicle', 'Vehicles');
-      this._addPointLayer('flag', 'Flags');
+      this._addPointLayer('control-point', 'Flags', 20,
+            function(m) { return 'control-point-'
+                  + (m.attributes.team ? m.attributes.team : 'none'); });
+      this._addPointLayer('vehicle', 'Vehicles', 12);
+      this._addLineLayer('target', 'Target lines');
+      this._addPointLayer('victim', 'Victims', 8);
+      this._addPointLayer('attacker', 'Attackers', 8);
 
-      // Set control tool tips
+      // Apply fixes to the layer control
+      var layerElm = $('.olControlLayerSwitcher', this.mapElm);
+      $('.layersDiv', layerElm).addClass('ui-widget-content ui-corner-all');
+      $('.maximizeDiv', layerElm).attr('title', 'Layers');
+      $('.dataLbl', layerElm).html('Layers');
+
+      // Apply fixes to the pan control
       var panElm = $('.olControlPanPanel', this.mapElm); 
       $('.olControlPanNorthItemActive', panElm).attr('title', 'Pan up');
       $('.olControlPanSouthItemActive', panElm).attr('title', 'Pan down');
       $('.olControlPanEastItemActive', panElm).attr('title', 'Pan right');
       $('.olControlPanWestItemActive', panElm).attr('title', 'Pan left');
+
+      // Apply fixes to the zoom control
       var zoomElm = $('.olControlZoomPanel', this.mapElm);
       $('.olControlZoomInItemActive', zoomElm).attr('title', 'Zoom in');
       $('.olControlZoomToMaxExtentItemActive', zoomElm).attr('title', 'Zoom to fit');
@@ -74,35 +88,41 @@ $.widget('ui.olmap', {
       }
    },
 
-   addMarker: function(model) {
-      if (model.type == 'KL') {
-         this.addKill(model);
-      } else if (model.type == 'VD') {
-         this.addVehicle(model);
+   // Adds the given control point marker to the map
+   addControlPoint: function(controlPoint) {
+      this._addPoint('control-point', controlPoint);
+   },
+
+   // Adds the given victim and attacker markers to the map
+   addKill: function(kill, victim, attacker) {
+      this._addPoint('victim', victim);
+      if (attacker) {
+         this._addPoint('attacker', attacker);
+         this._addLine('target', kill);
+      }
+   },
+
+   addPackets: function(packets) {
+      if (packets == undefined) {
+         return;
+      }
+      packets = $.isArray(packets) ? packets : [packets];
+
+      for (var i = 0; i < packets.length; i++) {
+         var packet = packets[i];
+         if (packet.type == 'KL') {
+            this.addKill(packet, packet.victim, packet.attacker);
+         } else if (packet.type == 'VD') {
+            this.addVehicle(packet.vehicle);
+         } else if (packet.type == 'CP') {
+            this.addControlPoint(packet.control_point);
+         }
       }
    },
 
    // Adds the given victim marker to the map
-   addKill: function(model) {
-      this._addPoint('victim', model.victim);
-      if (model.attacker) {
-         this._addPoint('attacker', model.attacker);
-         this._addLine('target', model);
-      }
-   },
-
-   // Removes the given victim marker from the map
-   removeKill: function(model) {
-      this._removeFeature('victim', model.victim);
-      if (model.attacker) {
-         this._removeFeature('attacker', model.attacker);
-         this._removeFeature('target', model);
-      }
-   },
-
-   // Adds the given victim marker to the map
-   addVehicle: function(model) {
-      this._addPoint('vehicle', model.vehicle);
+   addVehicle: function(vehicle) {
+      this._addPoint('vehicle', vehicle);
    },
 
    // Removes all the map markers
@@ -111,6 +131,50 @@ $.widget('ui.olmap', {
          var overlay = this.overlays[type];
          overlay.layer.removeAllFeatures();
          overlay.models = {};
+      }
+   },
+
+   // Removes all the control point markers
+   clearControlPoints: function() {
+      var overlay = this.overlays['control-point'];
+      overlay.layer.removeAllFeatures();
+      overlay.models = {};
+   },
+
+   // Removes the given control point marker from the map
+   removeControlPoint: function(controlPoint) {
+      this._removeFeature('control-point', controlPoint);
+   },
+
+   // Removes the given victim and attacker markers from the map
+   removeKill: function(kill, victim, attacker) {
+      this._removeFeature('victim', victim);
+      if (attacker) {
+         this._removeFeature('attacker', attacker);
+         this._removeFeature('target', kill);
+      }
+   },
+
+   // Removes the given vehicle marker from the map
+   removeVehicle: function(vehicle) {
+      this._removeFeature('vehicle', vehicle);
+   },
+
+   removePackets: function(packets) {
+      if (packets == undefined) {
+         return;
+      }
+      packets = $.isArray(packets) ? packets : [packets];
+
+      for (var i = 0; i < packets.length; i++) {
+         var packet = packets[i];
+         if (packet.type == 'KL') {
+            this.removeKill(packet, packet.victim, packet.attacker);
+         } else if (packet.type == 'VD') {
+            this.removeVehicle(packet.vehicle);
+         } else if (packet.type == 'CP') {
+            this.removeControlPoint(packet.control_point);
+         }
       }
    },
 
@@ -158,6 +222,7 @@ $.widget('ui.olmap', {
 
       // Configure the tile layer
       var layerOpts = {
+      displayInLayerSwitcher: false,
          maxExtent: new OpenLayers.Bounds(0, 0, this.options.maxSize, this.options.maxSize),
          maxResolution: (this.options.maxSize / this.options.maxTile),
          numZoomLevels: this.options.maxZoom,
@@ -188,17 +253,21 @@ $.widget('ui.olmap', {
       }, {
          context: {
             color: function(m) {
-               var team = m.attributes.kteam;
-               if (team == 'g') {
-                  return '#FFB709';
-               } else if (team == 'a' || team == 'r' || team == 'b') {
-                  return '#64C461';
+               var team = m.attributes.attacker.team;
+               if (team == 'us') {
+                  return '#44D5FF';
+               } else if (team == 'ch') {
+                  return '#FFB7B4';
+               } else if (team == 'mec') {
+                  return '#FFD191';
+               } else if (team == 'eu') {
+                  return '#819DFF';
                }
-               return '#ABABAB';
+               return '#C8C8C8';
             },
 
             width: function(m) {
-               return self.olmap.getZoom() + 1;
+               return self.olmap.getZoom() < 3 ? 1 : 2;
             }
          }
       });
@@ -211,7 +280,7 @@ $.widget('ui.olmap', {
       }
 
       // Add the target layer to the map
-      var layer = new OpenLayers.Layer.Vector('Kill lines', layerOpts);
+      var layer = new OpenLayers.Layer.Vector(name, layerOpts);
       this.olmap.addLayer(layer);
 
       var overlay = {
@@ -222,20 +291,27 @@ $.widget('ui.olmap', {
    },
 
    // Creates a layer that displays marker graphics
-   _addPointLayer: function(type, name) {
+   _addPointLayer: function(layerType, name, baseSize, typeFunc) {
+      if (typeFunc == undefined) {
+         typeFunc = function(m) { return layerType; };
+      }
 
       // Configure the style for the layer
       var self = this;
       var styleOpts = new OpenLayers.Style({ cursor: 'pointer',
-         externalGraphic: 'images/markers/' + type + '${size}.png',
+         externalGraphic: 'images/markers/${zoom}/${type}.png',
          graphicWidth: '${size}', graphicHeight: '${size}'
       }, {
          context: {
-            size: function(m) {
 
-               // Use the current zoom level to select an image size otherwise
-               var zoom = self.olmap.getZoom();
-               return 8;
+            size: function(m) {
+               return baseSize + (2 * self.olmap.getZoom());
+            },
+
+            type: typeFunc,
+
+            zoom: function(m) {
+               return self.olmap.getZoom();
             }
          }
       });
@@ -255,7 +331,7 @@ $.widget('ui.olmap', {
          layer: layer,
          models: {}
       };
-      this.overlays[type] = overlay;
+      this.overlays[layerType] = overlay;
    },
 
    _addPoint: function(type, model) {
@@ -265,11 +341,7 @@ $.widget('ui.olmap', {
       var feature = new OpenLayers.Feature.Vector(point, model);
 
       // Add the feature to the associated layer
-      var overlay = this.overlays[type];
-      if (overlay) {
-         overlay.layer.addFeatures(feature);
-         overlay.models[model] = feature;
-      }
+      this._addFeature(type, model, feature);
    },
 
    _addLine: function(type, model) {
@@ -281,20 +353,42 @@ $.widget('ui.olmap', {
       var feature = new OpenLayers.Feature.Vector(line, model);
 
       // Add the feature to the associated layer
+      this._addFeature(type, model, feature);
+   },
+
+   _addFeature: function(type, model, feature) {
+
+      // Attempt to get the overlay for the feature type
       var overlay = this.overlays[type];
       if (overlay) {
+
+         // Add the feature to the layer
          overlay.layer.addFeatures(feature);
-         overlay.models[model] = feature;
+
+         // Map the model to the feature using a unique hash code
+         if (model.__hash__ == undefined) {
+            this._hasher = this._hasher ? this._hasher : 0;
+            model.__hash__ = ++this._hasher;
+         }
+         overlay.models[model.__hash__] = feature;
       }
    },
 
    _removeFeature: function(type, model) {
+
+      // Attempt to get the overlay for the feature type
       var overlay = this.overlays[type];
       if (overlay) {
-         var feature = overlay.models[model];
-         if (feature) {
-            overlay.layer.removeFeatures(feature);
-            delete overlay.models[model];
+
+         // Get the feature associated with the given model
+         if (model && model.__hash__) {
+            var feature = overlay.models[model.__hash__];
+            if (feature) {
+
+               // Delete the feature from the layer
+               overlay.layer.removeFeatures(feature);
+               delete overlay.models[model.__hash__];
+            }
          }
       }
    }

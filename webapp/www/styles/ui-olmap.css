@@ -75,3 +75,42 @@
    left: 0px;
    top: 42px;
 }
+
+.olControlLayerSwitcher {
+   cursor: default;
+   right: 1px;
+   top: 10px;
+}
+
+.olControlLayerSwitcher .layersDiv {
+   padding: 5px 10px 10px 10px;
+}
+
+.olControlLayerSwitcher .maximizeDiv {
+   cursor: pointer;
+   height: 20px;
+   right: 0;
+   top: 0;
+   width: 22px;
+}
+
+.olControlLayerSwitcher .minimizeDiv {
+   cursor: pointer;
+   height: 18px;
+   right: 5px;
+   top: 5px;
+   width: 18px;
+}
+
+.olControlLayerSwitcher .dataLbl {
+   font-weight: bold;
+   margin-bottom: 5px;
+}
+
+.olControlLayerSwitcher input {
+   margin-left: 0;
+   margin-right: 5px;
+   margin-top: 5px;
+   position: relative;
+   top: 1px;
+}

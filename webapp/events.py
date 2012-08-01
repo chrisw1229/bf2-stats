@@ -477,7 +477,7 @@ class ConnectEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 2)
 
-        # Pre-process - Make sure the player model exists in the model manager
+        # Pre-process - Make sure the player model exists in the manager
         self.player = model_mgr.add_player(values[0], values[1])
 
         event_mgr.get_history(self.player).add_event(self)
@@ -492,9 +492,12 @@ class ControlPointEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 4)
 
-        self.control_point = values[0]
-        self.control_point_pos = event_mgr.parse_pos(values[1])
-        self.flag_state = values[2]
+        # Pre-process - Make sure the control point model exists in the manager
+        self.control_point = model_mgr.add_control_point(
+                model_mgr.get_game().map_id + values[1],
+                event_mgr.parse_pos(values[1]))
+        self.trigger_id = values[0]
+        self.status = values[2]
         self.team = model_mgr.get_team(values[3])
 
         event_mgr.get_history(self.team).add_event(self)
@@ -522,7 +525,7 @@ class DisconnectEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 2)
 
-        # Pre-process - Make sure the player model exists in the model manager
+        # Pre-process - Make sure the player model exists in the manager
         self.player = model_mgr.remove_player(values[0], values[1])
 
         event_mgr.get_history(self.player).add_event(self)
@@ -537,7 +540,7 @@ class GameStatusEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 4)
 
-        # Pre-process - Make sure the game model exists in the model manager
+        # Pre-process - Make sure the game model exists in the manager
         self.game = model_mgr.set_game_status(values[0], values[1], int(values[2]), int(values[3]))
 
         event_mgr.get_history(self.game).add_event(self)
@@ -728,7 +731,7 @@ class SquadEvent(BaseEvent):
 
         self.player = model_mgr.get_player_by_name(values[0])
 
-        # Pre-process - Make sure the squad model exists in the model manager
+        # Pre-process - Make sure the squad model exists in the manager
         self.squad = model_mgr.add_squad(values[1])
 
         event_mgr.get_history(self.player).add_event(self)
@@ -742,7 +745,7 @@ class SquadLeaderEvent(BaseEvent):
     def __init__(self, tick, values):
         BaseEvent.__init__(self, tick, values, 2)
 
-        # Pre-process - Make sure the squad model exists in the model manager
+        # Pre-process - Make sure the squad model exists in the manager
         self.squad = model_mgr.add_squad(values[0])
         self.player = model_mgr.get_player_by_name(values[1])
 

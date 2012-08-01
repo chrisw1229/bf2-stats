@@ -46,6 +46,13 @@ class Processor(BaseProcessor):
         e.player.connected = True
         e.player.bot = (e.player.address == None)
 
+    def on_control_point(self, e):
+
+        # Update the state of the control point
+        e.control_point.status = e.status
+        e.control_point.team_id = e.team.id
+        e.control_point.trigger_id = e.trigger_id
+
     def on_death(self, e):
 
         # Update the state of the player

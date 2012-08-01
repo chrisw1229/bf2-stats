@@ -42,6 +42,21 @@ class Processor(BaseProcessor):
         if id in self.games:
             return self.games[id]
 
+    def on_control_point(self, e):
+
+        # Create a packet to store the event info
+        packet = self._add_packet(e)
+
+        # Extract information about the flag
+        control_point_packet = {
+            'id': e.control_point.id,
+            'state': e.control_point.status,
+            'team': e.control_point.team_id,
+            'x': self._convert_x(e.control_point.pos[0]),
+            'y': self._convert_y(e.control_point.pos[2])
+        }
+        packet['control_point'] = control_point_packet
+
     def on_game_status(self, e):
 
         # Create a status model when a new game starts
@@ -91,6 +106,7 @@ class Processor(BaseProcessor):
         vehicle_packet = {
             'id': e.vehicle.id,
             'name': e.vehicle.name,
+            'team': 'na',
             'x': self._convert_x(e.vehicle_pos[0]),
             'y': self._convert_y(e.vehicle_pos[2])
         }

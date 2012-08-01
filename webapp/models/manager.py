@@ -1,4 +1,5 @@
 ﻿
+import control_points
 import games
 import kits
 import maps
@@ -11,10 +12,9 @@ import weapons
 class ModelManager(object):
 
     def __init__(self):
-        self.players = set()
-        self.id_to_player = dict()
-        self.name_to_player = dict()
-        self.addr_to_player = dict()
+        self.control_points = set()
+        self.id_to_control_point = dict()
+        self.addr_to_control_point = dict()
 
         self.games = list()
         self.id_to_game = dict()
@@ -25,6 +25,11 @@ class ModelManager(object):
 
         self.maps = set()
         self.id_to_map = dict()
+
+        self.players = set()
+        self.id_to_player = dict()
+        self.name_to_player = dict()
+        self.addr_to_player = dict()
 
         self.squads = set()
         self.id_to_squad = dict()
@@ -104,6 +109,33 @@ class ModelManager(object):
 
         print 'MODEL MANAGER - STOPPED'
 
+    def add_control_point(self, address, pos):
+        '''
+        Adds or updates the control point model registered for the given address
+        and position.
+
+        Args:
+           address (string): The map address of the control point.
+           pos (Array): The position array of the control point.
+
+        Returns:
+            control_point (ControlPoint): Returns the registered control point
+                    model.
+        '''
+
+        # Handle requests for missing control points
+        if not address:
+            return control_points.EMPTY
+
+        # Get a model for the control_point
+        if not address in self.addr_to_control_point:
+            control_point = control_points.ControlPoint(address, pos)
+            self.addr_to_control_point[address] = control_point
+            self.id_to_control_point[control_point.id] = control_point
+            self.control_points.add(control_point)
+
+        return self.addr_to_control_point[address]
+
     def add_player(self, address, name):
         '''
         Adds or updates the player model registered for the given unique composite key.
@@ -145,6 +177,29 @@ class ModelManager(object):
             self.squads.add(squad)
 
         return self.id_to_squad[id]
+
+    def get_control_point(self, id):
+        '''
+        Looks up the control point object associated with the given id.
+
+        Args:
+           id (string): The id of the control point to get.
+
+        Returns:
+            control_point (ControlPoint): Returns a registered control point
+                    model.
+        '''
+
+        # Handle requests for missing control points
+        if not id:
+            return control_points.EMPTY
+
+        # Get a model for the control point
+        if id in self.id_to_control_point:
+            return self.id_to_control_point[id]
+
+        print 'ERROR - Missing control point reference:', id
+        return None
 
     def get_game(self, id=None):
         '''

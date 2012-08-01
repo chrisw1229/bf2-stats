@@ -14,6 +14,9 @@ var mapElm = $('.olmap-widget');
 // Register the page manager as a jQuery extension
 $.extend({ mgr: {
 
+   FRAME_RATE: 50,
+   MARKER_TIME: 5000,
+
    onHistory: function(e) {
 
       // Get the kit identifier if available
@@ -40,7 +43,6 @@ $.extend({ mgr: {
    },
 
    onGame: function(data) {
-      $.mgr.game = data;
 
       // Update the header
       var headerElm = $('.common-header', headerElm);
@@ -49,10 +51,28 @@ $.extend({ mgr: {
       // Update the map tiles based on the current game
       mapElm.olmap({ mapName: 'dalian_plant' });
 
+      // Pre-process the packets to prepare for plotting
+      var controlPoints = [];
+      var packets = {};
+      for (var i = 0; i < data.packets.length; i++) {
+         var packet = data.packets[i];
+         if (packet.type == 'CP') {
+            controlPoints.push(packet);
+         } else {
+            if (packets[packet.tick] == undefined) {
+               packets[packet.tick] = [];
+            }
+            packets[packet.tick].push(packet);
+         }
+      }
+      $.mgr.controlPoints = controlPoints;
+      $.mgr.packets = packets;
+
       // Update the value range of the slider
       sliderElm.slider({ min: data.packets[0].tick,
             max: data.packets[data.packets.length - 1].tick, value: 0 });
 
+      // Simulate a stop click to show all packets at once
       stopBtn.trigger('click');
    },
 
@@ -78,6 +98,8 @@ $.extend({ mgr: {
 
       var min = sliderElm.slider('option', 'min');
       sliderElm.slider('value', min);
+
+      $.mgr.lastTick = undefined;
       $.mgr.displayAll();
    },
 
@@ -96,7 +118,7 @@ $.extend({ mgr: {
             sliderElm.slider('value', value + 1);
             $.mgr.stepTick();
          }
-      }, 100);
+      }, $.mgr.FRAME_RATE);
    },
 
    displayAll: function() {
@@ -104,30 +126,71 @@ $.extend({ mgr: {
       // Remove any previous markers
       mapElm.olmap('clearMarkers');
 
+      // Get the final state of the control points
+      var max = sliderElm.slider('option', 'max');
+      var controlPoints = $.mgr.getControlPoints(max);
+      mapElm.olmap('addPackets', controlPoints);
+
       // Add all the markers for the current game
-      var packets = $.mgr.game.packets;
-      for (var i = 0; i < packets.length; i++) {
-         mapElm.olmap('addMarker', packets[i]);
+      var packets = $.mgr.packets;
+      for (var tick in $.mgr.packets) {
+         mapElm.olmap('addPackets', $.mgr.packets[tick]);
       }
    },
 
    displayTick: function(tick) {
+      oldTick = $.mgr.lastTick;
+      $.mgr.lastTick = tick;
+      if (oldTick == tick) {
+         return;
+      }
+
+      // Check whether an incremental update can be used
+      if (oldTick == tick - 1) {
+         $.mgr.displayTickDiff(tick);
+         return;
+      }
 
       // Remove any previous markers
       mapElm.olmap('clearMarkers');
 
+      // Add the final state of the control points
+      
+      mapElm.olmap('addPackets', $.mgr.getControlPoints(tick));
+
       // Add all the markers for the selected tick
-      var packets = $.mgr.game.packets;
-      for (var i = 0; i < packets.length; i++) {
-         var packet = packets[i];
-         if (packet.tick < tick) {
-            continue;
-         } else if (packet.tick == tick) {
-            mapElm.olmap('addMarker', packet);
+      mapElm.olmap('addPackets', $.mgr.packets[tick]);
+   },
+
+   displayTickDiff: function(tick) {
+   
+      // Update the state of the control points
+      mapElm.olmap('clearControlPoints');
+      mapElm.olmap('addPackets', $.mgr.getControlPoints(tick));
+
+      // Clear any expired packets
+      var offset = tick - Math.floor($.mgr.MARKER_TIME / $.mgr.FRAME_RATE);
+      mapElm.olmap('removePackets', $.mgr.packets[offset]);
+
+      // Add packets for the current tick
+      mapElm.olmap('addPackets', $.mgr.packets[tick]);
+   },
+
+   getControlPoints: function(tick) {
+      var states = {};
+      for (var i = 0; i < $.mgr.controlPoints.length; i++) {
+         var packet = $.mgr.controlPoints[i];
+         if (packet.tick <= tick) {
+            states[packet.control_point.id] = packet;
          } else if (packet.tick > tick) {
             break;
          }
       }
+      var controlPoints = [];
+      for (var id in states) {
+         controlPoints.push(states[id]);
+      }
+      return controlPoints;
    }
 
 }});
