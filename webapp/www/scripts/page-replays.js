@@ -15,7 +15,7 @@ var mapElm = $('.olmap-widget');
 $.extend({ mgr: {
 
    FRAME_RATE: 50,
-   MARKER_TIME: 5000,
+   MARKER_TIME: 2000,
 
    onHistory: function(e) {
 
@@ -49,7 +49,7 @@ $.extend({ mgr: {
       headerElm.text('Game - ' + data.map_name);
 
       // Update the map tiles based on the current game
-      mapElm.olmap({ mapName: 'dalian_plant' });
+      mapElm.olmap({ mapName: data.map_id });
 
       // Pre-process the packets to prepare for plotting
       var controlPoints = [];
