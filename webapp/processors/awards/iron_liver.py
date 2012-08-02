@@ -7,25 +7,20 @@ class Processor(AwardProcessor):
     This processor keeps track of the most drinks as reported via chat.
 
     Implementation
-	Whenever a chat event is received the text is compared to a config file
-	for keywords (chuck, beer, etc)
+	Whenever a chat event is received the text is compared to a list of keywords
+    (chuck, beer, etc)
 
     Notes
-	None.
+	Make sure all the string comparisons are case-insensitive.
     '''
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Iron Liver', 'Most Drinks', [
                 Column('Players'), Column('Drinks', Column.NUMBER, Column.DESC)])
 
-        self.phrases = list()
-	# Get the path to the configuration file
-        confPath = os.path.join(os.path.dirname(__file__), 'drinks.conf')
-        f = open( confPath, 'r' )
-        for line in f:
-            self.phrases.append(line)
-            
-    def on_chat(self, e):
+        # Create a list of acceptable drinking phases
+        self.phrases = list(['beer', 'chuck', 'need one'])
 
-        if e.text in self.phrases:
+    def on_chat(self, e):
+        if e.text.lower() in self.phrases:
             self.results[e.player] += 1

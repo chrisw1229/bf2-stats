@@ -18,6 +18,6 @@ class Processor(AwardProcessor):
                 Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
 		
     def on_kill(self, e):
-        # may add logic in the future to distinguish team kills from vehicle crashes?
+
         if e.team_kill:
             self.results[e.attacker] += 1

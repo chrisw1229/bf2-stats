@@ -1,7 +1,5 @@
 
 from processors.awards import AwardProcessor,Column
-from models import squads
-from models import players
 from models import model_mgr
 
 class Processor(AwardProcessor):
@@ -18,22 +16,18 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Dick Winters',
-                'Most Soldier Kills as Squad Leader', [
+                'Most Subordinate Kills as Squad Leader', [
                 Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
-
 
     def on_kill(self, e):
 
+        # Ignore team kills and suicides
         if not e.valid_kill:
             return
-        
+
+        # Get the leader for the attacker's squad
         squad = model_mgr.get_squad(e.attacker.squad_id)
-        if squad == None or squad == squads.EMPTY:
-            return
+        leader = model_mgr.get_player(squad.leader_id)
 
-        leader = model_mgr.get_player( squad.leader_id )
-        if leader == None or leader == players.EMPTY:
-            return
-
+        # Give a point to the squad leader
         self.results[leader] += 1
-

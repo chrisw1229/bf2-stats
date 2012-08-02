@@ -1,6 +1,5 @@
 
 from processors.awards import AwardProcessor,Column
-from stats import stat_mgr
 
 class Processor(AwardProcessor):
     '''
@@ -18,15 +17,16 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'High Ground', 'Most Kills with Height Difference', [
+        AwardProcessor.__init__(self, 'High Ground',
+                'Most Kills from Above', [
                 Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
-		
+
     def on_kill(self, e):
 
         # Ignore suicides and team kills
         if not e.valid_kill:
             return
 
-        # Check whether the kill height was more than one story
-        if stat_mgr.dist_alt(e.victim.pos, e.attacker.pos) > 3:
+        # Check whether the attacker was at least a story higher than the victim
+        if (e.attacker.pos[1] - e.victim.pos[1]) > 3:
             self.results[e.attacker] += 1

@@ -1,9 +1,8 @@
 
 from processors.awards import AwardProcessor,Column
 from models import players
-from models.vehicles import JET
-from models.vehicles import HELICOPTER
 from models import model_mgr
+from models.vehicles import AIR
 
 class Processor(AwardProcessor):
     '''
@@ -11,8 +10,10 @@ class Processor(AwardProcessor):
     This processor keeps track of the number of aircraft kills from the ground
 
     Implementation
-    Check if the vehicle destroyed is an aircraft, the attacker is not in an aircraft
-    and the destroyed aircraft is actually in the air
+    Check if the vehicle destroyed is an aircraft, the attacker is not in an
+    aircraft and the destroyed aircraft is actually in the air. Acceptable
+    flight altitude will be represented by 30 feet, which is actually 10 meters
+    in game units.
 
     Notes
     None.
@@ -23,20 +24,18 @@ class Processor(AwardProcessor):
                 'Most Aircraft Kills from Ground', [
                 Column('Players'), Column('Aircraft Destroyed', Column.NUMBER, Column.DESC)])
 
-
     def on_vehicle_destroy(self, e):
 
+        # Ignore events caused by the environment
         if e.attacker == players.EMPTY:
             return
-        
-        attack_vehicle = model_mgr.get_vehicle(e.attacker.vehicle_id)
-        if attack_vehicle == HELICOPTER or attack_vehicle == JET:
-            return #ignore kill
-        
-        vehicle_type = e.vehicle.vehicle_type;
 
-        if vehicle_type == HELICOPTER or vehicle_type == JET:
-            height = e.vehicle_pos[1] - e.attacker_pos[1]
-            if height > 10: #playtest?
+        # Ignore air-to-air attacks
+        attacker_vehicle = model_mgr.get_vehicle(e.attacker.vehicle_id)
+        if attacker_vehicle.group == AIR:
+            return
+
+        # Check whether an aircraft was killed while in flight
+        if e.vehicle.group == AIR:
+            if (e.vehicle_pos[1] - e.attacker_pos[1]) > 10:
                 self.results[e.attacker] += 1
-

@@ -1,7 +1,5 @@
 
 from processors.awards import AwardProcessor,Column
-from models import teams
-from models import players
 from models import model_mgr
 
 class Processor(AwardProcessor):
@@ -18,18 +16,15 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Joseph Stalin',
-                'Most Soldier Deaths as Commander', [
+                'Most Subordinate Deaths as Commander', [
                 Column('Players'), Column('Deaths', Column.NUMBER, Column.DESC)])
 
 
     def on_death(self, e):
 
+        # Get the commander for the player's team
         team = model_mgr.get_team(e.player.team_id)
-        if team == None or team == teams.EMPTY:
-            return
+        commander = model_mgr.get_player(team.commander_id)
 
-        commander = model_mgr.get_player( team.commander_id )
-        if commander == None or commander == players.EMPTY:
-            return
-
+        # Give a point to the commander
         self.results[commander] += 1
