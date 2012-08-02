@@ -266,7 +266,7 @@ class EventManager(object):
             coordinates (array): Returns an array of parsed floating point coordinates.
         '''
 
-        if not position: return None
+        if not position: return [0, 0, 0, 0]
 
         values = position.split(',')
         assert len(values) == 4, 'Invalid position array size: %i' % len(values)
