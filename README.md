@@ -16,6 +16,8 @@ server installation. Currently, the modifications consist of only two files. The
 ### Web Application
 * Make sure Python 2.7.x is installed and the [Cherrypy](http://www.cherrypy.org) web server package is installed.
 
+* [Download](https://github.com/chrisw1229/bf2-stats/downloads) and extract map tiles for each game map to the `webapp/www/tiles` directory.
+
 * Set the location of your game log file using the `webapp/application.conf` configuration file.
 
 * Run the `webapp/application.py` file to start the web application.
