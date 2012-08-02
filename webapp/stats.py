@@ -93,6 +93,7 @@ class PlayerStats(BaseStats):
         self.heals_total = 0
         self.kills_5_total = 0
         self.kills_10_total = 0
+        self.kills_ratio_max = 0.0
         self.kills_streak_max = 0
         self.kills_total = 0
         self.kits = dict()
@@ -126,6 +127,7 @@ class PlayerStats(BaseStats):
         self.kills = 0
         self.kills_5 = 0
         self.kills_10 = 0
+        self.kills_ratio = 0.0
         self.kills_streak = 0
         self.played = False
         self.rank = 0        

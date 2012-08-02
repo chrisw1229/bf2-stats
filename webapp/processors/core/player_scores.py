@@ -75,6 +75,12 @@ class Processor(BaseProcessor):
             player_stats.deaths_streak_max = player_stats.deaths_streak
         player_stats.kills_streak = 0
 
+        # Update kill ratio for the player
+        player_stats.kills_ratio = round(float(player_stats.kills)
+                / float(player_stats.deaths), 2)
+        player_stats.kills_ratio_max = round(float(player_stats.kills_total)
+                / float(player_stats.deaths_total), 2)
+
         # Increment the enemy death count for the player
         kill_event = player_history.get_new_event(KillEvent.TYPE)
         if kill_event.valid_kill:
@@ -190,6 +196,18 @@ class Processor(BaseProcessor):
         elif attacker_stats.kills_streak == 10:
             attacker_stats.kills_10 += 1
             attacker_stats.kills_10_total += 1
+
+        # Update kill ratio for the attacker
+        if attacker_stats.deaths == 0:
+            attacker_stats.kills_ratio = 1.0
+        else:
+            attacker_stats.kills_ratio = round(float(attacker_stats.kills)
+                    / float(attacker_stats.deaths), 2)
+        if attacker_stats.deaths_total == 0:
+            attacker_stats.kills_ratio_max = 1.0
+        else:
+            attacker_stats.kills_ratio_max = round(float(attacker_stats.kills_total)
+                    / float(attacker_stats.deaths_total), 2)
 
         # Increment the enemy kill count for the attacker
         if not e.victim in attacker_stats.enemies:
