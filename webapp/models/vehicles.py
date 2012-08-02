@@ -406,13 +406,18 @@ was the sole ship of her class. Built to use up the remaining tonnage allowed to
 aircraft carriers under the treaties of the time, she was built on a reduced-size version of the \
 Yorktown-class hull.')
 
+_add('xp2_musclecar_01', TRANSPORT, LAND, '?',
+['xp2_musclecar_01_driver', 'xp2_musclecar_01_passenger'],
+[],
+'?')
+
 _add('xpak2_faav', TRANSPORT, LAND, '?',
-['xpak2_faav_driver', 'xpak2_faav_rear_passenger'],
+['xpak2_faav_driver', 'xpak2_faav_front_gun', 'xpak2_faav_rear_passenger'],
 [],
 '?')
 
 _add('xpak2_hmmwv', TRANSPORT, LAND, 'HMMWV',
-['xpak2_hmmwv_driver', 'xpak2_hmmwv_cupolabase'],
+['xpak2_hmmwv_driver', 'xpak2_hmmwv_codriver', 'xpak2_hmmwv_cupolabase'],
 [],
 '?')
 
