@@ -20,9 +20,3 @@ class Processor(AwardProcessor):
         AwardProcessor.__init__(self, 'George Patton',
                 'Most Wins as Commander', [
                 Column('Players'), Column('Wins', Column.NUMBER, Column.DESC)])
-
-
-    def on_game_status(self, e):
-
-        print e.game.status
-

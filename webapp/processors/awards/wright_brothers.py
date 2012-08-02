@@ -23,8 +23,6 @@ class Processor(AwardProcessor):
 
             air_timer = Timer()
             air_timer.elapsed = enter_time
-            if enter_time == 0:
-                print e.tick
 
             if e.player in self.results:
                 self.results[e.player] = min(air_timer, self.results[e.player])
