@@ -269,6 +269,11 @@ late 80s, a 5.8 mm shell that is fed from a 75 round drum. The weapon is constru
 polymer and with a range of 600 m this is a very effective lightweight mid to long range weapon \
 that is best used from prone with its bipod and sights.')
 
+_add('chlmg_type95_stationary', LMG, VEHICLE, PRECISION,
+'', '', '',
+'',
+'')
+
 _add('chpis_qsz92', PISTOL, SOLDIER, PRECISION,
 'Norinco', 'QSZ-92', 'Type 92',
 'The 92FS is the USMC''s and European Union''s standard sidearm in the game. Its stopping power \
