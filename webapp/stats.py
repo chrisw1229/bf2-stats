@@ -73,6 +73,7 @@ class PlayerItemStats(object):
         self.deaths = 0
         self.kills = 0
         self.score = 0
+        self.wounds = 0
 
 class PlayerStats(BaseStats):
 

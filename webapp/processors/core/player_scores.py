@@ -77,9 +77,10 @@ class Processor(BaseProcessor):
 
         # Increment the enemy death count for the player
         kill_event = player_history.get_new_event(KillEvent.TYPE)
-        if not kill_event.attacker in player_stats.enemies:
-            player_stats.enemies[kill_event.attacker] = PlayerItemStats()
-        player_stats.enemies[kill_event.attacker].deaths += 1
+        if kill_event.valid_kill:
+            if not kill_event.attacker in player_stats.enemies:
+                player_stats.enemies[kill_event.attacker] = PlayerItemStats()
+            player_stats.enemies[kill_event.attacker].deaths += 1
 
         # Increment the kit death count for the player
         if not player_kit in player_stats.kits:
@@ -168,6 +169,11 @@ class Processor(BaseProcessor):
         # Increment wound count for the victim
         victim_stats.wounds += 1
         victim_stats.wounds_total += 1
+
+        # Increment enemy wound count for the victim
+        if not e.attacker in victim_stats.enemies:
+            victim_stats.enemies[e.attacker] = PlayerItemStats()
+        victim_stats.enemies[e.attacker].wounds += 1
 
         # Increment kill count for the attacker
         attacker_stats.kills += 1

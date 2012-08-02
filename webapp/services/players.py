@@ -115,7 +115,8 @@ class Handler:
 
         # Build a list of column descriptors
         columns = [{ 'name': 'Players', 'data': 'string' },
-                { 'name': 'Deaths', 'data': 'number', 'sorted': False },
+                { 'name': 'Wounds', 'data': 'number', 'sorted': False },
+                { 'name': 'Deaths', 'data': 'number' },
                 { 'name': 'Kills', 'data': 'number' }]
 
         # Build a list of enemy statistics
@@ -123,8 +124,8 @@ class Handler:
         for player in player_stats.enemies:
             if player != models.players.EMPTY:
                 object_stats = player_stats.enemies[player]
-                rows.append([player.name, object_stats.deaths,
-                        object_stats.kills])
+                rows.append([player.name, object_stats.wounds,
+                        object_stats.deaths, object_stats.kills])
 
         # Sort the results by deaths to enemies
         rows.sort(key=lambda r: r[1], reverse=True)
