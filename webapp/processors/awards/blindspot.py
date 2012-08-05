@@ -8,7 +8,7 @@ from models import model_mgr
 class Processor(AwardProcessor):
     '''
     Overview
-    This processor keeps track of the most deaths
+    This processor keeps track of the most deaths from crashing into buildings
 
     Implementation
 	Whenever a kill event is received involving a helicopter/jet, the attacker
@@ -31,6 +31,9 @@ class Processor(AwardProcessor):
 
     def on_kill(self, e):
 
+        if e.victim.passenger:
+            return
+        
         # Check whether the victim vehicle was an aircraft
         victim_vehicle = model_mgr.get_vehicle(e.victim.vehicle_id)
         if (victim_vehicle.vehicle_type == HELICOPTER
