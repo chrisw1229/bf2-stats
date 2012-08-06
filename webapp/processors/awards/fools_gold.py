@@ -32,6 +32,9 @@ class Processor(AwardProcessor):
         if not e.valid_kill:
             return
 
+        if e.victim not in self.current:
+            self.current[e.victim] = 0
+
         attack_vehicle = model_mgr.get_vehicle(e.attacker.vehicle_id)
         if attack_vehicle.group == STATION:
             self.current[e.victim] += 1
