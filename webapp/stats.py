@@ -530,6 +530,9 @@ class StatManager(object):
         if hasattr(processor, event.CALLBACK):
             try:
 
+                # Pass the universal event callback
+                processor.on_event(event)
+
                 # Attempt to invoke the processor callback
                 callback = getattr(processor, event.CALLBACK)
 

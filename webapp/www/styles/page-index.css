@@ -11,14 +11,33 @@
    font-size: 14px;
 }
 
-.meter-widget {
+.ticker-widget {
+   height: 130px;
    position: absolute;
-   top: 120px;
+   top: 0;
+   width: 100%;
 }
 
-.olmap-widget {
+.meter-widget {
+   position: absolute;
+   top: 125px;
+   width: 100%;
+}
+
+.header-shadow {
+   background: url('../images/shadow.png') repeat-x scroll 0 0 transparent;
+   border: 0;
+   height: 5px;
+   position: absolute;
+   top: 150px;
+   width: 100%;
+   z-index: 1100;
+}
+
+.ui-widget-content.olmap-widget {
+   border: 0;
    bottom: 0;
    position: absolute;
-   top: 145px;
+   top: 150px;
    width: 100%;
 }

@@ -11,8 +11,9 @@
    font-size: 14px;
 }
 
-.header-container {
+.ui-widget-content.header-container {
    background: #C9C1A6;
+   border-width: 0 0 1px 0;
 }
 
 .header-content {
@@ -42,14 +43,15 @@
    background: url('../images/shadow.png') repeat-x scroll 0 0 transparent;
    height: 5px;
    position: absolute;
-   top: 185px;
+   top: 188px;
    width: 100%;
    z-index: 1100;
 }
 
-.olmap-widget {
+.ui-widget-content.olmap-widget {
+   border: 0;
    bottom: 0;
    position: absolute;
-   top: 185px;
+   top: 188px;
    width: 100%;
 }

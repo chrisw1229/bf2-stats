@@ -1,4 +1,6 @@
 ﻿.ui-meter {
+   background-image: none;
+   border-width: 0 0 1px 0;
    height: 24px;
    width: 100%;
 }
@@ -8,7 +10,7 @@
    left: 23px;
    position: absolute;
    right: 23px;
-   top: 7px;
+   top: 6px;
 }
 
 .ui-meter-value {

@@ -9,6 +9,7 @@
       <link type="text/css" href="styles/ui-logger.css" rel="stylesheet"/>
       <link type="text/css" href="styles/ui-meter.css" rel="stylesheet"/>
       <link type="text/css" href="styles/ui-olmap.css" rel="stylesheet"/>
+      <link type="text/css" href="styles/ui-ticker.css" rel="stylesheet"/>
       <link type="text/css" href="styles/page-index.css" rel="stylesheet"/>
 
       <script type="text/javascript" src="scripts/lib/jquery-1.7.2.js"></script>
@@ -20,16 +21,51 @@
       <script type="text/javascript" src="scripts/ui-logger.js"></script>
       <script type="text/javascript" src="scripts/ui-meter.js"></script>
       <script type="text/javascript" src="scripts/ui-olmap.js"></script>
+      <script type="text/javascript" src="scripts/ui-ticker.js"></script>
       <script type="text/javascript" src="scripts/page-index.js"></script>
    </head>
 
    <body class="ui-widget">
-      <div class="meter-widget ui-meter">
+      <div class="ui-widget ui-widget-content ticker-widget">
+         <div class="ui-ticker-items">
+            <div class="ui-ticker-item">
+               <div class="ui-widget-shadow ui-ticker-item-shadow"></div>
+               <div class="ui-state-default ui-corner-top ui-ticker-item-name"></div>
+               <div class="ui-widget-content ui-corner-bottom ui-ticker-item-content">
+                  <div class="ui-widget-content ui-corner-br ui-ticker-item-photo"></div>
+                  <div class="ui-ticker-item-icons">
+                     <div class="ui-widget-header ui-corner-bl ui-ticker-place" title="Leaderboard position">
+                        <div class="ui-ticker-place-label">RANK</div>
+                        <div class="ui-ticker-place-value"></div>
+                     </div>
+                     <div class="icon-rank ui-ticker-rank"></div>
+                     <div class="icon-team ui-ticker-team"></div>
+                  </div>
+                  <div class="ui-ticker-trend">
+                     <span class="ui-ticker-trend-icon"></span>
+                  </div>
+                  <table class="ui-ticker-stats">
+                     <tr class="ui-ticker-kills"><td class="ui-ticker-stat-value"></td><td>Kills</td></tr>
+                     <tr class="ui-ticker-deaths"><td class="ui-ticker-stat-value"></td><td>Deaths</td></tr>
+                     <tr class="ui-ticker-inflicted" title="Damage"><td class="ui-ticker-stat-value"></td><td>Inflicted</td></tr>
+                     <tr class="ui-ticker-received" title="Damage"><td class="ui-ticker-stat-value"></td><td>Received</td></tr>
+                  </table>
+                  <div class="ui-ticker-spec">SPECTATOR</div>
+               </div>
+            </div>
+         </div>
+         <div class="ui-state-default ui-corner-left ui-ticker-nav" title="Click to advance ticker">
+            <span class="ui-icon ui-icon-circle-triangle-e"/>
+         </div>
+      </div>
+      <div class="ui-widget ui-widget-content meter-widget ui-meter">
          <div class="ui-progressbar ui-widget ui-widget-content ui-corner-all ui-meter-bar">
             <div class="ui-progressbar-value ui-widget-header ui-corner-left ui-meter-value"></div>
          </div>
+         <div class="ui-meter-control-points"></div>
          <div class="ui-meter-marker"></div>
       </div>
+      <div class="header-shadow"></div>
 
       <div class="ui-widget-content olmap-widget">
          <div class="ui-widget-overlay"></div>

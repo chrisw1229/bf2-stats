@@ -6,7 +6,7 @@ $.extend({ service: {
 
    baseUrl: 'live', // The address of the communication service
    params: {}, // Optional set of parameters to add to the request
-   threshold: 0, // Stores the last update threshold from the server
+   tick: 0, // Stores the last tick threshold from the server
    errors: 0, // The number of consecutive communication errors
    producer: undefined, // An optional function that produces synthetic packets
 
@@ -14,7 +14,7 @@ $.extend({ service: {
    refresh: function(type, all) {
 
       // Build a list of request parameters
-      var params = { threshold: (all ? 0 : this.threshold) };
+      var params = { tick: (all ? 0 : this.tick) };
       if (type) {
          params.packet_type = type;
       }
@@ -49,22 +49,24 @@ $.extend({ service: {
 
       // Clear any previous errors
       this.errors = 0;
+      if (!data) {
+         return;
+      }
 
       // Process all the packets received from the server
       for (var i = 0; i < data.length; i++) {
          var packet = data[i];
 
-         // Check if this is a threshold packet
-         if (packet.type == 'threshold') {
-            this.threshold = packet.values;
-         } else {
+         // Store the next tick threshold if available
+         if (packet.type == 'TT') {
+            this.tick = packet.tick;
+         }
 
-            // Pass the packet to all registered listeners
-            try {
-               $($.service).trigger(packet);
-            } catch(err) {
-               $.log.error('Error processing service packet: ' + packet.type, err);
-            }
+         // Pass the packet to all registered listeners
+         try {
+            $($.service).trigger(packet.type, [packet]);
+         } catch(err) {
+            $.log.error('Error processing service packet: ' + packet.type, err);
          }
       }
    },

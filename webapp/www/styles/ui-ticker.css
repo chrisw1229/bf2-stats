@@ -1,0 +1,144 @@
+.ui-ticker {
+   background-image: none;
+   border-width: 0 0 1px 0;
+   height: 100%;
+   overflow: hidden;
+   width: 100%;
+}
+
+.ui-ticker-slider {
+   position: relative;
+}
+
+.ui-ticker-nav {
+   cursor: pointer;
+   opacity: 0.4;
+   position: absolute;
+   right: 0;
+   top: 3px;
+   z-index: 1200;
+}
+
+.ui-ticker-nav:hover {
+   opacity: 1.0;
+}
+
+.ui-ticker-item {
+   cursor: pointer;
+   font-family: courier new, monospace;
+   font-weight: bold;
+   margin-right: 6px;
+   position: absolute;
+   width: 254px;
+}
+
+.ui-ticker-item-shadow {
+   height: 120px;
+   position: absolute;
+   width: 253px;
+   z-index: 1025;
+}
+
+.ui-ticker-item-name {
+   height: 1.4em;
+   padding-top: 0.2em;
+   position: relative;
+   text-align: center;
+   z-index: 1050;
+}
+
+.ui-ticker-item-name.ui-state-default {
+   font-weight: bold;
+ }
+
+ .ui-ticker-item-content {
+   border-top: 0;
+   height: 96px;
+   position: relative;
+   z-index: 1050;
+}
+
+.ui-ticker-item-photo {
+   border-width: 0 0 0 1px;
+   height: 96px;
+   position: absolute;
+   right: 0;
+   top: 0;
+   width: 96px;
+}
+
+.ui-ticker-item-icons {
+   position: absolute;
+   right: 130px;
+}
+
+.ui-ticker-place {
+   border-width: 0 0 1px 1px;
+   font-weight: bold;
+   height: 32px;
+   position: absolute;
+   text-align: center;
+   top: 0;
+   width: 32px;
+}
+
+.ui-ticker-place-label {
+   font-size: 0.8em;
+   width: 100%;
+}
+
+.ui-ticker-place-value {
+   font-size: 1.9em;
+   font-weight: bold;    
+   position: relative;
+   top: -13px;
+}
+
+.ui-ticker-rank {
+   position: relative;
+   top: 40px;
+}
+
+.ui-ticker-team {
+   position: relative;
+   top: 44px;
+}
+
+.ui-ticker-item .ui-ticker-trend {
+   background: none;
+   border: none;
+   left: 5px;
+   position: absolute;
+   top: 33px;
+}
+
+.ui-ticker-stats {
+   height: 100%;
+}
+
+.ui-ticker-kills {
+   font-size: 1.6em;
+}
+
+.ui-ticker-deaths {
+   font-size: 1.2em;
+}
+
+.ui-ticker-inflicted,
+.ui-ticker-received {
+   font-size: 0.9em;
+}
+
+.ui-ticker-stat-value {
+   padding-right: 6px;
+   text-align: right;
+   width: 42px;
+}
+
+.ui-ticker-spec {
+   font-size: 1.3em;
+   font-weight: bold;
+   height: 100%;
+   margin-top: 38px;
+   text-align: center;
+}

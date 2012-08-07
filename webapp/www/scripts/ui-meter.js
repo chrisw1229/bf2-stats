@@ -5,28 +5,19 @@ $.widget('ui.meter', {
    // Configure the default widget options
    options: {
       max: 100,
-      milestones: [],
       value: 0
    },
 
    _create: function() {
-      var self = this;
-
-      // Initialize the component attributes
-      this.value = this.options.value;
-      this.max = this.options.max;
 
       // Build the document model
       this.barElm = $('.ui-meter-bar', this.element);
       this.valueElm = $('.ui-meter-value', this.barElm);
       this.markerElm = $('.ui-meter-marker', this.element);
-      this.milestoneElms = $('.ui-meter-milestone', this.barElm);
+      this.controlPointsElm = $('.ui-meter-control-points', this.element);
 
       // Bind the event handlers
-      $(window).on('resize.meter', $.proxy(this._update, this));
-
-      // Add any default milestones
-      this.addMilestones(this.options.milestones);
+      $(window).on('resize.meter', $.proxy(this._onResize, this));
    },
 
    destroy: function() {
@@ -35,36 +26,54 @@ $.widget('ui.meter', {
       $(window).off('resize.meter');
 
       // Destroy the document model
-      this.milestoneElms.remove();
-      this.milestoneElms = undefined;
+      this.controlPointsElm.empty();
 
       $.Widget.prototype.destroy.call(this);
    },
 
-   addEvent: function(event) {
-      this.value = event.time;
-      if (event.team) {
-         this.addMilestones(event);
-      } else {
+   _setOption: function(key, value) {
+      $.Widget.prototype._setOption.apply(this, arguments);
+
+      // Check whether the value changed
+      if (key === 'value') {
+
+         // Make sure the value stays in range
+         if (this.options.value > this.options.max) {
+            this.options.value = this.options.max;
+         }
+
+         // Refresh the display
          this._update();
       }
    },
 
-   addMilestones: function(milestones) {
-      milestones = ($.isArray(milestones) ? milestones : [milestones]);
+   addControlPoint: function(model) {
 
-      for (var i = 0; i < milestones.length; i++) {
-         this._createMilestoneElm(milestones[i]);
+      // Only add markers when a team fully controls a point
+      if (model.state != 'top' || model.team.length == 0) {
+         return;
       }
-      this.milestoneElms = $('.ui-meter-milestone', this.barElm);
+
+      this._createControlPointElm(model);
       this._update();
    },
 
-   reset: function(max) {
-      this.value = 0;
-      this.max = (max != undefined ? max : this.max);
+   addPackets: function(packets) {
+      if (packets == undefined) {
+         return;
+      }
+      packets = $.isArray(packets) ? packets : [packets];
 
-      this.milestoneElms.remove();
+      for (var i = 0; i < packets.length; i++) {
+         var packet = packets[i];
+         if (packet.type == 'CP') {
+            this.addControlPoint(packet.control_point);
+         }
+      }
+   },
+
+   clearMarkers: function() {
+      this.controlPointsElm.empty();
       this._update();
    },
 
@@ -74,16 +83,18 @@ $.widget('ui.meter', {
       var maxW = this.element.width();
       var markerW = this.markerElm.width();
       var barW = (this.element.width() - markerW);
-      var markerL = barW * (this.value / this.max);
+      var markerL = Math.round(barW * (this.options.value / this.options.max));
       this.valueElm.css('width', markerL);
       this.markerElm.css({ left: markerL, visibility: 'visible' });
 
-      // Display any milestones that have occurred
-      this.milestoneElms.each(function(index, item) {
+      // Display any control points that have occurred
+      var value = this.options.value;
+      var max = this.options.max;
+      $('.ui-meter-control-point', this.controlPointsElm).each(function(index, item) {
          var itemElm = $(item);
          var model = itemElm.data('model');
-         if (this.value >= model.time) {
-            var pos = barW * (model.time / this.max) - (itemElm.width() / 2);
+         if (value >= model.time) {
+            var pos = Math.round(barW * (model.time / max) - (itemElm.width() / 2));
             itemElm.css('left', pos);
             itemElm.show();
          } else {
@@ -92,20 +103,23 @@ $.widget('ui.meter', {
       });
 
       // Update the time remaining tool tip
-      var remaining = this.max - this.value;
-      var mins = remaining >= 60 ? Math.round(remaining / 60) : 0;
+      var remaining = this.options.max - this.options.value;
+      var mins = remaining >= 60 ? Math.floor(remaining / 60) : 0;
       var secs = Math.round(remaining % 60);
       var time = mins + ':' + (secs < 10 ? '0' : '') + secs;
-      this.barElm.attr('title', 'Time Remaining: ' + time);
+      this.markerElm.attr('title', 'Time Remaining: ' + time);
    },
 
-   _createMilestoneElm: function(model) {
-      var milestoneElm = $('<div class="ui-meter-milestone icon-team icon-team-'
-            + model.team + '"/>').appendTo(this.barElm);
-      milestoneElm.data('model', model);
-      milestoneElm.attr('title', model.desc);
-      milestoneElm.hide();
-      return milestoneElm;
+   _createControlPointElm: function(model) {
+      var controlPointElm = $('<div class="ui-meter-control-point icon-team icon-team-'
+            + model.team + '"/>').appendTo(this.controlPointsElm);
+      controlPointElm.data('model', model);
+      controlPointElm.hide();
+      return controlPointElm;
+   },
+
+   _onResize: function(e) {
+      this._update();
    }
 
 });

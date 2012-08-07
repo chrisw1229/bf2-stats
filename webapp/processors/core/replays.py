@@ -48,14 +48,14 @@ class Processor(BaseProcessor):
         packet = self._add_packet(e)
 
         # Extract information about the flag
-        control_point_packet = {
+        control_point = {
             'id': e.control_point.id,
             'state': e.control_point.status,
             'team': e.control_point.team_id,
             'x': self._convert_x(e.control_point.pos[0]),
             'y': self._convert_y(e.control_point.pos[2])
         }
-        packet['control_point'] = control_point_packet
+        packet['control_point'] = control_point
 
     def on_game_status(self, e):
 
@@ -72,19 +72,18 @@ class Processor(BaseProcessor):
         packet = self._add_packet(e)
 
         # Extract information about the victim
-        victim_packet = {
+        victim = {
             'id': e.victim.id,
             'name': e.victim.name,
             'team': e.victim.team_id,
             'x': self._convert_x(e.victim_pos[0]),
             'y': self._convert_y(e.victim_pos[2])
         }
-        packet['victim'] = victim_packet
+        packet['victim'] = victim
 
         # Add optional attacker info to the packet
-        attacker_packet = None
         if e.attacker != models.players.EMPTY:
-            attacker_packet = {
+            attacker = {
                 'id': e.attacker.id,
                 'name': e.attacker.name,
                 'team': e.attacker.team_id,
@@ -95,7 +94,7 @@ class Processor(BaseProcessor):
                 'x': self._convert_x(e.attacker_pos[0]),
                 'y': self._convert_y(e.attacker_pos[2])
             }
-            packet['attacker'] = attacker_packet
+            packet['attacker'] = attacker
 
     def on_vehicle_destroy(self, e):
 
@@ -103,14 +102,14 @@ class Processor(BaseProcessor):
         packet = self._add_packet(e)
 
         # Extract information about the vehicle
-        vehicle_packet = {
+        vehicle = {
             'id': e.vehicle.id,
             'name': e.vehicle.name,
             'team': 'na',
             'x': self._convert_x(e.vehicle_pos[0]),
             'y': self._convert_y(e.vehicle_pos[2])
         }
-        packet['vehicle'] = vehicle_packet
+        packet['vehicle'] = vehicle
 
     def _add_packet(self, e):
         packet = {

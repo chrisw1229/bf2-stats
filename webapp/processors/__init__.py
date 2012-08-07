@@ -44,6 +44,9 @@ class BaseProcessor(object):
     def on_death(self, e):
         pass
 
+    def on_event(self, e):
+        pass
+
     def on_game_status(self, e):
         pass
 
