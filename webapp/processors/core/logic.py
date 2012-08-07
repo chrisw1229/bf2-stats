@@ -25,20 +25,8 @@ class Processor(BaseProcessor):
 
     def on_commander(self, e):
 
-        # Remove the commander flag from the previous player
-        if e.team.commander_id:
-            old_player = model_mgr.get_player(e.team.commander_id)
-            if old_player:
-                old_player.commander = False
-
         # Update the commander for the team
-        if e.player == models.players.EMPTY:
-            e.team.commander_id = None
-        else:
-            e.team.commander_id = e.player.id
-
-        # Add the commander flag to the new player
-        e.player.commander = True
+        self._update_commander(e.player, e.team)
 
     def on_connect(self, e):
 
@@ -64,6 +52,14 @@ class Processor(BaseProcessor):
 
         # Update the connected flag for the player
         e.player.connected = False
+
+        # Reset other model references to the player
+        self._update_commander(e.player, models.teams.EMPTY)
+        self._update_team(e.player, models.teams.EMPTY)
+        self._update_squad(e.player, models.squads.EMPTY)
+
+        # Reset the attributes for the player
+        e.player.reset()
 
     def on_game_status(self, e):
 
@@ -131,23 +127,8 @@ class Processor(BaseProcessor):
             team = model_mgr.get_team(e.player.team_id)
             team.squad_ids.add(e.squad.id)
 
-        # Remove the player from the previous squad
-        if e.player.squad_id:
-            old_squad = model_mgr.get_squad(e.squad.id)
-            if old_squad and old_squad != models.squads.EMPTY:
-                old_squad.player_ids.remove(e.player.id)
-                if old_squad.leader_id == e.player.id:
-                    old_squad.leader_id = None
-
-        # Add the player to the new squad
-        e.squad.player_ids.add(e.player.id)
-
         # Update the squad for the player
-        e.player.squad_id = e.squad.id
-
-        # Remove the squad leader flag from the player if needed
-        if e.player.squad_id == models.squads.EMPTY.id:
-            e.player.leader = False
+        self._update_squad(e.player, e.squad)
 
     def on_squad_leader(self, e):
 
@@ -233,6 +214,54 @@ class Processor(BaseProcessor):
         # Update position for the player
         e.player.pos = e.player_pos
 
+    def _update_commander(self, player, team):
+
+        # Remove the commander flag from the previous player
+        if team.commander_id:
+            old_player = model_mgr.get_player(team.commander_id)
+            if old_player:
+                old_player.commander = False
+
+        # Update the commander for the team
+        if player == models.players.EMPTY or team == models.teams.EMPTY:
+            team.commander_id = None
+        else:
+            team.commander_id = player.id
+
+        # Update the commander flag for the player
+        if team == models.teams.EMPTY:
+            player.commander = False
+        else:
+            player.commander = True
+
+    def _update_squad(self, player, squad):
+
+        # Check whether the squad needs to be updated
+        if player.squad_id and player.squad_id == squad.id:
+            return
+    
+        # Remove the player from the previous squad
+        if player.squad_id:
+            old_squad = model_mgr.get_squad(squad.id)
+            if old_squad and old_squad != models.squads.EMPTY:
+                old_squad.player_ids.remove(player.id)
+                if old_squad.leader_id == player.id:
+                    old_squad.leader_id = None
+
+        # Add the player to the new squad
+        if squad != models.squads.EMPTY:
+            squad.player_ids.add(player.id)
+
+        # Update the squad for the player
+        if squad == models.squads.EMPTY:
+            player.squad_id = None
+        else:
+            player.squad_id = squad.id
+
+        # Remove the squad leader flag from the player if needed
+        if not player.squad_id:
+            player.leader = False
+
     def _update_team(self, player, team):
 
         # Check whether the team needs to be updated
@@ -249,7 +278,39 @@ class Processor(BaseProcessor):
                     player.commander = False
 
         # Add the player to the new team
-        team.player_ids.add(player.id)
+        if team != models.teams.EMPTY:
+            team.player_ids.add(player.id)
 
         # Update the team for the player
-        player.team_id = team.id
+        if team == models.teams.EMPTY:
+            player.team_id = None
+        else:
+            player.team_id = team.id
+
+    def _update_squad(self, player, squad):
+
+        # Check whether the squad needs to be updated
+        if player.squad_id and player.squad_id == squad.id:
+            return
+    
+        # Remove the player from the previous squad
+        if player.squad_id:
+            old_squad = model_mgr.get_squad(squad.id)
+            if old_squad and old_squad != models.squads.EMPTY:
+                old_squad.player_ids.remove(player.id)
+                if old_squad.leader_id == player.id:
+                    old_squad.leader_id = None
+
+        # Add the player to the new squad
+        if squad != models.squads.EMPTY:
+            squad.player_ids.add(player.id)
+
+        # Update the squad for the player
+        if squad == models.squads.EMPTY:
+            player.squad_id = None
+        else:
+            player.squad_id = squad.id
+
+        # Remove the squad leader flag from the player if needed
+        if not player.squad_id:
+            player.leader = False
