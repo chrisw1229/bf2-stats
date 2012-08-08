@@ -178,7 +178,7 @@ def on_clock_limit(value):
 
 def on_commander(team_id, old_player, new_player):
     try:
-        team_name = format_team(team_id)
+        team_name = format_team(new_player.getTeam())
         new_player_name = format_player(new_player)
 
         log('CM', team_name, new_player_name)
