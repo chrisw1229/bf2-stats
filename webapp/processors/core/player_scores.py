@@ -18,13 +18,17 @@ class Processor(BaseProcessor):
         receiver_stats = stat_mgr.get_player_stats(e.receiver)
         giver_stats = stat_mgr.get_player_stats(e.giver)
 
-        # Increment supported points for the receiver
-        receiver_stats.ammoed += 1
-        receiver_stats.ammoed_total += 1
+        # Increment supply points for the receiver
+        receiver_stats.supplied += 1
+        receiver_stats.supplied_total += 1
 
-        # Increment support points for the giver
-        giver_stats.ammos += 1
-        giver_stats.ammos_total += 1
+        # Increment supply points for the giver
+        giver_stats.supplies += 1
+        giver_stats.supplies_total += 1
+
+        # Increment teamwork for the giver
+        giver_stats.teamwork += 1
+        giver_stats.teamwork_total += 1
 
     def on_assist(self, e):
         player_stats = stat_mgr.get_player_stats(e.player)
@@ -32,6 +36,10 @@ class Processor(BaseProcessor):
         # Increment assist count for the player
         player_stats.assists += 1
         player_stats.assists_total += 1
+
+        # Increment teamwork count for the player
+        player_stats.teamwork += 1
+        player_stats.teamwork_total += 1
 
         # Get the last kill event that occurred
         global_history = event_mgr.get_history()
@@ -137,6 +145,10 @@ class Processor(BaseProcessor):
         # Increment heal points for the giver
         giver_stats.heals += 1
         giver_stats.heals_total += 1
+
+        # Increment teamwork for the giver
+        giver_stats.teamwork += 1
+        giver_stats.teamwork_total += 1
 
     def on_kill(self, e):
         victim_stats = stat_mgr.get_player_stats(e.victim)
@@ -246,6 +258,10 @@ class Processor(BaseProcessor):
         giver_stats.repairs += 1
         giver_stats.repairs_total += 1
 
+        # Increment teamwork for the giver
+        giver_stats.teamwork += 1
+        giver_stats.teamwork_total += 1
+
     def on_revive(self, e):
         receiver_stats = stat_mgr.get_player_stats(e.receiver)
         giver_stats = stat_mgr.get_player_stats(e.giver)
@@ -257,6 +273,10 @@ class Processor(BaseProcessor):
         # Increment revive points for the giver
         giver_stats.revives += 1
         giver_stats.revives_total += 1
+
+        # Increment teamwork for the giver
+        giver_stats.teamwork += 1
+        giver_stats.teamwork_total += 1
 
     def on_score(self, e):
         player_stats = stat_mgr.get_player_stats(e.player)

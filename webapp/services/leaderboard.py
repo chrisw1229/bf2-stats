@@ -26,6 +26,7 @@ class Handler:
         columns = list()
         columns.append({ 'name': 'Players', 'data': 'string' })
         columns.append({ 'name': 'Score', 'data': 'number', 'sorted': False })
+        columns.append({ 'name': 'Help', 'data': 'number' })
         columns.append({ 'name': 'Kills', 'data': 'number' })
         columns.append({ 'name': 'Deaths', 'data': 'number' })
         columns.append({ 'name': 'Time', 'data': 'string' })
@@ -35,8 +36,8 @@ class Handler:
         for player in players:
             player_stats = stat_mgr.get_player_stats(player);
             rows.append([player.name, player_stats.score_total,
-                    player_stats.kills_total, player_stats.deaths_total,
-                    player_stats.play_time])
+                    player_stats.teamwork_total, player_stats.kills_total,
+                    player_stats.deaths_total, player_stats.play_time])
 
         # Sort the results by score
         rows.sort(key=lambda r: r[1], reverse=True)
