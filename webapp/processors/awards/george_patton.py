@@ -20,3 +20,11 @@ class Processor(AwardProcessor):
         AwardProcessor.__init__(self, 'George Patton',
                 'Most Wins as Commander', [
                 Column('Players'), Column('Wins', Column.NUMBER, Column.DESC)])
+
+    def on_win(self, e):
+
+        # Get the commander of the team that won
+        commander = model_mgr.get_player(e.team.commander_id)
+
+        # Give a point to the commander
+        self.results[commander] += 1
