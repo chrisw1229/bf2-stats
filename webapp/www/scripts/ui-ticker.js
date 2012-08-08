@@ -18,8 +18,12 @@ $.widget('ui.ticker', {
 
       // Bind the event handlers
       this.nextElm.on('click', $.proxy(this._onNextClick, this));
-      this.itemsElm.on('mouseover', $.proxy(this._onItemMouseOver, this));
-      this.itemsElm.on('mouseout', $.proxy(this._onItemMouseOut, this));
+      this.itemsElm.on('mouseover', $.proxy(this._onItemsMouseOver, this));
+      this.itemsElm.on('mouseout', $.proxy(this._onItemsMouseOut, this));
+      this.itemsElm.on('mouseover', '.ui-ticker-item',
+            $.proxy(this._onItemMouseOver, this));
+      this.itemsElm.on('mouseout', '.ui-ticker-item',
+            $.proxy(this._onItemMouseOut, this));
       $(window).on('resize.ticker', $.proxy(this._onResize, this));
 
       this._reset();
@@ -30,6 +34,7 @@ $.widget('ui.ticker', {
       // Clear the event handlers
       this.nextElm.off('click mouseover mouseout');
       this.itemsElm.off('mouseover mouseout');
+      this.itemsElm.off('mouseover mouseout', '.ui-ticker-item');
       $(window).off('resize.ticker');
 
       // Destroy the document model
@@ -109,7 +114,7 @@ $.widget('ui.ticker', {
          if (this.models[newModel.id]) {
 
             // Check if the new model is being removed
-            if (newModel.team == "") {
+            if (newModel.team == '') {
 
                // Remove the existing model
                this._removeModel(newModel);
@@ -161,7 +166,7 @@ $.widget('ui.ticker', {
       // Move the group 1 until it surpasses the left screen bounds
       if (this.anim.x1 > this.anim.outPos) {
          this.anim.x1 -= this.anim.speed;
-         this.group1.css("left", this.anim.x1);
+         this.group1.css('left', this.anim.x1);
          this.group = this.group1;
       }
 
@@ -179,7 +184,7 @@ $.widget('ui.ticker', {
       if (this.anim.state != 0) { 
          if (this.anim.x2 > this.anim.outPos) {
          this.anim.x2 -= this.anim.speed;
-         this.group2.css("left", this.anim.x2);
+         this.group2.css('left', this.anim.x2);
          this.group = this.group2;
          }
       }
@@ -238,7 +243,7 @@ $.widget('ui.ticker', {
       // Load all the basic values for the given model
       $('.ui-ticker-item-name', itemElm).text(model.name);
       $('.ui-ticker-item-photo', itemElm).css('background-image',
-            'url(' + model.photo + ')');
+            'url(images/players/' + model.photo + ')');
 
       // Check whether the current model is a spectator
       var team = (model.team && model.team.length > 0 ? model.team.charAt(0) : '').toLowerCase();
@@ -318,12 +323,24 @@ $.widget('ui.ticker', {
       this._reset();
    },
 
+   _onItemsMouseOver: function(e) {
+      this.stop();
+   },
+
+   _onItemsMouseOut: function(e) {
+      this.start();
+   },
+
    _onItemMouseOver: function(e) {
-   
+      var itemElm = $(e.target).closest('.ui-ticker-item');
+      var nameElm = $('.ui-ticker-item-name', itemElm);
+      nameElm.removeClass('ui-state-default').addClass('ui-state-hover');
    },
 
    _onItemMouseOut: function(e) {
-   
+      var itemElm = $(e.target).closest('.ui-ticker-item');
+      var nameElm = $('.ui-ticker-item-name', itemElm);
+      nameElm.removeClass('ui-state-hover').addClass('ui-state-default');
    },
 
    _onNextClick: function(e) {
