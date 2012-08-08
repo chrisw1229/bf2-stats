@@ -500,6 +500,7 @@ class ControlPointEvent(BaseEvent):
         self.status = values[2]
         self.team = model_mgr.get_team(values[3])
 
+        event_mgr.get_history(self.control_point).add_event(self)
         event_mgr.get_history(self.team).add_event(self)
 event_mgr.add_event_class(ControlPointEvent)
 
@@ -633,6 +634,20 @@ class KitPickupEvent(BaseEvent):
         event_mgr.get_history(self.player).add_event(self)
         event_mgr.get_history(self.kit).add_event(self)
 event_mgr.add_event_class(KitPickupEvent)
+
+class LossEvent(BaseEvent):
+
+    TYPE =  'LS'
+    CALLBACK = 'on_loss'
+
+    def __init__(self, tick, values):
+        BaseEvent.__init__(self, tick, values, 2)
+
+        self.team = model_mgr.get_team(values[0])
+        self.condition_id = values[1]
+
+        event_mgr.get_history(self.team).add_event(self)
+event_mgr.add_event_class(LossEvent)
 
 class RepairEvent(BaseEvent):
 
@@ -873,3 +888,17 @@ class WeaponEvent(BaseEvent):
         event_mgr.get_history(self.player).add_event(self)
         event_mgr.get_history(self.weapon).add_event(self)
 event_mgr.add_event_class(WeaponEvent)
+
+class WinEvent(BaseEvent):
+
+    TYPE =  'WN'
+    CALLBACK = 'on_win'
+
+    def __init__(self, tick, values):
+        BaseEvent.__init__(self, tick, values, 2)
+
+        self.team = model_mgr.get_team(values[0])
+        self.condition_id = values[1]
+
+        event_mgr.get_history(self.team).add_event(self)
+event_mgr.add_event_class(WinEvent)

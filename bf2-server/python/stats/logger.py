@@ -114,6 +114,21 @@ def on_game_status(status):
             host.registerHandler('TicketLimitReached', on_ticket_limit)
             host.registerHandler('TimeLimitReached', on_clock_limit)
             host.registerHandler('VehicleDestroyed', on_vehicle_destroy)
+
+        # Log the winners and losers on game end
+        if status == bf2.GameStatus.EndGame:
+            win_team_id = bf2.gameLogic.getWinner()
+            win_type = bf2.gameLogic.getVictoryType()
+
+            team1_name = format_team(1)
+            team2_name = format_team(2)
+
+            if win_team_id == 1:
+                log('WN', team1_name, win_type)
+                log('LS', team2_name, win_type)
+            elif win_team_id == 2:
+                log('WN', team2_name, win_type)
+                log('LS', team1_name, win_type)
     except Exception, err:
         error('game_status', err)
 
