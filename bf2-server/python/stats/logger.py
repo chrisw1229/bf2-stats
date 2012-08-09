@@ -392,12 +392,21 @@ def on_vehicle_destroy(vehicle, attacker):
         if is_soldier(vehicle):
             return
 
+        # Attempt to determine the most recent vehicle driver
+        driver = None
+        passengers = vehicle.getOccupyingPlayers()
+        if len(passengers) > 0:
+            driver = passengers[0]
+        elif hasattr(vehicle, 'lastDrivingPlayerIndex'):
+            driver = bf2.playerManager.getPlayerByIndex(vehicle.lastDrivingPlayerIndex)
+
         vehicle_name = format_vehicle(vehicle)
         vehicle_pos = format_pos(vehicle)
         attacker_name = format_player(attacker)
         attacker_pos = format_player_pos(attacker)
+        driver_name = format_player(driver)
 
-        log('VD', vehicle_name, vehicle_pos, attacker_name, attacker_pos)
+        log('VD', vehicle_name, vehicle_pos, attacker_name, attacker_pos, driver_name)
     except Exception, err:
         error('vehicle_destroy', err)
 

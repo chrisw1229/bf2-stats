@@ -104,7 +104,7 @@
 00081;WP;P. Soderlund;-61.1,154.2,-266.7,-157.0;chrif_type85
 00082;WP;P. Hoyles;-120.0,155.2,-293.1,18.4;ushgr_m67
 00082;WP;L. Gustavsson;-84.5,156.2,-243.3,-141.6;ushgr_m67
-00083;VD;jeep_faav;-88.1,153.8,-261.5,79.2;L. Gustavsson;-84.4,156.2,-243.3,-153.2
+00083;VD;jeep_faav;-88.1,153.8,-261.5,79.2;L. Gustavsson;-84.4,156.2,-243.3,-153.2;None
 00084;WP;P. Hoyles;-119.9,155.2,-293.0,18.4;chlmg_type95
 00084;WP;O. Carlen;-96.2,154.2,-262.2,-93.9;ushgr_m67
 00085;WP;D. Rickard;-97.7,154.2,-297.5,2.9;ushgr_m67
@@ -126,7 +126,7 @@
 00090;DT;R. Hallwood;-101.4,155.7,-240.7,-150.2
 00091;WP;P. Hoyles;-115.9,154.2,-281.6,22.1;chpis_qsz92
 00092;WP;O. Carlen;-112.9,154.2,-271.7,-119.9;ushgr_m67
-00093;VD;ustnk_m1a2;-101.9,153.9,-241.9,-177.0;T. Soderman;-105.8,153.9,-250.9,-9.5
+00093;VD;ustnk_m1a2;-101.9,153.9,-241.9,-177.0;T. Soderman;-105.8,153.9,-250.9,-9.5;None
 00093;SC;T. Soderman;2
 00093;KL;C. Elliott;-101.9,153.9,-241.9,-177.0;T. Soderman;-105.8,153.9,-250.9,-9.5;tnk_type98_barrel;tnk_type98
 00093;SC;T. Soderman;1
@@ -180,7 +180,7 @@
 00116;VX;C. Tou;-256.7,154.5,-206.7,-8.6;jep_nanjing;jep_nanjing_driver
 00116;VE;C. Elliott;-140.0,153.8,-49.0,-180.0;jeep_faav;jeep_faav_driver;False
 00119;WP;T. Laedre;-264.7,154.2,-175.8,-26.0;ushgr_m67
-00120;VD;tnk_type98;-63.0,153.9,-161.1,158.3;C. Clarke;-115.6,154.2,-138.3,113.0
+00120;VD;tnk_type98;-63.0,153.9,-161.1,158.3;C. Clarke;-115.6,154.2,-138.3,113.0;None
 00120;SC;C. Clarke;2
 00120;SC;C. Elliott;1
 00120;KL;T. Soderman;-63.0,153.9,-161.1,158.3;C. Clarke;-115.6,154.2,-138.3,113.0;usatp_predator;None
@@ -236,7 +236,7 @@
 00141;WP;P. Hoyles;-83.6,154.2,-154.1,4.6;ushgr_m67
 00143;WP;T. Laedre;-253.0,154.3,-221.5,162.0;wrench
 00144;WP;P. Hoyles;-84.9,154.2,-154.2,-138.6;chlmg_type95
-00144;VD;jeep_faav;-100.8,152.5,-168.1,-174.7;J. Persson;-63.9,154.2,-150.5,-121.9
+00144;VD;jeep_faav;-100.8,152.5,-168.1,-174.7;J. Persson;-63.9,154.2,-150.5,-121.9;None
 00144;SC;J. Persson;2
 00144;KL;C. Elliott;-100.8,152.5,-168.1,-174.7;J. Persson;-63.9,154.2,-150.5,-121.9;rurgl_gp25;None
 00144;KD;C. Elliott;-100.8,152.5,-168.1,-174.7;us_medic
@@ -306,7 +306,7 @@
 00178;WP;P. Hoyles;-66.1,154.2,-145.4,-117.0;chlmg_type95
 00179;WP;T. Soderman;-63.4,154.2,-125.6,-126.9;chsht_norinco982
 00179;WP;R. Hallwood;-110.9,154.2,-155.3,-11.6;ushgr_m67
-00179;VD;ustnk_m1a2;-108.6,153.4,-166.9,90.2;P. Hoyles;-64.8,154.2,-142.8,-105.3
+00179;VD;ustnk_m1a2;-108.6,153.4,-166.9,90.2;P. Hoyles;-64.8,154.2,-142.8,-105.3;None
 00180;WP;C. Tou;-90.9,154.2,-196.6,-25.8;ushgr_m67
 00180;WP;C. Clarke;-107.8,154.2,-155.2,3.4;ushgr_m67
 00181;DT;D. Rickard;-177.2,153.3,-204.8,0.0
@@ -358,7 +358,7 @@
 00199;KP;C. Clarke;91.0,155.3,-59.0,53.1;us_support
 00200;WP;M. Brassard;-191.4,154.2,-219.5,63.8;ushgr_m67
 00201;WP;P. Soderlund;-158.2,154.2,-203.2,-116.3;chpis_qsz92
-00201;VD;tnk_type98;-146.9,153.9,-183.2,162.4;None;None
+00201;VD;tnk_type98;-146.9,153.9,-183.2,162.4;None;None;None
 00203;SP;R. Hallwood;-218.6,155.3,-246.1,0.0;us
 00203;WP;R. Hallwood;-218.6,155.3,-246.1,0.0;usrif_m4
 00203;KP;R. Hallwood;-218.6,155.3,-246.1,0.0;us_specops
@@ -411,7 +411,7 @@
 00228;WP;P. Soderlund;-68.6,154.2,-260.4,90.0;ushgr_m67
 00229;VE;O. Carlen;-179.2,153.9,-33.8,151.8;ustnk_m1a2;ustnk_m1a2_driver;False
 00231;WP;T. Soderman;48.3,154.2,-89.1,59.1;chsht_norinco982
-00232;VD;jep_nanjing;-254.8,154.2,-207.4,-8.8;None;None
+00232;VD;jep_nanjing;-254.8,154.2,-207.4,-8.8;None;None;None
 00233;VX;C. Clarke;80.8,154.3,-67.9,-91.3;usjep_hmmwv;usjep_hmmwv_cupolabase
 00233;WP;P. Soderlund;-68.7,154.2,-260.4,-102.2;chlmg_type95
 00233;WP;D. Rickard;-100.3,154.2,-264.8,-150.0;kni_knife
@@ -423,7 +423,7 @@
 00235;SP;W. Young;-64.5,154.2,-259.5,-102.3;ch
 00235;WP;W. Young;-64.5,154.2,-259.5,-102.3;chlmg_type95
 00235;KP;W. Young;-64.5,154.2,-259.5,-102.3;ch_support
-00235;VD;usjep_hmmwv;80.7,154.0,-69.7,-91.3;P. Hoyles;33.3,154.2,-93.5,64.5
+00235;VD;usjep_hmmwv;80.7,154.0,-69.7,-91.3;P. Hoyles;33.3,154.2,-93.5,64.5;None
 00237;VE;I. Ackworth;-167.8,155.7,-66.2,0.0;ustnk_m1a2;ustnk_m1a2_cupolabase;False
 00239;WP;C. Clarke;91.9,154.2,-66.1,-118.1;ushgr_m67
 00239;KD;T. Laedre;-96.9,153.3,-264.6,0.0;us_engineer
@@ -474,7 +474,7 @@
 00259;WP;M. Livesey;-130.9,154.6,-292.3,45.6;uspis_92fs
 00260;WP;C. Elliott;-230.6,154.3,-216.2,-72.6;ushgr_m67
 00261;WP;J. Persson;82.3,154.2,-38.2,-113.1;rurif_gp25
-00261;VD;ahe_ah1z;-99.9,155.5,-236.0,159.3;None;None
+00261;VD;ahe_ah1z;-99.9,155.5,-236.0,159.3;None;None;None
 00261;KL;Luda;-99.9,155.5,-236.0,159.3;None;None;None;None
 00261;KD;Luda;-99.9,155.5,-236.0,159.3;us_assault
 00261;VX;Luda;-50.0,185.0,-285.0,-16.2;ahe_ah1z;ahe_ah1z_driver
@@ -486,7 +486,7 @@
 00264;SP;C. Clarke;-229.0,154.5,-255.0,-90.0;us
 00264;WP;C. Clarke;-229.0,154.5,-255.0,-90.0;usrif_mp5_a3
 00264;KP;C. Clarke;-229.0,154.5,-255.0,-90.0;us_at
-00264;VD;ats_hj8;-93.7,155.2,-245.0,-24.5;None;None
+00264;VD;ats_hj8;-93.7,155.2,-245.0,-24.5;None;None;None
 00265;WP;C. Clarke;-230.9,154.3,-253.9,-17.2;usatp_predator
 00265;WP;M. Livesey;-125.6,154.3,-288.7,44.3;usrif_m203
 00266;WP;L. Gustavsson;82.5,154.2,-41.0,34.7;medikit
@@ -516,7 +516,7 @@
 00275;KL;W. Young;-106.8,154.2,-268.6,-169.4;M. Livesey;-105.3,154.2,-277.1,-10.9;usrif_m203;None
 00276;WP;P. Soderlund;-227.5,154.3,-208.0,-86.1;chpis_qsz92
 00276;KD;D. Rickard;-115.9,153.3,-277.3,0.0;ch_at
-00276;VD;ats_hj8;-219.1,153.3,-216.0,72.9;None;None
+00276;VD;ats_hj8;-219.1,153.3,-216.0,72.9;None;None;None
 00277;SP;Luda;-175.7,154.4,-92.4,-158.4;us
 00277;WP;Luda;-175.7,154.4,-92.4,-158.4;usrif_m203
 00277;KP;Luda;-175.7,154.4,-92.4,-158.4;us_assault
@@ -531,10 +531,10 @@
 00279;SC;P. Soderlund;2
 00279;KL;C. Elliott;-237.7,154.3,-209.4,38.7;P. Soderlund;-237.5,154.3,-208.9,-151.4;kni_knife;None
 00279;WP;P. Soderlund;-237.5,154.3,-208.9,-151.4;chlmg_type95
-00280;VD;aav_type95;-119.8,153.8,-196.4,73.0;None;None
+00280;VD;aav_type95;-119.8,153.8,-196.4,73.0;None;None;None
 00281;KD;R. Hallwood;-239.5,153.4,-208.4,0.0;us_specops
 00283;KD;C. Elliott;-238.2,153.4,-211.2,0.0;us_medic
-00285;VD;tnk_type98;-243.3,154.0,-208.2,-104.1;C. Clarke;-259.2,154.3,-217.8,58.6
+00285;VD;tnk_type98;-243.3,154.0,-208.2,-104.1;C. Clarke;-259.2,154.3,-217.8,58.6;None
 00285;SC;C. Clarke;2
 00285;KL;C. Tou;-243.3,154.0,-208.2,-104.1;C. Clarke;-259.2,154.3,-217.8,58.6;usatp_predator;None
 00285;SC;C. Clarke;1
@@ -712,7 +712,7 @@
 00369;KL;T. Laedre;-155.7,154.3,-55.7,167.3;T. Soderman;-150.5,154.2,-65.8,-25.0;chsht_norinco982;None
 00373;DT;J. Persson;-148.4,153.3,-62.8,0.0
 00373;KD;T. Laedre;-156.4,153.5,-54.8,0.0;us_engineer
-00375;VD;ahe_z10;-16.1,190.2,-223.1,-47.0;C. Elliott;-97.9,154.0,-229.1,74.9
+00375;VD;ahe_z10;-16.1,190.2,-223.1,-47.0;C. Elliott;-97.9,154.0,-229.1,74.9;None
 00375;SC;C. Elliott;2
 00375;SC;Luda;1
 00375;KL;P. Hoyles;-16.1,190.2,-223.1,-47.0;C. Elliott;-97.9,154.0,-229.1,74.9;usaav_m6_stinger_launcher;usaav_m6
@@ -785,7 +785,7 @@
 00412;VX;I. Ackworth;-164.0,154.5,-93.3,5.3;ustnk_m1a2;ustnk_m1a2_cupolabase
 00413;SC;D. Rickard;-2
 00413;KL;D. Rickard;-181.8,154.3,-81.2,75.5;D. Rickard;-181.8,154.3,-81.2,75.5;rurgl_gp25;None
-00413;VD;jep_nanjing;-153.7,154.1,-92.2,-33.0;None;None
+00413;VD;jep_nanjing;-153.7,154.1,-92.2,-33.0;None;None;None
 00414;WP;J. Persson;-160.3,154.2,-84.7,-168.4;ushgr_m67
 00415;WP;W. Young;-143.5,154.2,-72.7,5.9;rurif_gp25
 00415;WP;L. Gustavsson;-144.2,154.2,-72.7,84.4;rurif_ak47
@@ -793,7 +793,7 @@
 00416;WP;I. Ackworth;-165.7,154.2,-84.8,39.3;kni_knife
 00416;WP;L. Gustavsson;-138.6,154.2,-72.0,101.2;ushgr_m67
 00416;WP;W. Young;-137.8,154.2,-71.3,98.8;rurgl_gp25
-00417;VD;tnk_type98;-159.8,153.9,-73.8,-10.5;P. Hoyles;-187.1,154.8,-81.6,72.2
+00417;VD;tnk_type98;-159.8,153.9,-73.8,-10.5;P. Hoyles;-187.1,154.8,-81.6,72.2;None
 00417;SC;P. Hoyles;2
 00417;KL;M. Brassard;-159.8,153.9,-73.8,-10.5;P. Hoyles;-187.1,154.8,-81.6,72.2;chat_eryx;None
 00417;KD;M. Brassard;-159.8,153.9,-73.8,-10.5;us_medic
@@ -840,7 +840,7 @@
 00430;WP;D. Rickard;-171.7,154.2,-82.3,-164.6;chat_eryx
 00430;WP;I. Ackworth;-162.4,154.2,-57.5,78.3;usrif_m4
 00430;WP;C. Tou;-159.2,154.2,-57.1,-96.3;defibrillator
-00430;VD;ustnk_m1a2;-159.7,153.9,-74.2,-3.0;P. Hoyles;-188.6,154.3,-80.9,76.7
+00430;VD;ustnk_m1a2;-159.7,153.9,-74.2,-3.0;P. Hoyles;-188.6,154.3,-80.9,76.7;None
 00430;SC;P. Hoyles;2
 00430;KL;O. Carlen;-159.7,153.9,-74.2,-3.0;P. Hoyles;-188.6,154.3,-80.9,76.7;chat_eryx;None
 00430;KD;O. Carlen;-159.7,153.9,-74.2,-3.0;us_specops
@@ -974,7 +974,7 @@
 00494;SC;M. Brassard;1
 00494;KL;P. Hoyles;-77.8,153.7,-71.7,103.1;T. Laedre;-75.0,152.6,-67.2,-146.7;usrif_remington11-87;None
 00494;AS;M. Brassard;-74.2,153.8,-72.0,-111.5;damage
-00496;VD;usjep_hmmwv;-83.8,153.0,-66.9,-100.2;None;None
+00496;VD;usjep_hmmwv;-83.8,153.0,-66.9,-100.2;None;None;None
 00497;WP;L. Gustavsson;-90.4,154.2,-76.2,75.5;chpis_qsz92
 00498;WP;M. Livesey;-69.8,152.4,-68.1,157.4;uspis_92fs
 00498;KD;P. Hoyles;-78.6,153.1,-73.3,0.0;ch_at
@@ -996,7 +996,7 @@
 00509;WP;P. Hoyles;-52.7,154.2,-80.8,-95.2;chlmg_type95
 00509;KP;P. Hoyles;-52.7,154.2,-80.8,-95.2;ch_support
 00510;WP;J. Persson;-60.1,154.2,-81.5,-35.6;chpis_qsz92
-00511;VD;usaav_m6;14.8,145.9,-205.3,-52.7;None;None
+00511;VD;usaav_m6;14.8,145.9,-205.3,-52.7;None;None;None
 00511;WP;T. Laedre;-58.1,154.4,-116.0,-5.4;ushgr_m67
 00511;WP;J. Persson;-59.7,154.2,-83.0,-178.3;ushgr_m67
 00514;VX;Luda;-120.1,153.2,-151.2,26.4;ahe_ah1z;ahe_ah1z_driver
@@ -1007,7 +1007,7 @@
 00516;WP;J. Persson;-60.8,154.2,-82.3,-53.9;chlmg_type95
 00516;SC;Luda;2
 00516;KL;T. Soderman;-108.8,154.2,-141.4,-145.1;Luda;-117.9,154.4,-150.8,0.0;ahe_ah1z_gun;ahe_ah1z
-00518;VD;ahe_ah1z;-119.8,154.6,-153.6,29.0;C. Elliott;-131.7,155.6,-163.7,0.0
+00518;VD;ahe_ah1z;-119.8,154.6,-153.6,29.0;C. Elliott;-131.7,155.6,-163.7,0.0;None
 00518;SC;C. Elliott;-4
 00518;SC;T. Soderman;1
 00518;KL;Luda;-117.9,154.4,-150.8,0.0;C. Elliott;-131.7,155.6,-163.7,0.0;None;jep_nanjing
@@ -1118,7 +1118,7 @@
 00569;WP;C. Clarke;-186.9,154.2,-210.4,112.5;usrif_m4
 00569;WP;J. Persson;-204.2,154.2,-213.3,58.7;chpis_qsz92
 00569;WP;C. Clarke;-186.9,154.2,-210.4,96.5;ushgr_m67
-00570;VD;jep_nanjing;-241.3,154.0,-189.1,-138.6;W. Young;-232.6,154.3,-217.7,-13.2
+00570;VD;jep_nanjing;-241.3,154.0,-189.1,-138.6;W. Young;-232.6,154.3,-217.7,-13.2;None
 00570;SC;W. Young;2
 00570;KL;O. Carlen;-241.3,154.0,-189.1,-138.6;W. Young;-232.6,154.3,-217.7,-13.2;rurgl_gp25;None
 00570;KD;O. Carlen;-241.3,154.0,-189.1,-138.6;us_assault
@@ -1135,7 +1135,7 @@
 00571;WP;J. Persson;-199.8,154.2,-212.1,68.8;ushgr_m67
 00571;WP;C. Tou;-203.3,154.2,-216.3,78.7;rurif_ak47
 00575;KD;C. Clarke;-189.4,153.3,-207.7,0.0;us_specops
-00575;VD;jeep_faav;-84.0,152.8,-66.7,-95.2;P. Hoyles;-99.8,153.8,-71.1,74.6
+00575;VD;jeep_faav;-84.0,152.8,-66.7,-95.2;P. Hoyles;-99.8,153.8,-71.1,74.6;None
 00575;SC;P. Hoyles;2
 00575;KL;I. Ackworth;-83.5,153.7,-66.6,0.0;P. Hoyles;-99.8,153.8,-71.1,74.6;c4_explosives;None
 00575;KD;I. Ackworth;-83.5,153.7,-66.6,0.0;us_assault
@@ -1145,7 +1145,7 @@
 00575;WP;J. Persson;-199.8,154.2,-212.1,68.8;chlmg_type95
 00576;WP;C. Tou;-185.4,154.2,-209.3,51.1;chpis_qsz92
 00580;WP;R. Hallwood;-157.0,154.2,-188.9,131.9;usrif_remington11-87
-00581;VD;jep_paratrooper;-148.9,153.9,-201.1,85.4;D. Rickard;-107.5,153.9,-233.7,132.5
+00581;VD;jep_paratrooper;-148.9,153.9,-201.1,85.4;D. Rickard;-107.5,153.9,-233.7,132.5;None
 00582;WP;P. Soderlund;-187.0,154.2,-218.7,43.2;rurgl_gp25
 00583;WP;C. Tou;-170.2,154.2,-196.5,60.4;rurif_ak47
 00584;WP;C. Tou;-170.2,154.2,-196.5,60.4;defibrillator
@@ -1180,7 +1180,7 @@
 00593;WP;W. Young;-189.5,154.2,-210.3,53.2;chpis_qsz92
 00597;KD;R. Hallwood;-176.1,153.3,-198.0,0.0;us_engineer
 00598;WP;W. Young;-181.7,154.2,-203.0,47.0;rurif_gp25
-00598;VD;aav_type95;-102.1,153.9,-262.7,-141.7;C. Clarke;-52.7,155.7,-271.4,-66.0
+00598;VD;aav_type95;-102.1,153.9,-262.7,-141.7;C. Clarke;-52.7,155.7,-271.4,-66.0;None
 00598;SC;C. Clarke;2
 00598;KL;D. Rickard;-102.1,153.9,-262.7,-141.7;C. Clarke;-52.7,155.7,-271.4,-66.0;usatp_predator;None
 00598;SC;C. Clarke;1
@@ -1189,7 +1189,7 @@
 00598;DT;D. Rickard;-102.1,153.9,-262.7,-141.7
 00598;WP;C. Clarke;-52.7,155.7,-271.4,-66.0;usrif_mp5_a3
 00599;WP;I. Ackworth;-105.5,154.2,-259.4,126.8;usrif_mp5_a3
-00599;VD;ahe_ah1z;-5.2,166.0,-191.9,-115.0;D. Rickard;-102.1,153.9,-262.7,-141.7
+00599;VD;ahe_ah1z;-5.2,166.0,-191.9,-115.0;D. Rickard;-102.1,153.9,-262.7,-141.7;None
 00599;SC;D. Rickard;2
 00599;KL;Luda;-5.2,166.0,-191.9,-115.0;D. Rickard;-102.1,153.9,-262.7,-141.7;aav_type95_qw2launcher;None
 00599;KD;Luda;-5.2,166.0,-191.9,-115.0;us_assault
@@ -1358,7 +1358,7 @@
 00690;SC;P. Soderlund;2
 00690;SC;C. Tou;1
 00690;SC;D. Rickard;1
-00691;VD;jep_paratrooper;-139.3,153.9,-100.9,56.3;Luda;-129.8,154.5,-109.9,-33.0
+00691;VD;jep_paratrooper;-139.3,153.9,-100.9,56.3;Luda;-129.8,154.5,-109.9,-33.0;None
 00691;WP;T. Laedre;-9.3,153.9,-87.6,-126.5;kni_knife
 00693;SC;T. Laedre;2
 00693;KL;P. Hoyles;-11.4,154.2,-89.8,45.0;T. Laedre;-11.1,154.1,-89.4,-136.4;kni_knife;None
@@ -1381,7 +1381,7 @@
 00704;KP;T. Soderman;-181.0,154.7,-78.0,180.0;ch_assault
 00706;VX;C. Tou;-134.3,154.5,-291.4,169.3;aav_type95;aav_type95_passenger
 00707;WP;P. Soderlund;-108.3,154.2,-256.5,23.6;rurif_gp25
-00707;VD;ahe_ah1z;-162.7,158.9,-60.5,-94.9;W. Young;-136.7,153.9,-291.8,169.5
+00707;VD;ahe_ah1z;-162.7,158.9,-60.5,-94.9;W. Young;-136.7,153.9,-291.8,169.5;None
 00707;SC;W. Young;2
 00707;KL;Luda;-162.7,158.9,-60.5,-94.9;W. Young;-136.7,153.9,-291.8,169.5;None;aav_type95
 00707;SC;W. Young;1
@@ -1394,7 +1394,7 @@
 00707;KD;M. Livesey;-166.0,158.3,-61.0,0.0;us_sniper
 00707;VX;M. Livesey;-8.3,165.7,-193.4,-115.0;ahe_ah1z;ahe_ah1z_cogunner
 00707;DT;M. Livesey;-166.0,158.3,-61.0,-94.9
-00707;VD;ats_tow;-157.7,160.9,-55.3,175.7;W. Young;-136.7,153.9,-291.8,169.5
+00707;VD;ats_tow;-157.7,160.9,-55.3,175.7;W. Young;-136.7,153.9,-291.8,169.5;None
 00707;WP;O. Carlen;-100.7,154.7,-257.5,0.0;uspis_92fs
 00707;WP;R. Hallwood;-99.8,155.1,-259.7,-166.6;uspis_92fs_silencer
 00708;WP;P. Soderlund;-108.2,154.2,-256.2,118.6;rurgl_gp25
@@ -1444,7 +1444,7 @@
 00717;WP;T. Laedre;-58.4,154.5,-115.2,-87.8;usrif_m24
 00717;CP;4009;-92.3,153.2,-260.8,0.0;middle;ch
 00718;VX;C. Clarke;-91.2,154.4,-265.4,99.0;usjep_hmmwv;usjep_hmmwv_cupolabase
-00718;VD;usjep_hmmwv;-90.8,154.0,-263.6,99.0;P. Soderlund;-107.5,154.2,-256.4,106.9
+00718;VD;usjep_hmmwv;-90.8,154.0,-263.6,99.0;P. Soderlund;-107.5,154.2,-256.4,106.9;None
 00718;SC;P. Soderlund;2
 00718;KL;C. Clarke;-91.2,154.4,-265.4,99.0;P. Soderlund;-107.5,154.2,-256.4,106.9;None;None
 00718;SC;P. Soderlund;1
@@ -1505,7 +1505,7 @@
 00754;WP;M. Brassard;-48.0,154.2,-124.2,70.3;ushgr_m67
 00754;WP;C. Clarke;104.2,154.2,-51.5,-121.3;usrgl_m203
 00756;VX;R. Hallwood;46.2,156.5,-76.3,-40.3;ahe_ah1z;ahe_ah1z_cogunner
-00756;VD;ahe_ah1z;49.0,155.0,-76.5,-31.9;W. Young;-38.2,153.8,-123.5,41.6
+00756;VD;ahe_ah1z;49.0,155.0,-76.5,-31.9;W. Young;-38.2,153.8,-123.5,41.6;None
 00756;SC;W. Young;2
 00756;SC;D. Rickard;1
 00756;KL;Luda;49.0,155.0,-76.5,-31.9;W. Young;-38.2,153.8,-123.5,41.6;aav_type95_qw2launcher;aav_type95
@@ -1681,8 +1681,8 @@
 00818;WP;P. Hoyles;-179.7,154.3,-52.7,103.6;chpis_qsz92_silencer
 00818;KD;L. Gustavsson;-156.6,153.3,-77.5,0.0;ch_medic
 00819;WP;C. Elliott;-157.5,154.2,-64.6,-87.6;usrif_m16a2
-00822;VD;usjep_hmmwv;-160.2,154.0,-87.6,-8.3;None;None
-00822;VD;tnk_type98;79.7,153.9,-44.6,-16.6;None;None
+00822;VD;usjep_hmmwv;-160.2,154.0,-87.6,-8.3;None;None;None
+00822;VD;tnk_type98;79.7,153.9,-44.6,-16.6;None;None;None
 00823;WP;C. Elliott;-157.5,154.2,-64.6,-45.8;ushgr_m67
 00823;WP;O. Carlen;-152.1,154.2,-59.5,-70.3;uspis_92fs
 00824;WP;C. Elliott;-156.5,154.2,-62.5,-49.9;uspis_92fs
@@ -1869,7 +1869,7 @@
 01009;WP;Luda;-175.7,154.4,-92.4,-158.4;usrif_m203
 01009;KP;Luda;-175.7,154.4,-92.4,-158.4;us_assault
 01010;WP;O. Carlen;-157.8,154.2,-138.0,-142.7;c4_explosives
-01011;VD;jeep_faav;-99.0,153.9,-262.7,168.8;P. Soderlund;-126.6,154.2,-284.3,75.8
+01011;VD;jeep_faav;-99.0,153.9,-262.7,168.8;P. Soderlund;-126.6,154.2,-284.3,75.8;None
 01011;SC;P. Soderlund;2
 01011;KL;C. Elliott;-99.0,153.9,-262.7,168.8;P. Soderlund;-126.6,154.2,-284.3,75.8;ushgr_m67;None
 01011;SC;P. Soderlund;1
@@ -1923,7 +1923,7 @@
 01032;WP;D. Rickard;-44.0,154.4,-245.0,-90.0;chrif_type85
 01032;KP;D. Rickard;-44.0,154.4,-245.0,-90.0;ch_at
 01032;WP;O. Carlen;-166.7,154.2,-186.5,-109.2;ushgr_m67
-01033;VD;ustnk_m1a2;-102.2,153.9,-258.0,166.7;T. Soderman;-109.6,154.2,-213.3,168.9
+01033;VD;ustnk_m1a2;-102.2,153.9,-258.0,166.7;T. Soderman;-109.6,154.2,-213.3,168.9;None
 01033;SC;T. Soderman;2
 01033;KL;R. Hallwood;-102.2,153.9,-258.0,166.7;T. Soderman;-109.6,154.2,-213.3,168.9;chat_eryx;None
 01033;SC;T. Soderman;1
@@ -1943,7 +1943,7 @@
 01035;WP;O. Carlen;-170.7,154.2,-186.5,-84.7;usrif_m4
 01035;WP;M. Brassard;-209.1,154.2,-139.8,168.8;usrif_m16a2
 01036;WP;I. Ackworth;-168.3,155.0,-165.4,165.0;usrif_m4
-01038;VD;tnk_type98;-200.7,153.9,-181.8,-48.6;O. Carlen;-168.7,154.2,-187.3,117.4
+01038;VD;tnk_type98;-200.7,153.9,-181.8,-48.6;O. Carlen;-168.7,154.2,-187.3,117.4;None
 01038;WP;L. Gustavsson;-155.8,154.2,-193.9,-62.7;rurif_ak47
 01038;WP;T. Laedre;-97.5,154.2,-246.2,-7.0;uspis_92fs
 01039;WP;J. Persson;-209.7,154.2,-187.7,-29.4;chpis_qsz92
@@ -2060,7 +2060,7 @@
 01098;VX;C. Clarke;-126.7,154.5,-162.1,149.0;ustnk_m1a2;ustnk_m1a2_cupolabase
 01099;WP;C. Clarke;-126.3,154.2,-162.6,149.0;usrgl_m203
 01099;KD;C. Clarke;-126.3,154.2,-162.6,149.0;us_assault
-01099;VD;jep_nanjing;-116.3,154.0,-191.4,88.2;L. Gustavsson;-102.4,153.9,-208.4,-86.6
+01099;VD;jep_nanjing;-116.3,154.0,-191.4,88.2;L. Gustavsson;-102.4,153.9,-208.4,-86.6;None
 01100;DT;Luda;-205.6,153.3,-75.4,0.0
 01100;SP;Luda;-149.2,158.9,-47.4,180.0;us
 01100;WP;Luda;-149.2,158.9,-47.4,180.0;usrif_m203
@@ -2083,7 +2083,7 @@
 01114;KP;C. Clarke;-175.7,154.4,-92.4,-158.4;us_assault
 01116;KD;P. Hoyles;-133.4,154.2,-193.6,14.7;ch_at
 01117;WP;O. Carlen;-98.4,152.9,-152.7,-139.9;ushgr_m67
-01117;VD;tnk_type98;-123.0,152.5,-176.5,27.9;R. Hallwood;-127.9,153.3,-168.6,136.7
+01117;VD;tnk_type98;-123.0,152.5,-176.5,27.9;R. Hallwood;-127.9,153.3,-168.6,136.7;None
 01117;SC;R. Hallwood;2
 01117;KL;L. Gustavsson;-123.0,152.5,-176.5,27.9;R. Hallwood;-127.9,153.3,-168.6,136.7;ustnk_m1a2_barrel;ustnk_m1a2
 01117;KD;L. Gustavsson;-123.0,152.5,-176.5,27.9;ch_medic
@@ -2102,7 +2102,7 @@
 01127;WP;D. Rickard;-121.6,154.2,-259.1,-6.1;rurgl_gp25
 01127;WP;W. Young;-98.5,154.2,-246.8,-126.1;chat_eryx
 01129;WP;T. Soderman;-104.7,154.2,-269.7,-85.8;chsht_norinco982
-01129;VD;jeep_faav;-119.6,153.9,-282.2,46.8;W. Young;-99.5,154.2,-247.9,-153.7
+01129;VD;jeep_faav;-119.6,153.9,-282.2,46.8;W. Young;-99.5,154.2,-247.9,-153.7;None
 01129;SC;W. Young;2
 01129;KL;M. Brassard;-119.6,153.9,-282.2,46.8;W. Young;-99.5,154.2,-247.9,-153.7;chat_eryx;None
 01129;KD;M. Brassard;-119.6,153.9,-282.2,46.8;us_medic
@@ -2175,7 +2175,7 @@
 01169;SP;C. Tou;-44.0,154.4,-245.0,-90.0;ch
 01169;WP;C. Tou;-44.0,154.4,-245.0,-90.0;rurif_ak47
 01169;KP;C. Tou;-44.0,154.4,-245.0,-90.0;ch_medic
-01171;VD;jep_nanjing;-180.5,154.1,-295.1,-80.1;None;None
+01171;VD;jep_nanjing;-180.5,154.1,-295.1,-80.1;None;None;None
 01172;SC;T. Laedre;2
 01172;KL;J. Persson;-192.3,154.2,-198.9,-156.0;T. Laedre;-196.2,154.2,-212.8,15.5;usrif_m203;None
 01172;WP;M. Brassard;-196.2,154.2,-210.1,48.3;ushgr_m67
@@ -2184,7 +2184,7 @@
 01174;WP;T. Soderman;-184.2,154.2,-210.4,-68.7;chpis_qsz92
 01174;VX;R. Hallwood;25.2,154.5,-77.3,53.7;ustnk_m1a2;ustnk_m1a2_driver
 01175;WP;L. Gustavsson;-97.5,152.8,-159.8,53.5;rurif_ak47
-01175;VD;ustnk_m1a2;27.3,153.9,-79.9,64.3;W. Young;-43.0,153.9,-138.0,39.1
+01175;VD;ustnk_m1a2;27.3,153.9,-79.9,64.3;W. Young;-43.0,153.9,-138.0,39.1;None
 01175;WP;C. Elliott;-73.7,154.2,-140.6,-122.5;ushgr_m67
 01175;DT;C. Clarke;-172.8,153.3,-183.0,0.0
 01175;WP;L. Gustavsson;-97.0,152.8,-159.4,50.9;chpis_qsz92
@@ -2201,7 +2201,7 @@
 01179;WP;O. Carlen;-6.8,154.2,-94.5,-127.9;usrif_m24
 01181;KD;M. Brassard;-196.1,153.3,-206.6,0.0;us_medic
 01182;WP;L. Gustavsson;-76.9,154.2,-152.3,45.1;rurif_ak47
-01182;VD;jeep_faav;-79.8,153.8,-144.5,-111.8;L. Gustavsson;-76.8,154.2,-152.2,45.1
+01182;VD;jeep_faav;-79.8,153.8,-144.5,-111.8;L. Gustavsson;-76.8,154.2,-152.2,45.1;None
 01183;WP;C. Tou;-72.3,154.2,-261.3,-110.5;ushgr_m67
 01183;WP;P. Soderlund;-110.7,154.2,-256.3,23.5;ushgr_m67
 01183;WP;T. Soderman;-199.3,154.2,-213.4,-99.7;chsht_norinco982
@@ -2258,7 +2258,7 @@
 01202;KP;M. Livesey;-228.2,154.4,-216.2,-69.0;us_support
 01202;SC;M. Brassard;2
 01202;RV;M. Livesey;-228.2,154.4,-216.2,-69.0;M. Brassard;-229.2,154.3,-216.6,65.0
-01202;VD;usaav_m6;-135.4,153.9,-301.0,158.3;J. Persson;-125.3,154.2,-270.6,-165.9
+01202;VD;usaav_m6;-135.4,153.9,-301.0,158.3;J. Persson;-125.3,154.2,-270.6,-165.9;None
 01202;SC;J. Persson;2
 01202;KL;I. Ackworth;-135.4,153.9,-301.0,158.3;J. Persson;-125.3,154.2,-270.6,-165.9;chat_eryx;None
 01202;KD;I. Ackworth;-135.4,153.9,-301.0,158.3;us_specops
@@ -2347,7 +2347,7 @@
 01261;KP;J. Persson;68.0,154.4,-31.0,60.1;ch_support
 01261;VE;D. Rickard;72.8,153.2,-54.1,-122.7;ats_hj8;ats_hj8_driver;False
 01261;KD;T. Soderman;-199.5,153.3,-280.1,0.0;ch_specops
-01262;VD;jeep_faav;49.8,153.8,-65.7,39.7;D. Rickard;72.8,153.2,-54.1,-122.7
+01262;VD;jeep_faav;49.8,153.8,-65.7,39.7;D. Rickard;72.8,153.2,-54.1,-122.7;None
 01262;SC;D. Rickard;2
 01262;KL;C. Clarke;49.8,153.8,-65.7,39.7;D. Rickard;72.8,153.2,-54.1,-122.7;ats_hj8_launcher;ats_hj8
 01262;KD;C. Clarke;49.8,153.8,-65.7,39.7;us_at
@@ -2443,10 +2443,10 @@
 01326;VX;D. Rickard;-133.6,209.0,-43.4,131.1;ahe_z10;ahe_z10_driver
 01327;VE;D. Rickard;-122.8,204.7,-51.3,0.0;parachute;parachute_driver;True
 01328;WP;D. Rickard;-122.5,194.7,-51.3,0.0;ushgr_m67
-01328;VD;ahe_z10;-103.3,214.9,-90.1,-174.5;Luda;-114.3,154.0,-56.5,-60.0
+01328;VD;ahe_z10;-103.3,214.9,-90.1,-174.5;Luda;-114.3,154.0,-56.5,-60.0;None
 01329;WP;C. Elliott;57.4,154.3,-62.9,-110.1;usrif_m16a2
 01329;KD;R. Hallwood;-96.6,153.3,-264.7,0.0;us_at
-01329;VD;ustnk_m1a2;-101.0,153.9,-263.6,177.1;T. Soderman;-122.7,155.4,-257.1,82.5
+01329;VD;ustnk_m1a2;-101.0,153.9,-263.6,177.1;T. Soderman;-122.7,155.4,-257.1,82.5;None
 01329;SC;T. Soderman;2
 01329;KL;M. Livesey;-101.0,153.9,-263.6,177.1;T. Soderman;-122.7,155.4,-257.1,82.5;chat_eryx;None
 01329;SC;T. Soderman;1
@@ -2501,7 +2501,7 @@
 01355;KD;D. Rickard;-92.9,152.6,-48.4,0.0;ch_engineer
 01355;WP;O. Carlen;-96.8,156.1,-61.5,-22.3;ushgr_m67
 01355;WP;P. Soderlund;-172.8,154.2,-36.6,21.2;ushgr_m67
-01358;VD;jeep_faav;-88.8,153.8,-263.1,73.9;T. Soderman;-107.4,154.2,-266.0,67.8
+01358;VD;jeep_faav;-88.8,153.8,-263.1,73.9;T. Soderman;-107.4,154.2,-266.0,67.8;None
 01358;SC;T. Soderman;2
 01358;KL;M. Brassard;-88.8,153.8,-263.1,73.9;T. Soderman;-107.4,154.2,-266.0,67.8;chat_eryx;None
 01358;SC;T. Soderman;1
@@ -2546,7 +2546,7 @@
 01370;WP;R. Hallwood;-153.8,154.2,-95.3,66.8;usrif_m203
 01371;WP;M. Livesey;-98.5,153.7,-61.9,86.5;wrench
 01372;WP;O. Carlen;-94.5,156.0,-61.3,-12.8;usrif_remington11-87
-01373;VD;usaav_m6;-93.9,153.4,-61.6,106.5;W. Young;-91.2,153.2,-69.4,62.0
+01373;VD;usaav_m6;-93.9,153.4,-61.6,106.5;W. Young;-91.2,153.2,-69.4,62.0;None
 01373;SC;W. Young;2
 01373;KL;Luda;-93.9,153.4,-61.6,106.5;W. Young;-91.2,153.2,-69.4,62.0;tnk_type98_barrel;tnk_type98
 01373;KD;Luda;-93.9,153.4,-61.6,106.5;us_assault
@@ -2605,7 +2605,7 @@
 01392;SP;R. Hallwood;-175.7,154.4,-92.4,-158.4;us
 01392;WP;R. Hallwood;-175.7,154.4,-92.4,-158.4;uslmg_m249saw
 01392;KP;R. Hallwood;-175.7,154.4,-92.4,-158.4;us_support
-01393;VD;tnk_type98;-70.6,151.8,-63.7,79.5;None;None
+01393;VD;tnk_type98;-70.6,151.8,-63.7,79.5;None;None;None
 01394;VE;C. Elliott;115.1,154.7,-95.0,-32.0;ahe_z10;ahe_z10_driver;False
 01395;VE;O. Carlen;-179.2,153.9,-33.8,151.8;ustnk_m1a2;ustnk_m1a2_driver;False
 01400;WP;T. Laedre;-146.9,154.2,-57.8,-140.7;c4_explosives
@@ -2623,11 +2623,11 @@
 01415;WP;D. Rickard;-126.9,154.2,-131.7,-34.7;rurgl_gp25
 01417;WP;R. Hallwood;-151.9,154.2,-83.6,150.7;ushgr_m67
 01417;WP;C. Tou;-149.2,154.2,-151.9,-40.3;rurif_ak47
-01417;VD;jep_nanjing;81.0,154.1,-49.2,-101.9;None;None
+01417;VD;jep_nanjing;81.0,154.1,-49.2,-101.9;None;None;None
 01418;WP;C. Tou;-149.1,154.2,-149.6,-2.4;ushgr_m67
 01418;WP;D. Rickard;-127.4,154.2,-122.3,-76.6;rurif_gp25
 01419;KD;M. Livesey;-159.1,153.3,-86.0,0.0;us_at
-01420;VD;jeep_faav;48.1,153.8,-71.0,64.0;None;None
+01420;VD;jeep_faav;48.1,153.8,-71.0,64.0;None;None;None
 01421;WP;C. Tou;-147.9,154.2,-140.3,-72.1;rurif_ak47
 01421;WP;T. Laedre;-163.1,154.2,-75.6,136.0;ushgr_m67
 01424;WP;R. Hallwood;-151.9,154.2,-83.7,150.7;uslmg_m249saw
@@ -2696,7 +2696,7 @@
 01464;WP;C. Tou;-122.8,155.9,-244.5,0.0;ushgr_m67
 01465;VX;O. Carlen;-59.7,154.5,-189.6,-161.6;ustnk_m1a2;ustnk_m1a2_driver
 01465;WP;C. Tou;-122.8,155.9,-242.9,22.7;rurif_ak47
-01466;VD;ustnk_m1a2;-63.0,153.9,-188.6,-163.5;P. Soderlund;-71.3,153.9,-196.2,38.8
+01466;VD;ustnk_m1a2;-63.0,153.9,-188.6,-163.5;P. Soderlund;-71.3,153.9,-196.2,38.8;None
 01466;KD;W. Young;73.5,153.3,-55.8,0.0;ch_at
 01467;WP;P. Hoyles;57.8,154.2,-93.4,-48.7;chsni_type88
 01470;SC;Luda;2
@@ -2781,7 +2781,7 @@
 01516;WP;D. Rickard;68.4,154.2,-50.4,-91.6;ushgr_m67
 01516;WP;T. Soderman;93.0,154.2,-68.2,48.7;chat_eryx
 01516;KD;I. Ackworth;-121.7,154.2,-164.5,74.2;us_at
-01518;VD;jep_nanjing;93.5,154.1,-65.4,-125.8;T. Soderman;96.6,154.2,-63.8,-117.0
+01518;VD;jep_nanjing;93.5,154.1,-65.4,-125.8;T. Soderman;96.6,154.2,-63.8,-117.0;None
 01518;SC;T. Soderman;2
 01518;KL;Luda;93.8,155.6,-65.2,0.0;T. Soderman;96.6,154.2,-63.8,-117.0;chat_eryx;None
 01518;KD;Luda;93.8,155.6,-65.2,0.0;us_assault
@@ -2790,7 +2790,7 @@
 01518;SC;T. Soderman;-2
 01518;KL;T. Soderman;96.6,154.2,-63.8,-117.0;T. Soderman;96.6,154.2,-63.8,-117.0;chat_eryx;None
 01520;WP;L. Gustavsson;-36.9,154.0,-204.1,-116.7;rurif_ak47
-01520;VD;tnk_type98;46.3,153.9,-51.1,77.0;None;None
+01520;VD;tnk_type98;46.3,153.9,-51.1,77.0;None;None;None
 01520;WP;L. Gustavsson;-37.9,154.0,-202.3,-102.1;ushgr_m67
 01520;WP;D. Rickard;68.5,154.2,-46.4,-131.5;chsht_norinco982
 01522;DT;J. Persson;81.9,153.3,-44.0,0.0
@@ -2858,7 +2858,7 @@
 01570;VE;T. Laedre;-101.6,156.5,-259.1,0.0;usaav_m6;usaav_m6_cupolabase;True
 01570;WP;O. Carlen;-134.9,154.2,-121.3,-125.4;usrif_remington11-87
 01571;WP;P. Hoyles;-143.2,154.2,-158.3,147.8;chpis_qsz92
-01573;VD;jep_nanjing;-150.5,154.1,-124.0,-2.5;O. Carlen;-136.9,154.2,-130.6,-174.4
+01573;VD;jep_nanjing;-150.5,154.1,-124.0,-2.5;O. Carlen;-136.9,154.2,-130.6,-174.4;None
 01573;SC;O. Carlen;2
 01573;KL;C. Tou;-150.5,154.1,-124.0,-2.5;O. Carlen;-136.9,154.2,-130.6,-174.4;ushgr_m67;None
 01573;KD;C. Tou;-150.5,154.1,-124.0,-2.5;ch_medic
@@ -2905,7 +2905,7 @@
 01672;TD;C. Elliott;-161.3,208.6,-190.1,65.7;Luda;-256.4,153.8,-197.3,0.0
 01673;VE;C. Clarke;-161.8,204.0,-193.6,0.0;parachute;parachute_driver;True
 01673;VX;C. Elliott;-160.9,212.2,-189.6,65.6;ahe_z10;ahe_z10_driver
-01674;VD;ahe_z10;-161.4,213.3,-192.3,66.3;Luda;-256.4,153.8,-197.2,0.0
+01674;VD;ahe_z10;-161.4,213.3,-192.3,66.3;Luda;-256.4,153.8,-197.2,0.0;None
 01674;SC;Luda;-2
 01674;TD;None;None;Luda;-256.4,153.8,-197.2,0.0
 01674;KL;C. Elliott;-160.5,212.7,-189.7,65.6;Luda;-256.4,153.8,-197.2,0.0;None;usjep_hmmwv
@@ -3040,7 +3040,7 @@
 01803;SC;T. Soderman;1
 01803;KL;I. Ackworth;-103.6,152.8,-179.5,34.3;M. Brassard;-109.7,155.3,-165.3,0.0;hmg_m2hb;ustnk_m1a2
 01803;AS;T. Soderman;-66.1,155.6,-184.8,0.0;damage
-01804;VD;jeep_faav;-92.8,152.5,-165.7,-153.2;W. Young;-96.8,154.2,-223.2,-2.0
+01804;VD;jeep_faav;-92.8,152.5,-165.7,-153.2;W. Young;-96.8,154.2,-223.2,-2.0;None
 01804;SC;W. Young;2
 01804;KL;Luda;-92.8,152.5,-165.7,-153.2;W. Young;-96.8,154.2,-223.2,-2.0;chat_eryx;None
 01804;KD;Luda;-92.8,152.5,-165.7,-153.2;us_assault
@@ -3093,7 +3093,7 @@
 01824;VX;M. Brassard;-64.5,154.5,-196.1,-128.8;ustnk_m1a2;ustnk_m1a2_cupolabase
 01824;WP;P. Soderlund;-155.4,154.2,-61.1,-113.3;ushgr_m67
 01825;VX;T. Laedre;-66.8,154.5,-198.3,-137.9;ustnk_m1a2;ustnk_m1a2_driver
-01825;VD;ustnk_m1a2;-69.5,153.9,-196.1,-139.5;W. Young;-93.2,152.9,-188.5,104.9
+01825;VD;ustnk_m1a2;-69.5,153.9,-196.1,-139.5;W. Young;-93.2,152.9,-188.5,104.9;None
 01825;WP;W. Young;-93.2,152.9,-188.5,62.4;chrif_type85
 01826;WP;T. Soderman;-149.5,154.2,-57.5,-109.2;ushgr_m67
 01826;KD;R. Hallwood;-230.2,153.2,-165.4,0.0;us_specops
@@ -3260,7 +3260,7 @@
 01905;VX;R. Hallwood;8.4,153.0,-124.7,71.3;parachute;parachute_driver
 01905;VE;M. Brassard;72.8,153.2,-54.1,-122.7;ats_tow;ats_tow_driver;False
 01906;WP;C. Elliott;-149.0,154.2,-64.3,-165.7;usrif_m16a2
-01906;VD;ahe_ah1z;-38.7,156.0,-126.2,-101.8;O. Carlen;-122.1,152.5,-180.3,-26.3
+01906;VD;ahe_ah1z;-38.7,156.0,-126.2,-101.8;O. Carlen;-122.1,152.5,-180.3,-26.3;None
 01906;SC;O. Carlen;-4
 01906;KL;Luda;-38.7,156.0,-126.2,-101.8;O. Carlen;-122.1,152.5,-180.3,-26.3;None;aav_type95
 01906;KD;Luda;-38.7,156.0,-126.2,-101.8;us_assault
@@ -3272,7 +3272,7 @@
 01907;WP;T. Laedre;35.8,154.2,-85.2,-111.8;c4_explosives
 01907;WP;P. Soderlund;-105.3,154.2,-213.5,-0.5;rurgl_gp25
 01908;WP;C. Tou;-152.1,154.2,-87.3,-2.2;chpis_qsz92
-01908;VD;tnk_type98;6.4,153.9,-101.6,48.4;M. Brassard;72.8,153.2,-54.1,-122.7
+01908;VD;tnk_type98;6.4,153.9,-101.6,48.4;M. Brassard;72.8,153.2,-54.1,-122.7;None
 01908;SC;M. Brassard;2
 01908;KL;J. Persson;6.4,153.9,-101.6,48.4;M. Brassard;72.8,153.2,-54.1,-122.7;ats_tow_launcher;ats_tow
 01908;KD;J. Persson;6.4,153.9,-101.6,48.4;ch_sniper
@@ -3333,7 +3333,7 @@
 01928;WP;M. Brassard;21.0,154.2,-88.5,-123.6;ushgr_m67
 01928;WP;T. Soderman;-15.4,154.2,-112.6,25.2;ushgr_m67
 01929;KD;M. Livesey;2.4,153.3,-92.8,0.0;us_support
-01930;VD;jep_nanjing;-157.5,154.1,-86.9,-35.2;None;None
+01930;VD;jep_nanjing;-157.5,154.1,-86.9,-35.2;None;None;None
 01931;DT;I. Ackworth;-152.6,153.3,-62.8,0.0
 01931;SP;I. Ackworth;-181.0,154.7,-78.0,180.0;us
 01931;WP;I. Ackworth;-181.0,154.7,-78.0,180.0;usrif_remington11-87
@@ -3413,7 +3413,7 @@
 01964;KP;I. Ackworth;97.0,154.4,-100.0,-31.4;us_specops
 01966;SC;P. Hoyles;2
 01966;KL;M. Brassard;2.0,154.1,-107.6,-110.3;P. Hoyles;6.0,149.7,-119.7,0.0;ushgr_m67;None
-01966;VD;jeep_faav;117.9,153.8,-93.9,159.6;None;None
+01966;VD;jeep_faav;117.9,153.8,-93.9,159.6;None;None;None
 01969;KD;P. Hoyles;5.7,149.6,-119.6,0.0;ch_support
 01970;KD;M. Brassard;1.3,153.3,-107.1,0.0;us_medic
 01971;SC;P. Soderlund;2
@@ -3525,7 +3525,7 @@
 02078;WP;T. Soderman;-69.7,152.0,-62.8,111.1;chsht_norinco982
 02079;WP;T. Laedre;-6.7,150.2,-63.0,-83.0;ushgr_m67
 02079;VE;J. Persson;58.8,155.7,-54.6,0.0;ustnk_m1a2;ustnk_m1a2_cupolabase;False
-02079;VD;aav_type95;-118.7,153.8,-201.2,176.3;None;None
+02079;VD;aav_type95;-118.7,153.8,-201.2,176.3;None;None;None
 02080;WP;T. Laedre;-8.3,149.5,-62.8,59.8;usrif_m24
 02080;SC;O. Carlen;-2
 02080;TD;I. Ackworth;46.7,154.2,-55.7,84.5;O. Carlen;118.3,168.8,-62.2,0.0
@@ -3564,7 +3564,7 @@
 02093;KD;I. Ackworth;59.2,153.3,-40.3,0.0;us_specops
 02094;VX;P. Hoyles;-72.6,152.6,-61.6,93.4;jep_paratrooper;jep_paratrooper_driver
 02094;WP;M. Livesey;-67.7,151.7,-61.3,25.5;uslmg_m249saw
-02094;VD;ustnk_m1a2;65.9,153.9,-46.9,48.4;M. Brassard;79.6,153.9,-47.2,27.0
+02094;VD;ustnk_m1a2;65.9,153.9,-46.9,48.4;M. Brassard;79.6,153.9,-47.2,27.0;None
 02094;SC;M. Brassard;2
 02094;KL;C. Tou;65.9,153.9,-46.9,48.4;M. Brassard;79.6,153.9,-47.2,27.0;tnk_type98_barrel;tnk_type98
 02094;KD;C. Tou;65.9,153.9,-46.9,48.4;ch_medic
@@ -3588,7 +3588,7 @@
 02100;KL;W. Young;67.6,154.2,-57.7,51.9;M. Brassard;80.0,153.9,-46.9,27.5;tnk_type98_barrel;tnk_type98
 02100;KD;W. Young;67.6,154.2,-57.7,51.9;ch_at
 02100;DT;W. Young;67.6,154.2,-57.7,51.9
-02101;VD;tnk_type98;80.1,153.9,-46.8,27.6;W. Young;67.6,154.2,-57.7,51.9
+02101;VD;tnk_type98;80.1,153.9,-46.8,27.6;W. Young;67.6,154.2,-57.7,51.9;None
 02101;SC;W. Young;2
 02101;KL;M. Brassard;80.1,153.9,-46.8,27.6;W. Young;67.6,154.2,-57.7,51.9;chat_eryx;None
 02101;SC;W. Young;1
@@ -3614,7 +3614,7 @@
 02113;VE;L. Gustavsson;93.6,153.7,-65.5,0.0;usjep_hmmwv;usjep_hmmwv_cupolabase;False
 02114;SC;Luda;2
 02114;KL;J. Persson;93.8,154.2,-50.3,165.8;Luda;98.0,155.6,-69.0,0.0;chhmg_type85;jep_nanjing
-02115;VD;jep_nanjing;98.3,154.1,-68.7,47.0;L. Gustavsson;93.6,153.7,-65.5,0.0
+02115;VD;jep_nanjing;98.3,154.1,-68.7,47.0;L. Gustavsson;93.6,153.7,-65.5,0.0;None
 02115;SC;L. Gustavsson;2
 02115;SC;J. Persson;1
 02115;KL;Luda;98.0,155.6,-69.0,0.0;L. Gustavsson;93.6,153.7,-65.5,0.0;None;usjep_hmmwv
@@ -3652,7 +3652,7 @@
 02163;WP;L. Gustavsson;-142.8,154.2,-62.5,-35.5;medikit
 02167;WP;L. Gustavsson;-143.4,154.2,-59.6,-148.6;rurif_ak47
 02196;VE;D. Rickard;-249.2,154.0,-246.3,90.0;aav_type95;aav_type95_driver;False
-02205;VD;ahe_ah1z;-153.5,205.8,-429.8,-95.8;D. Rickard;-234.2,154.0,-227.7,-36.1
+02205;VD;ahe_ah1z;-153.5,205.8,-429.8,-95.8;D. Rickard;-234.2,154.0,-227.7,-36.1;None
 02205;SC;D. Rickard;2
 02205;SC;T. Soderman;1
 02205;KL;C. Elliott;-153.5,205.8,-429.8,-95.8;D. Rickard;-234.2,154.0,-227.7,-36.1;aav_type95_qw2launcher;aav_type95
@@ -3660,14 +3660,14 @@
 02205;KD;C. Elliott;-153.5,205.8,-429.8,-95.8;us_medic
 02205;VX;C. Elliott;-152.8,153.3,-62.3,0.0;ahe_ah1z;ahe_ah1z_driver
 02205;DT;C. Elliott;-153.5,205.8,-429.8,-95.8
-02208;VD;jep_paratrooper;-71.8,152.0,-63.6,94.2;None;None
+02208;VD;jep_paratrooper;-71.8,152.0,-63.6,94.2;None;None;None
 02215;VE;R. Hallwood;216.9,143.8,-268.1,0.0;parachute;parachute_driver;True
 02216;VX;R. Hallwood;216.9,142.1,-268.1,177.2;parachute;parachute_driver
 02222;WP;L. Gustavsson;-137.8,154.2,-86.7,83.5;ushgr_m67
 02225;WP;L. Gustavsson;-137.6,154.2,-86.7,83.5;rurif_ak47
 02240;WP;T. Soderman;-19.9,152.8,-82.9,-93.6;ushgr_m67
 02241;WP;L. Gustavsson;-86.2,154.2,-77.2,129.8;ushgr_m67
-02241;VD;usjep_hmmwv;-154.6,154.0,-91.0,-37.4;None;None
+02241;VD;usjep_hmmwv;-154.6,154.0,-91.0,-37.4;None;None;None
 02243;WP;L. Gustavsson;-86.2,154.2,-77.2,129.8;rurif_ak47
 02244;WP;T. Soderman;-23.2,152.9,-83.4,-119.8;chsni_type88
 02247;SC;T. Soderman;2

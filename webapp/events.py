@@ -819,15 +819,17 @@ class VehicleDestroyEvent(BaseEvent):
     CALLBACK = 'on_vehicle_destroy'
 
     def __init__(self, tick, values):
-        BaseEvent.__init__(self, tick, values, 4)
+        BaseEvent.__init__(self, tick, values, 5)
 
         self.vehicle = model_mgr.get_vehicle(values[0])
         self.vehicle_pos = event_mgr.parse_pos(values[1])
         self.attacker = model_mgr.get_player_by_name(values[2])
         self.attacker_pos = event_mgr.parse_pos(values[3])
+        self.driver = model_mgr.get_player_by_name(values[4])
 
         event_mgr.get_history(self.vehicle).add_event(self)
         event_mgr.get_history(self.attacker).add_event(self)
+        event_mgr.get_history(self.driver).add_event(self)
 event_mgr.add_event_class(VehicleDestroyEvent)
 
 class VehicleEnterEvent(BaseEvent):
