@@ -116,16 +116,16 @@
    height: 100%;
 }
 
-.ui-ticker-kills {
+.ui-ticker-score {
    font-size: 1.6em;
 }
 
-.ui-ticker-deaths {
+.ui-ticker-support {
    font-size: 1.2em;
 }
 
-.ui-ticker-inflicted,
-.ui-ticker-received {
+.ui-ticker-kills,
+.ui-ticker-deaths {
    font-size: 0.9em;
 }
 
@@ -139,6 +139,6 @@
    font-size: 1.3em;
    font-weight: bold;
    height: 100%;
-   margin-top: 38px;
-   text-align: center;
+   padding-left: 30px;
+   padding-top: 35px;
 }

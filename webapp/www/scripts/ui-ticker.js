@@ -246,16 +246,15 @@ $.widget('ui.ticker', {
             'url(images/players/' + model.photo + ')');
 
       // Check whether the current model is a spectator
-      var team = (model.team && model.team.length > 0 ? model.team.charAt(0) : '').toLowerCase();
-      if (team != 's') {
+      if (model.team != undefined) {
 
          // Load the player game place
          $('.ui-ticker-place-value', itemElm).text(model.place);
 
          // Load the player military rank
          var rankTip = 'Rank: ';
-         if (model.rank >= 0 && model.rank < this.ranks.length) {
-            rankTip += this.ranks[model.rank];
+         if (model.rank!= undefined && $.service.ranks[model.rank]) {
+            rankTip += $.service.ranks[model.rank];
          } else {
             rankTip += 'Unknown';
          }
@@ -264,8 +263,8 @@ $.widget('ui.ticker', {
 
          // Load the player team
          var teamTip = 'Team: ';
-         if (model.team && this.teams[model.team]) {
-            teamTip += this.teams[model.team];
+         if (model.team != undefined && $.service.teams[model.team]) {
+            teamTip += $.service.teams[model.team];
          } else {
             teamTip += 'Unknown';
          }
@@ -300,10 +299,10 @@ $.widget('ui.ticker', {
          $('.ui-ticker-trend', itemElm).show();
 
          // Load all the numeric content
+         $('.ui-ticker-score .ui-ticker-stat-value', itemElm).text(model.score);
+         $('.ui-ticker-support .ui-ticker-stat-value', itemElm).text(model.teamwork);
          $('.ui-ticker-kills .ui-ticker-stat-value', itemElm).text(model.kills);
          $('.ui-ticker-deaths .ui-ticker-stat-value', itemElm).text(model.deaths);
-         $('.ui-ticker-inflicted .ui-ticker-stat-value', itemElm).text(model.inflicted);
-         $('.ui-ticker-received .ui-ticker-stat-value', itemElm).text(model.received);
          $('.ui-ticker-stats', itemElm).show();
          $('.ui-ticker-spec', itemElm).hide();
       } else {

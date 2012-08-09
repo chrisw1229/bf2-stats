@@ -297,9 +297,7 @@ class Processor(BaseProcessor):
         player_stats.score_total += e.value
 
         # Calculate the player rank based on score
-        if player_stats.score >= 50:
-            player_stats.rank = 5
-        elif player_stats.score >= 40:
+        if player_stats.score >= 40:
             player_stats.rank = 4
         elif player_stats.score >= 30:
             player_stats.rank = 3
