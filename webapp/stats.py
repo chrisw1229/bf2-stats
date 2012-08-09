@@ -515,6 +515,20 @@ class StatManager(object):
         if pos1 and len(pos1) == 4 and pos2 and len(pos2) == 4:
             return math.fabs(pos2[1] - pos1[1])
 
+    def angle_diff(self, pos1, pos2):
+        '''
+        Calculates the angle difference between the given angles
+        
+        Args:
+            pos1 (array): Array of points in the form [x,z,y,a].
+            pos2 (array): Array of points in the form [x,z,y,a].
+            
+        Returns:
+            angular difference (float): Difference between the angles.
+        '''
+        if pos1 and len(pos1) == 4 and pos2 and len(pos2) == 4:
+            return math.fabs(pos2[3] - pos1[3])
+            
     def _get_stats(self, model, stats_type):
         if not (model and stats_type): return
 
