@@ -31,6 +31,7 @@ class Processor(AwardProcessor):
 
     def on_kill(self, e):
 
+        # Make sure only the driver gets credit
         if e.victim.passenger:
             return
         

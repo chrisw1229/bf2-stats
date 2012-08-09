@@ -65,6 +65,9 @@ class BaseProcessor(object):
     def on_kit_pickup(self, e):
         pass
 
+    def on_loss(self, e):
+        pass
+
     def on_repair(self, e):
         pass
 
@@ -108,4 +111,7 @@ class BaseProcessor(object):
         pass
 
     def on_weapon(self, e):
+        pass
+
+    def on_win(self, e):
         pass

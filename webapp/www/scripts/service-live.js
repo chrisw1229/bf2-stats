@@ -10,6 +10,21 @@ $.extend({ service: {
    errors: 0, // The number of consecutive communication errors
    producer: undefined, // An optional function that produces synthetic packets
 
+   ranks: {
+      '0': 'Private',
+      '1': 'Rifleman',
+      '2': 'Squad Leader',
+      '3': 'Section Sergeant',
+      '4': 'Platoon Sergeant'
+   },
+
+   teams: {
+      'ch': 'China',
+      'eu': 'European Union',
+      'mec': 'Mercenaries',
+      'us': 'United States'
+   },
+
    // Makes an update request to the server to get new data
    refresh: function(type, all) {
 

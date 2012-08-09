@@ -1,23 +1,26 @@
 
-import collections
 from processors.awards import AwardProcessor,Column
 from stats import stat_mgr
 
 class Processor(AwardProcessor):
     '''
     Overview
-    This processor keeps track of the total distance traveled between kills.
-
+    This processor tracks the maximum distance travelled between kills.
+    
     Implementation
-    Store position after each kill and add distance between current kill position
-    and last kill position.  Reset the position after dying.
+    This implementation tracks the distance travelled between kills...
+    (Distance between prior kill and current kill) The fact that you ran
+    around like a madman for 5 minutes doing laps around the map doesn't
+    help you out in this case.
 
     Notes
+    None.
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Camper', 'Shortest Distance Between Kills', [
-                Column('Players'), Column('Meters', Column.NUMBER, Column.ASC)])
+        AwardProcessor.__init__(self, 'Nomad',
+                'Longest Distance Between Kills', [
+                Column('Players'), Column('Distance', Column.NUMBER, Column.DESC)])
 
         # Store the last known position for each player
         self.player_to_pos = dict()

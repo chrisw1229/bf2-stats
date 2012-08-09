@@ -19,31 +19,32 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Fools Gold', 'Max Death Streak by Turrets',
-                                [Column('Players'), Column('Deaths', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Fool\'s Gold',
+                'Max Death Streak by Turrets',
+                [Column('Players'), Column('Deaths', Column.NUMBER, Column.DESC)])
 
         self.current = dict()
-    
+
     def on_kill(self, e):
-        # Reset counter to 0 for kills
-        self.current[e.attacker] = 0
-        
+
         # Ignore suicides and team kills
         if not e.valid_kill:
             return
 
+        # Reset counter to 0 for kills
+        self.current[e.attacker] = 0
+
         if e.victim not in self.current:
             self.current[e.victim] = 0
 
+        # Check whether the victim was killed by a station
         attack_vehicle = model_mgr.get_vehicle(e.attacker.vehicle_id)
         if attack_vehicle.group == STATION:
-            self.current[e.victim] += 1
 
-            if e.victim not in self.results:
-                self.results[e.victim] = self.current[e.victim]
-                
-            if self.current[e.victim] > self.results[e.victim]:
-                self.results[e.victim] = self.current[e.victim]
+            # Add a station death point update the results with the max
+            self.current[e.victim] += 1
+            self.results[e.victim] = max(self.results[e.victim], self.current[e.victim])
         else:
+
             # Reset counter for non turret deaths
             self.current[e.victim] = 0

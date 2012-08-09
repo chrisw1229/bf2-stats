@@ -12,13 +12,14 @@ class Handler:
 
     MODEL_FIELDS = ['aliases', 'id']
 
-    STATS_FIELDS = ['ammoed_total', 'ammos_total', 'assisted_total',
-            'assists_total', 'deaths_total', 'deaths_streak_max', 'games',
-            'healed_total', 'heals_total', 'kills_5_total', 'kills_10_total',
-            'kills_ratio_max','kills_streak_max', 'kills_total', 'play_time',
-            'repairs_total', 'revived_total','revives_total', 'score_total',
-            'spec_time', 'suicides_total', 'team_killed_total',
-            'team_kills_total', 'wounds_total']
+    STATS_FIELDS = ['assisted_total', 'assists_total', 'deaths_total',
+            'deaths_streak_max', 'games', 'healed_total', 'heals_total',
+            'kills_5_total', 'kills_10_total', 'kills_ratio_max',
+            'kills_streak_max', 'kills_total', 'play_time', 'repairs_total',
+            'revived_total','revives_total', 'score_total', 'spec_time',
+            'suicides_total', 'supplied_total', 'supplies_total',
+            'team_killed_total', 'team_kills_total', 'teamwork_total',
+            'wounds_total']
 
     def GET(self, id=None, data_type=None):
         '''

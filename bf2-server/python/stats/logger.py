@@ -114,6 +114,21 @@ def on_game_status(status):
             host.registerHandler('TicketLimitReached', on_ticket_limit)
             host.registerHandler('TimeLimitReached', on_clock_limit)
             host.registerHandler('VehicleDestroyed', on_vehicle_destroy)
+
+        # Log the winners and losers on game end
+        if status == bf2.GameStatus.EndGame:
+            win_team_id = bf2.gameLogic.getWinner()
+            win_type = bf2.gameLogic.getVictoryType()
+
+            team1_name = format_team(1)
+            team2_name = format_team(2)
+
+            if win_team_id == 1:
+                log('WN', team1_name, win_type)
+                log('LS', team2_name, win_type)
+            elif win_team_id == 2:
+                log('WN', team2_name, win_type)
+                log('LS', team1_name, win_type)
     except Exception, err:
         error('game_status', err)
 
@@ -178,7 +193,7 @@ def on_clock_limit(value):
 
 def on_commander(team_id, old_player, new_player):
     try:
-        team_name = format_team(team_id)
+        team_name = format_team(new_player.getTeam())
         new_player_name = format_player(new_player)
 
         log('CM', team_name, new_player_name)
@@ -377,12 +392,21 @@ def on_vehicle_destroy(vehicle, attacker):
         if is_soldier(vehicle):
             return
 
+        # Attempt to determine the most recent vehicle driver
+        driver = None
+        passengers = vehicle.getOccupyingPlayers()
+        if len(passengers) > 0:
+            driver = passengers[0]
+        elif hasattr(vehicle, 'lastDrivingPlayerIndex'):
+            driver = bf2.playerManager.getPlayerByIndex(vehicle.lastDrivingPlayerIndex)
+
         vehicle_name = format_vehicle(vehicle)
         vehicle_pos = format_pos(vehicle)
         attacker_name = format_player(attacker)
         attacker_pos = format_player_pos(attacker)
+        driver_name = format_player(driver)
 
-        log('VD', vehicle_name, vehicle_pos, attacker_name, attacker_pos)
+        log('VD', vehicle_name, vehicle_pos, attacker_name, attacker_pos, driver_name)
     except Exception, err:
         error('vehicle_destroy', err)
 

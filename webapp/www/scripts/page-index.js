@@ -94,9 +94,9 @@ $.extend({ mgr: {
 
 // Configure the network callbacks
 $($.service).on('GS', $.mgr.onGame);
-$($.service).on('CN', $.mgr.onPlayer);
 $($.service).on('CP', $.mgr.onControlPoint);
 $($.service).on('KL', $.mgr.onKill);
+$($.service).on('PL', $.mgr.onPlayer);
 $($.service).on('TT', $.mgr.onTime);
 $($.service).on('VD', $.mgr.onVehicleDestroy);
 

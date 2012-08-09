@@ -22,6 +22,7 @@ class GameItemStats(object):
         self.deaths = 0
         self.kills = 0
         self.score = 0
+        self.teamwork = 0
 
 class GameStats(BaseStats):
 
@@ -32,6 +33,7 @@ class GameStats(BaseStats):
         self.kills = 0
         self.players = dict()
         self.score = 0
+        self.teamwork = 0
 
 class KitItemStats(object):
 
@@ -81,8 +83,6 @@ class PlayerStats(BaseStats):
         BaseStats.__init__(self)
 
         # Cumulative values
-        self.ammoed_total = 0
-        self.ammos_total = 0
         self.assisted_total = 0
         self.assists_total = 0
         self.deaths_total = 0
@@ -106,9 +106,12 @@ class PlayerStats(BaseStats):
         self.score_total = 0
         self.spec_time = Timer()
         self.suicides_total = 0
+        self.supplied_total = 0
+        self.supplies_total = 0
         self.team_killed_total = 0
         self.team_kills_total = 0
         self.teams = dict()
+        self.teamwork_total = 0
         self.vehicles = dict()
         self.weapons = dict()
         self.wounds_total = 0
@@ -116,8 +119,6 @@ class PlayerStats(BaseStats):
     def reset(self):
 
         # Game values
-        self.ammoed = 0
-        self.ammos = 0
         self.assisted = 0
         self.assists = 0
         self.deaths = 0
@@ -136,8 +137,11 @@ class PlayerStats(BaseStats):
         self.revives = 0
         self.score = 0
         self.suicides = 0
+        self.supplied = 0
+        self.supplies = 0
         self.team_killed = 0
         self.team_kills = 0
+        self.teamwork = 0
         self.wounds = 0
 
 class TeamItemStats(object):
@@ -511,6 +515,20 @@ class StatManager(object):
         if pos1 and len(pos1) == 4 and pos2 and len(pos2) == 4:
             return math.fabs(pos2[1] - pos1[1])
 
+    def angle_diff(self, pos1, pos2):
+        '''
+        Calculates the angle difference between the given angles
+        
+        Args:
+            pos1 (array): Array of points in the form [x,z,y,a].
+            pos2 (array): Array of points in the form [x,z,y,a].
+            
+        Returns:
+            angular difference (float): Difference between the angles.
+        '''
+        if pos1 and len(pos1) == 4 and pos2 and len(pos2) == 4:
+            return math.fabs(pos2[3] - pos1[3])
+            
     def _get_stats(self, model, stats_type):
         if not (model and stats_type): return
 

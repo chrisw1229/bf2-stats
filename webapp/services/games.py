@@ -52,6 +52,7 @@ class Handler:
         # Build a list of column descriptors
         columns = [{ 'name': 'Players', 'data': 'string' },
                 { 'name': 'Score', 'data': 'number', 'sorted': False },
+                { 'name': 'Help', 'data': 'number' },
                 { 'name': 'Kills', 'data': 'number' },
                 { 'name': 'Deaths', 'data': 'number' }]
 
@@ -61,7 +62,8 @@ class Handler:
             if player != models.players.EMPTY:
                 object_stats = game_stats.players[player]
                 rows.append([player.name, object_stats.score,
-                        object_stats.kills, object_stats.deaths])
+                        object_stats.teamwork, object_stats.kills,
+                        object_stats.deaths])
 
         # Sort the results by score
         rows.sort(key=lambda r: r[1], reverse=True)

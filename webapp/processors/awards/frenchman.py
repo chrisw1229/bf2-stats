@@ -7,23 +7,23 @@ from models import games
 class Processor(AwardProcessor):
     '''
     Overview
-    This processor keeps track of the number of wins while commander
+    This processor keeps track of the number of losses while commander
 
     Implementation
-    Increment the count for the commander for each win
+    Increment the count for the commander for each loss
 
     Notes
     None.
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'George Patton',
-                'Most Wins as Commander', [
-                Column('Players'), Column('Wins', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Frenchman',
+                'Most Losses as Commander', [
+                Column('Players'), Column('Losses', Column.NUMBER, Column.DESC)])
 
-    def on_win(self, e):
+    def on_loss(self, e):
 
-        # Get the commander of the team that won
+        # Get the commander of the team that lost
         commander = model_mgr.get_player(e.team.commander_id)
 
         # Give a point to the commander
