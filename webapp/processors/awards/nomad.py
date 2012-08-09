@@ -22,35 +22,30 @@ class Processor(AwardProcessor):
                 'Longest Distance Between Kills', [
                 Column('Players'), Column('Distance', Column.NUMBER, Column.DESC)])
 
-        # Store temporary distances for each player
-        self.locations = dict()
-
-    def on_death(self, e):
-
-        # Reset the location for the player
-        if e.player in self.locations:
-            del self.locations[e.player]
+        # Store the last known position for each player
+        self.player_to_pos = dict()
 
     def on_kill(self, e):
 
-        # Ignore team kills and suicides
+        # Ignore suicides and team kills
         if not e.valid_kill:
             return
 
-        # Zero out the current max distance if there hasn't been one entered for the player yet
-        if e.attacker not in self.results:
-            self.results[e.attacker] = 0.0            
-            
-        # Log current position for the attacker as needed
-        if e.attacker not in self.locations:
-            self.locations[e.attacker] = e.attacker.pos
+        # Ignore empty attackers
+        if not e.attacker in self.player_to_pos:
             return
-        
-        # If we enter at this point the attacker has a previous valid kill that we can
-        # compare against
-        dist = stat_mgr.dist_2d(self.locations[e.attacker], e.attacker.pos)
-        if dist > self.results[e.attacker]:
-            self.results[e.attacker] = dist
-            
-        # Log the current position for the player
-        self.locations[e.attacker] = e.attacker.pos
+
+        # Calculate the distance traveled by the attacker to get the kill
+        last_pos = self.player_to_pos[e.attacker]
+        distance = stat_mgr.dist_3d(last_pos, e.attacker_pos)
+
+        # Increment the distance for the attacker
+        self.results[e.attacker] += round(distance)
+
+        # Store the current position for next time
+        self.player_to_pos[e.attacker] = e.attacker_pos
+
+    def on_spawn(self, e):
+
+        # Store the initial player position
+        self.player_to_pos[e.player] = e.player_pos

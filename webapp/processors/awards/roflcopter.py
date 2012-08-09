@@ -3,13 +3,11 @@ from processors.awards import AwardProcessor,Column
 from models import model_mgr
 from models.vehicles import AIR
 
-# TODO
-
 class Processor(AwardProcessor):
     '''
     Overview
-    This processor keeps track of the number of kills for each player that do not include any
-    assisting help from other players.
+    This processor keeps track of the number of aircraft destroyed within the
+    first 30 seconds of entering it.
 
     Implementation
     This implementation takes advantage of the fact that every kill event is guaranteed to be
@@ -24,29 +22,24 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'ROFLcopter', 'Most Deaths Within 30 Seconds of Piloting an Aircraft', [
-                Column('Players'), Column('Deaths', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'ROFLcopter',
+                'Most Aircraft Destroyed Within 30 Seconds of Takeoff', [
+                Column('Players'), Column('Destroyed', Column.NUMBER, Column.DESC)])
 
-        # Keep track of the last kill event
+        # Keep track of the last vehicle enter event
         self.last_vehicle_entrance = dict()
 
-    def on_death(self, e):
-        if e.player in self.last_vehicle_entrance:
-            # Arbitrarily set the death without an exit to within 30 seconds
-            if e.elapsed(self.last_vehicle_entrance[e.player]) < 30:
-                self.results[e.player] += 1
-                del self.last_vehicle_entrance[e.player]
+    def on_vehicle_destroy(self, e):
+
+        # Check whether the driver entered within the last 30 seconds
+        if e.driver in self.last_vehicle_entrance:
+            if e.elapsed(self.last_vehicle_entrance[e.driver]) < 30:
+                self.results[e.driver] += 1
+                del self.last_vehicle_entrance[e.driver]
         
     def on_vehicle_enter(self, e):
-        # Make sure we're only logging for air vehicle entrances
+
+        # Store the time when a player gets in an aircraft
         player_vehicle = model_mgr.get_vehicle(e.player.vehicle_id)
-        if player_vehicle.group != AIR:
-            return
-            
-        if e.player not in self.last_vehicle_entrance:
+        if player_vehicle.group == AIR:
             self.last_vehicle_entrance[e.player] = e
-            
-    def on_vehicle_exit(self, e):
-        # Remove vehicle entrance log when the player exits the vehicle
-        if e.player in self.last_vehicle_entrance:
-            del self.last_vehicle_entrance[e.player]

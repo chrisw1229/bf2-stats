@@ -19,23 +19,30 @@ class Processor(AwardProcessor):
         AwardProcessor.__init__(self, 'Camper', 'Shortest Distance Between Kills', [
                 Column('Players'), Column('Meters', Column.NUMBER, Column.ASC)])
 
-        self.last_kill_pos = dict()
-        
+        # Store the last known position for each player
+        self.player_to_pos = dict()
+
     def on_kill(self, e):
 
-        if e.attacker in self.last_kill_pos:
-            lastPos = self.last_kill_pos[e.attacker]
-            distance = stat_mgr.dist_3d( lastPos, e.attacker_pos )
-            self.results[e.attacker] += distance
+        # Ignore suicides and team kills
+        if not e.valid_kill:
+            return
 
-        self.last_kill_pos[e.attacker] = e.attacker_pos
+        # Ignore empty attackers
+        if not e.attacker in self.player_to_pos:
+            return
 
-    def on_death(self, e):
-        #remove last position on death/disconnect
-        if e.player in self.last_kill_pos:
-            del self.last_kill_pos[e.player]
+        # Calculate the distance traveled by the attacker to get the kill
+        last_pos = self.player_to_pos[e.attacker]
+        distance = stat_mgr.dist_3d(last_pos, e.attacker_pos)
 
-    def on_disconnect(self, e):
-        #remove last position on death/disconnect
-        if e.player in self.last_kill_pos:
-            del self.last_kill_pos[e.player]
+        # Increment the distance for the attacker
+        self.results[e.attacker] += round(distance)
+
+        # Store the current position for next time
+        self.player_to_pos[e.attacker] = e.attacker_pos
+
+    def on_spawn(self, e):
+
+        # Store the initial player position
+        self.player_to_pos[e.player] = e.player_pos

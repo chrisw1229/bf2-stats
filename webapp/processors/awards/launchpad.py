@@ -3,6 +3,8 @@ from processors.awards import AwardProcessor,Column
 from models import model_mgr
 from models.vehicles import AIR
 
+# TODO
+
 class Processor(AwardProcessor):
     '''
     Overview
@@ -27,9 +29,7 @@ class Processor(AwardProcessor):
 
         victim_vehicle = model_mgr.get_vehicle(e.victim.vehicle_id)
         if victim_vehicle.group == AIR:
-            players = model_mgr.get_player_names()
-            for player in players:
-                playerObj = model_mgr.get_player_by_name(player)
-                if playerObj.vehicle_id == e.victim.vehicle_id:
-                    if playerObj.driver:
-                        self.results[playerObj] += 1
+            for player in model_mgr.players:
+                if player.vehicle_id == e.victim.vehicle_id:
+                    if player.driver:
+                        self.results[player] += 1
