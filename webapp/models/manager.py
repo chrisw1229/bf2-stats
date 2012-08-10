@@ -115,8 +115,8 @@ class ModelManager(object):
         and position.
 
         Args:
-           address (string): The map address of the control point.
-           pos (Array): The position array of the control point.
+            address (string): The map address of the control point.
+            pos (Array): The position array of the control point.
 
         Returns:
             control_point (ControlPoint): Returns the registered control point
@@ -138,11 +138,13 @@ class ModelManager(object):
 
     def add_player(self, address, name):
         '''
-        Adds or updates the player model registered for the given unique composite key.
+        Adds or updates the player model registered for the given unique
+        composite key.
 
         Args:
-           address (string): The IP address of the player. This could be 'None' for bot players.
-           name (string): The name of the player.
+            address (string): The IP address of the player. This could be 'None'
+                    for bot players.
+            name (string): The name of the player.
 
         Returns:
             player (Player): Returns the registered player model.
@@ -152,7 +154,7 @@ class ModelManager(object):
         player = self._update_player(address, name)
         if not player: return players.EMPTY
 
-        print 'Player added: %s (%s)' % (name, address)
+        print 'Player joined: %s (%s)' % (name, address)
         return player
 
     def add_squad(self, id):
@@ -160,7 +162,7 @@ class ModelManager(object):
         Adds or updates the squad model registered for the given id.
 
         Args:
-           id (string): The id of the squad.
+            id (string): The id of the squad.
 
         Returns:
             squad (Squad): Returns the registered squad model.
@@ -183,7 +185,7 @@ class ModelManager(object):
         Looks up the control point object associated with the given id.
 
         Args:
-           id (string): The id of the control point to get.
+            id (string): The id of the control point to get.
 
         Returns:
             control_point (ControlPoint): Returns a registered control point
@@ -201,13 +203,31 @@ class ModelManager(object):
         print 'ERROR - Missing control point reference:', id
         return None
 
+    def get_control_points(self, active=None):
+        '''
+        Gets a list of all the registered control points.
+
+        Args:
+            active (boolean): Indicates whether all control points (None),
+                active control points (True), or inactive control points (False)
+                should be included in the results.
+
+        Returns:
+            control points (list): Returns a list of control point objects.
+        '''
+
+        control_points = list(self.control_points)
+        if active == None:
+            return control_points
+        return filter(lambda p: p.active == active, control_points)
+
     def get_game(self, id=None):
         '''
         Looks up the game object associated with the given id or gets the currently active game if
         no id is provided.
 
         Args:
-           id (string): The id of the game to get. None is equivalent to the current game.
+            id (string): The id of the game to get. None is equivalent to the current game.
 
         Returns:
             game (Game): Returns a registered game model.
@@ -226,12 +246,25 @@ class ModelManager(object):
         print 'ERROR - Missing game reference:', id
         return None
 
+    def get_games(self):
+        '''
+        Gets a list of all the registered games.
+
+        Args:
+            None
+
+        Returns:
+            games (list): Returns a list of game objects.
+        '''
+
+        return list(self.games)
+
     def get_kit(self, id):
         '''
         Looks up the kit object associated with the given id.
 
         Args:
-           id (string): The id of the kit to get.
+            id (string): The id of the kit to get.
 
         Returns:
             kit (Kit): Returns a registered kit model.
@@ -253,7 +286,7 @@ class ModelManager(object):
         Gets a list of registered kit types.
 
         Args:
-           None
+            None
 
         Returns:
             types (list): Returns a list of registered kit types.
@@ -266,22 +299,22 @@ class ModelManager(object):
         Gets a list of registered kits that match the given type.
 
         Args:
-           kit_type (string): The type of kits to get or None to get all kits.
+            kit_type (string): The type of kits to get or None to get all kits.
 
         Returns:
             kits (list): Returns a list of kits based on type.
         '''
 
         if kit_type and kit_type in self.type_to_kits:
-            return self.type_to_kits[kit_type]
-        return self.kits
+            return list(self.type_to_kits[kit_type])
+        return list(self.kits)
 
     def get_map(self, id):
         '''
         Looks up the map object associated with the given id.
 
         Args:
-           id (string): The id of the map to get.
+            id (string): The id of the map to get.
 
         Returns:
             map (Map): Returns a registered map model.
@@ -298,12 +331,25 @@ class ModelManager(object):
         print 'ERROR - Missing map reference:', id
         return None
 
+    def get_maps(self):
+        '''
+        Gets a list of all the registered maps.
+
+        Args:
+            None
+
+        Returns:
+            maps (list): Returns a list of map objects.
+        '''
+
+        return list(self.maps)
+
     def get_player(self, id):
         '''
         Looks up the player object associated with the given id.
 
         Args:
-           id (string): The id of the player to get.
+            id (string): The id of the player to get.
 
         Returns:
             Player (Player): Returns a registered player model.
@@ -325,7 +371,7 @@ class ModelManager(object):
         Looks up the player object associated with the given name.
 
         Args:
-           name (string): The name of the player to get.
+            name (string): The name of the player to get.
 
         Returns:
             Player (Player): Returns a registered player model.
@@ -347,7 +393,7 @@ class ModelManager(object):
         Gets a sorted list of names for all the player objects.
 
         Args:
-           None
+            None
 
         Returns:
             Names (list): Returns a sorted list of names for all the player objects.
@@ -357,12 +403,30 @@ class ModelManager(object):
         names.sort(key=str.lower)
         return names
 
+    def get_players(self, connected=None):
+        '''
+        Gets a list of all the registered players.
+
+        Args:
+            connected (boolean): Indicates whether all players (None), connected
+                players (True), or disconnected players (False) should be
+                included in the results.
+
+        Returns:
+            players (list): Returns a list of player objects.
+        '''
+
+        players = list(self.players)
+        if connected == None:
+            return players
+        return filter(lambda p: p.connected == connected, players)
+
     def get_squad(self, id):
         '''
         Looks up the squad object associated with the given id.
 
         Args:
-           id (string): The id of the squad to get.
+            id (string): The id of the squad to get.
 
         Returns:
             squad (Squad): Returns a registered squad model.
@@ -379,12 +443,25 @@ class ModelManager(object):
         print 'ERROR - Missing squad reference:', id
         return None
 
+    def get_squads(self):
+        '''
+        Gets a list of all the registered squads.
+
+        Args:
+            None
+
+        Returns:
+            squads (list): Returns a list of squad objects.
+        '''
+
+        return list(self.squads)
+
     def get_team(self, id):
         '''
         Looks up the team object associated with the given id.
 
         Args:
-           id (string): The id of the team to get.
+            id (string): The id of the team to get.
 
         Returns:
             team (Team): Returns a registered team model.
@@ -401,12 +478,25 @@ class ModelManager(object):
         print 'ERROR - Missing team reference:', id
         return None
 
+    def get_teams(self):
+        '''
+        Gets a list of all the registered teams.
+
+        Args:
+            None
+
+        Returns:
+            teams (list): Returns a list of team objects.
+        '''
+
+        return list(self.teams)
+
     def get_vehicle(self, id):
         '''
         Looks up the vehicle object associated with the given id.
 
         Args:
-           id (string): The id of the vehicle to get.
+            id (string): The id of the vehicle to get.
 
         Returns:
             vehicle (Vehicle): Returns a registered vehicle model.
@@ -428,7 +518,7 @@ class ModelManager(object):
         Gets a list of registered vehicle types.
 
         Args:
-           None
+            None
 
         Returns:
             types (list): Returns a list of registered vehicle types.
@@ -441,25 +531,27 @@ class ModelManager(object):
         Gets a list of registered vehicles that match the given type.
 
         Args:
-           vehicle_type (string): The type of vehicles to get or None to get all vehicles.
-           vehicle_group (string): The group of vehicles to get or None to get all vehicles.
+            vehicle_type (string): The type of vehicles to get or None to get
+                    all vehicles.
+            vehicle_group (string): The group of vehicles to get or None to get
+                    all vehicles.
 
         Returns:
             vehicles (list): Returns a list of vehicles based on type.
         '''
 
         if vehicle_type and vehicle_type in self.type_to_vehicles:
-            return self.type_to_vehicles[vehicle_type]
+            return list(self.type_to_vehicles[vehicle_type])
         if vehicle_group and vehicle_group in self.group_to_vehicles:
-            return self.group_to_vehicles[vehicle_group]
-        return self.vehicles
+            return list(self.group_to_vehicles[vehicle_group])
+        return list(self.vehicles)
 
     def get_weapon(self, id):
         '''
         Looks up the weapon object associated with the given id.
 
         Args:
-           id (string): The id of the weapon to get.
+            id (string): The id of the weapon to get.
 
         Returns:
             weapon (Weapon): Returns a registered weapon model.
@@ -481,7 +573,7 @@ class ModelManager(object):
         Gets a list of registered weapon types.
 
         Args:
-           None
+            None
 
         Returns:
             types (list): Returns a list of registered weapon types.
@@ -494,23 +586,25 @@ class ModelManager(object):
         Gets a list of registered weapons that match the given type.
 
         Args:
-           weapon_type (string): The type of weapons to get or None to get all weapons.
+            weapon_type (string): The type of weapons to get or None to get all
+                    weapons.
 
         Returns:
             weapons (list): Returns a list of weapons based on type.
         '''
 
         if weapon_type and weapon_type in self.type_to_weapons:
-            return self.type_to_weapons[weapon_type]
-        return self.weapons
+            return list(self.type_to_weapons[weapon_type])
+        return list(self.weapons)
 
     def remove_player(self, address, name):
         '''
         Removes the player model registered for the given unique composite key.
 
         Args:
-           address (string): The IP address of the player. This could be 'None' for bot players.
-           name (string): The name of the player.
+            address (string): The IP address of the player. This could be 'None'
+                    for bot players.
+            name (string): The name of the player.
 
         Returns:
             player (Player): Returns the unregistered player model.
@@ -520,7 +614,7 @@ class ModelManager(object):
         player = self._update_player(address, name)
         if not player: return players.EMPTY
 
-        print 'Player removed: %s (%s)' % (name, address)
+        print 'Player left: %s (%s)' % (name, address)
         return player
 
     def remove_squad(self, id):
@@ -528,7 +622,7 @@ class ModelManager(object):
         Removes the squad model registered for the given unique id.
 
         Args:
-           id (string): The unique id of a squad.
+            id (string): The unique id of a squad.
 
         Returns:
             squad (Squad): Returns the unregistered squad model.
@@ -547,7 +641,7 @@ class ModelManager(object):
         game starts.
 
         Args:
-           None
+            None
 
         Returns:
             None
@@ -575,10 +669,10 @@ class ModelManager(object):
         Sets the current game status based on the given parameters.
 
         Args:
-           status (string): The current status of the game.
-           map_id (string): The unique identifier of the current map.
-           clock_limit (integer): The maximum number of seconds before the game ends.
-           score_limit (integer): The maximum score before the game ends.
+            status (string): The current status of the game.
+            map_id (string): The unique identifier of the current map.
+            clock_limit (integer): The maximum number of seconds unil game end.
+            score_limit (integer): The maximum score until game end.
 
         Returns:
             game (Game): Returns the registered game model.
@@ -592,7 +686,7 @@ class ModelManager(object):
             # Create a new model when the game is starting
             game = games.Game(status, map_id, clock_limit, score_limit)
             self.games.append(game)
-            print 'Game added: %s %s' % (game.id, game.map_id)
+            print 'Game started: %s %s' % (game.id, game.map_id)
         else:
 
             # Update the game to reflect the new state

@@ -20,6 +20,8 @@ $.widget('ui.ticker', {
       this.nextElm.on('click', $.proxy(this._onNextClick, this));
       this.itemsElm.on('mouseover', $.proxy(this._onItemsMouseOver, this));
       this.itemsElm.on('mouseout', $.proxy(this._onItemsMouseOut, this));
+      this.itemsElm.on('click', '.ui-ticker-item',
+            $.proxy(this._onItemClick, this));
       this.itemsElm.on('mouseover', '.ui-ticker-item',
             $.proxy(this._onItemMouseOver, this));
       this.itemsElm.on('mouseout', '.ui-ticker-item',
@@ -34,7 +36,7 @@ $.widget('ui.ticker', {
       // Clear the event handlers
       this.nextElm.off('click mouseover mouseout');
       this.itemsElm.off('mouseover mouseout');
-      this.itemsElm.off('mouseover mouseout', '.ui-ticker-item');
+      this.itemsElm.off('click mouseover mouseout', '.ui-ticker-item');
       $(window).off('resize.ticker');
 
       // Destroy the document model
@@ -243,13 +245,14 @@ $.widget('ui.ticker', {
       // Load all the basic values for the given model
       $('.ui-ticker-item-name', itemElm).text(model.name);
       $('.ui-ticker-item-photo', itemElm).css('background-image',
-            'url(' + model.photo + ')');
+            'url(' + model.photo_m + ')');
 
       // Check whether the current model is a spectator
-      if (model.team != undefined) {
+      if (model.team_id != undefined) {
 
          // Load the player game place
-         $('.ui-ticker-place-value', itemElm).text(model.place);
+         place = model.place ? model.place : '-';
+         $('.ui-ticker-place-value', itemElm).text(place);
 
          // Load the player military rank
          var rankTip = 'Rank: ';
@@ -262,41 +265,43 @@ $.widget('ui.ticker', {
                + model.rank + ' ui-ticker-rank').attr('title', rankTip);
 
          // Load the player team
-         var teamTip = 'Team: ';
-         if (model.team != undefined && $.service.teams[model.team]) {
-            teamTip += $.service.teams[model.team];
+         var teamTip;
+         if (model.team_id != undefined && $.service.teams[model.team_id]) {
+            teamTip = $.service.teams[model.team_id];
          } else {
-            teamTip += 'Unknown';
+            teamTip = 'Unknown';
          }
-         $('.icon-team', itemElm).attr('class', 'icon-team icon-team-'
-               + model.team + ' ui-ticker-team').attr('title', teamTip);
+         $('.icon-team', itemElm).attr('class',
+               'icon-team icon-team-' + model.team_id + ' ui-ticker-team')
+               .attr('title', 'Team: ' + teamTip);
 
          // Show all the icon content
          $('.ui-ticker-item-icons', itemElm).show();
 
          // Load the trend content
-         var trendState, trendIcon, trendTip = 'Trend: ';
+         var trendState, trendIcon, trendTip;
          if (model.trend == '+') {
-            trendState = 'highlight';
-            trendIcon = 'arrow-n';
-            trendTip += 'Improving'
+            trendState = 'ui-state-highlight';
+            trendIcon = 'ui-icon-circle-arrow-n';
+            trendTip = 'Improving'
          } else if (model.trend == '-') {
-            trendState = 'error';
-            trendIcon = 'arrow-s';
-            trendTip += 'Declining'
-         } else if (model.trend == '') {
+            trendState = 'ui-state-error';
+            trendIcon = 'ui-icon-circle-arrow-s';
+            trendTip = 'Declining'
+         } else if (model.trend == '=') {
             trendState = '';
-            trendIcon = 'minus';
-            trendTip += 'Unchanged';
+            trendIcon = 'ui-icon-circle-minus';
+            trendTip = 'Unchanged';
          } else {
-            trendTip += 'Unknown';
+            trendState = '';
+            trendIcon = 'ui-icon-circle-close';
+            trendTip = 'Unknown';
          }
-         $('.ui-ticker-trend', itemElm).attr('class', 'ui-state-' + trendState
-               + ' ui-ticker-trend');
+         $('.ui-ticker-trend', itemElm).attr('class',
+               trendState + ' ui-ticker-trend');
          $('.ui-ticker-trend-icon', itemElm).attr('class',
-               'ui-icon ui-icon-circle-' + trendIcon + ' ui-ticker-trend-icon')
-               .attr('title', trendTip);
-         $('.ui-ticker-trend', itemElm).show();
+               'ui-icon ' + trendIcon + ' ui-ticker-trend-icon')
+               .attr('title', 'Trend: ' + trendTip);
 
          // Load all the numeric content
          $('.ui-ticker-score .ui-ticker-stat-value', itemElm).text(model.score);
@@ -309,7 +314,6 @@ $.widget('ui.ticker', {
 
          // Just show the spectator label
          $('.ui-ticker-item-icons', itemElm).hide();
-         $('.ui-ticker-trend', itemElm).hide();
          $('.ui-ticker-stats', itemElm).hide();
          $('.ui-ticker-spec', itemElm).show();
       }
@@ -328,6 +332,12 @@ $.widget('ui.ticker', {
 
    _onItemsMouseOut: function(e) {
       this.start();
+   },
+
+   _onItemClick: function(e) {
+      var itemElm = $(e.target).closest('.ui-ticker-item');
+      var model = itemElm.data('model');
+      window.location = 'players.html#id=' + model.id
    },
 
    _onItemMouseOver: function(e) {
@@ -366,7 +376,7 @@ $.widget('ui.ticker', {
       // Remove the model from its sorted position
       var index = 0;
       for (var i = 0; i < this.sorted.length; i++) {
-         if (item.id == this.sorted[i].id) {
+         if (model.id == this.sorted[i].id) {
             index = i;
             break;
          }

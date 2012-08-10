@@ -82,7 +82,7 @@ class Handler:
 
         # Build an index of the available players
         results = list()
-        for weapon in model_mgr.weapons:
+        for weapon in model_mgr.get_weapons():
             results.append({ 'id': weapon.id, 'name': weapon.name })
 
         # Sort the index by weapon name

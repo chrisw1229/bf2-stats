@@ -98,8 +98,8 @@ class PlayerStats(BaseStats):
         self.kills_total = 0
         self.kits = dict()
         self.maps = dict()
+        self.place_overall = 0
         self.play_time = Timer()
-        self.rank = 0
         self.repairs_total = 0
         self.revived_total = 0
         self.revives_total = 0
@@ -130,6 +130,7 @@ class PlayerStats(BaseStats):
         self.kills_10 = 0
         self.kills_ratio = 0.0
         self.kills_streak = 0
+        self.place = 0
         self.played = False
         self.rank = 0        
         self.repairs = 0
@@ -142,6 +143,7 @@ class PlayerStats(BaseStats):
         self.team_killed = 0
         self.team_kills = 0
         self.teamwork = 0
+        self.trend = ''
         self.wounds = 0
 
 class TeamItemStats(object):

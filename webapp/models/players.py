@@ -1,4 +1,6 @@
 ﻿
+import os
+
 class Player(object):
 
     counter = 0
@@ -34,5 +36,10 @@ class Player(object):
         self.vehicle_slot_id = None # ID for player's current vehicle slot
         self.weapon_id = None       # ID for player's current weapon
         self.wounded = False        # Flag when player is killed but revivable
-        
+
+        # Update the photo path for the player
+        self.photo_m = '/images/players/' + self.id + '-medium.jpg'
+        if not os.path.isfile('www' + self.photo_m):
+            self.photo_m = '/images/players/missing-medium.png'
+
 EMPTY = Player('', '')

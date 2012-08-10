@@ -38,8 +38,12 @@ class Processor(BaseProcessor):
 
         # Update the state of the control point
         e.control_point.status = e.status
-        e.control_point.team_id = e.team.id
+        if e.team == models.teams.EMPTY:
+            e.control_point.team_id = None
+        else:
+            e.control_point.team_id = e.team.id
         e.control_point.trigger_id = e.trigger_id
+        e.control_point.active = True
 
     def on_death(self, e):
 

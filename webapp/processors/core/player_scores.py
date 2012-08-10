@@ -321,6 +321,10 @@ class Processor(BaseProcessor):
             player_stats.teams[player_team] = PlayerItemStats()
         player_stats.teams[player_team].score += e.value
 
+        # Calculate the overall place of each player
+        self._update_place()
+        self._update_place_overall()
+
     def on_spawn(self, e):
         player_stats = stat_mgr.get_player_stats(e.player)
 
@@ -334,3 +338,48 @@ class Processor(BaseProcessor):
 
         # Start play timer
         player_stats.play_time.start(e.tick)
+
+    def _update_place(self):
+
+        # Sort the players by score
+        players = model_mgr.get_players(True)
+        players.sort(key=lambda p: stat_mgr.get_player_stats(p).score,
+                reverse=True)
+
+        # Assign a place value to each player based on index
+        last_score = None
+        place = None
+        for index, player in enumerate(players):
+            player_stats = stat_mgr.get_player_stats(player)
+
+            # Check whether the place should be incremented
+            if last_score != player_stats.score:
+                last_score = player_stats.score
+                place = index + 1
+
+            # Update the trend of the player
+            if place < player_stats.place:
+                player_stats.trend = '+'
+            elif place > player_stats.place:
+                player_stats.trend = '-'
+            else:
+                player_stats.trend = '='
+            player_stats.place = place
+
+    def _update_place_overall(self):
+
+        # Sort the players by total score
+        players = model_mgr.get_players()
+        players.sort(key=lambda p: stat_mgr.get_player_stats(p).score_total,
+                reverse=True)
+
+        # Assign an overall place value to each player based on index
+        last_score = None
+        place = None
+        for index, player in enumerate(players):
+            player_stats = stat_mgr.get_player_stats(player)
+
+            if last_score != player_stats.score_total:
+                last_score = player_stats.score_total
+                place = index + 1
+            player_stats.place_overall = place

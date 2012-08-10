@@ -82,7 +82,7 @@ class Handler:
 
         # Build an index of the available players
         results = list()
-        for team in model_mgr.teams:
+        for team in model_mgr.get_teams():
             results.append({ 'id': team.id, 'name': team.name })
 
         # Sort the index by team name

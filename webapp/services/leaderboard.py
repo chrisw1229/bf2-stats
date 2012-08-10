@@ -19,9 +19,6 @@ class Handler:
             leaders (object): Overall information for all players.
         '''
  
-        # Get a list of all the players
-        players = model_mgr.players
-
         # Build a list of columns
         columns = list()
         columns.append({ 'name': 'Players', 'data': 'string' })
@@ -33,7 +30,7 @@ class Handler:
 
         # Build a row of statistics for each player
         rows = list()
-        for player in players:
+        for player in model_mgr.get_players():
             player_stats = stat_mgr.get_player_stats(player);
             rows.append([player.name, player_stats.score_total,
                     player_stats.teamwork_total, player_stats.kills_total,

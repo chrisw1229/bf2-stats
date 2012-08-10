@@ -13,9 +13,6 @@ class Processor(BaseProcessor):
         BaseProcessor.__init__(self)
 
         self.priority = 30
-        self.game = None
-        self.control_points = set()
-        self.players = set()
         self.tick_to_packets = dict()
         self.start_tick = None
         self.last_tick = None
@@ -48,43 +45,43 @@ class Processor(BaseProcessor):
             packets.append(self._get_tick_packet())
         return packets
 
-    def on_connect(self, e):
-
-        # Store the player model for future updates
-        self.players.add(e.player)
+    def on_assist(self, e):
 
         # Create a packet to store the event info
-        packet = self._get_player_packet(e.player, True)
+        packet = self._get_stats_packet(e.player, ['teamwork'])
+        self._add_packet(e.tick, packet)
+
+    def on_connect(self, e):
+
+        # Create a packet to store the event info
+        packet = self._get_player_stats_packet(e.player)
         self._add_packet(e.tick, packet)
 
     def on_control_point(self, e):
-
-        # Store the control point model for future updates
-        self.control_points.add(e.control_point)
 
         # Create a packet to store the event info
         packet = self._get_control_point_packet(e.control_point)
         self._add_packet(e.tick, packet)
 
-    def on_disconnect(self, e):
-
-        # Remove the player model from the cache
-        if e.player in self.players:
-            self.players.remove(e.player)
+    def on_death(self, e):
 
         # Create a packet to store the event info
-        packet = self._get_player_packet(e.player, False)
+        packet = self._get_stats_packet(e.player, ['deaths'])
+        self._add_packet(e.tick, packet)
+
+    def on_disconnect(self, e):
+
+        # Create a packet to store the event info
+        packet = self._get_player_packet(e.player, ['connected'])
         self._add_packet(e.tick, packet)
 
     def on_game_status(self, e):
         if e.game.starting:
 
-            # Store the new game state
-            self.game = e.game
+            # Store the game start tick to calculate elapsed time
             self.start_tick = e.tick
 
             # Clear cached packets when the game resets
-            self.control_points.clear()
             self.tick_to_packets.clear()
             self.last_tick = None
         elif e.game.playing:
@@ -93,36 +90,56 @@ class Processor(BaseProcessor):
             packet = self._get_game_packet(e.game)
             self._add_packet(e.tick, packet)
 
-    def on_event(self, e):
+            # Add the player stats after the game reset
+            for player in model_mgr.get_players(True):
+                self._add_packet(e.tick, self._get_stats_packet(player))
 
-        # Store the most recent game tick for any event
-        self.last_tick = max(self.last_tick, e.tick)
+    def on_heal(self, e):
+
+        # Create a packet to store the event info
+        packet = self._get_stats_packet(e.giver, ['teamwork'])
+        self._add_packet(e.tick, packet)
 
     def on_kill(self, e):
 
         # Create a packet to store the event info
-        packet = {
+        kill_packet = {
             'tick': e.tick,
             'type': 'KL',
-            'victim': self._get_player_tuple(e.victim, e.victim_pos)
+            'victim': self._get_kill_tuple(e.victim, e.victim_pos),
+            'attacker': self._get_kill_tuple(e.attacker, e.attacker_pos,
+                    e.weapon)
         }
+        self._add_packet(e.tick, kill_packet)
 
-        # Add optional attacker info to the packet
+        # Create a packet to store the attacker kills
         if e.attacker != models.players.EMPTY:
-            packet['attacker'] = self._get_player_tuple(e.attacker,
-                    e.attacker_pos, e.weapon)
+            attacker_packet = self._get_stats_packet(e.attacker, ['kills'])
+            self._add_packet(e.tick, attacker_packet)
+
+    def on_repair(self, e):
+
+        # Create a packet to store the event info
+        packet = self._get_stats_packet(e.giver, ['teamwork'])
+        self._add_packet(e.tick, packet)
+
+    def on_revive(self, e):
+
+        # Create a packet to store the event info
+        packet = self._get_stats_packet(e.giver, ['teamwork'])
         self._add_packet(e.tick, packet)
 
     def on_spawn(self, e):
 
         # Create a packet to store the event info
-        packet = self._get_player_packet(e.player, False)
+        packet = self._get_player_packet(e.player, ['team_id'])
         self._add_packet(e.tick, packet)
 
     def on_score(self, e):
 
         # Create a packet to store the event info
-        packet = self._get_stats_packet(e.player)
+        packet = self._get_stats_packet(e.player,
+                ['place', 'rank', 'score', 'trend'])
         self._add_packet(e.tick, packet)
 
     def on_vehicle_destroy(self, e):
@@ -171,51 +188,12 @@ class Processor(BaseProcessor):
             'game': game_tuple
         }
 
-    def _get_packet_list(self):
-        packets = list()
+    def _get_kill_tuple(self, player, pos=None, weapon=None):
+        if player == models.players.EMPTY:
+            return None
 
-        # Add the current game info
-        packets.append(self._get_game_packet(self.game))
-
-        # Add the current player info
-        for player in self.players:
-            packets.append(self._get_player_packet(player, True))
-
-        # Add the current control point info
-        for control_point in self.control_points:
-            packets.append(self._get_control_point_packet(control_point))
-        return packets
-
-    def _get_player_packet(self, player, detailed):
+        # Get the basic information for the player
         player_tuple = self._get_player_tuple(player)
-
-        if detailed:
-            stats_tuple = self._get_stats_tuple(player)
-            player_tuple.update(stats_tuple)
-
-        return {
-            'type': 'PL',
-            'player': player_tuple
-        }
-
-    def _get_player_tuple(self, player, pos=None, weapon=None):
-
-        # Check whether a photo exists for the player
-        photo_path = '/images/players/' + player.id + '-medium.jpg'
-        if not os.path.isfile('www' + photo_path):
-            photo_path = '/images/players/missing-medium.png'
-
-        # Add basic player info
-        player_tuple = {
-            'id': player.id,
-            'name': player.name,
-            'team': player.team_id,
-            'photo': photo_path
-        }
-
-        # Check whether the player is disconnected
-        if not player.connected:
-            player_tuple['connected'] = False
 
         # Add position coordinates
         if pos:
@@ -230,24 +208,85 @@ class Processor(BaseProcessor):
             }
         return player_tuple
 
-    def _get_stats_packet(self, player):
+    def _get_packet_list(self):
+        packets = list()
+
+        # Add the current game info
+        game = model_mgr.get_game()
+        packets.append(self._get_game_packet(game))
+
+        # Add the current player info
+        for player in model_mgr.get_players(True):
+            packets.append(self._get_player_stats_packet(player))
+
+        # Add the current control point info
+        for control_point in model_mgr.get_control_points(True):
+            packets.append(self._get_control_point_packet(control_point))
+        return packets
+
+    def _get_player_packet(self, player, attributes=None):
         return {
             'type': 'PL',
-            'player': self._get_stats_tuple(player)
+            'player': self._get_player_tuple(player, attributes)
         }
 
-    def _get_stats_tuple(self, player):
+    def _get_player_stats_packet(self, player):
+
+        # Get the basic player info
+        player_tuple = self._get_player_tuple(player)
+
+        # Merge the stats in to the basic player info
+        stats_tuple = self._get_stats_tuple(player)
+        player_tuple.update(stats_tuple)
+
+        return {
+            'type': 'PL',
+            'player': player_tuple
+        }
+
+    def _get_player_tuple(self, player, attributes=None):
+        if attributes and len(attributes) > 0:
+            player_tuple = {
+                'id': player.id,
+            }
+            for attribute in attributes:
+                player_tuple[attribute] = player.__dict__[attribute]
+            return player_tuple
+
+        return {
+            'id': player.id,
+            'name': player.name,
+            'team_id': player.team_id,
+            'photo_m': player.photo_m
+        }
+
+    def _get_stats_packet(self, player, attributes=None):
+        return {
+            'type': 'PL',
+            'player': self._get_stats_tuple(player, attributes)
+        }
+
+    def _get_stats_tuple(self, player, attributes=None):
         player_stats = stat_mgr.get_player_stats(player)
 
-        stats_tuple = {
+        if attributes and len(attributes) > 0:
+            stats_tuple = {
+                'id': player.id
+            }
+            for attribute in attributes:
+                stats_tuple[attribute] = player_stats.__dict__[attribute]
+            return stats_tuple
+
+        return {
             'id': player.id,
             'deaths': player_stats.deaths,
             'kills': player_stats.kills,
+            'place': player_stats.place,
             'rank': player_stats.rank,
             'score': player_stats.score,
+            'trend': player_stats.trend,
             'teamwork': player_stats.teamwork
         }
-        return stats_tuple
 
     def _get_tick_packet(self):
         return {

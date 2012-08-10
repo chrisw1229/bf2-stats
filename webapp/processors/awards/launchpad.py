@@ -29,7 +29,7 @@ class Processor(AwardProcessor):
 
         victim_vehicle = model_mgr.get_vehicle(e.victim.vehicle_id)
         if victim_vehicle.group == AIR:
-            for player in model_mgr.players:
+            for player in model_mgr.get_players():
                 if player.vehicle_id == e.victim.vehicle_id:
                     if player.driver:
                         self.results[player] += 1

@@ -82,7 +82,7 @@ class Handler:
 
         # Build an index of the available players
         results = list()
-        for vehicle in model_mgr.vehicles:
+        for vehicle in model_mgr.get_vehicles():
             results.append({ 'id': vehicle.id, 'name': vehicle.name })
 
         # Sort the index by vehicle name

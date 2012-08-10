@@ -85,7 +85,7 @@ class Handler:
 
         # Build an index of the available games
         results = list()
-        for game in model_mgr.games:
+        for game in model_mgr.get_games():
             game_stats = stat_mgr.get_game_stats(game)
             if game_stats.kills > 0:
                 map_obj = model_mgr.get_map(game.map_id)

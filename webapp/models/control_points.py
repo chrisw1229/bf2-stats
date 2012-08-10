@@ -24,6 +24,6 @@ class ControlPoint(object):
         return self.__dict__
 
     def reset(self):
-        pass
+        self.active = False
 
 EMPTY = ControlPoint('', [0, 0, 0, 0])

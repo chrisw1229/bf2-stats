@@ -82,7 +82,7 @@ class Handler:
 
         # Build an index of the available players
         results = list()
-        for map_obj in model_mgr.maps:
+        for map_obj in model_mgr.get_maps():
             results.append({ 'id': map_obj.id, 'name': map_obj.name })
 
         # Sort the index by map name

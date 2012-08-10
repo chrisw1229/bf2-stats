@@ -15,9 +15,9 @@ class Handler:
     STATS_FIELDS = ['assisted_total', 'assists_total', 'deaths_total',
             'deaths_streak_max', 'games', 'healed_total', 'heals_total',
             'kills_5_total', 'kills_10_total', 'kills_ratio_max',
-            'kills_streak_max', 'kills_total', 'play_time', 'repairs_total',
-            'revived_total','revives_total', 'score_total', 'spec_time',
-            'suicides_total', 'supplied_total', 'supplies_total',
+            'kills_streak_max', 'kills_total', 'place_overall', 'play_time',
+            'repairs_total', 'revived_total','revives_total', 'score_total',
+            'spec_time', 'suicides_total', 'supplied_total', 'supplies_total',
             'team_killed_total', 'team_kills_total', 'teamwork_total',
             'wounds_total']
 
@@ -88,11 +88,6 @@ class Handler:
             results[key] = player.__dict__[key]
         for key in Handler.STATS_FIELDS:
             results[key] = player_stats.__dict__[key]
-
-        # Calculate the overall player place based on score total
-        rankings = stat_mgr.get_stats(PlayerStats)
-        rankings.sort(key=lambda r: r.score_total, reverse=True)
-        results['place'] = rankings.index(player_stats) + 1
         return results
 
     def get_player_enemies(self, id):
@@ -335,7 +330,7 @@ class Handler:
 
         # Build an index of the available players
         results = list()
-        for player in model_mgr.players:
+        for player in model_mgr.get_players():
             results.append({ 'id': player.id, 'name': player.name })
 
         # Sort the index by player name
