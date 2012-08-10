@@ -25,8 +25,6 @@
 
 .ui-ticker-item {
    cursor: pointer;
-   font-family: courier new, monospace;
-   font-weight: bold;
    margin-right: 6px;
    position: absolute;
    width: 254px;
@@ -40,16 +38,12 @@
 }
 
 .ui-ticker-item-name {
-   height: 1.4em;
-   padding-top: 0.2em;
+   height: 20px;
+   padding-top: 2px;
    position: relative;
    text-align: center;
    z-index: 1050;
 }
-
-.ui-ticker-item-name.ui-state-default {
-   font-weight: bold;
- }
 
  .ui-ticker-item-content {
    border-top: 0;
@@ -59,6 +53,7 @@
 }
 
 .ui-ticker-item-photo {
+   background-image: url('../images/players/missing-medium.png');
    border-width: 0 0 0 1px;
    height: 96px;
    position: absolute;
@@ -69,76 +64,69 @@
 
 .ui-ticker-item-icons {
    position: absolute;
-   right: 130px;
+   right: 97px;
 }
 
 .ui-ticker-place {
    border-width: 0 0 1px 1px;
-   font-weight: bold;
-   height: 32px;
-   position: absolute;
+   height: 35px;
    text-align: center;
-   top: 0;
-   width: 32px;
+   width: 35px;
 }
 
 .ui-ticker-place-label {
-   font-size: 0.8em;
-   width: 100%;
+   font-size: 11px;
+   font-weight: normal;
+   left: -1px;
+   position: relative;
 }
 
 .ui-ticker-place-value {
-   font-size: 1.9em;
-   font-weight: bold;    
+   font-size: 22px;
    position: relative;
-   top: -13px;
+   top: -4px;
+   left: -1px;
 }
 
-.ui-ticker-rank {
-   position: relative;
-   top: 40px;
+.ui-ticker-trend {
+   background: none;
+   border: none;
+   margin: 2px auto;
+   width: 16px;
 }
 
 .ui-ticker-team {
-   position: relative;
-   top: 44px;
+   margin: 2px auto;
 }
 
-.ui-ticker-item .ui-ticker-trend {
-   background: none;
-   border: none;
-   left: 5px;
-   position: absolute;
-   top: 33px;
+.ui-ticker-rank {
+   margin: 0 auto;
 }
 
 .ui-ticker-stats {
+   border-collapse: collapse;
    height: 100%;
 }
 
 .ui-ticker-score {
-   font-size: 1.6em;
+   font-size: 22px;
 }
 
-.ui-ticker-support {
-   font-size: 1.2em;
-}
-
+.ui-ticker-support,
 .ui-ticker-kills,
 .ui-ticker-deaths {
-   font-size: 0.9em;
+   font-size: 14px;
 }
 
 .ui-ticker-stat-value {
-   padding-right: 6px;
-   text-align: right;
-   width: 42px;
+   padding-right: 2px;
+   text-align: center;
+   width: 45px;
 }
 
 .ui-ticker-spec {
-   font-size: 1.3em;
-   font-weight: bold;
+   font-size: 18px;
    height: 100%;
-   padding-left: 30px;
-   padding-top: 35px;
+   padding-left: 20px;
+   padding-top: 30px;
 }

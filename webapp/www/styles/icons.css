@@ -1,0 +1,55 @@
+.icon-rank {
+  background-image: url('../images/icon-rank.png');
+  background-repeat: no-repeat;
+  display: block;
+  height: 24px;
+  width: 24px;  
+}
+
+.icon-rank-0 {
+  background-position: 0 0;
+}
+
+.icon-rank-1 {
+  background-position: -24px 0; 
+}
+
+.icon-rank-2 {
+  background-position: -48px 0;
+}
+
+.icon-rank-3 {
+  background-position: -72px 0;
+}
+
+.icon-rank-4 {
+  background-position: -96px 0;
+}
+
+.icon-team {
+  background-image: url('../images/icon-team.png');
+  background-repeat: no-repeat;
+  display: block;
+  height: 11px;
+  width: 16px;  
+}
+
+.icon-team-none {
+  background-position: 0 0;
+}
+
+.icon-team-ch {
+  background-position: -16px 0; 
+}
+
+.icon-team-eu {
+  background-position: -32px 0;
+}
+
+.icon-team-mec {
+  background-position: -48px 0;
+}
+
+.icon-team-us {
+  background-position: -64px 0;
+}

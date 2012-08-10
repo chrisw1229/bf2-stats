@@ -114,7 +114,7 @@ $.widget('ui.ticker', {
          if (this.models[newModel.id]) {
 
             // Check if the new model is being removed
-            if (newModel.team == '') {
+            if (newModel.connected == false) {
 
                // Remove the existing model
                this._removeModel(newModel);
@@ -243,7 +243,7 @@ $.widget('ui.ticker', {
       // Load all the basic values for the given model
       $('.ui-ticker-item-name', itemElm).text(model.name);
       $('.ui-ticker-item-photo', itemElm).css('background-image',
-            'url(images/players/' + model.photo + ')');
+            'url(' + model.photo + ')');
 
       // Check whether the current model is a spectator
       if (model.team != undefined) {
