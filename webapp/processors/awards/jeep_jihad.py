@@ -22,5 +22,5 @@ class Processor(AwardProcessor):
 
         if e.attacker in self.exit_times and e.weapon.id == 'c4_explosives':
             #need to experiment with the time limit, probably need to reduce this
-            if e.tick - self.exit_times[e.attacker] <= 10:
+            if e.tick - self.exit_times[e.attacker] <= 2:
                 self.results[e.attacker] += 1
