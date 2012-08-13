@@ -75,6 +75,11 @@ class Processor(BaseProcessor):
         packet = self._get_player_packet(e.player, ['connected'])
         self._add_packet(e.tick, packet)
 
+    def on_event(self, e):
+
+        # Store the last tick logged by the game
+        self.last_tick = max(self.last_tick, e.tick)
+
     def on_game_status(self, e):
         if e.game.starting:
 
