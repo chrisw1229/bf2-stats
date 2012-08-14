@@ -13,8 +13,8 @@
    background: url(../images/pan-panel.png) no-repeat;
    cursor: default;
    height: 54px;
-   left: 10px;
-   top: 48px;
+   left: 17px;
+   top: 23px;
    width: 54px;
 }
 
@@ -49,8 +49,8 @@
    background: url(../images/zoom-panel.png) no-repeat;
    cursor: default;
    height: 64px;
-   left: 27px;
-   top: 112px;
+   left: 34px;
+   top: 95px;
    width: 20px;
 }
 
@@ -78,19 +78,18 @@
 
 .olControlLayerSwitcher {
    cursor: default;
-   right: 1px;
-   top: 10px;
+   left: 32px;
+   top: 169px;
 }
 
 .olControlLayerSwitcher .layersDiv {
+   opacity: 0.8;
    padding: 5px 10px 10px 10px;
 }
 
 .olControlLayerSwitcher .maximizeDiv {
    cursor: pointer;
    height: 20px;
-   right: 0;
-   top: 0;
    width: 22px;
 }
 

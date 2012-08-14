@@ -6,6 +6,7 @@ $('.common-logger').logger();
 var tickerElm = $('.ticker-widget').ticker();
 var meterElm = $('.meter-widget').meter();
 var mapElm = $('.olmap-widget');
+var messageElm = $('.message-widget').message();
 
 // Register the page manager as a jQuery extension
 $.extend({ mgr: {
@@ -53,6 +54,9 @@ $.extend({ mgr: {
 
    // Callback from the server when a player is killed
    onKill: function(e, packet) {
+
+      // Add a message describing the kill
+      messageElm.message('addPackets', packet);
 
       // Add a map marker to represent the kill
       if (!$.mgr.mapMarkers[packet.tick]) {

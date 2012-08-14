@@ -8,6 +8,7 @@
       <link type="text/css" href="themes/jquery-ui-1.8.20.custom.css" rel="stylesheet"/>
       <link type="text/css" href="styles/icons.css" rel="stylesheet"/>
       <link type="text/css" href="styles/ui-logger.css" rel="stylesheet"/>
+      <link type="text/css" href="styles/ui-message.css" rel="stylesheet"/>
       <link type="text/css" href="styles/ui-meter.css" rel="stylesheet"/>
       <link type="text/css" href="styles/ui-olmap.css" rel="stylesheet"/>
       <link type="text/css" href="styles/ui-ticker.css" rel="stylesheet"/>
@@ -21,6 +22,7 @@
       <script type="text/javascript" src="scripts/service-live.js"></script>
       <script type="text/javascript" src="scripts/ui-logger.js"></script>
       <script type="text/javascript" src="scripts/ui-meter.js"></script>
+      <script type="text/javascript" src="scripts/ui-message.js"></script>
       <script type="text/javascript" src="scripts/ui-olmap.js"></script>
       <script type="text/javascript" src="scripts/ui-ticker.js"></script>
       <script type="text/javascript" src="scripts/page-index.js"></script>
@@ -71,6 +73,19 @@
       <div class="ui-widget-content olmap-widget">
          <div class="ui-widget-overlay"></div>
       </div>
+
+      <div class="message-widget">
+         <div class="ui-message-body">
+            <ol class="ui-message-list">
+               <li class="ui-message-item">
+                  <span class="ui-message-name ui-message-attacker"></span>
+                  <span class="ui-message-symbol"></span>
+                  <span class="ui-message-name ui-message-victim"></span>
+               </li>
+            </ol>
+         </div>
+      </div>
+
       <div class="common-logger"></div>
    </body>
 </html>
