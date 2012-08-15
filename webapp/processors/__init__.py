@@ -50,6 +50,9 @@ class BaseProcessor(object):
     def on_event(self, e):
         pass
 
+    def on_flag_action(self, e):
+        pass
+
     def on_game_status(self, e):
         pass
 

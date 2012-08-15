@@ -340,6 +340,38 @@ def on_score(player, difference):
     except Exception, err:
         error('score', err)
 
+    try:
+        if not hasattr(player, '_flags'):
+            player._flags = dict()
+            player._flags['captures'] = 0
+            player._flags['capture_assists'] = 0
+            player._flags['neutralizes'] = 0
+            player._flags['neutralize_assists'] = 0
+            player._flags['defends'] = 0
+
+        flag_action = None
+        if player._flags['captures'] != player.score.cpCaptures:
+            player._flags['captures'] = player.score.cpCaptures
+            flag_action = 'capture'
+        elif player._flags['capture_assists'] != player.score.cpAssists:
+            player._flags['capture_assists'] = player.score.cpAssists
+            flag_action = 'capture_assist'
+        elif player._flags['neutralizes'] != player.score.cpNeutralizes:
+            player._flags['neutralizes'] = player.score.cpNeutralizes
+            flag_action = 'neutralize'
+        elif player._flags['neutralize_assists'] != player.score.cpNeutralizeAssists:
+            player._flags['neutralize_assists'] = player.score.cpNeutralizeAssists
+            flag_action = 'neutralize_assist'
+        elif player._flags['defends'] != player.score.cpDefends:
+            player._flags['defends'] = player.score.cpDefends
+            flag_action = 'defend'
+
+        if flag_action:
+            player_name = format_player(player)
+            log('FA', player_name, flag_action)
+    except Exception, err:
+        error('flag_action', err)
+
 def on_spawn(player, bf2_object):
     try:
         player_name = format_player(player)

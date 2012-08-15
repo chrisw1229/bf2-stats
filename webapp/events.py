@@ -551,6 +551,26 @@ class DisconnectEvent(BaseEvent):
 
 event_mgr.add_event_class(DisconnectEvent)
 
+class FlagActionEvent(BaseEvent):
+
+    TYPE =  'FA'
+    CALLBACK = 'on_flag_action'
+
+    CAPTURE = 'capture'
+    CAPTURE_ASSIST = 'capture_assist'
+    NEUTRALIZE = 'neutralize'
+    NEUTRALIZE_ASSIST = 'neutralize_assist'
+    DEFEND = 'defend'
+
+    def __init__(self, tick, values):
+        BaseEvent.__init__(self, tick, values, 2)
+
+        self.player = model_mgr.get_player_by_name(values[0])
+        self.action_type = values[1]
+
+        event_mgr.get_history(self.player).add_event(self)
+event_mgr.add_event_class(FlagActionEvent)
+
 class GameStatusEvent(BaseEvent):
 
     TYPE =  'GS'
