@@ -278,6 +278,12 @@ def on_kill(victim, attacker, weapon, assists, bf2_object):
     except Exception, err:
         error('assist', err)
 
+    # Update the weapon accuracy for the player
+    try:
+        log_accuracy(attacker)
+    except Exception, err:
+        error('accuracy', err)
+
 def on_kit_drop(player, kit):
     try:
         player_name = format_player(player)
@@ -287,6 +293,12 @@ def on_kit_drop(player, kit):
         log('KD', player_name, player_pos, kit_name)
     except Exception, err:
         error('kit_drop', err)
+
+    # Update the weapon accuracy for the player
+    try:
+        log_accuracy(player)
+    except Exception, err:
+        error('accuracy', err)
 
 def on_kit_pickup(player, kit):
     try:
@@ -427,6 +439,12 @@ def on_vehicle_enter(player, vehicle, free_soldier=False):
     except Exception, err:
         error('vehicle_enter', err)
 
+    # Update the weapon accuracy for the player
+    try:
+        log_accuracy(player)
+    except Exception, err:
+        error('accuracy', err)
+
 def on_vehicle_exit(player, vehicle):
     try:
 
@@ -443,6 +461,12 @@ def on_vehicle_exit(player, vehicle):
     except Exception, err:
         error('vehicle_exit', err)
 
+    # Update the weapon accuracy for the player
+    try:
+        log_accuracy(player)
+    except Exception, err:
+        error('accuracy', err)
+
 def on_weapon(player, old_weapon, new_weapon):
     try:
         player_name = format_player(player)
@@ -452,6 +476,32 @@ def on_weapon(player, old_weapon, new_weapon):
         log('WP', player_name, player_pos, new_weapon_name)
     except Exception, err:
         error('weapon', err)
+
+def log_accuracy(player):
+    if player == None: return
+
+    if not hasattr(player, '_accuracy'):
+        player._accuracy = dict()
+        player._fired = dict()
+
+    for b in player.score.bulletsFired:
+        weapon_name = b[0].lower()
+        bullets_fired = b[1]
+
+        if (not weapon_name in player._accuracy or
+                player._accuracy[weapon_name] != bullets_fired):
+            player._accuracy[weapon_name] = bullets_fired
+            player._fired[weapon_name] = bullets_fired
+
+    if not player._fired: return
+
+    player_name = format_player(player)
+    for b in player.score.bulletsGivingDamage:
+        weapon_name = b[0].lower()
+        if weapon_name in player._fired:
+            bullets_hit = b[1]
+            log('AC', player_name, weapon_name, bullets_hit, bullets_fired)
+    player._fired.clear()
 
 def format_assist_type(assist_type):
     if assist_type == 1:

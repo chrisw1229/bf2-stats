@@ -380,6 +380,24 @@ class BaseEvent(object):
             return self.tick == event.tick
         return False
 
+class AccuracyEvent(BaseEvent):
+
+    TYPE =  'AC'
+    CALLBACK = 'on_accuracy'
+
+    def __init__(self, tick, values):
+        BaseEvent.__init__(self, tick, values, 4)
+
+        self.player = model_mgr.get_player_by_name(values[0])
+        self.weapon = model_mgr.get_weapon(values[1])
+
+        self.bullets_hit = int(values[2])
+        self.bullets_fired = int(values[3])
+
+        event_mgr.get_history(self.player).add_event(self)
+        event_mgr.get_history(self.weapon).add_event(self)
+event_mgr.add_event_class(AccuracyEvent)
+
 class AmmoEvent(BaseEvent):
 
     TYPE =  'AM'

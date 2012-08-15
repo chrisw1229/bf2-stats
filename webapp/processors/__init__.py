@@ -14,6 +14,9 @@ class BaseProcessor(object):
     def stop(self):
         pass
 
+    def on_accuracy(self, e):
+        pass
+
     def on_ammo(self, e):
         pass
 
