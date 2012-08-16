@@ -519,7 +519,8 @@ class StatManager(object):
 
     def angle_diff(self, pos1, pos2):
         '''
-        Calculates the angle difference between the given angles
+        Calculates the difference between the angles of the given positions, as
+        an absolute value from 0-360 degrees.
         
         Args:
             pos1 (array): Array of points in the form [x,z,y,a].
@@ -528,9 +529,46 @@ class StatManager(object):
         Returns:
             angular difference (float): Difference between the angles.
         '''
+
         if pos1 and len(pos1) == 4 and pos2 and len(pos2) == 4:
-            return math.fabs(pos2[3] - pos1[3])
+            pos1_angle = pos1[3] if pos1[3] >= 0 else 360 + pos1[3]
+            pos2_angle = pos2[3] if pos2[3] >= 0 else 360 + pos2[3]
+            return math.fabs(pos2_angle - pos1_angle)
+
+    def angle_same(self, pos1, pos2):
+        '''
+        Calculates whether the angles in the given positions are pointing in the
+        same general direction. The angles are considered in the same direction
+        if they are less than 120 degrees apart.
+        
+        Args:
+            pos1 (array): Array of points in the form [x,z,y,a].
+            pos2 (array): Array of points in the form [x,z,y,a].
             
+        Returns:
+            angles same (boolean): Whether the angles are pointing the same.
+        '''
+
+        angle_diff = self.angle_diff(pos1, pos2)
+        return angle_diff >= 120 and angle_diff <= 240
+
+    def angle_opp(self, pos1, pos2):
+        '''
+        Calculates whether the angles in the given positions are pointing in the
+        opposite general direction. The angles are considered in the opposite
+        direction if they are greater than 240 degrees apart.
+        
+        Args:
+            pos1 (array): Array of points in the form [x,z,y,a].
+            pos2 (array): Array of points in the form [x,z,y,a].
+            
+        Returns:
+            angles same (boolean): Whether the angles are pointing the opposite.
+        '''
+
+        angle_diff = self.angle_diff(pos1, pos2)
+        return angle_diff >= 300 or angle_diff <= 60
+
     def _get_stats(self, model, stats_type):
         if not (model and stats_type): return
 
