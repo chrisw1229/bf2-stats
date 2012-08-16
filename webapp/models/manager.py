@@ -707,6 +707,20 @@ class ModelManager(object):
         game.ending = (status == games.Game.ENDING)
         return game
 
+    def set_server_status(self, status, time_stamp):
+        '''
+        Sets the current server status based on the given parameters.
+
+        Args:
+            status (string): The current status of the server.
+            time_stamp (string): The real time when the server status changed
+
+        Returns:
+            None
+        '''
+
+        print 'Server updated: %s %s' % (status, time_stamp)
+
     def _update_player(self, address, name):
 
         # Attempt to get the player by name and then address

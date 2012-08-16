@@ -756,6 +756,9 @@ class ServerStatusEvent(BaseEvent):
 
         self.status = values[0]
         self.status_time = values[1]
+
+        model_mgr.set_server_status(values[0], values[1])
+
 event_mgr.add_event_class(ServerStatusEvent)
 
 class SpawnEvent(BaseEvent):
