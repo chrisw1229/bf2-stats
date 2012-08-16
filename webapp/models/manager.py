@@ -637,8 +637,8 @@ class ModelManager(object):
 
     def reset_models(self):
         '''
-        Resets all the game models. This is typically only called when a new
-        game starts.
+        Resets all the game models. This is typically only called when the
+        server restarts or a new game starts.
 
         Args:
             None
@@ -647,6 +647,8 @@ class ModelManager(object):
             None
         '''
 
+        for control_point in self.control_points:
+            control_point.reset();
         for player in self.players:
             player.reset()
         for game in self.games:
