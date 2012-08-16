@@ -514,26 +514,34 @@ def log_accuracy(player):
 
     if not hasattr(player, '_accuracy'):
         player._accuracy = dict()
-        player._fired = dict()
+        player._accuracy_temp = dict()
 
-    for b in player.score.bulletsFired:
-        weapon_name = b[0].lower()
-        bullets_fired = b[1]
+    # Find all the weapons that were fired since the last update
+    for bullets in player.score.bulletsFired:
+        weapon_name = bullets[0].lower()
+        bullets_fired = bullets[1]
 
         if (not weapon_name in player._accuracy or
                 player._accuracy[weapon_name] != bullets_fired):
             player._accuracy[weapon_name] = bullets_fired
-            player._fired[weapon_name] = bullets_fired
+            player._accuracy_temp[weapon_name] = {
+                'hits': 0,
+                'fired': bullets_fired
+            }
+    if not player._accuracy_temp: return
 
-    if not player._fired: return
-
+    # Find all the hit values for the weapons that were fired
     player_name = format_player(player)
-    for b in player.score.bulletsGivingDamage:
-        weapon_name = b[0].lower()
-        if weapon_name in player._fired:
-            bullets_hit = b[1]
-            log('AC', player_name, weapon_name, bullets_hit, bullets_fired)
-    player._fired.clear()
+    for bullets in player.score.bulletsGivingDamage:
+        weapon_name = bullets[0].lower()
+        if weapon_name in player._accuracy_temp:
+            player._accuracy_temp[weapon_name]['hits'] = bullets[1]
+
+    # Log all the updated values for each weapon that changed
+    for weapon_name in player._accuracy_temp:
+        bullets = player._accuracy_temp[weapon_name]
+        log('AC', player_name, weapon_name, bullets['hits'], bullets['fired'])
+    player._accuracy_temp.clear()
 
 def format_assist_type(assist_type):
     if assist_type == 1:
