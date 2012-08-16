@@ -1,7 +1,7 @@
 ﻿
 import models
 
-from events import KillEvent, event_mgr
+from events import FlagActionEvent, KillEvent, event_mgr
 from processors import BaseProcessor
 from models import model_mgr
 from stats import PlayerItemStats, stat_mgr
@@ -134,6 +134,30 @@ class Processor(BaseProcessor):
         player_stats.play_time.stop(e.tick)
         player_stats.spec_time.stop(e.tick)
 
+    def on_flag_action(self, e):
+        player_stats = stat_mgr.get_player_stats(e.player)
+
+        # Increment flag points for the player
+        if e.action_type == FlagActionEvent.CAPTURE:
+            player_stats.flag_captures += 1
+            player_stats.flag_captures_total += 1
+        elif e.action_type == FlagActionEvent.CAPTURE_ASSIST:
+            player_stats.flag_capture_assists += 1
+            player_stats.flag_capture_assists_total += 1
+        elif e.action_type == FlagActionEvent.NEUTRALIZE:
+            player_stats.flag_neutralizes += 1
+            player_stats.flag_neutralizes_total += 1
+        elif e.action_type == FlagActionEvent.NEUTRALIZE_ASSIST:
+            player_stats.flag_neutralize_assists += 1
+            player_stats.flag_neutralize_assists_total += 1
+        elif e.action_type == FlagActionEvent.DEFEND:
+            player_stats.flag_defends += 1
+            player_stats.flag_defends_total += 1
+
+        # Increment teamwork for the player
+        player_stats.teamwork += 1
+        player_stats.teamwork_total += 1
+
     def on_heal(self, e):
         receiver_stats = stat_mgr.get_player_stats(e.receiver)
         giver_stats = stat_mgr.get_player_stats(e.giver)
@@ -216,9 +240,9 @@ class Processor(BaseProcessor):
             attacker_stats.kills_ratio = round(float(attacker_stats.kills)
                     / float(attacker_stats.deaths), 2)
         if attacker_stats.deaths_total == 0:
-            attacker_stats.kills_ratio_max = 1.0
+            attacker_stats.kills_ratio_total = 1.0
         else:
-            attacker_stats.kills_ratio_max = round(float(attacker_stats.kills_total)
+            attacker_stats.kills_ratio_total = round(float(attacker_stats.kills_total)
                     / float(attacker_stats.deaths_total), 2)
 
         # Increment the enemy kill count for the attacker
