@@ -99,6 +99,11 @@ _add('ahe_havoc_gun', CANNON, VEHICLE, PRECISION,
 '',
 '')
 
+_add('ahe_havoc_atakalauncher_tv', ROCKET, VEHICLE, EXPLOSIVE,
+'', '', '',
+'',
+'')
+
 _add('ahe_havoc_s8launcher', ROCKET, VEHICLE, EXPLOSIVE,
 '', '', '',
 '',
@@ -110,6 +115,11 @@ _add('ahe_z10_gun', CANNON, VEHICLE, PRECISION,
 '')
 
 _add('ahe_z10_hj8launcher_tv', ROCKET, VEHICLE, EXPLOSIVE,
+'', '', '',
+'',
+'')
+
+_add('air_a10_us_bomblauncher', ROCKET, VEHICLE, EXPLOSIVE,
 '', '', '',
 '',
 '')
@@ -145,6 +155,11 @@ _add('air_su30mkk_archerlauncher', ROCKET, VEHICLE, EXPLOSIVE,
 '')
 
 _add('air_su30mkk_kedgelauncher_laser', ROCKET, VEHICLE, EXPLOSIVE,
+'', '', '',
+'',
+'')
+
+_add('air_su39_canon', CANNON, VEHICLE, PRECISION,
 '', '', '',
 '',
 '')
@@ -426,6 +441,11 @@ _add('eurif_hk53a3', CARBINE, SOLDIER, PRECISION,
 '',
 '')
 
+_add('eurofighter_missiles', ROCKET, VEHICLE, EXPLOSIVE,
+'', '', '',
+'',
+'')
+
 _add('f18_autocannon', CANNON, VEHICLE, PRECISION,
 '', '', '',
 '',
@@ -516,6 +536,16 @@ supplies inside and strapped tight. It gradually heals player for a short period
 thrown on the ground to instantly heal players to full health. The Medkits are also very useful as \
 bait for enemy infantry. The player can use one to lure an enemy toward a booby trap (e.g. a \
 Claymore anti-personnel mine).',
+'')
+
+_add('ruair_archerlauncher', ROCKET, VEHICLE, EXPLOSIVE,
+'', '', '',
+'',
+'')
+
+_add('ruair_mig29_30mmcannon', CANNON, VEHICLE, PRECISION,
+'', '', '',
+'',
 '')
 
 _add('ruair_su34_250kgbomblauncher', ROCKET, VEHICLE, EXPLOSIVE,
@@ -731,6 +761,16 @@ with all shotguns it will kill point blank but has bad recoil and added to that 
 and ineffectively use up all your ammo, it can be wise to switch to a pistol.')
 
 _add('rutnk_t90_barrel', CANNON, VEHICLE, EXPLOSIVE,
+'', '', '',
+'',
+'')
+
+_add('she_ec635_cannons', CANNON, VEHICLE, PRECISION,
+'', '', '',
+'',
+'')
+
+_add('she_littlebird_miniguns', CANNON, VEHICLE, PRECISION,
 '', '', '',
 '',
 '')
@@ -1074,4 +1114,9 @@ _add('wrench', TOOL, SOLDIER, PRECISION,
 'In Battlefield 2, the Wrench is issued to the Engineer kit. After a short animation, where the \
 user widens the mouth of the wrench, the player can use it to repair friendly or neutral vehicles. \
 It can also rebuild bridges which have been damaged or destroyed by C4 or other explosives.',
+'')
+
+_add('xpak2_tiger_missiles', ROCKET, VEHICLE, EXPLOSIVE,
+'', '', '',
+'',
 '')
