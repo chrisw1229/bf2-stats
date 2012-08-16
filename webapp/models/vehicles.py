@@ -51,14 +51,14 @@ _add('aav_tunguska', AIR_DEF, LAND, 'Tunguska-M1',
 'The Tunguska is a Russian tracked self-propelled anti-aircraft weapon armed with a surface-to-air \
 gun and missile system. It is designed to provide day and night protection for infantry and tank \
 regiments against low-flying aircraft, helicopters, and cruise missiles in all weather conditions.',
-     16)
+16.0)
 
 _add('aav_type95', AIR_DEF, LAND, 'Type 95',
 ['aav_type95_driver', 'aav_type95_passenger'],
 ['aav_type95guns', 'aav_type95_qw2launcher'],
 'The Type 95 is a Chinese self-propelled anti-aircraft vehicle. It is armed with four 25 \
 millimeter cannons and optionally four fire-and-forget QW-2 infra-red homing missiles.',
-     4)
+4.0)
 
 _add('ahe_ah1z', HELICOPTER, AIR, 'AH-1Z',
 ['ahe_ah1z_driver', 'ahe_ah1z_cogunner'],
@@ -66,7 +66,7 @@ _add('ahe_ah1z', HELICOPTER, AIR, 'AH-1Z',
 'The Bell AH-1Z Viper is a twin-engine attack helicopter based on the AH-1W SuperCobra, that was \
 developed for the United States Marine Corps. The AH-1Z features a four-blade, bearingless, \
 composite main rotor system, uprated transmission, and a new target sighting system.',
-     31)
+31.0)
 
 _add('ahe_havoc', HELICOPTER, AIR, 'Mi-28',
 ['ahe_havoc_driver', 'ahe_havoc_cogunner'],
@@ -75,20 +75,20 @@ _add('ahe_havoc', HELICOPTER, AIR, 'Mi-28',
 two-seat anti-armour attack helicopter. It is a dedicated attack helicopter with no intended \
 secondary transport capability, better optimized than the Mil Mi-24 for the role. It carries a \
 single gun in an undernose barbette, plus external loads carried on pylons beneath stub wings.',
-     15)
+15.0)
 
 _add('ahe_z10', HELICOPTER, AIR, 'WZ-10',
 ['ahe_z10_driver', 'ahe_z10_cogunner'],
 ['ahe_z10_s8launcher', 'ahe_z10_gun', 'ahe_z10_hj8launcher_tv'],
 'The WZ-10 is an attack helicopter developed by the People''s Republic of China. It is designed \
 primarily for anti-tank missions, but is also believed to have a secondary air-to-air capability.',
-     35)
+35.0)
 
-_add('aircontroltower', SENSOR, STATION, 'Control Tower',
-[],
-[],
+_add('air_a10', JET, AIR, '?',
+['air_a10_driver'],
+['air_a10_us_bomblauncher'],
 '',
-0)
+11.8)
 
 _add('air_f35b', JET, AIR, 'F-35B',
 ['air_f35b_driver'],
@@ -99,7 +99,7 @@ missions with stealth capability. The F-35B is the short takeoff and vertical la
 variant of the aircraft. Similar in size to the A variant, the B sacrifices about a third of the \
 other version''s fuel volume to make room for the vertical flight system. Takeoffs and landing \
 with vertical flight systems are by far the riskiest, and in the end, a decisive factor in design.',
-     236.8)
+236.8)
 
 _add('air_j10', JET, AIR, 'J-10',
 ['air_j10_driver'],
@@ -108,7 +108,7 @@ _add('air_j10', JET, AIR, 'J-10',
 of China''s Chengdu Aircraft Industry Corporation (CAC) for the People''s Liberation Army Air \
 Force (PLAAF). Known in the West as the "Vigorous Dragon", the J-10 is a multirole combat aircraft \
 capable of all-weather operation.',
-     50)
+50.0)
 
 _add('air_su30mkk', JET, AIR, 'Su-30MKK',
 ['air_su30mkk_driver', 'air_su30mkk_gunner'],
@@ -117,7 +117,25 @@ _add('air_su30mkk', JET, AIR, 'Su-30MKK',
 Shenyang Aircraft Corporation. It is considered an upgraded version of Sukhoi Su-30. It was \
 jointly developed by Russia and China, similar to the Su-30MKI. It is a heavy class, all-weather, \
 long-range strike fighter, comparable to American F-15E.',
-     53)
+53.0)
+
+_add('air_su39', JET, AIR, 'Su-39',
+['air_su39_driver'],
+[],
+'',
+11.0)
+
+_add('aircontroltower', SENSOR, STATION, 'Control Tower',
+[],
+[],
+'',
+0.0)
+
+_add('aircontroltower_mec', SENSOR, STATION, 'Control Tower',
+[],
+[],
+'',
+0.0)
 
 _add('apc_btr90', ARMOR, LAND, 'BTR-90',
 ['apc_btr90_driver', 'apc_btr90_passenger_rf', 'apc_btr90_passenger_lf', 'apc_btr90_passenger_rb',
@@ -128,7 +146,7 @@ first shown publicly in 1994. It is a larger version of the BTR-80 vehicle, fitt
 turret. Armour protection is improved compared with the BTR-80, giving protection from 14.5 mm \
 projectiles over the frontal arc. It is armed with a 2A42 30 mm auto cannon, coaxial 7.62 mm PKT \
 machine gun, AT-5 Spandrel ATGM, as well as a AGS-17 30 mm automatic grenade launcher.',
-     3.1)
+3.1)
 
 _add('apc_wz551', ARMOR, LAND, 'WZ551',
 ['apc_wz551_driver', 'apc_wz551_rearpassenger_left', 'apc_wz551_rearpassenger_stern',
@@ -137,7 +155,7 @@ _add('apc_wz551', ARMOR, LAND, 'WZ551',
 'The WZ551 is a Chinese wheeled armored personnel carrier. It actually consists of two families of \
 vehicles with official designations in the People''s Liberation Army as Type 90 and Type 92. \
 Roughly 600 WZ551s are in service with the PLA, where they are used by light mechanized infantry.',
-     0.4)
+0.4)
 
 _add('ars_d30', ARTILLERY, STATION, 'D-30',
 [],
@@ -146,7 +164,7 @@ _add('ars_d30', ARTILLERY, STATION, 'D-30',
 It is a robust piece that focuses on the essential features of a towed field gun suitable for all \
 conditions. The D-30 has a maximum range of 15.4 kilometers, or over 21 km using RAP ammunition. \
 With its striking three-leg mounting the D-30 can be rapidly traversed through 360 degrees.',
-    0.1)
+0.1)
 
 _add('ats_hj8', GROUND_DEF, STATION, 'HJ-8',
 ['ats_hj8_driver'],
@@ -154,7 +172,7 @@ _add('ats_hj8', GROUND_DEF, STATION, 'HJ-8',
 'The HJ-8 or Hongjian-8 is a second generation tube-launched, optically tracked, wire-guided \
 anti-tank missile system which was originally deployed by the People''s Liberation Army since the \
 late 1980s. It is able to defeat explosive reactive armour (ERA).',
-     0.5)
+0.5)
 
 _add('ats_tow', GROUND_DEF, STATION, 'BGM-71',
 ['ats_tow_driver'],
@@ -163,7 +181,7 @@ _add('ats_tow', GROUND_DEF, STATION, 'BGM-71',
 Environment (B), Surface-Attack (G), Missile (M). TOW is an acronym that stands for Tube-launched, \
 Optically-tracked, Wire command data link, guided missile. The TOW was first produced in 1970 and \
 is one of the two most widely used anti-tank guided missiles by Western nations.',
-     0.18)
+0.18)
 
 _add('boat_rib', BOAT, SEA, 'RIB',
 ['boat_rib_driver', 'boat_rib_gunpod', 'boat_rib_passengerfrontleft_cupolabase',
@@ -174,7 +192,7 @@ _add('boat_rib', BOAT, SEA, 'RIB',
 high-performance and high-capacity boat constructed with a solid, shaped hull and flexible tubes \
 at the gunwale. The design is stable and seaworthy. The inflatable collar allows the vessel to \
 maintain buoyancy even if a large quantity of water is shipped aboard due to bad sea conditions.',
-     0.00001)
+0.00001)
 
 _add('chhmg_kord', GROUND_DEF, STATION, '6P50',
 [],
@@ -185,13 +203,13 @@ been extensively reworked, changing from a horizontally pivoting breech block to
 design. Additionally the gas system has been changed and the muzzle baffle redesigned. These \
 changes give the weapon reduced recoil compared with the NSV, allowing greater accuracy during \
 sustained fire.',
-     0.001)
+0.001)
 
 _add('ch_bipod', GROUND_DEF, STATION, '?',
 ['ch_bipod_driver'],
 ['chlmg_type95_stationary'],
 '?',
-     0.0)
+0.0)
 
 _add('chthe_z8', HELICOPTER, AIR, 'Z-8',
 ['chthe_z8_driver', 'chthe_z8_llavett_cupolabase', 'chthe_z8_rlavett_cupolabase',
@@ -200,7 +218,7 @@ _add('chthe_z8', HELICOPTER, AIR, 'Z-8',
 'The Aerospatiale SA 321 Super Frelon is a three-engined heavy transport helicopter produced by \
 Aerospatiale of France. The helicopter is still in use in China where the locally produced version \
 is known as the Z-8.',
-     15)
+15.0)
 
 _add('hmg_m2hb', GROUND_DEF, STATION, 'M2',
 ['hmg_m2hb_driver'],
@@ -211,7 +229,7 @@ Browning machine gun, which was chambered for the .30-06 cartridge. The M2 uses 
 more powerful .50 BMG cartridge, which was named for the gun itself (BMG standing for Browning \
 Machine Gun). It is effective against infantry, unarmored or lightly armored vehicles and boats, \
 light fortifications and low-flying aircraft.',
-     0.0001)
+0.0001)
 
 _add('igla_djigit', AIR_DEF, STATION, '9K38',
 ['igla_djigit_driver'],
@@ -223,32 +241,32 @@ straight-approaching fighters (all-aspect capability) under favourable circumsta
 longer range, a higher-impulse, shorter-burning rocket with higher peak velocity (but \
 approximately same time of flight to maximum range), and a propellant that performs as high \
 explosive when detonated by the warhead''s secondary charge on impact.',
-     0.08)
+0.08)
 
 _add('jeep_faav', TRANSPORT, LAND, '?',
 ['jeep_faav_driver', 'jeep_faav_rear_passenger', 'jeep_faav_front_gun'],
 ['hmg_m2hb', 'uslmg_m249saw_stationary'],
 '?',
-     0.00)
+0.045)
 
 _add('jep_mec_paratrooper', TRANSPORT, LAND, '?',
 ['jep_mec_paratrooper_driver', 'jep_mec_paratrooper_gunbase', 'jep_mec_front_gunpos'],
 ['chhmg_kord', 'rulmg_rpk74_stationary'],
 '?',
-     0.00)
+0.045)
 
 _add('jep_nanjing', TRANSPORT, LAND, '?',
 ['jep_nanjing_driver', 'jep_nanjing_cupolabase', 'jep_nanjing_passenger_rr',
         'jep_nanjing_passenger_rl'],
 ['chhmg_type85'],
 '?',
-     0.00)
+0.045)
 
 _add('jep_paratrooper', TRANSPORT, LAND, '?',
 ['jep_paratrooper_driver', 'jep_paratrooper_gunbase', 'jep_paratrooper_front_gunpos'],
 ['chhmg_type85', 'chlmg_type95_stationary'],
 '?',
-     0.00)
+0.045)
 
 _add('jep_vodnik', TRANSPORT, LAND, 'GAZ-3937',
 ['jep_vodnik_driver', 'jep_vodnik_cupolabase', 'jep_vodnik_codriver', 'jep_vodnik_rearpassenger'],
@@ -260,19 +278,19 @@ suspension and a centralized system of tire-pressure control. The standard under
 cab can be fitted with a number of different modules with various number of passenger seats and \
 cargo compartments, seating up to 10 people. It is powered by a 175 hp (130 kW) diesel engine \
 giving a top speed of 112 km/h (4 to 5 km/h when swimming).',
-     0.045)
+0.045)
 
 _add('mec_bipod', GROUND_DEF, STATION, '?',
 ['mec_bipod_driver'],
 ['rulmg_rpk74_stationary'],
 '?',
-     0.00)
+0.0)
 
 _add('mobileradar_us_dest', SENSOR, STATION, 'Mobile Radar',
 [],
 [],
 '',
-     0.00)
+0.0)
 
 _add('parachute', PARACHUTE, AIR, 'Parachute',
 ['parachute_driver'],
@@ -283,17 +301,17 @@ light, strong cloth, originally silk, now most commonly nylon. Parachutes must s
 terminal vertical speed by a minimum 75% in order to be classified as such. Depending on the \
 situation, parachutes are used with a variety of loads, including people, food, equipment, space \
 capsules, and bombs.',
-     0.00)
+0.0)
 
 _add('ruair_mig29', JET, AIR, 'MiG-29',
 ['ruair_mig29_driver'],
-[],
+['ruair_mig29_30mmcannon', 'ruair_archerlauncher'],
 'The Mikoyan MiG-29 is a fourth-generation jet fighter aircraft designed in the Soviet Union for \
 an air superiority role. Developed in the 1970s by the Mikoyan design bureau, it entered service \
 with the Soviet Air Force in 1983, and remains in use by the Russian Air Force as well as in many \
 other nations. The MiG-29, along with the Sukhoi Su-27, was developed to counter new American \
 fighters such as the McDonnell Douglas F-15 Eagle, and the General Dynamics F-16 Fighting Falcon.',
-     29.0)
+29.0)
 
 _add('ruair_su34', JET, AIR, 'Su-34',
 ['ruair_su34_driver', 'ruair_su34_copilot'],
@@ -304,7 +322,7 @@ Su-27/Su-30, with canards like the Su-30MKI/Su-33/Su-27M/35 to increase static i
 manoeuvrability) and to reduce trim drag. The aircraft has an entirely new nose and forward \
 fuselage with a cockpit providing side-by-side seating for a crew of two. The Su-34 is powered by \
 the AL-31FM1, the same engines as the Su-27SM, but its maximum speed is lower at Mach 1.8+.',
-     36.0)
+36.0)
 
 _add('rutnk_t90', ARMOR, LAND, 'T-90',
 ['rutnk_t90_driver', 'rutnk_t90_cupolabase'],
@@ -316,7 +334,19 @@ T-72, the T-90 uses a 125mm 2A46 smoothbore tank gun, 1G46 gunner sights, a new 
 thermal sights. Standard protective measures include a blend of Steel, Composite armour, and \
 Kontakt-5 explosive-reactive armor, laser warning receivers, Nakidka camouflage and the Shtora \
 infrared ATGM jamming system.',
-     4.25)
+4.25)
+
+_add('she_ec635', HELICOPTER, AIR, '?',
+['she_ec635_driver', 'she_ec635_leftpassenger', 'she_ec635_rightpassenger'],
+['she_ec635_cannons'],
+'',
+43.0)
+     
+_add('she_littlebird', HELICOPTER, AIR, '?',
+['she_littlebird_driver', 'she_littlebird_leftspassenger', 'she_littlebird_rightpassenger'],
+['she_littlebird_miniguns'],
+'',
+1.2)
 
 _add('the_mi17', HELICOPTER, AIR, 'Mi-17',
 ['the_mi17_driver', 'the_mi17_llavett_cupolabase', 'the_mi17_rlavett_cupolabase',
@@ -326,7 +356,7 @@ _add('the_mi17', HELICOPTER, AIR, 'Mi-17',
 'The Mil Mi-17 (also known as the Mi-8M series in Russian service) is a Russian helicopter \
 currently in production at two factories in Kazan and Ulan-Ude. Mil Mi-8/17 is a medium \
 twin-turbine transport helicopter that can also act as a gunship.',
-     7.1)
+7.1)
 
 _add('tnk_type98', ARMOR, LAND, 'Type 98',
 ['tnk_type98_driver', 'tnk_type98_cupolabase'],
@@ -337,13 +367,13 @@ Liberation Army. It is made to compete with other modern tanks. Although not exp
 acquired in large numbers due to its high cost compared to the more economical Type 96, it is \
 currently the most advanced MBT fielded by China. The ZTZ99 MBT is a successor to the Type 98G \
 tank manufactured for the People''s Liberation Army (PLA).',
-     4.5)
+4.5)
 
 _add('us_bipod', GROUND_DEF, STATION, '?',
 ['us_bipod_driver'],
 ['uslmg_m249saw_stationary'],
 '?',
-     0.00)
+0.0)
 
 _add('usaas_stinger', AIR_DEF, STATION, 'FIM-92',
 ['usaas_stinger_driver'],
@@ -354,14 +384,14 @@ States and entered into service in 1981. Used by the militaries of the U.S. and 
 countries, the basic Stinger missile has to-date been responsible for 270 confirmed aircraft \
 kills. It is manufactured by Raytheon Missile Systems and under license by EADS in Germany, with \
 70,000 missiles produced. It is classified as a Man-Portable Air-Defense System (MANPADS).',
-     0.038)
+0.038)
 
 _add('usaav_m6', AIR_DEF, LAND, 'M6',
 ['usaav_m6_driver', 'usaav_m6_cupolabase'],
 ['usaav_m6_barrel', 'usaav_m6_stinger_launcher'],
 'The M6 Linebacker is an air defense variant of modified M2A2 ODSs with the TOW missile system \
 replaced with a four-tube Stinger missile system. These are due to be retired from U.S. service.',
-     3.1)
+3.1)
 
 _add('usair_f18', JET, AIR, 'F/A-18',
 ['usair_f18_driver'],
@@ -372,7 +402,7 @@ Fighter/Attack). Designed by McDonnell Douglas and Northrop, the F/A-18 was deri
 latter''s YF-17 in the 1970s for use by the United States Navy and Marine Corps. The Hornet is \
 also used by the air forces of several other nations. It has been the aerial demonstration \
 aircraft for the U.S. Navy''s Flight Demonstration Squadron, the Blue Angels, since 1986.',
-     57.0)
+57.0)
 
 _add('usair_f15', JET, AIR, 'F-15',
 ['usair_f15_driver', 'usair_f15_guidedmissilecontroller'],
@@ -381,7 +411,7 @@ _add('usair_f15', JET, AIR, 'F-15',
 designed by McDonnell Douglas to gain and maintain air superiority in aerial combat. It is \
 considered among the most successful modern fighters, with over 100 aerial combat victories with \
 no losses in dogfights.',
-     30.0)
+30.0)
 
 _add('usapc_lav25', ARMOR, LAND, 'LAV-25',
 ['usapc_lav25_driver', 'usapc_lav25_rearpassenger_l', 'usapc_lav25_rearpassenger_r',
@@ -390,7 +420,7 @@ _add('usapc_lav25', ARMOR, LAND, 'LAV-25',
 'The LAV-25 is an eight-wheeled amphibious reconnaissance vehicle used by the United States Marine \
 Corps. It was built by General Dynamics Land Systems Canada and is based on the Swiss MOWAG \
 Piranha I 8x8 family of armored fighting vehicles.',
-     0.90)
+0.9)
 
 _add('usart_lw155', ARTILLERY, STATION, 'M777',
 [],
@@ -399,7 +429,7 @@ _add('usart_lw155', ARTILLERY, STATION, 'M777',
 States Marine Corps and United States Army. The M777 is also used by the Canadian Army, and has \
 been in action in Afghanistan since February 2006 along with the associated GPS-guided Excalibur \
 ammunition.',
-     1.17)
+1.17)
 
 _add('usjep_hmmwv', TRANSPORT, LAND, 'HMMWV',
 ['usjep_hmmwv_driver', 'usjep_hmmwv_cupolabase', 'usjep_hmmwv_codriver',
@@ -411,14 +441,14 @@ smaller Jeeps such as the M151 1/4-short-ton (230 kg) MUTT, the M561 "Gama Goat"
 M792 ambulance versions, the CUCV, and other light trucks. Primarily used by the United States \
 Armed Forces, it is also used by numerous other countries and organizations and even in civilian \
 adaptations. The Hummer series was also inspired by the HMMWVs.',
-     0.140)
+0.14)
 
 _add('uslcr_lcac', BOAT, SEA, 'LCRL',
 [],
 [],
 'The LCRL or LCR (L) (Landing Craft Rubber Large) was an inflatable boat which could carry ten men \
 that was used by the USMC and US Army from 1938 to 1945.',
-     0.00)
+0.0)
 
 _add('usthe_uh60', HELICOPTER, AIR, 'UH-60',
 ['usthe_uh60_driver', 'usthe_uh60_left_gunner', 'usthe_uh60_right_gunner', 'usthe_uh60_copilot',
@@ -429,7 +459,7 @@ by Sikorsky Aircraft. Sikorsky submitted the S-70 design for the United States A
 Tactical Transport Aircraft System (UTTAS) competition in 1972. The Army designated the prototype \
 as the YUH-60A and selected the Black Hawk as the winner of the program in 1976, after a fly-off \
 competition with the Boeing Vertol YUH-61.',
-     21.3)
+21.3)
 
 _add('ustnk_m1a2', ARMOR, LAND, 'M1A2',
 ['ustnk_m1a2_driver', 'ustnk_m1a2_cupolabase'],
@@ -441,7 +471,7 @@ well armed and heavily armored. Notable features include the use of a powerful g
 (fueled with JP8 jet fuel), the adoption of sophisticated composite armor, and separate ammunition \
 storage in a blow-out compartment for crew safety. Weighing nearly 68 short tons (almost 62 metric \
 tons), it is one of the heaviest main battle tanks in service.',
-     8.58)
+8.58)
 
 _add('wasp_defence', AIR_DEF, STATION, 'CV-7',
 ['wasp_defence_front', 'wasp_defence_back'],
@@ -450,25 +480,31 @@ _add('wasp_defence', AIR_DEF, STATION, 'CV-7',
 was the sole ship of her class. Built to use up the remaining tonnage allowed to the U.S. for \
 aircraft carriers under the treaties of the time, she was built on a reduced-size version of the \
 Yorktown-class hull.',
-     750.0)
+750.0)
 
 _add('xp2_musclecar_01', TRANSPORT, LAND, '?',
 ['xp2_musclecar_01_driver', 'xp2_musclecar_01_passenger'],
 [],
 '?',
-     0.02)
+0.02)
+
+_add('xpak2_eurofighter', JET, AIR, '?',
+['xpak2_eurofighter_driver'],
+['eurofighter_missiles'],
+'?',
+196.0)
 
 _add('xpak2_faav', TRANSPORT, LAND, '?',
 ['xpak2_faav_driver', 'xpak2_faav_front_gun', 'xpak2_faav_rear_passenger'],
 [],
 '?',
-     0.0155)
+0.0155)
 
 _add('xpak2_hmmwv', TRANSPORT, LAND, 'HMMWV',
 ['xpak2_hmmwv_driver', 'xpak2_hmmwv_codriver', 'xpak2_hmmwv_cupolabase'],
 [],
 '?',
-     0.140)
+0.14)
 
 _add('xpak2_lav25', ARMOR, LAND, 'LAV-25',
 ['xpak2_lav25_driver', 'xpak2_lav25_rearpassenger_l', 'xpak2_lav25_rearpassenger_br'],
@@ -476,16 +512,28 @@ _add('xpak2_lav25', ARMOR, LAND, 'LAV-25',
 'The LAV-25 is an eight-wheeled amphibious reconnaissance vehicle used by the United States Marine \
 Corps. It was built by General Dynamics Land Systems Canada and is based on the Swiss MOWAG \
 Piranha I 8x8 family of armored fighting vehicles.',
-     0.900)
+0.9)
+
+_add('xpak2_semi', TRANSPORT, LAND, 'Semi-Truck',
+['xpak2_semi_driver', 'xpak2_semi_passenger'],
+[],
+'?',
+0.1)
+
+_add('xpak2_tiger', HELICOPTER, AIR, '?',
+['xpak2_tiger_driver', 'xpak2_tiger_gunner'],
+[],
+'?',
+89.7)
 
 _add('xpak2_tnkl2a6', ARMOR, LAND, '?',
 ['xpak2_tnkl2a6_driver'],
 [],
 '?',
-     0.400)
+0.4)
 
 _add('xpak2_tnkc2', ARMOR, LAND, '?',
 ['xpak2_tnkc2_driver', 'tnk_c2_gunner'],
 [],
 '?',
-     0.500)
+0.5)
