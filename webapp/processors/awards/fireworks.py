@@ -1,8 +1,7 @@
 
 from processors.awards import AwardProcessor,Column
 from models.weapons import ROCKET
-
-# TODO
+from stats import stat_mgr
 
 class Processor(AwardProcessor):
     '''
@@ -31,6 +30,5 @@ class Processor(AwardProcessor):
         if e.weapon.weapon_type == ROCKET:
 
             # Check whether the attacker and victim are facing each other
-            angle_diff = abs(e.victim_pos[3] - e.attacker_pos[3])
-            if angle_diff >= 90 and angle_diff <= 270:
+            if stat_mgr.angle_opp(e.victim_pos, e.attacker_pos):
                 self.results[e.attacker] += 1
