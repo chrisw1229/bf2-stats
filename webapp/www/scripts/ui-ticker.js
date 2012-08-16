@@ -141,7 +141,7 @@ $.widget('ui.ticker', {
       // Insert the model at its sorted position
       var index = this.sorted.length;
       for (var i = 0; i < this.sorted.length; i++) {
-         if (model.name < this.sorted[i].name) {
+         if (model.name.toLowerCase() < this.sorted[i].name.toLowerCase()) {
             index = i;
             break;
          }
@@ -484,7 +484,7 @@ $.widget('ui.ticker', {
          // Add the model to its new sorted position
          var newIndex = this.sorted.length;
          for (var i = 0; i < this.sorted.length; i++) {
-            if (model.name < this.sorted[i].name) {
+            if (model.name.toLowerCase() < this.sorted[i].name.toLowerCase()) {
                newIndex = i;
                break;
             }
