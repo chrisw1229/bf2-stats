@@ -51,7 +51,7 @@ $.extend({ mgr: {
    requestGame: function(id) {
 
       // Display the loading indicator
-      tableElm.table();
+      tableElm.table({ showAll: true });
       tableElm.table('loading');
 
       // Configure the request options
