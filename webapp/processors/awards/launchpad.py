@@ -17,26 +17,31 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Launchpad', 'Most Passenger Kills as Pilot', [
-                Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Launchpad', 'Most Passenger Team Kills as Pilot', [
+                Column('Players'), Column('Team Kills', Column.NUMBER, Column.DESC)])
 
-        self.times = dict()
-        self.drivers = dict()
+        self.vehicles = dict()
         
     def on_vehicle_destroy(self, e):
-        
+
+        # Check whether a driver caused a vehicle to crash
         if e.attacker == EMPTY and e.driver != EMPTY:
-            self.times[e.vehicle] = e.tick
-            self.drivers[e.vehicle] = e.driver
-            
+            self.vehicles[e.vehicle] = e
+
     def on_kill(self, e):
 
         # Ignore kills where victim isn't passenger
         if not e.victim.passenger:
             return
 
+        # Check whether the victim was in an aircraft
         v = model_mgr.get_vehicle(e.victim.vehicle_id)
         if v.group == AIR:
-            if v in self.times and v in self.drivers and self.times[v] == e.tick:
-                driver = self.drivers[v]
-                self.results[driver] += 1
+
+            # Check whether the vehicle was destroyed at the same time
+            if v in self.vehicles and self.vehicles[v].tick == e.tick:
+
+                # Make sure the victim and driver are teammates
+                driver = self.vehicles[v].driver
+                if driver.team_id == e.victim.team_id:
+                    self.results[driver] += 1

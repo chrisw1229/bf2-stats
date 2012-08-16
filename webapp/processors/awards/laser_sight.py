@@ -29,15 +29,11 @@ class Processor(AwardProcessor):
         if not e.valid_kill:
             return
 
+        # Make sure only hand carried bullet weapons are used
         if e.weapon.group != SOLDIER or e.weapon.ammo != PRECISION:
             return
 
-        if e.attacker == EMPTY:
-            return
-
-        dist = stat_mgr.dist_3d( e.attacker_pos, e.victim_pos )
-        dist = abs(dist)
-        if e.attacker not in self.results:
-            self.results[e.attacker] = dist
-        elif dist > self.results[e.attacker]:
+        # Update the kill distance for the attacker
+        dist = round(stat_mgr.dist_3d(e.attacker_pos, e.victim_pos))
+        if dist > self.results[e.attacker]:
             self.results[e.attacker] = dist

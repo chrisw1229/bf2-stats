@@ -1,8 +1,7 @@
 
 from processors.awards import AwardProcessor,Column
+from models.weapons import ASSAULT, CARBINE, PISTOL, SNIPER
 from timer import Timer
-
-# TODO
 
 class Processor(AwardProcessor):
     '''
@@ -20,31 +19,13 @@ class Processor(AwardProcessor):
     def __init__(self):
         AwardProcessor.__init__(self, 'Quick Draw',
                 'Shortest Time Between Kills', [
-                Column('Players'), Column('Time', Column.TIME, Column.DESC)])
+                Column('Players'), Column('Time', Column.TIME, Column.ASC)])
 
         # Setup the results to store timers instead of numbers
         self.results = dict()
 
-        # Store temporary timers for each player
-        self.timers = dict()
-
-    def on_death(self, e):
-
-        # Reset the timer for the player
-        if e.player in self.timers:
-            self.timers[e.player].reset()
-
-    def on_disconnect(self, e):
-
-        # Same as exit event but make sure the timer exists
-        if e.player in self.timers:
-            self.timers[e.player].stop(e.tick)
-
-            # Swap timers if the time difference is the new minimum
-            if self.results[e.player].elapsed > self.timers[e.player].elapsed:
-                temp_timer = self.results[e.player]
-                self.results[e.player] = self.timers[e.player]
-                self.timers[e.player] = temp_timer
+        # Store the last kill events for each player
+        self.last_kills = dict()
 
     def on_kill(self, e):
 
@@ -52,23 +33,28 @@ class Processor(AwardProcessor):
         if not e.valid_kill:
             return
 
-        # Create timers for the attacker as needed
+        # Only count non-automatic weapons
+        weapon_type = e.weapon.weapon_type
+        if (weapon_type != ASSAULT and weapon_type != CARBINE
+                and weapon_type != PISTOL and weapon_type != SNIPER):
+            return
+
+        # Store the first kill that happens
+        if not e.attacker in self.last_kills:
+            self.last_kills[e.attacker] = e
+            return
+
+        # Check whether the next consecutive kill is the quickest
+        elapsed = e.elapsed(self.last_kills[e.attacker])
         if not e.attacker in self.results:
             self.results[e.attacker] = Timer(e.attacker)
-            self.timers[e.attacker] = Timer(e.attacker)
+            self.results[e.attacker].elapsed = elapsed
+        elif elapsed < self.results[e.attacker].elapsed:
+            self.results[e.attacker].elapsed = elapsed
+        self.last_kills[e.attacker] = e
 
-        # Check whether the attacker has killed previously for the current life
-        if self.timers[e.attacker].running:
+    def on_spawn(self, e):
 
-            # Stop the timer for the current kill
-            self.timers[e.attacker].stop(e.tick)
-
-            # Swap timers if the time difference is the new minimum
-            if self.results[e.attacker].elapsed > self.timers[e.attacker].elapsed:
-                temp_timer = self.results[e.attacker]
-                self.results[e.attacker] = self.timers[e.attacker]
-                self.timers[e.attacker] = temp_timer
-
-        # Reset the attacker timer for the next kill
-        self.timers[e.attacker].reset()
-        self.timers[e.attacker].start(e.tick)
+        # Reset the last kill when the player respawns
+        if e.player in self.last_kills:
+            del self.last_kills[e.player]

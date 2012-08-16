@@ -1,5 +1,6 @@
 
 import collections
+
 from processors.awards import AwardProcessor,Column
 from models import model_mgr
 
@@ -28,11 +29,11 @@ class Processor(AwardProcessor):
         if not e.valid_kill:
             return
 
-        team = model_mgr.get_team(e.victim.team_id)
         if e.attacker not in self.teams:
             self.teams[e.attacker] = collections.Counter()
+        counter = self.teams[e.attacker]
 
-        (self.teams[e.attacker])[team] += 1
-        if (self.teams[e.attacker])[team] > self.results[e.attacker]:
-            self.results[e.attacker] = (self.teams[e.attacker])[team]
-
+        team = model_mgr.get_team(e.victim.team_id)
+        counter[team] += 1
+        if counter[team] > self.results[e.attacker]:
+            self.results[e.attacker] = counter[team]
