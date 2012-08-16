@@ -21,7 +21,10 @@ $.extend({ mgr: {
       meterElm.meter({ max: packet.game.clock_limit, value: 0});
       meterElm.meter('clearMarkers');
 
-      //  Clear previous map markers
+      // Reset the messages
+      messageElm.message('clearMessages');
+
+      // Clear previous map markers
       $.mgr.controlPoints = {};
       $.mgr.mapMarkers = {};
       mapElm.olmap('clearMarkers');
@@ -42,14 +45,15 @@ $.extend({ mgr: {
       old = $.mgr.controlPoints[packet.control_point.id]
       mapElm.olmap('removePackets', old);
 
-      // Add a meter marker when the control point changes state
-      if (old) {
-         meterElm.meter('addPackets', packet);
-      }
-
       // Add the new control point state to the map
       $.mgr.controlPoints[packet.control_point.id] = packet
       mapElm.olmap('addPackets', packet);
+   },
+
+   onFlagAction: function(e, packet) {
+
+      // Add a meter marker when the control point changes state
+      meterElm.meter('addPackets', packet);
    },
 
    // Callback from the server when a player is killed
@@ -86,6 +90,9 @@ $.extend({ mgr: {
    // Callback from the server when a vehicle is destroyed
    onVehicleDestroy: function(e, packet) {
 
+      // Add a message describing the destroy
+      messageElm.message('addPackets', packet);
+
       // Add a map marker to represent the vehicle
       if (!$.mgr.mapMarkers[packet.tick]) {
          $.mgr.mapMarkers[packet.tick] = [];
@@ -99,6 +106,7 @@ $.extend({ mgr: {
 // Configure the network callbacks
 $($.service).on('GS', $.mgr.onGame);
 $($.service).on('CP', $.mgr.onControlPoint);
+$($.service).on('FA', $.mgr.onFlagAction);
 $($.service).on('KL', $.mgr.onKill);
 $($.service).on('PL', $.mgr.onPlayer);
 $($.service).on('TT', $.mgr.onTime);

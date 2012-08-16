@@ -36,12 +36,10 @@
    color: #FFD191;
 }
 
-.ui-message-team-us {
-   color: #44D5FF;
+.ui-message-team-none {
+   color: #969698;
 }
 
-.ui-message-symbol {
-   height: 32px;
-   margin: 0 8px;
-   width: 32px;
+.ui-message-team-us {
+   color: #44D5FF;
 }

@@ -69,8 +69,9 @@ $.extend({ mgr: {
       $.mgr.packets = packets;
 
       // Update the value range of the slider
-      sliderElm.slider({ min: data.packets[0].tick,
-            max: data.packets[data.packets.length - 1].tick, value: 0 });
+      var sliderMin = data.packets.length ? data.packets[0].tick : 0;
+      var sliderMax = data.packets.length ? data.packets[data.packets.length - 1].tick : 0;
+      sliderElm.slider({ min: sliderMin, max: sliderMax, value: 0 });
 
       // Simulate a stop click to show all packets at once
       stopBtn.trigger('click');

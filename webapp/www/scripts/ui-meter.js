@@ -14,7 +14,7 @@ $.widget('ui.meter', {
       this.barElm = $('.ui-meter-bar', this.element);
       this.valueElm = $('.ui-meter-value', this.barElm);
       this.markerElm = $('.ui-meter-marker', this.element);
-      this.controlPointsElm = $('.ui-meter-control-points', this.element);
+      this.flagActionsElm = $('.ui-meter-flag-actions', this.element);
 
       // Bind the event handlers
       $(window).on('resize.meter', $.proxy(this._onResize, this));
@@ -26,7 +26,7 @@ $.widget('ui.meter', {
       $(window).off('resize.meter');
 
       // Destroy the document model
-      this.controlPointsElm.empty();
+      this.flagActionsElm.empty();
 
       $.Widget.prototype.destroy.call(this);
    },
@@ -47,14 +47,13 @@ $.widget('ui.meter', {
       }
    },
 
-   addControlPoint: function(model) {
-
-      // Only add markers when a team fully controls a point
-      if (model.state != 'top' || model.team.length == 0) {
+   addFlagAction: function(model) {
+      console.log(model.time + " " + model.action_type);
+      if (model.action_type != 'capture' && model.action_type != 'neutralize') {
          return;
       }
 
-      this._createControlPointElm(model);
+      this._createFlagActionElm(model);
       this._update();
    },
 
@@ -66,14 +65,14 @@ $.widget('ui.meter', {
 
       for (var i = 0; i < packets.length; i++) {
          var packet = packets[i];
-         if (packet.type == 'CP') {
-            this.addControlPoint(packet.control_point);
+         if (packet.type == 'FA') {
+            this.addFlagAction(packet);
          }
       }
    },
 
    clearMarkers: function() {
-      this.controlPointsElm.empty();
+      this.flagActionsElm.empty();
       this._update();
    },
 
@@ -87,15 +86,19 @@ $.widget('ui.meter', {
       this.valueElm.css('width', markerL);
       this.markerElm.css({ left: markerL, visibility: 'visible' });
 
-      // Display any control points that have occurred
+      // Display any flag actions that have occurred
       var value = this.options.value;
       var max = this.options.max;
-      $('.ui-meter-control-point', this.controlPointsElm).each(function(index, item) {
+      var self = this;
+      $('.ui-meter-flag-action', this.flagActionsElm).each(function(index, item) {
          var itemElm = $(item);
          var model = itemElm.data('model');
          if (value >= model.time) {
             var pos = Math.round(barW * (model.time / max) - (itemElm.width() / 2));
             itemElm.css('left', pos);
+            itemElm.attr('title', model.player.name
+                  + ' [' + model.action_type + ']'
+                  + ' @ ' + self._formatTime(model.time));
             itemElm.show();
          } else {
             itemElm.hide();
@@ -104,18 +107,28 @@ $.widget('ui.meter', {
 
       // Update the time remaining tool tip
       var remaining = this.options.max - this.options.value;
-      var mins = remaining >= 60 ? Math.floor(remaining / 60) : 0;
-      var secs = Math.round(remaining % 60);
-      var time = mins + ':' + (secs < 10 ? '0' : '') + secs;
+      var time = this._formatTime(remaining);
       this.markerElm.attr('title', 'Time Remaining: ' + time);
    },
 
-   _createControlPointElm: function(model) {
-      var controlPointElm = $('<div class="ui-meter-control-point icon-team icon-team-'
-            + model.team + '"/>').appendTo(this.controlPointsElm);
-      controlPointElm.data('model', model);
-      controlPointElm.hide();
-      return controlPointElm;
+   _createFlagActionElm: function(model) {
+      var team_id;
+      if (model.action_type == 'capture') {
+         team_id = model.player.team_id
+      } else {
+         team_id = 'none';
+      }
+      var flagActionElm = $('<div class="ui-meter-flag-action ui-meter-team-'
+            + team_id + '"/>').appendTo(this.flagActionsElm);
+      flagActionElm.data('model', model);
+      flagActionElm.hide();
+      return flagActionElm;
+   },
+
+   _formatTime: function(time) {
+      var mins = time >= 60 ? Math.floor(time / 60) : 0;
+      var secs = Math.round(time % 60);
+      return mins + ':' + (secs < 10 ? '0' : '') + secs;
    },
 
    _onResize: function(e) {

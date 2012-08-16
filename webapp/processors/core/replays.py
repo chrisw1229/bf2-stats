@@ -51,7 +51,7 @@ class Processor(BaseProcessor):
         control_point = {
             'id': e.control_point.id,
             'state': e.control_point.status,
-            'team': e.control_point.team_id,
+            'team_id': e.control_point.team_id,
             'x': self._convert_x(e.control_point.pos[0]),
             'y': self._convert_y(e.control_point.pos[2])
         }
@@ -75,25 +75,30 @@ class Processor(BaseProcessor):
         victim = {
             'id': e.victim.id,
             'name': e.victim.name,
-            'team': e.victim.team_id,
+            'team_id': e.victim.team_id,
             'x': self._convert_x(e.victim_pos[0]),
             'y': self._convert_y(e.victim_pos[2])
         }
         packet['victim'] = victim
 
         # Add optional attacker info to the packet
-        if e.attacker != models.players.EMPTY:
+        if e.suicide:
+            victim['suicide'] = True
+        elif e.attacker != models.players.EMPTY:
             attacker = {
                 'id': e.attacker.id,
                 'name': e.attacker.name,
-                'team': e.attacker.team_id,
-                'weapon': {
-                    'id': e.weapon.id,
-                    'name': e.weapon.name
-                },
+                'team_id': e.attacker.team_id,
                 'x': self._convert_x(e.attacker_pos[0]),
                 'y': self._convert_y(e.attacker_pos[2])
             }
+
+            if e.team_kill:
+                attacker['weapon'] = 'Teamkills';
+            elif e.weapon != models.weapons.EMPTY:
+                attacker['weapon'] = e.weapon.name
+            elif e.vehicle != models.vehicles.EMPTY:
+                attacker['weapon'] = e.vehicle.name
             packet['attacker'] = attacker
 
     def on_vehicle_destroy(self, e):
@@ -105,7 +110,7 @@ class Processor(BaseProcessor):
         vehicle = {
             'id': e.vehicle.id,
             'name': e.vehicle.name,
-            'team': 'na',
+            'type': e.vehicle.vehicle_type,
             'x': self._convert_x(e.vehicle_pos[0]),
             'y': self._convert_y(e.vehicle_pos[2])
         }

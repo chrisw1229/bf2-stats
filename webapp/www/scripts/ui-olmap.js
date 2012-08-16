@@ -45,11 +45,18 @@ $.widget('ui.olmap', {
       this.overlays = {};
       this._addPointLayer('control-point', 'Flags', 20,
             function(m) { return 'control-point-'
-                  + (m.attributes.team ? m.attributes.team : 'none'); });
+                  + (m.attributes.team_id ? m.attributes.team_id : 'none'); });
       this._addPointLayer('vehicle', 'Vehicles', 12);
       this._addLineLayer('target', 'Target lines');
       this._addPointLayer('victim', 'Victims', 8);
       this._addPointLayer('attacker', 'Attackers', 8);
+
+      // Add the hover control after the feature layers are created
+      this.hoverCtrl = this._createHoverControl();
+      this.olmap.addControl(this.hoverCtrl);
+      if (this.enabled) {
+         this.hoverCtrl.activate();
+      }
 
       // Apply fixes to the layer control
       var layerElm = $('.olControlLayerSwitcher', this.mapElm);
@@ -180,6 +187,7 @@ $.widget('ui.olmap', {
 
    // Enables or disables the map controls
    _setEnabled: function(enabled) {
+      this.enabled = enabled;
 
       // Only allow mouse interaction when tiles are loaded
       var display = enabled ? 'block' : 'none';
@@ -253,8 +261,10 @@ $.widget('ui.olmap', {
       }, {
          context: {
             color: function(m) {
-               var team = m.attributes.attacker.team;
-               if (team == 'us') {
+               var team = m.attributes.attacker.team_id;
+               if (m.attributes.__selected__) {
+                  return '#FFFFFF';
+               } else if (team == 'us') {
                   return '#44D5FF';
                } else if (team == 'ch') {
                   return '#FFB7B4';
@@ -267,7 +277,11 @@ $.widget('ui.olmap', {
             },
 
             width: function(m) {
-               return self.olmap.getZoom() < 3 ? 1 : 2;
+               var width = self.olmap.getZoom() < 3 ? 1 : 2;
+               if (m.attributes.__selected__) {
+                  width += width;
+               }
+               return width;
             }
          }
       });
@@ -369,6 +383,7 @@ $.widget('ui.olmap', {
          if (model.__hash__ == undefined) {
             this._hasher = this._hasher ? this._hasher : 0;
             model.__hash__ = ++this._hasher;
+            feature.attributes.__hash__ = model.__hash__;
          }
          overlay.models[model.__hash__] = feature;
       }
@@ -388,9 +403,158 @@ $.widget('ui.olmap', {
                // Delete the feature from the layer
                overlay.layer.removeFeatures(feature);
                delete overlay.models[model.__hash__];
+
+               // Hide the hover info if the feaure was selected
+               if (this.hoverCtrl.selected) {
+                  this.hoverCtrl.outFeature(feature);
+               }
             }
          }
       }
+   },
+
+   _getKill: function(model) {
+      var hash = model.__hash__;
+      var models = this.overlays['target'].models;
+      for (key in models) {
+         var kill = models[key].attributes;
+         if (kill.__hash__ == hash
+               || (kill.victim && kill.victim.__hash__ == hash)
+               || (kill.attacker && kill.attacker.__hash__ == hash)) {
+            return kill;
+         }
+      }
+   },
+
+   _createHoverControl: function() {
+      var self = this;
+      OpenLayers.Control.Hover = OpenLayers.Class(OpenLayers.Control, {                
+
+         initialize: function(options) {
+            OpenLayers.Control.prototype.initialize.apply(this, arguments); 
+
+            var hoverLayers = [
+               self.overlays['attacker'].layer,
+               self.overlays['target'].layer,
+               self.overlays['vehicle'].layer,
+               self.overlays['victim'].layer
+            ];
+            this.layer = new OpenLayers.Layer.Vector.RootContainer(
+                  this.id + '_container', { layers: hoverLayers, ratio: 2.0 });
+            this.callbacks = {
+               over: this.overFeature,
+               out: this.outFeature
+            };
+            this.handlers = {
+               feature: new OpenLayers.Handler.Feature(this, this.layer,
+                     this.callbacks)
+            };
+            this.dialogElm = $('.ui-olmap-dialog', self.element);
+         },
+
+         destroy: function() {
+            OpenLayers.Control.prototype.destroy.apply(this, arguments);
+
+            this.layer.destroy();
+         },
+
+         activate: function () {
+            if (!this.active) {
+               this.map.addLayer(this.layer);
+               this.handlers.feature.activate();
+            }
+            return OpenLayers.Control.prototype.activate.apply(this, arguments);
+         },
+
+         deactivate: function () {
+            if (this.active) {
+               this.handlers.feature.deactivate();
+               this.map.removeLayer(this.layer);
+            }
+            return OpenLayers.Control.prototype.deactivate.apply(this, arguments);
+         },
+
+         overFeature: function(feature) {
+            var kill = $.proxy(self._getKill, self)(feature.attributes);
+            var attacker = kill ? kill.attacker : undefined;
+            var weapon = attacker ? attacker.weapon : undefined;
+            var victim = kill ? kill.victim : feature.attributes;
+
+            var contentElm = $('.ui-olmap-dialog-content', this.dialogElm);
+            var attackerElm = $('.ui-olmap-dialog-attacker', contentElm);
+            var weaponElm = $('.ui-olmap-dialog-weapon', contentElm);
+            var victimElm = $('.ui-olmap-dialog-victim', contentElm);
+
+            if (attacker) {
+               contentElm.attr('class', 'ui-olmap-dialog-content'
+                     + ' ui-olmap-dialog-team-' + attacker.team_id);
+
+               attackerElm.text(attacker.name);
+               attackerElm.show();
+
+               weaponElm.text('[' + (weapon ? weapon : '?') + ']');
+               weaponElm.show();
+
+               victimElm.text(victim.name);
+            } else {
+               contentElm.attr('class', 'ui-olmap-dialog-content'
+                     + ' ui-olmap-dialog-team-'
+                     + (victim.team_id ? victim.team_id : 'none'));
+
+               attackerElm.text('');
+               attackerElm.hide();
+               weaponElm.text('');
+               weaponElm.hide();
+
+               var victimMsg;
+               if (victim.suicide) {
+                  victimMsg = ' suicided.';
+               } else if (victim.type) {
+                  victimMsg = ' was destroyed.';
+               } else {
+                  victimMsg = ' died.';
+               }
+               victimElm.text(victim.name + victimMsg);
+            }
+
+            var maxW = self.element.width();
+            this.dialogElm.css('left',
+                  Math.round((maxW - this.dialogElm.width()) / 2));
+            this.dialogElm.show();
+
+            if (this.selected) {
+               this.selected.__selected__ = undefined;
+            }
+            this.selected = kill;
+            if (this.selected) {
+               this.selected.__selected__ = true;
+            }
+            self.overlays['target'].layer.redraw();
+         },
+
+         outFeature: function(feature) {
+            this.dialogElm.hide();
+
+            if (this.selected) {
+               this.selected.__selected__ = undefined;
+               this.selected = undefined;
+               self.overlays['target'].layer.redraw();
+            }
+         },
+
+         setMap: function(map) {
+            this.handlers.feature.setMap(map);
+
+            OpenLayers.Control.prototype.setMap.apply(this, arguments);
+         },
+
+         resize: function() {
+            this.dialogElm.hide();
+         },
+
+         CLASS_NAME: 'OpenLayers.Control.Hover'
+      });
+      return new OpenLayers.Control.Hover();
    }
 
 });

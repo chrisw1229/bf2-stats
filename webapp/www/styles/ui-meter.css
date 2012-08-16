@@ -26,7 +26,33 @@
    z-index: 1030;
 }
 
-.ui-meter-milestone {
+.ui-meter-flag-actions {
    position: absolute;
-   top: -7px;
+   top: 7px;
+}
+
+.ui-meter-flag-action {
+   height: 10px;
+   position: absolute;
+   width: 3px;
+}
+
+.ui-meter-team-ch {
+   background-color: #FFB7B4;
+}
+
+.ui-meter-team-eu {
+   background-color: #819DFF;
+}
+
+.ui-meter-team-mec {
+   background-color: #FFD191;
+}
+
+.ui-meter-team-none {
+   background-color: #969698;
+}
+
+.ui-meter-team-us {
+   background-color: #44D5FF;
 }

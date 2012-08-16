@@ -14,6 +14,7 @@ class Processor(BaseProcessor):
 
         self.priority = 30
         self.tick_to_packets = dict()
+        self.flag_packets = list()
         self.start_tick = None
         self.last_tick = None
 
@@ -80,6 +81,13 @@ class Processor(BaseProcessor):
         # Store the last tick logged by the game
         self.last_tick = max(self.last_tick, e.tick)
 
+    def on_flag_action(self, e):
+
+        # Create a packet to store the event info
+        packet = self._get_flag_action_packet(e.player, e.action_type)
+        self._add_packet(e.tick, packet)
+        self.flag_packets.append(packet)
+
     def on_game_status(self, e):
         if e.game.starting:
 
@@ -88,6 +96,7 @@ class Processor(BaseProcessor):
 
             # Clear cached packets when the game resets
             self.tick_to_packets.clear()
+            del self.flag_packets[:]
             self.last_tick = None
         elif e.game.playing:
 
@@ -107,14 +116,17 @@ class Processor(BaseProcessor):
 
     def on_kill(self, e):
 
+        victim = self._get_kill_victim_tuple(e)
+        attacker = self._get_kill_attacker_tuple(e)
+
         # Create a packet to store the event info
         kill_packet = {
             'tick': e.tick,
             'type': 'KL',
-            'victim': self._get_kill_tuple(e.victim, e.victim_pos),
-            'attacker': self._get_kill_tuple(e.attacker, e.attacker_pos,
-                    e.weapon)
+            'victim': victim
         }
+        if attacker:
+            kill_packet['attacker'] = attacker
         self._add_packet(e.tick, kill_packet)
 
         # Create a packet to store the attacker kills
@@ -169,8 +181,7 @@ class Processor(BaseProcessor):
         control_point_tuple = {
             'id': control_point.id,
             'state': control_point.status,
-            'team': control_point.team_id,
-            'time': self._get_time(),
+            'team_id': control_point.team_id,
             'x': self._convert_x(control_point.pos[0]),
             'y': self._convert_y(control_point.pos[2])
         }
@@ -178,6 +189,14 @@ class Processor(BaseProcessor):
         return {
             'type': 'CP',
             'control_point': control_point_tuple
+        }
+
+    def _get_flag_action_packet(self, player, action_type):
+        return {
+            'type': 'FA',
+            'player': self._get_player_tuple(player),
+            'action_type': action_type,
+            'time': self._get_time()
         }
 
     def _get_game_packet(self, game):
@@ -193,24 +212,41 @@ class Processor(BaseProcessor):
             'game': game_tuple
         }
 
-    def _get_kill_tuple(self, player, pos=None, weapon=None):
-        if player == models.players.EMPTY:
+    def _get_kill_attacker_tuple(self, e):
+        if e.attacker == models.players.EMPTY or e.suicide:
             return None
 
         # Get the basic information for the player
-        player_tuple = self._get_player_tuple(player)
+        player_tuple = self._get_player_tuple(e.attacker)
 
         # Add position coordinates
-        if pos:
-            player_tuple['x'] = self._convert_x(pos[0])
-            player_tuple['y'] = self._convert_y(pos[2])
+        if e.attacker_pos:
+            player_tuple['x'] = self._convert_x(e.attacker_pos[0])
+            player_tuple['y'] = self._convert_y(e.attacker_pos[2])
 
         # Add weapon info
-        if weapon:
-            player_tuple['weapon'] = {
-                'id': weapon.id,
-                'name': weapon.name
-            }
+        if e.team_kill:
+            player_tuple['weapon'] = 'Teamkills'
+        if e.weapon:
+            player_tuple['weapon'] = e.weapon.name
+        elif e.vehicle:
+            player_tuple['weapon'] = e.vehicle.name
+        return player_tuple
+
+    def _get_kill_victim_tuple(self, e):
+        if e.victim == models.players.EMPTY:
+            return None
+
+        # Get the basic information for the player
+        player_tuple = self._get_player_tuple(e.victim)
+
+        if e.suicide:
+            player_tuple['suicide'] = True
+
+        # Add position coordinates
+        if e.victim_pos:
+            player_tuple['x'] = self._convert_x(e.victim_pos[0])
+            player_tuple['y'] = self._convert_y(e.victim_pos[2])
         return player_tuple
 
     def _get_packet_list(self):
@@ -227,6 +263,9 @@ class Processor(BaseProcessor):
         # Add the current control point info
         for control_point in model_mgr.get_control_points(True):
             packets.append(self._get_control_point_packet(control_point))
+
+        # Add the flag action history
+        packets.extend(self.flag_packets)
         return packets
 
     def _get_player_packet(self, player, attributes=None):
@@ -306,7 +345,8 @@ class Processor(BaseProcessor):
     def _get_vehicle_packet(self, tick, vehicle, pos=None):
         vehicle_tuple = {
             'id': vehicle.id,
-            'name': vehicle.name
+            'name': vehicle.name,
+            'type': vehicle.vehicle_type
         }
 
         if pos:

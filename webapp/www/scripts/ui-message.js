@@ -4,7 +4,7 @@ $.widget('ui.message', {
 
    // Configure the default widget options
    options: {
-      maxMessages: 4
+      maxMessages: 5
    },
 
    _create: function() {
@@ -72,6 +72,13 @@ $.widget('ui.message', {
       this._refresh();
    },
 
+   clearMessages: function() {
+      for (var i = 0; i < this.itemElms.length; i++) {
+         this._unloadItem(this.itemElms.eq(i));
+      }
+      this.messages = [];
+   },
+
    _refresh: function() {
 
       // Update the displayed messages
@@ -88,29 +95,51 @@ $.widget('ui.message', {
    },
 
    _loadItem: function(itemElm, attacker, victim) {
+      var weapon = attacker ? attacker.weapon : undefined;
 
-      // Update the attacker elements
       var attackerElm = $('.ui-message-attacker', itemElm);
-      attackerElm.text(attacker ? attacker.name : '');
-      attackerElm.attr('class', 'ui-message-name ui-message-attacker'
-            + ' ui-message-team-' + (attacker ? attacker.team_id : ''));
-
-      // Update the kill type symbol
-      var symbolElm = $('.ui-message-symbol', itemElm);
-      symbolElm.html('&#9658;');
-      symbolElm.attr('class', 'ui-message-symbol'
-            + ' ui-message-team-' + (attacker ? attacker.team_id : victim.team_id));
-
-      // Update the victim elements
+      var weaponElm = $('.ui-message-weapon', itemElm);
       var victimElm = $('.ui-message-victim', itemElm);
-      victimElm.text(victim.name);
-      victimElm.attr('class', 'ui-message-name ui-message-victim'
-            + ' ui-message-team-' + victim.team_id);
+
+      if (attacker) {
+         itemElm.attr('class', 'ui-message-item'
+               + ' ui-message-team-' + attacker.team_id);
+
+         attackerElm.text(attacker.name);
+         attackerElm.show();
+
+         weaponElm.text('[' + (weapon ? weapon : '?') + ']');
+         weaponElm.show();
+
+         victimElm.text(victim.name);
+      } else {
+         itemElm.attr('class', 'ui-message-item'
+               + ' ui-message-team-'
+               + (victim.team_id ? victim.team_id : 'none'));
+
+         attackerElm.text('');
+         attackerElm.hide();
+         weaponElm.text('');
+         weaponElm.hide();
+
+         var victimMsg;
+         if (victim.suicide) {
+            victimMsg = ' suicided.';
+         } else if (victim.type) {
+            victimMsg = ' was destroyed.';
+         } else {
+            victimMsg = ' is no more.';
+         }
+         victimElm.text(victim.name + victimMsg);
+      }
+      itemElm.show();
    },
 
    _unloadItem: function(itemElm) {
-      $('.ui-message-name', itemElm).text('');
-      $('.ui-message-symbol', itemElm).text('');
+      $('.ui-message-attacker', itemElm).text('');
+      $('.ui-message-weapon', itemElm).text('');
+      $('.ui-message-victim', itemElm).text('');
+      itemElm.hide();
    },
 
    _cleanItems: function() {

@@ -113,3 +113,42 @@
    position: relative;
    top: 1px;
 }
+
+.ui-olmap-dialog {
+   border-width: 2px;
+   display: none;
+   font-weight: bold;
+   opacity: 0.8;
+   padding: 8px;
+   position: absolute;
+   text-align: center;
+   text-shadow: 1px 1px 1px #000000;
+   top: 10px;
+   z-index: 1000;
+}
+
+.ui-olmap-dialog-team-ch {
+   color: #FFB7B4;
+}
+
+.ui-olmap-dialog-team-eu {
+   color: #819DFF;
+}
+
+.ui-olmap-dialog-team-mec {
+   color: #FFD191;
+}
+
+.ui-olmap-dialog-team-none {
+   color: #969698;
+}
+
+.ui-olmap-dialog-team-us {
+   color: #44D5FF;
+}
+
+.ui-olmap-dialog-attacker,
+.ui-olmap-dialog-weapon,
+.ui-olmap-dialog-victim {
+  display: inline-block;
+}
