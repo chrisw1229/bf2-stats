@@ -92,5 +92,5 @@ class Handler:
                 results.append({ 'id': game.id, 'name': map_obj.name })
 
         # Sort the index by game id
-        results.sort(key=lambda r: r['id'].lower())
+        results.sort(key=lambda r: int(r['id']))
         return results
