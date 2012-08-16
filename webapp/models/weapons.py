@@ -521,7 +521,7 @@ _add('igla_djigit_launcher', ROCKET, VEHICLE, EXPLOSIVE,
 '')
 
 _add('kni_knife', MELEE, SOLDIER, PRECISION,
-'', '', 'Combat Knife',
+'', '', 'Knife',
 'In Battlefield 2, the Knife is issued to every kit, and can kill in a single hit. Unlike previous \
 games, the combat knife''s skin does not change between factions: there is a single game file \
 related to the knife, which is used for all soldiers, rather than multiple for each faction.',
@@ -994,7 +994,7 @@ mode. The M16A2 can also fire 40 mm grenades when used in conjunction with the M
 launcher making this an effective gun for many combat situations.')
 
 _add('usrif_m24', SNIPER, SOLDIER, PRECISION,
-'Remington', 'M24', 'SWS',
+'Remington', 'M24', 'M24',
 'The M24 is the default sniper rifle for the USMC. Its scope crosshairs are similar to that of the \
 Chinese Type 88 with the traditional intersection line arrangement, but the lines go to each end \
 of the scope. As a bolt-action rifle, the M24 does have its limitations, especially in fire rate. \
