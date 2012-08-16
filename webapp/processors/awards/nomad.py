@@ -1,5 +1,7 @@
 
 from processors.awards import AwardProcessor,Column
+from models.vehicles import AIR
+from models import model_mgr
 from stats import stat_mgr
 
 class Processor(AwardProcessor):
@@ -14,7 +16,7 @@ class Processor(AwardProcessor):
     help you out in this case.
 
     Notes
-    None.
+    Only count kills that occur on the ground.
     '''
 
     def __init__(self):
@@ -33,6 +35,11 @@ class Processor(AwardProcessor):
 
         # Ignore empty attackers
         if not e.attacker in self.player_to_pos:
+            return
+
+        # Ignore aircraft kills
+        vehicle = model_mgr.get_vehicle(e.attacker.vehicle_id)
+        if vehicle.group == AIR:
             return
 
         # Calculate the distance traveled by the attacker to get the kill
