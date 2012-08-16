@@ -65,12 +65,12 @@ class Timer(object):
     def __init__(self, player=None):
         self.player = player
 
+        self.executed = False
         self.running = False
         self.start_tick = None
         self.last_tick = None
         self.stop_tick = None
         self.elapsed = 0
-        self.debug = False
 
     def __repr__(self):
         delta_time = timedelta(seconds=self.elapsed)
@@ -100,6 +100,7 @@ class Timer(object):
         self.start_tick = tick
         self.last_tick = tick
         self.running = True
+        self.executed = True
 
         timer_mgr._update_timer(self)
 
@@ -124,6 +125,7 @@ class Timer(object):
         timer_mgr._update_timer(self)
 
     def reset(self):
+        self.executed = False
         self.running = False
         self.start_tick = None
         self.last_tick = None
@@ -133,6 +135,7 @@ class Timer(object):
         timer_mgr._update_timer(self)
 
     def _reset(self):
+        self.executed = False
         self.running = False
         self.start_tick = None
         self.last_tick = None
