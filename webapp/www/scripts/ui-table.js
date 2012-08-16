@@ -139,7 +139,9 @@ $.widget('ui.table', {
       // Update the footer actions
       if (this.options.showAll) {
          this.showMoreElm.hide();
-         this.showLessElm.show();
+         if (this.rows.length > this.options.maxRows) {
+            this.showLessElm.show();
+         }
       } else {
          if (this.rows.length > this.options.maxRows) {
             this.showMoreElm.show();
