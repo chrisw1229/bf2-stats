@@ -113,6 +113,15 @@ class Processor(BaseProcessor):
         e.receiver.pos = e.receiver_pos
         e.giver.pos = e.giver_pos
 
+    def on_server_status(self, e):
+
+        # Disconnect all the registered players
+        for player in model_mgr.get_players():
+            player.connected = False
+
+        # Reset the game models on server start
+        model_mgr.reset_models()
+
     def on_spawn(self, e):
 
         # Update the spawned status for the player
