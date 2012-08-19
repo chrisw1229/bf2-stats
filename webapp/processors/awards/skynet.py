@@ -1,22 +1,23 @@
 
 from processors.awards import AwardProcessor,Column
 from models import model_mgr
-from models.kits import SPEC_OPS
+from models.kits import ENGINEER
 
 class Processor(AwardProcessor):
     '''
     Overview
-    This processor keeps track of the most number of kills as spec-ops
+    This processor keeps track of the most number of kills as an engineer
 
     Implementation
-	Cache kill events involving spec-ops.
+	Whenever a kill event is received involving an engineer, the kill event
+    is cached.
 
     Notes
 	None.
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'SEAL Team Six', 'Most Kills as Special Forces', [
+        AwardProcessor.__init__(self, 'Skynet', 'Most Kills as Engineer', [
                 Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
 
     def on_kill(self, e):
@@ -26,5 +27,5 @@ class Processor(AwardProcessor):
             return
 
         attacker_kit = model_mgr.get_kit(e.attacker.kit_id)
-        if attacker_kit.kit_type == SPEC_OPS:
+        if attacker_kit.kit_type == ENGINEER:
             self.results[e.attacker] += 1
