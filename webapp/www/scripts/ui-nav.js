@@ -8,13 +8,11 @@ $.widget('ui.nav', {
       footer: '08-25-2012',
       icon: 'ui-icon-triangle-1-e',
       menus: [
-         { name: 'Achievements', tip: '', url: 'achievements.html' },
          { name: 'Awards', tip: '', url: 'awards.html' },
          { name: 'Games', tip: '', url: 'games.html' },
          { name: 'Kits', tip: '', url: 'kits.html' },
          { name: 'Leaderboard', tip: '', url: 'leaderboard.html' },
          { name: 'Maps', tip: '', url: 'maps.html' },
-         { name: 'Matchups', tip: '', url: 'matchups.html' },
          { name: 'Players', tip: '', url: 'players.html' },
          { name: 'Teams', tip: '', url: 'teams.html' },
          { name: 'Vehicles', tip: '', url: 'vehicles.html' },
