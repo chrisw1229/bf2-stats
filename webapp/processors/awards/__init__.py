@@ -95,6 +95,7 @@ class Column(object):
 
     # Data constants
     NUMBER = 'number'
+    PERCENT = 'percent'
     STRING = 'string'
     TIME = 'time'
 

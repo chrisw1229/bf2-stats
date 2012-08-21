@@ -227,33 +227,31 @@ $.widget('ui.table', {
    },
 
    _sort: function() {
-      var columns = this.columns;
-      var index = this.sortIndex;
-      var asc = this.sortAsc;
 
-      // Check if the sort index is valid
-      if (index != undefined && index >= 0 && index < this.rows.length) {
-
-         // Use the standard sort function with custom comparator
-         this.rows.sort(function(row1, row2) {
-
-            // Make sure string comparisons are case-insensitive
-            var column = columns[index];
-            var val1 = row1[index];
-            var val2 = row2[index];
-
-            val1 = (column.data == 'string' ? val1.toLowerCase() : val1);
-            val2 = (column.data == 'string' ? val2.toLowerCase() : val2);
-
-            // Adjust the result based on the sort direction
-            if (val1 < val2) {
-               return (asc ? -1 : 1);
-            } else if (val1 > val2) {
-               return (asc ? 1 : -1);
-            }
-            return 0;
-         });
+      // Make sure the sort index is valid
+      if (this.sortIndex == undefined || this.sortIndex < 0
+            || this.sortIndex >= this.rows.length) {
+         return;
       }
+
+      var self = this;
+      var column = this.columns[this.sortIndex];
+
+      // Use the standard sort function with custom comparator
+      this.rows.sort(function(row1, row2) {
+
+         // Format the values for sorting purposes
+         var val1 = self._formatSortValue(column, row1[self.sortIndex]);
+         var val2 = self._formatSortValue(column, row2[self.sortIndex]);
+
+         // Adjust the result based on the sort direction
+         if (val1 < val2) {
+            return (self.sortAsc ? -1 : 1);
+         } else if (val1 > val2) {
+            return (self.sortAsc ? 1 : -1);
+         }
+         return 0;
+      });
    },
 
    _display: function() {
@@ -279,7 +277,8 @@ $.widget('ui.table', {
 
             // Check if there is a value defined for the cell
             if (r < this.rows.length && c < this.rows[r].length) {
-               $(cellElms[j]).text(this.rows[r][c]);
+               $(cellElms[j]).text(this._formatDisplayValue(this.columns[c],
+                     this.rows[r][c]));
             } else {
                $(cellElms[j]).text('');
             }
@@ -346,6 +345,23 @@ $.widget('ui.table', {
       var startIndex = Math.min(this.rows.length, this.options.maxRows) + 1;
       var endIndex = rowElms.length - 1;
       rowElms.slice(startIndex, endIndex).remove();
+   },
+
+   _formatSortValue: function(column, value) {
+      if (column.data == 'string') {
+         return value.toLowerCase();
+      } else if (column.data == 'percent' && value.length == 2) {
+         return value[1] ? (value[0] / value[1]) : 0;
+      }
+      return value;
+   },
+
+   _formatDisplayValue: function(column, value) {
+      if (column.data == 'percent' && value.length == 2) {
+         var pct = value[1] ? Math.round(100 * value[0] / value[1]) : 0.00;
+         return pct + '% (' + value[0] + '/' + value[1] + ')';
+      }
+      return value;
    }
 
 });
