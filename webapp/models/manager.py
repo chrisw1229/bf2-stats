@@ -12,6 +12,8 @@ import weapons
 class ModelManager(object):
 
     def __init__(self):
+        self.debug_enabled = False
+
         self.control_points = set()
         self.id_to_control_point = dict()
         self.addr_to_control_point = dict()
@@ -154,7 +156,7 @@ class ModelManager(object):
         player = self._update_player(address, name)
         if not player: return players.EMPTY
 
-        print 'Player joined: %s (%s)' % (name, address)
+        self._log('Player joined: %s (%s)' % (name, address))
         return player
 
     def add_squad(self, id):
@@ -614,7 +616,7 @@ class ModelManager(object):
         player = self._update_player(address, name)
         if not player: return players.EMPTY
 
-        print 'Player left: %s (%s)' % (name, address)
+        self._log('Player left: %s (%s)' % (name, address))
         return player
 
     def remove_squad(self, id):
@@ -688,7 +690,7 @@ class ModelManager(object):
             # Create a new model when the game is starting
             game = games.Game(status, map_id, clock_limit, score_limit)
             self.games.append(game)
-            print 'Game started: %s %s' % (game.id, game.map_id)
+            self._log('Game started: %s %s' % (game.id, game.map_id))
         else:
 
             # Update the game to reflect the new state
@@ -719,7 +721,7 @@ class ModelManager(object):
             None
         '''
 
-        print 'Server updated: %s %s' % (status, time_stamp)
+        self._log('Server updated: %s %s' % (status, time_stamp))
 
     def _update_player(self, address, name):
 
@@ -750,6 +752,10 @@ class ModelManager(object):
         # Update the master player index
         self.players.add(player)
         return player
+
+    def _log(self, value):
+        if self.debug_enabled:
+            print value
 
 # Create a shared singleton instance of the model manager
 model_mgr = ModelManager()

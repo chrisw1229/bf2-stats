@@ -40,6 +40,9 @@ class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
         except IOError:
             raise Exception('Unable to open stats log file: ' + self.log_file_path)
 
+        # Enable debug print output
+        model_mgr.debug_enabled = self.debug_enabled
+
         print 'STATS PLUGIN - STARTED'
     start.priority = 100
 
@@ -47,6 +50,9 @@ class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
     def main(self):
         if not self.log_file or self.log_file.closed:
             return
+
+        if not self.activated:
+            print 'Reading existing log lines...'
 
         # Keep reading lines until the stream is exhausted
         running = True
