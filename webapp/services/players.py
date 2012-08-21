@@ -16,12 +16,13 @@ class Handler:
             'deaths_streak_max', 'flag_capture_assists_total',
             'flag_captures_total', 'flag_defends_total',
             'flag_neutralize_assists_total', 'flag_neutralizes_total', 'games',
-            'healed_total', 'heals_total', 'kills_5_total', 'kills_10_total',
-            'kills_ratio_total', 'kills_streak_max', 'kills_total',
-            'place_overall', 'play_time', 'repairs_total', 'revived_total',
-            'revives_total', 'score_total', 'spec_time', 'suicides_total',
-            'supplied_total', 'supplies_total', 'team_killed_total',
-            'team_kills_total', 'teamwork_total', 'wounds_total']
+            'healed_total', 'heals_total', 'losses', 'kills_5_total',
+            'kills_10_total', 'kills_ratio_total', 'kills_streak_max',
+            'kills_total', 'place_overall', 'play_time', 'repairs_total',
+            'revived_total', 'revives_total', 'score_total', 'spec_time',
+            'suicides_total', 'supplied_total', 'supplies_total',
+            'team_killed_total', 'team_kills_total', 'teamwork_total', 'wins',
+            'wounds_total']
 
     def GET(self, id=None, data_type=None):
         '''
@@ -304,15 +305,16 @@ class Handler:
         # Build a list of column descriptors
         columns = [{ 'name': 'Weapons', 'data': 'string' },
                 { 'name': 'Kills', 'data': 'number', 'sorted': False },
-                { 'name': 'Deaths', 'data': 'number' }]
+                { 'name': 'Deaths', 'data': 'number' },
+                { 'name': 'Accuracy', 'data': 'percent' }]
 
         # Build a list of weapon statistics
         rows = list()
         for weapon in player_stats.weapons:
             if weapon != models.weapons.EMPTY:
                 object_stats = player_stats.weapons[weapon]
-                rows.append([weapon.id, object_stats.kills,
-                        object_stats.deaths])
+                rows.append([weapon.id, object_stats.kills, object_stats.deaths,
+                        [object_stats.bullets_hit, object_stats.bullets_fired]])
 
         # Sort the results by kills
         rows.sort(key=lambda r: r[1], reverse=True)

@@ -77,6 +77,16 @@ class PlayerItemStats(object):
         self.score = 0
         self.wounds = 0
 
+class PlayerWeaponStats(object):
+
+    def __init__(self):
+        self.deaths = 0
+        self.kills = 0
+        self.bullets_hit = 0
+        self.bullets_fired = 0
+        self.temp_bullets_hit = 0
+        self.temp_bullets_fired = 0
+
 class PlayerStats(BaseStats):
 
     def __init__(self):
@@ -102,6 +112,7 @@ class PlayerStats(BaseStats):
         self.kills_streak_max = 0
         self.kills_total = 0
         self.kits = dict()
+        self.losses = 0
         self.maps = dict()
         self.place_overall = 0
         self.play_time = Timer()
@@ -119,6 +130,7 @@ class PlayerStats(BaseStats):
         self.teamwork_total = 0
         self.vehicles = dict()
         self.weapons = dict()
+        self.wins = 0
         self.wounds_total = 0
 
     def reset(self):

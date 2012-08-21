@@ -4,7 +4,7 @@ import models
 from events import FlagActionEvent, KillEvent, event_mgr
 from processors import BaseProcessor
 from models import model_mgr
-from stats import PlayerItemStats, stat_mgr
+from stats import PlayerItemStats, PlayerWeaponStats, stat_mgr
 
 class Processor(BaseProcessor):
 
@@ -13,6 +13,17 @@ class Processor(BaseProcessor):
 
         self.priority = 20
         self.vehicles = dict()
+
+    def on_accuracy(self, e):
+        player_stats = stat_mgr.get_player_stats(e.player)
+
+        # Update the accuracy for the player
+        # Note that a base value must be used since accuracy is reset on death
+        if not e.weapon in player_stats.weapons:
+            player_stats.weapons[e.weapon] = PlayerWeaponStats()
+        weapon_stats = player_stats.weapons[e.weapon]
+        weapon_stats.bullets_hit = weapon_stats.temp_bullets_hit + e.bullets_hit
+        weapon_stats.bullets_fired = weapon_stats.temp_bullets_fired + e.bullets_fired
 
     def on_ammo(self, e):
         receiver_stats = stat_mgr.get_player_stats(e.receiver)
@@ -118,8 +129,11 @@ class Processor(BaseProcessor):
 
         # Increment the weapon death count for the player
         if not player_weapon in player_stats.weapons:
-            player_stats.weapons[player_weapon] = PlayerItemStats()
+            player_stats.weapons[player_weapon] = PlayerWeaponStats()
         player_stats.weapons[player_weapon].deaths += 1
+
+        # Reset all the temporary accuracy values
+        self._update_accuracy(e.player)
 
         # Stop play timer
         player_stats.play_time.stop(e.tick)
@@ -129,6 +143,9 @@ class Processor(BaseProcessor):
 
     def on_disconnect(self, e):
         player_stats = stat_mgr.get_player_stats(e.player)
+
+        # Reset all the temporary accuracy values
+        self._update_accuracy(e.player)
 
         # Stop any active timers
         player_stats.play_time.stop(e.tick)
@@ -157,6 +174,13 @@ class Processor(BaseProcessor):
         # Increment teamwork for the player
         player_stats.teamwork += 1
         player_stats.teamwork_total += 1
+
+    def on_game_status(self, e):
+        if not e.game.starting: return
+
+        # Reset all the temporary accuracy values
+        for player in model_mgr.get_players(True):
+            self._update_accuracy(player)
 
     def on_heal(self, e):
         receiver_stats = stat_mgr.get_player_stats(e.receiver)
@@ -272,8 +296,16 @@ class Processor(BaseProcessor):
 
         # Increment the weapon kill count for the attacker
         if not e.weapon in attacker_stats.weapons:
-            attacker_stats.weapons[e.weapon] = PlayerItemStats()
+            attacker_stats.weapons[e.weapon] = PlayerWeaponStats()
         attacker_stats.weapons[e.weapon].kills += 1
+
+    def on_loss(self, e):
+
+        # Increment the loss count for all the active players on the team
+        for player in model_mgr.get_players(True):
+            if player.team_id == e.team.id:
+                player_stats = stat_mgr.get_player_stats(player)
+                player_stats.losses += 1
 
     def on_repair(self, e):
         giver_stats = stat_mgr.get_player_stats(e.giver)
@@ -349,6 +381,12 @@ class Processor(BaseProcessor):
         self._update_place()
         self._update_place_overall()
 
+    def on_server_status(self, e):
+
+        # Reset all the temporary accuracy values
+        for player in model_mgr.get_players(True):
+            self._update_accuracy(player)
+
     def on_spawn(self, e):
         player_stats = stat_mgr.get_player_stats(e.player)
 
@@ -362,6 +400,23 @@ class Processor(BaseProcessor):
 
         # Start play timer
         player_stats.play_time.start(e.tick)
+
+    def on_win(self, e):
+
+        # Increment the win count for all the active players on the team
+        for player in model_mgr.get_players(True):
+            if player.team_id == e.team.id:
+                player_stats = stat_mgr.get_player_stats(player)
+                player_stats.wins += 1
+
+    def _update_accuracy(self, player):
+        player_stats = stat_mgr.get_player_stats(player)
+
+        # Use accuracy accumulated in the current game as the new base
+        for weapon in player_stats.weapons:
+            weapon_stats = player_stats.weapons[weapon]
+            weapon_stats.temp_bullets_hit = weapon_stats.bullets_hit
+            weapon_stats.temp_bullets_fired = weapon_stats.bullets_fired
 
     def _update_place(self):
 
