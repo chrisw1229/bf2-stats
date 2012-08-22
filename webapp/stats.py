@@ -84,8 +84,8 @@ class PlayerWeaponStats(object):
         self.kills = 0
         self.bullets_hit = 0
         self.bullets_fired = 0
-        self._bullets_hit = 0
-        self._bullets_fired = 0
+        self.temp_bullets_hit = 0
+        self.temp_bullets_fired = 0
 
 class PlayerStats(BaseStats):
 
@@ -95,9 +95,6 @@ class PlayerStats(BaseStats):
         # Cumulative values
         self.assisted_total = 0
         self.assists_total = 0
-        self.bullets_fired = 0
-        self.bullets_hit = 0
-        self.commander_time = Timer()
         self.deaths_total = 0
         self.deaths_streak_max = 0
         self.enemies = dict()
@@ -115,7 +112,6 @@ class PlayerStats(BaseStats):
         self.kills_streak_max = 0
         self.kills_total = 0
         self.kits = dict()
-        self.leader_time = Timer()
         self.losses = 0
         self.maps = dict()
         self.place_overall = 0
@@ -125,7 +121,6 @@ class PlayerStats(BaseStats):
         self.revives_total = 0
         self.score_total = 0
         self.spec_time = Timer()
-        self.squad_time = Timer()
         self.suicides_total = 0
         self.supplied_total = 0
         self.supplies_total = 0
