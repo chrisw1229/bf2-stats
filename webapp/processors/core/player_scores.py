@@ -22,9 +22,14 @@ class Processor(BaseProcessor):
         if not e.weapon in player_stats.weapons:
             player_stats.weapons[e.weapon] = PlayerWeaponStats()
         weapon_stats = player_stats.weapons[e.weapon]
-        weapon_stats.bullets_hit = weapon_stats.temp_bullets_hit + e.bullets_hit
-        weapon_stats.bullets_fired = weapon_stats.temp_bullets_fired + e.bullets_fired
+        weapon_stats.bullets_hit = weapon_stats._bullets_hit + e.bullets_hit
+        weapon_stats.bullets_fired = weapon_stats._bullets_fired + e.bullets_fired
 
+        # Update ammo used for the player
+        self._update_ammo(e.player)
+
+        if e.player.name == 'Jimini' and e.weapon.id == 'chsni_type88':
+            print e.tick, e.bullets_fired
     def on_ammo(self, e):
         receiver_stats = stat_mgr.get_player_stats(e.receiver)
         giver_stats = stat_mgr.get_player_stats(e.giver)
@@ -415,8 +420,17 @@ class Processor(BaseProcessor):
         # Use accuracy accumulated in the current game as the new base
         for weapon in player_stats.weapons:
             weapon_stats = player_stats.weapons[weapon]
-            weapon_stats.temp_bullets_hit = weapon_stats.bullets_hit
-            weapon_stats.temp_bullets_fired = weapon_stats.bullets_fired
+            weapon_stats._bullets_hit = weapon_stats.bullets_hit
+            weapon_stats._bullets_fired = weapon_stats.bullets_fired
+
+    def _update_ammo(self, player):
+        player_stats = stat_mgr.get_player_stats(player)
+
+        ammo = 0
+        for weapon in player_stats.weapons:
+            weapon_stats = player_stats.weapons[weapon]
+            ammo += weapon_stats.bullets_fired
+        player_stats.ammo_total = ammo
 
     def _update_place(self):
 

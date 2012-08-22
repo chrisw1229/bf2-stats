@@ -12,8 +12,8 @@ class Handler:
 
     MODEL_FIELDS = ['aliases', 'id']
 
-    STATS_FIELDS = ['assisted_total', 'assists_total', 'deaths_total',
-            'deaths_streak_max', 'flag_capture_assists_total',
+    STATS_FIELDS = ['ammo_total', 'assisted_total', 'assists_total',
+            'deaths_total', 'deaths_streak_max', 'flag_capture_assists_total',
             'flag_captures_total', 'flag_defends_total',
             'flag_neutralize_assists_total', 'flag_neutralizes_total', 'games',
             'healed_total', 'heals_total', 'losses', 'kills_5_total',
