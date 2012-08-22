@@ -43,5 +43,8 @@ class Processor(AwardProcessor):
 
         aWeapon = model_mgr.get_weapon(e.attacker.weapon_id)
         vWeapon = model_mgr.get_weapon(e.victim.weapon_id)
+        if aWeapon == weapons.EMPTY or vWeapon == weapons.EMPTY:
+            return
+
         if self.ranks[aWeapon.weapon_type] < self.ranks[vWeapon.weapon_type]:
             self.results[e.attacker] += 1
