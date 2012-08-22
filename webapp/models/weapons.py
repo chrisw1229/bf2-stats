@@ -84,6 +84,11 @@ _add('ahe_ah1z_cogunner_hellfirelaunchertv', ROCKET, VEHICLE, EXPLOSIVE,
 '',
 '')
 
+_add('ahe_ah1z_flarelauncher', CANNON, VEHICLE, PRECISION,
+'', '', '',
+'',
+'')
+
 _add('ahe_ah1z_gun', CANNON, VEHICLE, PRECISION,
 '', '', '',
 '',
@@ -238,6 +243,11 @@ the explosive more manageable and stable meaning a detonator and blasting cap ar
 off a two phase blast. Military issue M112 blocks of C4 weighing in at 1.25 pounds can easily \
 demolish a truck but with the gases expanding at about 8050 m/s, you must be clear of the blast \
 radius as you cannot outrun the explosion.')
+
+_add('car_horn', TOOL, VEHICLE, PRECISION,
+'', '', '',
+'',
+'')
 
 _add('chat_eryx', ROCKET, SOLDIER, EXPLOSIVE,
 'MBDA', 'ERYX', '',
@@ -515,6 +525,16 @@ more powerful .50 BMG cartridge, which was named for the gun itself (BMG standin
 Machine Gun). It is effective against infantry, unarmored or lightly armored vehicles and boats, \
 light fortifications and low-flying aircraft.')
 
+_add('hmg_m2hb_ammo', HMG, VEHICLE, PRECISION,
+'Browning', 'M2', 'Browning M2',
+'',
+'The M2 Machine Gun, Browning .50 Caliber Machine Gun, is a heavy machine gun designed towards the \
+end of World War I by John Browning. It is very similar in design to Browning''s earlier M1919 \
+Browning machine gun, which was chambered for the .30-06 cartridge. The M2 uses the larger and \
+more powerful .50 BMG cartridge, which was named for the gun itself (BMG standing for Browning \
+Machine Gun). It is effective against infantry, unarmored or lightly armored vehicles and boats, \
+light fortifications and low-flying aircraft.')
+
 _add('igla_djigit_launcher', ROCKET, VEHICLE, EXPLOSIVE,
 '', '', '',
 '',
@@ -528,6 +548,23 @@ related to the knife, which is used for all soldiers, rather than multiple for e
 'Most modern combat knives are approximately 7 inch in length and made of carbon steel with an \
 epoxy coating to protect the knife and prevent light reflection. The knife is a hand to hand \
 combat weapon that can prove vital when out of ammunition or when silence is necessary.')
+
+_add('m249saw_ammo', LMG, SOLDIER, PRECISION,
+'Fabrique Nationale de Herstal', 'M249', 'SAW',
+'The M249SAW in Battlefield 2 is the first weapon unlocked in the Support kit for the United \
+States Marine Corps. The M249 also appears as a turret that will spawn near certain control points \
+that are held by the USMC, although without usable ironsights and infinite ammo. It is tied with \
+the Chinese Type 95 LMG for the highest accuracy and lowest power. When compared to its MEC \
+counterpart the RPK-74, it has a much lower power output, but is far more accurate. Though having \
+a high rate of fire, it is fairly inaccurate when standing up, due to its default high spread. \
+Therefore, it is a good idea to go prone to maintain an acceptable amount of accuracy. In \
+addition, it has a very long reload time, which can be disadvantageous during combat.',
+'The M249 squad automatic weapon (SAW) is in use by the US army and USMC forces. Arriving mid \
+eighties it replaced the Browning automatic rifle and is primarily used to support infantry in \
+defensive and offensive roles. The SAW is a gas operated, lightweight and handheld weapon that can \
+be fired from a bipod or from different hand positions. It uses standard 200 round disintegrating \
+belt ammunition but can also make use of M16 rifle magazines as well. With an effective 1000 m \
+range and large ammunition capacity this gun increases your sides firepower considerably.')
 
 _add('medikit', TOOL, SOLDIER, PRECISION,
 '', '', 'Medical Bag',
@@ -781,6 +818,11 @@ _add('tnk_c2_barrel', CANNON, VEHICLE, EXPLOSIVE,
 '')
 
 _add('tnk_type98_barrel', CANNON, VEHICLE, EXPLOSIVE,
+'', '', '',
+'',
+'')
+
+_add('tnk_type98_smokelauncher', CANNON, VEHICLE, EXPLOSIVE,
 '', '', '',
 '',
 '')
@@ -1082,6 +1124,11 @@ fed from a 30 round detachable STANAG box magazine with an effective range of up
 depending on the variant and a 650 rounds per minute fire rate.')
 
 _add('ustnk_m1a2_barrel', CANNON, VEHICLE, EXPLOSIVE,
+'', '', '',
+'',
+'')
+
+_add('ustnk_m1a2_smokelauncher', CANNON, VEHICLE, EXPLOSIVE,
 '', '', '',
 '',
 '')

@@ -58,6 +58,14 @@ def on_connect(player):
         error('connect', err)
 
 def on_disconnect(player):
+
+    # Update the weapon accuracy for the player
+    try:
+        log_accuracy(player)
+        reset_accuracy(player)
+    except Exception, err:
+        error('accuracy', err)
+
     try:
         player_addr = format_player_addr(player)
         player_name = format_player(player)
@@ -115,8 +123,17 @@ def on_game_status(status):
             host.registerHandler('TimeLimitReached', on_clock_limit)
             host.registerHandler('VehicleDestroyed', on_vehicle_destroy)
 
-        # Log the winners and losers on game end
         if status == bf2.GameStatus.EndGame:
+
+            # Update the weapon accuracy for the player
+            try:
+                for player in bf2.playerManager.getPlayers():
+                    log_accuracy(player)
+                    reset_accuracy(player)
+            except Exception, err:
+                error('accuracy', err)
+
+            # Log the winners and losers on game end
             win_team_id = bf2.gameLogic.getWinner()
             win_type = bf2.gameLogic.getVictoryType()
 
@@ -219,6 +236,12 @@ def on_death(victim, bf2_object):
         log('DT', victim_name, victim_pos)
     except Exception, err:
         error('death', err)
+
+    # Reset the weapon accuracy for the player
+    try:
+        reset_accuracy(victim)
+    except Exception, err:
+        error('accuracy', err)
 
 def on_heal(giver, bf2_object):
     try:
@@ -542,6 +565,11 @@ def log_accuracy(player):
         bullets = player._accuracy_temp[weapon_name]
         log('AC', player_name, weapon_name, bullets['hits'], bullets['fired'])
     player._accuracy_temp.clear()
+
+def reset_accuracy(player):
+    if player and hasattr(player, '_accuracy'):
+        player._accuracy.clear()
+        player._accuracy_temp.clear()
 
 def format_assist_type(assist_type):
     if assist_type == 1:
