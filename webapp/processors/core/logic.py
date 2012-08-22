@@ -252,7 +252,7 @@ class Processor(BaseProcessor):
         # Check whether the squad needs to be updated
         if player.squad_id and player.squad_id == squad.id:
             return
-    
+
         # Remove the player from the previous squad
         if player.squad_id:
             old_squad = model_mgr.get_squad(squad.id)
@@ -268,8 +268,10 @@ class Processor(BaseProcessor):
         # Update the squad for the player
         if squad == models.squads.EMPTY:
             player.squad_id = None
+            player.squader = False
         else:
             player.squad_id = squad.id
+            player.squader = True
 
         # Remove the squad leader flag from the player if needed
         if not player.squad_id:
@@ -299,31 +301,3 @@ class Processor(BaseProcessor):
             player.team_id = None
         else:
             player.team_id = team.id
-
-    def _update_squad(self, player, squad):
-
-        # Check whether the squad needs to be updated
-        if player.squad_id and player.squad_id == squad.id:
-            return
-    
-        # Remove the player from the previous squad
-        if player.squad_id:
-            old_squad = model_mgr.get_squad(squad.id)
-            if old_squad and old_squad != models.squads.EMPTY:
-                old_squad.player_ids.remove(player.id)
-                if old_squad.leader_id == player.id:
-                    old_squad.leader_id = None
-
-        # Add the player to the new squad
-        if squad != models.squads.EMPTY:
-            squad.player_ids.add(player.id)
-
-        # Update the squad for the player
-        if squad == models.squads.EMPTY:
-            player.squad_id = None
-        else:
-            player.squad_id = squad.id
-
-        # Remove the squad leader flag from the player if needed
-        if not player.squad_id:
-            player.leader = False

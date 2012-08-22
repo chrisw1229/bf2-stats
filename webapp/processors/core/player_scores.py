@@ -64,6 +64,21 @@ class Processor(BaseProcessor):
         attacker_stats.assisted += 1
         attacker_stats.assisted_total += 1
 
+    def on_commander(self, e):
+        player_stats = stat_mgr.get_player_stats(e.player)
+        old_player_stats = stat_mgr.get_player_stats(e.old_player)
+
+        # Update the associated commander timers
+        player_stats.commander_time.start(e.tick)
+        player_stats.squad_time.stop(e.tick)
+        old_player_stats.commander_time.stop(e.tick)
+
+    def on_connect(self, e):
+        player_stats = stat_mgr.get_player_stats(e.player)
+
+        # Start the spectator timer when the player connects
+        player_stats.spec_time.start(e.tick)
+
     def on_death(self, e):
         player_stats = stat_mgr.get_player_stats(e.player)
         player_history = event_mgr.get_history(e.player)
@@ -138,8 +153,11 @@ class Processor(BaseProcessor):
         # Reset all the temporary accuracy values
         self._update_accuracy(e.player)
 
-        # Stop play timer
+        # Stop active timers
+        player_stats.commander_time.stop(e.tick)
+        player_stats.leader_time.stop(e.tick)
         player_stats.play_time.stop(e.tick)
+        player_stats.squad_time.stop(e.tick)
 
         # Start the spectator timer
         player_stats.spec_time.start(e.tick)
@@ -151,8 +169,11 @@ class Processor(BaseProcessor):
         self._update_accuracy(e.player)
 
         # Stop any active timers
+        player_stats.commander_time.stop(e.tick)
+        player_stats.leader_time.stop(e.tick)
         player_stats.play_time.stop(e.tick)
         player_stats.spec_time.stop(e.tick)
+        player_stats.squad_time.stop(e.tick)
 
     def on_flag_action(self, e):
         player_stats = stat_mgr.get_player_stats(e.player)
@@ -179,11 +200,20 @@ class Processor(BaseProcessor):
         player_stats.teamwork_total += 1
 
     def on_game_status(self, e):
-        if not e.game.starting: return
 
         # Reset all the temporary accuracy values
-        for player in model_mgr.get_players(True):
-            self._update_accuracy(player)
+        if e.game.starting:
+            for player in model_mgr.get_players(True):
+                self._update_accuracy(player)
+
+        # Reset any active timers
+        if e.game.ending:
+            for player in model_mgr.get_players(True):
+                player_stats = stat_mgr.get_player_stats(player)
+                player_stats.commander_time.stop(e.tick)
+                player_stats.leader_time.stop(e.tick)
+                player_stats.play_time.stop(e.tick)
+                player_stats.squad_time.stop(e.tick)
 
     def on_heal(self, e):
         receiver_stats = stat_mgr.get_player_stats(e.receiver)
@@ -390,6 +420,15 @@ class Processor(BaseProcessor):
         for player in model_mgr.get_players(True):
             self._update_accuracy(player)
 
+        # Reset any active timers
+        for player in model_mgr.get_players():
+            player_stats = stat_mgr.get_player_stats(player)
+            player_stats.commander_time.stop(e.tick)
+            player_stats.leader_time.stop(e.tick)
+            player_stats.play_time.stop(e.tick)
+            player_stats.spec_time.stop(e.tick)
+            player_stats.squad_time.stop(e.tick)
+
     def on_spawn(self, e):
         player_stats = stat_mgr.get_player_stats(e.player)
 
@@ -401,8 +440,31 @@ class Processor(BaseProcessor):
         # Stop the spectator timer
         player_stats.spec_time.stop(e.tick)
 
-        # Start play timer
+        # Start relevant timers
+        if e.player.commander:
+            player_stats.commander_time.start(e.tick)
+        if e.player.leader:
+            player_stats.leader_time.start(e.tick)
         player_stats.play_time.start(e.tick)
+        if e.player.squader:
+            player_stats.squad_time.start(e.tick)
+
+    def on_squad(self, e):
+        player_stats = stat_mgr.get_player_stats(e.player)
+
+        # Update the squad timer for the player
+        if e.player.squader:
+            player_stats.squad_time.start(e.tick)
+        else:
+            player_stats.squad_time.stop(e.tick)
+
+    def on_squad_leader(self, e):
+        player_stats = stat_mgr.get_player_stats(e.player)
+        old_player_stats = stat_mgr.get_player_stats(e.old_player)
+
+        # Update the associated leader timers
+        player_stats.leader_time.start(e.tick)
+        old_player_stats.leader_time.stop(e.tick)
 
     def on_win(self, e):
 
