@@ -31,6 +31,7 @@ class Player(object):
         self.passenger = False      # Flag when player is vehicle passenger
         self.spawned = False        # Flag when player is spawned
         self.squad_id = None        # ID for player's current squad
+        self.squader = False        # Flag when player is in a squad
         self.team_id = None         # ID for player's current team
         self.vehicle_id = None      # ID for player's current vehicle
         self.vehicle_slot_id = None # ID for player's current vehicle slot

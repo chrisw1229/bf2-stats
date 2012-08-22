@@ -482,6 +482,7 @@ class CommanderEvent(BaseEvent):
 
         self.team = model_mgr.get_team(values[0])
         self.player = model_mgr.get_player_by_name(values[1])
+        self.old_player = model_mgr.get_player(self.team.commander_id)
 
         event_mgr.get_history(self.team).add_event(self)
         event_mgr.get_history(self.player).add_event(self)
@@ -804,6 +805,7 @@ class SquadLeaderEvent(BaseEvent):
         # Pre-process - Make sure the squad model exists in the manager
         self.squad = model_mgr.add_squad(values[0])
         self.player = model_mgr.get_player_by_name(values[1])
+        self.old_player = model_mgr.get_player(self.squad.leader_id)
 
         event_mgr.get_history(self.player).add_event(self)
 event_mgr.add_event_class(SquadLeaderEvent)
