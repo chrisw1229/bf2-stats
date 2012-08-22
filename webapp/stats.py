@@ -93,9 +93,10 @@ class PlayerStats(BaseStats):
         BaseStats.__init__(self)
 
         # Cumulative values
-        self.ammo_total = 0
         self.assisted_total = 0
         self.assists_total = 0
+        self.bullets_fired = 0
+        self.bullets_hit = 0
         self.deaths_total = 0
         self.deaths_streak_max = 0
         self.enemies = dict()

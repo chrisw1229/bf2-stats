@@ -28,8 +28,6 @@ class Processor(BaseProcessor):
         # Update ammo used for the player
         self._update_ammo(e.player)
 
-        if e.player.name == 'Jimini' and e.weapon.id == 'chsni_type88':
-            print e.tick, e.bullets_fired
     def on_ammo(self, e):
         receiver_stats = stat_mgr.get_player_stats(e.receiver)
         giver_stats = stat_mgr.get_player_stats(e.giver)
@@ -426,11 +424,14 @@ class Processor(BaseProcessor):
     def _update_ammo(self, player):
         player_stats = stat_mgr.get_player_stats(player)
 
-        ammo = 0
+        bullets_fired = 0
+        bullets_hit = 0
         for weapon in player_stats.weapons:
             weapon_stats = player_stats.weapons[weapon]
-            ammo += weapon_stats.bullets_fired
-        player_stats.ammo_total = ammo
+            bullets_fired += weapon_stats.bullets_fired
+            bullets_hit += weapon_stats.bullets_hit
+        player_stats.bullets_fired = bullets_fired
+        player_stats.bullets_hit = bullets_hit
 
     def _update_place(self):
 

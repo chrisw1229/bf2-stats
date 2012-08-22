@@ -12,15 +12,15 @@ class Handler:
 
     MODEL_FIELDS = ['aliases', 'id']
 
-    STATS_FIELDS = ['ammo_total', 'assisted_total', 'assists_total',
-            'deaths_total', 'deaths_streak_max', 'flag_capture_assists_total',
-            'flag_captures_total', 'flag_defends_total',
-            'flag_neutralize_assists_total', 'flag_neutralizes_total', 'games',
-            'healed_total', 'heals_total', 'losses', 'kills_5_total',
-            'kills_10_total', 'kills_ratio_total', 'kills_streak_max',
-            'kills_total', 'place_overall', 'play_time', 'repairs_total',
-            'revived_total', 'revives_total', 'score_total', 'spec_time',
-            'suicides_total', 'supplied_total', 'supplies_total',
+    STATS_FIELDS = ['assisted_total', 'assists_total', 'bullets_fired',
+            'bullets_hit', 'deaths_total', 'deaths_streak_max',
+            'flag_capture_assists_total', 'flag_captures_total',
+            'flag_defends_total', 'flag_neutralize_assists_total',
+            'flag_neutralizes_total', 'games', 'healed_total', 'heals_total',
+            'losses', 'kills_5_total', 'kills_10_total', 'kills_ratio_total',
+            'kills_streak_max', 'kills_total', 'place_overall', 'play_time',
+            'repairs_total', 'revived_total', 'revives_total', 'score_total',
+            'spec_time', 'suicides_total', 'supplied_total', 'supplies_total',
             'team_killed_total', 'team_kills_total', 'teamwork_total', 'wins',
             'wounds_total']
 
