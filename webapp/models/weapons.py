@@ -6,6 +6,7 @@ registry = set()
 ASSAULT = 'assault_rifle'
 CARBINE = 'carbine_rifle'
 CANNON = 'cannon'
+COUNTER = 'counter'
 GRENADE = 'grenade'
 HMG = 'heavy_machine_gun'
 LMG = 'light_machine_gun'
@@ -84,7 +85,7 @@ _add('ahe_ah1z_cogunner_hellfirelaunchertv', ROCKET, VEHICLE, EXPLOSIVE,
 '',
 '')
 
-_add('ahe_ah1z_flarelauncher', CANNON, VEHICLE, PRECISION,
+_add('ahe_ah1z_flarelauncher', COUNTER, VEHICLE, EXPLOSIVE,
 '', '', '',
 '',
 '')
@@ -130,6 +131,16 @@ _add('air_a10_us_bomblauncher', ROCKET, VEHICLE, EXPLOSIVE,
 '')
 
 _add('ahe_z10_s8launcher', ROCKET, VEHICLE, EXPLOSIVE,
+'', '', '',
+'',
+'')
+
+_add('air_f35b_autocannon', CANNON, VEHICLE, PRECISION,
+'', '', '',
+'',
+'')
+
+_add('air_f35b_bomblauncher', ROCKET, VEHICLE, EXPLOSIVE,
 '', '', '',
 '',
 '')
@@ -397,6 +408,11 @@ mm cartridge but can also fire standard 5.8 mm ammunition. This is a very effect
 distance of around 800 m and with 10 rounds and semi-auto fire it allows you that extra chance of \
 finishing the enemy off.')
 
+_add('chthe_z8_flarelauncher', COUNTER, VEHICLE, EXPLOSIVE,
+'', '', '',
+'',
+'')
+
 _add('coaxial_browning', HMG, VEHICLE, PRECISION,
 '', '', '',
 '',
@@ -447,6 +463,16 @@ _add('eurif_hk21', LMG, VEHICLE, PRECISION,
 '')
 
 _add('eurif_hk53a3', CARBINE, SOLDIER, PRECISION,
+'', '', '',
+'',
+'')
+
+_add('eurofighter_autocannon', CANNON, VEHICLE, PRECISION,
+'', '', '',
+'',
+'')
+
+_add('eurofighter_bomb_launcher', ROCKET, VEHICLE, EXPLOSIVE,
 '', '', '',
 '',
 '')
@@ -581,6 +607,11 @@ _add('ruair_archerlauncher', ROCKET, VEHICLE, EXPLOSIVE,
 '')
 
 _add('ruair_mig29_30mmcannon', CANNON, VEHICLE, PRECISION,
+'', '', '',
+'',
+'')
+
+_add('ruair_mig29_bomblauncher_1', ROCKET, VEHICLE, EXPLOSIVE,
 '', '', '',
 '',
 '')
@@ -822,7 +853,7 @@ _add('tnk_type98_barrel', CANNON, VEHICLE, EXPLOSIVE,
 '',
 '')
 
-_add('tnk_type98_smokelauncher', CANNON, VEHICLE, EXPLOSIVE,
+_add('tnk_type98_smokelauncher', COUNTER, VEHICLE, EXPLOSIVE,
 '', '', '',
 '',
 '')
@@ -1128,7 +1159,12 @@ _add('ustnk_m1a2_barrel', CANNON, VEHICLE, EXPLOSIVE,
 '',
 '')
 
-_add('ustnk_m1a2_smokelauncher', CANNON, VEHICLE, EXPLOSIVE,
+_add('usthe_uh60_flarelauncher', COUNTER, VEHICLE, EXPLOSIVE,
+'', '', '',
+'',
+'')
+
+_add('ustnk_m1a2_smokelauncher', COUNTER, VEHICLE, EXPLOSIVE,
 '', '', '',
 '',
 '')
