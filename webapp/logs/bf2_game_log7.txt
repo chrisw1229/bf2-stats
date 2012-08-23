@@ -1,0 +1,1301 @@
+00000;SS;start;2012-08-22_22-30-44
+00000;GS;pre;None;600;0
+00000;RS;0
+00004;GS;play;kubra_dam;600;0
+00014;CN;192.168.1.243;Jimini
+00054;GS;pre;kubra_dam;600;0
+00054;RS;0
+00054;GS;play;kubra_dam;600;0
+00054;CP;4001;162.0,74.5,184.0,0.0;top;us
+00054;CP;4002;-72.8,62.4,105.1,0.0;bottom;None
+00054;CP;4003;-354.0,54.0,156.0,0.0;top;mec
+00054;CP;4004;-220.0,68.1,294.0,0.0;top;mec
+00054;CP;4005;-260.0,69.0,-14.0,0.0;top;mec
+00054;CP;4006;-401.6,73.0,-223.4,0.0;top;mec
+00054;CP;4007;-205.5,131.7,-274.9,0.0;top;mec
+00054;CP;4008;-495.0,118.0,-105.9,0.0;top;mec
+00054;CP;4009;-388.9,69.5,-520.2,0.0;top;mec
+00069;CN;192.168.1.204;CCS NanoBennett
+00069;SP;Jimini;187.0,69.1,160.0,-108.1;us
+00069;WP;Jimini;187.0,69.1,160.0,-108.1;usrif_m24
+00069;KP;Jimini;187.0,69.1,160.0,-108.1;us_sniper
+00090;VE;Jimini;193.0,65.3,126.0,-98.1;usapc_lav25;usapc_lav25_driver;False
+00113;SP;CCS NanoBennett;-487.3,67.8,-721.5,26.0;mec
+00113;WP;CCS NanoBennett;-487.3,67.8,-721.5,26.0;rusht_saiga12
+00113;KP;CCS NanoBennett;-487.3,67.8,-721.5,26.0;mec_engineer
+00117;VE;CCS NanoBennett;-507.7,68.1,-724.6,40.0;ruair_mig29;ruair_mig29_driver;False
+00126;CN;192.168.1.10;Luda
+00171;SP;Luda;189.0,69.1,146.0,-142.7;us
+00171;WP;Luda;189.0,69.1,146.0,-142.7;usrif_m16a2
+00171;KP;Luda;189.0,69.1,146.0,-142.7;us_medic
+00205;VD;ruair_mig29;-107.8,126.7,398.6,22.7;None;None;CCS NanoBennett
+00205;KL;CCS NanoBennett;-107.8,126.7,398.6,22.7;None;None;None;None
+00205;KD;CCS NanoBennett;-107.8,126.7,398.6,22.7;mec_engineer
+00205;AC;CCS NanoBennett;ruair_mig29_30mmcannon;0;3
+00205;AC;CCS NanoBennett;ruair_mig29_bomblauncher_1;0;2
+00205;VX;CCS NanoBennett;-337.0,65.0,-81.0,-153.0;ruair_mig29;ruair_mig29_driver
+00205;DT;CCS NanoBennett;-107.8,126.7,398.6,22.7
+00215;VX;Jimini;189.5,65.7,131.6,-166.4;usapc_lav25;usapc_lav25_driver
+00215;AC;Jimini;usapc_lav25_towlauncher;0;2
+00215;AC;Jimini;usapc_lav25_barrel;1;34
+00220;SP;CCS NanoBennett;-487.3,67.8,-721.5,26.0;mec
+00220;WP;CCS NanoBennett;-487.3,67.8,-721.5,26.0;rusht_saiga12
+00220;KP;CCS NanoBennett;-487.3,67.8,-721.5,26.0;mec_engineer
+00225;VE;CCS NanoBennett;-486.3,68.8,-742.0,39.8;ruair_su34;ruair_su34_driver;False
+00233;VE;Jimini;187.6,65.3,132.1,-166.4;usapc_lav25;usapc_lav25_driver;False
+00235;VX;Jimini;189.5,65.7,131.6,-166.4;usapc_lav25;usapc_lav25_driver
+00375;SC;CCS NanoBennett;2
+00375;KL;Jimini;188.4,67.7,132.1,-141.7;CCS NanoBennett;221.3,122.2,-53.6,-10.9;ruair_su34_30mmcannon;ruair_su34
+00375;AC;CCS NanoBennett;ruair_su34_30mmcannon;3;92
+00375;AC;CCS NanoBennett;ruair_su34_250kgbomblauncher;0;5
+00379;KD;Jimini;189.4,66.3,134.6,0.0;us_sniper
+00379;AC;Jimini;usrif_m24;2;8
+00388;VD;ruair_su34;-373.6,106.2,-89.9,-175.2;None;None;CCS NanoBennett
+00388;KL;CCS NanoBennett;-373.6,106.2,-89.9,-175.2;None;None;None;None
+00388;KD;CCS NanoBennett;-373.6,106.2,-89.9,-175.2;mec_engineer
+00388;AC;CCS NanoBennett;ruair_su34_30mmcannon;3;103
+00388;VX;CCS NanoBennett;-107.8,126.7,398.6,22.7;ruair_su34;ruair_su34_driver
+00388;DT;CCS NanoBennett;-373.6,106.2,-89.9,-175.2
+00390;DT;Jimini;189.5,64.7,135.0,0.0
+00390;SP;Jimini;187.0,69.1,160.0,-108.1;us
+00390;WP;Jimini;187.0,69.1,160.0,-108.1;usrif_m24
+00390;KP;Jimini;187.0,69.1,160.0,-108.1;us_sniper
+00403;SP;CCS NanoBennett;-487.3,67.8,-721.5,26.0;mec
+00403;WP;CCS NanoBennett;-487.3,67.8,-721.5,26.0;rusht_saiga12
+00403;KP;CCS NanoBennett;-487.3,67.8,-721.5,26.0;mec_engineer
+00413;VE;CCS NanoBennett;-507.6,68.1,-724.6,40.0;ruair_mig29;ruair_mig29_driver;False
+00432;VE;Luda;187.7,65.3,132.3,-167.3;usapc_lav25;usapc_lav25_driver;False
+00433;VE;Jimini;214.0,49.3,42.0,-178.2;ats_tow;ats_tow_driver;False
+00442;VX;Jimini;214.0,50.5,43.5,-178.2;ats_tow;ats_tow_driver
+00559;VD;ruair_mig29;-140.4,68.6,76.2,116.9;None;None;CCS NanoBennett
+00559;KL;CCS NanoBennett;-140.4,68.6,76.2,116.9;None;None;None;None
+00559;KD;CCS NanoBennett;-140.4,68.6,76.2,116.9;mec_engineer
+00559;AC;CCS NanoBennett;ruair_mig29_bomblauncher_1;1;2
+00559;VX;CCS NanoBennett;-373.6,106.2,-89.9,-175.2;ruair_mig29;ruair_mig29_driver
+00559;DT;CCS NanoBennett;-140.4,68.6,76.2,116.9
+00574;SP;CCS NanoBennett;-487.3,67.8,-721.5,26.0;mec
+00574;WP;CCS NanoBennett;-487.3,67.8,-721.5,26.0;rusht_saiga12
+00574;KP;CCS NanoBennett;-487.3,67.8,-721.5,26.0;mec_engineer
+00587;VE;CCS NanoBennett;-486.3,68.8,-742.0,39.8;ruair_su34;ruair_su34_driver;False
+00634;WP;Jimini;-30.4,106.5,-58.1,86.9;ushgr_m67
+00635;WP;Jimini;-30.4,106.5,-58.1,86.9;kni_knife
+00636;SC;CCS NanoBennett;2
+00636;KL;Jimini;-30.4,106.5,-58.1,12.6;CCS NanoBennett;-132.2,117.8,47.2,137.0;ruair_su34_30mmcannon;ruair_su34
+00636;AC;CCS NanoBennett;ruair_su34_30mmcannon;4;36
+00640;KD;Jimini;-30.4,105.8,-58.3,0.0;us_sniper
+00640;AC;Jimini;usrif_m24;0;2
+00651;DT;Jimini;-30.7,105.7,-58.2,0.0
+00651;SP;Jimini;125.0,69.1,117.0,51.3;us
+00651;WP;Jimini;125.0,69.1,117.0,51.3;usrif_m24
+00651;KP;Jimini;125.0,69.1,117.0,51.3;us_sniper
+00663;VE;Jimini;166.0,68.7,141.0,-90.5;jeep_faav;jeep_faav_driver;False
+00668;VX;Jimini;123.1,70.3,147.6,-118.1;jeep_faav;jeep_faav_driver
+00669;GS;end;kubra_dam;600;0
+00669;AC;CCS NanoBennett;ruair_su34_30mmcannon;4;43
+00669;AC;Luda;usapc_lav25_towlauncher;0;1
+00669;AC;Luda;usapc_lav25_barrel;0;45
+00669;WN;us;3
+00669;LS;mec;3
+00714;GS;pre;kubra_dam;600;0
+00714;RS;0
+00714;GS;play;road_to_jalalabad;600;0
+00721;GS;pre;road_to_jalalabad;600;0
+00721;RS;0
+00721;GS;play;road_to_jalalabad;600;0
+00721;CP;4019;-205.4,45.3,7.7,0.0;top;us
+00721;CP;4020;-16.7,39.1,-207.8,0.0;top;mec
+00721;CP;4021;91.9,40.2,-263.2,0.0;top;mec
+00721;CP;4022;181.6,37.6,-170.3,0.0;top;mec
+00721;CP;4023;282.9,42.0,-138.3,0.0;top;mec
+00721;CP;4024;234.9,44.4,-42.1,0.0;top;mec
+00721;CP;4025;293.1,47.9,55.0,0.0;top;mec
+00721;CP;4026;38.5,37.5,-40.9,0.0;bottom;None
+00745;SP;Luda;-212.4,46.7,4.5,128.1;us
+00745;WP;Luda;-212.4,46.7,4.5,128.1;usrif_m16a2
+00745;KP;Luda;-212.4,46.7,4.5,128.1;us_medic
+00766;SP;Jimini;-242.4,49.0,-27.0,90.4;us
+00766;WP;Jimini;-242.4,49.0,-27.0,90.4;usrif_m24
+00766;KP;Jimini;-242.4,49.0,-27.0,90.4;us_sniper
+00773;SP;CCS NanoBennett;330.9,49.1,18.9,-64.5;mec
+00773;WP;CCS NanoBennett;330.9,49.1,18.9,-64.5;rusht_saiga12
+00773;KP;CCS NanoBennett;330.9,49.1,18.9,-64.5;mec_engineer
+00776;VE;Jimini;-203.4,43.3,-33.4,66.1;jeep_faav;jeep_faav_driver;False
+00784;VE;CCS NanoBennett;286.5,48.6,38.4,-90.0;jep_mec_paratrooper;jep_mec_paratrooper_driver;False
+00833;CN;192.168.1.211;kkk noocher
+00836;CP;4028;-16.7,39.1,-207.8,0.0;middle;mec
+00836;SC;Jimini;2
+00836;FA;Jimini;neutralize
+00854;CP;4028;-16.7,39.1,-207.8,0.0;middle;None
+00854;SC;Jimini;2
+00854;FA;Jimini;capture
+00857;VX;CCS NanoBennett;5.9,40.3,-222.3,-69.4;jep_mec_paratrooper;jep_mec_paratrooper_driver
+00857;VE;CCS NanoBennett;7.0,39.7,-220.6,0.0;jep_mec_paratrooper;jep_mec_paratrooper_gunbase;False
+00872;VE;Luda;-204.1,46.1,53.7,164.5;jeep_faav;jeep_faav_driver;False
+00873;VX;Jimini;-34.8,40.6,-162.7,-168.5;jeep_faav;jeep_faav_driver
+00873;AC;Jimini;car_horn;0;6
+00881;SC;Jimini;2
+00881;KL;CCS NanoBennett;5.3,39.7,-220.0,0.0;Jimini;-29.6,39.6,-166.6,145.8;usrif_m24;None
+00881;AC;Jimini;usrif_m24;1;2
+00881;KD;CCS NanoBennett;5.3,39.7,-220.0,0.0;mec_engineer
+00881;AC;CCS NanoBennett;hmg_m2hb_ammo;0;24
+00881;AC;CCS NanoBennett;chhmg_kord;8;31
+00881;VX;CCS NanoBennett;260.0,43.0,-121.0,152.7;jep_mec_paratrooper;jep_mec_paratrooper_gunbase
+00881;DT;CCS NanoBennett;5.3,39.7,-220.0,-69.4
+00889;VE;Jimini;-3.2,40.2,-184.6,-147.8;jep_vodnik;jep_vodnik_driver;False
+00896;SP;CCS NanoBennett;253.2,49.1,18.0,68.2;mec
+00896;WP;CCS NanoBennett;253.2,49.1,18.0,68.2;rusht_saiga12
+00896;KP;CCS NanoBennett;253.2,49.1,18.0,68.2;mec_engineer
+00904;KD;CCS NanoBennett;253.2,48.9,18.0,68.2;mec_engineer
+00904;DT;CCS NanoBennett;253.2,48.9,18.0,68.2
+00904;DC;192.168.1.204;CCS NanoBennett
+00928;CP;4029;91.9,40.2,-263.2,0.0;middle;mec
+00928;SC;Jimini;2
+00928;FA;Jimini;neutralize
+00949;SP;kkk noocher;283.1,43.2,-159.3,-61.5;mec
+00949;WP;kkk noocher;283.1,43.2,-159.3,-61.5;rurrif_ak74u
+00949;KP;kkk noocher;283.1,43.2,-159.3,-61.5;mec_specops
+00951;CP;4029;91.9,40.2,-263.2,0.0;middle;None
+00951;SC;Jimini;2
+00951;FA;Jimini;capture
+00953;VD;jeep_faav;-36.4,40.0,-166.1,-160.9;None;None;Jimini
+00955;VD;jep_mec_paratrooper;4.5,39.8,-219.6,-69.4;None;None;None
+00957;CP;4031;282.9,42.0,-138.3,0.0;middle;mec
+00957;SC;Luda;2
+00957;FA;Luda;neutralize
+00962;VX;Jimini;116.9,38.6,-230.3,90.0;jep_vodnik;jep_vodnik_driver
+00962;AC;Jimini;car_horn;0;53
+00962;VE;Jimini;116.9,38.6,-232.5,0.0;jep_vodnik;jep_vodnik_cupolabase;False
+00972;WP;kkk noocher;281.8,43.0,-140.2,52.4;c4_explosives
+00982;VE;kkk noocher;299.5,43.3,-126.5,-90.2;jep_vodnik;jep_vodnik_driver;False
+00982;AC;kkk noocher;c4_explosives;0;5
+00982;AC;kkk noocher;rurrif_ak74u;0;6
+00984;VX;Jimini;116.9,38.6,-234.5,90.0;jep_vodnik;jep_vodnik_cupolabase
+00984;AC;Jimini;hmg_m2hb_ammo;0;7
+00984;AC;Jimini;chhmg_kord;0;8
+00984;VE;Jimini;114.6,39.6,-232.1,150.0;jep_vodnik;jep_vodnik_codriver;True
+00984;VX;Jimini;115.6,38.7,-230.6,-90.0;jep_vodnik;jep_vodnik_codriver
+00984;VE;Jimini;114.5,39.6,-232.8,177.0;jep_vodnik;jep_vodnik_rearpassenger;True
+00986;VX;Jimini;115.5,38.8,-234.4,-90.0;jep_vodnik;jep_vodnik_rearpassenger
+00986;VE;Jimini;116.9,38.6,-232.5,90.0;jep_vodnik;jep_vodnik_driver;False
+01004;VX;Luda;260.4,43.4,-114.3,125.5;jeep_faav;jeep_faav_driver
+01004;VE;Luda;259.5,43.6,-116.5,0.0;jeep_faav;jeep_faav_rear_passenger;False
+01005;VX;kkk noocher;265.6,43.1,-123.1,-63.4;jep_vodnik;jep_vodnik_driver
+01006;VD;jep_vodnik;264.6,43.1,-119.9,-56.6;kkk noocher;266.9,43.0,-123.2,-66.4;kkk noocher
+01006;VD;jeep_faav;259.6,42.6,-116.5,126.0;kkk noocher;266.9,43.0,-123.2,-66.4;Luda
+01006;SC;kkk noocher;2
+01006;KL;Luda;259.2,43.6,-116.2,0.0;kkk noocher;266.9,43.0,-123.2,-66.4;c4_explosives;None
+01006;KD;Luda;259.2,43.6,-116.2,0.0;us_medic
+01006;AC;Luda;hmg_m2hb_ammo;0;6
+01006;AC;Luda;hmg_m2hb;3;8
+01006;VX;Luda;260.0,43.0,-121.0,159.0;jeep_faav;jeep_faav_rear_passenger
+01006;DT;Luda;259.2,43.6,-116.2,126.0
+01006;SC;kkk noocher;-2
+01006;KL;kkk noocher;267.0,43.0,-123.3,-66.4;kkk noocher;267.0,43.0,-123.3,-66.4;None;None
+01006;KD;kkk noocher;267.0,43.0,-123.3,-66.4;mec_specops
+01006;DT;kkk noocher;267.0,43.0,-123.3,-66.4
+01024;SP;kkk noocher;180.2,38.8,-176.4,-10.5;mec
+01024;WP;kkk noocher;180.2,38.8,-176.4,-10.5;rurrif_ak74u
+01024;KP;kkk noocher;180.2,38.8,-176.4,-10.5;mec_specops
+01028;CP;4031;282.9,42.0,-138.3,0.0;middle;None
+01031;SP;Luda;-188.2,43.9,-43.4,-33.4;us
+01031;WP;Luda;-188.2,43.9,-43.4,-33.4;usrif_m16a2
+01031;KP;Luda;-188.2,43.9,-43.4,-33.4;us_medic
+01034;WP;kkk noocher;166.2,38.6,-187.9,-166.8;c4_explosives
+01040;VE;kkk noocher;166.4,38.3,-190.2,-1.0;jep_mec_paratrooper;jep_mec_paratrooper_driver;False
+01040;AC;kkk noocher;c4_explosives;0;5
+01047;VE;Luda;-197.4,43.3,-34.2,64.1;jeep_faav;jeep_faav_driver;False
+01050;CP;4034;38.5,37.5,-40.9,0.0;middle;None
+01050;SC;Jimini;2
+01050;FA;Jimini;capture
+01073;VX;kkk noocher;277.2,43.2,-133.5,86.5;jep_mec_paratrooper;jep_mec_paratrooper_driver
+01075;VD;jep_mec_paratrooper;277.7,42.7,-135.1,103.5;kkk noocher;279.4,43.0,-127.8,-140.9;kkk noocher
+01075;VD;ats_hj8;278.8,42.0,-133.4,-48.9;kkk noocher;279.4,43.0,-127.8,-140.9;None
+01075;WP;kkk noocher;279.4,43.0,-127.7,-140.9;rurrif_ak74u
+01082;VX;Jimini;272.2,43.1,-127.8,81.7;jep_vodnik;jep_vodnik_driver
+01082;VE;Jimini;272.6,43.1,-130.0,0.0;jep_vodnik;jep_vodnik_cupolabase;False
+01087;SC;Jimini;2
+01087;KL;kkk noocher;284.1,43.0,-135.7,-53.6;Jimini;272.5,43.1,-130.0,0.0;chhmg_kord;jep_vodnik
+01087;AC;Jimini;hmg_m2hb_ammo;0;31
+01087;AC;Jimini;chhmg_kord;1;38
+01090;VX;Jimini;272.8,43.1,-132.0,81.8;jep_vodnik;jep_vodnik_cupolabase
+01090;AC;Jimini;hmg_m2hb_ammo;0;34
+01090;AC;Jimini;chhmg_kord;2;41
+01090;VE;Jimini;272.5,43.1,-130.0,81.8;jep_vodnik;jep_vodnik_driver;False
+01091;KD;kkk noocher;285.5,42.1,-136.3,0.0;mec_specops
+01091;AC;kkk noocher;rurrif_ak74u;9;11
+01102;DT;kkk noocher;285.5,42.1,-136.3,0.0
+01102;SP;kkk noocher;185.0,38.8,-191.5,-84.8;mec
+01102;WP;kkk noocher;185.0,38.8,-191.5,-84.8;rurrif_ak74u
+01102;KP;kkk noocher;185.0,38.8,-191.5,-84.8;mec_specops
+01103;CP;4031;282.9,42.0,-138.3,0.0;middle;None
+01110;WP;kkk noocher;164.6,38.6,-189.0,7.4;c4_explosives
+01115;CP;4031;282.9,42.0,-138.3,0.0;middle;None
+01115;SC;Luda;1
+01115;FA;Luda;capture_assist
+01115;SC;Jimini;2
+01115;FA;Jimini;capture
+01116;VE;kkk noocher;166.4,38.3,-190.2,-1.0;jep_mec_paratrooper;jep_mec_paratrooper_driver;False
+01116;AC;kkk noocher;c4_explosives;0;5
+01147;VX;kkk noocher;332.1,51.5,101.8,96.4;jep_mec_paratrooper;jep_mec_paratrooper_driver
+01147;AC;kkk noocher;car_horn;0;5
+01149;VE;kkk noocher;329.2,49.9,99.3,116.9;jep_mec_paratrooper;jep_mec_paratrooper_driver;False
+01156;VD;jeep_faav;340.8,49.6,88.6,144.9;None;None;Luda
+01156;SC;kkk noocher;2
+01156;KL;Luda;340.8,49.6,88.6,144.9;kkk noocher;375.9,48.6,50.8,7.1;None;jep_mec_paratrooper
+01156;KD;Luda;340.8,49.6,88.6,144.9;us_medic
+01156;VX;Luda;259.2,43.6,-116.2,126.0;jeep_faav;jeep_faav_driver
+01156;DT;Luda;340.8,49.6,88.6,144.9
+01171;SP;Luda;-242.4,49.0,-27.0,90.4;us
+01171;WP;Luda;-242.4,49.0,-27.0,90.4;usrif_m16a2
+01171;KP;Luda;-242.4,49.0,-27.0,90.4;us_medic
+01175;VX;Jimini;288.6,49.0,50.3,28.1;jep_vodnik;jep_vodnik_driver
+01175;AC;Jimini;car_horn;0;64
+01175;VE;Jimini;290.6,49.0,49.3,0.0;jep_vodnik;jep_vodnik_cupolabase;False
+01187;VE;Luda;-203.4,43.3,-33.4,66.1;jeep_faav;jeep_faav_driver;False
+01211;CP;4033;293.1,47.9,55.0,0.0;middle;mec
+01211;SC;Jimini;2
+01211;FA;Jimini;neutralize
+01213;VX;kkk noocher;280.6,43.9,-137.4,-114.5;jep_mec_paratrooper;jep_mec_paratrooper_driver
+01231;CP;4031;282.9,42.0,-138.3,0.0;middle;us
+01231;SC;kkk noocher;2
+01231;FA;kkk noocher;neutralize
+01254;CP;4031;282.9,42.0,-138.3,0.0;middle;None
+01254;SC;kkk noocher;2
+01254;FA;kkk noocher;capture
+01258;CP;4033;293.1,47.9,55.0,0.0;middle;None
+01258;SC;Jimini;2
+01258;FA;Jimini;capture
+01261;VX;Jimini;292.3,49.0,48.4,28.1;jep_vodnik;jep_vodnik_cupolabase
+01261;VE;Jimini;290.6,49.0,49.3,28.1;jep_vodnik;jep_vodnik_driver;False
+01273;VD;jep_mec_paratrooper;279.9,43.1,-135.5,-103.9;kkk noocher;300.0,43.0,-128.8,-72.6;kkk noocher
+01273;VD;ats_tow;278.8,42.0,-133.4,-48.9;kkk noocher;300.0,43.0,-128.8,-72.6;None
+01273;WP;kkk noocher;300.0,43.0,-128.8,-72.6;rurrif_ak74u
+01273;VE;kkk noocher;299.5,43.0,-126.6,-89.7;usjep_hmmwv;usjep_hmmwv_driver;False
+01318;CP;4032;234.9,44.4,-42.1,0.0;middle;mec
+01329;CP;4028;-16.7,39.1,-207.8,0.0;middle;us
+01329;SC;kkk noocher;2
+01329;FA;kkk noocher;neutralize
+01335;GS;end;road_to_jalalabad;600;0
+01335;AC;Jimini;car_horn;0;96
+01335;AC;kkk noocher;car_horn;0;6
+01335;WN;us;3
+01335;LS;mec;3
+01380;GS;pre;road_to_jalalabad;600;0
+01380;RS;0
+01380;GS;play;sharqi_peninsula;600;0
+01387;GS;pre;sharqi_peninsula;600;0
+01387;RS;0
+01387;GS;play;sharqi_peninsula;600;0
+01387;CP;4035;-112.4,104.4,-134.4,0.0;top;us
+01387;CP;4036;-276.8,102.5,-110.6,0.0;top;us
+01387;CP;4037;-316.3,79.3,-226.3,0.0;top;us
+01387;CP;4038;-647.1,95.3,205.1,0.0;top;mec
+01387;CP;4039;-359.0,101.2,-115.0,0.0;top;us
+01387;CP;4040;-307.6,99.8,-25.6,0.0;top;us
+01387;CP;4041;-288.6,74.1,-597.2,0.0;top;mec
+01387;CP;4042;-605.0,94.6,-201.1,0.0;top;mec
+01387;CP;4043;-467.5,99.6,-77.1,0.0;top;us
+01422;SP;Luda;-110.1,98.1,-88.9,179.6;us
+01422;WP;Luda;-110.1,98.1,-88.9,179.6;usrif_m16a2
+01422;KP;Luda;-110.1,98.1,-88.9,179.6;us_medic
+01432;SP;Jimini;-99.8,129.9,-128.3,18.0;us
+01432;WP;Jimini;-99.8,129.9,-128.3,18.0;usrif_m4
+01432;KP;Jimini;-99.8,129.9,-128.3,18.0;us_specops
+01439;SP;kkk noocher;-670.5,96.3,217.9,90.0;mec
+01439;WP;kkk noocher;-670.5,96.3,217.9,90.0;rurrif_ak74u
+01439;KP;kkk noocher;-670.5,96.3,217.9,90.0;mec_specops
+01445;VE;Jimini;-111.3,126.5,-131.4,0.0;parachute;parachute_driver;True
+01445;VX;Jimini;-111.4,122.3,-131.4,-92.1;parachute;parachute_driver
+01446;VE;Jimini;-112.9,117.0,-131.4,0.0;parachute;parachute_driver;True
+01448;VX;Jimini;-113.5,106.2,-131.3,-90.7;parachute;parachute_driver
+01456;VE;Jimini;-114.8,105.5,-132.5,-93.5;us_bipod;us_bipod_driver;False
+01459;VX;Jimini;-113.5,105.5,-132.4,-93.5;us_bipod;us_bipod_driver
+01461;VE;kkk noocher;-643.1,95.3,205.2,90.0;igla_djigit;igla_djigit_driver;False
+01468;SQ;kkk noocher;None
+01468;CM;mec;kkk noocher
+01471;VX;kkk noocher;-644.9,96.5,205.2,90.0;igla_djigit;igla_djigit_driver
+01471;AC;kkk noocher;igla_djigit_launcher;0;2
+01477;WP;kkk noocher;-644.9,96.3,208.7,106.0;c4_explosives
+01480;WP;kkk noocher;-644.9,96.3,208.7,106.0;rurrif_ak74u
+01496;VE;Luda;-98.1,129.8,-145.4,-115.0;ahe_ah1z;ahe_ah1z_driver;False
+01514;VE;Jimini;-90.7,97.9,-97.9,-90.0;usjep_hmmwv;usjep_hmmwv_driver;False
+01597;VE;kkk noocher;-620.8,96.5,208.9,177.9;jep_vodnik;jep_vodnik_driver;False
+01597;AC;kkk noocher;rurrif_ak74u;0;2
+01597;AC;kkk noocher;ars_d30_barrel;0;10
+01653;VD;jep_vodnik;-621.2,96.3,-227.9,-0.0;kkk noocher;-363.8,102.3,-113.7,173.9;None
+01672;CP;4048;-359.0,101.2,-115.0,0.0;middle;us
+01692;CP;4048;-359.0,101.2,-115.0,0.0;middle;None
+01726;VD;usaas_stinger;-356.6,100.0,-85.2,44.4;kkk noocher;-395.2,101.8,-138.4,117.0;None
+01737;VX;kkk noocher;-322.6,80.1,-232.6,142.5;jep_vodnik;jep_vodnik_driver
+01737;AC;kkk noocher;ars_d30_barrel;0;30
+01737;AC;kkk noocher;car_horn;0;30
+01751;VX;Jimini;-289.8,75.2,-600.6,79.7;usjep_hmmwv;usjep_hmmwv_driver
+01751;AC;Jimini;car_horn;0;18
+01756;CP;4046;-316.3,79.3,-226.3,0.0;middle;us
+01758;VE;Jimini;-245.1,78.3,-582.8,0.0;ahe_havoc;ahe_havoc_driver;False
+01776;CP;4046;-316.3,79.3,-226.3,0.0;middle;None
+01783;VX;Jimini;-318.1,87.4,-252.4,-12.4;ahe_havoc;ahe_havoc_driver
+01783;AC;Jimini;ahe_havoc_s8launcher;0;3
+01784;KL;Jimini;-329.8,79.8,-236.0,-10.5;None;None;None;None
+01784;VE;kkk noocher;-345.9,80.0,-238.6,89.2;usjep_hmmwv;usjep_hmmwv_driver;False
+01784;AC;kkk noocher;ars_d30_barrel;0;36
+01787;VX;Luda;-234.0,80.0,-214.5,-42.8;ahe_ah1z;ahe_ah1z_driver
+01787;AC;Luda;ahe_ah1z_hydralauncher;0;8
+01788;KD;Jimini;-332.1,79.3,-230.9,0.0;us_specops
+01792;VD;ahe_havoc;-328.6,81.5,-230.5,-23.4;kkk noocher;-346.0,80.0,-237.9,76.1;Jimini
+01792;DT;Jimini;-332.1,79.3,-230.9,0.0
+01792;VD;jep_vodnik;-319.6,80.4,-232.5,133.7;kkk noocher;-346.0,80.0,-237.9,76.1;kkk noocher
+01797;VD;ats_tow;-319.6,79.3,-245.0,-90.5;kkk noocher;-351.6,80.0,-238.6,105.6;None
+01799;SP;Jimini;-99.7,129.8,-117.9,-126.6;us
+01799;WP;Jimini;-99.7,129.8,-117.9,-126.6;usrif_m4
+01799;KP;Jimini;-99.7,129.8,-117.9,-126.6;us_specops
+01802;VE;Luda;-286.9,80.1,-230.8,-180.0;usjep_hmmwv;usjep_hmmwv_driver;False
+01810;VX;kkk noocher;-279.6,80.4,-244.0,-30.8;usjep_hmmwv;usjep_hmmwv_driver
+01810;AC;kkk noocher;ars_d30_barrel;0;40
+01810;VE;kkk noocher;-277.8,79.8,-243.1,0.0;usjep_hmmwv;usjep_hmmwv_cupolabase;False
+01812;VX;Luda;-265.9,80.3,-255.3,-48.7;usjep_hmmwv;usjep_hmmwv_driver
+01812;VE;Luda;-264.5,79.7,-253.8,0.0;usjep_hmmwv;usjep_hmmwv_cupolabase;False
+01814;SC;Luda;2
+01814;FA;Luda;capture_assist
+01814;KL;kkk noocher;-278.1,79.8,-243.2,0.0;Luda;-264.1,79.7,-254.2,0.0;hmg_m2hb;usjep_hmmwv
+01814;AC;Luda;hmg_m2hb_ammo;0;7
+01814;AC;Luda;hmg_m2hb;3;9
+01814;KD;kkk noocher;-278.1,79.8,-243.2,0.0;mec_specops
+01814;AC;kkk noocher;hmg_m2hb_ammo;0;14
+01814;AC;kkk noocher;hmg_m2hb;17;18
+01814;VX;kkk noocher;-142.0,98.0,-134.0,91.0;usjep_hmmwv;usjep_hmmwv_cupolabase
+01814;DT;kkk noocher;-278.1,79.8,-243.2,-29.4
+01815;VX;Luda;-262.9,80.4,-252.9,-48.7;usjep_hmmwv;usjep_hmmwv_cupolabase
+01815;AC;Luda;hmg_m2hb_ammo;0;10
+01815;AC;Luda;hmg_m2hb;3;12
+01827;VE;Luda;-230.2,80.4,-214.7,-23.4;ahe_ah1z;ahe_ah1z_driver;False
+01829;VE;Jimini;-109.2,114.0,-151.3,0.0;parachute;parachute_driver;True
+01829;SP;kkk noocher;-670.5,96.3,217.9,90.0;mec
+01829;WP;kkk noocher;-670.5,96.3,217.9,90.0;rurrif_ak74u
+01829;KP;kkk noocher;-670.5,96.3,217.9,90.0;mec_specops
+01831;VX;Jimini;-110.1,100.8,-151.8,-114.9;parachute;parachute_driver
+01834;VD;usjep_hmmwv;-284.5,74.9,-601.6,79.6;None;None;Jimini
+01855;WP;kkk noocher;-640.2,96.3,209.4,102.7;c4_explosives
+01861;VD;ats_tow;-146.6,97.1,-162.0,0.2;kkk noocher;-621.8,96.3,205.6,15.8;None
+01864;VE;kkk noocher;-621.7,96.4,208.8,180.0;jep_vodnik;jep_vodnik_driver;False
+01864;AC;kkk noocher;c4_explosives;0;5
+01864;AC;kkk noocher;ars_d30_barrel;1;10
+01866;VD;ahe_ah1z;-142.5,116.4,-139.2,-40.9;kkk noocher;-621.7,96.4,208.8,180.0;Luda
+01866;KL;Luda;-142.5,116.4,-139.2,-40.9;kkk noocher;-621.7,96.4,208.8,180.0;ars_d30_barrel;jep_vodnik
+01866;KD;Luda;-142.5,116.4,-139.2,-40.9;us_medic
+01866;VX;Luda;-142.0,98.0,-134.0,91.0;ahe_ah1z;ahe_ah1z_driver
+01866;DT;Luda;-142.5,116.4,-139.2,-40.9
+01881;SP;Luda;-99.8,129.9,-128.3,18.0;us
+01881;WP;Luda;-99.8,129.9,-128.3,18.0;usrif_m16a2
+01881;KP;Luda;-99.8,129.9,-128.3,18.0;us_medic
+01891;CP;4052;-467.5,99.6,-77.1,0.0;middle;us
+01898;VD;usjep_hmmwv;-278.1,80.1,-243.0,-29.5;None;None;kkk noocher
+01899;VE;Luda;-98.1,129.8,-145.5,-115.0;ahe_ah1z;ahe_ah1z_driver;False
+01906;VX;kkk noocher;-321.4,95.1,-115.4,11.4;jep_vodnik;jep_vodnik_driver
+01913;VD;jep_vodnik;-321.3,92.3,-115.6,17.4;None;None;kkk noocher
+01915;WP;kkk noocher;-321.2,92.2,-133.4,26.4;rurrif_ak74u
+01933;CP;4046;-316.3,79.3,-226.3,0.0;middle;mec
+01933;SC;Luda;1
+01933;FA;Luda;neutralize
+01933;SC;Jimini;2
+01933;FA;Jimini;capture
+01943;CP;4046;-316.3,79.3,-226.3,0.0;middle;None
+01943;SC;Luda;1
+01943;FA;Luda;capture_assist
+01943;SC;Jimini;2
+01943;FA;Jimini;capture
+01953;VE;Jimini;-323.2,80.2,-219.9,0.0;ahe_ah1z;ahe_ah1z_cogunner;False
+01964;SC;Luda;1
+01964;FA;Luda;neutralize_assist
+01964;HL;None;None;Luda;-335.6,137.6,-212.6,-110.2
+01968;VE;kkk noocher;-319.0,80.4,-230.6,-132.9;us_bipod;us_bipod_driver;False
+01968;AC;kkk noocher;rurrif_ak74u;47;82
+01971;VX;kkk noocher;-318.0,80.4,-229.7,-132.9;us_bipod;us_bipod_driver
+01971;AC;kkk noocher;uslmg_m249saw_stationary;0;6
+01971;AC;kkk noocher;m249saw_ammo;0;3
+01986;CP;4046;-316.3,79.3,-226.3,0.0;middle;us
+02002;GS;end;sharqi_peninsula;600;0
+02002;AC;kkk noocher;rurrif_ak74u;53;89
+02002;WN;mec;3
+02002;LS;us;3
+02047;GS;pre;sharqi_peninsula;600;0
+02047;RS;0
+02047;GS;play;songhua_stalemate;600;0
+02054;GS;pre;songhua_stalemate;600;0
+02054;RS;0
+02054;GS;play;songhua_stalemate;600;0
+02054;CP;4053;201.0,170.4,128.0,0.0;top;us
+02054;CP;4054;113.0,172.4,-179.0,0.0;top;us
+02054;CP;4055;-5.8,170.4,-349.3,0.0;bottom;None
+02054;CP;4056;-145.4,168.3,-91.0,0.0;bottom;None
+02054;CP;4057;-176.0,175.0,-442.0,0.0;top;ch
+02054;CP;4058;-269.0,168.1,-175.0,0.0;top;ch
+02054;CP;4059;-496.9,243.3,-127.8,0.0;top;ch
+02054;CP;4060;290.7,199.2,-164.8,0.0;top;us
+02093;SP;Luda;276.0,200.4,-194.0,90.0;us
+02093;WP;Luda;276.0,200.4,-194.0,90.0;usrif_remington11-87
+02093;KP;Luda;276.0,200.4,-194.0,90.0;us_engineer
+02103;SP;Jimini;130.0,169.5,93.0,-110.4;us
+02103;WP;Jimini;130.0,169.5,93.0,-110.4;usrif_m24
+02103;KP;Jimini;130.0,169.5,93.0,-110.4;us_sniper
+02108;VE;Jimini;119.1,169.4,90.9,-98.4;us_bipod;us_bipod_driver;False
+02109;VE;Luda;331.1,200.5,-134.9,-47.4;usthe_uh60;usthe_uh60_driver;False
+02109;VX;Jimini;120.4,169.4,91.1,-98.4;us_bipod;us_bipod_driver
+02115;SP;kkk noocher;-475.8,244.5,-127.8,-179.1;ch
+02115;WP;kkk noocher;-475.8,244.5,-127.8,-179.1;chrif_type95
+02115;KP;kkk noocher;-475.8,244.5,-127.8,-179.1;ch_specops
+02122;VE;Jimini;164.0,168.9,114.0,-90.0;jeep_faav;jeep_faav_driver;False
+02135;VE;kkk noocher;-457.0,240.6,-162.0,90.0;apc_wz551;apc_wz551_driver;False
+02142;SQ;kkk noocher;None
+02142;CM;ch;kkk noocher
+02161;VX;kkk noocher;-289.6,169.4,-103.5,157.6;apc_wz551;apc_wz551_driver
+02164;WP;kkk noocher;-289.9,169.1,-98.2,69.6;c4_explosives
+02170;VE;kkk noocher;-287.0,168.8,-100.0,0.0;jep_paratrooper;jep_paratrooper_driver;False
+02170;AC;kkk noocher;c4_explosives;0;5
+02195;CP;4064;-145.4,168.3,-91.0,0.0;middle;None
+02195;SC;Jimini;2
+02195;FA;Jimini;neutralize
+02197;VX;Luda;-166.8,167.6,-40.7,27.2;usthe_uh60;usthe_uh60_driver
+02201;WP;Luda;-166.0,167.5,-40.1,-94.8;wrench
+02207;VE;Luda;-169.8,167.8,-42.1,27.5;usthe_uh60;usthe_uh60_driver;False
+02207;AC;Luda;wrench;0;3
+02222;CP;4064;-145.4,168.3,-91.0,0.0;middle;us
+02238;CP;4063;-5.8,170.4,-349.3,0.0;middle;None
+02238;SC;Jimini;2
+02238;FA;Jimini;capture
+02239;VD;apc_wz551;-291.1,168.8,-105.3,163.7;None;None;kkk noocher
+02242;CP;4064;-145.4,168.3,-91.0,0.0;middle;None
+02261;VX;Jimini;-96.2,167.9,-160.4,-23.1;jeep_faav;jeep_faav_driver
+02261;AC;Jimini;car_horn;0;4
+02261;VE;Jimini;-94.4,168.1,-159.0,0.0;jeep_faav;jeep_faav_rear_passenger;False
+02264;VX;kkk noocher;-97.9,167.7,-151.4,137.6;jep_paratrooper;jep_paratrooper_driver
+02264;AC;kkk noocher;ars_d30_barrel;0;15
+02264;VD;jeep_faav;-92.9,166.7,-161.3,-23.8;None;None;Jimini
+02264;KL;Jimini;-93.0,167.7,-161.6,0.0;None;None;None;None
+02264;KD;Jimini;-93.0,167.7,-161.6,0.0;us_sniper
+02264;AC;Jimini;hmg_m2hb_ammo;0;11
+02264;AC;Jimini;hmg_m2hb;8;13
+02264;VX;Jimini;-82.0,173.0,-254.0,55.0;jeep_faav;jeep_faav_rear_passenger
+02264;DT;Jimini;-93.0,167.7,-161.6,-23.8
+02264;VD;jep_paratrooper;-95.1,167.2,-157.9,148.3;kkk noocher;-97.3,167.5,-152.1,136.4;kkk noocher
+02264;WP;kkk noocher;-97.4,167.5,-152.0,137.0;chrif_type95
+02277;VX;Luda;-142.0,170.2,-91.3,-19.3;usthe_uh60;usthe_uh60_driver
+02280;SP;Jimini;130.0,169.5,93.0,-110.4;us
+02280;WP;Jimini;130.0,169.5,93.0,-110.4;usrif_m24
+02280;KP;Jimini;130.0,169.5,93.0,-110.4;us_sniper
+02289;WP;Luda;-146.7,169.3,-90.4,160.4;uspis_92fs
+02290;WP;Luda;-146.7,169.3,-90.4,160.4;kni_knife
+02291;WP;Luda;-146.7,169.3,-90.4,160.4;usrif_remington11-87
+02291;WP;Luda;-146.7,169.3,-90.4,160.4;ushgr_m67
+02291;CP;4064;-145.4,168.3,-91.0,0.0;middle;ch
+02291;SC;Luda;2
+02291;FA;Luda;capture_assist
+02292;WP;Luda;-146.7,169.3,-90.4,160.4;usrif_remington11-87
+02304;VE;Jimini;212.5,169.0,86.8,-90.0;usapc_lav25;usapc_lav25_driver;False
+02304;KL;Luda;-146.7,169.3,-90.4,-166.5;kkk noocher;-118.1,170.8,-149.2,-24.8;ars_d30_barrel;None
+02304;AC;kkk noocher;chrif_type95;1;1
+02304;AC;kkk noocher;ars_d30_barrel;1;30
+02304;KD;Luda;-146.7,169.3,-90.4,-166.5;us_engineer
+02304;AC;Luda;wrench;0;4
+02304;DT;Luda;-146.7,169.3,-90.4,-166.5
+02308;VD;usthe_uh60;-142.9,170.0,-94.3,-22.8;kkk noocher;-118.8,170.5,-147.9,-25.2;Luda
+02319;SP;Luda;278.0,200.2,-135.0,88.2;us
+02319;WP;Luda;278.0,200.2,-135.0,88.2;usrif_remington11-87
+02319;KP;Luda;278.0,200.2,-135.0,88.2;us_engineer
+02324;CP;4064;-145.4,168.3,-91.0,0.0;middle;None
+02342;VE;Luda;331.1,200.5,-134.9,-47.4;usthe_uh60;usthe_uh60_driver;False
+02342;AC;Luda;usrif_remington11-87;0;2
+02344;CP;4064;-145.4,168.3,-91.0,0.0;middle;None
+02350;VE;kkk noocher;-152.7,168.9,-64.4,179.8;jeep_faav;jeep_faav_driver;False
+02376;VX;kkk noocher;-9.7,171.9,-344.0,116.0;jeep_faav;jeep_faav_driver
+02376;AC;kkk noocher;car_horn;0;22
+02381;VE;kkk noocher;-1.1,171.1,-357.2,0.1;usapc_lav25;usapc_lav25_driver;False
+02396;CP;4063;-5.8,170.4,-349.3,0.0;middle;us
+02403;VX;Luda;-141.1,169.3,-88.7,-157.5;usthe_uh60;usthe_uh60_driver
+02403;CP;4064;-145.4,168.3,-91.0,0.0;middle;ch
+02403;SC;Luda;1
+02403;FA;Luda;neutralize
+02403;SC;Jimini;2
+02403;FA;Jimini;neutralize
+02413;CP;4064;-145.4,168.3,-91.0,0.0;middle;None
+02413;SC;Luda;1
+02413;FA;Luda;capture_assist
+02413;SC;Jimini;2
+02413;FA;Jimini;capture
+02415;VE;Luda;-138.3,169.6,-87.0,-158.0;usthe_uh60;usthe_uh60_driver;False
+02416;CP;4063;-5.8,170.4,-349.3,0.0;middle;None
+02437;VX;kkk noocher;97.9,173.5,-183.0,21.2;usapc_lav25;usapc_lav25_driver
+02437;AC;kkk noocher;ars_d30_barrel;5;45
+02442;VD;jeep_faav;-7.3,171.0,-347.7,144.7;None;None;kkk noocher
+02466;VD;usthe_uh60;-10.4,176.5,-346.1,95.3;None;None;Luda
+02466;KL;Luda;-10.4,176.5,-346.1,95.3;None;None;None;None
+02466;KD;Luda;-10.4,176.5,-346.1,95.3;us_engineer
+02466;VX;Luda;-146.7,169.3,-90.4,-166.5;usthe_uh60;usthe_uh60_driver
+02466;DT;Luda;-10.4,176.5,-346.1,95.3
+02470;CP;4062;113.0,172.4,-179.0,0.0;middle;us
+02480;CP;4063;-5.8,170.4,-349.3,0.0;middle;ch
+02480;SC;Jimini;2
+02480;FA;Jimini;neutralize
+02482;SP;Luda;275.7,205.8,-189.7,92.7;us
+02482;WP;Luda;275.7,205.8,-189.7,92.7;usrif_remington11-87
+02482;KP;Luda;275.7,205.8,-189.7,92.7;us_engineer
+02500;CP;4062;113.0,172.4,-179.0,0.0;middle;None
+02500;CP;4063;-5.8,170.4,-349.3,0.0;middle;None
+02500;SC;Jimini;2
+02500;FA;Jimini;capture
+02508;VE;kkk noocher;101.5,173.1,-180.0,34.8;usapc_lav25;usapc_lav25_driver;False
+02508;AC;kkk noocher;ars_d30_barrel;8;60
+02509;VX;Jimini;-22.3,171.5,-348.4,-177.7;usapc_lav25;usapc_lav25_driver
+02509;AC;Jimini;usapc_lav25_towlauncher;0;1
+02517;VE;Jimini;11.7,171.5,-337.0,0.0;us_bipod;us_bipod_driver;False
+02519;VX;Jimini;11.7,171.5,-338.3,0.0;us_bipod;us_bipod_driver
+02524;VE;Luda;331.1,200.5,-134.9,-47.4;usthe_uh60;usthe_uh60_driver;False
+02564;VX;Luda;-29.5,171.8,-324.7,-142.9;usthe_uh60;usthe_uh60_driver
+02567;WP;Luda;-25.9,171.4,-339.3,148.5;wrench
+02568;WP;Jimini;1.2,171.4,-358.6,-38.0;uspis_92fs_silencer
+02568;WP;Jimini;1.2,171.4,-358.6,-38.0;usrif_m24
+02569;WP;Jimini;1.2,171.4,-358.6,-38.0;ushgr_m67
+02569;WP;Jimini;1.2,171.4,-358.6,-38.0;usmin_claymore
+02575;KL;Luda;-26.9,171.4,-345.3,-136.4;kkk noocher;-16.3,171.1,-340.8,-151.8;usapc_lav25_barrel;usapc_lav25
+02575;AC;kkk noocher;usapc_lav25_towlauncher;0;2
+02575;AC;kkk noocher;usapc_lav25_barrel;2;7
+02577;WP;Jimini;-16.7,171.4,-344.1,-54.0;ushgr_m67
+02578;VD;usapc_lav25;-24.9,171.2,-348.3,-176.4;kkk noocher;-16.4,171.1,-341.0,-151.7;Jimini
+02580;KD;Luda;-28.4,170.5,-348.0,0.0;us_engineer
+02580;AC;Luda;wrench;0;6
+02583;VD;jeep_faav;-28.3,171.1,-350.2,48.2;kkk noocher;-14.9,171.1,-338.1,-159.9;None
+02585;WP;Jimini;-14.6,171.4,-358.1,-18.1;kni_knife
+02587;WP;Jimini;-14.6,171.4,-358.1,-18.1;uspis_92fs_silencer
+02588;WP;Jimini;-14.6,171.4,-358.1,-18.1;usrif_m24
+02590;DT;Luda;-28.5,170.5,-348.0,0.0
+02590;SP;Luda;276.0,200.4,-194.0,90.0;us
+02590;WP;Luda;276.0,200.4,-194.0,90.0;usrif_remington11-87
+02590;KP;Luda;276.0,200.4,-194.0,90.0;us_engineer
+02595;KL;Jimini;-18.8,171.8,-359.7,-11.1;kkk noocher;-8.4,171.1,-354.6,155.6;usapc_lav25_barrel;usapc_lav25
+02595;AC;kkk noocher;usapc_lav25_towlauncher;0;3
+02595;AC;kkk noocher;usapc_lav25_barrel;4;37
+02599;KD;Jimini;-19.5,170.9,-359.4,0.0;us_sniper
+02599;AC;Jimini;usmin_claymore;0;2
+02599;AC;Jimini;ushgr_m67;1;1
+02610;DT;Jimini;-19.5,170.9,-359.4,0.0
+02610;SP;Jimini;130.0,169.5,93.0,-110.4;us
+02610;WP;Jimini;130.0,169.5,93.0,-110.4;usrif_m24
+02610;KP;Jimini;130.0,169.5,93.0,-110.4;us_sniper
+02615;CP;4063;-5.8,170.4,-349.3,0.0;middle;us
+02627;VE;Jimini;164.0,168.9,114.0,-90.0;jeep_faav;jeep_faav_driver;False
+02635;CP;4063;-5.8,170.4,-349.3,0.0;middle;None
+02637;VX;Jimini;69.7,166.6,73.2,-148.8;jeep_faav;jeep_faav_driver
+02638;VD;jeep_faav;67.0,164.8,72.7,-151.7;None;None;Jimini
+02649;KL;Luda;312.4,200.1,-152.7,20.6;kkk noocher;-17.3,171.1,-347.4,-143.8;ars_d30_barrel;usapc_lav25
+02649;AC;kkk noocher;ars_d30_barrel;9;75
+02649;AC;kkk noocher;usapc_lav25_barrel;5;39
+02649;VX;kkk noocher;-16.6,171.5,-350.0,-138.9;usapc_lav25;usapc_lav25_driver
+02651;KD;Luda;315.9,199.3,-155.1,0.0;us_engineer
+02651;AC;Luda;usrif_remington11-87;0;1
+02651;DT;Luda;315.9,199.3,-155.1,0.0
+02652;VE;kkk noocher;-26.5,171.1,-350.7,54.2;jeep_faav;jeep_faav_driver;False
+02653;VD;jeep_faav;337.0,199.8,-161.0,-180.0;kkk noocher;-26.5,171.1,-350.7,54.2;None
+02656;VD;usapc_lav25;325.2,199.9,-163.2,-3.6;kkk noocher;-25.7,171.0,-334.7,-51.2;None
+02660;VE;Jimini;100.0,166.8,49.4,-91.0;boat_rib;boat_rib_driver;False
+02664;SP;Luda;276.0,200.4,-194.0,90.0;us
+02664;WP;Luda;276.0,200.4,-194.0,90.0;usrif_remington11-87
+02664;KP;Luda;276.0,200.4,-194.0,90.0;us_engineer
+02668;GS;end;songhua_stalemate;600;0
+02668;AC;kkk noocher;car_horn;0;24
+02668;WN;ch;3
+02668;LS;us;3
+02713;GS;pre;songhua_stalemate;600;0
+02713;RS;0
+02713;GS;play;strike_at_karkand;600;0
+02720;GS;pre;strike_at_karkand;600;0
+02720;RS;0
+02720;GS;play;strike_at_karkand;600;0
+02720;CP;4069;-161.0,161.3,-262.8,0.0;top;us
+02720;CP;4070;-194.4,158.2,11.4,0.0;top;mec
+02720;CP;4071;-220.1,155.8,98.1,0.0;top;mec
+02720;CP;4072;-122.4,149.9,256.6,0.0;top;mec
+02720;CP;4073;14.0,156.0,288.9,0.0;top;mec
+02720;CP;4074;29.4,150.0,164.4,0.0;top;mec
+02720;CP;4075;183.0,152.7,166.0,0.0;top;mec
+02720;CP;4076;104.0,152.7,231.1,0.0;top;mec
+02720;CP;4077;-323.7,168.4,220.2,0.0;top;mec
+02762;SP;Jimini;-160.2,162.3,-319.5,0.0;us
+02762;WP;Jimini;-160.2,162.3,-319.5,0.0;usrif_m24
+02762;KP;Jimini;-160.2,162.3,-319.5,0.0;us_sniper
+02767;SP;Luda;-179.0,162.3,-316.0,52.1;us
+02767;WP;Luda;-179.0,162.3,-316.0,52.1;usrif_remington11-87
+02767;KP;Luda;-179.0,162.3,-316.0,52.1;us_engineer
+02776;SP;kkk noocher;-222.8,157.1,14.7,90.0;mec
+02776;WP;kkk noocher;-222.8,157.1,14.7,90.0;rurrif_ak74u
+02776;KP;kkk noocher;-222.8,157.1,14.7,90.0;mec_specops
+02788;VE;Jimini;-146.5,162.0,-268.6,-0.0;usapc_lav25;usapc_lav25_driver;False
+02803;SQ;kkk noocher;None
+02803;CM;mec;kkk noocher
+02811;VE;Luda;-133.9,162.0,-291.7,-90.0;usapc_lav25;usapc_lav25_driver;False
+02845;SQ;Luda;None
+02845;CM;us;Luda
+02872;CP;4079;-194.4,158.2,11.4,0.0;middle;mec
+02926;WP;kkk noocher;-186.0,156.9,28.7,-111.3;c4_explosives
+02959;SC;Jimini;2
+02959;FA;Jimini;capture
+02959;SC;Luda;1
+02959;FA;Luda;capture_assist
+02959;KL;kkk noocher;-186.0,156.9,29.1,-129.1;Jimini;-211.9,156.5,20.0,85.4;usapc_lav25_barrel;usapc_lav25
+02959;AC;Jimini;usapc_lav25_towlauncher;0;4
+02959;AC;Jimini;usapc_lav25_barrel;7;103
+02963;KD;kkk noocher;-186.0,156.0,29.5,0.0;mec_specops
+02963;AC;kkk noocher;ars_d30_barrel;3;20
+02969;VX;Luda;-165.6,156.9,27.2,-27.2;usapc_lav25;usapc_lav25_driver
+02974;DT;kkk noocher;-186.0,156.0,29.5,0.0
+02974;SP;kkk noocher;-189.8,156.9,26.4,-104.1;mec
+02974;WP;kkk noocher;-189.8,156.9,26.4,-104.1;rurrif_ak74u
+02974;KP;kkk noocher;-189.8,156.9,26.4,-104.1;mec_specops
+02982;KL;kkk noocher;-193.7,159.2,14.9,-179.0;Luda;-192.9,159.2,11.3,-9.5;usrif_remington11-87;None
+02982;AC;Luda;usrif_remington11-87;1;2
+02986;KD;kkk noocher;-193.3,158.3,17.4,0.0;mec_specops
+02986;AC;kkk noocher;rurrif_ak74u;1;10
+02993;CP;4079;-194.4,158.2,11.4,0.0;middle;mec
+02997;DT;kkk noocher;-193.3,158.3,17.4,0.0
+02997;SP;kkk noocher;-245.0,156.9,123.4,178.7;mec
+02997;WP;kkk noocher;-245.0,156.9,123.4,178.7;rurrif_ak74u
+02997;KP;kkk noocher;-245.0,156.9,123.4,178.7;mec_specops
+03001;WP;kkk noocher;-245.4,156.8,114.5,-159.1;c4_explosives
+03007;VE;kkk noocher;-249.0,156.9,111.4,90.0;jep_vodnik;jep_vodnik_driver;False
+03007;AC;kkk noocher;c4_explosives;0;5
+03018;CP;4079;-194.4,158.2,11.4,0.0;middle;None
+03024;WP;Luda;-174.6,156.9,27.1,87.2;wrench
+03025;CP;4080;-220.1,155.8,98.1,0.0;middle;mec
+03025;SC;Jimini;2
+03025;FA;Jimini;neutralize
+03025;SC;Luda;1
+03025;FA;Luda;capture
+03031;VE;Luda;-163.9,156.5,28.0,-26.2;usapc_lav25;usapc_lav25_driver;False
+03031;AC;Luda;wrench;0;3
+03041;VX;kkk noocher;-218.9,157.1,86.9,-4.1;jep_vodnik;jep_vodnik_driver
+03042;VD;jep_vodnik;-217.2,157.0,92.7,-3.8;kkk noocher;-218.9,156.8,87.4,-2.2;kkk noocher
+03042;VD;usapc_lav25;-218.6,156.5,99.9,-19.4;kkk noocher;-218.9,156.8,87.4,-2.2;Jimini
+03042;KL;Jimini;-218.6,156.5,99.9,-19.4;kkk noocher;-218.9,156.8,87.4,-2.2;c4_explosives;None
+03042;KD;Jimini;-218.6,156.5,99.9,-19.4;us_sniper
+03042;AC;Jimini;usapc_lav25_barrel;7;104
+03042;VX;Jimini;-203.0,157.0,-27.0,-28.0;usapc_lav25;usapc_lav25_driver
+03042;DT;Jimini;-218.6,156.5,99.9,-19.4
+03042;WP;kkk noocher;-218.9,156.8,87.3,-2.2;rurrif_ak74u
+03057;SP;Jimini;-179.0,162.3,-316.0,52.1;us
+03057;WP;Jimini;-179.0,162.3,-316.0,52.1;usrif_m24
+03057;KP;Jimini;-179.0,162.3,-316.0,52.1;us_sniper
+03059;KL;kkk noocher;-221.6,156.8,98.0,163.6;Luda;-212.5,156.5,73.1,-67.6;usapc_lav25_barrel;usapc_lav25
+03059;AC;Luda;usapc_lav25_barrel;1;2
+03061;CP;4080;-220.1,155.8,98.1,0.0;middle;None
+03063;KD;kkk noocher;-222.9,155.9,98.6,0.0;mec_specops
+03074;DT;kkk noocher;-222.9,155.9,98.6,0.0
+03084;SP;kkk noocher;-355.0,174.9,171.5,39.9;mec
+03084;WP;kkk noocher;-355.0,174.9,171.5,39.9;rurrif_ak74u
+03084;KP;kkk noocher;-355.0,174.9,171.5,39.9;mec_specops
+03086;CP;4080;-220.1,155.8,98.1,0.0;middle;None
+03092;WP;kkk noocher;-341.3,171.7,181.5,8.9;c4_explosives
+03101;VE;kkk noocher;-339.3,169.6,211.2,126.2;jep_vodnik;jep_vodnik_driver;False
+03101;AC;kkk noocher;c4_explosives;0;5
+03120;VX;kkk noocher;-239.2,156.8,44.7,130.9;jep_vodnik;jep_vodnik_driver
+03121;VD;jep_vodnik;-238.5,157.0,40.4,146.2;kkk noocher;-239.5,156.8,45.9,175.8;kkk noocher
+03121;VD;usapc_lav25;-241.2,156.5,37.4,176.6;kkk noocher;-239.5,156.8,45.9,175.8;Luda
+03121;KL;Luda;-241.2,156.5,37.4,176.6;kkk noocher;-239.5,156.8,45.9,175.8;c4_explosives;None
+03121;KD;Luda;-241.2,156.5,37.4,176.6;us_engineer
+03121;AC;Luda;usapc_lav25_barrel;1;3
+03121;VX;Luda;-203.0,157.0,-27.0,-28.0;usapc_lav25;usapc_lav25_driver
+03121;DT;Luda;-241.2,156.5,37.4,176.6
+03121;WP;kkk noocher;-239.5,156.8,46.0,175.8;rurrif_ak74u
+03136;SP;Luda;-121.8,162.3,-282.9,-90.0;us
+03136;WP;Luda;-121.8,162.3,-282.9,-90.0;usrif_remington11-87
+03136;KP;Luda;-121.8,162.3,-282.9,-90.0;us_engineer
+03146;WP;kkk noocher;-247.6,156.8,16.4,66.3;ushgr_m67
+03148;VE;Luda;-146.5,162.0,-268.6,-0.0;usapc_lav25;usapc_lav25_driver;False
+03166;SC;kkk noocher;-2
+03166;FA;kkk noocher;capture
+03166;KL;kkk noocher;-253.2,156.8,13.4,84.9;kkk noocher;-253.2,156.8,13.4,84.9;ushgr_m67;None
+03166;AC;kkk noocher;ars_d30_barrel;0;6
+03166;AC;kkk noocher;ushgr_m67;0;2
+03171;KD;kkk noocher;-255.7,155.9,13.1,0.0;mec_specops
+03171;AC;kkk noocher;ars_d30_barrel;0;10
+03181;DT;kkk noocher;-255.7,155.9,13.1,0.0
+03181;SP;kkk noocher;-355.0,174.9,171.5,39.9;mec
+03181;WP;kkk noocher;-355.0,174.9,171.5,39.9;rurrif_ak74u
+03181;KP;kkk noocher;-355.0,174.9,171.5,39.9;mec_specops
+03184;VE;Jimini;-236.5,156.5,71.0,0.0;usapc_lav25;usapc_lav25_rearpassenger_l;False
+03194;WP;kkk noocher;-339.5,169.8,200.8,16.0;c4_explosives
+03199;VE;kkk noocher;-339.3,169.6,211.2,126.2;jep_vodnik;jep_vodnik_driver;False
+03199;AC;kkk noocher;c4_explosives;0;5
+03200;VX;Jimini;-295.2,157.1,148.6,-134.0;usapc_lav25;usapc_lav25_rearpassenger_l
+03200;AC;Jimini;firingport_m16;0;1
+03200;VE;Jimini;-294.8,157.1,151.1,0.0;usapc_lav25;usapc_lav25_rearpassenger_r;False
+03201;VX;Jimini;-295.2,158.3,155.2,68.3;usapc_lav25;usapc_lav25_rearpassenger_r
+03201;VE;Jimini;-297.6,157.8,155.8,180.0;usapc_lav25;usapc_lav25_rearpassenger_bl;False
+03202;VX;Jimini;-300.4,159.5,162.8,179.4;usapc_lav25;usapc_lav25_rearpassenger_bl
+03202;VE;Jimini;-298.4,159.3,164.0,180.0;usapc_lav25;usapc_lav25_rearpassenger_br;False
+03210;VX;Jimini;-309.2,169.0,219.2,74.5;usapc_lav25;usapc_lav25_rearpassenger_br
+03210;VE;Jimini;-309.8,168.6,216.9,0.0;usapc_lav25;usapc_lav25_rearpassenger_r;False
+03213;VX;Luda;-322.8,169.5,212.4,-89.5;usapc_lav25;usapc_lav25_driver
+03222;CP;4086;-323.7,168.4,220.2,0.0;middle;mec
+03222;SC;Jimini;2
+03222;FA;Jimini;neutralize
+03222;SC;Luda;1
+03222;FA;Luda;capture
+03223;VX;Jimini;-321.2,169.6,216.4,0.7;usapc_lav25;usapc_lav25_rearpassenger_r
+03223;AC;Jimini;firingport_m16;0;3
+03223;VE;Jimini;-322.7,169.1,214.4,0.0;usapc_lav25;usapc_lav25_rearpassenger_l;False
+03225;VX;Jimini;-321.3,169.6,212.4,-179.3;usapc_lav25;usapc_lav25_rearpassenger_l
+03225;VE;Jimini;-322.7,169.1,214.4,180.0;usapc_lav25;usapc_lav25_rearpassenger_bl;False
+03226;VX;Jimini;-321.6,169.6,212.4,90.7;usapc_lav25;usapc_lav25_rearpassenger_bl
+03226;VE;Jimini;-322.7,169.1,214.4,0.0;usapc_lav25;usapc_lav25_rearpassenger_r;False
+03228;VX;Jimini;-321.2,169.6,216.4,0.7;usapc_lav25;usapc_lav25_rearpassenger_r
+03228;VE;Jimini;-322.7,169.1,214.4,180.0;usapc_lav25;usapc_lav25_rearpassenger_bl;False
+03229;VX;Jimini;-321.6,169.6,212.4,90.7;usapc_lav25;usapc_lav25_rearpassenger_bl
+03229;VE;Jimini;-322.7,169.1,214.4,180.0;usapc_lav25;usapc_lav25_rearpassenger_br;False
+03232;CP;4086;-323.7,168.4,220.2,0.0;middle;None
+03232;SC;Jimini;2
+03232;FA;Jimini;capture
+03232;SC;Luda;1
+03232;FA;Luda;capture
+03232;VX;kkk noocher;-195.9,157.1,-0.8,109.8;jep_vodnik;jep_vodnik_driver
+03233;VE;Luda;-322.7,169.1,214.4,-89.3;usapc_lav25;usapc_lav25_driver;False
+03234;VX;Jimini;-321.7,169.6,216.4,90.7;usapc_lav25;usapc_lav25_rearpassenger_br
+03234;AC;Jimini;firingport_m16;0;5
+03234;VE;Jimini;-322.9,169.1,214.4,0.0;usapc_lav25;usapc_lav25_rearpassenger_r;False
+03252;CP;4079;-194.4,158.2,11.4,0.0;middle;us
+03258;VX;Jimini;-124.2,151.1,258.6,-124.3;usapc_lav25;usapc_lav25_rearpassenger_r
+03258;AC;Jimini;firingport_m16;0;7
+03260;VX;Luda;-119.9,151.0,259.4,146.8;usapc_lav25;usapc_lav25_driver
+03264;VE;Jimini;-131.0,150.9,282.6,180.0;jep_vodnik;jep_vodnik_driver;False
+03268;KL;Luda;-123.5,150.9,255.6,-3.6;kkk noocher;-193.8,159.2,11.2,-60.7;None;None
+03268;AC;kkk noocher;ars_d30_barrel;0;10
+03272;VD;jep_vodnik;-135.5,150.9,234.6,175.9;kkk noocher;-193.8,159.2,11.2,-60.7;Jimini
+03272;KL;Jimini;-135.5,150.9,234.6,175.9;kkk noocher;-193.8,159.2,11.2,-60.7;ars_d30_barrel;None
+03272;KD;Jimini;-135.5,150.9,234.6,175.9;us_sniper
+03272;VX;Jimini;-218.6,156.5,99.9,-19.4;jep_vodnik;jep_vodnik_driver
+03272;DT;Jimini;-135.5,150.9,234.6,175.9
+03273;KD;Luda;-125.3,150.4,254.6,0.0;us_engineer
+03277;CP;4079;-194.4,158.2,11.4,0.0;middle;None
+03283;DT;Luda;-125.3,150.4,254.6,0.0
+03285;SP;Luda;-160.2,162.3,-319.5,0.0;us
+03285;WP;Luda;-160.2,162.3,-319.5,0.0;usrif_remington11-87
+03285;KP;Luda;-160.2,162.3,-319.5,0.0;us_engineer
+03287;SP;Jimini;-206.0,156.9,107.0,-88.9;us
+03287;WP;Jimini;-206.0,156.9,107.0,-88.9;usrif_m24
+03287;KP;Jimini;-206.0,156.9,107.0,-88.9;us_sniper
+03290;VE;kkk noocher;-196.7,157.0,-2.9,109.3;jep_vodnik;jep_vodnik_driver;False
+03294;VE;Jimini;-186.3,155.6,96.2,-155.3;ats_hj8;ats_hj8_driver;False
+03296;VX;Jimini;-185.6,156.8,97.5,-155.3;ats_hj8;ats_hj8_driver
+03297;VE;Luda;-172.8,162.0,-309.1,90.0;ustnk_m1a2;ustnk_m1a2_driver;False
+03299;CP;4081;-122.4,149.9,256.6,0.0;middle;mec
+03308;WP;Jimini;-200.8,156.9,58.2,179.3;ushgr_m67
+03309;WP;Jimini;-200.8,156.9,58.2,179.3;usmin_claymore
+03335;GS;end;strike_at_karkand;600;0
+03335;WN;us;3
+03335;LS;mec;3
+03380;GS;pre;strike_at_karkand;600;0
+03380;RS;0
+03380;GS;play;taraba_quarry;600;0
+03387;GS;pre;taraba_quarry;600;0
+03387;RS;0
+03387;GS;play;taraba_quarry;600;0
+03387;CP;4087;-154.6,107.3,451.0,0.0;bottom;None
+03387;CP;4088;427.2,162.9,-461.5,0.0;top;eu
+03387;CP;4089;159.2,152.2,-114.7,0.0;top;eu
+03387;CP;4090;-488.8,165.3,-553.2,0.0;top;mec
+03387;CP;4091;-396.9,149.5,-89.5,0.0;top;mec
+03387;CP;4092;-360.0,134.4,192.1,0.0;bottom;None
+03387;CP;4093;18.5,133.7,186.5,0.0;bottom;None
+03435;SP;Jimini;529.4,163.3,-400.9,105.5;eu
+03435;WP;Jimini;529.4,163.3,-400.9,105.5;gbrif_l96a1
+03435;KP;Jimini;529.4,163.3,-400.9,105.5;eu_sniper
+03446;VE;Jimini;567.2,164.0,-441.4,-38.0;usair_f15;usair_f15_driver;False
+03459;SP;kkk noocher;-477.3,167.1,-492.7,-15.2;mec
+03459;WP;kkk noocher;-477.3,167.1,-492.7,-15.2;rurrif_ak74u
+03459;KP;kkk noocher;-477.3,167.1,-492.7,-15.2;mec_specops
+03476;VE;kkk noocher;-496.0,165.3,-488.1,47.4;ats_hj8;ats_hj8_driver;False
+03481;VX;kkk noocher;-497.1,166.5,-489.1,47.4;ats_hj8;ats_hj8_driver
+03486;VD;usair_f15;-496.4,167.5,-451.7,-178.6;None;None;Jimini
+03486;KL;Jimini;-496.4,167.5,-451.7,-178.6;None;None;None;None
+03486;KD;Jimini;-496.4,167.5,-451.7,-178.6;eu_sniper
+03486;AC;Jimini;usair_f15_autocannon;0;5
+03486;AC;Jimini;usair_f15_250kgbomblauncher;0;2
+03486;VX;Jimini;-137.0,105.0,422.0,-35.0;usair_f15;usair_f15_driver
+03486;DT;Jimini;-496.4,167.5,-451.7,-178.6
+03492;SQ;kkk noocher;None
+03492;CM;mec;kkk noocher
+03494;SP;Luda;552.4,163.3,-438.8,-0.9;eu
+03494;WP;Luda;552.4,163.3,-438.8,-0.9;gbrif_benelli_m4
+03494;KP;Luda;552.4,163.3,-438.8,-0.9;eu_engineer
+03501;SP;Jimini;529.4,163.3,-400.9,105.5;eu
+03501;WP;Jimini;529.4,163.3,-400.9,105.5;gbrif_l96a1
+03501;KP;Jimini;529.4,163.3,-400.9,105.5;eu_sniper
+03502;VE;kkk noocher;-438.6,170.5,-495.2,42.8;ats_hj8;ats_hj8_driver;False
+03504;VE;Luda;583.7,163.9,-401.8,-38.0;xpak2_eurofighter;xpak2_eurofighter_driver;False
+03505;VX;kkk noocher;-439.7,171.7,-496.3,42.8;ats_hj8;ats_hj8_driver
+03538;VE;kkk noocher;-443.5,166.0,-584.3,-90.0;jep_mec_paratrooper;jep_mec_paratrooper_driver;False
+03555;VE;Jimini;567.2,164.0,-441.4,-38.0;usair_f15;usair_f15_driver;False
+03572;VX;kkk noocher;-614.6,166.5,-542.9,-46.8;jep_mec_paratrooper;jep_mec_paratrooper_driver
+03572;AC;kkk noocher;ars_d30_barrel;0;1
+03576;VE;kkk noocher;-638.2,166.9,-547.5,38.0;ruair_mig29;ruair_mig29_driver;False
+03576;AC;kkk noocher;ars_d30_barrel;0;7
+03576;VD;xpak2_eurofighter;-356.8,151.0,-141.5,178.6;None;None;Luda
+03576;KL;Luda;-356.8,151.0,-141.5,178.6;None;None;None;None
+03576;KD;Luda;-356.8,151.0,-141.5,178.6;eu_engineer
+03576;VX;Luda;-137.0,105.0,422.0,-35.0;xpak2_eurofighter;xpak2_eurofighter_driver
+03576;DT;Luda;-356.8,151.0,-141.5,178.6
+03591;SP;Luda;529.4,163.3,-400.9,105.5;eu
+03591;WP;Luda;529.4,163.3,-400.9,105.5;gbrif_benelli_m4
+03591;KP;Luda;529.4,163.3,-400.9,105.5;eu_engineer
+03609;SL;eu_1;Luda
+03609;SQ;Luda;eu_1
+03627;VD;usair_f15;-688.5,177.7,195.3,175.4;kkk noocher;-500.1,194.0,332.8,-118.9;Jimini
+03627;KL;Jimini;-688.5,177.7,195.3,175.4;kkk noocher;-500.1,194.0,332.8,-118.9;ruair_archerlauncher;ruair_mig29
+03627;AC;kkk noocher;ruair_mig29_30mmcannon;0;26
+03627;AC;kkk noocher;ruair_archerlauncher;1;6
+03627;AC;kkk noocher;ars_d30_barrel;0;15
+03627;KD;Jimini;-688.5,177.7,195.3,175.4;eu_sniper
+03627;VX;Jimini;-496.4,167.5,-451.7,-178.6;usair_f15;usair_f15_driver
+03627;DT;Jimini;-688.5,177.7,195.3,175.4
+03630;VD;ruair_mig29;-667.0,187.5,35.4,179.1;None;None;kkk noocher
+03630;SC;Jimini;2
+03630;FA;Jimini;capture
+03630;KL;kkk noocher;-667.0,187.5,35.4,179.1;Jimini;-688.5,177.7,195.3,175.4;None;usair_f15
+03630;KD;kkk noocher;-667.0,187.5,35.4,179.1;mec_specops
+03630;AC;kkk noocher;ruair_mig29_30mmcannon;0;46
+03630;VX;kkk noocher;-137.0,105.0,422.0,-47.1;ruair_mig29;ruair_mig29_driver
+03630;DT;kkk noocher;-667.0,187.5,35.4,179.1
+03642;SP;Jimini;552.4,163.3,-438.8,-0.9;eu
+03642;WP;Jimini;552.4,163.3,-438.8,-0.9;gbrif_l96a1
+03642;KP;Jimini;552.4,163.3,-438.8,-0.9;eu_sniper
+03642;VE;Luda;583.7,163.9,-401.8,-38.0;xpak2_eurofighter;xpak2_eurofighter_driver;False
+03645;SP;kkk noocher;-475.5,166.6,-538.6,-149.7;mec
+03645;WP;kkk noocher;-475.5,166.6,-538.6,-149.7;rurrif_ak74u
+03645;KP;kkk noocher;-475.5,166.6,-538.6,-149.7;mec_specops
+03651;VD;jep_mec_paratrooper;-613.6,166.0,-541.1,-46.8;None;None;kkk noocher
+03655;VE;kkk noocher;-443.6,166.0,-551.2,-92.1;jep_mec_paratrooper;jep_mec_paratrooper_driver;False
+03675;VX;kkk noocher;-625.8,166.5,-507.6,-25.8;jep_mec_paratrooper;jep_mec_paratrooper_driver
+03680;VE;kkk noocher;-654.5,167.6,-506.1,38.0;ruair_su34;ruair_su34_driver;False
+03687;VD;xpak2_eurofighter;-158.6,134.5,220.8,-87.0;None;None;Luda
+03687;KL;Luda;-158.6,134.5,220.8,-87.0;None;None;None;None
+03687;KD;Luda;-158.6,134.5,220.8,-87.0;eu_engineer
+03687;AC;Luda;eurofighter_autocannon;0;3
+03687;VX;Luda;-356.8,151.0,-141.5,178.6;xpak2_eurofighter;xpak2_eurofighter_driver
+03687;DT;Luda;-158.6,134.5,220.8,-87.0
+03691;VE;Jimini;567.2,164.0,-441.4,-38.0;usair_f15;usair_f15_driver;False
+03691;AC;Jimini;gbrif_l96a1;0;3
+03702;SP;Luda;552.4,163.3,-438.8,-0.9;eu
+03702;WP;Luda;552.4,163.3,-438.8,-0.9;gbrif_benelli_m4
+03702;KP;Luda;552.4,163.3,-438.8,-0.9;eu_engineer
+03703;VX;kkk noocher;-812.4,1184.6,-437.3,-143.6;ruair_su34;ruair_su34_driver
+03707;VE;kkk noocher;-901.1,1235.2,-553.1,0.0;parachute;parachute_driver;True
+03718;KL;kkk noocher;-899.8,1007.4,-553.3,0.0;None;None;None;None
+03718;KD;kkk noocher;-899.8,1007.4,-553.3,0.0;mec_specops
+03718;VX;kkk noocher;-667.0,187.5,35.4,179.1;parachute;parachute_driver
+03718;DT;kkk noocher;-899.9,1009.5,-553.4,-3.8
+03733;SP;kkk noocher;-470.1,166.6,-573.9,-28.5;mec
+03733;WP;kkk noocher;-470.1,166.6,-573.9,-28.5;rurrif_ak74u
+03733;KP;kkk noocher;-470.1,166.6,-573.9,-28.5;mec_specops
+03744;VE;kkk noocher;-443.5,166.0,-584.3,-90.0;jep_mec_paratrooper;jep_mec_paratrooper_driver;False
+03752;VE;Luda;583.7,163.9,-401.8,-38.0;xpak2_eurofighter;xpak2_eurofighter_driver;False
+03756;VD;jep_mec_paratrooper;-626.1,166.0,-502.6,-44.3;None;None;kkk noocher
+03759;KL;Jimini;-270.9,290.7,1977.3,-60.7;None;None;None;None
+03759;KD;Jimini;-270.9,290.7,1977.3,-60.7;eu_sniper
+03759;VX;Jimini;-688.5,177.7,195.3,175.4;usair_f15;usair_f15_driver
+03759;DT;Jimini;-270.9,290.7,1977.3,-60.7
+03760;VD;ruair_su34;-1436.6,266.9,-1276.5,-61.6;None;None;kkk noocher
+03774;SP;Jimini;508.9,163.3,-412.9,73.8;eu
+03774;WP;Jimini;508.9,163.3,-412.9,73.8;gbrif_l96a1
+03774;KP;Jimini;508.9,163.3,-412.9,73.8;eu_sniper
+03774;VX;kkk noocher;-606.8,166.5,-537.3,-82.8;jep_mec_paratrooper;jep_mec_paratrooper_driver
+03774;AC;kkk noocher;ars_d30_barrel;0;2
+03779;VE;kkk noocher;-638.2,166.9,-547.5,38.0;ruair_mig29;ruair_mig29_driver;False
+03779;AC;kkk noocher;ars_d30_barrel;0;9
+03797;VX;kkk noocher;-364.3,814.1,-424.2,-172.2;ruair_mig29;ruair_mig29_driver
+03797;AC;kkk noocher;ars_d30_barrel;0;15
+03801;VE;kkk noocher;-380.4,866.8,-538.2,0.0;parachute;parachute_driver;True
+03804;VD;xpak2_eurofighter;338.4,143.7,222.0,-28.9;None;None;Luda
+03804;KL;Luda;338.4,143.7,222.0,-28.9;None;None;None;None
+03804;KD;Luda;338.4,143.7,222.0,-28.9;eu_engineer
+03804;VX;Luda;-158.6,134.5,220.8,-87.0;xpak2_eurofighter;xpak2_eurofighter_driver
+03804;DT;Luda;338.4,143.7,222.0,-28.9
+03819;SP;Luda;571.3,163.3,-401.6,-42.6;eu
+03819;WP;Luda;571.3,163.3,-401.6,-42.6;gbrif_benelli_m4
+03819;KP;Luda;571.3,163.3,-401.6,-42.6;eu_engineer
+03825;VD;usair_f15;-1094.6,150.4,2563.8,-34.7;None;None;Jimini
+03845;VD;ruair_mig29;-667.9,305.4,-1717.5,-17.3;None;None;kkk noocher
+03852;VD;jep_mec_paratrooper;-607.0,166.0,-535.3,-82.8;None;None;kkk noocher
+03854;WP;Jimini;558.8,163.4,-426.0,142.3;usmin_claymore
+03856;WP;Jimini;558.8,163.0,-426.0,142.3;ushgr_m67
+03856;WP;Jimini;558.8,163.0,-426.0,142.3;gbrif_l96a1
+03857;WP;Jimini;558.8,163.0,-426.0,142.3;uspis_92fs_silencer
+03858;WP;Jimini;558.8,163.0,-426.0,142.3;kni_knife
+03858;WP;Jimini;558.8,163.0,-426.0,142.3;gbrif_l96a1
+03860;WP;Jimini;558.8,163.0,-426.0,142.3;uspis_92fs_silencer
+03861;WP;Jimini;558.8,163.0,-426.0,142.3;ushgr_m67
+03861;WP;kkk noocher;-524.6,265.4,-480.3,0.0;ushgr_m67
+03862;WP;Jimini;558.8,163.0,-426.0,142.3;kni_knife
+03863;WP;Jimini;558.8,163.0,-426.0,142.3;uspis_92fs_silencer
+03864;WP;Jimini;558.8,163.0,-426.0,142.3;gbrif_l96a1
+03870;WP;kkk noocher;-560.9,217.5,-408.4,0.0;rurrif_ak74u
+03878;VE;Luda;583.7,163.9,-401.8,-38.0;xpak2_eurofighter;xpak2_eurofighter_driver;False
+03879;VX;kkk noocher;-561.8,166.8,-344.7,90.0;parachute;parachute_driver
+03879;AC;kkk noocher;rurrif_ak74u;0;13
+03879;AC;kkk noocher;ushgr_m67;0;4
+03889;VE;Jimini;507.1,162.8,-397.9,-130.0;xpak2_hmmwv;xpak2_hmmwv_driver;False
+03975;WP;kkk noocher;-413.6,150.5,-75.1,-61.2;c4_explosives
+03976;CP;4100;18.5,133.7,186.5,0.0;middle;None
+03976;SC;Jimini;2
+03976;FA;Jimini;capture
+03983;VE;kkk noocher;-427.5,150.2,-67.6,107.5;jep_mec_paratrooper;jep_mec_paratrooper_driver;False
+03983;AC;kkk noocher;c4_explosives;0;5
+03983;AC;kkk noocher;ars_d30_barrel;0;30
+03990;VD;xpak2_eurofighter;167.0,162.6,-177.0,82.9;None;None;Luda
+03990;KL;Luda;167.0,162.6,-177.0,82.9;None;None;None;None
+03990;KD;Luda;167.0,162.6,-177.0,82.9;eu_engineer
+03990;AC;Luda;eurofighter_autocannon;0;8
+03990;AC;Luda;eurofighter_missiles;0;2
+03990;AC;Luda;eurofighter_bomb_launcher;0;2
+03990;VX;Luda;338.4,143.7,222.0,-28.9;xpak2_eurofighter;xpak2_eurofighter_driver
+03990;DT;Luda;167.0,162.6,-177.0,82.9
+04002;GS;end;taraba_quarry;600;0
+04002;AC;Jimini;car_horn;0;72
+04002;WN;mec;3
+04002;LS;eu;3
+04047;GS;pre;taraba_quarry;600;0
+04047;RS;0
+04047;GS;play;wake_island_2007;600;0
+04054;GS;pre;wake_island_2007;600;0
+04054;RS;0
+04054;GS;play;wake_island_2007;600;0
+04054;CP;4101;-28.0,91.0,-168.5,0.0;top;ch
+04054;CP;4102;359.9,101.0,-248.7,0.0;top;ch
+04054;CP;4103;259.2,93.8,184.8,0.0;top;ch
+04054;CP;4104;34.9,95.6,198.8,0.0;top;ch
+04054;CP;4105;127.6,86.6,-302.4,0.0;top;ch
+04054;CP;4106;-681.2,130.6,694.5,0.0;top;us
+04098;SP;Luda;-740.7,86.6,622.6,-100.8;us
+04098;WP;Luda;-740.7,86.6,622.6,-100.8;usrif_remington11-87
+04098;KP;Luda;-740.7,86.6,622.6,-100.8;us_engineer
+04099;SP;Jimini;-711.3,104.1,657.0,-142.7;us
+04099;WP;Jimini;-711.3,104.1,657.0,-142.7;usrif_m24
+04099;KP;Jimini;-711.3,104.1,657.0,-142.7;us_sniper
+04112;VE;Jimini;-737.9,104.8,612.4,128.7;air_f35b;air_f35b_driver;False
+04114;SP;kkk noocher;388.7,102.7,-222.3,90.0;ch
+04114;WP;kkk noocher;388.7,102.7,-222.3,90.0;chrif_type95
+04114;KP;kkk noocher;388.7,102.7,-222.3,90.0;ch_specops
+04121;VX;Jimini;-688.1,87.4,575.1,128.6;air_f35b;air_f35b_driver
+04121;VD;air_f35b;-681.5,86.2,567.3,128.6;None;None;Jimini
+04121;KL;Jimini;-683.6,84.7,571.5,128.6;Jimini;-683.6,84.7,571.5,128.6;None;air_f35b
+04125;SQ;kkk noocher;None
+04125;CM;ch;kkk noocher
+04134;WP;kkk noocher;423.5,102.0,-269.7,142.4;c4_explosives
+04136;KD;Jimini;-677.5,82.8,567.1,0.0;us_sniper
+04136;DT;Jimini;-677.5,82.8,567.1,0.0
+04136;SP;Jimini;-703.5,104.1,659.6,-142.7;us
+04136;WP;Jimini;-703.5,104.1,659.6,-142.7;usrif_m24
+04136;KP;Jimini;-703.5,104.1,659.6,-142.7;us_sniper
+04143;VE;kkk noocher;429.1,103.2,-273.1,-90.0;chthe_z8;chthe_z8_driver;False
+04143;AC;kkk noocher;c4_explosives;0;5
+04147;VE;Jimini;-740.8,104.1,670.3,129.3;ahe_ah1z;ahe_ah1z_driver;False
+04152;VE;Luda;-738.2,103.7,668.2,0.0;ahe_ah1z;ahe_ah1z_cogunner;False
+04224;VX;kkk noocher;-644.0,185.1,657.4,-40.9;chthe_z8;chthe_z8_driver
+04224;AC;kkk noocher;chthe_z8_flarelauncher;0;6
+04225;VE;kkk noocher;-667.6,168.9,683.1,0.0;parachute;parachute_driver;True
+04234;VD;chthe_z8;-711.5,107.1,805.1,-19.2;kkk noocher;-703.0,110.8,739.4,0.0;kkk noocher
+04234;WP;kkk noocher;-703.0,110.6,739.7,0.0;chrif_type95
+04238;VX;kkk noocher;-677.3,84.2,752.0,177.7;parachute;parachute_driver
+04276;VX;Jimini;-645.7,127.6,661.4,0.6;ahe_ah1z;ahe_ah1z_driver
+04276;AC;Jimini;ahe_ah1z_hydralauncher;0;8
+04279;KL;Jimini;-640.4,86.7,731.7,52.2;None;None;None;None
+04280;VD;ahe_ah1z;-541.8,85.7,774.5,73.4;None;None;Luda
+04280;KL;Luda;-539.4,83.4,775.3,0.0;None;None;None;None
+04280;KD;Luda;-539.4,83.4,775.3,0.0;us_engineer
+04280;AC;Luda;ahe_ah1z_cogunner_hellfirelaunchertv;0;1
+04280;AC;Luda;ahe_ah1z_gun;0;24
+04280;VX;Luda;-156.0,88.0,-147.0,16.0;ahe_ah1z;ahe_ah1z_cogunner
+04280;DT;Luda;-539.4,83.4,775.3,73.4
+04294;KD;Jimini;-641.4,82.8,728.7,0.0;us_sniper
+04294;DT;Jimini;-641.4,82.8,728.7,0.0
+04294;SP;Jimini;-708.5,102.7,646.9,-142.6;us
+04294;WP;Jimini;-708.5,102.7,646.9,-142.6;usrif_m24
+04294;KP;Jimini;-708.5,102.7,646.9,-142.6;us_sniper
+04295;SP;Luda;-711.3,104.1,657.0,-142.7;us
+04295;WP;Luda;-711.3,104.1,657.0,-142.7;usrif_remington11-87
+04295;KP;Luda;-711.3,104.1,657.0,-142.7;us_engineer
+04343;SC;Jimini;2
+04343;FA;Jimini;capture
+04343;KL;kkk noocher;-645.8,83.0,723.4,-142.0;Jimini;-704.4,102.5,650.7,40.2;usrif_m24;None
+04343;AC;Jimini;usrif_m24;1;3
+04355;VE;Jimini;-737.9,104.8,612.4,128.7;air_f35b;air_f35b_driver;False
+04358;KD;kkk noocher;-646.0,82.8,723.4,0.0;ch_specops
+04358;AC;kkk noocher;ars_d30_barrel;3;30
+04358;DT;kkk noocher;-646.0,82.8,723.4,0.0
+04358;SP;kkk noocher;426.4,102.5,-292.9,-86.5;ch
+04358;WP;kkk noocher;426.4,102.5,-292.9,-86.5;chrif_type95
+04358;KP;kkk noocher;426.4,102.5,-292.9,-86.5;ch_specops
+04378;VE;kkk noocher;407.0,102.8,-380.2,0.0;air_j10;air_j10_driver;False
+04390;VE;Luda;-740.8,104.1,670.3,129.3;ahe_ah1z;ahe_ah1z_driver;False
+04390;AC;Luda;usrif_remington11-87;0;1
+04419;CP;4110;34.9,95.6,198.8,0.0;middle;ch
+04457;VD;air_j10;-735.4,300.6,588.1,-84.8;Jimini;-563.3,293.4,490.2,-59.0;kkk noocher
+04457;SC;Jimini;2
+04457;FA;Jimini;neutralize
+04457;KL;kkk noocher;-735.4,300.6,588.1,-84.8;Jimini;-563.3,293.4,490.2,-59.0;air_f35b_sidewinderlauncher;air_f35b
+04457;AC;Jimini;air_f35b_autocannon;0;10
+04457;AC;Jimini;air_f35b_sidewinderlauncher;1;3
+04457;KD;kkk noocher;-735.4,300.6,588.1,-84.8;ch_specops
+04457;AC;kkk noocher;air_j10_archerlauncher;0;4
+04457;VX;kkk noocher;-646.0,82.8,723.4,0.0;air_j10;air_j10_driver
+04457;DT;kkk noocher;-735.4,300.6,588.1,-84.8
+04472;SP;kkk noocher;351.6,102.7,-260.6,-180.0;ch
+04472;WP;kkk noocher;351.6,102.7,-260.6,-180.0;chrif_type95
+04472;KP;kkk noocher;351.6,102.7,-260.6,-180.0;ch_specops
+04484;WP;kkk noocher;378.0,102.0,-313.0,-170.9;c4_explosives
+04498;VE;kkk noocher;373.1,102.5,-350.9,0.0;ahe_z10;ahe_z10_driver;False
+04498;AC;kkk noocher;c4_explosives;0;5
+04509;VX;Luda;32.2,96.9,192.1,-172.3;ahe_ah1z;ahe_ah1z_driver
+04509;AC;Luda;ahe_ah1z_flarelauncher;0;6
+04509;AC;Luda;ahe_ah1z_hydralauncher;0;1
+04510;WP;Luda;33.1,96.6,192.0,-96.2;wrench
+04511;CP;4110;34.9,95.6,198.8,0.0;middle;ch
+04511;SC;Luda;2
+04511;FA;Luda;capture
+04532;CP;4110;34.9,95.6,198.8,0.0;middle;None
+04532;SC;Luda;2
+04532;FA;Luda;capture
+04537;VX;kkk noocher;38.1,102.9,190.2,-38.2;ahe_z10;ahe_z10_driver
+04537;AC;kkk noocher;ahe_z10_s8launcher;0;8
+04537;VD;ahe_z10;37.5,101.1,194.1,-42.3;None;None;kkk noocher
+04537;SC;kkk noocher;-2
+04537;FA;kkk noocher;neutralize
+04537;KL;kkk noocher;35.0,100.2,194.4,-38.2;kkk noocher;35.0,100.2,194.4,-38.2;c4_explosives;None
+04537;KL;Luda;35.8,96.6,197.6,-46.7;kkk noocher;35.0,100.2,194.4,-38.2;c4_explosives;None
+04537;VD;ahe_ah1z;30.0,96.8,194.5,-172.3;kkk noocher;35.0,100.2,194.4,-38.2;Luda
+04542;KD;kkk noocher;23.6,95.7,205.0,0.0;ch_specops
+04542;KD;Luda;37.1,95.7,198.8,0.0;us_engineer
+04542;AC;Luda;wrench;0;4
+04552;DT;Luda;37.1,95.7,198.8,0.0
+04552;SP;Luda;-747.6,102.7,662.3,62.0;us
+04552;WP;Luda;-747.6,102.7,662.3,62.0;usrif_remington11-87
+04552;KP;Luda;-747.6,102.7,662.3,62.0;us_engineer
+04552;DT;kkk noocher;23.6,95.7,205.0,0.0
+04552;SP;kkk noocher;436.4,102.3,-307.5,180.0;ch
+04552;WP;kkk noocher;436.4,102.3,-307.5,180.0;chrif_type95
+04552;KP;kkk noocher;436.4,102.3,-307.5,180.0;ch_specops
+04561;VE;Luda;-729.5,104.2,636.9,133.1;usthe_uh60;usthe_uh60_driver;False
+04589;VE;kkk noocher;407.0,102.8,-380.2,0.0;air_j10;air_j10_driver;False
+04606;VX;kkk noocher;97.2,125.8,171.1,-70.2;air_j10;air_j10_driver
+04606;AC;kkk noocher;air_j10_cannon;0;5
+04606;AC;kkk noocher;air_j10_archerlauncher;1;2
+04606;VE;kkk noocher;67.1,118.7,181.3,0.0;parachute;parachute_driver;True
+04607;VD;air_j10;-30.4,110.2,225.0,-66.2;None;None;kkk noocher
+04608;CP;4108;359.9,101.0,-248.7,0.0;middle;ch
+04609;VX;kkk noocher;58.5,97.0,185.4,-60.0;parachute;parachute_driver
+04625;CP;4109;259.2,93.8,184.8,0.0;middle;ch
+04629;CP;4110;34.9,95.6,198.8,0.0;middle;us
+04642;VD;air_f35b;-7.8,103.3,162.5,34.0;None;None;Jimini
+04642;KL;Jimini;-7.8,103.3,162.5,34.0;None;None;None;None
+04642;KD;Jimini;-7.8,103.3,162.5,34.0;us_sniper
+04642;AC;Jimini;air_f35b_autocannon;0;44
+04642;AC;Jimini;air_f35b_bomblauncher;0;2
+04642;AC;Jimini;air_f35b_sidewinderlauncher;1;5
+04642;VX;Jimini;-641.4,82.8,728.7,0.0;air_f35b;air_f35b_driver
+04642;DT;Jimini;-7.8,103.3,162.5,34.0
+04646;VX;Luda;-24.0,92.8,-186.1,-4.3;usthe_uh60;usthe_uh60_driver
+04649;CP;4110;34.9,95.6,198.8,0.0;middle;None
+04657;SP;Jimini;-716.2,104.1,667.0,-116.6;us
+04657;WP;Jimini;-716.2,104.1,667.0,-116.6;usrif_m24
+04657;KP;Jimini;-716.2,104.1,667.0,-116.6;us_sniper
+04662;CP;4107;-28.0,91.0,-168.5,0.0;middle;ch
+04662;SC;Luda;2
+04662;FA;Luda;neutralize
+04668;GS;end;wake_island_2007;600;0
+04668;AC;Jimini;usrif_m24;0;1
+04668;AC;kkk noocher;ars_d30_barrel;0;8
+04668;WN;us;3
+04668;LS;ch;3
+04713;GS;pre;wake_island_2007;600;0
+04713;RS;0
+04713;GS;play;zatar_wetlands;600;0
+04720;GS;pre;zatar_wetlands;600;0
+04720;RS;0
+04720;GS;play;zatar_wetlands;600;0
+04720;CP;4113;-565.0,37.5,482.1,0.0;top;us
+04720;CP;4114;-772.0,43.2,102.0,0.0;bottom;None
+04720;CP;4115;-53.2,48.0,-241.6,0.0;bottom;None
+04720;CP;4116;258.6,35.8,-352.6,0.0;bottom;None
+04720;CP;4117;482.0,46.5,-164.0,0.0;bottom;None
+04720;CP;4118;727.0,62.1,-401.3,0.0;top;mec
+04720;CP;4119;-367.4,39.0,-330.2,0.0;bottom;None
+04720;CP;4120;-441.1,39.0,-59.0,0.0;bottom;None
+04720;CP;4121;-432.6,65.6,925.4,0.0;top;us
+04744;SP;Luda;-403.5,51.4,942.6,90.0;us
+04744;WP;Luda;-403.5,51.4,942.6,90.0;usrif_remington11-87
+04744;KP;Luda;-403.5,51.4,942.6,90.0;us_engineer
+04757;VE;Luda;-360.1,53.4,915.4,-90.0;air_f35b;air_f35b_driver;False
+04768;SP;Jimini;-413.8,51.4,942.6,90.0;us
+04768;WP;Jimini;-413.8,51.4,942.6,90.0;usrif_m24
+04768;KP;Jimini;-413.8,51.4,942.6,90.0;us_sniper
+04782;SP;kkk noocher;671.2,62.0,-431.1,90.0;mec
+04782;WP;kkk noocher;671.2,62.0,-431.1,90.0;rurrif_ak74u
+04782;KP;kkk noocher;671.2,62.0,-431.1,90.0;mec_specops
+04786;VE;Jimini;-411.8,53.4,899.2,180.0;air_f35b;air_f35b_driver;False
+04792;SQ;kkk noocher;None
+04792;CM;mec;kkk noocher
+04809;WP;kkk noocher;750.5,62.0,-440.8,86.1;c4_explosives
+04814;VD;air_f35b;-212.2,56.3,-236.9,68.7;None;None;Luda
+04814;KL;Luda;-212.2,56.3,-236.9,68.7;None;None;None;None
+04814;KD;Luda;-212.2,56.3,-236.9,68.7;us_engineer
+04814;AC;Luda;air_f35b_autocannon;0;20
+04814;AC;Luda;air_f35b_sidewinderlauncher;0;1
+04814;VX;Luda;101.0,35.0,-205.0,142.0;air_f35b;air_f35b_driver
+04814;DT;Luda;-212.2,56.3,-236.9,68.7
+04814;VE;kkk noocher;753.0,61.7,-441.0,-90.0;jep_mec_paratrooper;jep_mec_paratrooper_driver;False
+04814;AC;kkk noocher;c4_explosives;0;5
+04829;SP;Luda;-416.2,52.8,935.9,141.0;us
+04829;WP;Luda;-416.2,52.8,935.9,141.0;usrif_remington11-87
+04829;KP;Luda;-416.2,52.8,935.9,141.0;us_engineer
+04856;VE;Luda;-370.7,52.9,941.6,-145.0;usthe_uh60;usthe_uh60_driver;False
+04901;VX;Jimini;-611.8,93.9,29.1,-63.6;air_f35b;air_f35b_driver
+04902;VE;Jimini;-653.3,87.5,49.3,0.0;parachute;parachute_driver;True
+04909;VX;Jimini;-690.4,47.7,62.0,-78.3;parachute;parachute_driver
+04921;VD;air_f35b;-1499.5,68.7,387.6,-77.8;None;None;Jimini
+04925;CP;4126;482.0,46.5,-164.0,0.0;middle;None
+04927;VX;Luda;-817.9,48.8,125.1,52.7;usthe_uh60;usthe_uh60_driver
+04927;KL;Luda;-805.0,39.6,134.3,51.4;None;None;None;None
+04928;VD;usthe_uh60;-808.2,40.1,131.3,63.9;None;None;Luda
+04932;KD;Luda;-804.9,38.8,134.4,0.0;us_engineer
+04934;KL;Jimini;-772.4,44.2,101.5,-39.2;kkk noocher;490.5,47.2,-157.6,-109.6;ars_d30_barrel;jep_mec_paratrooper
+04934;AC;kkk noocher;ars_d30_barrel;1;20
+04940;KD;Jimini;-768.4,43.3,105.6,0.0;us_sniper
+04942;DT;Luda;-804.9,38.8,134.4,0.0
+04942;SP;Luda;-416.2,52.8,935.9,141.0;us
+04942;WP;Luda;-416.2,52.8,935.9,141.0;usrif_remington11-87
+04942;KP;Luda;-416.2,52.8,935.9,141.0;us_engineer
+04949;DT;Jimini;-768.4,43.3,105.6,0.0
+04949;SP;Jimini;-416.2,52.8,935.9,141.0;us
+04949;WP;Jimini;-416.2,52.8,935.9,141.0;usrif_m24
+04949;KP;Jimini;-416.2,52.8,935.9,141.0;us_sniper
+04953;CP;4123;-772.0,43.2,102.0,0.0;middle;None
+04960;VE;Jimini;-360.1,53.4,915.4,-90.0;air_f35b;air_f35b_driver;False
+04969;VE;Luda;-370.7,52.9,941.6,-145.0;usthe_uh60;usthe_uh60_driver;False
+04990;CP;4125;258.6,35.8,-352.6,0.0;middle;None
+05022;CP;4125;258.6,35.8,-352.6,0.0;middle;mec
+05040;CP;4126;482.0,46.5,-164.0,0.0;middle;mec
+05043;CP;4125;258.6,35.8,-352.6,0.0;middle;mec
+05049;VX;Luda;-788.3,44.6,178.0,-158.2;usthe_uh60;usthe_uh60_driver
+05064;VX;kkk noocher;-359.1,36.2,-330.8,-169.3;jep_mec_paratrooper;jep_mec_paratrooper_driver
+05064;AC;kkk noocher;ars_d30_barrel;1;30
+05064;AC;kkk noocher;car_horn;0;27
+05092;CP;4123;-772.0,43.2,102.0,0.0;middle;None
+05092;SC;Luda;2
+05092;FA;Luda;neutralize
+05094;CP;4128;-367.4,39.0,-330.2,0.0;middle;None
+05097;SC;Jimini;2
+05097;KL;kkk noocher;-368.6,40.0,-329.6,121.0;Jimini;-450.6,58.3,-295.3,116.4;air_f35b_autocannon;air_f35b
+05097;AC;Jimini;air_f35b_autocannon;1;213
+05099;CP;4128;-367.4,39.0,-330.2,0.0;middle;mec
+05101;KD;kkk noocher;-368.9,39.1,-330.2,0.0;mec_specops
+05101;AC;kkk noocher;ars_d30_barrel;1;40
+05104;VD;ats_tow;-771.5,43.2,96.1,133.4;kkk noocher;-368.9,39.1,-330.2,0.0;None
+05112;DT;kkk noocher;-368.9,39.1,-330.2,0.0
+05112;SP;kkk noocher;682.6,62.0,-352.2,180.0;mec
+05112;WP;kkk noocher;682.6,62.0,-352.2,180.0;rurrif_ak74u
+05112;KP;kkk noocher;682.6,62.0,-352.2,180.0;mec_specops
+05131;VE;Luda;-785.6,44.5,179.6,-158.2;usthe_uh60;usthe_uh60_driver;False
+05179;VE;kkk noocher;790.5,62.7,-492.6,-90.0;ruair_mig29;ruair_mig29_driver;False
+05179;AC;kkk noocher;rurrif_ak74u;1;5
+05180;VX;Luda;-446.4,39.2,-70.3,-46.3;usthe_uh60;usthe_uh60_driver
+05187;VD;jep_mec_paratrooper;-361.1,35.7,-330.9,-168.9;None;None;kkk noocher
+05197;CP;4129;-441.1,39.0,-59.0,0.0;middle;None
+05197;SC;Luda;2
+05197;FA;Luda;capture
+05201;VE;Luda;-445.9,38.3,-73.3,-42.3;usthe_uh60;usthe_uh60_driver;False
+05215;VD;jeep_faav;-471.6,38.3,-73.7,0.3;kkk noocher;146.4,86.9,-333.4,-64.9;None
+05234;VD;usthe_uh60;-89.2,82.1,-204.7,122.1;kkk noocher;-95.2,81.2,-197.7,70.5;Luda
+05234;KL;Luda;-89.2,82.1,-204.7,122.1;kkk noocher;-95.2,81.2,-197.7,70.5;None;ruair_mig29
+05234;AC;kkk noocher;ruair_mig29_30mmcannon;3;23
+05234;AC;kkk noocher;ruair_archerlauncher;0;7
+05234;AC;kkk noocher;ars_d30_barrel;0;10
+05234;KD;Luda;-89.2,82.1,-204.7,122.1;us_engineer
+05234;AC;Luda;usthe_uh60_flarelauncher;0;12
+05234;VX;Luda;-804.9,38.8,134.4,0.0;usthe_uh60;usthe_uh60_driver
+05234;DT;Luda;-89.2,82.1,-204.7,122.1
+05234;VD;ruair_mig29;-95.2,81.2,-197.7,70.5;None;None;kkk noocher
+05234;KL;kkk noocher;-95.2,81.2,-197.7,70.5;None;None;None;None
+05234;KD;kkk noocher;-95.2,81.2,-197.7,70.5;mec_specops
+05234;VX;kkk noocher;-368.9,39.1,-330.2,0.0;ruair_mig29;ruair_mig29_driver
+05234;DT;kkk noocher;-95.2,81.2,-197.7,70.5
+05248;VD;air_f35b;-381.2,52.0,-336.7,109.3;None;None;Jimini
+05248;KL;Jimini;-381.2,52.0,-336.7,109.3;None;None;None;None
+05248;KD;Jimini;-381.2,52.0,-336.7,109.3;us_sniper
+05248;AC;Jimini;air_f35b_autocannon;2;260
+05248;VX;Jimini;-768.4,43.3,105.6,0.0;air_f35b;air_f35b_driver
+05248;DT;Jimini;-381.2,52.0,-336.7,109.3
+05249;SP;Luda;-393.9,52.8,936.8,-180.0;us
+05249;WP;Luda;-393.9,52.8,936.8,-180.0;usrif_remington11-87
+05249;KP;Luda;-393.9,52.8,936.8,-180.0;us_engineer
+05249;SP;kkk noocher;764.0,62.0,-458.3,-90.0;mec
+05249;WP;kkk noocher;764.0,62.0,-458.3,-90.0;rurrif_ak74u
+05249;KP;kkk noocher;764.0,62.0,-458.3,-90.0;mec_specops
+05256;VE;kkk noocher;753.0,61.7,-441.0,-90.0;jep_mec_paratrooper;jep_mec_paratrooper_driver;False
+05263;SP;Jimini;-416.2,52.8,935.9,141.0;us
+05263;WP;Jimini;-416.2,52.8,935.9,141.0;usrif_m24
+05263;KP;Jimini;-416.2,52.8,935.9,141.0;us_sniper
+05272;VE;Luda;-411.8,53.4,899.2,180.0;air_f35b;air_f35b_driver;False
+05280;VD;air_f35b;-411.7,35.8,845.0,179.9;None;None;Luda
+05280;KL;Luda;-411.7,35.8,845.0,179.9;None;None;None;None
+05280;KD;Luda;-411.7,35.8,845.0,179.9;us_engineer
+05280;VX;Luda;-89.2,82.1,-204.7,122.1;air_f35b;air_f35b_driver
+05280;DT;Luda;-411.7,35.8,845.0,179.9
+05291;VX;kkk noocher;770.9,62.3,-538.0,143.9;jep_mec_paratrooper;jep_mec_paratrooper_driver
+05295;SP;Luda;-403.5,51.4,942.6,90.0;us
+05295;WP;Luda;-403.5,51.4,942.6,90.0;usrif_remington11-87
+05295;KP;Luda;-403.5,51.4,942.6,90.0;us_engineer
+05309;VE;kkk noocher;793.0,62.7,-528.2,-90.0;ruair_mig29;ruair_mig29_driver;False
+05320;VE;Jimini;-360.1,53.4,915.4,-90.0;air_f35b;air_f35b_driver;False
+05335;GS;end;zatar_wetlands;600;0
+05335;AC;Jimini;air_f35b_autocannon;0;46
+05335;AC;Luda;usrif_remington11-87;0;1
+05335;AC;kkk noocher;ruair_mig29_30mmcannon;0;2
+05335;AC;kkk noocher;ruair_mig29_bomblauncher_1;0;2
+05335;WN;mec;3
+05335;LS;us;3
+05376;AC;Luda;usrif_remington11-87;0;1
+05376;DC;192.168.1.10;Luda
+05380;GS;pre;zatar_wetlands;600;0
+05380;RS;0
+05380;GS;play;kubra_dam;600;0
+05387;GS;pre;kubra_dam;600;0
+05387;RS;0
+05387;GS;play;kubra_dam;600;0
+05387;CP;4131;162.0,74.5,184.0,0.0;top;us
+05387;CP;4132;-72.8,62.4,105.1,0.0;bottom;None
+05387;CP;4133;-354.0,54.0,156.0,0.0;top;mec
+05387;CP;4134;-220.0,68.1,294.0,0.0;top;mec
+05387;CP;4135;-260.0,69.0,-14.0,0.0;top;mec
+05387;CP;4136;-401.6,73.0,-223.4,0.0;top;mec
+05387;CP;4137;-205.5,131.7,-274.9,0.0;top;mec
+05387;CP;4138;-495.0,118.0,-105.9,0.0;top;mec
+05387;CP;4139;-388.9,69.5,-520.2,0.0;top;mec
+05430;DC;192.168.1.243;Jimini
+06002;GS;end;kubra_dam;600;0
+06002;WN;us;3
+06002;LS;mec;3
+06047;GS;pre;kubra_dam;600;0
+06047;RS;0
+06047;GS;play;road_to_jalalabad;600;0
+06053;GS;pre;road_to_jalalabad;600;0
+06053;RS;0
+06053;GS;play;road_to_jalalabad;600;0
+06053;CP;4149;-205.4,45.3,7.7,0.0;top;us
+06053;CP;4150;-16.7,39.1,-207.8,0.0;top;mec
+06053;CP;4151;91.9,40.2,-263.2,0.0;top;mec
+06053;CP;4152;181.6,37.6,-170.3,0.0;top;mec
+06053;CP;4153;282.9,42.0,-138.3,0.0;top;mec
+06053;CP;4154;234.9,44.4,-42.1,0.0;top;mec
+06053;CP;4155;293.1,47.9,55.0,0.0;top;mec
+06053;CP;4156;38.5,37.5,-40.9,0.0;bottom;None
+06207;DC;192.168.1.211;kkk noocher
+06222;GS;end;road_to_jalalabad;600;0
+06222;WN;us;3
+06222;LS;mec;3
