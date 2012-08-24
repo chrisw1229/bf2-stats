@@ -29,13 +29,12 @@ EXPLOSIVE = 'explosive'
 
 class Weapon(object):
 
-    def __init__(self, id, weapon_type, group, ammo, make, model, name,
-            game_desc, real_desc):
+    def __init__(self, id, weapon_type, group, ammo, model, name, game_desc,
+            real_desc):
         self.id = id
         self.weapon_type = weapon_type
         self.group = group
         self.ammo = ammo
-        self.make = make
         self.model = model
         self.name = name
         self.game_desc = game_desc
@@ -49,139 +48,139 @@ class Weapon(object):
     def reset(self):
         pass
 
-EMPTY = Weapon('', '', '', '', '', '', '', '', '')
+EMPTY = Weapon('', '', '', '', '', '', '', '')
 
-def _add(id, weapon_type, group, ammo, make, model, name, game_desc, real_desc):
-    registry.add(Weapon(id, weapon_type, group, ammo, make, model, name,
+def _add(id, weapon_type, group, ammo, model, name, game_desc, real_desc):
+    registry.add(Weapon(id, weapon_type, group, ammo, model, name,
             game_desc, real_desc))
 
 _add('aas_seasparrow', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'Wasp', 'Wasp Sea Sparrow Missile',
 '',
 '')
 
 _add('aav_tunguska_gun', CANNON, VEHICLE, PRECISION,
-'', '', '',
+'Tunguska', 'Tunguska 30mm Cannon',
 '',
 '')
 
 _add('aav_tunguska_sa19launcher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'Tunguska', 'Tunguska SA-19 Missile',
 '',
 '')
 
 _add('aav_type95_qw2launcher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'Type 95', 'Type 95 Vanguard 2 Missile',
 '',
 '')
 
-_add('aav_type95guns', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+_add('aav_type95guns', CANNON, VEHICLE, PRECISION,
+'Type 95', 'Type 95 25mm Cannon',
 '',
 '')
 
 _add('ahe_ah1z_cogunner_hellfirelaunchertv', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'AH-1Z', 'AH-1Z Hellfire Guided Missile',
 '',
 '')
 
 _add('ahe_ah1z_flarelauncher', COUNTER, VEHICLE, EXPLOSIVE,
-'', '', '',
+'AH-1Z', 'AH-1Z Flare',
 '',
 '')
 
 _add('ahe_ah1z_gun', CANNON, VEHICLE, PRECISION,
-'', '', '',
+'AH-1Z', 'AH-1Z 20mm Cannon',
 '',
 '')
 
 _add('ahe_ah1z_hydralauncher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'AH-1Z', 'AH-1Z Hydra Rocket',
 '',
 '')
 
 _add('ahe_havoc_gun', CANNON, VEHICLE, PRECISION,
-'', '', '',
+'Mi-28', 'Mi-28 30mm Cannon',
 '',
 '')
 
 _add('ahe_havoc_atakalauncher_tv', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'Mi-28', 'Mi-28 Ataka Guided Missile',
 '',
 '')
 
 _add('ahe_havoc_s8launcher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'Mi-28', 'Mi-28 S-8 Rocket',
 '',
 '')
 
 _add('ahe_z10_gun', CANNON, VEHICLE, PRECISION,
-'', '', '',
+'Z-10', 'Z-10 30mm Cannon',
 '',
 '')
 
 _add('ahe_z10_hj8launcher_tv', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
-'',
-'')
-
-_add('air_a10_us_bomblauncher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'Z-10', 'Z-10 HJ-8 Guided Missile',
 '',
 '')
 
 _add('ahe_z10_s8launcher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'Z-10', 'Z-10 S-8 Rocket',
+'',
+'')
+
+_add('air_a10_us_bomblauncher', ROCKET, VEHICLE, EXPLOSIVE,
+'A-10', 'A-10 Cluster Bomb',
 '',
 '')
 
 _add('air_f35b_autocannon', CANNON, VEHICLE, PRECISION,
-'', '', '',
+'F-35B', 'F-35B 25mm Cannon',
 '',
 '')
 
 _add('air_f35b_bomblauncher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'F-35B', 'F-35B Cluster Bomb',
 '',
 '')
 
 _add('air_f35b_sidewinderlauncher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'F-35B', 'F-35B Sidewinder Missile',
 '',
 '')
 
 _add('air_j10_cannon', CANNON, VEHICLE, PRECISION,
-'', '', '',
+'J-10', 'J-10 23mm Cannon',
 '',
 '')
 
 _add('air_j10_archerlauncher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'J-10', 'J-10 ARCHER Guided Missile',
 '',
 '')
 
 _add('air_su30mkk_30mmcannon', CANNON, VEHICLE, PRECISION,
-'', '', '',
+'Su-30MKK', 'Su-30MKK 30mm Cannon',
 '',
 '')
 
 _add('air_su30mkk_archerlauncher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'Su-30MKK', 'Su-30MKK ARCHER Guided Missile',
 '',
 '')
 
 _add('air_su30mkk_kedgelauncher_laser', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'Su-30MKK', 'Su-30MKK Kedge Guided Missile',
 '',
 '')
 
 _add('air_su39_canon', CANNON, VEHICLE, PRECISION,
-'', '', '',
+'Su-39', 'Su-39 30mm Cannon',
 '',
 '')
 
 _add('ammokit', TOOL, SOLDIER, PRECISION,
-'', '', 'Ammunition Bag',
+'Ammo', 'Ammunition Kit',
 'In Battlefield 2, ammunition is dispensed either by the Ammo Bags from Support Class or Supply \
 Crate deployed by the Commander. The Ammo Bags can be held to replenish the player''s own ammo or \
 those of others and they can be dropped as well. The Supply Crates are typically requested by \
@@ -189,32 +188,32 @@ Squad leaders and supply ammo to any player within range of the crate.',
 '')
 
 _add('apc_btr90__barrel', CANNON, VEHICLE, EXPLOSIVE,
-'', '', '',
+'BTR-90', 'BTR-90 30mm Cannon',
 '',
 '')
 
 _add('apc_btr90_hj8launcher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'BTR-90', 'BTR-90 HJ-8 Guided Missile',
 '',
 '')
 
 _add('apc_wz551_barrel', CANNON, VEHICLE, EXPLOSIVE,
-'', '', '',
+'WZ551', 'WZ551 120mm Cannon',
 '',
 '')
 
 _add('apc_wz551_hj8launcher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'WZ551', 'WZ551 HJ-8 Guided Missile',
 '',
 '')
 
 _add('ars_d30_barrel', CANNON, VEHICLE, EXPLOSIVE,
-'', '', '',
+'D-30', 'D-30 122mm Cannon',
 '',
 '')
 
 _add('at_mine', MINE, SOLDIER, EXPLOSIVE,
-'', 'M15', 'Anti-Tank Mine',
+'M15', 'M15 Anti-Tank Mine',
 'The Anti-Tank Mine is issued to the Engineer Kit in Battlefield 2. Like Mines from its \
 predecessors, the Anti-Tank Mine is very effective against vehicles, especially armored ones. It \
 is a pressure mine, meaning that in order for it to detonate, a vehicle must drive over the mine. \
@@ -232,12 +231,12 @@ enemy vehicles approaching certain areas but they do not discriminate and can be
 own sides vehicles as well.')
 
 _add('ats_hj8_launcher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'HJ-8', 'HJ-8 Guided Turret',
 '',
 '')
 
 _add('ats_tow_launcher', ROCKET, VEHICLE, EXPLOSIVE,
-'', 'BGM-71', 'BGM-71 TOW',
+'BGM-71', 'BGM-71 Guided Turret',
 '',
 'The BGM-71 TOW is an anti-tank missile. BGM is a weapon classification that stands for Multiple \
 Environment (B), Surface-Attack (G), Missile (M). TOW is an acronym that stands for Tube-launched, \
@@ -245,7 +244,7 @@ Optically-tracked, Wire command data link, guided missile. The TOW was first pro
 is one of the two most widely used anti-tank guided missiles by Western nations.')
 
 _add('c4_explosives', MINE, SOLDIER, EXPLOSIVE,
-'', 'C-4', '',
+'C-4', 'C-4 Explosive',
 'In Battlefield 2, C4 is issued to the Special Forces Kit. It is most commonly used to destroy \
 enemy armored vehicles, as well as enemy installations such as Artillery and UAV Trailers.',
 'C4 or composition 4 is a variety of plastic explosive used by the military for demolition or as \
@@ -256,12 +255,12 @@ demolish a truck but with the gases expanding at about 8050 m/s, you must be cle
 radius as you cannot outrun the explosion.')
 
 _add('car_horn', TOOL, VEHICLE, PRECISION,
-'', '', '',
+'Horn', 'Car Horn',
 '',
 '')
 
 _add('chat_eryx', ROCKET, SOLDIER, EXPLOSIVE,
-'MBDA', 'ERYX', '',
+'ERYX', 'ERYX Anti-Tank Missile',
 'The ERYX is issued as the default anti-tank weapon for the MEC and PLA Anti-Tank kits. The ERYX \
 is very effective against heavy vehicles, as well as light vehicles. When firing at a stationary \
 target zoom in and line up the target and fire. Keep in mind that it is still guidable if the \
@@ -281,17 +280,17 @@ effective anti-armour weapon that will also easily destroy other types of vehicl
 concrete bunkers.')
 
 _add('chhmg_kord', HMG, VEHICLE, PRECISION,
-'', '', '',
+'Kord', 'Kord Machine Gun',
 '',
 '')
 
 _add('chhmg_type85', HMG, VEHICLE, PRECISION,
-'', '', '',
+'W-85', 'W-85 Machine Gun',
 '',
 '')
 
 _add('chlmg_type95', LMG, SOLDIER, PRECISION,
-'Norinco', 'QBB-95', 'Type 95',
+'QBB-95', 'QBB-95 Machine Gun',
 'In Battlefield 2, the Type 95 is the light machine gun issued to the People''s Liberation Army \
 Support Kit. When prone, the machine gun has medium accuracy over distance (which rapidly \
 deteriorates with extended automatic fire), and delivers decent damage. It carries a hundred-round \
@@ -306,12 +305,12 @@ polymer and with a range of 600 m this is a very effective lightweight mid to lo
 that is best used from prone with its bipod and sights.')
 
 _add('chlmg_type95_stationary', LMG, VEHICLE, PRECISION,
-'', '', '',
+'QBZ-95', 'QBZ-95 Mounted Machine Gun',
 '',
 '')
 
 _add('chpis_qsz92', PISTOL, SOLDIER, PRECISION,
-'Norinco', 'QSZ-92', 'Type 92',
+'QSZ-92', 'QSZ-92 Pistol',
 'The 92FS is the USMC''s and European Union''s standard sidearm in the game. Its stopping power \
 and accuracy are similar to that of other handguns in the game. However, it is widely considered \
 that the M9 has the most user friendly iron sights in the game. Its magazine capacity is 15 \
@@ -327,7 +326,7 @@ weapon had an effective range of 50 m and has a magazine capacity of 15 rounds o
 ammunition.')
 
 _add('chpis_qsz92_silencer', PISTOL, SOLDIER, PRECISION,
-'Norinco', 'QSZ-92', 'Type 92 Silencer',
+'QSZ-92', 'QSZ-92 Pistol Silenced',
 'The 92FS is the USMC''s and European Union''s standard sidearm in the game. Its stopping power \
 and accuracy are similar to that of other handguns in the game. However, it is widely considered \
 that the M9 has the most user friendly iron sights in the game. Its magazine capacity is 15 \
@@ -344,7 +343,7 @@ weapon had an effective range of 50 m and has a magazine capacity of 15 rounds o
 ammunition.')
 
 _add('chrif_type85', SMG, SOLDIER, PRECISION,
-'Norinco', '', 'Type 85',
+'Type 85', 'Type 85 Machine Gun',
 'In Battlefield 2, the Type 85 is used by the PLA Anti-Tank Kit. The Type 85 has low accuracy, \
 even when sighted, it also delivers only moderate damage. However, it has a high rate of fire \
 (like the other sub machineguns), and has the fastest reload rate of the submachineguns.',
@@ -356,7 +355,7 @@ action and is fed by a 30 round box magazine. The Type 85 is an ideal close quar
 but not so ideal at medium and longer ranges.')
 
 _add('chrif_type95', CARBINE, SOLDIER, PRECISION,
-'Norinco', 'QBZ-97B', 'Type 97',
+'QBZ-97B', 'QBZ-97B Carbine Rifle',
 'In Battlefield 2, the QBZ-97 is the standard primary weapon of the Spec Ops Kit for the PLA. It \
 is the most accurate of the basic level carbines, and when prone is more accurate than the G36C. \
 The iron sights are similar to that of the G36C''s or G3''s though, as it has an open/aperature \
@@ -370,7 +369,8 @@ prevents using the weapon effectively whilst prone due to the placing of the sig
 head exposed. The QBZ is a very accurate weapon made from modern materials meaning it is also very \
 lightweight.')
 
-_add('chsht_norinco982', SHOTGUN, SOLDIER, PRECISION, 'Norinco', 'N982', '',
+_add('chsht_norinco982', SHOTGUN, SOLDIER, PRECISION,
+'N982', 'N982 Shotgun',
 'The NOR982 is a 12-gauge, pump-action combat shotgun issued to the PLA Engineer kit. Like the \
 other pump-action shotguns, it is capable of achieving one-hit kills at medium-close distances, \
 and inflicting decent damage beyond there. It has a low rate of fire and a slow reload rate.',
@@ -382,7 +382,7 @@ infantry. With the time it takes to reload and the large scatter pattern the Nor
 use at medium-long ranges.')
 
 _add('chsht_protecta', SHOTGUN, SOLDIER, PRECISION,
-'Hilton Walker', 'DAO-12', 'Armsel Striker',
+'DAO-12', 'DAO-12 Shotgun',
 'In Battlefield 2, the DAO-12 is the Tier One unlock for the Anti-Tank Kit. Unlike most unlocks, \
 it is a completely different type of weapon from the defaults; the DAO-12 is a Semi-Automatic, 12 \
 gauge shotgun whereas the Anti-Tank soldier would normally get a Sub-Machine Gun such as the MP5 \
@@ -395,7 +395,7 @@ that has found its way around the world today. This weapon has earned itself the
 "Street Sweeper" for it''s large shell capacity and high effective fire rate.')
 
 _add('chsni_type88', SNIPER, SOLDIER, PRECISION,
-'Norinco', 'QBU-88', 'Type 88',
+'QBU-88', 'QBU-88 Sniper Rifle',
 'In Battlefield 2, the Type 88 is the standard Sniper Rifle for the PLA in the game. It''s better \
 than its MEC counterpart, the SVD, despite having lower damage, as it has higher accuracy and a \
 more user-friendly scope view. A Type 88 will kill unarmored infantry in 3 hits, while an armored \
@@ -409,27 +409,27 @@ distance of around 800 m and with 10 rounds and semi-auto fire it allows you tha
 finishing the enemy off.')
 
 _add('chthe_z8_flarelauncher', COUNTER, VEHICLE, EXPLOSIVE,
-'', '', '',
+'Z-8', 'Z-8 Flare',
 '',
 '')
 
 _add('coaxial_browning', HMG, VEHICLE, PRECISION,
-'', '', '',
+'M1919', 'M1919 Browning Machine Gun',
 '',
 '')
 
 _add('coaxial_mg_china', HMG, VEHICLE, PRECISION,
-'', '', '',
+'HMG', 'China HMG',
 '',
 '')
 
 _add('coaxial_mg_mec', HMG, VEHICLE, PRECISION,
-'', '', '',
+'HMG', 'MEC HMG',
 '',
 '')
 
 _add('defibrillator', TOOL, SOLDIER, PRECISION,
-'', '', 'Defibrillator',
+'Defibrillator', 'Defibrillator',
 'The Defibrillator, or "Shock Paddles", is an item in the Medic Kit. It can revive any critically \
 wounded ally to full health. A heartbeat icon is used to represent downed allies. The \
 defribrillator can also be used on enemy players, instantly killing them, much like knives. The \
@@ -448,87 +448,87 @@ automate the diagnosis of treatable rhythms, meaning that lay responders or byst
 use them successfully with little, or in some cases no training at all.')
 
 _add('eurif_famas', ASSAULT, SOLDIER, PRECISION,
-'', '', '',
+'FAMAS', 'FAMAS Assault Rifle',
 '',
 '')
 
 _add('eurif_fnp90', SMG, SOLDIER, PRECISION,
-'', '', '',
+'FN P-90', 'FN P-90 Machine Gun',
 '',
 '')
 
 _add('eurif_hk21', LMG, VEHICLE, PRECISION,
-'', '', '',
+'HK21', 'HK21 Machine Gun',
 '',
 '')
 
 _add('eurif_hk53a3', CARBINE, SOLDIER, PRECISION,
-'', '', '',
+'HK53A3', 'HK53A3 Carbine Rifle',
 '',
 '')
 
 _add('eurofighter_autocannon', CANNON, VEHICLE, PRECISION,
-'', '', '',
+'Eurofighter', 'Eurofighter 27mm Cannon',
 '',
 '')
 
 _add('eurofighter_bomb_launcher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'Eurofighter', 'Eurofighter Cluster Bomb',
 '',
 '')
 
 _add('eurofighter_missiles', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'Eurofighter', 'Eurofighter Missile',
 '',
 '')
 
 _add('f18_autocannon', CANNON, VEHICLE, PRECISION,
-'', '', '',
+'F/A-18', 'F/A-18 20mm Cannon',
 '',
 '')
 
 _add('f18_sidewinderlauncher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'F/A-18', 'F/A-18 Sidewinder Missile',
 '',
 '')
 
 _add('firingport_ak', LMG, VEHICLE, PRECISION,
-'', '', '',
+'AK-47', 'AK-47 Machine Gun Mounted',
 '',
 '')
 
 _add('firingport_m16', LMG, VEHICLE, PRECISION,
-'', '', '',
+'M16', 'M16 Machine Gun Mounted',
 '',
 '')
 
 _add('gbgr_sa80a2_l85', GRENADE, SOLDIER, EXPLOSIVE,
-'', '', '',
+'SA80A2', 'SA80A2 Grenade Launcher',
 '',
 '')
 
 _add('gbrif_l96a1', SNIPER, SOLDIER, PRECISION,
-'', '', '',
+'L96A1', 'L96A1 Sniper Rifle',
 '',
 '')
 
 _add('gbrif_benelli_m4', SHOTGUN, SOLDIER, PRECISION,
-'', '', '',
+'M4', 'Benelli M4 Shotgun',
 '',
 '')
 
 _add('gbrif_hk21', LMG, SOLDIER, PRECISION,
-'', '', '',
+'HK21', 'HK21 Machine Gun',
 '',
 '')
 
 _add('gbrif_sa80a2_l85', ASSAULT, SOLDIER, PRECISION,
-'', '', '',
+'SA80A2', 'SA80A2 Assault Rifle',
 '',
 '')
 
 _add('hgr_smoke', GRENADE, SOLDIER, EXPLOSIVE,
-'', '', 'Smoke Grenade',
+'Smoke', 'Smoke Grenade',
 'The Smoke Grenade is included in the Assault kit in the game Battlefield 2. Instead of having a \
 spherical shape like the frag grenade, it has a cylindrical shape (sort of looks like a tiny can). \
 It is thrown like a frag grenade (default Left-Mouse-Button for normal throw, default \
@@ -537,12 +537,12 @@ has many uses.',
 '')
 
 _add('hmg_m134_gun', HMG, VEHICLE, PRECISION,
-'', '', '',
+'M134', 'M134 Minigun',
 '',
 '')
 
 _add('hmg_m2hb', HMG, VEHICLE, PRECISION,
-'Browning', 'M2', 'Browning M2',
+'M2', 'Browning M2',
 '',
 'The M2 Machine Gun, Browning .50 Caliber Machine Gun, is a heavy machine gun designed towards the \
 end of World War I by John Browning. It is very similar in design to Browning''s earlier M1919 \
@@ -552,7 +552,7 @@ Machine Gun). It is effective against infantry, unarmored or lightly armored veh
 light fortifications and low-flying aircraft.')
 
 _add('hmg_m2hb_ammo', HMG, VEHICLE, PRECISION,
-'Browning', 'M2', 'Browning M2',
+'M2', 'Browning M2 Ammo',
 '',
 'The M2 Machine Gun, Browning .50 Caliber Machine Gun, is a heavy machine gun designed towards the \
 end of World War I by John Browning. It is very similar in design to Browning''s earlier M1919 \
@@ -562,12 +562,12 @@ Machine Gun). It is effective against infantry, unarmored or lightly armored veh
 light fortifications and low-flying aircraft.')
 
 _add('igla_djigit_launcher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'Igla', 'Igla Missile Turret',
 '',
 '')
 
 _add('kni_knife', MELEE, SOLDIER, PRECISION,
-'', '', 'Knife',
+'Knife', 'Knife',
 'In Battlefield 2, the Knife is issued to every kit, and can kill in a single hit. Unlike previous \
 games, the combat knife''s skin does not change between factions: there is a single game file \
 related to the knife, which is used for all soldiers, rather than multiple for each faction.',
@@ -576,7 +576,7 @@ epoxy coating to protect the knife and prevent light reflection. The knife is a 
 combat weapon that can prove vital when out of ammunition or when silence is necessary.')
 
 _add('m249saw_ammo', LMG, SOLDIER, PRECISION,
-'Fabrique Nationale de Herstal', 'M249', 'SAW',
+'M249', 'M249 SAW Machine Gun Ammo',
 'The M249SAW in Battlefield 2 is the first weapon unlocked in the Support kit for the United \
 States Marine Corps. The M249 also appears as a turret that will spawn near certain control points \
 that are held by the USMC, although without usable ironsights and infinite ammo. It is tied with \
@@ -593,7 +593,7 @@ belt ammunition but can also make use of M16 rifle magazines as well. With an ef
 range and large ammunition capacity this gun increases your sides firepower considerably.')
 
 _add('medikit', TOOL, SOLDIER, PRECISION,
-'', '', 'Medical Bag',
+'Medical', 'Medical Kit',
 'In Battlefield 2, the Medic Bag issued to the Medic kit. It takes the form of a bag with medical \
 supplies inside and strapped tight. It gradually heals player for a short period of time or can be \
 thrown on the ground to instantly heal players to full health. The Medkits are also very useful as \
@@ -602,37 +602,37 @@ Claymore anti-personnel mine).',
 '')
 
 _add('ruair_archerlauncher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'MiG-29', 'MiG-29 ARCHER Guided Missile',
 '',
 '')
 
 _add('ruair_mig29_30mmcannon', CANNON, VEHICLE, PRECISION,
-'', '', '',
+'MiG-29', 'MiG-29 30mm Cannon',
 '',
 '')
 
 _add('ruair_mig29_bomblauncher_1', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'MiG-29', 'MiG-29 Cluster Bomb',
 '',
 '')
 
 _add('ruair_su34_250kgbomblauncher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'Su-34', 'Su-34 Cluster Bomb',
 '',
 '')
 
 _add('ruair_su34_30mmcannon', CANNON, VEHICLE, PRECISION,
-'', '', '',
+'Su-34', 'Su-34 30mm Cannon',
 '',
 '')
 
 _add('ruair_su34_archerlauncher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'Su-34', 'Su-34 ARCHER Guided Missile',
 '',
 '')
 
 _add('rulmg_pkm', LMG, SOLDIER, PRECISION,
-'Kalashnikov', 'PKM', '',
+'PKM', 'PKM Machine Gun',
 'In Battlefield 2, the PKM is the Tier One unlock for the Support Kit in Battlefield 2. It is both \
 more powerful and more accurate than the other support weapons, and is one of the two weapons most \
 commonly employed in "Dolphin diving" (the other being the M95).',
@@ -642,7 +642,7 @@ currently in production in Russia. It fires 7.62x54mmR rounds at a rate of fire 
 rounds per minute up to an effective range of 1500 meters (1640 yards).')
 
 _add('rulmg_rpk74', LMG, SOLDIER, PRECISION,
-'Kalashnikov', 'RPK-74', '',
+'RPK-74', 'RPK-74 Machine Gun',
 'The RPK-74 appears in Battlefield 2 as the main weapon for the MEC''s Support Kit. Compared to \
 the PLA''s QBB-95 and USMC''s M249 SAW, it has lower accuracy than the two, as the sights are \
 somewhat hard to use at long range. It''s rate of fire is also slower than the two, so in close \
@@ -656,12 +656,12 @@ around 460 m. The RPK is not to be used without its bipod and should be fired pr
 bursts to avoid overheating, at which point you have to wait for it to cool down.')
 
 _add('rulmg_rpk74_stationary', LMG, VEHICLE, PRECISION,
-'', '', '',
+'RPK-74', 'RPK-74 Machine Gun Mounted',
 '',
 '')
 
 _add('rupis_baghira', PISTOL, SOLDIER, PRECISION,
-'Izhevsk Mechanical Plant', 'MR-444', 'Baghira',
+'MR-444', 'MR-444 Pistol',
 'In Battlefield 2, the MR-444 is the standard sidearm of the Middle Eastern Coalition, and comes \
 both with and without a suppressor (The former available only to the Special Forces and Sniper \
 kits). It can kill in about five rounds, has a 15-round magazine, a low firecap, and decent \
@@ -673,7 +673,7 @@ different chambers and uses a detachable, box-type, double-column magazine. The 
 most pistols, is a useful close combat weapon that makes the difference when out of ammunition.')
 
 _add('rupis_baghira_silencer', PISTOL, SOLDIER, PRECISION,
-'Izhevsk Mechanical Plant', 'MR-444', 'Baghira Silencer',
+'MR-444', 'MR-444 Pistol Silenced',
 'In Battlefield 2, the MR-444 is the standard sidearm of the Middle Eastern Coalition, and comes \
 both with and without a suppressor (The former available only to the Special Forces and Sniper \
 kits). It can kill in about five rounds, has a 15-round magazine, a low firecap, and decent \
@@ -685,7 +685,7 @@ different chambers and uses a detachable, box-type, double-column magazine. The 
 most pistols, is a useful close combat weapon that makes the difference when out of ammunition.')
 
 _add('rurgl_gp25', GRENADE, SOLDIER, EXPLOSIVE,
-'KBP Instrument Design Bureau', 'GP-25', 'Bonfire',
+'GP-25', 'GP-25 Grenade Launcher',
 'In Battlefield 2, the GP-25 is attached to the AK-47, issued uniquely to the PLA Assault kit. It \
 replaces the standard hand grenades available with the PLA Medic''s AK-47.',
 'The GP-25 "Kostyor" is an under-barrel grenade launcher designed in the Soviet Union by KBP \
@@ -696,7 +696,7 @@ velocity of around 76.5 meters per second. A new modern version of the GP-25 is 
 is attached to more modern Kalashnikov firearms such as the AK-101.')
 
 _add('rurgl_gp30', GRENADE, SOLDIER, EXPLOSIVE,
-'KBP Instrument Design Bureau', 'GP-30', 'Shoe',
+'GP-30', 'GP-30 Grenade Launcher',
 'The GP-30 appears in Battlefield 2 attached to the AK-101 assault rifle used by the MEC. It is \
 nearly identical to the GP-25 as their only difference is their sighting system.',
 'The GP-30 Obuvka ("Shoe"), is a Russian Under-Barrel Grenade Launchers for the AK and AN series \
@@ -705,7 +705,7 @@ latest version the GP-30 is an evolved version of the GP-25, being lighter, easi
 easier to use.')
 
 _add('rurif_ak47', ASSAULT, SOLDIER, PRECISION,
-'Kalashnikov', 'AK-47', '',
+'AK-47', 'AK-47 Assault Rifle',
 'In Battlefield 2, the AK-47 is the standard primary weapon for the PLA''s Assault and Medic kits. \
 Like the other factions, the PLA''s AK-47 is equipped with several extra magazines and an \
 underslung GP-25, whereas the Medic''s AK-47 has considerably less ammunition and no underslung \
@@ -725,7 +725,7 @@ printed media, and video games. The AK-47 fires the 7.62x39mm M43 cartridge from
 range of 350-400 meters.')
 
 _add('rurif_ak74u', CARBINE, SOLDIER, PRECISION,
-'Kalashnikov', 'AKS-74U', '',
+'AKS-74U', 'AKS-74U Carbine Rifle',
 'The AK-74U in Battlefield 2 is the standard primary weapon for the Spec Ops Kit on the MEC team. \
 It comes with a Kobra Red Dot Sight and sports desert camouflage. It has the highest stopping \
 power of all the standard Spec Ops Kit weapons; compared to its American counterpart, the M4A1 \
@@ -737,7 +737,7 @@ features a folding stock and is fitted with a red-dot scope which when zoomed pr
 effective.')
 
 _add('rurif_ak101', ASSAULT, SOLDIER, PRECISION,
-'Kalashnikov', 'AK-101', '',
+'AK-101', 'AK-101 Assault Rifle',
 'In Battlefield 2, the AK-101 is utilized by the MEC as their service rifle for both the Assault \
 and Medic kits. The former''s version of the rifle features and underslung GP-30 grenade launcher, \
 whereas the latter is not equipped with any attachments. The two operate in exactly the same \
@@ -754,7 +754,7 @@ and at far range, when in the right mode but it will rapidly deplete it''s ammo 
 so this has to be watched. ')
 
 _add('rurif_bizon', SMG, SOLDIER, PRECISION,
-'Izhmash', 'PP-19', 'Bizon',
+'PP-19', 'PP-19 Machine Gun',
 'In Battlefield 2, the PP-19 is issued to the MEC Anti-Tank Kit. It is very similar to the MP5, \
 with the exception of the additional 15 rounds to each magazine. This gives the PP-19 a slight \
 advantage over the other submachine guns.',
@@ -766,7 +766,7 @@ be shouldered or handheld. With its 45 rounds this weapon can be a good short ra
 100 m or more it may be a better idea to use a pistol.')
 
 _add('rurif_dragunov', SNIPER, SOLDIER, PRECISION,
-'Izhmash', 'SVD', 'Dragunov',
+'Dragunov', 'Dragunov Sniper Rifle',
 'In Battlefield 2, the SVD is the default primary weapon for the MEC Sniper kit. When compared \
 with the USMC M24, The SVD has less power and accuracy, as well as less magnification. However, \
 the SVD is semi-automatic, giving it a faster fire rate. It takes a minimum of two rounds to kill, \
@@ -780,7 +780,7 @@ to be accurate at more like 600 m. The Dragunov is ideal and was designed for gi
 larger operating distance.')
 
 _add('rurif_gp25', ASSAULT, SOLDIER, PRECISION,
-'KBP Instrument Design Bureau', 'GP-25', 'Bonfire',
+'GP-25', 'GP-25 Assault Rifle',
 'In Battlefield 2, the GP-25 is attached to the AK-47, issued uniquely to the PLA Assault kit. It \
 replaces the standard hand grenades available with the PLA Medic''s AK-47.',
 'The GP-25 "Kostyor" is an under-barrel grenade launcher designed in the Soviet Union by KBP \
@@ -791,7 +791,7 @@ velocity of around 76.5 meters per second. A new modern version of the GP-25 is 
 is attached to more modern Kalashnikov firearms such as the AK-101.')
 
 _add('rurif_gp30', ASSAULT, SOLDIER, PRECISION,
-'KBP Instrument Design Bureau', 'GP-30', 'Shoe',
+'GP-30', 'GP-30 Assault Rifle',
 'The GP-30 appears in Battlefield 2 attached to the AK-101 assault rifle used by the MEC. It is \
 nearly identical to the GP-25 as their only difference is their sighting system.',
 'The GP-30 Obuvka ("Shoe"), is a Russian Under-Barrel Grenade Launchers for the AK and AN series \
@@ -800,7 +800,7 @@ latest version the GP-30 is an evolved version of the GP-25, being lighter, easi
 easier to use.')
 
 _add('rurrif_ak74u', CARBINE, SOLDIER, PRECISION,
-'Kalashnikov', 'AKS-74U', '',
+'AKS-74U', 'AKS-74U Carbine Rifle',
 'The AK-74U in Battlefield 2 is the standard primary weapon for the Spec Ops Kit on the MEC team. \
 It comes with a Kobra Red Dot Sight and sports desert camouflage. It has the highest stopping \
 power of all the standard Spec Ops Kit weapons; compared to its American counterpart, the M4A1 \
@@ -812,7 +812,7 @@ features a folding stock and is fitted with a red-dot scope which when zoomed pr
 effective.')
 
 _add('rusht_saiga12', SHOTGUN, SOLDIER, PRECISION,
-'Izhmash', 'S12K', 'Saiga-12',
+'S12K', 'S12K Shotgun',
 'In Battlefield 2, the S12K is the default weapon for the Engineer kit for the MEC team. It is the \
 first semi-automatic shotgun players will most likely get at their disposal. The weapon is \
 potentially more forgiving than the pump-action USMC and PLA shotguns; it is usually not capable \
@@ -829,87 +829,87 @@ with all shotguns it will kill point blank but has bad recoil and added to that 
 and ineffectively use up all your ammo, it can be wise to switch to a pistol.')
 
 _add('rutnk_t90_barrel', CANNON, VEHICLE, EXPLOSIVE,
-'', '', '',
+'T-90', 'T-90 125mm Cannon',
 '',
 '')
 
 _add('she_ec635_cannons', CANNON, VEHICLE, PRECISION,
-'', '', '',
+'EC635', 'EC635 Cannon',
 '',
 '')
 
 _add('she_littlebird_miniguns', CANNON, VEHICLE, PRECISION,
-'', '', '',
+'MH-6', 'MH-6 M134 Minigun',
 '',
 '')
 
 _add('tnk_c2_barrel', CANNON, VEHICLE, EXPLOSIVE,
-'', '', '',
+'C2', 'C2 Cannon',
 '',
 '')
 
 _add('tnk_type98_barrel', CANNON, VEHICLE, EXPLOSIVE,
-'', '', '',
+'Type 98', 'Type 98 120mm Cannon',
 '',
 '')
 
 _add('tnk_type98_smokelauncher', COUNTER, VEHICLE, EXPLOSIVE,
-'', '', '',
+'Type 98', 'Type 98 Smoke',
 '',
 '')
 
 _add('usaas_stinger_launcher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'FIM-92', 'FIM-92 Missile Turret',
 '',
 '')
 
 _add('usaav_m6_barrel', CANNON, VEHICLE, EXPLOSIVE,
-'', '', '',
+'M6', 'M6 76mm Cannon',
 '',
 '')
 
 _add('usaav_m6_stinger_launcher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'M6', 'M6 Stinger Missile',
 '',
 '')
 
 _add('usair_f15_autocannon', CANNON, VEHICLE, PRECISION,
-'', '', '',
+'F-15', 'F-15 20mm Cannon',
 '',
 '')
 
 _add('usair_f15_mavericklauncherlaser', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'F-15', 'F-15 Maverick Guided Missile',
 '',
 '')
 
 _add('usair_f15_250kgbomblauncher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'F-15', 'F-15 Cluster Bomb',
 '',
 '')
 
 _add('usair_f15_sidewinderlauncher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'F-15', 'F-15 Sidewinder Missile',
 '',
 '')
 
 _add('usapc_lav25_barrel', CANNON, VEHICLE, EXPLOSIVE,
-'', '', '',
+'LAV-25', 'LAV-25 25mm Cannon',
 '',
 '')
 
 _add('usapc_lav25_towlauncher', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'LAV-25', 'LAV-25 TOW Missile',
 '',
 '')
 
 _add('usart_lw155_barrel', CANNON, VEHICLE, EXPLOSIVE,
-'', '', '',
+'M777', 'M777 155mm Cannon',
 '',
 '')
 
 _add('usatp_predator', ROCKET, SOLDIER, EXPLOSIVE,
-'Lockheed Martin', 'FGM-172', 'Predator SRAW',
+'FGM-172', 'FGM-172 Predator SRAW',
 'In Battlefield 2, the SRAW is issued to the USMC Anti-Tank kit. Like its counterpart weapon in \
 the other factions, the ERYX, the SRAW is a semi-guided anti-tank missile launcher. Once fired, if \
 the player continues aiming down the sights they can control the missile for a short time.',
@@ -920,7 +920,7 @@ like crosswinds. It can be fired safely from enclosed places within the ranges o
 meaning the personnel using it can remain relatively safe from return fire.')
 
 _add('ushgr_m67', GRENADE, SOLDIER, EXPLOSIVE,
-'', 'M67', '',
+'M67', 'M67 Grenade',
 'In Battlefield 2, Hand Grenades are standard issue to each playable faction. They are found on \
 all Kits except the Assault Kit, which replaces them with an under-barrel grenade launcher, and \
 the Anti-Tank Kit, which uses a rocket launcher instead. As the G3 unlock for Assault has no \
@@ -935,7 +935,7 @@ rooms in buildings, however the use use a hand grenade in such circumstances doe
 all fatalities and caution should still be taken.')
 
 _add('uslmg_m249saw', LMG, SOLDIER, PRECISION,
-'Fabrique Nationale de Herstal', 'M249', 'SAW',
+'M249', 'M249 SAW Machine Gun',
 'The M249SAW in Battlefield 2 is the first weapon unlocked in the Support kit for the United \
 States Marine Corps. The M249 also appears as a turret that will spawn near certain control points \
 that are held by the USMC, although without usable ironsights and infinite ammo. It is tied with \
@@ -952,12 +952,12 @@ belt ammunition but can also make use of M16 rifle magazines as well. With an ef
 range and large ammunition capacity this gun increases your sides firepower considerably.')
 
 _add('uslmg_m249saw_stationary', LMG, VEHICLE, PRECISION,
-'', '', '',
+'M249', 'M249 SAW Machine Gun Mounted',
 '',
 '')
 
 _add('usmin_claymore', MINE, SOLDIER, EXPLOSIVE,
-'Macleod', 'M18A1', 'Claymore',
+'M18A1', 'M18A1 Claymore Trip Mine',
 'In Battlefield 2, the Claymore is issued to the Sniper Kit for the USMC , MEC and the PLA. It is \
 useful as a safeguard for when the player is sitting in a good spot for sniping as it can protect \
 the player from enemies trying to sneak up on them from behind to take them out.',
@@ -969,7 +969,7 @@ approaching, and snipers can make safe their position by employing these devices
 defensive position like at the top of a ladder.')
 
 _add('uspis_92fs', PISTOL, SOLDIER, PRECISION,
-'Beretta', '92FS', 'Berretta 92',
+'92FS', '92FS Pistol',
 'The 92FS is the USMC''s and European Union''s standard sidearm in the game. Its stopping power \
 and accuracy are similar to that of other handguns in the game. However, it is widely considered \
 that the M9 has the most user friendly iron sights in the game. Its magazine capacity is 15 \
@@ -982,7 +982,7 @@ also very quick to reload. As with all sidearms it can prove invaluable when swi
 stuations with slower loading weapons or when out of primary ammunition.')
 
 _add('uspis_92fs_silencer', PISTOL, SOLDIER, PRECISION,
-'Beretta', '92FS Silencer', 'Berretta 92 Silencer',
+'92FS', '92FS Pistol Silenced',
 'The 92FS is the USMC''s and European Union''s standard sidearm in the game. Its stopping power \
 and accuracy are similar to that of other handguns in the game. However, it is widely considered \
 that the M9 has the most user friendly iron sights in the game. Its magazine capacity is 15 \
@@ -996,7 +996,7 @@ also very quick to reload. As with all sidearms it can prove invaluable when swi
 stuations with slower loading weapons or when out of primary ammunition.')
 
 _add('usrgl_m203', GRENADE, SOLDIER, EXPLOSIVE,
-'Colt', 'M203', '',
+'M203', 'M203 Grenade Launcher',
 'The M203 in Battlefield 2 is used as an attachment for assault rifles. It fires a 40mm grenade \
 out of a tube located on the bottom of the barrel of a gun. On impact creates an explosion that \
 can kill an enemy or destroy a vehicle. It is only used by the Assault class.',
@@ -1005,7 +1005,7 @@ mounts or Picatinny rails, but was originally designed for the U.S. M16 family o
 include the M4A1 and the HK416 Carbines.')
 
 _add('usrif_g3a3', ASSAULT, SOLDIER, PRECISION,
-'Heckler & Koch', 'G3A3', 'H&K G3',
+'G3A3', 'G3A3 Assault Rifle',
 'The G3 is the Tier 1 unlock for the Assault Kit in Battlefield 2. The rifle itself is more \
 powerful than the default assault rifles, as the weapon is a battle rifle which uses full-sized \
 7.62x51mm rifle rounds. However, it is made significantly less attractive to players because of \
@@ -1021,7 +1021,7 @@ that currently exist. The most recent incarnation of the rifle is the A4 variant
 a collapsible stock.')
 
 _add('usrif_g36c', CARBINE, SOLDIER, PRECISION,
-'Heckler & Koch', 'G36C', 'H&K Gewehr 36',
+'G36C', 'G36C Carbine Rifle',
 'The G36C is the Tier One unlock for the Special Forces kit in Battlefield 2. It is one of the \
 more accurate Spec Ops Carbines in game. It is noticeably more accurate than the USMC''s M4 and \
 the PLA''s Type 95 Carbines, but less powerful than the MEC''s AKS-74u. However, it lacks the \
@@ -1033,7 +1033,7 @@ magazines, with a rate of fire of 750 rounds per minute. It is a variant of the 
 carbine, which is solely based on the original G36.')
 
 _add('usrif_m4', CARBINE, SOLDIER, PRECISION,
-'Colt', 'M4', '',
+'M4', 'M4 Carbine Rifle',
 'The M4 Carbine is the standard primary weapon for the USMC''s Special Forces kit. It has a \
 Aimpoint M2 Sight attached to it, enabling an un-obstructed field of view when aiming. The M4 \
 Carbine has reasonably high accuracy but with a low damage output. However, the lack of stopping \
@@ -1052,7 +1052,7 @@ vision, laser sights, bipods and even the M203 grenade launcher. With all its fe
 will not let you down when you most need it.')
 
 _add('usrif_m16a2', ASSAULT, SOLDIER, PRECISION,
-'Colt', 'M16A2', '',
+'M16A2', 'M16A2 Assault Rifle',
 'The United States Marine Corps in Battlefield 2 uses the M16A2 as its primary weapon for the \
 Assault and Medic kits. It fires in three-round bursts, with each burst doing a moderate amount of \
 damage. The M16A2 included in Assault kits comes with an M203 grenade launcher, while the M16 used \
@@ -1067,7 +1067,7 @@ mode. The M16A2 can also fire 40 mm grenades when used in conjunction with the M
 launcher making this an effective gun for many combat situations.')
 
 _add('usrif_m24', SNIPER, SOLDIER, PRECISION,
-'Remington', 'M24', 'M24',
+'M24', 'M24 Sniper Rifle',
 'The M24 is the default sniper rifle for the USMC. Its scope crosshairs are similar to that of the \
 Chinese Type 88 with the traditional intersection line arrangement, but the lines go to each end \
 of the scope. As a bolt-action rifle, the M24 does have its limitations, especially in fire rate. \
@@ -1086,7 +1086,7 @@ weapons it is important for personnel using them to remain undetected possibly u
 claymore.')
 
 _add('ussni_m82a1', SNIPER, SOLDIER, PRECISION,
-'Barrett', 'M82A1', '',
+'M82A1', 'M82A1 Sniper Rifle',
 'The M82A1 seems to be a weapon which was cut midway though Battlefield 2''s development. It has a \
 different texture sheet and animations than the M95, which is a similar weapon. In addition, the \
 horizontal line on its scope is shorter on both sides. Its file directories lack the "sounds" and \
@@ -1103,7 +1103,7 @@ and the bullpup M82A2. The M82A2 is no longer manufactured, though the XM500 can
 successor.')
 
 _add('usrif_m203', ASSAULT, SOLDIER, PRECISION,
-'Colt', 'M203', '',
+'M203', 'M203 Assault Rifle',
 'The M16 feautres a 3-round burst firing mode, which is very effective at close range, and medium \
 ranges. It will take a couple of well-placed bursts to take down an enemy. Switch to semi-auto and \
 zoom your view in and the M16 will make a decent long-range weapon to pick off enemies from afar. \
@@ -1120,7 +1120,7 @@ mode. The M16A2 can also fire 40 mm grenades when used in conjunction with the M
 launcher making this an effective gun for many combat situations.')
 
 _add('usrif_mp5_a3', SMG, SOLDIER, PRECISION,
-'Heckler & Koch', 'MP5A3', '',
+'MP5A3', 'MP5A3 Machine Gun',
 'The MP5 is the standard submachine gun of the USMC, US Navy SEALs and SAS Anti-Tank Kit. It fires \
 at 900 rounds per minute from a 30-round magazine, but it has low damage and accuracy, and a \
 fairly long reload.',
@@ -1131,7 +1131,7 @@ with six assembly groups and ambidextrous safety selector lever. It features aut
 shot modes so making sure which mode you are in can save your life.')
 
 _add('usrif_remington11-87', SHOTGUN, SOLDIER, PRECISION,
-'Remington', 'M11-87', '',
+'M11-87', 'M11-87 Shotgun',
 'In Battlefield 2, the M11-87 is issued to the USMC Engineer Kit. A hit with this pump shotgun can \
 kill in one shot up to medium-short range, and multiple targets can be damaged with each shot. In \
 addition, there is no accuracy benefit (or detriment) for the different stances, though the zoom \
@@ -1142,7 +1142,7 @@ switching to a pistol for medium to longer range shots. Due to the delay between
 important to hit the target the first time as you may not get another chance.')
 
 _add('usrif_sa80', ASSAULT, SOLDIER, PRECISION,
-'Heckler & Koch', 'L85A1', '',
+'L85A1', 'L85A1 Assault Rifle',
 'The L85A1 (referred to in the game files as SA80A2[2]) is a Tier One unlock for the Medic Kit and \
 the primary weapon for the European Union Assault Class. It features a SUSAT scope instead of the \
 iron sights. Some players feel that the high-precision sight seen through the scope makes the \
@@ -1154,23 +1154,13 @@ become the service rifle of the Armed Forces of Britain. It fires the 5.56x45mm 
 fed from a 30 round detachable STANAG box magazine with an effective range of up to 850 meters \
 depending on the variant and a 650 rounds per minute fire rate.')
 
-_add('ustnk_m1a2_barrel', CANNON, VEHICLE, EXPLOSIVE,
-'', '', '',
-'',
-'')
-
 _add('usthe_uh60_flarelauncher', COUNTER, VEHICLE, EXPLOSIVE,
-'', '', '',
-'',
-'')
-
-_add('ustnk_m1a2_smokelauncher', COUNTER, VEHICLE, EXPLOSIVE,
-'', '', '',
+'UH-60', 'UH-60 Flare',
 '',
 '')
 
 _add('ussht_jackhammer', SHOTGUN, SOLDIER, PRECISION,
-'Pancor', 'MK3A1', 'Jackhammer',
+'MK3A1', 'MK3A1 Jackhammer Shotgun',
 'In Battlefield 2, the MK3A1 is the Tier one unlock for the Engineer Kit. Its main advantage is \
 its fully-automatic firing mode, being only matched in fire rate by the MEC S12K. The shotgun is a \
 valid replacement for the American M11-87 and Chinese NOR982 Pump-Action shotguns, as the MK3A1 \
@@ -1180,7 +1170,7 @@ developed by John Anderson in 1984 and patented in 1987. Its cumbersome design n
 fully produced; there are few (according to some reports, only two) prototypes in existence.')
 
 _add('ussni_m95_barret', SNIPER, SOLDIER, PRECISION,
-'Barrett', 'M95', '',
+'M95', 'M95 Sniper Rifle',
 'In Battlefield 2, the M95 is the Tier One unlock for the Sniper kit. The M95 is a bolt action \
 rifle, with a magazine of five rounds (Similar to all the bolt-action rifles such as the M24 SWS). \
 Its main improvement is a more powerful cartridge, the .50 BMG. The M95 is the only small arms \
@@ -1192,14 +1182,24 @@ due to its incredibly large .50 Caliber round, which easily penetrates heavy arm
 triangular bolt head and, because of its bullpup configuration, is fairly short for a sniper \
 rifle. Furthermore, its recoil is remarkably low.')
 
+_add('ustnk_m1a2_barrel', CANNON, VEHICLE, EXPLOSIVE,
+'M1A2', 'M1A2 120mm Cannon',
+'',
+'')
+
+_add('ustnk_m1a2_smokelauncher', COUNTER, VEHICLE, EXPLOSIVE,
+'M1A2', 'M1A2 Smoke',
+'',
+'')
+
 _add('wrench', TOOL, SOLDIER, PRECISION,
-'', '', 'Wrench',
+'Wrench', 'Wrench',
 'In Battlefield 2, the Wrench is issued to the Engineer kit. After a short animation, where the \
 user widens the mouth of the wrench, the player can use it to repair friendly or neutral vehicles. \
 It can also rebuild bridges which have been damaged or destroyed by C4 or other explosives.',
 '')
 
 _add('xpak2_tiger_missiles', ROCKET, VEHICLE, EXPLOSIVE,
-'', '', '',
+'EC665', 'EC665 Hellfire Missile',
 '',
 '')
