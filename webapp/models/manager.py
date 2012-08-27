@@ -727,7 +727,7 @@ class ModelManager(object):
 
         # Attempt to get the player by name and then address
         player = None
-        if name and name in self.name_to_player:
+        if name != 'defaultPlayer' and name in self.name_to_player:
             player = self.name_to_player[name]
         elif address and address in self.addr_to_player:
             player = self.addr_to_player[address]
