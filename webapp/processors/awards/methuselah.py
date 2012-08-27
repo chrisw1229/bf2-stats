@@ -1,4 +1,5 @@
 
+import models
 from processors.awards import AwardProcessor,Column
 from timer import Timer
 import collections
@@ -41,13 +42,17 @@ class Processor(AwardProcessor):
     def on_death(self, e):
 
         # Stop the timer for the player
-        self.totalTime[e.player].stop(e.tick)
+        if e.player in self.totalTime:
+            self.totalTime[e.player].stop(e.tick)
 
-        self.results[e.player].elapsed = self.totalTime[e.player].elapsed / self.lives[e.player]
+        if e.player in self.results:
+            self.results[e.player].elapsed = self.totalTime[e.player].elapsed / self.lives[e.player]
 
     def on_disconnect(self, e):
 
         # Stop the timer for the player
-        self.totalTime[e.player].stop(e.tick)
+        if e.player in self.totalTime:
+            self.totalTime[e.player].stop(e.tick)
 
-        self.results[e.player].elapsed = self.totalTime[e.player].elapsed / self.lives[e.player]
+        if e.player in self.results:
+            self.results[e.player].elapsed = self.totalTime[e.player].elapsed / self.lives[e.player]

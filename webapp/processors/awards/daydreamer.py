@@ -1,4 +1,5 @@
 
+import models
 from processors.awards import AwardProcessor,Column
 from timer import Timer
 
@@ -27,6 +28,8 @@ class Processor(AwardProcessor):
         self.timers = dict()
 
     def on_death(self, e):
+        if not e.player in self.timers:
+            return
 
         # Stop the player timer
         self.timers[e.player].stop(e.tick)
@@ -38,6 +41,8 @@ class Processor(AwardProcessor):
             self.timers[e.player] = temp_timer
 
     def on_disconnect(self, e):
+        if not e.player in self.timers:
+            return
 
         # Stop the player timer
         self.timers[e.player].stop(e.tick)
