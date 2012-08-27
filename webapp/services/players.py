@@ -87,11 +87,12 @@ class Handler:
         player_stats = stat_mgr.get_player_stats(player)
 
         # Respond with a summary of the player model and stats
-        results = {}
+        results = list()
         for key in Handler.MODEL_FIELDS:
-            results[key] = player.__dict__[key]
+            results.append({ 'key': key, 'value': player.__dict__[key] })
         for key in Handler.STATS_FIELDS:
-            results[key] = player_stats.__dict__[key]
+            results.append({ 'key': key, 'value': player_stats.__dict__[key] })
+        results.sort(key=lambda r: r['key'])
         return results
 
     def get_player_enemies(self, id):
@@ -162,7 +163,7 @@ class Handler:
         for kit in player_stats.kits:
             if kit != models.kits.EMPTY:
                 object_stats = player_stats.kits[kit]
-                rows.append([kit.id, object_stats.score, object_stats.kills,
+                rows.append([kit.name, object_stats.score, object_stats.kills,
                         object_stats.deaths])
 
         # Sort the results by score
@@ -200,8 +201,8 @@ class Handler:
         for map_obj in player_stats.maps:
             if map_obj != models.maps.EMPTY:
                 object_stats = player_stats.maps[map_obj]
-                rows.append([map_obj.id, object_stats.score, object_stats.kills,
-                        object_stats.deaths])
+                rows.append([map_obj.name, object_stats.score,
+                        object_stats.kills, object_stats.deaths])
 
         # Sort the results by score
         rows.sort(key=lambda r: r[1], reverse=True)
@@ -238,7 +239,7 @@ class Handler:
         for team in player_stats.teams:
             if team != models.teams.EMPTY:
                 object_stats = player_stats.teams[team]
-                rows.append([team.id, object_stats.score, object_stats.kills,
+                rows.append([team.name, object_stats.score, object_stats.kills,
                         object_stats.deaths])
 
         # Sort the results by score
@@ -276,7 +277,7 @@ class Handler:
         for vehicle in player_stats.vehicles:
             if vehicle != models.vehicles.EMPTY:
                 object_stats = player_stats.vehicles[vehicle]
-                rows.append([vehicle.id, object_stats.kills,
+                rows.append([vehicle.name, object_stats.kills,
                         object_stats.deaths])
 
         # Sort the results by kills
@@ -314,7 +315,7 @@ class Handler:
         for weapon in player_stats.weapons:
             if weapon != models.weapons.EMPTY:
                 object_stats = player_stats.weapons[weapon]
-                rows.append([weapon.id, object_stats.kills, object_stats.deaths,
+                rows.append([weapon.name, object_stats.kills, object_stats.deaths,
                         [object_stats.bullets_hit, object_stats.bullets_fired]])
 
         # Sort the results by kills

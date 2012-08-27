@@ -220,18 +220,19 @@ $.extend({ mgr: {
    },
 
    onPlayer: function(data) {
-
-      // Update the header
       var headerElm = $('.common-header', playerElm);
-      headerElm.text(data.aliases[data.aliases.length - 1]);
 
       $('.player-photo', playerElm).attr('src',
             'images/players/' + data.id + '-large.jpg');
 
       var statsElm = $('.player-stats', playerElm);
       statsElm.empty();
-      for (var key in data) {
-         $('<li>' + key + ' ' + data[key] + '</li>').appendTo(statsElm);
+      for (var i = 0; i < data.length; i++) {
+         var row = data[i];
+         if (row.key == 'aliases') {
+            headerElm.text(row.value[row.value.length - 1]);
+         }
+         $('<li>' + row.key + ' ' + row.value + '</li>').appendTo(statsElm);
       }
    },
 
