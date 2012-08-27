@@ -120,7 +120,7 @@ class Processor(BaseProcessor):
 
         # Increment the enemy death count for the player
         kill_event = player_history.get_new_event(KillEvent.TYPE)
-        if kill_event.valid_kill:
+        if kill_event and kill_event.valid_kill:
             if not kill_event.attacker in player_stats.enemies:
                 player_stats.enemies[kill_event.attacker] = PlayerItemStats()
             player_stats.enemies[kill_event.attacker].deaths += 1
