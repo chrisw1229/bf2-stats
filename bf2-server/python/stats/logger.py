@@ -1,5 +1,6 @@
 import datetime
 import fpformat
+import random
 
 import host
 import bf2.GameLogic
@@ -10,6 +11,7 @@ from constants import *
 from bf2.stats.stats import getStatsMap
 
 log_file = None
+last_map = None
 
 def init():
     print 'LOGGER - INIT'
@@ -154,6 +156,27 @@ def on_reset(data):
         log('RS', data)
     except Exception, err:
         error('reset', err)
+
+    # Attempt to randomize the teams
+    try:
+        global last_map
+        current_map = bf2.serverSettings.getMapName()
+        if current_map == last_map:
+            for player in bf2.playerManager.getPlayers():
+                player.setTeam(3 - player.getTeam())
+            return
+        last_map = current_map
+
+        players = list(bf2.playerManager.getPlayers())
+        random.shuffle(players)
+        for i in range(len(players)):
+            player = players[i]
+            if i < int(len(players) / 2):
+                player.setTeam(1)
+            else:
+                player.setTeam(2)
+    except Exception, err:
+        error('team_assign', err)
 
 def on_ammo(giver, bf2_object):
     try:
