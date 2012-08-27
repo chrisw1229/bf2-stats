@@ -10,6 +10,7 @@
 .ui-table-header th.ui-state-default {
    border-left: none;
    padding: 6px 8px;
+   white-space: nowrap;
 }
 
 .ui-table-row-even {
@@ -26,6 +27,7 @@
    border-width: 0 1px 1px 0;
    margin: 0;
    padding: 6px 8px;
+   white-space: nowrap;
 }
 
 .ui-table-empty,
