@@ -96,9 +96,9 @@ class Processor(BaseProcessor):
             if e.team_kill:
                 attacker['weapon'] = 'Teamkills';
             elif e.weapon != models.weapons.EMPTY:
-                attacker['weapon'] = e.weapon.name
+                attacker['weapon'] = e.weapon.model
             elif e.vehicle != models.vehicles.EMPTY:
-                attacker['weapon'] = e.vehicle.name
+                attacker['weapon'] = e.vehicle.model
             packet['attacker'] = attacker
 
     def on_vehicle_destroy(self, e):
@@ -109,7 +109,7 @@ class Processor(BaseProcessor):
         # Extract information about the vehicle
         vehicle = {
             'id': e.vehicle.id,
-            'name': e.vehicle.name,
+            'name': e.vehicle.model,
             'type': e.vehicle.vehicle_type,
             'x': self._convert_x(e.vehicle_pos[0]),
             'y': self._convert_y(e.vehicle_pos[2])

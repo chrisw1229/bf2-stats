@@ -228,9 +228,9 @@ class Processor(BaseProcessor):
         if e.team_kill:
             player_tuple['weapon'] = 'Teamkills'
         if e.weapon:
-            player_tuple['weapon'] = e.weapon.name
+            player_tuple['weapon'] = e.weapon.model
         elif e.vehicle:
-            player_tuple['weapon'] = e.vehicle.name
+            player_tuple['weapon'] = e.vehicle.model
         return player_tuple
 
     def _get_kill_victim_tuple(self, e):
@@ -345,7 +345,7 @@ class Processor(BaseProcessor):
     def _get_vehicle_packet(self, tick, vehicle, pos=None):
         vehicle_tuple = {
             'id': vehicle.id,
-            'name': vehicle.name,
+            'name': vehicle.model,
             'type': vehicle.vehicle_type
         }
 
