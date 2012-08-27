@@ -42,7 +42,7 @@ class Vehicle(object):
     def reset(self):
         pass
 
-EMPTY = Vehicle('', '', '', '', '', [], [], '',0)
+EMPTY = Vehicle('', '', '', '', '', [], [], '', 0)
 
 def _add(id, vehicle_type, group, model, name, slot_ids, weapon_ids, desc, cost):
     registry.add(Vehicle(id, vehicle_type, group, model, name, slot_ids,
@@ -134,7 +134,13 @@ _add('aircontroltower', SENSOR, STATION, 'ACT', 'Air Control Tower',
 '',
 0.0)
 
-_add('aircontroltower_mec', SENSOR, STATION, 'ACT', 'Air Control Tower',
+_add('aircontroltower_chi', SENSOR, STATION, 'ACT', 'China Air Control Tower',
+[],
+[],
+'',
+0.0)
+
+_add('aircontroltower_mec', SENSOR, STATION, 'ACT', 'MEC Air Control Tower',
 [],
 [],
 '',
@@ -196,6 +202,12 @@ high-performance and high-capacity boat constructed with a solid, shaped hull an
 at the gunwale. The design is stable and seaworthy. The inflatable collar allows the vessel to \
 maintain buoyancy even if a large quantity of water is shipped aboard due to bad sea conditions.',
 0.00001)
+
+_add('che_wz11', TRANSPORT, LAND, 'WZ-11', 'WZ-11',
+['che_wz11_driver', 'che_wz11_leftpassenger'],
+['che_wz11_canons', 'che_wz11_flarelauncher'],
+'',
+0.001)
 
 _add('chhmg_kord', GROUND_DEF, STATION, 'Kord', 'Kord 6P50',
 [],
@@ -283,10 +295,28 @@ cargo compartments, seating up to 10 people. It is powered by a 175 hp (130 kW) 
 giving a top speed of 112 km/h (4 to 5 km/h when swimming).',
 0.045)
 
+_add('laddercontainer', GROUND_DEF, STATION, 'Ladder', 'Ladder',
+[],
+[],
+'?',
+0.0)
+
 _add('mec_bipod', GROUND_DEF, STATION, 'Bipod', 'MEC Bipod',
 ['mec_bipod_driver'],
 ['rulmg_rpk74_stationary'],
 '?',
+0.0)
+
+_add('mobileradar_ch_dest', SENSOR, STATION, 'Radar', 'China Mobile Radar',
+[],
+[],
+'',
+0.0)
+
+_add('mobileradar_mech_dest', SENSOR, STATION, 'Radar', 'MEC Mobile Radar',
+[],
+[],
+'',
 0.0)
 
 _add('mobileradar_us_dest', SENSOR, STATION, 'Radar', 'US Mobile Radar',
@@ -318,7 +348,7 @@ fighters such as the McDonnell Douglas F-15 Eagle, and the General Dynamics F-16
 
 _add('ruair_su34', JET, AIR, 'Su-34', 'Su-34 Fullback',
 ['ruair_su34_driver', 'ruair_su34_copilot'],
-['ruair_su34_30mmcannon', 'ruair_su34_archerlauncher', 'ruair_su34_250kgbomblauncher'],
+['ruair_su34_30mmcannon', 'ruair_su34_archerlauncher', 'ruair_su34_250kgbomblauncher', 'ruair_su34_kedgelaunchertv'],
 'The Sukhoi Su-34 is a Russian twin-seat fighter-bomber. It is intended to replace the Sukhoi \
 Su-24. The aircraft shares most of its wing structure, tail, and engine nacelles with the \
 Su-27/Su-30, with canards like the Su-30MKI/Su-33/Su-27M/35 to increase static instability (higher \
@@ -329,7 +359,7 @@ the AL-31FM1, the same engines as the Su-27SM, but its maximum speed is lower at
 
 _add('rutnk_t90', ARMOR, LAND, 'T-90', 'T-90',
 ['rutnk_t90_driver', 'rutnk_t90_cupolabase'],
-['rutnk_t90_barrel', 'coaxial_mg_mec', 'chhmg_kord'],
+['rutnk_t90_barrel', 'coaxial_mg_mec', 'chhmg_kord', 'rutnk_t90_smokelauncher'],
 'The T-90 is a Russian third-generation main battle tank that is a modernisation of the T-72 (it \
 was originally to be called the T-72BU, later renamed to T-90). It is currently the most modern \
 tank in service with the Russian Ground Forces and Naval Infantry. Although a development of the \
@@ -341,13 +371,13 @@ infrared ATGM jamming system.',
 
 _add('she_ec635', HELICOPTER, AIR, 'EC635', 'Eurocopter EC635',
 ['she_ec635_driver', 'she_ec635_leftpassenger', 'she_ec635_rightpassenger'],
-['she_ec635_cannons'],
+['she_ec635_cannons', 'she_ec635_flarelauncher'],
 '',
 43.0)
      
 _add('she_littlebird', HELICOPTER, AIR, 'MH-6', 'MH-6 Little Bird',
 ['she_littlebird_driver', 'she_littlebird_leftspassenger', 'she_littlebird_rightpassenger'],
-['she_littlebird_miniguns'],
+['she_littlebird_miniguns', 'she_littlebird_flarelauncher'],
 '',
 1.2)
 
@@ -355,7 +385,7 @@ _add('the_mi17', HELICOPTER, AIR, 'Mi-17', 'Mi-17 Hip',
 ['the_mi17_driver', 'the_mi17_llavett_cupolabase', 'the_mi17_rlavett_cupolabase',
         'the_mi17_cargo_passenger_left', 'the_mi17_cargo_passenger_right',
         'the_mi17_cargo_passenger_middle'],
-[],
+['the_mi17_flarelauncher'],
 'The Mil Mi-17 (also known as the Mi-8M series in Russian service) is a Russian helicopter \
 currently in production at two factories in Kazan and Ulan-Ude. Mil Mi-8/17 is a medium \
 twin-turbine transport helicopter that can also act as a gunship.',
@@ -398,7 +428,7 @@ replaced with a four-tube Stinger missile system. These are due to be retired fr
 
 _add('usair_f18', JET, AIR, 'F/A-18', 'F/A-18 Hornet',
 ['usair_f18_driver'],
-['f18_autocannon', 'f18_sidewinderlauncher'],
+['f18_autocannon', 'f18_sidewinderlauncher', 'usair_f18_bomblauncher', 'decoy_flare_launcher'],
 'The McDonnell Douglas (now Boeing) F/A-18 Hornet is a twin-engine supersonic, all-weather \
 carrier-capable multirole fighter jet, designed to dogfight and attack ground targets (F/A for \
 Fighter/Attack). Designed by McDonnell Douglas and Northrop, the F/A-18 was derived from the \
@@ -419,7 +449,7 @@ no losses in dogfights.',
 _add('usapc_lav25', ARMOR, LAND, 'LAV-25', 'LAV-25 APC',
 ['usapc_lav25_driver', 'usapc_lav25_rearpassenger_l', 'usapc_lav25_rearpassenger_r',
         'usapc_lav25_rearpassenger_bl', 'usapc_lav25_rearpassenger_br'],
-['usapc_lav25_barrel', 'usapc_lav25_towlauncher', 'firingport_m16'],
+['usapc_lav25_barrel', 'usapc_lav25_towlauncher', 'firingport_m16', 'usapc_lav25_smokelauncher'],
 'The LAV-25 is an eight-wheeled amphibious reconnaissance vehicle used by the United States Marine \
 Corps. It was built by General Dynamics Land Systems Canada and is based on the Swiss MOWAG \
 Piranha I 8x8 family of armored fighting vehicles.',
@@ -503,6 +533,12 @@ _add('xpak2_faav', TRANSPORT, LAND, 'FAAV', 'Euro FAAV Jeep',
 '?',
 0.0155)
 
+_add('xpak2_fantan', JET, AIR, 'Q-5', 'Q-5 Fantan',
+['xpak2_fantan_driver'],
+['fantan_autocannon', 'xpak2_fantan_bomblauncher'],
+'?',
+30.0)
+
 _add('xpak2_hmmwv', TRANSPORT, LAND, 'HMMWV', 'Euro HMMWV',
 ['xpak2_hmmwv_driver', 'xpak2_hmmwv_codriver', 'xpak2_hmmwv_cupolabase'],
 [],
@@ -519,7 +555,7 @@ Piranha I 8x8 family of armored fighting vehicles.',
 
 _add('xpak2_semi', TRANSPORT, LAND, 'Truck', 'Semi-Truck',
 ['xpak2_semi_driver', 'xpak2_semi_passenger'],
-[],
+['truck_horn'],
 '?',
 0.1)
 

@@ -54,6 +54,11 @@ def _add(id, weapon_type, group, ammo, model, name, game_desc, real_desc):
     registry.add(Weapon(id, weapon_type, group, ammo, model, name,
             game_desc, real_desc))
 
+_add('aas_phalanx', ROCKET, VEHICLE, EXPLOSIVE,
+'Wasp', 'Wasp Phalanx Missile',
+'',
+'')
+
 _add('aas_seasparrow', ROCKET, VEHICLE, EXPLOSIVE,
 'Wasp', 'Wasp Sea Sparrow Missile',
 '',
@@ -109,8 +114,18 @@ _add('ahe_havoc_atakalauncher_tv', ROCKET, VEHICLE, EXPLOSIVE,
 '',
 '')
 
+_add('ahe_havoc_flarelauncher', COUNTER, VEHICLE, EXPLOSIVE,
+'Mi-28', 'Mi-28 Flare',
+'',
+'')
+
 _add('ahe_havoc_s8launcher', ROCKET, VEHICLE, EXPLOSIVE,
 'Mi-28', 'Mi-28 S-8 Rocket',
+'',
+'')
+
+_add('ahe_z10_flarelauncher', COUNTER, VEHICLE, EXPLOSIVE,
+'Z-10', 'Z-10 Flare',
 '',
 '')
 
@@ -126,6 +141,11 @@ _add('ahe_z10_hj8launcher_tv', ROCKET, VEHICLE, EXPLOSIVE,
 
 _add('ahe_z10_s8launcher', ROCKET, VEHICLE, EXPLOSIVE,
 'Z-10', 'Z-10 S-8 Rocket',
+'',
+'')
+
+_add('air_a10_avenger_firearm', CANNON, VEHICLE, PRECISION,
+'A-10', 'A-10 30mm Cannon',
 '',
 '')
 
@@ -159,6 +179,11 @@ _add('air_j10_archerlauncher', ROCKET, VEHICLE, EXPLOSIVE,
 '',
 '')
 
+_add('air_j10_bomblauncher', ROCKET, VEHICLE, EXPLOSIVE,
+'J-10', 'J-10 Cluster Bomb',
+'',
+'')
+
 _add('air_su30mkk_30mmcannon', CANNON, VEHICLE, PRECISION,
 'Su-30MKK', 'Su-30MKK 30mm Cannon',
 '',
@@ -171,6 +196,11 @@ _add('air_su30mkk_archerlauncher', ROCKET, VEHICLE, EXPLOSIVE,
 
 _add('air_su30mkk_kedgelauncher_laser', ROCKET, VEHICLE, EXPLOSIVE,
 'Su-30MKK', 'Su-30MKK Kedge Guided Missile',
+'',
+'')
+
+_add('air_su39_bomblauncher', ROCKET, VEHICLE, EXPLOSIVE,
+'Su-39', 'Su-39 Cluster Bomb',
 '',
 '')
 
@@ -197,6 +227,11 @@ _add('apc_btr90_hj8launcher', ROCKET, VEHICLE, EXPLOSIVE,
 '',
 '')
 
+_add('apc_btr90_smokelauncher', COUNTER, VEHICLE, EXPLOSIVE,
+'BTR-90', 'BTR-90 Smoke',
+'',
+'')
+
 _add('apc_wz551_barrel', CANNON, VEHICLE, EXPLOSIVE,
 'WZ551', 'WZ551 120mm Cannon',
 '',
@@ -204,6 +239,11 @@ _add('apc_wz551_barrel', CANNON, VEHICLE, EXPLOSIVE,
 
 _add('apc_wz551_hj8launcher', ROCKET, VEHICLE, EXPLOSIVE,
 'WZ551', 'WZ551 HJ-8 Guided Missile',
+'',
+'')
+
+_add('apc_wz551_smokelauncher', COUNTER, VEHICLE, EXPLOSIVE,
+'WZ551', 'WZ551 Smoke',
 '',
 '')
 
@@ -255,7 +295,12 @@ demolish a truck but with the gases expanding at about 8050 m/s, you must be cle
 radius as you cannot outrun the explosion.')
 
 _add('car_horn', TOOL, VEHICLE, PRECISION,
-'Horn', 'Car Horn',
+'Horn', 'Horn - Military',
+'',
+'')
+
+_add('car_horn2', TOOL, VEHICLE, PRECISION,
+'Horn', 'Horn - Civilian',
 '',
 '')
 
@@ -278,6 +323,16 @@ capable of firing 5 missiles in 2 minutes. With the misile being armed with a 13
 shaped charge high explosive warhead it is capable of penetrating 900 mm of ERA. All in all a very \
 effective anti-armour weapon that will also easily destroy other types of vehicles and even \
 concrete bunkers.')
+
+_add('che_wz11_canons', CANNON, VEHICLE, PRECISION,
+'WZ-11', 'WZ-11 23mm Cannon',
+'',
+'')
+
+_add('che_wz11_flarelauncher', COUNTER, VEHICLE, PRECISION,
+'WZ-11', 'WZ-11 Flare',
+'',
+'')
 
 _add('chhmg_kord', HMG, VEHICLE, PRECISION,
 'Kord', 'Kord Machine Gun',
@@ -428,6 +483,11 @@ _add('coaxial_mg_mec', HMG, VEHICLE, PRECISION,
 '',
 '')
 
+_add('decoy_flare_launcher', COUNTER, VEHICLE, EXPLOSIVE,
+'F/A-18', 'F/A-18 Flare',
+'',
+'')
+
 _add('defibrillator', TOOL, SOLDIER, PRECISION,
 'Defibrillator', 'Defibrillator',
 'The Defibrillator, or "Shock Paddles", is an item in the Medic Kit. It can revive any critically \
@@ -489,6 +549,11 @@ _add('f18_autocannon', CANNON, VEHICLE, PRECISION,
 
 _add('f18_sidewinderlauncher', ROCKET, VEHICLE, EXPLOSIVE,
 'F/A-18', 'F/A-18 Sidewinder Missile',
+'',
+'')
+
+_add('fantan_autocannon', CANNON, VEHICLE, PRECISION,
+'Q-5', 'Q-5 23mm Cannon',
 '',
 '')
 
@@ -628,6 +693,11 @@ _add('ruair_su34_30mmcannon', CANNON, VEHICLE, PRECISION,
 
 _add('ruair_su34_archerlauncher', ROCKET, VEHICLE, EXPLOSIVE,
 'Su-34', 'Su-34 ARCHER Guided Missile',
+'',
+'')
+
+_add('ruair_su34_kedgelaunchertv', ROCKET, VEHICLE, EXPLOSIVE,
+'Su-34', 'Su-34 Kedge Guided Missile',
 '',
 '')
 
@@ -833,13 +903,33 @@ _add('rutnk_t90_barrel', CANNON, VEHICLE, EXPLOSIVE,
 '',
 '')
 
+_add('rutnk_t90_smokelauncher', COUNTER, VEHICLE, EXPLOSIVE,
+'T-90', 'T-90 Smoke',
+'',
+'')
+
 _add('she_ec635_cannons', CANNON, VEHICLE, PRECISION,
 'EC635', 'EC635 Cannon',
 '',
 '')
 
+_add('she_ec635_flarelauncher', COUNTER, VEHICLE, EXPLOSIVE,
+'EC635', 'EC635 Flare',
+'',
+'')
+
+_add('she_littlebird_flarelauncher', COUNTER, VEHICLE, EXPLOSIVE,
+'MH-6', 'MH-6 Flare',
+'',
+'')
+
 _add('she_littlebird_miniguns', CANNON, VEHICLE, PRECISION,
 'MH-6', 'MH-6 M134 Minigun',
+'',
+'')
+
+_add('the_mi17_flarelauncher', COUNTER, VEHICLE, EXPLOSIVE,
+'Mi-17', 'Mi-17 Flare',
 '',
 '')
 
@@ -855,6 +945,11 @@ _add('tnk_type98_barrel', CANNON, VEHICLE, EXPLOSIVE,
 
 _add('tnk_type98_smokelauncher', COUNTER, VEHICLE, EXPLOSIVE,
 'Type 98', 'Type 98 Smoke',
+'',
+'')
+
+_add('truck_horn', TOOL, VEHICLE, PRECISION,
+'Horn', 'Horn - Truck',
 '',
 '')
 
@@ -893,8 +988,18 @@ _add('usair_f15_sidewinderlauncher', ROCKET, VEHICLE, EXPLOSIVE,
 '',
 '')
 
+_add('usair_f18_bomblauncher', ROCKET, VEHICLE, EXPLOSIVE,
+'F/A-18', 'F/A-18 Cluster Bomb',
+'',
+'')
+
 _add('usapc_lav25_barrel', CANNON, VEHICLE, EXPLOSIVE,
 'LAV-25', 'LAV-25 25mm Cannon',
+'',
+'')
+
+_add('usapc_lav25_smokelauncher', COUNTER, VEHICLE, EXPLOSIVE,
+'LAV-25', 'LAV-25 Smoke',
 '',
 '')
 
@@ -1197,6 +1302,11 @@ _add('wrench', TOOL, SOLDIER, PRECISION,
 'In Battlefield 2, the Wrench is issued to the Engineer kit. After a short animation, where the \
 user widens the mouth of the wrench, the player can use it to repair friendly or neutral vehicles. \
 It can also rebuild bridges which have been damaged or destroyed by C4 or other explosives.',
+'')
+
+_add('xpak2_fantan_bomblauncher', ROCKET, VEHICLE, EXPLOSIVE,
+'Fantan', 'Fantan Cluster Bomb',
+'',
 '')
 
 _add('xpak2_tiger_missiles', ROCKET, VEHICLE, EXPLOSIVE,
