@@ -1,4 +1,4 @@
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 
 class Processor(AwardProcessor):
     '''
@@ -10,8 +10,9 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Scapegoat', 'Most Damage Received from Teammates', [
-                Column('Players'), Column('Damage', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Scapegoat',
+                'Most Damage Received from Teammates',
+                [PLAYER_COL, Column('Damage', Column.NUMBER, Column.DESC)])
 
     def on_team_damage(self, e): #add in team kills?
         self.results[e.victim] += 1

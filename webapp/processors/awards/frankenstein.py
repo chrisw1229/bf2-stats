@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 
 class Processor(AwardProcessor):
     '''
@@ -15,8 +15,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Frankenstein', 'Most Revivals Given', [
-                Column('Players'), Column('Revivals', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Frankenstein', 'Most Revivals Given',
+                [PLAYER_COL, Column('Revivals', Column.NUMBER, Column.DESC)])
 
     def on_revive(self, e):
 

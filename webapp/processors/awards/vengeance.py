@@ -1,4 +1,4 @@
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 
 class Processor(AwardProcessor):
     '''
@@ -10,8 +10,8 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Vengeance',
-                'Most Kills Against Your Last Attacker', [
-                Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
+                'Most Kills Against Your Last Attacker',
+                [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
 
         self.last_killer = dict()
 

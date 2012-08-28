@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models import players
 from models.vehicles import AIR
 from models import model_mgr
@@ -22,8 +22,8 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Goose',
-                'Most Deaths from Ejections', [
-                Column('Players'), Column('Deaths', Column.NUMBER, Column.DESC)])
+                'Most Deaths from Ejections',
+                [PLAYER_COL, Column('Deaths', Column.NUMBER, Column.DESC)])
 
         self.eject = dict()
 

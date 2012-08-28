@@ -30,6 +30,15 @@
    white-space: nowrap;
 }
 
+.ui-table-cell a {
+   color: #3C4A2C;
+   text-decoration: none;
+}
+
+.ui-table-cell a:hover {
+   text-decoration: underline;
+}
+
 .ui-table-empty,
 .ui-table-load,
 .ui-table-error {

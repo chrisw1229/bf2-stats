@@ -1,6 +1,6 @@
 
 import models
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from timer import Timer
 
 class Processor(AwardProcessor):
@@ -18,8 +18,8 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Daydreamer',
-                'Longest Time Without a Kill', [
-                Column('Players'), Column('Time', Column.TIME, Column.DESC)])
+                'Longest Time Without a Kill',
+                [PLAYER_COL, Column('Time', Column.TIME, Column.DESC)])
 
         # Setup the results to store timers instead of numbers
         self.results = dict()

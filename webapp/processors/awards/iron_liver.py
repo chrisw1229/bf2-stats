@@ -1,4 +1,4 @@
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 import os.path
 
 class Processor(AwardProcessor):
@@ -15,8 +15,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Iron Liver', 'Most Drinks', [
-                Column('Players'), Column('Drinks', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Iron Liver', 'Most Drinks',
+                [PLAYER_COL, Column('Drinks', Column.NUMBER, Column.DESC)])
 
         # Create a list of acceptable drinking phases
         self.phrases = list(['beer', 'chuck', 'need one'])

@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 import collections
 
 class Processor(AwardProcessor):
@@ -19,8 +19,9 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Serial Killer', 'Most Consecutive Kills against a single player', [
-                Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Serial Killer',
+                'Most Consecutive Kills Against a Single Player',
+                [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
 
         self.lastVictim = dict()
         self.tempCounter = collections.Counter()

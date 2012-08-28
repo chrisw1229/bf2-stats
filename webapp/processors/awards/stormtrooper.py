@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from stats import stat_mgr
 
 class Processor(AwardProcessor):
@@ -14,8 +14,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Stormtrooper', 'Lowest Weapon Accuracy', [
-                Column('Players'), Column('Accuracy', Column.NUMBER, Column.ASC)])
+        AwardProcessor.__init__(self, 'Stormtrooper', 'Lowest Weapon Accuracy',
+                [PLAYER_COL, Column('Accuracy', Column.NUMBER, Column.ASC)])
 
     def on_accuracy(self, e):
 

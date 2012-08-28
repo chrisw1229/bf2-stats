@@ -1,6 +1,6 @@
 
 import collections
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models import model_mgr
 from models.kits import ANTI_TANK
 
@@ -16,8 +16,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Bomberman', 'Most Kills as Anti-Tank', [
-                Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Bomberman', 'Most Kills as Anti-Tank',
+                [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
         
     def on_kill(self, e):
 

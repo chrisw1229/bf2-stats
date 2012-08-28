@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 
 class Processor(AwardProcessor):
     '''
@@ -14,8 +14,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Quartermaster', 'Most Ammo Given', [
-                Column('Players'), Column('Ammo Given', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Quartermaster', 'Most Ammo Given',
+                [PLAYER_COL, Column('Ammo Given', Column.NUMBER, Column.DESC)])
 
     def on_ammo(self, e):
 

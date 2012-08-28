@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 
 class Processor(AwardProcessor):
     '''
@@ -14,8 +14,8 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Assassin',
-                'Most Kills Against Commanders and Squad Leaders', [
-                Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
+                'Most Kills Against Commanders and Squad Leaders',
+                [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
         
     def on_kill(self, e):
 

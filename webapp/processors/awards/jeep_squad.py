@@ -1,4 +1,4 @@
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from events import event_mgr
 from models import model_mgr
 from models.vehicles import ARMOR
@@ -17,8 +17,9 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Jeep Squad', 'Most Tank Kills by Vehicle Passenger', [
-                Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Jeep Squad',
+                'Most Tank Kills by Vehicle Passenger',
+                [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
 
     def on_kill(self, e):
         #Ignore suicides and team kills

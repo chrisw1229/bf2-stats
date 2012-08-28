@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models.vehicles import AIR
 from models import model_mgr
 from stats import stat_mgr
@@ -19,8 +19,8 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Sittin\' Duck',
-                'Shortest Distance Between Deaths', [
-                Column('Players'), Column('Distance', Column.NUMBER, Column.ASC)])
+                'Shortest Distance Between Deaths',
+                [PLAYER_COL, Column('Distance', Column.NUMBER, Column.ASC)])
 
         # Store the last known position for each player
         self.player_to_pos = dict()

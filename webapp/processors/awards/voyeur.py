@@ -1,4 +1,4 @@
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from stats import stat_mgr
 
 class Processor(AwardProcessor):
@@ -8,8 +8,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Voyeur', 'Most Time Spent in Spectator', [
-                Column('Players'), Column('Time', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Voyeur', 'Most Time Spent in Spectator',
+                [PLAYER_COL, Column('Time', Column.NUMBER, Column.DESC)])
 
         self.results = dict()
 

@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 
 class Processor(AwardProcessor):
     '''
@@ -13,8 +13,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Rasputin', 'Most Weapon Type Deaths', [
-                Column('Players'), Column('Types', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Rasputin', 'Most Weapon Type Deaths',
+                [PLAYER_COL, Column('Types', Column.NUMBER, Column.DESC)])
 
         self.types = dict()
         

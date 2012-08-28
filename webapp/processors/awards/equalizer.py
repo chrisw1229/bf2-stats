@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models import weapons
 from models import model_mgr
 
@@ -16,8 +16,9 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Equalizer', 'Most Kills against Players with Better Weapons', [
-                Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Equalizer',
+                'Most Kills against Players with Better Weapons',
+                [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
 
         self.ranks = dict()
         self.ranks[weapons.TOOL]     = 0

@@ -1,4 +1,4 @@
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 
 class Processor(AwardProcessor):
     '''
@@ -12,8 +12,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Elusive', 'Fewest Kills and Deaths', [
-                Column('Players'), Column('Kills/Deaths', Column.NUMBER, Column.ASC)])
+        AwardProcessor.__init__(self, 'Elusive', 'Fewest Kills and Deaths',
+                [PLAYER_COL, Column('Kills/Deaths', Column.NUMBER, Column.ASC)])
 		
     def on_kill(self, e):
         # Ignore suicides and team kills

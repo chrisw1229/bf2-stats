@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from stats import stat_mgr
 from models.players import EMPTY
 
@@ -18,8 +18,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Explorer', 'Most Distance Traveled', [
-                Column('Players'), Column('Meters', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Explorer', 'Most Distance Traveled',
+                [PLAYER_COL, Column('Meters', Column.NUMBER, Column.DESC)])
 
         self.lastPos = dict();
         self.lastPos[EMPTY] = EMPTY.pos

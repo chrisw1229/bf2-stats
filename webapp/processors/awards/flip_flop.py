@@ -1,4 +1,4 @@
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 
 class Processor(AwardProcessor):
     '''
@@ -13,8 +13,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Flip Flop', 'Most Team Changes', [
-                Column('Players'), Column('Teams', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Flip Flop', 'Most Team Changes',
+                [PLAYER_COL, Column('Teams', Column.NUMBER, Column.DESC)])
 		
     def on_team(self, e):
         self.results[e.player] += 1

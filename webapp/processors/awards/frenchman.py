@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models import players
 from models import model_mgr
 from models import games
@@ -18,8 +18,8 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Frenchman',
-                'Most Losses as Commander', [
-                Column('Players'), Column('Losses', Column.NUMBER, Column.DESC)])
+                'Most Losses as Commander',
+                [PLAYER_COL, Column('Losses', Column.NUMBER, Column.DESC)])
 
     def on_loss(self, e):
 

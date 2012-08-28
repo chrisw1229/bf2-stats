@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 
 from models import vehicles
 
@@ -17,9 +17,10 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Crash Test Dummy', 'Most Deaths from Vehicles', [
-                Column('Players'), Column('Deaths', Column.NUMBER, Column.DESC)])
-		
+        AwardProcessor.__init__(self, 'Crash Test Dummy',
+                'Most Deaths from Vehicles',
+                [PLAYER_COL, Column('Deaths', Column.NUMBER, Column.DESC)])
+
     def on_kill(self, e):
 
         # Ignore suicides

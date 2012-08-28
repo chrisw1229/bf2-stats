@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models.vehicles import AIR
 from models import model_mgr
 from stats import stat_mgr
@@ -21,8 +21,8 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Nomad',
-                'Longest Distance Between Kills', [
-                Column('Players'), Column('Distance', Column.NUMBER, Column.DESC)])
+                'Longest Distance Between Kills',
+                [PLAYER_COL, Column('Distance', Column.NUMBER, Column.DESC)])
 
         # Store the last known position for each player
         self.player_to_pos = dict()

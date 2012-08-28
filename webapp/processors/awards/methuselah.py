@@ -1,6 +1,6 @@
 
 import models
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from timer import Timer
 import collections
 
@@ -18,9 +18,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Methuselah',
-                'Longest Life', [
-                Column('Players'), Column('Time', Column.TIME, Column.DESC)])
+        AwardProcessor.__init__(self, 'Methuselah', 'Longest Life',
+                [PLAYER_COL, Column('Time', Column.TIME, Column.DESC)])
 
         # Setup the results to store timers instead of numbers
         self.results = dict()

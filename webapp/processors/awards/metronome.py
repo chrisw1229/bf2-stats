@@ -1,4 +1,4 @@
-from processors.awards import AwardProcessor, Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from math import sqrt
 
 class Processor(AwardProcessor):
@@ -16,9 +16,8 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Metronome',
-                'Most Consistent Time Between Kills', [
-                Column('Players'),
-                Column('Deviation in Seconds', Column.NUMBER, Column.ASC)])
+                'Most Consistent Time Between Kills',
+                [PLAYER_COL, Column('Seconds Deviation', Column.NUMBER, Column.ASC)])
 
         self.last_kill_time = dict()
         self.kills = dict()

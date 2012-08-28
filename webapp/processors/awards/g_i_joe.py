@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from stats import stat_mgr
 
 class Processor(AwardProcessor):
@@ -15,12 +15,20 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'G.I. Joe', 'Most Ammo and Fewest Kills', [
-                Column('Players'), Column('Anti-Performance', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'G.I. Joe', 'Most Ammo and Fewest Kills',
+                [PLAYER_COL, Column('Ammo / Kills', Column.PERCENT, Column.DESC)])
 
     def on_accuracy(self, e):
+        self._update(e.player)
 
-        player_stats = stat_mgr.get_player_stats(e.player)
-        kills = player_stats.kills_total + 1 #ensure the kill total is at least 1
+    def on_kill(self, e):
+        if not e.valid_kill:
+            return
+
+        self._update(e.attacker)
+
+    def _update(self, player):
+        player_stats = stat_mgr.get_player_stats(player)
+        kills = player_stats.kills_total
         ammo = player_stats.bullets_fired
-        self.results[e.player] = ( ammo * 1.0 ) / ( kills * 1.0 )
+        self.results[player] = [ammo, kills]

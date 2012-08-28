@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models import model_mgr
 from models.vehicles import AIR
 
@@ -23,8 +23,8 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'ROFLcopter',
-                'Most Aircraft Destroyed Within 30 Seconds of Takeoff', [
-                Column('Players'), Column('Destroyed', Column.NUMBER, Column.DESC)])
+                'Most Aircraft Crashed Within 30 Seconds of Takeoff',
+                [PLAYER_COL, Column('Crashed', Column.NUMBER, Column.DESC)])
 
         # Keep track of the last vehicle enter event
         self.last_vehicle_entrance = dict()

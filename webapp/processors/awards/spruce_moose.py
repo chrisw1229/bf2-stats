@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models.vehicles import JET
 from models.vehicles import HELICOPTER
 from timer import Timer
@@ -18,9 +18,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Spruce Moose',
-                'Shortest Flight', [
-                Column('Players'), Column('Time', Column.TIME, Column.ASC)])
+        AwardProcessor.__init__(self, 'Spruce Moose', 'Shortest Flight',
+                [PLAYER_COL, Column('Time', Column.TIME, Column.ASC)])
 
         # Setup the results to store timers instead of numbers
         self.results = dict()

@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 import collections
 import math
 from models import kits
@@ -18,8 +18,9 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Jack of All Trades', 'Most Distributed Use of Kits', [
-                Column('Players'), Column('Score Deviation', Column.NUMBER, Column.ASC)])
+        AwardProcessor.__init__(self, 'Jack of All Trades',
+                'Most Distributed Use of Kits',
+                [PLAYER_COL, Column('Score Deviation', Column.NUMBER, Column.ASC)])
 
         self.kitScores = dict()
 		

@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 
 class Processor(AwardProcessor):
     '''
@@ -13,8 +13,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Identity Crisis', 'Most Name Changes', [
-                Column('Players'), Column('Names', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Identity Crisis', 'Most Name Changes',
+                [PLAYER_COL, Column('Names', Column.NUMBER, Column.DESC)])
 		
     def on_spawn(self, e):
 

@@ -57,8 +57,13 @@ class AwardProcessor(BaseProcessor):
         results = []
         for player,value in values.iteritems():
             if player != models.players.EMPTY:
+                player_tuple = None
+                if self.columns[0].data == Column.PLAYER:
+                    player_tuple = { 'id': player.id, 'name': player.name }
+                else:
+                    player_tuple = player.name
                 value = self._format_value(values[player])
-                results.append([ player.name, value ])
+                results.append([player_tuple, value])
 
         # Figure out the column and direction to use when sorting
         sort_index = None
@@ -96,6 +101,7 @@ class Column(object):
     # Data constants
     NUMBER = 'number'
     PERCENT = 'percent'
+    PLAYER = 'player'
     STRING = 'string'
     TIME = 'time'
 
@@ -110,3 +116,5 @@ class Column(object):
 
     def __repr__(self):
         return self.__dict__
+
+PLAYER_COL = Column('Players', Column.PLAYER)

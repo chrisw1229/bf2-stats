@@ -277,10 +277,10 @@ $.widget('ui.table', {
 
             // Check if there is a value defined for the cell
             if (r < this.rows.length && c < this.rows[r].length) {
-               $(cellElms[j]).text(this._formatDisplayValue(this.columns[c],
+               $(cellElms[j]).html(this._formatDisplayValue(this.columns[c],
                      this.rows[r][c]));
             } else {
-               $(cellElms[j]).text('');
+               $(cellElms[j]).html('');
             }
          }
       }
@@ -350,6 +350,8 @@ $.widget('ui.table', {
    _formatSortValue: function(column, value) {
       if (column.data == 'string') {
          return value.toLowerCase();
+      } else if (column.data == 'player') {
+         return value.name.toLowerCase();
       } else if (column.data == 'percent' && value.length == 2) {
          return value[1] ? (value[0] / value[1]) : 0;
       }
@@ -357,7 +359,9 @@ $.widget('ui.table', {
    },
 
    _formatDisplayValue: function(column, value) {
-      if (column.data == 'percent' && value.length == 2) {
+      if (column.data == 'player') {
+         return '<a href="players.html#id=' + value.id + '">' + value.name + '</a>';
+      } else if (column.data == 'percent' && value.length == 2) {
          var pct = value[1] ? Math.round(100 * value[0] / value[1]) : 0.00;
          return pct + '% (' + value[0] + '/' + value[1] + ')';
       }

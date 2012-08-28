@@ -1,4 +1,4 @@
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models.weapons import MINE
 
 class Processor(AwardProcessor):
@@ -8,8 +8,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Watch Your Step', 'Most Deaths by Mines', [
-                Column('Players'), Column('Deaths', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Watch Your Step', 'Most Deaths by Mines',
+                [PLAYER_COL, Column('Deaths', Column.NUMBER, Column.DESC)])
 
     def on_kill(self, e):
         if e.weapon.weapon_type == MINE:

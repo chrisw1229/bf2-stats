@@ -1,5 +1,5 @@
 ﻿
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 
 class Processor(AwardProcessor):
     '''
@@ -19,8 +19,9 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Bullet Magnet', 'Most Players Assisting Your Death', [
-                Column('Players'), Column('Assists', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Bullet Magnet',
+                'Most Players Assisting Your Death',
+                [PLAYER_COL, Column('Assists', Column.NUMBER, Column.DESC)])
 
         # Keep track of the last kill event
         self.last_kill = None

@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models.weapons import MELEE
 
 class Processor(AwardProcessor):
@@ -16,8 +16,9 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Jack the Ripper', 'Most Kills with Knives', [
-                Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Jack the Ripper',
+                'Most Kills with Knives',
+                [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
 		
     def on_kill(self, e):
 

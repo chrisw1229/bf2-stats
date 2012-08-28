@@ -1,4 +1,4 @@
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from timer import Timer
 from stats import stat_mgr
 
@@ -16,9 +16,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Endurance',
-                'Most Time Played', [
-                Column('Players'), Column('Time', Column.TIME, Column.DESC)])
+        AwardProcessor.__init__(self, 'Endurance', 'Most Time Played',
+                [PLAYER_COL, Column('Time', Column.TIME, Column.DESC)])
 
     def on_spawn(self, e):
 

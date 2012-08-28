@@ -1,4 +1,4 @@
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from stats import stat_mgr
 
 class Processor(AwardProcessor):
@@ -11,8 +11,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Salmon', 'Most Deaths Near Spawn Points', [
-                Column('Players'), Column('Deaths', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Salmon', 'Most Deaths Near Spawn Points',
+                [PLAYER_COL, Column('Deaths', Column.NUMBER, Column.DESC)])
 
         self.spawn_pos = dict()
 

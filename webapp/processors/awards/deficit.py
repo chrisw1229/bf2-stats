@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models import players
 from models import model_mgr
 
@@ -16,8 +16,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Deficit', 'Most Money Wasted', [
-                Column('Players'), Column('Million$', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Deficit', 'Most Money Wasted',
+                [PLAYER_COL, Column('Million$', Column.NUMBER, Column.DESC)])
 
     def on_vehicle_destroy(self, e):
         self.results[e.driver] += round(e.vehicle.cost)

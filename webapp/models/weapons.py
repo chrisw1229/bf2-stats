@@ -3,6 +3,7 @@
 registry = set()
 
 # Weapon type constants
+ARTILLERY = 'artillery'
 ASSAULT = 'assault_rifle'
 CARBINE = 'carbine_rifle'
 CANNON = 'cannon'
@@ -247,7 +248,7 @@ _add('apc_wz551_smokelauncher', COUNTER, VEHICLE, EXPLOSIVE,
 '',
 '')
 
-_add('ars_d30_barrel', CANNON, VEHICLE, EXPLOSIVE,
+_add('ars_d30_barrel', ARTILLERY, VEHICLE, EXPLOSIVE,
 'D-30', 'D-30 122mm Cannon',
 '',
 '')
@@ -1008,7 +1009,7 @@ _add('usapc_lav25_towlauncher', ROCKET, VEHICLE, EXPLOSIVE,
 '',
 '')
 
-_add('usart_lw155_barrel', CANNON, VEHICLE, EXPLOSIVE,
+_add('usart_lw155_barrel', ARTILLERY, VEHICLE, EXPLOSIVE,
 'M777', 'M777 155mm Cannon',
 '',
 '')

@@ -1,4 +1,4 @@
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models import model_mgr
 from models.vehicles import LAND
 from models.weapons import EMPTY
@@ -14,8 +14,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Roadkill', 'Most Kills by Vehicle Crush', [
-                Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Roadkill', 'Most Kills by Vehicle Crush',
+                [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
 
     def on_kill(self, e):
         #Ignore suicides and team kills

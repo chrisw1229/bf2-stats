@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from stats import stat_mgr
 
 class Processor(AwardProcessor):
@@ -14,12 +14,12 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Hawkeye', 'Highest Weapon Accuracy', [
-                Column('Players'), Column('Accuracy', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Hawkeye', 'Highest Weapon Accuracy',
+                [PLAYER_COL, Column('Accuracy', Column.PERCENT, Column.DESC)])
 
     def on_accuracy(self, e):
 
         player_stats = stat_mgr.get_player_stats(e.player)
         hits = player_stats.bullets_hit
         fired = player_stats.bullets_fired
-        self.results[e.player] = 100.0 * ( hits ) / ( fired * 1.0 )
+        self.results[e.player] = [hits, fired]

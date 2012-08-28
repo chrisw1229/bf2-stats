@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models.vehicles import ARTILLERY
 
 class Processor(AwardProcessor):
@@ -15,8 +15,9 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Mission Impossible', 'Most Artillery Destroyed', [
-                Column('Players'), Column('Artillery Destroyed', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Mission Impossible',
+                'Most Artillery Destroyed',
+                [PLAYER_COL, Column('Destroyed', Column.NUMBER, Column.DESC)])
 		
     def on_vehicle_destroy(self, e):
 

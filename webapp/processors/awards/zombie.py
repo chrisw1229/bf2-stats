@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 import collections
 
 class Processor(AwardProcessor):
@@ -19,8 +19,9 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Zombie', 'Most Times Revived in a Single Life', [
-                Column('Players'), Column('Revives', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Zombie',
+                'Most Times Revived in a Single Life',
+                [PLAYER_COL, Column('Revives', Column.NUMBER, Column.DESC)])
 
         self.tempCounter = collections.Counter()
 

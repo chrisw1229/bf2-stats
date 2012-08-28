@@ -1,6 +1,6 @@
 
 import collections
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 
 class Processor(AwardProcessor):
     '''
@@ -19,8 +19,8 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Predator',
-                'Most Kills Against a Single Player', [
-                Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
+                'Most Kills Against a Single Player',
+                [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
         
         self.attacker_to_victims = dict()
         

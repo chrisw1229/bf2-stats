@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models import players
 from models import model_mgr
 from models.vehicles import AIR
@@ -21,8 +21,8 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Fly Swatter',
-                'Most Aircraft Kills from Ground', [
-                Column('Players'), Column('Aircraft Destroyed', Column.NUMBER, Column.DESC)])
+                'Most Aircraft Kills from Ground',
+                [PLAYER_COL, Column('Destroyed', Column.NUMBER, Column.DESC)])
 
     def on_vehicle_destroy(self, e):
 

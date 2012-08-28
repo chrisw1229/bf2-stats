@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models.vehicles import AIR
 from models.vehicles import PARACHUTE
 
@@ -16,9 +16,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Skydiver',
-                'Most Ejections', [
-                Column('Players'), Column('Ejections', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Skydiver', 'Most Ejections',
+                [PLAYER_COL, Column('Ejections', Column.NUMBER, Column.DESC)])
 
     def on_vehicle_exit(self, e):
 

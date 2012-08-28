@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models.vehicles import PARACHUTE
 from timer import Timer
 
@@ -18,8 +18,8 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Balloon',
-                'Longest Parachute Flight', [
-                Column('Players'), Column('Time', Column.TIME, Column.DESC)])
+                'Longest Parachute Flight',
+                [PLAYER_COL, Column('Time', Column.TIME, Column.DESC)])
 
         # Setup the results to store timers instead of numbers
         self.results = dict()

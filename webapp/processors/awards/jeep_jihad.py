@@ -1,4 +1,4 @@
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from events import event_mgr
 
 class Processor(AwardProcessor):
@@ -13,8 +13,9 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Jeep Jihad', 'Most Kills by C4 Loaded Jeeps', [
-                Column('Players'), Column('Kills', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Jeep Jihad',
+                'Most Kills by C4 Loaded Jeeps',
+                [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
 
         self.time = dict()
 

@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 
 class Processor(AwardProcessor):
     '''
@@ -14,8 +14,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Grease Monkey', 'Most Vehicle Repairs', [
-                Column('Players'), Column('Repairs', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Grease Monkey', 'Most Vehicle Repairs',
+                [PLAYER_COL, Column('Repairs', Column.NUMBER, Column.DESC)])
 
     def on_repair(self, e):
 

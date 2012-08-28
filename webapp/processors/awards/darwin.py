@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models.players import EMPTY
 
 class Processor(AwardProcessor):
@@ -17,8 +17,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Darwin', 'Most Deaths from Environment', [
-                Column('Players'), Column('Deaths', Column.NUMBER, Column.DESC)])
+        AwardProcessor.__init__(self, 'Darwin', 'Most Deaths from Environment',
+                [PLAYER_COL, Column('Deaths', Column.NUMBER, Column.DESC)])
 
     def on_kill(self, e):
         # Check whether the victim died to nobody

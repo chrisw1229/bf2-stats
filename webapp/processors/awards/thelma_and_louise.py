@@ -1,5 +1,5 @@
 
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models import players
 from models.vehicles import LAND
 from models import model_mgr
@@ -19,8 +19,8 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Thelma & Louise',
-                'Most Deaths from Stuck Vehicles', [
-                Column('Players'), Column('Deaths', Column.NUMBER, Column.DESC)])
+                'Most Deaths from Stuck Vehicles',
+                [PLAYER_COL, Column('Deaths', Column.NUMBER, Column.DESC)])
 
     def on_kill(self, e):
         

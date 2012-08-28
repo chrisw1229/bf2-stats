@@ -1,4 +1,4 @@
-from processors.awards import AwardProcessor,Column
+from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models.vehicles import AIR
 from timer import Timer
 
@@ -9,8 +9,9 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Wright Brothers', 'Fastest to an Air Vehicle', [
-                Column('Players'), Column('Time', Column.NUMBER, Column.ASC)])
+        AwardProcessor.__init__(self, 'Wright Brothers',
+                'Fastest to an Air Vehicle',
+                [PLAYER_COL, Column('Time', Column.NUMBER, Column.ASC)])
 
         self.spawn_times = dict()
 
