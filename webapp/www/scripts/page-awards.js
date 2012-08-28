@@ -78,8 +78,26 @@ $.extend({ mgr: {
    onAward: function(data) {
 
       // Update the header
-      var headerElm = $('.common-header', awardElm);
-      headerElm.text('Award - ' + data.name);
+      var headerElm = $('.common-header-title', awardElm);
+      headerElm.text(data.name);
+
+      // Update the navigation buttons
+      var prevElm = $('.award-nav-prev', awardElm).button(
+            { icons: { primary: 'ui-icon-circle-arrow-w' }, text: false });
+      if (data.prev_id) {
+         prevElm.attr('href', '#id=' + data.prev_id);
+         prevElm.button({ disabled: false });
+      } else {
+         prevElm.button({ disabled: true });
+      }
+      var nextElm = $('.award-nav-next', awardElm).button(
+            { icons: { primary: 'ui-icon-circle-arrow-e' }, text: false });
+      if (data.next_id) {
+         nextElm.attr('href', '#id=' + data.next_id);
+         nextElm.show();
+      } else {
+         nextElm.hide();
+      }
 
       // Update the award attributes
       $('.award-desc', awardElm).text(data.desc);

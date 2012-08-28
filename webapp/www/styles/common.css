@@ -27,6 +27,15 @@
    padding: 10px 20px;
 }
 
+.common-header-title {
+
+}
+
+.common-header-page {
+   float: right;
+   font-weight: normal;
+}
+
 .common-body {
    border-top: 0;
    padding: 20px;

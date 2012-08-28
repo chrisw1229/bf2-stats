@@ -7,6 +7,14 @@
    display: none;
 }
 
+.award-nav {
+   float: right;
+}
+
+.award-nav .ui-button-text {
+   padding: 0.7em;
+}
+
 .award-desc {
    font-size: 18px;
    font-style: italic;

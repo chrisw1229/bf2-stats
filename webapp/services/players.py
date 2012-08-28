@@ -10,7 +10,7 @@ from stats import PlayerStats, stat_mgr
 @cherrypy.tools.json_out()
 class Handler:
 
-    MODEL_FIELDS = ['aliases', 'id']
+    MODEL_FIELDS = ['aliases', 'id', 'name']
 
     STATS_FIELDS = ['assisted_total', 'assists_total', 'bullets_fired',
             'bullets_hit', 'commander_time', 'deaths_total',

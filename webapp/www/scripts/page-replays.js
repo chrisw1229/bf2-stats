@@ -45,8 +45,8 @@ $.extend({ mgr: {
    onGame: function(data) {
 
       // Update the header
-      var headerElm = $('.common-header', headerElm);
-      headerElm.text('Game - ' + data.map_name);
+      var headerElm = $('.common-header-title', headerElm);
+      headerElm.text(data.map_name);
 
       // Update the map tiles based on the current game
       mapElm.olmap({ mapName: data.map_id });

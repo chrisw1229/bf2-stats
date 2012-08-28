@@ -220,7 +220,7 @@ $.extend({ mgr: {
    },
 
    onPlayer: function(data) {
-      var headerElm = $('.common-header', playerElm);
+      var headerElm = $('.common-header-title', playerElm);
 
       $('.player-photo', playerElm).attr('src',
             'images/players/' + data.id + '-large.jpg');
@@ -229,8 +229,8 @@ $.extend({ mgr: {
       statsElm.empty();
       for (var i = 0; i < data.length; i++) {
          var row = data[i];
-         if (row.key == 'aliases') {
-            headerElm.text(row.value[row.value.length - 1]);
+         if (row.key == 'name') {
+            headerElm.text(row.value);
          }
          $('<li>' + row.key + ' ' + row.value + '</li>').appendTo(statsElm);
       }

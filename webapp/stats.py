@@ -275,6 +275,7 @@ class StatManager(object):
 
         if not processor.processor_type in self.type_to_processors:
             self.type_to_processors[processor.processor_type] = []
+        processor.type_index = len(self.type_to_processors[processor.processor_type])
         self.type_to_processors[processor.processor_type].append(processor)
 
     def get_processor(self, id):

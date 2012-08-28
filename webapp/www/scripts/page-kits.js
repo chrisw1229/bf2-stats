@@ -78,8 +78,8 @@ $.extend({ mgr: {
    onKit: function(data) {
 
       // Update the header
-      var headerElm = $('.common-header', kitElm);
-      headerElm.text('Kit - ' + data.name);
+      var headerElm = $('.common-header-title', kitElm);
+      headerElm.text(data.name);
 
       // Populate the table with kit results
       tableElm.table('setColumns', data.columns);

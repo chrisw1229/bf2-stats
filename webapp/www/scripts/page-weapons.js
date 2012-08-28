@@ -78,8 +78,8 @@ $.extend({ mgr: {
    onWeapon: function(data) {
 
       // Update the header
-      var headerElm = $('.common-header', weaponElm);
-      headerElm.text('Weapon - ' + data.name);
+      var headerElm = $('.common-header-title', weaponElm);
+      headerElm.text(data.name);
 
       // Populate the table with weapon results
       tableElm.table('setColumns', data.columns);

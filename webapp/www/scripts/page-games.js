@@ -79,8 +79,8 @@ $.extend({ mgr: {
    onGame: function(data) {
 
       // Update the header
-      var headerElm = $('.common-header', gameElm);
-      headerElm.text('Game - ' + data.name);
+      var headerElm = $('.common-header-title', gameElm);
+      headerElm.text(data.name);
 
       // Update the replay button link
       $('.replay-button').button({ icons: { secondary: 'ui-icon-extlink' } })

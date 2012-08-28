@@ -78,8 +78,8 @@ $.extend({ mgr: {
    onMap: function(data) {
 
       // Update the header
-      var headerElm = $('.common-header', mapElm);
-      headerElm.text('Map - ' + data.name);
+      var headerElm = $('.common-header-title', mapElm);
+      headerElm.text(data.name);
 
       // Populate the table with map results
       tableElm.table('setColumns', data.columns);

@@ -78,8 +78,8 @@ $.extend({ mgr: {
    onVehicle: function(data) {
 
       // Update the header
-      var headerElm = $('.common-header', vehicleElm);
-      headerElm.text('Vehicle - ' + data.name);
+      var headerElm = $('.common-header-title', vehicleElm);
+      headerElm.text(data.name);
 
       // Populate the table with vehicle results
       tableElm.table('setColumns', data.columns);

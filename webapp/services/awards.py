@@ -44,10 +44,19 @@ class Handler:
         processor = stat_mgr.get_processor(id)
         if not processor: raise cherrypy.HTTPError(404)
 
+        processors = stat_mgr.get_processors(processor.processor_type)
+        prev_id = None
+        if processor.type_index > 0:
+            prev_id = processors[processor.type_index - 1].id
+        next_id = None
+        if processor.type_index < len(processors) - 1:
+            next_id = processors[processor.type_index + 1].id
+
         # Respond with a summary of the award information
         return { 'id': processor.id, 'name': processor.name,
                 'desc': processor.desc, 'columns' : processor.columns,
-                'notes': processor.notes, 'rows': processor.get_results() }
+                'notes': processor.notes, 'rows': processor.get_results(),
+                'prev_id': prev_id, 'next_id': next_id }
 
     def get_awards(self):
         '''

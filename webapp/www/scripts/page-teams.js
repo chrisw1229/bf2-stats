@@ -78,8 +78,8 @@ $.extend({ mgr: {
    onTeam: function(data) {
 
       // Update the header
-      var headerElm = $('.common-header', teamElm);
-      headerElm.text('Team - ' + data.name);
+      var headerElm = $('.common-header-title', teamElm);
+      headerElm.text(data.name);
 
       // Populate the table with team results
       tableElm.table('setColumns', data.columns);
