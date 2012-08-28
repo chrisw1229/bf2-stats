@@ -18,26 +18,33 @@ class Processor(AwardProcessor):
     def __init__(self):
         AwardProcessor.__init__(self, 'Lone Wolf', 'Most Time Without a Squad',
                 [Column('Players'), Column('Time', Column.TIME, Column.DESC)])
-        
-        self.squadTime = dict()
+
+        # Setup the results to store timers instead of numbers
+        self.results = dict()
+
+    def on_death(self, e):
+        if e.player in self.results:
+            self.results[e.player].stop(e.tick)
+
+    def on_commander(self, e):
+        self._update_timer(e.player, e.tick)
+        self._update_timer(e.old_player, e.tick)
 
     def on_spawn(self, e):
-
-        player_stats = stat_mgr.get_player_stats(e.player)
-        if not player_stats.play_time:
-            return
-        
-        if e.player in self.squadTime:
-            self.results[e.player] = player_stats.play_time.elapsed - self.squadTime[e.player].elapsed
-        else: #require a minimum amount of squad time?
-            self.results[e.player] = player_stats.play_time
+        self._update_timer(e.player, e.tick)
 
     def on_squad(self, e):
+        self._update_timer(e.player, e.tick)
 
-        if e.player not in self.squadTime:
-            self.squadTime[e.player] = Timer(e.player)
+    def on_squad_leader(self, e):
+        self._update_timer(e.player, e.tick)
+        self._update_timer(e.old_player, e.tick)
 
-        if not e.squad:
-            self.squadTime[e.player].stop(e.tick)
+    def _update_timer(self, player, tick):
+        if not player.leader and not player.squader:
+            if not player in self.results:
+                self.results[player] = Timer(player)
+            self.results[player].start(tick)
         else:
-            self.squadTime[e.player].start(e.tick)
+            if player in self.results:
+                self.results[player].stop(tick)

@@ -23,19 +23,29 @@ class Processor(AwardProcessor):
         # Setup the results to store timers instead of numbers
         self.results = dict()
 
-        self.currentCommanders = dict()
+    def on_death(self, e):
+        if e.player in self.results:
+            self.results[e.player].stop(e.tick)
 
-    def on_commander(self, e): #is there an event when someone resigns/mutiny?
+    def on_commander(self, e):
+        self._update_timer(e.player, e.tick)
+        self._update_timer(e.old_player, e.tick)
 
-        # Create a timer for the player as needed
-        if not e.player in self.results:
-            self.results[e.player] = Timer(e.player)
+    def on_spawn(self, e):
+        self._update_timer(e.player, e.tick)
 
-        if e.team in self.currentCommanders:
-            #stop timer for old commander
-            old = self.currentCommanders[e.team]
-            self.results[old].stop(e.tick)
-            
-        #set new commander and start timer
-        self.currentCommanders[e.team] = e.player
-        self.results[e.player].start(e.tick)
+    def on_squad(self, e):
+        self._update_timer(e.player, e.tick)
+
+    def on_squad_leader(self, e):
+        self._update_timer(e.player, e.tick)
+        self._update_timer(e.old_player, e.tick)
+
+    def _update_timer(self, player, tick):
+        if player.commander:
+            if not player in self.results:
+                self.results[player] = Timer(player)
+            self.results[player].start(tick)
+        else:
+            if player in self.results:
+                self.results[player].stop(tick)
