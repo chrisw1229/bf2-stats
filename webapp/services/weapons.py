@@ -51,7 +51,7 @@ class Handler:
         weapon_stats = stat_mgr.get_weapon_stats(weapon)
 
         # Build a list of column descriptors
-        columns = [{ 'name': 'Players', 'data': 'string' },
+        columns = [{ 'name': 'Players', 'data': 'player' },
                 { 'name': 'Kills', 'data': 'number', 'sorted': False },
                 { 'name': 'Deaths', 'data': 'number' }]
 
@@ -60,7 +60,12 @@ class Handler:
         for player in weapon_stats.players:
             if player != models.players.EMPTY:
                 object_stats = weapon_stats.players[player]
-                rows.append([player.name, object_stats.kills,
+                player_tuple = {
+                    'id': player.id,
+                    'name': player.name,
+                    'photo': player.photo_s
+                }
+                rows.append([player_tuple, object_stats.kills,
                         object_stats.deaths])
 
         # Sort the results by score

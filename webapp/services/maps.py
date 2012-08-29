@@ -50,7 +50,7 @@ class Handler:
         map_stats = stat_mgr.get_map_stats(map_obj)
 
         # Build a list of column descriptors
-        columns = [{ 'name': 'Players', 'data': 'string' },
+        columns = [{ 'name': 'Players', 'data': 'player' },
                 { 'name': 'Score', 'data': 'number', 'sorted': False },
                 { 'name': 'Kills', 'data': 'number' },
                 { 'name': 'Deaths', 'data': 'number' }]
@@ -60,7 +60,12 @@ class Handler:
         for player in map_stats.players:
             if player != models.players.EMPTY:
                 object_stats = map_stats.players[player]
-                rows.append([player.name, object_stats.score,
+                player_tuple = {
+                    'id': player.id,
+                    'name': player.name,
+                    'photo': player.photo_s
+                }
+                rows.append([player_tuple, object_stats.score,
                         object_stats.kills, object_stats.deaths])
 
         # Sort the results by score

@@ -50,7 +50,7 @@ class Handler:
         game_stats = stat_mgr.get_game_stats(game)
 
         # Build a list of column descriptors
-        columns = [{ 'name': 'Players', 'data': 'string' },
+        columns = [{ 'name': 'Players', 'data': 'player' },
                 { 'name': 'Score', 'data': 'number', 'sorted': False },
                 { 'name': 'Help', 'data': 'number' },
                 { 'name': 'Kills', 'data': 'number' },
@@ -61,7 +61,12 @@ class Handler:
         for player in game_stats.players:
             if player != models.players.EMPTY:
                 object_stats = game_stats.players[player]
-                rows.append([player.name, object_stats.score,
+                player_tuple = {
+                    'id': player.id,
+                    'name': player.name,
+                    'photo': player.photo_s
+                }
+                rows.append([player_tuple, object_stats.score,
                         object_stats.teamwork, object_stats.kills,
                         object_stats.deaths])
 
