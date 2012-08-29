@@ -26,17 +26,8 @@
    border-style: solid;
    border-width: 0 1px 1px 0;
    margin: 0;
-   padding: 6px 8px;
+   padding: 4px 8px;
    white-space: nowrap;
-}
-
-.ui-table-cell a {
-   color: #3C4A2C;
-   text-decoration: none;
-}
-
-.ui-table-cell a:hover {
-   text-decoration: underline;
 }
 
 .ui-table-empty,
@@ -71,6 +62,22 @@
 .ui-table-data-number ,
 .ui-table-data-time {
    text-align: center;
+}
+
+.ui-table-data-player a {
+   color: #3C4A2C;
+   display: block;
+   height: 32px;
+   text-decoration: none;
+}
+.ui-table-cell a:hover span {
+   text-decoration: underline;
+}
+
+.ui-table-data-player span {
+   line-height: 32px;
+   margin-left: 8px;
+   vertical-align: top;
 }
 
 .ui-table-empty .ui-icon {

@@ -59,7 +59,11 @@ class AwardProcessor(BaseProcessor):
             if player != models.players.EMPTY:
                 player_tuple = None
                 if self.columns[0].data == Column.PLAYER:
-                    player_tuple = { 'id': player.id, 'name': player.name }
+                    player_tuple = {
+                        'id': player.id,
+                        'name': player.name,
+                        'photo': player.photo_s
+                    }
                 else:
                     player_tuple = player.name
                 value = self._format_value(values[player])

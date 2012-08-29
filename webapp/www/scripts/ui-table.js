@@ -360,7 +360,9 @@ $.widget('ui.table', {
 
    _formatDisplayValue: function(column, value) {
       if (column.data == 'player') {
-         return '<a href="players.html#id=' + value.id + '">' + value.name + '</a>';
+         return '<a href="players.html#id=' + value.id + '">'
+               + '<img src="' + value.photo + '"/>'
+               + '<span>' + value.name + '</span></a>';
       } else if (column.data == 'percent' && value.length == 2) {
          var pct = value[1] ? Math.round(100 * value[0] / value[1]) : 0.00;
          return pct + '% (' + value[0] + '/' + value[1] + ')';

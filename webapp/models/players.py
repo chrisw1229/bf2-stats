@@ -38,7 +38,10 @@ class Player(object):
         self.weapon_id = None       # ID for player's current weapon
         self.wounded = False        # Flag when player is killed but revivable
 
-        # Update the photo path for the player
+        # Update the photo paths for the player
+        self.photo_s = '/images/players/' + self.id + '-small.png'
+        if not os.path.isfile('www' + self.photo_s):
+            self.photo_s = '/images/players/missing-small.png'
         self.photo_m = '/images/players/' + self.id + '-medium.jpg'
         if not os.path.isfile('www' + self.photo_m):
             self.photo_m = '/images/players/missing-medium.png'
