@@ -1,6 +1,6 @@
 
 from processors.awards import AwardProcessor,Column,PLAYER_COL
-from models.weapons import GRENADE
+from models.weapons import SOLDIER,PRECISION
 from stats import stat_mgr
 from models import model_mgr
 
@@ -29,11 +29,9 @@ class Processor(AwardProcessor):
         if not e.valid_kill:
             return
 
-        # Check to make sure the weapon type is not a throwable type (GRENADE)
-        attacker_weapon = model_mgr.get_weapon(e.attacker.weapon_id)
-        if attacker_weapon == GRENADE:
-            return
+        # Make sure a valid weapon type was used
+        if e.weapon.group == SOLDIER and e.weapon.ammo == PRECISION:
 
-        # Check whether the attacker and victim are not facing each other
-        if stat_mgr.angle_same(e.victim.pos, e.attacker.pos):
-            self.results[e.attacker] += 1
+            # Check whether the attacker and victim are not facing each other
+            if stat_mgr.angle_same(e.victim.pos, e.attacker.pos):
+                self.results[e.attacker] += 1

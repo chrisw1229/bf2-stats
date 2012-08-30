@@ -1,6 +1,6 @@
 
 from processors.awards import AwardProcessor,Column,PLAYER_COL
-from models.weapons import ROCKET
+from models.weapons import SOLDIER,ROCKET
 from stats import stat_mgr
 
 class Processor(AwardProcessor):
@@ -27,8 +27,8 @@ class Processor(AwardProcessor):
         if not e.valid_kill:
             return
 
-        # Check whether a projectile weapon was used
-        if e.weapon.weapon_type == ROCKET:
+        # Make sure a valid weapon type was used
+        if e.weapon.group == SOLDIER and e.weapon.weapon_type == ROCKET:
 
             # Check whether the attacker and victim are facing each other
             if stat_mgr.angle_opp(e.victim_pos, e.attacker_pos):
