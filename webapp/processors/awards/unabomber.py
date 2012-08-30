@@ -1,5 +1,6 @@
+
 from processors.awards import AwardProcessor,Column,PLAYER_COL
-from models.weapons import EXPLOSIVE
+from models.weapons import SOLDIER,EXPLOSIVE
 
 class Processor(AwardProcessor):
     '''
@@ -12,9 +13,10 @@ class Processor(AwardProcessor):
                 [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
 
     def on_kill(self, e):
+
         #Ignore suicides and team kills
         if not e.valid_kill:
             return
 
-        if e.weapon.ammo == EXPLOSIVE:
+        if e.weapon.group == SOLDIER and e.weapon.ammo == EXPLOSIVE:
             self.results[e.attacker] += 1
