@@ -21,31 +21,32 @@ class Processor(AwardProcessor):
                 [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
 
         self.ranks = dict()
-        self.ranks[weapons.TOOL]     = 0
-        self.ranks[weapons.MELEE]    = 1
-        self.ranks[weapons.PISTOL]   = 2
-        self.ranks[weapons.SNIPER]   = 3
-        self.ranks[weapons.SHOTGUN]  = 4
-        self.ranks[weapons.CARBINE]  = 5
-        self.ranks[weapons.ASSAULT]  = 6
-        self.ranks[weapons.GRENADE]  = 7
-        self.ranks[weapons.SMG]      = 8
-        self.ranks[weapons.LMG]      = 9
-        self.ranks[weapons.MINE]     = 10
-        self.ranks[weapons.HMG]      = 11
-        self.ranks[weapons.ROCKET]   = 12
-        self.ranks[weapons.CANNON]   = 13
-		
+        self.ranks[weapons.TOOL]      = 0
+        self.ranks[weapons.COUNTER]   = 1
+        self.ranks[weapons.MELEE]     = 2
+        self.ranks[weapons.PISTOL]    = 3
+        self.ranks[weapons.SNIPER]    = 4
+        self.ranks[weapons.SHOTGUN]   = 5
+        self.ranks[weapons.CARBINE]   = 6
+        self.ranks[weapons.ASSAULT]   = 7
+        self.ranks[weapons.GRENADE]   = 8
+        self.ranks[weapons.SMG]       = 9
+        self.ranks[weapons.LMG]       = 10
+        self.ranks[weapons.MINE]      = 11
+        self.ranks[weapons.HMG]       = 12
+        self.ranks[weapons.CANNON]    = 13
+        self.ranks[weapons.ROCKET]    = 14
+        self.ranks[weapons.ARTILLERY] = 15
+
     def on_kill(self, e):
 
         # Ignore suicides and team kills
         if not e.valid_kill:
             return
 
-        aWeapon = model_mgr.get_weapon(e.attacker.weapon_id)
         vWeapon = model_mgr.get_weapon(e.victim.weapon_id)
-        if aWeapon == weapons.EMPTY or vWeapon == weapons.EMPTY:
+        if e.weapon == weapons.EMPTY or vWeapon == weapons.EMPTY:
             return
 
-        if self.ranks[aWeapon.weapon_type] < self.ranks[vWeapon.weapon_type]:
+        if self.ranks[e.weapon.weapon_type] < self.ranks[vWeapon.weapon_type]:
             self.results[e.attacker] += 1
