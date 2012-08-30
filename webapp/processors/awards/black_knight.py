@@ -18,20 +18,20 @@ class Processor(AwardProcessor):
     def __init__(self):
         AwardProcessor.__init__(self, 'Black Knight',
                 'Most Damage Received in a Single Life',
-                [PLAYER_COL, Column('Damage', Column.NUMBER, Column.DESC)])
+                [PLAYER_COL, Column('Damaged', Column.NUMBER, Column.DESC)])
 
         self.tempCounter = collections.Counter()
 
     def on_heal(self, e):
+        self._update(e.receiver)
 
-        self.tempCounter[e.receiver] += 100.0
-        
     def on_revive(self, e):
-
-        self.tempCounter[e.receiver] += 100.0
+        self._update(e.receiver)
 
     def on_death(self, e):
-
-        self.results[e.player] = max( self.results[e.player], self.tempCounter[e.player] )
-
         self.tempCounter[e.player] = 0
+
+    def _update(self, player):
+        self.tempCounter[player] += 1
+        self.results[player] = max(self.results[player],
+                self.tempCounter[player])
