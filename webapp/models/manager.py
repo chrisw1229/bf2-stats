@@ -52,6 +52,17 @@ class ModelManager(object):
     def start(self):
         print 'MODEL MANAGER - STARTING'
 
+        # Register all the weapon models
+        self.weapons.update(weapons.registry)
+        for weapon in self.weapons:
+            assert not weapon.id in self.id_to_weapon, 'Duplicate weapon ID: %s' % weapon.id
+            self.id_to_weapon[weapon.id] = weapon
+
+            if not weapon.weapon_type in self.type_to_weapons:
+                self.type_to_weapons[weapon.weapon_type] = set()
+            self.type_to_weapons[weapon.weapon_type].add(weapon)
+        print 'Weapons registered: ', len(self.weapons)
+
         # Register all the kit models
         self.kits.update(kits.registry)
         for kit in self.kits:
@@ -61,6 +72,9 @@ class ModelManager(object):
             if not kit.kit_type in self.type_to_kits:
                 self.type_to_kits[kit.kit_type] = set()
             self.type_to_kits[kit.kit_type].add(kit)
+
+            for weapon_id in kit.weapon_ids:
+                assert weapon_id in self.id_to_weapon, 'Missing kit weapon: %s' % weapon_id
         print 'Kits registered: ', len(self.kits)
 
         # Register all the map models
@@ -90,18 +104,10 @@ class ModelManager(object):
             if not vehicle.group in self.group_to_vehicles:
                 self.group_to_vehicles[vehicle.group] = set()
             self.group_to_vehicles[vehicle.group].add(vehicle)
+
+            for weapon_id in vehicle.weapon_ids:
+                assert weapon_id in self.id_to_weapon, 'Missing vehicle weapon: %s' % weapon_id
         print 'Vehicles registered: ', len(self.vehicles)
-
-        # Register all the weapon models
-        self.weapons.update(weapons.registry)
-        for weapon in self.weapons:
-            assert not weapon.id in self.id_to_weapon, 'Duplicate weapon ID: %s' % weapon.id
-            self.id_to_weapon[weapon.id] = weapon
-
-            if not weapon.weapon_type in self.type_to_weapons:
-                self.type_to_weapons[weapon.weapon_type] = set()
-            self.type_to_weapons[weapon.weapon_type].add(weapon)
-        print 'Weapons registered: ', len(self.weapons)
 
         print 'MODEL MANAGER - STARTED'
 
