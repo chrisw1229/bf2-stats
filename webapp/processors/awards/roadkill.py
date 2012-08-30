@@ -18,15 +18,15 @@ class Processor(AwardProcessor):
                 [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
 
     def on_kill(self, e):
+
         #Ignore suicides and team kills
         if not e.valid_kill:
             return
 
         if not e.attacker.driver:
             return
-        
-        landCheck = model_mgr.get_vehicle(e.attacker.vehicle_id)
-        if landCheck.group != LAND:
+
+        if e.vehicle.group != LAND:
             return
 
         if e.weapon != EMPTY:
