@@ -17,7 +17,7 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'SEAL Team Six',
-                'Most Kills as Special Forces',
+                'Most Kills with Spec-Ops Kit',
                 [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
 
     def on_kill(self, e):
@@ -26,6 +26,8 @@ class Processor(AwardProcessor):
         if not e.valid_kill:
             return
 
+        # Check whether the kill weapon belongs to the spec-ops kit
         attacker_kit = model_mgr.get_kit(e.attacker.kit_id)
         if attacker_kit.kit_type == SPEC_OPS:
-            self.results[e.attacker] += 1
+            if e.weapon.id in attacker_kit.weapon_ids:
+                self.results[e.attacker] += 1

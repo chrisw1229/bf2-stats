@@ -16,15 +16,18 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Bomberman', 'Most Kills as Anti-Tank',
+        AwardProcessor.__init__(self, 'Bomberman',
+                'Most Kills with Anti-Tank Kit',
                 [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
-        
+
     def on_kill(self, e):
 
         # Ignore suicides and team kills
         if not e.valid_kill:
             return
-            
+
+        # Check whether the kill weapon belongs to the anti-tank kit
         attacker_kit = model_mgr.get_kit(e.attacker.kit_id)
         if attacker_kit.kit_type == ANTI_TANK:
-            self.results[e.attacker] += 1
+            if e.weapon.id in attacker_kit.weapon_ids:
+                self.results[e.attacker] += 1

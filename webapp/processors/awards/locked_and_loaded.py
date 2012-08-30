@@ -1,22 +1,23 @@
 
 from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models import model_mgr
-from models.kits import ASSAULT
+from models.kits import SUPPORT
 
 class Processor(AwardProcessor):
     '''
     Overview
-    This processor keeps track of the most number of kills as assault class
+    This processor keeps track of the most number of kills as spec-ops
 
     Implementation
-	Cache kill events involving assaulters.
+	Cache kill events involving spec-ops.
+
     Notes
 	None.
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'War Machine',
-                'Most Kills with Assault Kit',
+        AwardProcessor.__init__(self, 'Locked & Loaded',
+                'Most Kills with Support Kit',
                 [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
 
     def on_kill(self, e):
@@ -25,8 +26,8 @@ class Processor(AwardProcessor):
         if not e.valid_kill:
             return
 
-        # Check whether the kill weapon belongs to the assault kit
+        # Check whether the kill weapon belongs to the support kit
         attacker_kit = model_mgr.get_kit(e.attacker.kit_id)
-        if attacker_kit.kit_type == ASSAULT:
+        if attacker_kit.kit_type == SUPPORT:
             if e.weapon.id in attacker_kit.weapon_ids:
                 self.results[e.attacker] += 1

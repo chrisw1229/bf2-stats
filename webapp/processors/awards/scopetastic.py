@@ -15,7 +15,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Scopetastic', 'Most Kills as Sniper',
+        AwardProcessor.__init__(self, 'Scopetastic',
+                'Most Kills with Sniper Kit',
                 [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
 
     def on_kill(self, e):
@@ -24,6 +25,8 @@ class Processor(AwardProcessor):
         if not e.valid_kill:
             return
 
+        # Check whether the kill weapon belongs to the sniper kit
         attacker_kit = model_mgr.get_kit(e.attacker.kit_id)
         if attacker_kit.kit_type == SNIPER:
-            self.results[e.attacker] += 1
+            if e.weapon.id in attacker_kit.weapon_ids:
+                self.results[e.attacker] += 1
