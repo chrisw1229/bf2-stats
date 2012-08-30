@@ -1,5 +1,6 @@
 
 from processors.awards import AwardProcessor,Column,PLAYER_COL
+from models import model_mgr,vehicles
 
 class Processor(AwardProcessor):
     '''
@@ -25,6 +26,11 @@ class Processor(AwardProcessor):
 
         # Ignore suicides and team kills
         if not e.valid_kill:
+            return
+
+        # Make sure the attacker is not in a vehicle
+        attacker_vehicle = model_mgr.get_vehicle(e.attacker.vehicle_id)
+        if attacker_vehicle != vehicles.EMPTY:
             return
 
         # Check whether the attacker was at least a story higher than the victim
