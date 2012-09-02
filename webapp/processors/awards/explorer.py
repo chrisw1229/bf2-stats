@@ -2,6 +2,8 @@
 from processors.awards import AwardProcessor,Column,PLAYER_COL
 from stats import stat_mgr
 from models.players import EMPTY
+from models.vehicles import JET
+from models.vehicles import HELICOPTER
 
 class Processor(AwardProcessor):
     '''
@@ -23,81 +25,106 @@ class Processor(AwardProcessor):
 
         self.lastPos = dict();
         self.lastPos[EMPTY] = EMPTY.pos
+        self.disableAir = dict();
+        self.disableAir[EMPTY] = True
 
     def on_spawn(self, e):
         self.lastPos[e.player] = e.player_pos
+        self.disableAir[e.player] = False
 
     def on_ammo(self, e):
-        dist = stat_mgr.dist_3d(self.lastPos[e.giver], e.giver_pos);
-        self.results[e.giver] += round(dist)
-        self.lastPos[e.giver] = e.giver_pos
+        if not self.disableAir[e.giver]:
+            dist = stat_mgr.dist_3d(self.lastPos[e.giver], e.giver_pos);
+            self.results[e.giver] += round(dist)
+            self.lastPos[e.giver] = e.giver_pos
 
-        dist = stat_mgr.dist_3d(self.lastPos[e.receiver], e.receiver_pos);
-        self.results[e.receiver] += round(dist)
-        self.lastPos[e.receiver] = e.receiver_pos
+        if not self.disableAir[e.receiver]:
+            dist = stat_mgr.dist_3d(self.lastPos[e.receiver], e.receiver_pos)
+            self.results[e.receiver] += round(dist)
+            self.lastPos[e.receiver] = e.receiver_pos
 
     def on_assist(self, e):
+        if self.disableAir[e.player]:
+            return
         dist = stat_mgr.dist_3d(self.lastPos[e.player], e.player_pos);
         self.results[e.player] += round(dist)
         self.lastPos[e.player] = e.player_pos
 
     def on_death(self, e):
+        if self.disableAir[e.player]:
+            return
         dist = stat_mgr.dist_3d(self.lastPos[e.player], e.player_pos);
         self.results[e.player] += round(dist)
         self.lastPos[e.player] = e.player_pos
         
     def on_heal(self, e):
-        dist = stat_mgr.dist_3d(self.lastPos[e.giver], e.giver_pos);
-        self.results[e.giver] += round(dist)
-        self.lastPos[e.giver] = e.giver_pos
+        if not self.disableAir[e.giver]:
+            dist = stat_mgr.dist_3d(self.lastPos[e.giver], e.giver_pos);
+            self.results[e.giver] += round(dist)
+            self.lastPos[e.giver] = e.giver_pos
 
-        dist = stat_mgr.dist_3d(self.lastPos[e.receiver], e.receiver_pos);
-        self.results[e.receiver] += round(dist)
-        self.lastPos[e.receiver] = e.receiver_pos
+        if not self.disableAir[e.receiver]:
+            dist = stat_mgr.dist_3d(self.lastPos[e.receiver], e.receiver_pos)
+            self.results[e.receiver] += round(dist)
+            self.lastPos[e.receiver] = e.receiver_pos
         
     def on_kill(self, e):
-        dist = stat_mgr.dist_3d(self.lastPos[e.attacker], e.attacker_pos);
-        self.results[e.attacker] += round(dist)
-        self.lastPos[e.attacker] = e.attacker_pos
+        if not self.disableAir[e.attacker]:
+            dist = stat_mgr.dist_3d(self.lastPos[e.attacker], e.attacker_pos);
+            self.results[e.attacker] += round(dist)
+            self.lastPos[e.attacker] = e.attacker_pos
 
-        dist = stat_mgr.dist_3d(self.lastPos[e.victim], e.victim_pos);
-        self.results[e.victim] += round(dist)
-        self.lastPos[e.victim] = e.victim_pos
+        if not self.disableAir[e.victim]:
+            dist = stat_mgr.dist_3d(self.lastPos[e.victim], e.victim_pos)
+            self.results[e.victim] += round(dist)
+            self.lastPos[e.victim] = e.victim_pos
 
     def on_kit_drop(self, e):
+        if self.disableAir[e.player]:
+            return
         dist = stat_mgr.dist_3d(self.lastPos[e.player], e.player_pos);
         self.results[e.player] += round(dist)
         self.lastPos[e.player] = e.player_pos
         
     def on_kit_pickup(self, e):
+        if self.disableAir[e.player]:
+            return
         dist = stat_mgr.dist_3d(self.lastPos[e.player], e.player_pos);
         self.results[e.player] += round(dist)
         self.lastPos[e.player] = e.player_pos
 
     def on_repair(self, e):
+        if self.disableAir[e.giver]:
+            return
         dist = stat_mgr.dist_3d(self.lastPos[e.giver], e.giver_pos);
         self.results[e.giver] += round(dist)
         self.lastPos[e.giver] = e.giver_pos
 
     def on_revive(self, e):
-        dist = stat_mgr.dist_3d(self.lastPos[e.giver], e.giver_pos);
-        self.results[e.giver] += round(dist)
-        self.lastPos[e.giver] = e.giver_pos
+        if not self.disableAir[e.giver]:
+            dist = stat_mgr.dist_3d(self.lastPos[e.giver], e.giver_pos);
+            self.results[e.giver] += round(dist)
+            self.lastPos[e.giver] = e.giver_pos
 
-        dist = stat_mgr.dist_3d(self.lastPos[e.receiver], e.receiver_pos);
-        self.results[e.receiver] += round(dist)
-        self.lastPos[e.receiver] = e.receiver_pos
+        if not self.disableAir[e.receiver]:
+            dist = stat_mgr.dist_3d(self.lastPos[e.receiver], e.receiver_pos)
+            self.results[e.receiver] += round(dist)
+            self.lastPos[e.receiver] = e.receiver_pos
 
     def on_team_damage(self, e):
-        dist = stat_mgr.dist_3d(self.lastPos[e.attacker], e.attacker_pos);
-        self.results[e.attacker] += round(dist)
-        self.lastPos[e.attacker] = e.attacker_pos
+        if not self.disableAir[e.attacker]:
+            dist = stat_mgr.dist_3d(self.lastPos[e.attacker], e.attacker_pos);
+            self.results[e.attacker] += round(dist)
+            self.lastPos[e.attacker] = e.attacker_pos
 
-        dist = stat_mgr.dist_3d(self.lastPos[e.victim], e.victim_pos);
-        self.results[e.victim] += round(dist)
-        self.lastPos[e.victim] = e.victim_pos
+        if not self.disableAir[e.victim]:
+            dist = stat_mgr.dist_3d(self.lastPos[e.victim], e.victim_pos)
+            self.results[e.victim] += round(dist)
+            self.lastPos[e.victim] = e.victim_pos
 
     def on_vehicle_destroy(self, e):
+        if self.disableAir[e.attacker]:
+            return
         dist = stat_mgr.dist_3d(self.lastPos[e.attacker], e.attacker_pos);
         self.results[e.attacker] += round(dist)
         self.lastPos[e.attacker] = e.attacker_pos
@@ -106,13 +133,23 @@ class Processor(AwardProcessor):
         dist = stat_mgr.dist_3d(self.lastPos[e.player], e.player_pos);
         self.results[e.player] += round(dist)
         self.lastPos[e.player] = e.player_pos
+        vehicle_type = e.vehicle.vehicle_type
+        if vehicle_type == HELICOPTER or vehicle_type == JET:
+            self.disableAir[e.player] = True
+            
 
     def on_vehicle_exit(self, e):
-        dist = stat_mgr.dist_3d(self.lastPos[e.player], e.player_pos);
+        if self.disableAir[e.player]:
+            self.lastPos[e.player] = e.player_pos
+            self.disableAir[e.player] = False
+            return
+        dist = stat_mgr.dist_3d(self.lastPos[e.player], e.player_pos)
         self.results[e.player] += round(dist)
         self.lastPos[e.player] = e.player_pos
 
     def on_weapon(self, e):
+        if self.disableAir[e.player]:
+            return
         dist = stat_mgr.dist_3d(self.lastPos[e.player], e.player_pos);
         self.results[e.player] += round(dist)
         self.lastPos[e.player] = e.player_pos
