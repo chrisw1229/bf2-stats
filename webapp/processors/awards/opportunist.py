@@ -41,4 +41,5 @@ class Processor(AwardProcessor):
             
         else:
             self.lastKillTime[e.attacker] = e.tick
+            self.count[e.attacker] = 0
             
