@@ -34,11 +34,17 @@ class Processor(AwardProcessor):
         # Stop the player timer
         self.timers[e.player].stop(e.tick)
 
+##        if e.player.name == 'Willard':
+##            print 'Willard death'
+##            print e.tick
+##            print self.timers[e.player]
+
         # Swap timers if the time difference is the new maximum
         if self.timers[e.player].elapsed > self.results[e.player].elapsed:
             temp_timer = self.results[e.player]
             self.results[e.player] = self.timers[e.player]
             self.timers[e.player] = temp_timer
+            self.timers[e.player].elapsed = self.results[e.player].elapsed
 
     def on_disconnect(self, e):
         if not e.player in self.timers:
@@ -47,11 +53,17 @@ class Processor(AwardProcessor):
         # Stop the player timer
         self.timers[e.player].stop(e.tick)
 
+##        if e.player.name == 'Willard':
+##            print 'Willard disconnect'
+##            print e.tick
+##            print self.timers[e.player]
+
         # Swap timers if the time difference is the new maximum
         if self.timers[e.player].elapsed > self.results[e.player].elapsed:
             temp_timer = self.results[e.player]
             self.results[e.player] = self.timers[e.player]
             self.timers[e.player] = temp_timer
+            self.timers[e.player].elapsed = self.results[e.player].elapsed
 
     def on_kill(self, e):
 
@@ -63,6 +75,11 @@ class Processor(AwardProcessor):
         if not e.attacker in self.timers:
             return
 
+##        if e.attacker.name == 'Willard':
+##            print 'Willard kill'
+##            print e.tick
+##            print self.timers[e.attacker]
+
         # Stop the timer for the current kill
         self.timers[e.attacker].stop(e.tick)
 
@@ -71,6 +88,7 @@ class Processor(AwardProcessor):
             temp_timer = self.results[e.attacker]
             self.results[e.attacker] = self.timers[e.attacker]
             self.timers[e.attacker] = temp_timer
+            self.timers[e.attacker].elapsed = self.results[e.attacker].elapsed
 
         # Reset the attacker timer for the next kill
         self.timers[e.attacker].reset()
@@ -85,3 +103,8 @@ class Processor(AwardProcessor):
 
         # Start the player timer
         self.timers[e.player].start(e.tick)
+        
+##        if e.player.name == 'Willard':
+##            print 'Willard spawn'
+##            print e.tick
+##            print self.timers[e.player]

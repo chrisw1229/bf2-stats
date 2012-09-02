@@ -3,6 +3,7 @@ from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models.vehicles import AIR
 from models import model_mgr
 from stats import stat_mgr
+import collections
 
 class Processor(AwardProcessor):
     '''
@@ -26,6 +27,8 @@ class Processor(AwardProcessor):
 
         # Store the last known position for each player
         self.player_to_pos = dict()
+        self.distance = collections.Counter()
+        self.kills = collections.Counter()
 
     def on_kill(self, e):
 
@@ -46,8 +49,11 @@ class Processor(AwardProcessor):
         last_pos = self.player_to_pos[e.attacker]
         distance = stat_mgr.dist_3d(last_pos, e.attacker_pos)
 
-        # Increment the distance for the attacker
-        self.results[e.attacker] += round(distance)
+        # Increment the distance and kills for the attacker
+        self.distance[e.attacker] += round(distance)
+        self.kills[e.attacker] += 1
+        # Display the average
+        self.results[e.attacker] = self.distance[e.attacker] / self.kills[e.attacker]
 
         # Store the current position for next time
         self.player_to_pos[e.attacker] = e.attacker_pos
