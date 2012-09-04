@@ -22,8 +22,8 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Nomad',
-                'Longest Distance Between Kills',
-                [PLAYER_COL, Column('Distance', Column.NUMBER, Column.DESC)])
+                'Longest Avg. Distance Between Kills',
+                [PLAYER_COL, Column('Meters', Column.NUMBER, Column.DESC)])
 
         # Store the last known position for each player
         self.player_to_pos = dict()
@@ -53,7 +53,7 @@ class Processor(AwardProcessor):
         self.distance[e.attacker] += round(distance)
         self.kills[e.attacker] += 1
         # Display the average
-        self.results[e.attacker] = self.distance[e.attacker] / self.kills[e.attacker]
+        self.results[e.attacker] = round(self.distance[e.attacker] / self.kills[e.attacker])
 
         # Store the current position for next time
         self.player_to_pos[e.attacker] = e.attacker_pos

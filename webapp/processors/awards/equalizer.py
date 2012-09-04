@@ -17,7 +17,7 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Equalizer',
-                'Most Kills against Players with Better Weapons',
+                'Most Kills Against Players with Better Weapons',
                 [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
 
         self.ranks = dict()

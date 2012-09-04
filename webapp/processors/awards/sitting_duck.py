@@ -32,7 +32,7 @@ class Processor(AwardProcessor):
             return
 
         last_pos = self.player_to_pos[e.player]
-        distance = stat_mgr.dist_3d(last_pos, e.player_pos)
+        distance = round(stat_mgr.dist_3d(last_pos, e.player_pos))
 
         # Increment the distance for the attacker
         self.results[e.player] = min(distance, self.results[e.player])

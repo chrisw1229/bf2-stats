@@ -14,7 +14,7 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Chatty Cathy', 'Most Text Typed',
+        AwardProcessor.__init__(self, 'Chatty Cathy', 'Most Text Characters Typed',
                 [PLAYER_COL, Column('Text', Column.NUMBER, Column.DESC)])
 
 	self.previous = ''

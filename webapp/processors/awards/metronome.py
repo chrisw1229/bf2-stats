@@ -46,5 +46,5 @@ class Processor(AwardProcessor):
 
             mean = self.sum[e.attacker] / self.kills[e.attacker]
 
-            self.results[e.attacker] = sqrt((self.sum_squares[e.attacker] / self.kills[e.attacker]) - (mean * mean))
+            self.results[e.attacker] = round(sqrt((self.sum_squares[e.attacker] / self.kills[e.attacker]) - (mean * mean)))
 

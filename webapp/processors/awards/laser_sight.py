@@ -20,7 +20,7 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Laser Signt', 'Longest Kill Distance',
+        AwardProcessor.__init__(self, 'Laser Sight', 'Longest Kill Distance',
                 [PLAYER_COL, Column('Meters', Column.NUMBER, Column.DESC)])
 
     def on_kill(self, e):

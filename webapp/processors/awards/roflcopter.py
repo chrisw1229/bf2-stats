@@ -23,8 +23,8 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'ROFLcopter',
-                'Most Aircraft Crashed Within 30 Seconds of Takeoff',
-                [PLAYER_COL, Column('Crashed', Column.NUMBER, Column.DESC)])
+                'Most Aircraft Crashes Within 30 Seconds of Takeoff',
+                [PLAYER_COL, Column('Crashes', Column.NUMBER, Column.DESC)])
 
         # Keep track of the last vehicle enter event
         self.last_vehicle_entrance = dict()

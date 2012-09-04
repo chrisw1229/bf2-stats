@@ -21,7 +21,7 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Fly Swatter',
-                'Most Aircraft Kills from Ground',
+                'Most Aircraft Destroyed from Ground',
                 [PLAYER_COL, Column('Destroyed', Column.NUMBER, Column.DESC)])
 
     def on_vehicle_destroy(self, e):

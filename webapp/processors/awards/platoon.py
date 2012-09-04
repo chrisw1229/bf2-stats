@@ -12,7 +12,7 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Platoon', 'Most Teamkills of Squadmates',
-                [PLAYER_COL, Column('Teamkills', Column.NUMBER, Column.DESC)])
+                [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
 
     def on_kill(self, e):
         

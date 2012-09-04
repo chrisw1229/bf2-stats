@@ -8,7 +8,7 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Lemming', 'Suicides',
+        AwardProcessor.__init__(self, 'Lemming', 'Most Suicides',
                 [PLAYER_COL, Column('Suicides', Column.NUMBER, Column.DESC)])
 
     def on_kill(self, e):

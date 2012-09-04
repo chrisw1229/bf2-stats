@@ -57,4 +57,4 @@ class Processor(AwardProcessor):
         for score in scores:
             totalDev += (score - avg) * (score - avg)
 
-        self.results[e.player] = math.sqrt( totalDev / ( len(scores) * 1.0 ) )
+        self.results[e.player] = round(math.sqrt(totalDev / (len(scores) * 1.0)))

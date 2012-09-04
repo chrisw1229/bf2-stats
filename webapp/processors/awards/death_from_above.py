@@ -16,7 +16,7 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'Death From Avove',
+        AwardProcessor.__init__(self, 'Death from Above',
                 'Most Ground Kills from Aircraft',
                 [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
 
