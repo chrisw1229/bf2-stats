@@ -15,8 +15,8 @@ class Processor(AwardProcessor):
     '''
 
     def __init__(self):
-        AwardProcessor.__init__(self, 'G.I. Joe', 'Most Ammo and Fewest Kills',
-                [PLAYER_COL, Column('Ammo / Kills', Column.PERCENT, Column.DESC)])
+        AwardProcessor.__init__(self, 'G.I. Joe', 'Most Ammo Used per Kill',
+                [PLAYER_COL, Column('Ammo', Column.PERCENT, Column.DESC)])
 
     def on_accuracy(self, e):
         self._update(e.player)
@@ -31,4 +31,5 @@ class Processor(AwardProcessor):
         player_stats = stat_mgr.get_player_stats(player)
         kills = player_stats.kills_total
         ammo = player_stats.bullets_fired
-        self.results[player] = [ammo, kills]
+        if kills > 0:
+            self.results[player] = round(ammo / kills)

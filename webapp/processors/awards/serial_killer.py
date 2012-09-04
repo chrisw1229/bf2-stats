@@ -2,6 +2,15 @@
 from processors.awards import AwardProcessor,Column,PLAYER_COL
 import collections
 
+class AwardResult(object):
+
+    def __init__(self, kills, player):
+        self.kills = kills
+        self.player = player
+
+    def __repr__(self):
+        return [self.kills, self.player.name]
+
 class Processor(AwardProcessor):
     '''
     Overview
@@ -21,8 +30,9 @@ class Processor(AwardProcessor):
     def __init__(self):
         AwardProcessor.__init__(self, 'Serial Killer',
                 'Most Consecutive Kills Against a Single Player',
-                [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
+                [PLAYER_COL, Column('Kills', Column.ARRAY, Column.DESC)])
 
+        self.results = dict()
         self.lastVictim = dict()
         self.tempCounter = collections.Counter()
 
@@ -42,6 +52,13 @@ class Processor(AwardProcessor):
         else:
             self.tempCounter[e.attacker] = 1
 
+        kills = self.tempCounter[e.attacker]
         self.lastVictim[e.attacker] = e.victim
-        self.results[e.attacker] = max(self.tempCounter[e.attacker],
-                                       self.results[e.attacker])
+
+        if not e.attacker in self.results:
+            self.results[e.attacker] = AwardResult(kills, e.victim)
+        result = self.results[e.attacker]
+
+        if kills > result.kills:
+            result.kills = kills
+            result.player = e.victim

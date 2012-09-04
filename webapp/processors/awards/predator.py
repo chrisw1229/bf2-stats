@@ -2,6 +2,15 @@
 import collections
 from processors.awards import AwardProcessor,Column,PLAYER_COL
 
+class AwardResult(object):
+
+    def __init__(self, kills, player):
+        self.kills = kills
+        self.player = player
+
+    def __repr__(self):
+        return [self.kills, self.player.name]
+
 class Processor(AwardProcessor):
     '''
     Overview
@@ -20,8 +29,9 @@ class Processor(AwardProcessor):
     def __init__(self):
         AwardProcessor.__init__(self, 'Predator',
                 'Most Kills Against a Single Player',
-                [PLAYER_COL, Column('Kills', Column.NUMBER, Column.DESC)])
-        
+                [PLAYER_COL, Column('Kills', Column.ARRAY, Column.DESC)])
+
+        self.results = dict()
         self.attacker_to_victims = dict()
         
     def on_kill(self, e):
@@ -38,7 +48,12 @@ class Processor(AwardProcessor):
         victims = self.attacker_to_victims[e.attacker]
         victims[e.victim] += 1
 
+        if not e.attacker in self.results:
+            self.results[e.attacker] = AwardResult(victims[e.victim], e.victim)
+        result = self.results[e.attacker]
+
         # Check whether total kills for the victim is the new maximum
         for victim in victims:
-            if victims[victim] > self.results[e.attacker]:
-                self.results[e.attacker] = victims[victim]
+            if victims[victim] > result.kills:
+                result.kills = victims[victim]
+                result.player = victim

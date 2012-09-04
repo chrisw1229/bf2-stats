@@ -103,6 +103,7 @@ class AwardProcessor(BaseProcessor):
 class Column(object):
 
     # Data constants
+    ARRAY = 'array'
     NUMBER = 'number'
     PERCENT = 'percent'
     PLAYER = 'player'

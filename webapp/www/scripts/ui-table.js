@@ -356,6 +356,8 @@ $.widget('ui.table', {
          return value.name.toLowerCase();
       } else if (column.data == 'percent' && value.length == 2) {
          return value[1] ? (value[0] / value[1]) : 0;
+      } else if (column.data == 'array' && value.length > 0) {
+         return value[0];
       }
       return value;
    },
@@ -373,6 +375,12 @@ $.widget('ui.table', {
       } else if (column.data == 'percent' && value.length == 2) {
          var pct = value[1] ? Math.round(100 * value[0] / value[1]) : 0.00;
          return pct + '% (' + value[0] + '/' + value[1] + ')';
+      } else if (column.data == 'array' && value.length > 0) {
+         result = '';
+         for (var i = 1; i < value.length; i++) {
+            result += (result.length > 0 ? ', ' : '') + value[i];
+         }
+         return value[0] + ' (' + result + ')';;
       }
       return value;
    }
