@@ -13,6 +13,7 @@ class Processor(BaseProcessor):
 
         self.priority = 20
         self.vehicles = dict()
+        self.victims = dict()
 
     def on_accuracy(self, e):
         player_stats = stat_mgr.get_player_stats(e.player)
@@ -81,7 +82,6 @@ class Processor(BaseProcessor):
 
     def on_death(self, e):
         player_stats = stat_mgr.get_player_stats(e.player)
-        player_history = event_mgr.get_history(e.player)
 
         # Get the last known kit for the player
         # Player will no longer have an active kit at this point
@@ -119,11 +119,12 @@ class Processor(BaseProcessor):
                 / float(player_stats.deaths_total), 2)
 
         # Increment the enemy death count for the player
-        kill_event = player_history.get_new_event(KillEvent.TYPE)
-        if kill_event and kill_event.valid_kill:
-            if not kill_event.attacker in player_stats.enemies:
-                player_stats.enemies[kill_event.attacker] = PlayerItemStats()
-            player_stats.enemies[kill_event.attacker].deaths += 1
+        if e.player in self.victims:
+            kill_event = self.victims[e.player]
+            if kill_event and kill_event.valid_kill:
+                if not kill_event.attacker in player_stats.enemies:
+                    player_stats.enemies[kill_event.attacker] = PlayerItemStats()
+                player_stats.enemies[kill_event.attacker].deaths += 1
 
         # Increment the kit death count for the player
         if not player_kit in player_stats.kits:
@@ -232,6 +233,8 @@ class Processor(BaseProcessor):
         giver_stats.teamwork_total += 1
 
     def on_kill(self, e):
+        self.victims[e.victim] = e
+
         victim_stats = stat_mgr.get_player_stats(e.victim)
         attacker_stats = stat_mgr.get_player_stats(e.attacker)
 
