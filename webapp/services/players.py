@@ -158,7 +158,7 @@ class Handler:
         player_stats = stat_mgr.get_player_stats(player)
 
         # Build a list of column descriptors
-        columns = [{ 'name': 'Kits', 'data': 'string' },
+        columns = [{ 'name': 'Kits', 'data': 'kit' },
                 { 'name': 'Score', 'data': 'number', 'sorted': False },
                 { 'name': 'Kills', 'data': 'number' },
                 { 'name': 'Deaths', 'data': 'number' }]
@@ -168,7 +168,8 @@ class Handler:
         for kit in player_stats.kits:
             if kit != models.kits.EMPTY:
                 object_stats = player_stats.kits[kit]
-                rows.append([kit.name, object_stats.score, object_stats.kills,
+                kit_tuple = { 'id': kit.id, 'name': kit.name }
+                rows.append([kit_tuple, object_stats.score, object_stats.kills,
                         object_stats.deaths])
 
         # Sort the results by score
@@ -196,7 +197,7 @@ class Handler:
         player_stats = stat_mgr.get_player_stats(player)
 
         # Build a list of column descriptors
-        columns = [{ 'name': 'Maps', 'data': 'string' },
+        columns = [{ 'name': 'Maps', 'data': 'map' },
                 { 'name': 'Score', 'data': 'number', 'sorted': False },
                 { 'name': 'Kills', 'data': 'number' },
                 { 'name': 'Deaths', 'data': 'number' }]
@@ -206,7 +207,8 @@ class Handler:
         for map_obj in player_stats.maps:
             if map_obj != models.maps.EMPTY:
                 object_stats = player_stats.maps[map_obj]
-                rows.append([map_obj.name, object_stats.score,
+                map_tuple = { 'id': map_obj.id, 'name': map_obj.name }
+                rows.append([map_tuple, object_stats.score,
                         object_stats.kills, object_stats.deaths])
 
         # Sort the results by score
@@ -234,7 +236,7 @@ class Handler:
         player_stats = stat_mgr.get_player_stats(player)
 
         # Build a list of column descriptors
-        columns = [{ 'name': 'Teams', 'data': 'string' },
+        columns = [{ 'name': 'Teams', 'data': 'team' },
                 { 'name': 'Score', 'data': 'number', 'sorted': False },
                 { 'name': 'Kills', 'data': 'number' },
                 { 'name': 'Deaths', 'data': 'number' }]
@@ -244,7 +246,8 @@ class Handler:
         for team in player_stats.teams:
             if team != models.teams.EMPTY:
                 object_stats = player_stats.teams[team]
-                rows.append([team.name, object_stats.score, object_stats.kills,
+                team_tuple = { 'id': team.id, 'name': team.name }
+                rows.append([team_tuple, object_stats.score, object_stats.kills,
                         object_stats.deaths])
 
         # Sort the results by score
@@ -273,7 +276,7 @@ class Handler:
         player_stats = stat_mgr.get_player_stats(player)
 
         # Build a list of column descriptors
-        columns = [{ 'name': 'Vehicles', 'data': 'string' },
+        columns = [{ 'name': 'Vehicles', 'data': 'vehicle' },
                 { 'name': 'Kills', 'data': 'number', 'sorted': False },
                 { 'name': 'Deaths', 'data': 'number' }]
 
@@ -282,7 +285,8 @@ class Handler:
         for vehicle in player_stats.vehicles:
             if vehicle != models.vehicles.EMPTY:
                 object_stats = player_stats.vehicles[vehicle]
-                rows.append([vehicle.name, object_stats.kills,
+                vehicle_tuple = { 'id': vehicle.id, 'name': vehicle.name }
+                rows.append([vehicle_tuple, object_stats.kills,
                         object_stats.deaths])
 
         # Sort the results by kills
@@ -310,7 +314,7 @@ class Handler:
         player_stats = stat_mgr.get_player_stats(player)
 
         # Build a list of column descriptors
-        columns = [{ 'name': 'Weapons', 'data': 'string' },
+        columns = [{ 'name': 'Weapons', 'data': 'weapon' },
                 { 'name': 'Kills', 'data': 'number', 'sorted': False },
                 { 'name': 'Deaths', 'data': 'number' },
                 { 'name': 'Accuracy', 'data': 'percent' }]
@@ -320,7 +324,8 @@ class Handler:
         for weapon in player_stats.weapons:
             if weapon != models.weapons.EMPTY:
                 object_stats = player_stats.weapons[weapon]
-                rows.append([weapon.name, object_stats.kills, object_stats.deaths,
+                weapon_tuple = { 'id': weapon.id, 'name': weapon.name }
+                rows.append([weapon_tuple, object_stats.kills, object_stats.deaths,
                         [object_stats.bullets_hit, object_stats.bullets_fired]])
 
         # Sort the results by kills

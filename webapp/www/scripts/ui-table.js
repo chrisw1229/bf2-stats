@@ -350,7 +350,9 @@ $.widget('ui.table', {
    _formatSortValue: function(column, value) {
       if (column.data == 'string') {
          return value.toLowerCase();
-      } else if (column.data == 'player') {
+      } else if (column.data == 'kit' || column.data == 'map'
+            || column.data == 'player' || column.data == 'team'
+            || column.data == 'vehicle' || column.data == 'weapon') {
          return value.name.toLowerCase();
       } else if (column.data == 'percent' && value.length == 2) {
          return value[1] ? (value[0] / value[1]) : 0;
@@ -363,6 +365,11 @@ $.widget('ui.table', {
          return '<a href="players.html#id=' + value.id + '">'
                + '<img src="' + value.photo + '"/>'
                + '<span>' + value.name + '</span></a>';
+      } else if (column.data == 'kit' || column.data == 'map'
+            || column.data == 'team' || column.data == 'vehicle'
+            || column.data == 'weapon') {
+         return '<a href="' + column.data + 's.html#id=' + value.id + '">'
+               + value.name + '</a>';
       } else if (column.data == 'percent' && value.length == 2) {
          var pct = value[1] ? Math.round(100 * value[0] / value[1]) : 0.00;
          return pct + '% (' + value[0] + '/' + value[1] + ')';

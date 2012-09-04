@@ -64,20 +64,33 @@
    text-align: center;
 }
 
-.ui-table-data-player a {
+.ui-table-cell a {
    color: #3C4A2C;
    display: block;
-   height: 32px;
    text-decoration: none;
 }
-.ui-table-cell a:hover span {
+
+.ui-table-cell a:hover {
    text-decoration: underline;
+}
+
+.ui-table-data-player a {
+   display: block;
+   height: 32px;
 }
 
 .ui-table-data-player span {
    line-height: 32px;
    margin-left: 8px;
    vertical-align: top;
+}
+
+.ui-table-data-player a:hover {
+   text-decoration: none;
+}
+
+.ui-table-data-player a:hover span {
+   text-decoration: underline;
 }
 
 .ui-table-empty .ui-icon {
