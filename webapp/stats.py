@@ -256,7 +256,8 @@ class StatManager(object):
 
     def add_processor(self, processor):
         '''
-        Registers the given processor instance so that it can be used to calculate statistics.
+        Registers the given processor instance so that it can be used to
+        calculate statistics.
 
         Args:
             processor (BaseProcessor): The processor instance to register.
@@ -283,7 +284,8 @@ class StatManager(object):
         Gets the processor instance associated with the given identifier.
 
         Args:
-            id (string): A unique identifier that was previously registered to a processor instance.
+            id (string): A unique identifier that was previously registered to a
+            processor instance.
 
         Returns:
             processor (BaseProcessor): The requested processor instance.
@@ -300,7 +302,7 @@ class StatManager(object):
         Gets a list of registered processor types.
 
         Args:
-           None
+            None
 
         Returns:
             types (list): Returns a list of registered processor types.
@@ -320,7 +322,7 @@ class StatManager(object):
         '''
 
         if processor_type and processor_type in self.type_to_processors:
-            return self.type_to_processors[processor_type]
+            return list(self.type_to_processors[processor_type])
         return []
 
     def process_event(self, event):
@@ -328,7 +330,7 @@ class StatManager(object):
         Takes in a log event and processes it into useful statistics.
 
         Args:
-           event (BaseEvent): Object representation of a log entry.
+            event (BaseEvent): Object representation of a log entry.
 
         Returns:
             None
@@ -368,12 +370,35 @@ class StatManager(object):
         if isinstance(event, GameStatusEvent) and event.game.ending:
             timer_mgr.reset_timers()
 
-    def reset_stats(self):
+    def post_process(self):
         '''
-        Resets all the statistic models. This is typically only called when a new game starts.
+        After all log lines have been read this method processes any final
+        statistics.
 
         Args:
-           None
+            None
+
+        Returns:
+            None
+        '''
+
+        for processor in self.processors:
+            try:
+                if processor.enabled:
+                    processor.post_process()
+            except Exception, err:
+                print ('ERROR - Failed to invoke post process function: %s.%s'
+                        % (processor.__class__.__module__,
+                        processor.__class__.__name__))
+                traceback.print_exc(err)
+
+    def reset_stats(self):
+        '''
+        Resets all the statistic models. This is typically only called when a
+        new game starts.
+
+        Args:
+            None
 
         Returns:
             None
@@ -388,7 +413,7 @@ class StatManager(object):
         Gets all the statistics objects of the given class type.
 
         Args:
-           stats_type (class): Class definition for the type of statistics
+            stats_type (class): Class definition for the type of statistics
                 objects to retrieve.
 
         Returns:
@@ -404,8 +429,8 @@ class StatManager(object):
         Gets the statistics object for the given game model.
 
         Args:
-           game (Game): Object representation of a game. None will retrieve the statistics for the
-                    currently active game.
+            game (Game): Object representation of a game. None will retrieve the
+                    statistics for the currently active game.
 
         Returns:
             stats (GameStats): The statistics model associated with the game.
@@ -420,7 +445,7 @@ class StatManager(object):
         Gets the statistics object for the given kit model.
 
         Args:
-           kit (Kit): Object representation of a kit.
+            kit (Kit): Object representation of a kit.
 
         Returns:
             stats (KitStats): The statistics model associated with the kit.
@@ -433,7 +458,7 @@ class StatManager(object):
         Gets the statistics object for the given map model.
 
         Args:
-           map (Map): Object representation of a map.
+            map (Map): Object representation of a map.
 
         Returns:
             stats (MapStats): The statistics model associated with the map.
@@ -446,7 +471,7 @@ class StatManager(object):
         Gets the statistics object for the given player model.
 
         Args:
-           player (Player): Object representation of a player.
+            player (Player): Object representation of a player.
 
         Returns:
             stats (PlayerStats): The statistics model associated with the player.
@@ -459,7 +484,7 @@ class StatManager(object):
         Gets the statistics object for the given team model.
 
         Args:
-           team (Team): Object representation of a team.
+            team (Team): Object representation of a team.
 
         Returns:
             stats (TeamStats): The statistics model associated with the team.
@@ -472,7 +497,7 @@ class StatManager(object):
         Gets the statistics object for the given vehicle model.
 
         Args:
-           vehicle (Vehicle): Object representation of a vehicle.
+            vehicle (Vehicle): Object representation of a vehicle.
 
         Returns:
             stats (VehicleStats): The statistics model associated with the vehicle.
@@ -485,7 +510,7 @@ class StatManager(object):
         Gets the statistics object for the given weapon model.
 
         Args:
-           weapon (Weapon): Object representation of a weapon.
+            weapon (Weapon): Object representation of a weapon.
 
         Returns:
             stats (WeaponStats): The statistics model associated with the weapon.
@@ -498,8 +523,8 @@ class StatManager(object):
         Calculates the distance between the given position arrays in 2-dimensional space.
 
         Args:
-           pos1 (array): Array of points in the form [x, z, y, a].
-           pos2 (array): Array of points in the form [x, z, y, a].
+            pos1 (array): Array of points in the form [x, z, y, a].
+            pos2 (array): Array of points in the form [x, z, y, a].
 
         Returns:
             distance (float): The distance between two points using the x and y coordinates.
@@ -516,8 +541,8 @@ class StatManager(object):
         Calculates the distance between the given position arrays in 3-dimensional space.
 
         Args:
-           pos1 (array): Array of points in the form [x, z, y, a].
-           pos2 (array): Array of points in the form [x, z, y, a].
+            pos1 (array): Array of points in the form [x, z, y, a].
+            pos2 (array): Array of points in the form [x, z, y, a].
 
         Returns:
             distance (float): The distance between two points using the x, y, and z coordinates.
@@ -535,8 +560,8 @@ class StatManager(object):
         Calculates the altitude or height distance between the given position arrays.
 
         Args:
-           pos1 (array): Array of points in the form [x, z, y, a].
-           pos2 (array): Array of points in the form [x, z, y, a].
+            pos1 (array): Array of points in the form [x, z, y, a].
+            pos2 (array): Array of points in the form [x, z, y, a].
 
         Returns:
             distance (float): The distance between two points using the z coordinate.
@@ -611,6 +636,10 @@ class StatManager(object):
         return model_to_stats[model]
 
     def _process_event(self, processor, event):
+
+        # Ignore disabled processors
+        if not processor.enabled:
+            return
 
         # Make sure the processor has the event callback function
         if hasattr(processor, event.CALLBACK):

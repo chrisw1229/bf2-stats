@@ -1,5 +1,6 @@
 ﻿
 import pkgutil
+import time
 import traceback
 
 import cherrypy
@@ -16,6 +17,7 @@ class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
         self.log_file_path = None
         self.log_file = None
         self.activated = False
+        self.start_time = int(round(time.time() * 1000))
 
     # This method will be called when the plugin engine starts
     def start(self):
@@ -70,6 +72,12 @@ class StatsPlugin(cherrypy.process.plugins.SimplePlugin):
         if not self.activated:
             self.activated = True
             print 'Log lines read: ', count
+
+            print 'Executing post processors...'
+            stat_mgr.post_process()
+
+            elapsed = int(round(time.time() * 1000)) - self.start_time
+            print 'Server startup in %i ms' % elapsed
 
     # This method will be called when the plugin engine stops
     def stop(self):

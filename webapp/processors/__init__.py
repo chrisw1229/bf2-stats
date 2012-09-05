@@ -8,8 +8,12 @@ class BaseProcessor(object):
         self.processor_type = '.'.join(module_names[1:-1])
         self.type_index = 0
         self.priority = 100
+        self.enabled = True
 
     def start(self):
+        pass
+
+    def post_process(self):
         pass
 
     def stop(self):
