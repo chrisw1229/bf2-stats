@@ -28,5 +28,19 @@ class Processor(AwardProcessor):
         processors.remove(self)
 
         for processor in processors:
-            # TODO Get the sorted award results: processor.get_results()
-            pass
+            print processor.name
+            results = processor.get_results()
+            sort_index = None
+            sort_dir = None
+            for index,column in enumerate(processor.columns):
+                if column.sorted != None:
+                    sort_index = index
+                    sort_dir = column.sorted
+                    break
+                
+            if sort_index:
+                results.sort(key=lambda row: row[sort_index], reverse=sort_dir)
+
+            if len(results) > 1:
+                results[1]
+            
