@@ -3,14 +3,15 @@ from processors.awards import AwardProcessor,Column,PLAYER_COL
 from models.vehicles import AIR
 from models import model_mgr
 from stats import stat_mgr
+from collections import Counter
 
 class Processor(AwardProcessor):
     '''
     Overview
-    This processor tracks the minimum distance travelled between deaths.
+    This processor tracks the minimum avg. distance travelled between deaths.
     
     Implementation
-    This implementation tracks the distance travelled between deaths.
+    This implementation tracks the avg. distance travelled between deaths.
     (Distance between prior death and current death)
 
     Notes
@@ -19,11 +20,13 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Sittin\' Duck',
-                'Shortest Distance Between Deaths',
+                'Shortest Average Distance Between Deaths',
                 [PLAYER_COL, Column('Distance', Column.NUMBER, Column.ASC)])
 
         # Store the last known position for each player
         self.player_to_pos = dict()
+        self.distance = Counter()
+        self.deaths = Counter()
 
     def on_death(self, e):
 
@@ -32,10 +35,12 @@ class Processor(AwardProcessor):
             return
 
         last_pos = self.player_to_pos[e.player]
-        distance = round(stat_mgr.dist_3d(last_pos, e.player_pos))
+        dist = round(stat_mgr.dist_3d(last_pos, e.player_pos))
+        self.distance[e.player] += dist
 
-        # Increment the distance for the attacker
-        self.results[e.player] = min(distance, self.results[e.player])
+        self.deaths[e.player] += 1
+        
+        self.results[e.player] = self.distance[e.player] / self.deaths[e.player]
 
         # Store the current position for next time
         self.player_to_pos[e.player] = e.player_pos
@@ -44,3 +49,8 @@ class Processor(AwardProcessor):
 
         if not e.player in self.results:
             self.results[e.player] = 99999999999999
+
+    def on_game_event(self, e):
+
+        if e.game.ending:
+            self.player_to_pos.clear()
