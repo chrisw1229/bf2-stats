@@ -25,7 +25,8 @@ $.widget('ui.nav', {
       // Build the document model
       this.element.addClass('ui-nav');
       this.contentElm = $('<div class="ui-nav-content"/>').appendTo(this.element);
-      this.logoElm = $('<img class="ui-nav-logo" src="images/logo.png"/>').appendTo(this.contentElm);
+      var homeElm = $('<a href="index.html"></a>').appendTo(this.contentElm);
+      var logoElm = $('<img class="ui-nav-logo" src="images/logo.png"/>').appendTo(homeElm);
 
       // Build the menu header
       this.headerDiv = $('<h2 class="ui-helper-reset ui-widget-header ui-corner-top ui-nav-menu-header">'
