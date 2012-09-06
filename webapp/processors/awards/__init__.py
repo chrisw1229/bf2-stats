@@ -75,7 +75,7 @@ class AwardProcessor(BaseProcessor):
         for index,column in enumerate(self.columns):
             if column.sorted != None:
                 sort_index = index
-                sort_dir = column.sorted
+                sort_dir = not column.sorted
                 break
 
         # Sort the results if applicable
