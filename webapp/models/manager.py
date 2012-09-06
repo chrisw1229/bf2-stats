@@ -691,16 +691,20 @@ class ModelManager(object):
         if not status or not map_id: return games.EMPTY
 
         game = None
-        if status == games.Game.STARTING:
+        current_game = self.get_game()
+        if (current_game == games.EMPTY or (current_game.valid
+                and status == games.Game.STARTING)):
 
             # Create a new model when the game is starting
             game = games.Game(status, map_id, clock_limit, score_limit)
             self.games.append(game)
             self._log('Game started: %s %s' % (game.id, game.map_id))
         else:
+            game = self.get_game()
+            if game.map_id != map_id:
+                self._log('Game updated: %s %s' % (game.id, map_id))
 
             # Update the game to reflect the new state
-            game = self.get_game()
             game.status = status
             game.map_id = map_id
             game.clock_limit = clock_limit

@@ -16,6 +16,7 @@ class Game(object):
         self.starting = False
         self.playing = False
         self.ending = False
+        self.valid = False
 
         self.reset()
 

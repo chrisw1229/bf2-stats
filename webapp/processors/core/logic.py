@@ -124,6 +124,9 @@ class Processor(BaseProcessor):
 
     def on_spawn(self, e):
 
+        # Flag the current game as valid once a spawn occurs
+        model_mgr.get_game().valid = True
+
         # Update the spawned status for the player
         e.player.spawned = True
 
