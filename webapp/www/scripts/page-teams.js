@@ -37,7 +37,7 @@ $.extend({ mgr: {
 
       // Configure the request options
       var options = {
-         url: 'services/teams',
+         url: 'services/teams/index.json',
          dataType: 'json',
          success: $.proxy($.mgr.onTeams, $.mgr),
          error: $.proxy($.mgr.onError, $.mgr)
@@ -55,7 +55,7 @@ $.extend({ mgr: {
 
       // Configure the request options
       var options = {
-         url: 'services/teams/' + id,
+         url: 'services/teams/' + id + '.json',
          dataType: 'json',
          success: $.proxy($.mgr.onTeam, $.mgr),
          error: $.proxy($.mgr.onError, $.mgr)

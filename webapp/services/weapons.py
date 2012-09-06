@@ -1,5 +1,6 @@
 ﻿
 import cherrypy
+import os.path
 
 import models.weapons
 
@@ -25,7 +26,8 @@ class Handler:
         '''
 
         # Handle requests for specific weapons
-        if id:
+        if id and id != 'index.json':
+            id = os.path.splitext(id)[0]
             return self.get_weapon(id)
 
         # Handle requests for the full weapon index

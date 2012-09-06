@@ -4,4 +4,5 @@
 
 .DS_Store
 
+/webapp/__export
 /webapp/www/tiles/*

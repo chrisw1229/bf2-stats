@@ -37,7 +37,7 @@ $.extend({ mgr: {
 
       // Configure the request options
       var options = {
-         url: 'services/vehicles',
+         url: 'services/vehicles/index.json',
          dataType: 'json',
          success: $.proxy($.mgr.onVehicles, $.mgr),
          error: $.proxy($.mgr.onError, $.mgr)
@@ -55,7 +55,7 @@ $.extend({ mgr: {
 
       // Configure the request options
       var options = {
-         url: 'services/vehicles/' + id,
+         url: 'services/vehicles/' + id + '.json',
          dataType: 'json',
          success: $.proxy($.mgr.onVehicle, $.mgr),
          error: $.proxy($.mgr.onError, $.mgr)

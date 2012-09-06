@@ -1,5 +1,6 @@
 ﻿
 import cherrypy
+import os.path
 
 import models.teams
 
@@ -25,7 +26,8 @@ class Handler:
         '''
 
         # Handle requests for specific teams
-        if id:
+        if id and id != 'index.json':
+            id = os.path.splitext(id)[0]
             return self.get_team(id)
 
         # Handle requests for the full team index

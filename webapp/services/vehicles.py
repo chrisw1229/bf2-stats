@@ -1,5 +1,6 @@
 ﻿
 import cherrypy
+import os.path
 
 import models.vehicles
 
@@ -25,7 +26,8 @@ class Handler:
         '''
 
         # Handle requests for specific vehicles
-        if id:
+        if id and id != 'index.json':
+            id = os.path.splitext(id)[0]
             return self.get_vehicle(id)
 
         # Handle requests for the full vehicle index

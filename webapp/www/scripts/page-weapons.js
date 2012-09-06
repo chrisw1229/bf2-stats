@@ -37,7 +37,7 @@ $.extend({ mgr: {
 
       // Configure the request options
       var options = {
-         url: 'services/weapons',
+         url: 'services/weapons/index.json',
          dataType: 'json',
          success: $.proxy($.mgr.onWeapons, $.mgr),
          error: $.proxy($.mgr.onError, $.mgr)
@@ -55,7 +55,7 @@ $.extend({ mgr: {
 
       // Configure the request options
       var options = {
-         url: 'services/weapons/' + id,
+         url: 'services/weapons/' + id + '.json',
          dataType: 'json',
          success: $.proxy($.mgr.onWeapon, $.mgr),
          error: $.proxy($.mgr.onError, $.mgr)

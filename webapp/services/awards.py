@@ -1,5 +1,6 @@
 ﻿
 import cherrypy
+import os.path
 
 from stats import stat_mgr
 
@@ -22,7 +23,8 @@ class Handler:
         '''
  
         # Handle requests for specific awards
-        if id:
+        if id and id != 'index.json':
+            id = os.path.splitext(id)[0]
             return self.get_award(id)
 
         # Handle requests for the full award index

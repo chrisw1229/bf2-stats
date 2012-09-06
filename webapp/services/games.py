@@ -1,5 +1,6 @@
 ﻿
 import cherrypy
+import os.path
 
 import models.games
 
@@ -25,7 +26,8 @@ class Handler:
         '''
 
         # Handle requests for specific games
-        if id:
+        if id and id != 'index.json':
+            id = os.path.splitext(id)[0]
             return self.get_game(id)
 
         # Handle requests for the full game index

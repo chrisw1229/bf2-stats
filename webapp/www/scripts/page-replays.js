@@ -32,7 +32,7 @@ $.extend({ mgr: {
 
       // Configure the request options
       var options = {
-         url: 'services/replays/' + id,
+         url: 'services/replays/' + id + '.json',
          dataType: 'json',
          success: $.proxy($.mgr.onGame, $.mgr),
          error: $.proxy($.mgr.onError, $.mgr)

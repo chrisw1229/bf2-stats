@@ -82,7 +82,7 @@ $.extend({ mgr: {
 
       // Configure the request options
       var options = {
-         url: 'services/players',
+         url: 'services/players/index.json',
          dataType: 'json',
          success: $.proxy($.mgr.onPlayers, $.mgr),
          error: $.proxy($.mgr.onError, $.mgr)
@@ -102,7 +102,7 @@ $.extend({ mgr: {
 
       // Configure the request options
       var options = {
-         url: 'services/players/' + id + '/statistics',
+         url: 'services/players/' + id + '/statistics.json',
          dataType: 'json',
          success: $.proxy($.mgr.onPlayer, $.mgr),
          error: $.proxy($.mgr.onError, $.mgr)
@@ -118,7 +118,7 @@ $.extend({ mgr: {
 
       // Configure the request options
       var options = {
-         url: 'services/players/' + id + '/enemies',
+         url: 'services/players/' + id + '/enemies.json',
          dataType: 'json',
          success: $.proxy($.mgr.onEnemies, $.mgr),
          error: $.proxy($.mgr.onError, $.mgr)
@@ -134,7 +134,7 @@ $.extend({ mgr: {
 
       // Configure the request options
       var options = {
-         url: 'services/players/' + id + '/kits',
+         url: 'services/players/' + id + '/kits.json',
          dataType: 'json',
          success: $.proxy($.mgr.onKits, $.mgr),
          error: $.proxy($.mgr.onError, $.mgr)
@@ -150,7 +150,7 @@ $.extend({ mgr: {
 
       // Configure the request options
       var options = {
-         url: 'services/players/' + id + '/maps',
+         url: 'services/players/' + id + '/maps.json',
          dataType: 'json',
          success: $.proxy($.mgr.onMaps, $.mgr),
          error: $.proxy($.mgr.onError, $.mgr)
@@ -166,7 +166,7 @@ $.extend({ mgr: {
 
       // Configure the request options
       var options = {
-         url: 'services/players/' + id + '/teams',
+         url: 'services/players/' + id + '/teams.json',
          dataType: 'json',
          success: $.proxy($.mgr.onTeams, $.mgr),
          error: $.proxy($.mgr.onError, $.mgr)
@@ -182,7 +182,7 @@ $.extend({ mgr: {
 
       // Configure the request options
       var options = {
-         url: 'services/players/' + id + '/vehicles',
+         url: 'services/players/' + id + '/vehicles.json',
          dataType: 'json',
          success: $.proxy($.mgr.onVehicles, $.mgr),
          error: $.proxy($.mgr.onError, $.mgr)
@@ -199,7 +199,7 @@ $.extend({ mgr: {
 
       // Configure the request options
       var options = {
-         url: 'services/players/' + id + '/weapons',
+         url: 'services/players/' + id + '/weapons.json',
          dataType: 'json',
          success: $.proxy($.mgr.onWeapons, $.mgr),
          error: $.proxy($.mgr.onError, $.mgr)

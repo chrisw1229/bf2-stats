@@ -14,7 +14,7 @@ $.extend({ mgr: {
 
       // Configure the request options
       var options = {
-         url: 'services/leaderboard',
+         url: 'services/leaderboard/index.json',
          dataType: 'json',
          success: $.proxy($.mgr.onResults, $.mgr),
          error: $.proxy($.mgr.onError, $.mgr)

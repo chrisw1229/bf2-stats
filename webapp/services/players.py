@@ -1,5 +1,6 @@
 ﻿
 import cherrypy
+import os.path
 
 import models.players
 
@@ -46,7 +47,8 @@ class Handler:
             data_type = data_type.lower()
 
         # Handle requests for specific players
-        if id:
+        if id and id != 'index.json':
+            data_type = os.path.splitext(data_type)[0]
             if data_type == 'statistics':
                 return self.get_player_stats(id)
             elif data_type == 'enemies':

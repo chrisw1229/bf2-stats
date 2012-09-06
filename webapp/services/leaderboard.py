@@ -8,7 +8,7 @@ from stats import stat_mgr
 @cherrypy.tools.json_out()
 class Handler:
 
-    def GET(self):
+    def GET(self, id=None):
         '''
         Provides statistics that represent the overall performance of all players.
 
