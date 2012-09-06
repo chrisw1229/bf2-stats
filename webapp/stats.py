@@ -24,6 +24,9 @@ class GameItemStats(object):
         self.score = 0
         self.teamwork = 0
 
+    def __repr__(self):
+        return self.__dict__
+
 class GameStats(BaseStats):
 
     def __init__(self):
@@ -35,12 +38,18 @@ class GameStats(BaseStats):
         self.score = 0
         self.teamwork = 0
 
+    def __repr__(self):
+        return self.__dict__
+
 class KitItemStats(object):
 
     def __init__(self):
         self.deaths = 0
         self.kills = 0
         self.score = 0
+
+    def __repr__(self):
+        return self.__dict__
 
 class KitStats(BaseStats):
 
@@ -52,12 +61,18 @@ class KitStats(BaseStats):
         self.players = dict()
         self.score = 0
 
+    def __repr__(self):
+        return self.__dict__
+
 class MapItemStats(object):
 
     def __init__(self):
         self.deaths = 0
         self.kills = 0
         self.score = 0
+
+    def __repr__(self):
+        return self.__dict__
 
 class MapStats(BaseStats):
 
@@ -69,6 +84,21 @@ class MapStats(BaseStats):
         self.players = dict()
         self.score = 0
 
+    def __repr__(self):
+        return self.__dict__
+
+class OverviewStats(object):
+
+    def __init__(self):
+        self.deaths = 0
+        self.kills = 0
+        self.lines = 0
+        self.players = 0
+        self.score = 0
+
+    def __repr__(self):
+        return self.__dict__
+
 class PlayerItemStats(object):
 
     def __init__(self):
@@ -76,6 +106,9 @@ class PlayerItemStats(object):
         self.kills = 0
         self.score = 0
         self.wounds = 0
+
+    def __repr__(self):
+        return self.__dict__
 
 class PlayerWeaponStats(object):
 
@@ -86,6 +119,9 @@ class PlayerWeaponStats(object):
         self.bullets_fired = 0
         self._bullets_hit = 0
         self._bullets_fired = 0
+
+    def __repr__(self):
+        return self.__dict__
 
 class PlayerStats(BaseStats):
 
@@ -138,6 +174,9 @@ class PlayerStats(BaseStats):
         self.wins = 0
         self.wounds_total = 0
 
+    def __repr__(self):
+        return self.__dict__
+
     def reset(self):
 
         # Game values
@@ -180,6 +219,9 @@ class TeamItemStats(object):
         self.kills = 0
         self.score = 0
 
+    def __repr__(self):
+        return self.__dict__
+
 class TeamStats(BaseStats):
 
     def __init__(self):
@@ -190,11 +232,17 @@ class TeamStats(BaseStats):
         self.players = dict()
         self.score = 0
 
+    def __repr__(self):
+        return self.__dict__
+
 class VehicleItemStats(object):
 
     def __init__(self):
         self.deaths = 0
         self.kills = 0
+
+    def __repr__(self):
+        return self.__dict__
 
 class VehicleStats(BaseStats):
 
@@ -205,11 +253,17 @@ class VehicleStats(BaseStats):
         self.kills = 0
         self.players = dict()
 
+    def __repr__(self):
+        return self.__dict__
+
 class WeaponItemStats(object):
 
     def __init__(self):
         self.deaths = 0
         self.kills = 0
+
+    def __repr__(self):
+        return self.__dict__
 
 class WeaponStats(BaseStats):
 
@@ -220,6 +274,9 @@ class WeaponStats(BaseStats):
         self.kills = 0
         self.players = dict()
 
+    def __repr__(self):
+        return self.__dict__
+
 class StatManager(object):
 
     def __init__(self):
@@ -229,6 +286,7 @@ class StatManager(object):
 
         self.game = None
         self.type_to_stats = dict()
+        self.overview_stats = OverviewStats()
 
     # This method will be called to initialize the manager
     def start(self):
@@ -408,17 +466,20 @@ class StatManager(object):
             for model_stats in model_to_stats.itervalues():
                 model_stats.reset()
 
-    def get_stats(self, stats_type):
+    def get_stats(self, stats_type=None):
         '''
         Gets all the statistics objects of the given class type.
 
         Args:
             stats_type (class): Class definition for the type of statistics
-                objects to retrieve.
+                objects to retrieve. None gets the overview stats object.
 
         Returns:
             stats (list): A list of statistics models of the specified type.
         '''
+
+        if stats_type == None:
+            return self.overview_stats
 
         if stats_type in self.type_to_stats:
             return self.type_to_stats[stats_type].values()

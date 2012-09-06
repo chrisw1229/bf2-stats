@@ -11,6 +11,7 @@ import services.kits
 import services.leaderboard
 import services.live
 import services.maps
+import services.overview
 import services.players
 import services.replays
 import services.teams
@@ -32,8 +33,9 @@ root.services.awards = services.awards.Handler()
 root.services.games = services.games.Handler()
 root.services.kits = services.kits.Handler()
 root.services.leaderboard = services.leaderboard.Handler();
-root.services.maps = services.maps.Handler()
 root.services.live = services.live.Handler()
+root.services.maps = services.maps.Handler()
+root.services.overview = services.overview.Handler()
 root.services.players = services.players.Handler()
 root.services.replays = services.replays.Handler()
 root.services.teams = services.teams.Handler()
