@@ -20,7 +20,7 @@ class Processor(AwardProcessor):
 
     def __init__(self):
         AwardProcessor.__init__(self, 'Sittin\' Duck',
-                'Shortest Average Distance Between Deaths',
+                'Shortest Avg. Distance Between Deaths',
                 [PLAYER_COL, Column('Distance', Column.NUMBER, Column.ASC)])
 
         # Store the last known position for each player
@@ -40,7 +40,7 @@ class Processor(AwardProcessor):
 
         self.deaths[e.player] += 1
         
-        self.results[e.player] = self.distance[e.player] / self.deaths[e.player]
+        self.results[e.player] = round(self.distance[e.player] / self.deaths[e.player])
 
         # Store the current position for next time
         self.player_to_pos[e.player] = e.player_pos
